@@ -1,0 +1,20 @@
+parameters:
+    package_composer_locations:
+        - '*/packages/*/composer.json'
+
+services:
+    _defaults:
+        autowire: true
+
+    Symplify\MonorepoBuilder\:
+        resource: '..'
+
+    Symfony\Component\Console\Application:
+        public: true # for bin file
+
+    Symfony\Component\Console\Input\ArgvInput: ~
+    Symfony\Component\Console\Output\ConsoleOutput: ~
+    Symfony\Component\Console\Output\OutputInterface:
+        alias: 'Symfony\Component\Console\Output\ConsoleOutput'
+
+    Symfony\Component\Console\Style\SymfonyStyle: ~
