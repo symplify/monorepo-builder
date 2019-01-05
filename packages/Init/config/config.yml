@@ -2,6 +2,7 @@ services:
     _defaults:
         public: true
         autowire: true
+        autoconfigure: true
 
     Symplify\MonorepoBuilder\Init\:
         resource: '../src'

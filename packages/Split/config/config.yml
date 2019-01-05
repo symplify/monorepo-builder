@@ -8,5 +8,14 @@ parameters:
     github_token: '%env(GITHUB_TOKEN)%'
     repository: '%root_directory%/.git'
 
-imports:
-    - { resource: 'services.yml' }
+services:
+    _defaults:
+        public: true
+        autowire: true
+        autoconfigure: true
+
+    Symplify\MonorepoBuilder\Split\:
+        resource: '../src'
+        exclude: '../src/{Exception,Process/SplitProcessInfo.php}'
+
+    Symplify\PackageBuilder\FileSystem\FileSystemGuard: ~

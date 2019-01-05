@@ -2,10 +2,11 @@ services:
     _defaults:
         public: true
         autowire: true
+        autoconfigure: true
 
     Symplify\MonorepoBuilder\:
-        resource: '..'
-        exclude: '../{Contract,Exception}'
+        resource: '../src'
+        exclude: '../src/{Contract,Exception}'
 
 
     Symplify\MonorepoBuilder\Console\MonorepoBuilderApplication:
