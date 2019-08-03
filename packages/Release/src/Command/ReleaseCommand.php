@@ -10,6 +10,7 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symplify\MonorepoBuilder\Configuration\Option;
+use Symplify\MonorepoBuilder\Exception\Git\InvalidGitVersionException;
 use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface;
 use Symplify\MonorepoBuilder\Release\Guard\ReleaseGuard;
 use Symplify\MonorepoBuilder\Release\ReleaseWorkerProvider;
@@ -76,7 +77,17 @@ final class ReleaseCommand extends Command
 
         /** @var string $versionArgument */
         $versionArgument = $input->getArgument(Option::VERSION);
-        $version = $this->createValidVersion($versionArgument, $stage);
+        // this object performs validation of version
+        $version = new Version($versionArgument);
+        try {
+            $this->releaseGuard->guardVersion($version, $stage);
+        } catch (InvalidGitVersionException $exception) {
+            $this->symfonyStyle->warning($exception->getMessage());
+            $answer = $this->symfonyStyle->confirm(sprintf('Are you sure you want to release "%s" version?', $version->getVersionString()));
+            if ($answer === false) {
+                return ShellCode::ERROR;
+            }
+        }
 
         $activeReleaseWorkers = $this->releaseWorkerProvider->provideByStage($stage);
 
@@ -106,16 +117,6 @@ final class ReleaseCommand extends Command
         }
 
         return ShellCode::SUCCESS;
-    }
-
-    private function createValidVersion(string $versionArgument, ?string $stage): Version
-    {
-        // this object performs validation of version
-        $version = new Version($versionArgument);
-
-        $this->releaseGuard->guardVersion($version, $stage);
-
-        return $version;
     }
 
     private function printReleaseWorkerMetadata(ReleaseWorkerInterface $releaseWorker): void
