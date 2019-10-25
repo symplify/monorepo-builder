@@ -50,10 +50,14 @@ final class ProcessFactory
             realpath(self::SUBSPLIT_BASH_FILE),
             sprintf('--from-directory=%s', $directory),
             sprintf('--to-repository=%s', $remoteRepository),
-            '--branch=master',
             $theMostRecentTag ? sprintf('--tag=%s', $theMostRecentTag) : '',
             sprintf('--repository=%s', $this->repository),
         ];
+        
+        // @TODO: Add "branch" as an option. If left out, it uses the current branch.
+        // if ($branchOptionSet) {
+        //    $commandLine[] = "--branch=master";
+        //}
 
         return $this->createProcessFromCommandLine($commandLine, $directory);
     }
