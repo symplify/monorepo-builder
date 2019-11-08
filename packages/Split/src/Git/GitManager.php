@@ -73,6 +73,19 @@ final class GitManager
     }
 
     /**
+     * Sanitize secrets from process output to ensure they are not
+     * exposed in CI logs
+     *
+     * @param string $output
+     *
+     * @return string
+     */
+    public function sanitizeProcessOutput(string $output): string
+    {
+        return Strings::replace($output, $this->githubToken, '***');
+    }
+
+    /**
      * @param string $commandResult
      * @return string[]
      */

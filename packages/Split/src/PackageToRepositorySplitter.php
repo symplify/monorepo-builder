@@ -117,7 +117,7 @@ final class PackageToRepositorySplitter
                 $message = sprintf(
                     'Process failed with "%d" code: "%s"',
                     $process->getExitCode(),
-                    $process->getErrorOutput()
+                    $this->gitManager->sanitizeProcessOutput($process->getErrorOutput())
                 );
 
                 throw new PackageToRepositorySplitException($message);
@@ -129,7 +129,7 @@ final class PackageToRepositorySplitter
                     $processInfo->getLocalDirectory(),
                     $processInfo->getRemoteRepository(),
                     PHP_EOL . PHP_EOL,
-                    $process->getOutput()
+                    $this->gitManager->sanitizeProcessOutput($process->getOutput())
                 )
             );
         }
