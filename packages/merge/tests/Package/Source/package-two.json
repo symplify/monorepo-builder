@@ -1,0 +1,12 @@
+{
+    "require": {
+        "rector/rector": "^2.0",
+        "phpunit/phpunit": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Symplify\\Statie\\": "src"
+        }
+    },
+    "minimum-stability": "dev"
+}
