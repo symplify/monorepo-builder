@@ -170,8 +170,8 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     $parameters = $containerConfigurator->parameters();
     $parameters->set(Option::DIRECTORIES_TO_REPOSITORIES, [
         __DIR__ . '/packages/package-builder' => 'git@github.com:symplify/package-builder.git',
-        __DIR__ . '/packagages/monorepo-builder' => 'git@github.com:symplify/monorepo-builder.git',
-        __DIR__ . '/packagages/coding-standard' => 'git@github.com:symplify/coding-standard.git',
+        __DIR__ . '/packages/monorepo-builder' => 'git@github.com:symplify/monorepo-builder.git',
+        __DIR__ . '/packages/coding-standard' => 'git@github.com:symplify/coding-standard.git',
     ]);
 };
 ```
@@ -231,7 +231,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     $parameters = $containerConfigurator->parameters();
     $parameters->set(Option::DIRECTORIES_TO_REPOSITORIES, [
         __DIR__ . '/packages/package-builder' => 'file:///home/developer/git/package-builder.git',
-        __DIR__ . '/packagages/monorepo-builder' => 'file:///home/developer/git/monorepo-builder.git',
+        __DIR__ . '/packages/monorepo-builder' => 'file:///home/developer/git/monorepo-builder.git',
     ]);
 };
 ```
