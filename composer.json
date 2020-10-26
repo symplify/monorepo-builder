@@ -1,0 +1,53 @@
+{
+    "name": "symplify/monorepo-builder",
+    "description": "Not only Composer tools to build a Monorepo.",
+    "license": "MIT",
+    "bin": [
+        "bin/monorepo-builder"
+    ],
+    "require": {
+        "php": ">=7.2",
+        "nette/utils": "^3.0",
+        "jean85/pretty-package-versions": "^1.2",
+        "phar-io/version": "^2.0.1|^3.0",
+        "symfony/finder": "^4.4|^5.1",
+        "symfony/dependency-injection": "^4.4|^5.1",
+        "symfony/console": "^4.4|^5.1",
+        "symfony/process": "^4.4|^5.1",
+        "symplify/package-builder": "^8.3.48",
+        "symplify/autowire-array-parameter": "^8.3.48",
+        "symplify/composer-json-manipulator": "^8.3.48",
+        "symplify/smart-file-system": "^8.3.48",
+        "symplify/symplify-kernel": "^8.3.48",
+        "symplify/set-config-resolver": "^8.3.48"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.5|^9.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Symplify\\MonorepoBuilder\\": "src",
+            "Symplify\\MonorepoBuilder\\Split\\": "packages/split/src",
+            "Symplify\\MonorepoBuilder\\Release\\": "packages/release/src",
+            "Symplify\\MonorepoBuilder\\Init\\": "packages/init/src",
+            "Symplify\\MonorepoBuilder\\Testing\\": "packages/testing/src",
+            "Symplify\\MonorepoBuilder\\Merge\\": "packages/merge/src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Symplify\\MonorepoBuilder\\Tests\\": "tests",
+            "Symplify\\MonorepoBuilder\\Split\\Tests\\": "packages/split/tests",
+            "Symplify\\MonorepoBuilder\\Merge\\Tests\\": "packages/merge/tests",
+            "Symplify\\MonorepoBuilder\\Release\\Tests\\": "packages/release/tests",
+            "Symplify\\MonorepoBuilder\\Testing\\Tests\\": "packages/testing/tests"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "8.4-dev"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
