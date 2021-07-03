@@ -1,11 +1,9 @@
 <?php
 
-declare(strict_types=1);
-
-namespace Symplify\MonorepoBuilder\Exception;
+declare (strict_types=1);
+namespace MonorepoBuilder20210703\Symplify\MonorepoBuilder\Exception;
 
 use Exception;
-
-final class AmbiguousVersionException extends Exception
+final class AmbiguousVersionException extends \Exception
 {
 }
