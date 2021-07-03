@@ -1,26 +1,25 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
+namespace MonorepoBuilder20210703\Symplify\MonorepoBuilder\Git;
 
-namespace Symplify\MonorepoBuilder\Git;
-
-use Symfony\Component\Process\Process;
-use Symplify\MonorepoBuilder\Utils\VersionUtils;
-
+use MonorepoBuilder20210703\Symfony\Component\Process\Process;
+use MonorepoBuilder20210703\Symplify\MonorepoBuilder\Utils\VersionUtils;
 final class ExpectedAliasResolver
 {
-    public function __construct(
-        private VersionUtils $versionUtils
-    ) {
-    }
-
-    public function resolve(): string
+    /**
+     * @var \Symplify\MonorepoBuilder\Utils\VersionUtils
+     */
+    private $versionUtils;
+    public function __construct(\MonorepoBuilder20210703\Symplify\MonorepoBuilder\Utils\VersionUtils $versionUtils)
     {
-        $process = new Process(['git', 'describe', '--abbrev=0', '--tags']);
+        $this->versionUtils = $versionUtils;
+    }
+    public function resolve() : string
+    {
+        $process = new \MonorepoBuilder20210703\Symfony\Component\Process\Process(['git', 'describe', '--abbrev=0', '--tags']);
         $process->run();
-
         $output = $process->getOutput();
-
         return $this->versionUtils->getNextAliasFormat($output);
     }
 }
