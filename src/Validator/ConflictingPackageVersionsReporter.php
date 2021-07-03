@@ -1,41 +1,44 @@
 <?php
 
-declare (strict_types=1);
-namespace MonorepoBuilder20210703\Symplify\MonorepoBuilder\Validator;
+declare(strict_types=1);
 
-use MonorepoBuilder20210703\Symfony\Component\Console\Style\SymfonyStyle;
-use MonorepoBuilder20210703\Symplify\SmartFileSystem\SmartFileInfo;
+namespace Symplify\MonorepoBuilder\Validator;
+
+use Symfony\Component\Console\Style\SymfonyStyle;
+use Symplify\SmartFileSystem\SmartFileInfo;
+
 final class ConflictingPackageVersionsReporter
 {
-    /**
-     * @var \Symfony\Component\Console\Style\SymfonyStyle
-     */
-    private $symfonyStyle;
-    public function __construct(\MonorepoBuilder20210703\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle)
-    {
-        $this->symfonyStyle = $symfonyStyle;
+    public function __construct(
+        private SymfonyStyle $symfonyStyle
+    ) {
     }
+
     /**
      * @param mixed[] $conflictingPackages
      */
-    public function report(array $conflictingPackages) : void
+    public function report(array $conflictingPackages): void
     {
         foreach ($conflictingPackages as $packageName => $filesToVersions) {
-            $message = \sprintf('Package "%s" has incompatible version', $packageName);
+            $message = sprintf('Package "%s" has incompatible version', $packageName);
             $this->symfonyStyle->title($message);
+
             $tableRows = $this->createTableRows($filesToVersions);
             $this->symfonyStyle->table(['File', 'Version'], $tableRows);
         }
+
         $this->symfonyStyle->error('Found conflicting package versions, fix them first.');
     }
+
     /**
      * @return array<int, mixed[]>
      */
-    private function createTableRows($filesToVersions) : array
+    private function createTableRows($filesToVersions): array
     {
         $tableRows = [];
+
         foreach ($filesToVersions as $file => $version) {
-            $fileInfo = new \MonorepoBuilder20210703\Symplify\SmartFileSystem\SmartFileInfo($file);
+            $fileInfo = new SmartFileInfo($file);
             $tableRows[] = [$fileInfo->getRelativeFilePathFromCwd(), $version];
         }
         return $tableRows;
