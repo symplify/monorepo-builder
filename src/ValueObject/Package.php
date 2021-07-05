@@ -1,29 +1,28 @@
 <?php
 
-declare (strict_types=1);
-namespace MonorepoBuilder20210705\Symplify\MonorepoBuilder\ValueObject;
+declare(strict_types=1);
 
-use MonorepoBuilder20210705\Nette\Utils\Strings;
+namespace Symplify\MonorepoBuilder\ValueObject;
+
+use Nette\Utils\Strings;
+
 final class Package
 {
-    /**
-     * @var string
-     */
-    private $shortName;
-    /**
-     * @var bool
-     */
-    private $hasTests;
-    public function __construct(string $name, bool $hasTests)
-    {
-        $this->hasTests = $hasTests;
-        $this->shortName = (string) \MonorepoBuilder20210705\Nette\Utils\Strings::after($name, '/', -1);
+    private string $shortName;
+
+    public function __construct(
+        string $name,
+        private bool $hasTests
+    ) {
+        $this->shortName = (string) Strings::after($name, '/', -1);
     }
-    public function getShortName() : string
+
+    public function getShortName(): string
     {
         return $this->shortName;
     }
-    public function hasTests() : bool
+
+    public function hasTests(): bool
     {
         return $this->hasTests;
     }

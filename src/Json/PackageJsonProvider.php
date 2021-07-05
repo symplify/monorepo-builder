@@ -1,42 +1,45 @@
 <?php
 
-declare (strict_types=1);
-namespace MonorepoBuilder20210705\Symplify\MonorepoBuilder\Json;
+declare(strict_types=1);
 
-use MonorepoBuilder20210705\Symplify\MonorepoBuilder\Package\PackageProvider;
+namespace Symplify\MonorepoBuilder\Json;
+
+use Symplify\MonorepoBuilder\Package\PackageProvider;
+
 final class PackageJsonProvider
 {
-    /**
-     * @var \Symplify\MonorepoBuilder\Package\PackageProvider
-     */
-    private $packageProvider;
-    public function __construct(\MonorepoBuilder20210705\Symplify\MonorepoBuilder\Package\PackageProvider $packageProvider)
-    {
-        $this->packageProvider = $packageProvider;
+    public function __construct(
+        private PackageProvider $packageProvider
+    ) {
     }
+
     /**
      * @return string[]
      */
-    public function providePackages() : array
+    public function providePackages(): array
     {
         $packageShortNames = [];
         foreach ($this->packageProvider->provide() as $package) {
             $packageShortNames[] = $package->getShortName();
         }
+
         return $packageShortNames;
     }
+
     /**
      * @return string[]
      */
-    public function providePackagesWithTests() : array
+    public function providePackagesWithTests(): array
     {
         $packageShortNames = [];
         foreach ($this->packageProvider->provide() as $package) {
-            if (!$package->hasTests()) {
+            if (! $package->hasTests()) {
                 continue;
             }
+
             $packageShortNames[] = $package->getShortName();
         }
+
         return $packageShortNames;
     }
 }
