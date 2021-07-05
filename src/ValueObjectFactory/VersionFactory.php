@@ -1,15 +1,13 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
+namespace MonorepoBuilder20210705\Symplify\MonorepoBuilder\ValueObjectFactory;
 
-namespace Symplify\MonorepoBuilder\ValueObjectFactory;
-
-use PharIo\Version\Version;
-
+use MonorepoBuilder20210705\PharIo\Version\Version;
 final class VersionFactory
 {
-    public function create(string $version): Version
+    public function create(string $version) : \MonorepoBuilder20210705\PharIo\Version\Version
     {
-        return new Version($version);
+        return new \MonorepoBuilder20210705\PharIo\Version\Version($version);
     }
 }

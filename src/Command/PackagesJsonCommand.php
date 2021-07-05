@@ -1,57 +1,48 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
+namespace MonorepoBuilder20210705\Symplify\MonorepoBuilder\Command;
 
-namespace Symplify\MonorepoBuilder\Command;
-
-use Nette\Utils\Json;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Output\OutputInterface;
-use Symplify\MonorepoBuilder\Json\PackageJsonProvider;
-use Symplify\MonorepoBuilder\ValueObject\Option;
-use Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
-use Symplify\PackageBuilder\Console\ShellCode;
-
-final class PackagesJsonCommand extends AbstractSymplifyCommand
+use MonorepoBuilder20210705\Nette\Utils\Json;
+use MonorepoBuilder20210705\Symfony\Component\Console\Input\InputInterface;
+use MonorepoBuilder20210705\Symfony\Component\Console\Input\InputOption;
+use MonorepoBuilder20210705\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder20210705\Symplify\MonorepoBuilder\Json\PackageJsonProvider;
+use MonorepoBuilder20210705\Symplify\MonorepoBuilder\ValueObject\Option;
+use MonorepoBuilder20210705\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
+use MonorepoBuilder20210705\Symplify\PackageBuilder\Console\ShellCode;
+final class PackagesJsonCommand extends \MonorepoBuilder20210705\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand
 {
-    public function __construct(
-        private PackageJsonProvider $packageJsonProvider
-    ) {
+    /**
+     * @var \Symplify\MonorepoBuilder\Json\PackageJsonProvider
+     */
+    private $packageJsonProvider;
+    public function __construct(\MonorepoBuilder20210705\Symplify\MonorepoBuilder\Json\PackageJsonProvider $packageJsonProvider)
+    {
+        $this->packageJsonProvider = $packageJsonProvider;
         parent::__construct();
     }
-
-    protected function configure(): void
+    protected function configure() : void
     {
         $this->setDescription('Provides package paths in json format. Useful for GitHub Actions Workflow');
-        $this->addOption(Option::TESTS, null, InputOption::VALUE_NONE, 'Only with /tests directory');
-        $this->addOption(
-            Option::EXCLUDE_PACKAGE,
-            null,
-            InputOption::VALUE_IS_ARRAY | InputOption::VALUE_REQUIRED,
-            'Exclude one or more package from the list, useful e.g. when scoping one package instead of bare split'
-        );
+        $this->addOption(\MonorepoBuilder20210705\Symplify\MonorepoBuilder\ValueObject\Option::TESTS, null, \MonorepoBuilder20210705\Symfony\Component\Console\Input\InputOption::VALUE_NONE, 'Only with /tests directory');
+        $this->addOption(\MonorepoBuilder20210705\Symplify\MonorepoBuilder\ValueObject\Option::EXCLUDE_PACKAGE, null, \MonorepoBuilder20210705\Symfony\Component\Console\Input\InputOption::VALUE_IS_ARRAY | \MonorepoBuilder20210705\Symfony\Component\Console\Input\InputOption::VALUE_REQUIRED, 'Exclude one or more package from the list, useful e.g. when scoping one package instead of bare split');
     }
-
-    protected function execute(InputInterface $input, OutputInterface $output): int
+    protected function execute(\MonorepoBuilder20210705\Symfony\Component\Console\Input\InputInterface $input, \MonorepoBuilder20210705\Symfony\Component\Console\Output\OutputInterface $output) : int
     {
-        $onlyTests = (bool) $input->getOption(Option::TESTS);
+        $onlyTests = (bool) $input->getOption(\MonorepoBuilder20210705\Symplify\MonorepoBuilder\ValueObject\Option::TESTS);
         if ($onlyTests) {
             $packagePaths = $this->packageJsonProvider->providePackagesWithTests();
         } else {
             $packagePaths = $this->packageJsonProvider->providePackages();
         }
-
-        $excludedPackages = (array) $input->getOption(Option::EXCLUDE_PACKAGE);
-        $packagePaths = array_diff($packagePaths, $excludedPackages);
-
+        $excludedPackages = (array) $input->getOption(\MonorepoBuilder20210705\Symplify\MonorepoBuilder\ValueObject\Option::EXCLUDE_PACKAGE);
+        $packagePaths = \array_diff($packagePaths, $excludedPackages);
         // re-index from 0
-        $packagePaths = array_values($packagePaths);
-
+        $packagePaths = \array_values($packagePaths);
         // must be without spaces, otherwise it breaks GitHub Actions json
-        $json = Json::encode($packagePaths);
+        $json = \MonorepoBuilder20210705\Nette\Utils\Json::encode($packagePaths);
         $this->symfonyStyle->writeln($json);
-
-        return ShellCode::SUCCESS;
+        return \MonorepoBuilder20210705\Symplify\PackageBuilder\Console\ShellCode::SUCCESS;
     }
 }

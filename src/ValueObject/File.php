@@ -1,8 +1,7 @@
 <?php
 
-declare(strict_types=1);
-
-namespace Symplify\MonorepoBuilder\ValueObject;
+declare (strict_types=1);
+namespace MonorepoBuilder20210705\Symplify\MonorepoBuilder\ValueObject;
 
 final class File
 {
@@ -10,7 +9,6 @@ final class File
      * @var string
      */
     public const COMPOSER_JSON = 'composer.json';
-
     /**
      * @var string
      */
