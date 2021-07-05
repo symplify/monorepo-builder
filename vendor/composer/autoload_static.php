@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit663de6b37cf4fb6061b8f6adf6a3fdfc
+class ComposerStaticInit0c124a5ae3f99806eca294911f71b843
 {
     public static $files = array (
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
@@ -1120,9 +1120,71 @@ class ComposerStaticInit663de6b37cf4fb6061b8f6adf6a3fdfc
         'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Git\\ExpectedAliasResolver' => __DIR__ . '/../..' . '/src/Git/ExpectedAliasResolver.php',
         'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Git\\MostRecentTagResolver' => __DIR__ . '/../..' . '/src/Git/MostRecentTagResolver.php',
         'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\HttpKernel\\MonorepoBuilderKernel' => __DIR__ . '/../..' . '/src/HttpKernel/MonorepoBuilderKernel.php',
+        'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Init\\Command\\InitCommand' => __DIR__ . '/../..' . '/packages/Init/Command/InitCommand.php',
         'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Json\\PackageJsonProvider' => __DIR__ . '/../..' . '/src/Json/PackageJsonProvider.php',
+        'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Merge\\Application\\MergedAndDecoratedComposerJsonFactory' => __DIR__ . '/../..' . '/packages/Merge/Application/MergedAndDecoratedComposerJsonFactory.php',
+        'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Merge\\Arrays\\ArraySorter' => __DIR__ . '/../..' . '/packages/Merge/Arrays/ArraySorter.php',
+        'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Merge\\Arrays\\SortedParameterMerger' => __DIR__ . '/../..' . '/packages/Merge/Arrays/SortedParameterMerger.php',
+        'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Merge\\Cleaner\\RequireRequireDevDuplicateCleaner' => __DIR__ . '/../..' . '/packages/Merge/Cleaner/RequireRequireDevDuplicateCleaner.php',
+        'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Merge\\Command\\MergeCommand' => __DIR__ . '/../..' . '/packages/Merge/Command/MergeCommand.php',
+        'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Merge\\ComposerJsonDecorator\\AppenderComposerJsonDecorator' => __DIR__ . '/../..' . '/packages/Merge/ComposerJsonDecorator/AppenderComposerJsonDecorator.php',
+        'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Merge\\ComposerJsonDecorator\\FilterOutDuplicatedRequireAndRequireDevJsonDecorator' => __DIR__ . '/../..' . '/packages/Merge/ComposerJsonDecorator/FilterOutDuplicatedRequireAndRequireDevJsonDecorator.php',
+        'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Merge\\ComposerJsonDecorator\\RemoverComposerJsonDecorator' => __DIR__ . '/../..' . '/packages/Merge/ComposerJsonDecorator/RemoverComposerJsonDecorator.php',
+        'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Merge\\ComposerJsonDecorator\\ReplaceSectionJsonDecorator' => __DIR__ . '/../..' . '/packages/Merge/ComposerJsonDecorator/ReplaceSectionJsonDecorator.php',
+        'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Merge\\ComposerJsonDecorator\\RootRemoveComposerJsonDecorator' => __DIR__ . '/../..' . '/packages/Merge/ComposerJsonDecorator/RootRemoveComposerJsonDecorator.php',
+        'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Merge\\ComposerJsonDecorator\\SortComposerJsonDecorator' => __DIR__ . '/../..' . '/packages/Merge/ComposerJsonDecorator/SortComposerJsonDecorator.php',
+        'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Merge\\ComposerJsonMerger' => __DIR__ . '/../..' . '/packages/Merge/ComposerJsonMerger.php',
+        'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Merge\\ComposerKeyMerger\\AuthorComposerKeyMerger' => __DIR__ . '/../..' . '/packages/Merge/ComposerKeyMerger/AuthorComposerKeyMerger.php',
+        'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Merge\\ComposerKeyMerger\\AutoloadComposerKeyMerger' => __DIR__ . '/../..' . '/packages/Merge/ComposerKeyMerger/AutoloadComposerKeyMerger.php',
+        'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Merge\\ComposerKeyMerger\\AutoloadDevComposerKeyMerger' => __DIR__ . '/../..' . '/packages/Merge/ComposerKeyMerger/AutoloadDevComposerKeyMerger.php',
+        'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Merge\\ComposerKeyMerger\\ExtraComposerKeyMerger' => __DIR__ . '/../..' . '/packages/Merge/ComposerKeyMerger/ExtraComposerKeyMerger.php',
+        'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Merge\\ComposerKeyMerger\\MinimalStabilityKeyMerger' => __DIR__ . '/../..' . '/packages/Merge/ComposerKeyMerger/MinimalStabilityKeyMerger.php',
+        'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Merge\\ComposerKeyMerger\\PreferStableKeyMerger' => __DIR__ . '/../..' . '/packages/Merge/ComposerKeyMerger/PreferStableKeyMerger.php',
+        'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Merge\\ComposerKeyMerger\\ReplaceComposerKeyMerger' => __DIR__ . '/../..' . '/packages/Merge/ComposerKeyMerger/ReplaceComposerKeyMerger.php',
+        'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Merge\\ComposerKeyMerger\\RepositoriesComposerKeyMerger' => __DIR__ . '/../..' . '/packages/Merge/ComposerKeyMerger/RepositoriesComposerKeyMerger.php',
+        'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Merge\\ComposerKeyMerger\\RequireComposerKeyMerger' => __DIR__ . '/../..' . '/packages/Merge/ComposerKeyMerger/RequireComposerKeyMerger.php',
+        'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Merge\\ComposerKeyMerger\\RequireDevComposerKeyMerger' => __DIR__ . '/../..' . '/packages/Merge/ComposerKeyMerger/RequireDevComposerKeyMerger.php',
+        'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Merge\\Configuration\\MergedPackagesCollector' => __DIR__ . '/../..' . '/packages/Merge/Configuration/MergedPackagesCollector.php',
+        'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Merge\\Configuration\\ModifyingComposerJsonProvider' => __DIR__ . '/../..' . '/packages/Merge/Configuration/ModifyingComposerJsonProvider.php',
+        'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Merge\\Contract\\ComposerJsonDecoratorInterface' => __DIR__ . '/../..' . '/packages/Merge/Contract/ComposerJsonDecoratorInterface.php',
+        'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Merge\\Contract\\ComposerKeyMergerInterface' => __DIR__ . '/../..' . '/packages/Merge/Contract/ComposerKeyMergerInterface.php',
+        'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Merge\\Guard\\ConflictingVersionsGuard' => __DIR__ . '/../..' . '/packages/Merge/Guard/ConflictingVersionsGuard.php',
+        'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Merge\\PathResolver\\AutoloadPathNormalizer' => __DIR__ . '/../..' . '/packages/Merge/PathResolver/AutoloadPathNormalizer.php',
+        'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Merge\\Validation\\AutoloadPathValidator' => __DIR__ . '/../..' . '/packages/Merge/Validation/AutoloadPathValidator.php',
         'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Package\\PackageNamesProvider' => __DIR__ . '/../..' . '/src/Package/PackageNamesProvider.php',
         'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Package\\PackageProvider' => __DIR__ . '/../..' . '/src/Package/PackageProvider.php',
+        'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Propagate\\Command\\PropagateCommand' => __DIR__ . '/../..' . '/packages/Propagate/Command/PropagateCommand.php',
+        'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Propagate\\VersionPropagator' => __DIR__ . '/../..' . '/packages/Propagate/VersionPropagator.php',
+        'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Release\\Command\\ReleaseCommand' => __DIR__ . '/../..' . '/packages/Release/Command/ReleaseCommand.php',
+        'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Release\\Configuration\\StageResolver' => __DIR__ . '/../..' . '/packages/Release/Configuration/StageResolver.php',
+        'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Release\\Configuration\\VersionResolver' => __DIR__ . '/../..' . '/packages/Release/Configuration/VersionResolver.php',
+        'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Release\\Contract\\ReleaseWorker\\ReleaseWorkerInterface' => __DIR__ . '/../..' . '/packages/Release/Contract/ReleaseWorker/ReleaseWorkerInterface.php',
+        'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Release\\Contract\\ReleaseWorker\\StageAwareInterface' => __DIR__ . '/../..' . '/packages/Release/Contract/ReleaseWorker/StageAwareInterface.php',
+        'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Release\\Exception\\ConfigurationException' => __DIR__ . '/../..' . '/packages/Release/Exception/ConfigurationException.php',
+        'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Release\\Guard\\ReleaseGuard' => __DIR__ . '/../..' . '/packages/Release/Guard/ReleaseGuard.php',
+        'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Release\\Output\\ReleaseWorkerReporter' => __DIR__ . '/../..' . '/packages/Release/Output/ReleaseWorkerReporter.php',
+        'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Release\\Process\\ProcessRunner' => __DIR__ . '/../..' . '/packages/Release/Process/ProcessRunner.php',
+        'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Release\\ReleaseWorkerProvider' => __DIR__ . '/../..' . '/packages/Release/ReleaseWorkerProvider.php',
+        'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Release\\ReleaseWorker\\AddTagToChangelogReleaseWorker' => __DIR__ . '/../..' . '/packages/Release/ReleaseWorker/AddTagToChangelogReleaseWorker.php',
+        'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Release\\ReleaseWorker\\PushNextDevReleaseWorker' => __DIR__ . '/../..' . '/packages/Release/ReleaseWorker/PushNextDevReleaseWorker.php',
+        'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Release\\ReleaseWorker\\PushTagReleaseWorker' => __DIR__ . '/../..' . '/packages/Release/ReleaseWorker/PushTagReleaseWorker.php',
+        'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Release\\ReleaseWorker\\SetCurrentMutualConflictsReleaseWorker' => __DIR__ . '/../..' . '/packages/Release/ReleaseWorker/SetCurrentMutualConflictsReleaseWorker.php',
+        'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Release\\ReleaseWorker\\SetCurrentMutualDependenciesReleaseWorker' => __DIR__ . '/../..' . '/packages/Release/ReleaseWorker/SetCurrentMutualDependenciesReleaseWorker.php',
+        'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Release\\ReleaseWorker\\SetNextMutualDependenciesReleaseWorker' => __DIR__ . '/../..' . '/packages/Release/ReleaseWorker/SetNextMutualDependenciesReleaseWorker.php',
+        'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Release\\ReleaseWorker\\TagVersionReleaseWorker' => __DIR__ . '/../..' . '/packages/Release/ReleaseWorker/TagVersionReleaseWorker.php',
+        'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Release\\ReleaseWorker\\UpdateBranchAliasReleaseWorker' => __DIR__ . '/../..' . '/packages/Release/ReleaseWorker/UpdateBranchAliasReleaseWorker.php',
+        'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Release\\ReleaseWorker\\UpdateReplaceReleaseWorker' => __DIR__ . '/../..' . '/packages/Release/ReleaseWorker/UpdateReplaceReleaseWorker.php',
+        'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Release\\ValueObject\\SemVersion' => __DIR__ . '/../..' . '/packages/Release/ValueObject/SemVersion.php',
+        'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Release\\ValueObject\\Stage' => __DIR__ . '/../..' . '/packages/Release/ValueObject/Stage.php',
+        'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Release\\Version\\VersionFactory' => __DIR__ . '/../..' . '/packages/Release/Version/VersionFactory.php',
+        'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Testing\\Command\\LocalizeComposerPathsCommand' => __DIR__ . '/../..' . '/packages/Testing/Command/LocalizeComposerPathsCommand.php',
+        'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Testing\\ComposerJsonRepositoriesUpdater' => __DIR__ . '/../..' . '/packages/Testing/ComposerJsonRepositoriesUpdater.php',
+        'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Testing\\ComposerJsonRequireUpdater' => __DIR__ . '/../..' . '/packages/Testing/ComposerJsonRequireUpdater.php',
+        'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Testing\\ComposerJson\\ComposerJsonSymlinker' => __DIR__ . '/../..' . '/packages/Testing/ComposerJson/ComposerJsonSymlinker.php',
+        'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Testing\\ComposerJson\\ComposerVersionManipulator' => __DIR__ . '/../..' . '/packages/Testing/ComposerJson/ComposerVersionManipulator.php',
+        'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Testing\\PackageDependency\\UsedPackagesResolver' => __DIR__ . '/../..' . '/packages/Testing/PackageDependency/UsedPackagesResolver.php',
+        'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Testing\\PathResolver\\PackagePathResolver' => __DIR__ . '/../..' . '/packages/Testing/PathResolver/PackagePathResolver.php',
+        'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Testing\\ValueObject\\Option' => __DIR__ . '/../..' . '/packages/Testing/ValueObject/Option.php',
         'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Utils\\VersionUtils' => __DIR__ . '/../..' . '/src/Utils/VersionUtils.php',
         'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Validator\\ConflictingPackageVersionsReporter' => __DIR__ . '/../..' . '/src/Validator/ConflictingPackageVersionsReporter.php',
         'MonorepoBuilder20210705\\Symplify\\MonorepoBuilder\\Validator\\SourcesPresenceValidator' => __DIR__ . '/../..' . '/src/Validator/SourcesPresenceValidator.php',
@@ -1189,9 +1251,9 @@ class ComposerStaticInit663de6b37cf4fb6061b8f6adf6a3fdfc
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit663de6b37cf4fb6061b8f6adf6a3fdfc::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit663de6b37cf4fb6061b8f6adf6a3fdfc::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit663de6b37cf4fb6061b8f6adf6a3fdfc::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit0c124a5ae3f99806eca294911f71b843::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit0c124a5ae3f99806eca294911f71b843::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit0c124a5ae3f99806eca294911f71b843::$classMap;
 
         }, null, ClassLoader::class);
     }
