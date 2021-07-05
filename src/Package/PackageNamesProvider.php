@@ -1,38 +1,35 @@
 <?php
 
-declare (strict_types=1);
-namespace MonorepoBuilder20210705\Symplify\MonorepoBuilder\Package;
+declare(strict_types=1);
 
-use MonorepoBuilder20210705\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
-use MonorepoBuilder20210705\Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider;
-use MonorepoBuilder20210705\Symplify\SmartFileSystem\SmartFileInfo;
+namespace Symplify\MonorepoBuilder\Package;
+
+use Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
+use Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider;
+use Symplify\SmartFileSystem\SmartFileInfo;
+
 final class PackageNamesProvider
 {
     /**
      * @var string[]
      */
-    private $names = [];
-    /**
-     * @var \Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider
-     */
-    private $composerJsonProvider;
-    /**
-     * @var \Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager
-     */
-    private $jsonFileManager;
-    public function __construct(\MonorepoBuilder20210705\Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider $composerJsonProvider, \MonorepoBuilder20210705\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager $jsonFileManager)
-    {
-        $this->composerJsonProvider = $composerJsonProvider;
-        $this->jsonFileManager = $jsonFileManager;
+    private array $names = [];
+
+    public function __construct(
+        private ComposerJsonProvider $composerJsonProvider,
+        private JsonFileManager $jsonFileManager
+    ) {
     }
+
     /**
      * @return string[]
      */
-    public function provide() : array
+    public function provide(): array
     {
         if ($this->names !== []) {
             return $this->names;
         }
+
         $packagesFileInfos = $this->composerJsonProvider->getPackagesComposerFileInfos();
         foreach ($packagesFileInfos as $packagesFileInfo) {
             $name = $this->extractNameFromFileInfo($packagesFileInfo);
@@ -40,11 +37,14 @@ final class PackageNamesProvider
                 $this->names[] = $name;
             }
         }
+
         return $this->names;
     }
-    private function extractNameFromFileInfo(\MonorepoBuilder20210705\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : ?string
+
+    private function extractNameFromFileInfo(SmartFileInfo $smartFileInfo): ?string
     {
         $json = $this->jsonFileManager->loadFromFileInfo($smartFileInfo);
+
         return $json['name'] ?? null;
     }
 }
