@@ -12,7 +12,7 @@ use MonorepoBuilder20210706\Symplify\PackageBuilder\Yaml\ParametersMerger;
 return static function (\MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator $containerConfigurator) : void {
     $services = $containerConfigurator->services();
     $services->defaults()->public()->autowire()->autoconfigure();
-    $services->load('MonorepoBuilder20210706\Symplify\MonorepoBuilder\\', __DIR__ . '/../src')->exclude([__DIR__ . '/../src/Exception', __DIR__ . '/../src/HttpKernel', __DIR__ . '/../src/ValueObject']);
+    $services->load('Symplify\MonorepoBuilder\\', __DIR__ . '/../src')->exclude([__DIR__ . '/../src/Exception', __DIR__ . '/../src/HttpKernel', __DIR__ . '/../src/ValueObject']);
     // console
     $services->set(\Symplify\MonorepoBuilder\Console\MonorepoBuilderConsoleApplication::class);
     $services->alias(\MonorepoBuilder20210706\Symfony\Component\Console\Application::class, \Symplify\MonorepoBuilder\Console\MonorepoBuilderConsoleApplication::class);

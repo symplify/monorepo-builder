@@ -7,7 +7,7 @@ use MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Loader\Configu
 return static function (\MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator $containerConfigurator) : void {
     $services = $containerConfigurator->services();
     $services->defaults()->public()->autowire()->autoconfigure();
-    $services->load('MonorepoBuilder20210706\Symplify\MonorepoBuilder\\', __DIR__ . '/../packages')->exclude([
+    $services->load('Symplify\MonorepoBuilder\\', __DIR__ . '/../packages')->exclude([
         // register manually
         __DIR__ . '/../packages/Release/ReleaseWorker',
     ]);
