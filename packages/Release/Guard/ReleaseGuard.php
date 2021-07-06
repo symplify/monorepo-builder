@@ -1,17 +1,17 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20210705\Symplify\MonorepoBuilder\Release\Guard;
+namespace Symplify\MonorepoBuilder\Release\Guard;
 
-use MonorepoBuilder20210705\PharIo\Version\Version;
-use MonorepoBuilder20210705\Symplify\MonorepoBuilder\Exception\Git\InvalidGitVersionException;
-use MonorepoBuilder20210705\Symplify\MonorepoBuilder\Git\MostRecentTagResolver;
-use MonorepoBuilder20210705\Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface;
-use MonorepoBuilder20210705\Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\StageAwareInterface;
-use MonorepoBuilder20210705\Symplify\MonorepoBuilder\Release\Exception\ConfigurationException;
-use MonorepoBuilder20210705\Symplify\MonorepoBuilder\Release\ValueObject\Stage;
-use MonorepoBuilder20210705\Symplify\MonorepoBuilder\ValueObject\Option;
-use MonorepoBuilder20210705\Symplify\PackageBuilder\Parameter\ParameterProvider;
+use MonorepoBuilder20210706\PharIo\Version\Version;
+use Symplify\MonorepoBuilder\Exception\Git\InvalidGitVersionException;
+use Symplify\MonorepoBuilder\Git\MostRecentTagResolver;
+use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface;
+use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\StageAwareInterface;
+use Symplify\MonorepoBuilder\Release\Exception\ConfigurationException;
+use Symplify\MonorepoBuilder\Release\ValueObject\Stage;
+use Symplify\MonorepoBuilder\ValueObject\Option;
+use MonorepoBuilder20210706\Symplify\PackageBuilder\Parameter\ParameterProvider;
 final class ReleaseGuard
 {
     /**
@@ -37,12 +37,12 @@ final class ReleaseGuard
     /**
      * @param ReleaseWorkerInterface[] $releaseWorkers
      */
-    public function __construct(\MonorepoBuilder20210705\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider, \MonorepoBuilder20210705\Symplify\MonorepoBuilder\Git\MostRecentTagResolver $mostRecentTagResolver, array $releaseWorkers)
+    public function __construct(\MonorepoBuilder20210706\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider, \Symplify\MonorepoBuilder\Git\MostRecentTagResolver $mostRecentTagResolver, array $releaseWorkers)
     {
         $this->mostRecentTagResolver = $mostRecentTagResolver;
         $this->releaseWorkers = $releaseWorkers;
-        $this->isStageRequired = $parameterProvider->provideBoolParameter(\MonorepoBuilder20210705\Symplify\MonorepoBuilder\ValueObject\Option::IS_STAGE_REQUIRED);
-        $this->stagesToAllowExistingTag = $parameterProvider->provideArrayParameter(\MonorepoBuilder20210705\Symplify\MonorepoBuilder\ValueObject\Option::STAGES_TO_ALLOW_EXISTING_TAG);
+        $this->isStageRequired = $parameterProvider->provideBoolParameter(\Symplify\MonorepoBuilder\ValueObject\Option::IS_STAGE_REQUIRED);
+        $this->stagesToAllowExistingTag = $parameterProvider->provideArrayParameter(\Symplify\MonorepoBuilder\ValueObject\Option::STAGES_TO_ALLOW_EXISTING_TAG);
     }
     public function guardRequiredStageOnEmptyStage() : void
     {
@@ -55,7 +55,7 @@ final class ReleaseGuard
             return;
         }
         // stage is required → show options
-        throw new \MonorepoBuilder20210705\Symplify\MonorepoBuilder\Release\Exception\ConfigurationException(\sprintf('Set "--%s <name>" option first. Pick one of: "%s"', \MonorepoBuilder20210705\Symplify\MonorepoBuilder\ValueObject\Option::STAGE, \implode('", "', $this->getStages())));
+        throw new \Symplify\MonorepoBuilder\Release\Exception\ConfigurationException(\sprintf('Set "--%s <name>" option first. Pick one of: "%s"', \Symplify\MonorepoBuilder\ValueObject\Option::STAGE, \implode('", "', $this->getStages())));
     }
     public function guardStage(string $stage) : void
     {
@@ -64,12 +64,12 @@ final class ReleaseGuard
             return;
         }
         // stage has invalid value
-        throw new \MonorepoBuilder20210705\Symplify\MonorepoBuilder\Release\Exception\ConfigurationException(\sprintf('Stage "%s" was not found. Pick one of: "%s"', $stage, \implode('", "', $this->getStages())));
+        throw new \Symplify\MonorepoBuilder\Release\Exception\ConfigurationException(\sprintf('Stage "%s" was not found. Pick one of: "%s"', $stage, \implode('", "', $this->getStages())));
     }
-    public function guardVersion(\MonorepoBuilder20210705\PharIo\Version\Version $version, string $stage) : void
+    public function guardVersion(\MonorepoBuilder20210706\PharIo\Version\Version $version, string $stage) : void
     {
         // stage is set and it doesn't need a validation
-        if ($stage !== \MonorepoBuilder20210705\Symplify\MonorepoBuilder\Release\ValueObject\Stage::MAIN && \in_array($stage, $this->stagesToAllowExistingTag, \true)) {
+        if ($stage !== \Symplify\MonorepoBuilder\Release\ValueObject\Stage::MAIN && \in_array($stage, $this->stagesToAllowExistingTag, \true)) {
             return;
         }
         $this->ensureVersionIsNewerThanLastOne($version);
@@ -84,14 +84,14 @@ final class ReleaseGuard
         }
         $stages = [];
         foreach ($this->releaseWorkers as $releaseWorker) {
-            if ($releaseWorker instanceof \MonorepoBuilder20210705\Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\StageAwareInterface) {
+            if ($releaseWorker instanceof \Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\StageAwareInterface) {
                 $stages[] = $releaseWorker->getStage();
             }
         }
         $this->stages = \array_unique($stages);
         return $this->stages;
     }
-    private function ensureVersionIsNewerThanLastOne(\MonorepoBuilder20210705\PharIo\Version\Version $version) : void
+    private function ensureVersionIsNewerThanLastOne(\MonorepoBuilder20210706\PharIo\Version\Version $version) : void
     {
         $mostRecentVersion = $this->mostRecentTagResolver->resolve(\getcwd());
         // no tag yet
@@ -101,10 +101,10 @@ final class ReleaseGuard
         // normalize to workaround phar-io bug
         $mostRecentVersion = \strtolower($mostRecentVersion);
         // validation
-        $mostRecentVersion = new \MonorepoBuilder20210705\PharIo\Version\Version($mostRecentVersion);
+        $mostRecentVersion = new \MonorepoBuilder20210706\PharIo\Version\Version($mostRecentVersion);
         if ($version->isGreaterThan($mostRecentVersion)) {
             return;
         }
-        throw new \MonorepoBuilder20210705\Symplify\MonorepoBuilder\Exception\Git\InvalidGitVersionException(\sprintf('Provided version "%s" must be greater than the last one: "%s"', $version->getVersionString(), $mostRecentVersion->getVersionString()));
+        throw new \Symplify\MonorepoBuilder\Exception\Git\InvalidGitVersionException(\sprintf('Provided version "%s" must be greater than the last one: "%s"', $version->getVersionString(), $mostRecentVersion->getVersionString()));
     }
 }

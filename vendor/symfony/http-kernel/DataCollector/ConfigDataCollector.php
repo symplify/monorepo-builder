@@ -8,19 +8,19 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210705\Symfony\Component\HttpKernel\DataCollector;
+namespace MonorepoBuilder20210706\Symfony\Component\HttpKernel\DataCollector;
 
-use MonorepoBuilder20210705\Symfony\Component\HttpFoundation\Request;
-use MonorepoBuilder20210705\Symfony\Component\HttpFoundation\Response;
-use MonorepoBuilder20210705\Symfony\Component\HttpKernel\Kernel;
-use MonorepoBuilder20210705\Symfony\Component\HttpKernel\KernelInterface;
-use MonorepoBuilder20210705\Symfony\Component\VarDumper\Caster\ClassStub;
+use MonorepoBuilder20210706\Symfony\Component\HttpFoundation\Request;
+use MonorepoBuilder20210706\Symfony\Component\HttpFoundation\Response;
+use MonorepoBuilder20210706\Symfony\Component\HttpKernel\Kernel;
+use MonorepoBuilder20210706\Symfony\Component\HttpKernel\KernelInterface;
+use MonorepoBuilder20210706\Symfony\Component\VarDumper\Caster\ClassStub;
 /**
  * @author Fabien Potencier <fabien@symfony.com>
  *
  * @final
  */
-class ConfigDataCollector extends \MonorepoBuilder20210705\Symfony\Component\HttpKernel\DataCollector\DataCollector implements \MonorepoBuilder20210705\Symfony\Component\HttpKernel\DataCollector\LateDataCollectorInterface
+class ConfigDataCollector extends \MonorepoBuilder20210706\Symfony\Component\HttpKernel\DataCollector\DataCollector implements \MonorepoBuilder20210706\Symfony\Component\HttpKernel\DataCollector\LateDataCollectorInterface
 {
     /**
      * @var KernelInterface
@@ -29,21 +29,21 @@ class ConfigDataCollector extends \MonorepoBuilder20210705\Symfony\Component\Htt
     /**
      * Sets the Kernel associated with this Request.
      */
-    public function setKernel(\MonorepoBuilder20210705\Symfony\Component\HttpKernel\KernelInterface $kernel = null)
+    public function setKernel(\MonorepoBuilder20210706\Symfony\Component\HttpKernel\KernelInterface $kernel = null)
     {
         $this->kernel = $kernel;
     }
     /**
      * {@inheritdoc}
      */
-    public function collect(\MonorepoBuilder20210705\Symfony\Component\HttpFoundation\Request $request, \MonorepoBuilder20210705\Symfony\Component\HttpFoundation\Response $response, \Throwable $exception = null)
+    public function collect(\MonorepoBuilder20210706\Symfony\Component\HttpFoundation\Request $request, \MonorepoBuilder20210706\Symfony\Component\HttpFoundation\Response $response, \Throwable $exception = null)
     {
-        $eom = \DateTime::createFromFormat('d/m/Y', '01/' . \MonorepoBuilder20210705\Symfony\Component\HttpKernel\Kernel::END_OF_MAINTENANCE);
-        $eol = \DateTime::createFromFormat('d/m/Y', '01/' . \MonorepoBuilder20210705\Symfony\Component\HttpKernel\Kernel::END_OF_LIFE);
-        $this->data = ['token' => $response->headers->get('X-Debug-Token'), 'symfony_version' => \MonorepoBuilder20210705\Symfony\Component\HttpKernel\Kernel::VERSION, 'symfony_minor_version' => \sprintf('%s.%s', \MonorepoBuilder20210705\Symfony\Component\HttpKernel\Kernel::MAJOR_VERSION, \MonorepoBuilder20210705\Symfony\Component\HttpKernel\Kernel::MINOR_VERSION), 'symfony_lts' => 4 === \MonorepoBuilder20210705\Symfony\Component\HttpKernel\Kernel::MINOR_VERSION, 'symfony_state' => $this->determineSymfonyState(), 'symfony_eom' => $eom->format('F Y'), 'symfony_eol' => $eol->format('F Y'), 'env' => isset($this->kernel) ? $this->kernel->getEnvironment() : 'n/a', 'debug' => isset($this->kernel) ? $this->kernel->isDebug() : 'n/a', 'php_version' => \PHP_VERSION, 'php_architecture' => \PHP_INT_SIZE * 8, 'php_intl_locale' => \class_exists(\Locale::class, \false) && \Locale::getDefault() ? \Locale::getDefault() : 'n/a', 'php_timezone' => \date_default_timezone_get(), 'xdebug_enabled' => \extension_loaded('xdebug'), 'apcu_enabled' => \extension_loaded('apcu') && \filter_var(\ini_get('apc.enabled'), \FILTER_VALIDATE_BOOLEAN), 'zend_opcache_enabled' => \extension_loaded('Zend OPcache') && \filter_var(\ini_get('opcache.enable'), \FILTER_VALIDATE_BOOLEAN), 'bundles' => [], 'sapi_name' => \PHP_SAPI];
+        $eom = \DateTime::createFromFormat('d/m/Y', '01/' . \MonorepoBuilder20210706\Symfony\Component\HttpKernel\Kernel::END_OF_MAINTENANCE);
+        $eol = \DateTime::createFromFormat('d/m/Y', '01/' . \MonorepoBuilder20210706\Symfony\Component\HttpKernel\Kernel::END_OF_LIFE);
+        $this->data = ['token' => $response->headers->get('X-Debug-Token'), 'symfony_version' => \MonorepoBuilder20210706\Symfony\Component\HttpKernel\Kernel::VERSION, 'symfony_minor_version' => \sprintf('%s.%s', \MonorepoBuilder20210706\Symfony\Component\HttpKernel\Kernel::MAJOR_VERSION, \MonorepoBuilder20210706\Symfony\Component\HttpKernel\Kernel::MINOR_VERSION), 'symfony_lts' => 4 === \MonorepoBuilder20210706\Symfony\Component\HttpKernel\Kernel::MINOR_VERSION, 'symfony_state' => $this->determineSymfonyState(), 'symfony_eom' => $eom->format('F Y'), 'symfony_eol' => $eol->format('F Y'), 'env' => isset($this->kernel) ? $this->kernel->getEnvironment() : 'n/a', 'debug' => isset($this->kernel) ? $this->kernel->isDebug() : 'n/a', 'php_version' => \PHP_VERSION, 'php_architecture' => \PHP_INT_SIZE * 8, 'php_intl_locale' => \class_exists(\Locale::class, \false) && \Locale::getDefault() ? \Locale::getDefault() : 'n/a', 'php_timezone' => \date_default_timezone_get(), 'xdebug_enabled' => \extension_loaded('xdebug'), 'apcu_enabled' => \extension_loaded('apcu') && \filter_var(\ini_get('apc.enabled'), \FILTER_VALIDATE_BOOLEAN), 'zend_opcache_enabled' => \extension_loaded('Zend OPcache') && \filter_var(\ini_get('opcache.enable'), \FILTER_VALIDATE_BOOLEAN), 'bundles' => [], 'sapi_name' => \PHP_SAPI];
         if (isset($this->kernel)) {
             foreach ($this->kernel->getBundles() as $name => $bundle) {
-                $this->data['bundles'][$name] = new \MonorepoBuilder20210705\Symfony\Component\VarDumper\Caster\ClassStub(\get_class($bundle));
+                $this->data['bundles'][$name] = new \MonorepoBuilder20210706\Symfony\Component\VarDumper\Caster\ClassStub(\get_class($bundle));
             }
         }
         if (\preg_match('~^(\\d+(?:\\.\\d+)*)(.+)?$~', $this->data['php_version'], $matches) && isset($matches[2])) {
@@ -238,13 +238,13 @@ class ConfigDataCollector extends \MonorepoBuilder20210705\Symfony\Component\Htt
     private function determineSymfonyState() : string
     {
         $now = new \DateTime();
-        $eom = \DateTime::createFromFormat('d/m/Y', '01/' . \MonorepoBuilder20210705\Symfony\Component\HttpKernel\Kernel::END_OF_MAINTENANCE)->modify('last day of this month');
-        $eol = \DateTime::createFromFormat('d/m/Y', '01/' . \MonorepoBuilder20210705\Symfony\Component\HttpKernel\Kernel::END_OF_LIFE)->modify('last day of this month');
+        $eom = \DateTime::createFromFormat('d/m/Y', '01/' . \MonorepoBuilder20210706\Symfony\Component\HttpKernel\Kernel::END_OF_MAINTENANCE)->modify('last day of this month');
+        $eol = \DateTime::createFromFormat('d/m/Y', '01/' . \MonorepoBuilder20210706\Symfony\Component\HttpKernel\Kernel::END_OF_LIFE)->modify('last day of this month');
         if ($now > $eol) {
             $versionState = 'eol';
         } elseif ($now > $eom) {
             $versionState = 'eom';
-        } elseif ('' !== \MonorepoBuilder20210705\Symfony\Component\HttpKernel\Kernel::EXTRA_VERSION) {
+        } elseif ('' !== \MonorepoBuilder20210706\Symfony\Component\HttpKernel\Kernel::EXTRA_VERSION) {
             $versionState = 'dev';
         } else {
             $versionState = 'stable';

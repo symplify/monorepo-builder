@@ -1,16 +1,16 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20210705\Symplify\MonorepoBuilder\Json;
+namespace Symplify\MonorepoBuilder\Json;
 
-use MonorepoBuilder20210705\Symplify\MonorepoBuilder\Package\PackageProvider;
+use Symplify\MonorepoBuilder\Package\PackageProvider;
 final class PackageJsonProvider
 {
     /**
      * @var \Symplify\MonorepoBuilder\Package\PackageProvider
      */
     private $packageProvider;
-    public function __construct(\MonorepoBuilder20210705\Symplify\MonorepoBuilder\Package\PackageProvider $packageProvider)
+    public function __construct(\Symplify\MonorepoBuilder\Package\PackageProvider $packageProvider)
     {
         $this->packageProvider = $packageProvider;
     }

@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20210705\Symplify\MonorepoBuilder\Release;
+namespace Symplify\MonorepoBuilder\Release;
 
-use MonorepoBuilder20210705\Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface;
-use MonorepoBuilder20210705\Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\StageAwareInterface;
-use MonorepoBuilder20210705\Symplify\MonorepoBuilder\Release\ValueObject\Stage;
+use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface;
+use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\StageAwareInterface;
+use Symplify\MonorepoBuilder\Release\ValueObject\Stage;
 /**
  * @see \Symplify\MonorepoBuilder\Tests\Release\ReleaseWorkerProvider\ReleaseWorkerProviderTest
  */
@@ -34,12 +34,12 @@ final class ReleaseWorkerProvider
      */
     public function provideByStage(string $stage) : array
     {
-        if ($stage === \MonorepoBuilder20210705\Symplify\MonorepoBuilder\Release\ValueObject\Stage::MAIN) {
+        if ($stage === \Symplify\MonorepoBuilder\Release\ValueObject\Stage::MAIN) {
             return $this->releaseWorkers;
         }
         $activeReleaseWorkers = [];
         foreach ($this->releaseWorkers as $releaseWorker) {
-            if (!$releaseWorker instanceof \MonorepoBuilder20210705\Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\StageAwareInterface) {
+            if (!$releaseWorker instanceof \Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\StageAwareInterface) {
                 continue;
             }
             if ($stage !== $releaseWorker->getStage()) {

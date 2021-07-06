@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20210705\Symplify\MonorepoBuilder\Testing\ComposerJson;
+namespace Symplify\MonorepoBuilder\Testing\ComposerJson;
 
-use MonorepoBuilder20210705\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
-use MonorepoBuilder20210705\Symplify\MonorepoBuilder\ValueObject\Option;
-use MonorepoBuilder20210705\Symplify\PackageBuilder\Parameter\ParameterProvider;
+use MonorepoBuilder20210706\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
+use Symplify\MonorepoBuilder\ValueObject\Option;
+use MonorepoBuilder20210706\Symplify\PackageBuilder\Parameter\ParameterProvider;
 final class ComposerVersionManipulator
 {
     /**
@@ -16,9 +16,9 @@ final class ComposerVersionManipulator
      * @var string
      */
     private $branchAliasTarget;
-    public function __construct(\MonorepoBuilder20210705\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider)
+    public function __construct(\MonorepoBuilder20210706\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider)
     {
-        $this->branchAliasTarget = self::COMPOSER_BRANCH_PREFIX . $parameterProvider->provideStringParameter(\MonorepoBuilder20210705\Symplify\MonorepoBuilder\ValueObject\Option::DEFAULT_BRANCH_NAME);
+        $this->branchAliasTarget = self::COMPOSER_BRANCH_PREFIX . $parameterProvider->provideStringParameter(\Symplify\MonorepoBuilder\ValueObject\Option::DEFAULT_BRANCH_NAME);
     }
     /**
      * @param mixed[] $packageComposerJson
@@ -27,7 +27,7 @@ final class ComposerVersionManipulator
      */
     public function decorateAsteriskVersionForUsedPackages(array $packageComposerJson, array $usedPackageNames) : array
     {
-        foreach ([\MonorepoBuilder20210705\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE, \MonorepoBuilder20210705\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE_DEV] as $section) {
+        foreach ([\MonorepoBuilder20210706\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE, \MonorepoBuilder20210706\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE_DEV] as $section) {
             foreach ($usedPackageNames as $usedPackageName) {
                 if (!isset($packageComposerJson[$section][$usedPackageName])) {
                     continue;

@@ -8,33 +8,33 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210705\Symfony\Component\DependencyInjection\Config;
+namespace MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Config;
 
-use MonorepoBuilder20210705\Symfony\Component\Config\Resource\ResourceInterface;
-use MonorepoBuilder20210705\Symfony\Component\Config\ResourceCheckerInterface;
-use MonorepoBuilder20210705\Symfony\Component\DependencyInjection\ContainerInterface;
+use MonorepoBuilder20210706\Symfony\Component\Config\Resource\ResourceInterface;
+use MonorepoBuilder20210706\Symfony\Component\Config\ResourceCheckerInterface;
+use MonorepoBuilder20210706\Symfony\Component\DependencyInjection\ContainerInterface;
 /**
  * @author Maxime Steinhausser <maxime.steinhausser@gmail.com>
  */
-class ContainerParametersResourceChecker implements \MonorepoBuilder20210705\Symfony\Component\Config\ResourceCheckerInterface
+class ContainerParametersResourceChecker implements \MonorepoBuilder20210706\Symfony\Component\Config\ResourceCheckerInterface
 {
     /** @var ContainerInterface */
     private $container;
-    public function __construct(\MonorepoBuilder20210705\Symfony\Component\DependencyInjection\ContainerInterface $container)
+    public function __construct(\MonorepoBuilder20210706\Symfony\Component\DependencyInjection\ContainerInterface $container)
     {
         $this->container = $container;
     }
     /**
      * {@inheritdoc}
      */
-    public function supports(\MonorepoBuilder20210705\Symfony\Component\Config\Resource\ResourceInterface $metadata)
+    public function supports(\MonorepoBuilder20210706\Symfony\Component\Config\Resource\ResourceInterface $metadata)
     {
-        return $metadata instanceof \MonorepoBuilder20210705\Symfony\Component\DependencyInjection\Config\ContainerParametersResource;
+        return $metadata instanceof \MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Config\ContainerParametersResource;
     }
     /**
      * {@inheritdoc}
      */
-    public function isFresh(\MonorepoBuilder20210705\Symfony\Component\Config\Resource\ResourceInterface $resource, int $timestamp)
+    public function isFresh(\MonorepoBuilder20210706\Symfony\Component\Config\Resource\ResourceInterface $resource, int $timestamp)
     {
         foreach ($resource->getParameters() as $key => $value) {
             if (!$this->container->hasParameter($key) || $this->container->getParameter($key) !== $value) {

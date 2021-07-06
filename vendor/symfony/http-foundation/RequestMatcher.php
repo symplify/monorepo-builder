@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210705\Symfony\Component\HttpFoundation;
+namespace MonorepoBuilder20210706\Symfony\Component\HttpFoundation;
 
 /**
  * RequestMatcher compares a pre-defined set of checks against a Request instance.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class RequestMatcher implements \MonorepoBuilder20210705\Symfony\Component\HttpFoundation\RequestMatcherInterface
+class RequestMatcher implements \MonorepoBuilder20210706\Symfony\Component\HttpFoundation\RequestMatcherInterface
 {
     /**
      * @var string|null
@@ -134,7 +134,7 @@ class RequestMatcher implements \MonorepoBuilder20210705\Symfony\Component\HttpF
     /**
      * {@inheritdoc}
      */
-    public function matches(\MonorepoBuilder20210705\Symfony\Component\HttpFoundation\Request $request)
+    public function matches(\MonorepoBuilder20210706\Symfony\Component\HttpFoundation\Request $request)
     {
         if ($this->schemes && !\in_array($request->getScheme(), $this->schemes, \true)) {
             return \false;
@@ -160,7 +160,7 @@ class RequestMatcher implements \MonorepoBuilder20210705\Symfony\Component\HttpF
         if (null !== $this->port && 0 < $this->port && $request->getPort() !== $this->port) {
             return \false;
         }
-        if (\MonorepoBuilder20210705\Symfony\Component\HttpFoundation\IpUtils::checkIp($request->getClientIp(), $this->ips)) {
+        if (\MonorepoBuilder20210706\Symfony\Component\HttpFoundation\IpUtils::checkIp($request->getClientIp(), $this->ips)) {
             return \true;
         }
         // Note to future implementors: add additional checks above the

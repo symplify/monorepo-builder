@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20210705\PharIo\Version;
+namespace MonorepoBuilder20210706\PharIo\Version;
 
 class VersionConstraintValue
 {
@@ -34,15 +34,15 @@ class VersionConstraintValue
     {
         return $this->versionString;
     }
-    public function getMajor() : \MonorepoBuilder20210705\PharIo\Version\VersionNumber
+    public function getMajor() : \MonorepoBuilder20210706\PharIo\Version\VersionNumber
     {
         return $this->major;
     }
-    public function getMinor() : \MonorepoBuilder20210705\PharIo\Version\VersionNumber
+    public function getMinor() : \MonorepoBuilder20210706\PharIo\Version\VersionNumber
     {
         return $this->minor;
     }
-    public function getPatch() : \MonorepoBuilder20210705\PharIo\Version\VersionNumber
+    public function getPatch() : \MonorepoBuilder20210706\PharIo\Version\VersionNumber
     {
         return $this->patch;
     }
@@ -52,11 +52,11 @@ class VersionConstraintValue
         $this->extractLabel($versionString);
         $this->stripPotentialVPrefix($versionString);
         $versionSegments = \explode('.', $versionString);
-        $this->major = new \MonorepoBuilder20210705\PharIo\Version\VersionNumber(\is_numeric($versionSegments[0]) ? (int) $versionSegments[0] : null);
+        $this->major = new \MonorepoBuilder20210706\PharIo\Version\VersionNumber(\is_numeric($versionSegments[0]) ? (int) $versionSegments[0] : null);
         $minorValue = isset($versionSegments[1]) && \is_numeric($versionSegments[1]) ? (int) $versionSegments[1] : null;
         $patchValue = isset($versionSegments[2]) && \is_numeric($versionSegments[2]) ? (int) $versionSegments[2] : null;
-        $this->minor = new \MonorepoBuilder20210705\PharIo\Version\VersionNumber($minorValue);
-        $this->patch = new \MonorepoBuilder20210705\PharIo\Version\VersionNumber($patchValue);
+        $this->minor = new \MonorepoBuilder20210706\PharIo\Version\VersionNumber($minorValue);
+        $this->patch = new \MonorepoBuilder20210706\PharIo\Version\VersionNumber($patchValue);
     }
     private function extractBuildMetaData(string &$versionString) : void
     {

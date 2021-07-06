@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20210705\Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker;
+namespace Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker;
 
-use MonorepoBuilder20210705\PharIo\Version\Version;
+use MonorepoBuilder20210706\PharIo\Version\Version;
 interface ReleaseWorkerInterface
 {
     /**
@@ -12,6 +12,6 @@ interface ReleaseWorkerInterface
      * - "Dump new items to CHANGELOG.md"
      * - "Run coding standards"
      */
-    public function getDescription(\MonorepoBuilder20210705\PharIo\Version\Version $version) : string;
-    public function work(\MonorepoBuilder20210705\PharIo\Version\Version $version) : void;
+    public function getDescription(\MonorepoBuilder20210706\PharIo\Version\Version $version) : string;
+    public function work(\MonorepoBuilder20210706\PharIo\Version\Version $version) : void;
 }

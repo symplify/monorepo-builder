@@ -1,18 +1,18 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20210705\Symplify\MonorepoBuilder\Command;
+namespace Symplify\MonorepoBuilder\Command;
 
-use MonorepoBuilder20210705\Symfony\Component\Console\Input\InputArgument;
-use MonorepoBuilder20210705\Symfony\Component\Console\Input\InputInterface;
-use MonorepoBuilder20210705\Symfony\Component\Console\Output\OutputInterface;
-use MonorepoBuilder20210705\Symplify\MonorepoBuilder\DependencyUpdater;
-use MonorepoBuilder20210705\Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider;
-use MonorepoBuilder20210705\Symplify\MonorepoBuilder\Validator\SourcesPresenceValidator;
-use MonorepoBuilder20210705\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
-use MonorepoBuilder20210705\Symplify\PackageBuilder\Console\ShellCode;
-use MonorepoBuilder20210705\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
-final class BumpInterdependencyCommand extends \MonorepoBuilder20210705\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand
+use MonorepoBuilder20210706\Symfony\Component\Console\Input\InputArgument;
+use MonorepoBuilder20210706\Symfony\Component\Console\Input\InputInterface;
+use MonorepoBuilder20210706\Symfony\Component\Console\Output\OutputInterface;
+use Symplify\MonorepoBuilder\DependencyUpdater;
+use Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider;
+use Symplify\MonorepoBuilder\Validator\SourcesPresenceValidator;
+use MonorepoBuilder20210706\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
+use MonorepoBuilder20210706\Symplify\PackageBuilder\Console\ShellCode;
+use MonorepoBuilder20210706\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
+final class BumpInterdependencyCommand extends \MonorepoBuilder20210706\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand
 {
     /**
      * @var string
@@ -30,7 +30,7 @@ final class BumpInterdependencyCommand extends \MonorepoBuilder20210705\Symplify
      * @var \Symplify\MonorepoBuilder\Validator\SourcesPresenceValidator
      */
     private $sourcesPresenceValidator;
-    public function __construct(\MonorepoBuilder20210705\Symplify\MonorepoBuilder\DependencyUpdater $dependencyUpdater, \MonorepoBuilder20210705\Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider $composerJsonProvider, \MonorepoBuilder20210705\Symplify\MonorepoBuilder\Validator\SourcesPresenceValidator $sourcesPresenceValidator)
+    public function __construct(\Symplify\MonorepoBuilder\DependencyUpdater $dependencyUpdater, \Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider $composerJsonProvider, \Symplify\MonorepoBuilder\Validator\SourcesPresenceValidator $sourcesPresenceValidator)
     {
         $this->dependencyUpdater = $dependencyUpdater;
         $this->composerJsonProvider = $composerJsonProvider;
@@ -40,9 +40,9 @@ final class BumpInterdependencyCommand extends \MonorepoBuilder20210705\Symplify
     protected function configure() : void
     {
         $this->setDescription('Bump dependency of split packages on each other');
-        $this->addArgument(self::VERSION_ARGUMENT, \MonorepoBuilder20210705\Symfony\Component\Console\Input\InputArgument::REQUIRED, 'New version of inter-dependencies, e.g. "^4.4.2"');
+        $this->addArgument(self::VERSION_ARGUMENT, \MonorepoBuilder20210706\Symfony\Component\Console\Input\InputArgument::REQUIRED, 'New version of inter-dependencies, e.g. "^4.4.2"');
     }
-    protected function execute(\MonorepoBuilder20210705\Symfony\Component\Console\Input\InputInterface $input, \MonorepoBuilder20210705\Symfony\Component\Console\Output\OutputInterface $output) : int
+    protected function execute(\MonorepoBuilder20210706\Symfony\Component\Console\Input\InputInterface $input, \MonorepoBuilder20210706\Symfony\Component\Console\Output\OutputInterface $output) : int
     {
         $this->sourcesPresenceValidator->validateRootComposerJsonName();
         /** @var string $version */
@@ -52,11 +52,11 @@ final class BumpInterdependencyCommand extends \MonorepoBuilder20210705\Symplify
         // see https://github.com/symplify/symplify/pull/1037/files
         $vendorName = $rootComposerJson->getVendorName();
         if ($vendorName === null) {
-            throw new \MonorepoBuilder20210705\Symplify\SymplifyKernel\Exception\ShouldNotHappenException();
+            throw new \MonorepoBuilder20210706\Symplify\SymplifyKernel\Exception\ShouldNotHappenException();
         }
         $this->dependencyUpdater->updateFileInfosWithVendorAndVersion($this->composerJsonProvider->getPackagesComposerFileInfos(), $vendorName, $version);
         $successMessage = \sprintf('Inter-dependencies of packages were updated to "%s".', $version);
         $this->symfonyStyle->success($successMessage);
-        return \MonorepoBuilder20210705\Symplify\PackageBuilder\Console\ShellCode::SUCCESS;
+        return \MonorepoBuilder20210706\Symplify\PackageBuilder\Console\ShellCode::SUCCESS;
     }
 }

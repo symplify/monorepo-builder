@@ -9,11 +9,11 @@ declare (strict_types=1);
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210705\PharIo\Version;
+namespace MonorepoBuilder20210706\PharIo\Version;
 
-class ExactVersionConstraint extends \MonorepoBuilder20210705\PharIo\Version\AbstractVersionConstraint
+class ExactVersionConstraint extends \MonorepoBuilder20210706\PharIo\Version\AbstractVersionConstraint
 {
-    public function complies(\MonorepoBuilder20210705\PharIo\Version\Version $version) : bool
+    public function complies(\MonorepoBuilder20210706\PharIo\Version\Version $version) : bool
     {
         return $this->asString() === $version->getVersionString();
     }

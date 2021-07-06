@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210705\Symfony\Component\DependencyInjection\Loader\Configurator;
+namespace MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use MonorepoBuilder20210705\Symfony\Component\DependencyInjection\Definition;
+use MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Definition;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class InstanceofConfigurator extends \MonorepoBuilder20210705\Symfony\Component\DependencyInjection\Loader\Configurator\AbstractServiceConfigurator
+class InstanceofConfigurator extends \MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Loader\Configurator\AbstractServiceConfigurator
 {
     public const FACTORY = 'instanceof';
     use Traits\AutowireTrait;
@@ -27,7 +27,7 @@ class InstanceofConfigurator extends \MonorepoBuilder20210705\Symfony\Component\
     use Traits\ShareTrait;
     use Traits\TagTrait;
     private $path;
-    public function __construct(\MonorepoBuilder20210705\Symfony\Component\DependencyInjection\Loader\Configurator\ServicesConfigurator $parent, \MonorepoBuilder20210705\Symfony\Component\DependencyInjection\Definition $definition, string $id, string $path = null)
+    public function __construct(\MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Loader\Configurator\ServicesConfigurator $parent, \MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Definition $definition, string $id, string $path = null)
     {
         parent::__construct($parent, $definition, $id, []);
         $this->path = $path;

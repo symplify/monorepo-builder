@@ -8,24 +8,24 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210705\Symfony\Component\DependencyInjection\Compiler;
+namespace MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Compiler;
 
-use MonorepoBuilder20210705\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder20210706\Symfony\Component\DependencyInjection\ContainerBuilder;
 /**
  * A pass to automatically process extensions if they implement
  * CompilerPassInterface.
  *
  * @author Wouter J <wouter@wouterj.nl>
  */
-class ExtensionCompilerPass implements \MonorepoBuilder20210705\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
+class ExtensionCompilerPass implements \MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
 {
     /**
      * {@inheritdoc}
      */
-    public function process(\MonorepoBuilder20210705\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    public function process(\MonorepoBuilder20210706\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
         foreach ($container->getExtensions() as $extension) {
-            if (!$extension instanceof \MonorepoBuilder20210705\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface) {
+            if (!$extension instanceof \MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface) {
                 continue;
             }
             $extension->process($container);

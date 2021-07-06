@@ -1,16 +1,16 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20210705\Symplify\MonorepoBuilder;
+namespace Symplify\MonorepoBuilder;
 
-use MonorepoBuilder20210705\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
-use MonorepoBuilder20210705\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
-use MonorepoBuilder20210705\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
-use MonorepoBuilder20210705\Symplify\MonorepoBuilder\Merge\Configuration\ModifyingComposerJsonProvider;
-use MonorepoBuilder20210705\Symplify\MonorepoBuilder\ValueObject\File;
-use MonorepoBuilder20210705\Symplify\MonorepoBuilder\ValueObject\Option;
-use MonorepoBuilder20210705\Symplify\PackageBuilder\Parameter\ParameterProvider;
-use MonorepoBuilder20210705\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder20210706\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
+use MonorepoBuilder20210706\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
+use MonorepoBuilder20210706\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
+use Symplify\MonorepoBuilder\Merge\Configuration\ModifyingComposerJsonProvider;
+use Symplify\MonorepoBuilder\ValueObject\File;
+use Symplify\MonorepoBuilder\ValueObject\Option;
+use MonorepoBuilder20210706\Symplify\PackageBuilder\Parameter\ParameterProvider;
+use MonorepoBuilder20210706\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\MonorepoBuilder\Tests\VersionValidator\VersionValidatorTest
  */
@@ -19,7 +19,7 @@ final class VersionValidator
     /**
      * @var string[]
      */
-    private const SECTIONS = [\MonorepoBuilder20210705\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE, \MonorepoBuilder20210705\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE_DEV];
+    private const SECTIONS = [\MonorepoBuilder20210706\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE, \MonorepoBuilder20210706\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE_DEV];
     /**
      * @var \Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager
      */
@@ -32,7 +32,7 @@ final class VersionValidator
      * @var \Symplify\PackageBuilder\Parameter\ParameterProvider
      */
     private $parameterProvider;
-    public function __construct(\MonorepoBuilder20210705\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager $jsonFileManager, \MonorepoBuilder20210705\Symplify\MonorepoBuilder\Merge\Configuration\ModifyingComposerJsonProvider $modifyingComposerJsonProvider, \MonorepoBuilder20210705\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider)
+    public function __construct(\MonorepoBuilder20210706\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager $jsonFileManager, \Symplify\MonorepoBuilder\Merge\Configuration\ModifyingComposerJsonProvider $modifyingComposerJsonProvider, \MonorepoBuilder20210706\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider)
     {
         $this->jsonFileManager = $jsonFileManager;
         $this->modifyingComposerJsonProvider = $modifyingComposerJsonProvider;
@@ -67,16 +67,16 @@ final class VersionValidator
     private function appendAppendingComposerJson(array $packageVersionsPerFile) : array
     {
         $appendingComposerJson = $this->modifyingComposerJsonProvider->getAppendingComposerJson();
-        if (!$appendingComposerJson instanceof \MonorepoBuilder20210705\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson) {
+        if (!$appendingComposerJson instanceof \MonorepoBuilder20210706\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson) {
             return $packageVersionsPerFile;
         }
         $requires = $appendingComposerJson->getRequire();
         foreach ($requires as $packageName => $packageVersion) {
-            $packageVersionsPerFile[$packageName][\MonorepoBuilder20210705\Symplify\MonorepoBuilder\ValueObject\File::CONFIG] = $packageVersion;
+            $packageVersionsPerFile[$packageName][\Symplify\MonorepoBuilder\ValueObject\File::CONFIG] = $packageVersion;
         }
         $requiredevs = $appendingComposerJson->getRequireDev();
         foreach ($requiredevs as $packageName => $packageVersion) {
-            $packageVersionsPerFile[$packageName][\MonorepoBuilder20210705\Symplify\MonorepoBuilder\ValueObject\File::CONFIG] = $packageVersion;
+            $packageVersionsPerFile[$packageName][\Symplify\MonorepoBuilder\ValueObject\File::CONFIG] = $packageVersion;
         }
         return $packageVersionsPerFile;
     }
@@ -103,7 +103,7 @@ final class VersionValidator
     }
     private function isPackageAllowedVersionConflict(string $packageName) : bool
     {
-        $excludePackageVersionConflicts = $this->parameterProvider->provideArrayParameter(\MonorepoBuilder20210705\Symplify\MonorepoBuilder\ValueObject\Option::EXCLUDE_PACKAGE_VERSION_CONFLICTS);
+        $excludePackageVersionConflicts = $this->parameterProvider->provideArrayParameter(\Symplify\MonorepoBuilder\ValueObject\Option::EXCLUDE_PACKAGE_VERSION_CONFLICTS);
         return \in_array($packageName, $excludePackageVersionConflicts, \true);
     }
 }

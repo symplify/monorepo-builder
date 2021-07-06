@@ -8,21 +8,21 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210705\Symfony\Component\Console\Descriptor;
+namespace MonorepoBuilder20210706\Symfony\Component\Console\Descriptor;
 
-use MonorepoBuilder20210705\Symfony\Component\Console\Application;
-use MonorepoBuilder20210705\Symfony\Component\Console\Command\Command;
-use MonorepoBuilder20210705\Symfony\Component\Console\Exception\InvalidArgumentException;
-use MonorepoBuilder20210705\Symfony\Component\Console\Input\InputArgument;
-use MonorepoBuilder20210705\Symfony\Component\Console\Input\InputDefinition;
-use MonorepoBuilder20210705\Symfony\Component\Console\Input\InputOption;
-use MonorepoBuilder20210705\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder20210706\Symfony\Component\Console\Application;
+use MonorepoBuilder20210706\Symfony\Component\Console\Command\Command;
+use MonorepoBuilder20210706\Symfony\Component\Console\Exception\InvalidArgumentException;
+use MonorepoBuilder20210706\Symfony\Component\Console\Input\InputArgument;
+use MonorepoBuilder20210706\Symfony\Component\Console\Input\InputDefinition;
+use MonorepoBuilder20210706\Symfony\Component\Console\Input\InputOption;
+use MonorepoBuilder20210706\Symfony\Component\Console\Output\OutputInterface;
 /**
  * @author Jean-François Simon <jeanfrancois.simon@sensiolabs.com>
  *
  * @internal
  */
-abstract class Descriptor implements \MonorepoBuilder20210705\Symfony\Component\Console\Descriptor\DescriptorInterface
+abstract class Descriptor implements \MonorepoBuilder20210706\Symfony\Component\Console\Descriptor\DescriptorInterface
 {
     /**
      * @var OutputInterface
@@ -31,27 +31,27 @@ abstract class Descriptor implements \MonorepoBuilder20210705\Symfony\Component\
     /**
      * {@inheritdoc}
      */
-    public function describe(\MonorepoBuilder20210705\Symfony\Component\Console\Output\OutputInterface $output, $object, array $options = [])
+    public function describe(\MonorepoBuilder20210706\Symfony\Component\Console\Output\OutputInterface $output, $object, array $options = [])
     {
         $this->output = $output;
         switch (\true) {
-            case $object instanceof \MonorepoBuilder20210705\Symfony\Component\Console\Input\InputArgument:
+            case $object instanceof \MonorepoBuilder20210706\Symfony\Component\Console\Input\InputArgument:
                 $this->describeInputArgument($object, $options);
                 break;
-            case $object instanceof \MonorepoBuilder20210705\Symfony\Component\Console\Input\InputOption:
+            case $object instanceof \MonorepoBuilder20210706\Symfony\Component\Console\Input\InputOption:
                 $this->describeInputOption($object, $options);
                 break;
-            case $object instanceof \MonorepoBuilder20210705\Symfony\Component\Console\Input\InputDefinition:
+            case $object instanceof \MonorepoBuilder20210706\Symfony\Component\Console\Input\InputDefinition:
                 $this->describeInputDefinition($object, $options);
                 break;
-            case $object instanceof \MonorepoBuilder20210705\Symfony\Component\Console\Command\Command:
+            case $object instanceof \MonorepoBuilder20210706\Symfony\Component\Console\Command\Command:
                 $this->describeCommand($object, $options);
                 break;
-            case $object instanceof \MonorepoBuilder20210705\Symfony\Component\Console\Application:
+            case $object instanceof \MonorepoBuilder20210706\Symfony\Component\Console\Application:
                 $this->describeApplication($object, $options);
                 break;
             default:
-                throw new \MonorepoBuilder20210705\Symfony\Component\Console\Exception\InvalidArgumentException(\sprintf('Object of type "%s" is not describable.', \get_debug_type($object)));
+                throw new \MonorepoBuilder20210706\Symfony\Component\Console\Exception\InvalidArgumentException(\sprintf('Object of type "%s" is not describable.', \get_debug_type($object)));
         }
     }
     /**
@@ -59,26 +59,26 @@ abstract class Descriptor implements \MonorepoBuilder20210705\Symfony\Component\
      */
     protected function write(string $content, bool $decorated = \false)
     {
-        $this->output->write($content, \false, $decorated ? \MonorepoBuilder20210705\Symfony\Component\Console\Output\OutputInterface::OUTPUT_NORMAL : \MonorepoBuilder20210705\Symfony\Component\Console\Output\OutputInterface::OUTPUT_RAW);
+        $this->output->write($content, \false, $decorated ? \MonorepoBuilder20210706\Symfony\Component\Console\Output\OutputInterface::OUTPUT_NORMAL : \MonorepoBuilder20210706\Symfony\Component\Console\Output\OutputInterface::OUTPUT_RAW);
     }
     /**
      * Describes an InputArgument instance.
      */
-    protected abstract function describeInputArgument(\MonorepoBuilder20210705\Symfony\Component\Console\Input\InputArgument $argument, array $options = []);
+    protected abstract function describeInputArgument(\MonorepoBuilder20210706\Symfony\Component\Console\Input\InputArgument $argument, array $options = []);
     /**
      * Describes an InputOption instance.
      */
-    protected abstract function describeInputOption(\MonorepoBuilder20210705\Symfony\Component\Console\Input\InputOption $option, array $options = []);
+    protected abstract function describeInputOption(\MonorepoBuilder20210706\Symfony\Component\Console\Input\InputOption $option, array $options = []);
     /**
      * Describes an InputDefinition instance.
      */
-    protected abstract function describeInputDefinition(\MonorepoBuilder20210705\Symfony\Component\Console\Input\InputDefinition $definition, array $options = []);
+    protected abstract function describeInputDefinition(\MonorepoBuilder20210706\Symfony\Component\Console\Input\InputDefinition $definition, array $options = []);
     /**
      * Describes a Command instance.
      */
-    protected abstract function describeCommand(\MonorepoBuilder20210705\Symfony\Component\Console\Command\Command $command, array $options = []);
+    protected abstract function describeCommand(\MonorepoBuilder20210706\Symfony\Component\Console\Command\Command $command, array $options = []);
     /**
      * Describes an Application instance.
      */
-    protected abstract function describeApplication(\MonorepoBuilder20210705\Symfony\Component\Console\Application $application, array $options = []);
+    protected abstract function describeApplication(\MonorepoBuilder20210706\Symfony\Component\Console\Application $application, array $options = []);
 }

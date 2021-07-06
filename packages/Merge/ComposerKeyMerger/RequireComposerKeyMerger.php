@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20210705\Symplify\MonorepoBuilder\Merge\ComposerKeyMerger;
+namespace Symplify\MonorepoBuilder\Merge\ComposerKeyMerger;
 
-use MonorepoBuilder20210705\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
-use MonorepoBuilder20210705\Symplify\MonorepoBuilder\Merge\Arrays\SortedParameterMerger;
-use MonorepoBuilder20210705\Symplify\MonorepoBuilder\Merge\Cleaner\RequireRequireDevDuplicateCleaner;
-use MonorepoBuilder20210705\Symplify\MonorepoBuilder\Merge\Contract\ComposerKeyMergerInterface;
-final class RequireComposerKeyMerger implements \MonorepoBuilder20210705\Symplify\MonorepoBuilder\Merge\Contract\ComposerKeyMergerInterface
+use MonorepoBuilder20210706\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
+use Symplify\MonorepoBuilder\Merge\Arrays\SortedParameterMerger;
+use Symplify\MonorepoBuilder\Merge\Cleaner\RequireRequireDevDuplicateCleaner;
+use Symplify\MonorepoBuilder\Merge\Contract\ComposerKeyMergerInterface;
+final class RequireComposerKeyMerger implements \Symplify\MonorepoBuilder\Merge\Contract\ComposerKeyMergerInterface
 {
     /**
      * @var \Symplify\MonorepoBuilder\Merge\Arrays\SortedParameterMerger
@@ -17,12 +17,12 @@ final class RequireComposerKeyMerger implements \MonorepoBuilder20210705\Symplif
      * @var \Symplify\MonorepoBuilder\Merge\Cleaner\RequireRequireDevDuplicateCleaner
      */
     private $requireRequireDevDuplicateCleaner;
-    public function __construct(\MonorepoBuilder20210705\Symplify\MonorepoBuilder\Merge\Arrays\SortedParameterMerger $sortedParameterMerger, \MonorepoBuilder20210705\Symplify\MonorepoBuilder\Merge\Cleaner\RequireRequireDevDuplicateCleaner $requireRequireDevDuplicateCleaner)
+    public function __construct(\Symplify\MonorepoBuilder\Merge\Arrays\SortedParameterMerger $sortedParameterMerger, \Symplify\MonorepoBuilder\Merge\Cleaner\RequireRequireDevDuplicateCleaner $requireRequireDevDuplicateCleaner)
     {
         $this->sortedParameterMerger = $sortedParameterMerger;
         $this->requireRequireDevDuplicateCleaner = $requireRequireDevDuplicateCleaner;
     }
-    public function merge(\MonorepoBuilder20210705\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $mainComposerJson, \MonorepoBuilder20210705\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $newComposerJson) : void
+    public function merge(\MonorepoBuilder20210706\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $mainComposerJson, \MonorepoBuilder20210706\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $newComposerJson) : void
     {
         if ($newComposerJson->getRequire() === []) {
             return;

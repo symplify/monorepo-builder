@@ -9,9 +9,9 @@ declare (strict_types=1);
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210705\PharIo\Version;
+namespace MonorepoBuilder20210706\PharIo\Version;
 
-abstract class AbstractVersionConstraint implements \MonorepoBuilder20210705\PharIo\Version\VersionConstraint
+abstract class AbstractVersionConstraint implements \MonorepoBuilder20210706\PharIo\Version\VersionConstraint
 {
     /** @var string */
     private $originalValue;

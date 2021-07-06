@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210705\Symfony\Component\DependencyInjection\Extension;
+namespace MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Extension;
 
-use MonorepoBuilder20210705\Symfony\Component\Config\Definition\ConfigurationInterface;
-use MonorepoBuilder20210705\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder20210706\Symfony\Component\Config\Definition\ConfigurationInterface;
+use MonorepoBuilder20210706\Symfony\Component\DependencyInjection\ContainerBuilder;
 /**
  * ConfigurationExtensionInterface is the interface implemented by container extension classes.
  *
@@ -24,5 +24,5 @@ interface ConfigurationExtensionInterface
      *
      * @return ConfigurationInterface|null The configuration or null
      */
-    public function getConfiguration(array $config, \MonorepoBuilder20210705\Symfony\Component\DependencyInjection\ContainerBuilder $container);
+    public function getConfiguration(array $config, \MonorepoBuilder20210706\Symfony\Component\DependencyInjection\ContainerBuilder $container);
 }

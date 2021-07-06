@@ -9,7 +9,7 @@ declare (strict_types=1);
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210705\PharIo\Version;
+namespace MonorepoBuilder20210706\PharIo\Version;
 
 class Version
 {
@@ -28,10 +28,10 @@ class Version
         $this->ensureVersionStringIsValid($versionString);
         $this->originalVersionString = $versionString;
     }
-    public function getPreReleaseSuffix() : \MonorepoBuilder20210705\PharIo\Version\PreReleaseSuffix
+    public function getPreReleaseSuffix() : \MonorepoBuilder20210706\PharIo\Version\PreReleaseSuffix
     {
         if ($this->preReleaseSuffix === null) {
-            throw new \MonorepoBuilder20210705\PharIo\Version\NoPreReleaseSuffixException('No pre-release suffix set');
+            throw new \MonorepoBuilder20210706\PharIo\Version\NoPreReleaseSuffixException('No pre-release suffix set');
         }
         return $this->preReleaseSuffix;
     }
@@ -51,11 +51,11 @@ class Version
     {
         return $this->preReleaseSuffix !== null;
     }
-    public function equals(\MonorepoBuilder20210705\PharIo\Version\Version $other) : bool
+    public function equals(\MonorepoBuilder20210706\PharIo\Version\Version $other) : bool
     {
         return $this->getVersionString() === $other->getVersionString();
     }
-    public function isGreaterThan(\MonorepoBuilder20210705\PharIo\Version\Version $version) : bool
+    public function isGreaterThan(\MonorepoBuilder20210706\PharIo\Version\Version $version) : bool
     {
         if ($version->getMajor()->getValue() > $this->getMajor()->getValue()) {
             return \false;
@@ -86,15 +86,15 @@ class Version
         }
         return $this->getPreReleaseSuffix()->isGreaterThan($version->getPreReleaseSuffix());
     }
-    public function getMajor() : \MonorepoBuilder20210705\PharIo\Version\VersionNumber
+    public function getMajor() : \MonorepoBuilder20210706\PharIo\Version\VersionNumber
     {
         return $this->major;
     }
-    public function getMinor() : \MonorepoBuilder20210705\PharIo\Version\VersionNumber
+    public function getMinor() : \MonorepoBuilder20210706\PharIo\Version\VersionNumber
     {
         return $this->minor;
     }
-    public function getPatch() : \MonorepoBuilder20210705\PharIo\Version\VersionNumber
+    public function getPatch() : \MonorepoBuilder20210706\PharIo\Version\VersionNumber
     {
         return $this->patch;
     }
@@ -105,11 +105,11 @@ class Version
      */
     private function parseVersion(array $matches) : void
     {
-        $this->major = new \MonorepoBuilder20210705\PharIo\Version\VersionNumber((int) $matches['Major']);
-        $this->minor = new \MonorepoBuilder20210705\PharIo\Version\VersionNumber((int) $matches['Minor']);
-        $this->patch = isset($matches['Patch']) ? new \MonorepoBuilder20210705\PharIo\Version\VersionNumber((int) $matches['Patch']) : new \MonorepoBuilder20210705\PharIo\Version\VersionNumber(0);
+        $this->major = new \MonorepoBuilder20210706\PharIo\Version\VersionNumber((int) $matches['Major']);
+        $this->minor = new \MonorepoBuilder20210706\PharIo\Version\VersionNumber((int) $matches['Minor']);
+        $this->patch = isset($matches['Patch']) ? new \MonorepoBuilder20210706\PharIo\Version\VersionNumber((int) $matches['Patch']) : new \MonorepoBuilder20210706\PharIo\Version\VersionNumber(0);
         if (isset($matches['PreReleaseSuffix'])) {
-            $this->preReleaseSuffix = new \MonorepoBuilder20210705\PharIo\Version\PreReleaseSuffix($matches['PreReleaseSuffix']);
+            $this->preReleaseSuffix = new \MonorepoBuilder20210706\PharIo\Version\PreReleaseSuffix($matches['PreReleaseSuffix']);
         }
     }
     /**
@@ -132,7 +132,7 @@ class Version
             )?       
         $/xi';
         if (\preg_match($regex, $version, $matches) !== 1) {
-            throw new \MonorepoBuilder20210705\PharIo\Version\InvalidVersionException(\sprintf("Version string '%s' does not follow SemVer semantics", $version));
+            throw new \MonorepoBuilder20210706\PharIo\Version\InvalidVersionException(\sprintf("Version string '%s' does not follow SemVer semantics", $version));
         }
         $this->parseVersion($matches);
     }

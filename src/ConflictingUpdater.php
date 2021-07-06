@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20210705\Symplify\MonorepoBuilder;
+namespace Symplify\MonorepoBuilder;
 
-use MonorepoBuilder20210705\PharIo\Version\Version;
-use MonorepoBuilder20210705\Symplify\ComposerJsonManipulator\ComposerJsonFactory;
-use MonorepoBuilder20210705\Symplify\ComposerJsonManipulator\Printer\ComposerJsonPrinter;
-use MonorepoBuilder20210705\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder20210706\PharIo\Version\Version;
+use MonorepoBuilder20210706\Symplify\ComposerJsonManipulator\ComposerJsonFactory;
+use MonorepoBuilder20210706\Symplify\ComposerJsonManipulator\Printer\ComposerJsonPrinter;
+use MonorepoBuilder20210706\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\MonorepoBuilder\Tests\ConflictingUpdater\ConflictingUpdaterTest
  */
@@ -20,7 +20,7 @@ final class ConflictingUpdater
      * @var \Symplify\ComposerJsonManipulator\Printer\ComposerJsonPrinter
      */
     private $composerJsonPrinter;
-    public function __construct(\MonorepoBuilder20210705\Symplify\ComposerJsonManipulator\ComposerJsonFactory $composerJsonFactory, \MonorepoBuilder20210705\Symplify\ComposerJsonManipulator\Printer\ComposerJsonPrinter $composerJsonPrinter)
+    public function __construct(\MonorepoBuilder20210706\Symplify\ComposerJsonManipulator\ComposerJsonFactory $composerJsonFactory, \MonorepoBuilder20210706\Symplify\ComposerJsonManipulator\Printer\ComposerJsonPrinter $composerJsonPrinter)
     {
         $this->composerJsonFactory = $composerJsonFactory;
         $this->composerJsonPrinter = $composerJsonPrinter;
@@ -29,7 +29,7 @@ final class ConflictingUpdater
      * @param string[] $packageNames
      * @param SmartFileInfo[] $packageComposerFileInfos
      */
-    public function updateFileInfosWithVendorAndVersion(array $packageComposerFileInfos, array $packageNames, \MonorepoBuilder20210705\PharIo\Version\Version $conflictingVersion) : void
+    public function updateFileInfosWithVendorAndVersion(array $packageComposerFileInfos, array $packageNames, \MonorepoBuilder20210706\PharIo\Version\Version $conflictingVersion) : void
     {
         foreach ($packageComposerFileInfos as $packageComposerFileInfo) {
             $composerJson = $this->composerJsonFactory->createFromFileInfo($packageComposerFileInfo);

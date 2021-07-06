@@ -1,16 +1,16 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20210705\Symplify\MonorepoBuilder\Git;
+namespace Symplify\MonorepoBuilder\Git;
 
-use MonorepoBuilder20210705\Symplify\MonorepoBuilder\Release\Process\ProcessRunner;
+use Symplify\MonorepoBuilder\Release\Process\ProcessRunner;
 final class MostRecentTagResolver
 {
     /**
      * @var \Symplify\MonorepoBuilder\Release\Process\ProcessRunner
      */
     private $processRunner;
-    public function __construct(\MonorepoBuilder20210705\Symplify\MonorepoBuilder\Release\Process\ProcessRunner $processRunner)
+    public function __construct(\Symplify\MonorepoBuilder\Release\Process\ProcessRunner $processRunner)
     {
         $this->processRunner = $processRunner;
     }

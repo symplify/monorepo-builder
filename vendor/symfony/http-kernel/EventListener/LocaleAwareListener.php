@@ -8,36 +8,36 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210705\Symfony\Component\HttpKernel\EventListener;
+namespace MonorepoBuilder20210706\Symfony\Component\HttpKernel\EventListener;
 
-use MonorepoBuilder20210705\Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use MonorepoBuilder20210705\Symfony\Component\HttpFoundation\RequestStack;
-use MonorepoBuilder20210705\Symfony\Component\HttpKernel\Event\FinishRequestEvent;
-use MonorepoBuilder20210705\Symfony\Component\HttpKernel\Event\RequestEvent;
-use MonorepoBuilder20210705\Symfony\Component\HttpKernel\KernelEvents;
-use MonorepoBuilder20210705\Symfony\Contracts\Translation\LocaleAwareInterface;
+use MonorepoBuilder20210706\Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use MonorepoBuilder20210706\Symfony\Component\HttpFoundation\RequestStack;
+use MonorepoBuilder20210706\Symfony\Component\HttpKernel\Event\FinishRequestEvent;
+use MonorepoBuilder20210706\Symfony\Component\HttpKernel\Event\RequestEvent;
+use MonorepoBuilder20210706\Symfony\Component\HttpKernel\KernelEvents;
+use MonorepoBuilder20210706\Symfony\Contracts\Translation\LocaleAwareInterface;
 /**
  * Pass the current locale to the provided services.
  *
  * @author Pierre Bobiet <pierrebobiet@gmail.com>
  */
-class LocaleAwareListener implements \MonorepoBuilder20210705\Symfony\Component\EventDispatcher\EventSubscriberInterface
+class LocaleAwareListener implements \MonorepoBuilder20210706\Symfony\Component\EventDispatcher\EventSubscriberInterface
 {
     private $localeAwareServices;
     private $requestStack;
     /**
      * @param LocaleAwareInterface[] $localeAwareServices
      */
-    public function __construct(iterable $localeAwareServices, \MonorepoBuilder20210705\Symfony\Component\HttpFoundation\RequestStack $requestStack)
+    public function __construct(iterable $localeAwareServices, \MonorepoBuilder20210706\Symfony\Component\HttpFoundation\RequestStack $requestStack)
     {
         $this->localeAwareServices = $localeAwareServices;
         $this->requestStack = $requestStack;
     }
-    public function onKernelRequest(\MonorepoBuilder20210705\Symfony\Component\HttpKernel\Event\RequestEvent $event) : void
+    public function onKernelRequest(\MonorepoBuilder20210706\Symfony\Component\HttpKernel\Event\RequestEvent $event) : void
     {
         $this->setLocale($event->getRequest()->getLocale(), $event->getRequest()->getDefaultLocale());
     }
-    public function onKernelFinishRequest(\MonorepoBuilder20210705\Symfony\Component\HttpKernel\Event\FinishRequestEvent $event) : void
+    public function onKernelFinishRequest(\MonorepoBuilder20210706\Symfony\Component\HttpKernel\Event\FinishRequestEvent $event) : void
     {
         if (null === ($parentRequest = $this->requestStack->getParentRequest())) {
             foreach ($this->localeAwareServices as $service) {
@@ -51,8 +51,8 @@ class LocaleAwareListener implements \MonorepoBuilder20210705\Symfony\Component\
     {
         return [
             // must be registered after the Locale listener
-            \MonorepoBuilder20210705\Symfony\Component\HttpKernel\KernelEvents::REQUEST => [['onKernelRequest', 15]],
-            \MonorepoBuilder20210705\Symfony\Component\HttpKernel\KernelEvents::FINISH_REQUEST => [['onKernelFinishRequest', -15]],
+            \MonorepoBuilder20210706\Symfony\Component\HttpKernel\KernelEvents::REQUEST => [['onKernelRequest', 15]],
+            \MonorepoBuilder20210706\Symfony\Component\HttpKernel\KernelEvents::FINISH_REQUEST => [['onKernelFinishRequest', -15]],
         ];
     }
     private function setLocale(string $locale, string $defaultLocale) : void

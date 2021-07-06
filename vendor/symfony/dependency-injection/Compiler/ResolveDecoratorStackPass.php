@@ -8,19 +8,19 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210705\Symfony\Component\DependencyInjection\Compiler;
+namespace MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Compiler;
 
-use MonorepoBuilder20210705\Symfony\Component\DependencyInjection\Alias;
-use MonorepoBuilder20210705\Symfony\Component\DependencyInjection\ChildDefinition;
-use MonorepoBuilder20210705\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder20210705\Symfony\Component\DependencyInjection\Definition;
-use MonorepoBuilder20210705\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use MonorepoBuilder20210705\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
-use MonorepoBuilder20210705\Symfony\Component\DependencyInjection\Reference;
+use MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Alias;
+use MonorepoBuilder20210706\Symfony\Component\DependencyInjection\ChildDefinition;
+use MonorepoBuilder20210706\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Definition;
+use MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
+use MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Reference;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class ResolveDecoratorStackPass implements \MonorepoBuilder20210705\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
+class ResolveDecoratorStackPass implements \MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
 {
     private $tag;
     public function __construct(string $tag = 'container.stack')
@@ -30,16 +30,16 @@ class ResolveDecoratorStackPass implements \MonorepoBuilder20210705\Symfony\Comp
         }
         $this->tag = $tag;
     }
-    public function process(\MonorepoBuilder20210705\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    public function process(\MonorepoBuilder20210706\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
         $stacks = [];
         foreach ($container->findTaggedServiceIds($this->tag) as $id => $tags) {
             $definition = $container->getDefinition($id);
-            if (!$definition instanceof \MonorepoBuilder20210705\Symfony\Component\DependencyInjection\ChildDefinition) {
-                throw new \MonorepoBuilder20210705\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Invalid service "%s": only definitions with a "parent" can have the "%s" tag.', $id, $this->tag));
+            if (!$definition instanceof \MonorepoBuilder20210706\Symfony\Component\DependencyInjection\ChildDefinition) {
+                throw new \MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Invalid service "%s": only definitions with a "parent" can have the "%s" tag.', $id, $this->tag));
             }
             if (!($stack = $definition->getArguments())) {
-                throw new \MonorepoBuilder20210705\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Invalid service "%s": the stack of decorators is empty.', $id));
+                throw new \MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Invalid service "%s": the stack of decorators is empty.', $id));
             }
             $stacks[$id] = $stack;
         }
@@ -71,27 +71,27 @@ class ResolveDecoratorStackPass implements \MonorepoBuilder20210705\Symfony\Comp
         $id = \end($path);
         $prefix = '.' . $id . '.';
         if (!isset($stacks[$id])) {
-            return [$id => new \MonorepoBuilder20210705\Symfony\Component\DependencyInjection\ChildDefinition($id)];
+            return [$id => new \MonorepoBuilder20210706\Symfony\Component\DependencyInjection\ChildDefinition($id)];
         }
         if (\key($path) !== ($searchKey = \array_search($id, $path))) {
-            throw new \MonorepoBuilder20210705\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException($id, \array_slice($path, $searchKey));
+            throw new \MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException($id, \array_slice($path, $searchKey));
         }
         foreach ($stacks[$id] as $k => $definition) {
-            if ($definition instanceof \MonorepoBuilder20210705\Symfony\Component\DependencyInjection\ChildDefinition && isset($stacks[$definition->getParent()])) {
+            if ($definition instanceof \MonorepoBuilder20210706\Symfony\Component\DependencyInjection\ChildDefinition && isset($stacks[$definition->getParent()])) {
                 $path[] = $definition->getParent();
                 $definition = \unserialize(\serialize($definition));
                 // deep clone
-            } elseif ($definition instanceof \MonorepoBuilder20210705\Symfony\Component\DependencyInjection\Definition) {
+            } elseif ($definition instanceof \MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Definition) {
                 $definitions[$decoratedId = $prefix . $k] = $definition;
                 continue;
-            } elseif ($definition instanceof \MonorepoBuilder20210705\Symfony\Component\DependencyInjection\Reference || $definition instanceof \MonorepoBuilder20210705\Symfony\Component\DependencyInjection\Alias) {
+            } elseif ($definition instanceof \MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Reference || $definition instanceof \MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Alias) {
                 $path[] = (string) $definition;
             } else {
-                throw new \MonorepoBuilder20210705\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Invalid service "%s": unexpected value of type "%s" found in the stack of decorators.', $id, \get_debug_type($definition)));
+                throw new \MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Invalid service "%s": unexpected value of type "%s" found in the stack of decorators.', $id, \get_debug_type($definition)));
             }
             $p = $prefix . $k;
             foreach ($this->resolveStack($stacks, $path) as $k => $v) {
-                $definitions[$decoratedId = $p . $k] = $definition instanceof \MonorepoBuilder20210705\Symfony\Component\DependencyInjection\ChildDefinition ? $definition->setParent($k) : new \MonorepoBuilder20210705\Symfony\Component\DependencyInjection\ChildDefinition($k);
+                $definitions[$decoratedId = $p . $k] = $definition instanceof \MonorepoBuilder20210706\Symfony\Component\DependencyInjection\ChildDefinition ? $definition->setParent($k) : new \MonorepoBuilder20210706\Symfony\Component\DependencyInjection\ChildDefinition($k);
                 $definition = null;
             }
             \array_pop($path);

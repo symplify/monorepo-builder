@@ -1,15 +1,15 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20210705\Symplify\MonorepoBuilder\Release\ReleaseWorker;
+namespace Symplify\MonorepoBuilder\Release\ReleaseWorker;
 
-use MonorepoBuilder20210705\PharIo\Version\Version;
-use MonorepoBuilder20210705\Symplify\MonorepoBuilder\ConflictingUpdater;
-use MonorepoBuilder20210705\Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider;
-use MonorepoBuilder20210705\Symplify\MonorepoBuilder\Package\PackageNamesProvider;
-use MonorepoBuilder20210705\Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface;
-use MonorepoBuilder20210705\Symplify\MonorepoBuilder\Utils\VersionUtils;
-final class SetCurrentMutualConflictsReleaseWorker implements \MonorepoBuilder20210705\Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface
+use MonorepoBuilder20210706\PharIo\Version\Version;
+use Symplify\MonorepoBuilder\ConflictingUpdater;
+use Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider;
+use Symplify\MonorepoBuilder\Package\PackageNamesProvider;
+use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface;
+use Symplify\MonorepoBuilder\Utils\VersionUtils;
+final class SetCurrentMutualConflictsReleaseWorker implements \Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface
 {
     /**
      * @var \Symplify\MonorepoBuilder\Utils\VersionUtils
@@ -27,20 +27,20 @@ final class SetCurrentMutualConflictsReleaseWorker implements \MonorepoBuilder20
      * @var \Symplify\MonorepoBuilder\ConflictingUpdater
      */
     private $conflictingUpdater;
-    public function __construct(\MonorepoBuilder20210705\Symplify\MonorepoBuilder\Utils\VersionUtils $versionUtils, \MonorepoBuilder20210705\Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider $composerJsonProvider, \MonorepoBuilder20210705\Symplify\MonorepoBuilder\Package\PackageNamesProvider $packageNamesProvider, \MonorepoBuilder20210705\Symplify\MonorepoBuilder\ConflictingUpdater $conflictingUpdater)
+    public function __construct(\Symplify\MonorepoBuilder\Utils\VersionUtils $versionUtils, \Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider $composerJsonProvider, \Symplify\MonorepoBuilder\Package\PackageNamesProvider $packageNamesProvider, \Symplify\MonorepoBuilder\ConflictingUpdater $conflictingUpdater)
     {
         $this->versionUtils = $versionUtils;
         $this->composerJsonProvider = $composerJsonProvider;
         $this->packageNamesProvider = $packageNamesProvider;
         $this->conflictingUpdater = $conflictingUpdater;
     }
-    public function work(\MonorepoBuilder20210705\PharIo\Version\Version $version) : void
+    public function work(\MonorepoBuilder20210706\PharIo\Version\Version $version) : void
     {
         $this->conflictingUpdater->updateFileInfosWithVendorAndVersion($this->composerJsonProvider->getPackagesComposerFileInfos(), $this->packageNamesProvider->provide(), $version);
         // give time to propagate printed composer.json values before commit
         \sleep(1);
     }
-    public function getDescription(\MonorepoBuilder20210705\PharIo\Version\Version $version) : string
+    public function getDescription(\MonorepoBuilder20210706\PharIo\Version\Version $version) : string
     {
         $versionInString = $this->versionUtils->getRequiredFormat($version);
         return \sprintf('Set packages mutual conflicts to "%s" version', $versionInString);

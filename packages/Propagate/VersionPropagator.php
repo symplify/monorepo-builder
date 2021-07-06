@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20210705\Symplify\MonorepoBuilder\Propagate;
+namespace Symplify\MonorepoBuilder\Propagate;
 
-use MonorepoBuilder20210705\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
+use MonorepoBuilder20210706\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
 final class VersionPropagator
 {
-    public function propagate(\MonorepoBuilder20210705\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $mainComposerJson, \MonorepoBuilder20210705\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $otherComposerJson) : void
+    public function propagate(\MonorepoBuilder20210706\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $mainComposerJson, \MonorepoBuilder20210706\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $otherComposerJson) : void
     {
         $packagesToVersions = \array_merge($mainComposerJson->getRequire(), $mainComposerJson->getRequireDev());
         foreach ($packagesToVersions as $packageName => $packageVersion) {

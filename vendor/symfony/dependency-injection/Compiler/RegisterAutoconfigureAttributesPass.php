@@ -8,25 +8,25 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210705\Symfony\Component\DependencyInjection\Compiler;
+namespace MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Compiler;
 
-use MonorepoBuilder20210705\Symfony\Component\DependencyInjection\Attribute\Autoconfigure;
-use MonorepoBuilder20210705\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder20210705\Symfony\Component\DependencyInjection\Definition;
-use MonorepoBuilder20210705\Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
+use MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Attribute\Autoconfigure;
+use MonorepoBuilder20210706\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Definition;
+use MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 /**
  * Reads #[Autoconfigure] attributes on definitions that are autoconfigured
  * and don't have the "container.ignore_attributes" tag.
  *
  * @author Nicolas Grekas <p@tchwork.com>
  */
-final class RegisterAutoconfigureAttributesPass implements \MonorepoBuilder20210705\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
+final class RegisterAutoconfigureAttributesPass implements \MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
 {
     private static $registerForAutoconfiguration;
     /**
      * {@inheritdoc}
      */
-    public function process(\MonorepoBuilder20210705\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    public function process(\MonorepoBuilder20210706\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
         if (80000 > \PHP_VERSION_ID) {
             return;
@@ -37,25 +37,25 @@ final class RegisterAutoconfigureAttributesPass implements \MonorepoBuilder20210
             }
         }
     }
-    public function accept(\MonorepoBuilder20210705\Symfony\Component\DependencyInjection\Definition $definition) : bool
+    public function accept(\MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Definition $definition) : bool
     {
         return 80000 <= \PHP_VERSION_ID && $definition->isAutoconfigured() && !$definition->hasTag('container.ignore_attributes');
     }
-    public function processClass(\MonorepoBuilder20210705\Symfony\Component\DependencyInjection\ContainerBuilder $container, \ReflectionClass $class)
+    public function processClass(\MonorepoBuilder20210706\Symfony\Component\DependencyInjection\ContainerBuilder $container, \ReflectionClass $class)
     {
-        foreach ($class->getAttributes(\MonorepoBuilder20210705\Symfony\Component\DependencyInjection\Attribute\Autoconfigure::class, \ReflectionAttribute::IS_INSTANCEOF) as $attribute) {
+        foreach ($class->getAttributes(\MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Attribute\Autoconfigure::class, \ReflectionAttribute::IS_INSTANCEOF) as $attribute) {
             self::registerForAutoconfiguration($container, $class, $attribute);
         }
     }
-    private static function registerForAutoconfiguration(\MonorepoBuilder20210705\Symfony\Component\DependencyInjection\ContainerBuilder $container, \ReflectionClass $class, \ReflectionAttribute $attribute)
+    private static function registerForAutoconfiguration(\MonorepoBuilder20210706\Symfony\Component\DependencyInjection\ContainerBuilder $container, \ReflectionClass $class, \ReflectionAttribute $attribute)
     {
         if (self::$registerForAutoconfiguration) {
             return (self::$registerForAutoconfiguration)($container, $class, $attribute);
         }
-        $parseDefinitions = new \ReflectionMethod(\MonorepoBuilder20210705\Symfony\Component\DependencyInjection\Loader\YamlFileLoader::class, 'parseDefinitions');
+        $parseDefinitions = new \ReflectionMethod(\MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Loader\YamlFileLoader::class, 'parseDefinitions');
         $parseDefinitions->setAccessible(\true);
         $yamlLoader = $parseDefinitions->getDeclaringClass()->newInstanceWithoutConstructor();
-        self::$registerForAutoconfiguration = static function (\MonorepoBuilder20210705\Symfony\Component\DependencyInjection\ContainerBuilder $container, \ReflectionClass $class, \ReflectionAttribute $attribute) use($parseDefinitions, $yamlLoader) {
+        self::$registerForAutoconfiguration = static function (\MonorepoBuilder20210706\Symfony\Component\DependencyInjection\ContainerBuilder $container, \ReflectionClass $class, \ReflectionAttribute $attribute) use($parseDefinitions, $yamlLoader) {
             $attribute = (array) $attribute->newInstance();
             foreach ($attribute['tags'] ?? [] as $i => $tag) {
                 if (\is_array($tag) && [0] === \array_keys($tag)) {

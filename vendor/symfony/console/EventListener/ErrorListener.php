@@ -8,26 +8,26 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210705\Symfony\Component\Console\EventListener;
+namespace MonorepoBuilder20210706\Symfony\Component\Console\EventListener;
 
-use MonorepoBuilder20210705\Psr\Log\LoggerInterface;
-use MonorepoBuilder20210705\Symfony\Component\Console\ConsoleEvents;
-use MonorepoBuilder20210705\Symfony\Component\Console\Event\ConsoleErrorEvent;
-use MonorepoBuilder20210705\Symfony\Component\Console\Event\ConsoleEvent;
-use MonorepoBuilder20210705\Symfony\Component\Console\Event\ConsoleTerminateEvent;
-use MonorepoBuilder20210705\Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use MonorepoBuilder20210706\Psr\Log\LoggerInterface;
+use MonorepoBuilder20210706\Symfony\Component\Console\ConsoleEvents;
+use MonorepoBuilder20210706\Symfony\Component\Console\Event\ConsoleErrorEvent;
+use MonorepoBuilder20210706\Symfony\Component\Console\Event\ConsoleEvent;
+use MonorepoBuilder20210706\Symfony\Component\Console\Event\ConsoleTerminateEvent;
+use MonorepoBuilder20210706\Symfony\Component\EventDispatcher\EventSubscriberInterface;
 /**
  * @author James Halsall <james.t.halsall@googlemail.com>
  * @author Robin Chalas <robin.chalas@gmail.com>
  */
-class ErrorListener implements \MonorepoBuilder20210705\Symfony\Component\EventDispatcher\EventSubscriberInterface
+class ErrorListener implements \MonorepoBuilder20210706\Symfony\Component\EventDispatcher\EventSubscriberInterface
 {
     private $logger;
-    public function __construct(\MonorepoBuilder20210705\Psr\Log\LoggerInterface $logger = null)
+    public function __construct(\MonorepoBuilder20210706\Psr\Log\LoggerInterface $logger = null)
     {
         $this->logger = $logger;
     }
-    public function onConsoleError(\MonorepoBuilder20210705\Symfony\Component\Console\Event\ConsoleErrorEvent $event)
+    public function onConsoleError(\MonorepoBuilder20210706\Symfony\Component\Console\Event\ConsoleErrorEvent $event)
     {
         if (null === $this->logger) {
             return;
@@ -39,7 +39,7 @@ class ErrorListener implements \MonorepoBuilder20210705\Symfony\Component\EventD
         }
         $this->logger->critical('Error thrown while running command "{command}". Message: "{message}"', ['exception' => $error, 'command' => $inputString, 'message' => $error->getMessage()]);
     }
-    public function onConsoleTerminate(\MonorepoBuilder20210705\Symfony\Component\Console\Event\ConsoleTerminateEvent $event)
+    public function onConsoleTerminate(\MonorepoBuilder20210706\Symfony\Component\Console\Event\ConsoleTerminateEvent $event)
     {
         if (null === $this->logger) {
             return;
@@ -56,9 +56,9 @@ class ErrorListener implements \MonorepoBuilder20210705\Symfony\Component\EventD
     }
     public static function getSubscribedEvents()
     {
-        return [\MonorepoBuilder20210705\Symfony\Component\Console\ConsoleEvents::ERROR => ['onConsoleError', -128], \MonorepoBuilder20210705\Symfony\Component\Console\ConsoleEvents::TERMINATE => ['onConsoleTerminate', -128]];
+        return [\MonorepoBuilder20210706\Symfony\Component\Console\ConsoleEvents::ERROR => ['onConsoleError', -128], \MonorepoBuilder20210706\Symfony\Component\Console\ConsoleEvents::TERMINATE => ['onConsoleTerminate', -128]];
     }
-    private static function getInputString(\MonorepoBuilder20210705\Symfony\Component\Console\Event\ConsoleEvent $event) : ?string
+    private static function getInputString(\MonorepoBuilder20210706\Symfony\Component\Console\Event\ConsoleEvent $event) : ?string
     {
         $commandName = $event->getCommand() ? $event->getCommand()->getName() : null;
         $input = $event->getInput();

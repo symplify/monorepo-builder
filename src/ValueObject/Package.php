@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20210705\Symplify\MonorepoBuilder\ValueObject;
+namespace Symplify\MonorepoBuilder\ValueObject;
 
-use MonorepoBuilder20210705\Nette\Utils\Strings;
+use MonorepoBuilder20210706\Nette\Utils\Strings;
 final class Package
 {
     /**
@@ -17,7 +17,7 @@ final class Package
     public function __construct(string $name, bool $hasTests)
     {
         $this->hasTests = $hasTests;
-        $this->shortName = (string) \MonorepoBuilder20210705\Nette\Utils\Strings::after($name, '/', -1);
+        $this->shortName = (string) \MonorepoBuilder20210706\Nette\Utils\Strings::after($name, '/', -1);
     }
     public function getShortName() : string
     {

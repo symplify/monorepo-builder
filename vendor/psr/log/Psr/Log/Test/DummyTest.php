@@ -1,6 +1,6 @@
 <?php
 
-namespace MonorepoBuilder20210705\Psr\Log\Test;
+namespace MonorepoBuilder20210706\Psr\Log\Test;
 
 /**
  * This class is internal and does not follow the BC promise.

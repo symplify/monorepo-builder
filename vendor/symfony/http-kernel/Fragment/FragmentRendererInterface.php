@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210705\Symfony\Component\HttpKernel\Fragment;
+namespace MonorepoBuilder20210706\Symfony\Component\HttpKernel\Fragment;
 
-use MonorepoBuilder20210705\Symfony\Component\HttpFoundation\Request;
-use MonorepoBuilder20210705\Symfony\Component\HttpFoundation\Response;
-use MonorepoBuilder20210705\Symfony\Component\HttpKernel\Controller\ControllerReference;
+use MonorepoBuilder20210706\Symfony\Component\HttpFoundation\Request;
+use MonorepoBuilder20210706\Symfony\Component\HttpFoundation\Response;
+use MonorepoBuilder20210706\Symfony\Component\HttpKernel\Controller\ControllerReference;
 /**
  * Interface implemented by all rendering strategies.
  *
@@ -27,7 +27,7 @@ interface FragmentRendererInterface
      *
      * @return Response A Response instance
      */
-    public function render($uri, \MonorepoBuilder20210705\Symfony\Component\HttpFoundation\Request $request, array $options = []);
+    public function render($uri, \MonorepoBuilder20210706\Symfony\Component\HttpFoundation\Request $request, array $options = []);
     /**
      * Gets the name of the strategy.
      *

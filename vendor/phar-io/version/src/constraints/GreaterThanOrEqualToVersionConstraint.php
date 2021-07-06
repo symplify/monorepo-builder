@@ -9,18 +9,18 @@ declare (strict_types=1);
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210705\PharIo\Version;
+namespace MonorepoBuilder20210706\PharIo\Version;
 
-class GreaterThanOrEqualToVersionConstraint extends \MonorepoBuilder20210705\PharIo\Version\AbstractVersionConstraint
+class GreaterThanOrEqualToVersionConstraint extends \MonorepoBuilder20210706\PharIo\Version\AbstractVersionConstraint
 {
     /** @var Version */
     private $minimalVersion;
-    public function __construct(string $originalValue, \MonorepoBuilder20210705\PharIo\Version\Version $minimalVersion)
+    public function __construct(string $originalValue, \MonorepoBuilder20210706\PharIo\Version\Version $minimalVersion)
     {
         parent::__construct($originalValue);
         $this->minimalVersion = $minimalVersion;
     }
-    public function complies(\MonorepoBuilder20210705\PharIo\Version\Version $version) : bool
+    public function complies(\MonorepoBuilder20210706\PharIo\Version\Version $version) : bool
     {
         return $version->getVersionString() === $this->minimalVersion->getVersionString() || $version->isGreaterThan($this->minimalVersion);
     }

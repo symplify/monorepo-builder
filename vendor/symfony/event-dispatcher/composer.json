@@ -44,7 +44,7 @@
     },
     "autoload": {
         "psr-4": {
-            "MonorepoBuilder20210705\\Symfony\\Component\\EventDispatcher\\": ""
+            "MonorepoBuilder20210706\\Symfony\\Component\\EventDispatcher\\": ""
         },
         "exclude-from-classmap": [
             "\/Tests\/"

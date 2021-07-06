@@ -1,28 +1,28 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20210705\Symplify\MonorepoBuilder\Merge\ComposerJsonDecorator;
+namespace Symplify\MonorepoBuilder\Merge\ComposerJsonDecorator;
 
-use MonorepoBuilder20210705\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
-use MonorepoBuilder20210705\Symplify\MonorepoBuilder\Merge\Configuration\MergedPackagesCollector;
-use MonorepoBuilder20210705\Symplify\MonorepoBuilder\Merge\Contract\ComposerJsonDecoratorInterface;
+use MonorepoBuilder20210706\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
+use Symplify\MonorepoBuilder\Merge\Configuration\MergedPackagesCollector;
+use Symplify\MonorepoBuilder\Merge\Contract\ComposerJsonDecoratorInterface;
 /**
  * Remove inter-dependencies in split packages from root, e.g. symfony/console needs symfony/filesystem in package, but
  * it makes no sense to have symfony/filesystem in root of symfony/symfony.
  *
  * @see \Symplify\MonorepoBuilder\Tests\Merge\ComposerJsonDecorator\RootRemoveComposerJsonDecorator\RootRemoveComposerJsonDecoratorTest
  */
-final class RootRemoveComposerJsonDecorator implements \MonorepoBuilder20210705\Symplify\MonorepoBuilder\Merge\Contract\ComposerJsonDecoratorInterface
+final class RootRemoveComposerJsonDecorator implements \Symplify\MonorepoBuilder\Merge\Contract\ComposerJsonDecoratorInterface
 {
     /**
      * @var \Symplify\MonorepoBuilder\Merge\Configuration\MergedPackagesCollector
      */
     private $mergedPackagesCollector;
-    public function __construct(\MonorepoBuilder20210705\Symplify\MonorepoBuilder\Merge\Configuration\MergedPackagesCollector $mergedPackagesCollector)
+    public function __construct(\Symplify\MonorepoBuilder\Merge\Configuration\MergedPackagesCollector $mergedPackagesCollector)
     {
         $this->mergedPackagesCollector = $mergedPackagesCollector;
     }
-    public function decorate(\MonorepoBuilder20210705\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJson) : void
+    public function decorate(\MonorepoBuilder20210706\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJson) : void
     {
         $require = $this->filterOutMergedPackages($composerJson->getRequire());
         $composerJson->setRequire($require);

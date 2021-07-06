@@ -8,22 +8,22 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210705\Symfony\Component\VarDumper\Caster;
+namespace MonorepoBuilder20210706\Symfony\Component\VarDumper\Caster;
 
-use MonorepoBuilder20210705\Imagine\Image\ImageInterface;
-use MonorepoBuilder20210705\Symfony\Component\VarDumper\Cloner\Stub;
+use MonorepoBuilder20210706\Imagine\Image\ImageInterface;
+use MonorepoBuilder20210706\Symfony\Component\VarDumper\Cloner\Stub;
 /**
  * @author Grégoire Pineau <lyrixx@lyrixx.info>
  */
 final class ImagineCaster
 {
-    public static function castImage(\MonorepoBuilder20210705\Imagine\Image\ImageInterface $c, array $a, \MonorepoBuilder20210705\Symfony\Component\VarDumper\Cloner\Stub $stub, bool $isNested) : array
+    public static function castImage(\MonorepoBuilder20210706\Imagine\Image\ImageInterface $c, array $a, \MonorepoBuilder20210706\Symfony\Component\VarDumper\Cloner\Stub $stub, bool $isNested) : array
     {
         $imgData = $c->get('png');
         if (\strlen($imgData) > 1 * 1000 * 1000) {
-            $a += [\MonorepoBuilder20210705\Symfony\Component\VarDumper\Caster\Caster::PREFIX_VIRTUAL . 'image' => new \MonorepoBuilder20210705\Symfony\Component\VarDumper\Caster\ConstStub($c->getSize())];
+            $a += [\MonorepoBuilder20210706\Symfony\Component\VarDumper\Caster\Caster::PREFIX_VIRTUAL . 'image' => new \MonorepoBuilder20210706\Symfony\Component\VarDumper\Caster\ConstStub($c->getSize())];
         } else {
-            $a += [\MonorepoBuilder20210705\Symfony\Component\VarDumper\Caster\Caster::PREFIX_VIRTUAL . 'image' => new \MonorepoBuilder20210705\Symfony\Component\VarDumper\Caster\ImgStub($imgData, 'image/png', $c->getSize())];
+            $a += [\MonorepoBuilder20210706\Symfony\Component\VarDumper\Caster\Caster::PREFIX_VIRTUAL . 'image' => new \MonorepoBuilder20210706\Symfony\Component\VarDumper\Caster\ImgStub($imgData, 'image/png', $c->getSize())];
         }
         return $a;
     }

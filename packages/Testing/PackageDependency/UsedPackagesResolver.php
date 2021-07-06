@@ -1,17 +1,17 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20210705\Symplify\MonorepoBuilder\Testing\PackageDependency;
+namespace Symplify\MonorepoBuilder\Testing\PackageDependency;
 
-use MonorepoBuilder20210705\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
-use MonorepoBuilder20210705\Symplify\MonorepoBuilder\Package\PackageNamesProvider;
+use MonorepoBuilder20210706\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
+use Symplify\MonorepoBuilder\Package\PackageNamesProvider;
 final class UsedPackagesResolver
 {
     /**
      * @var \Symplify\MonorepoBuilder\Package\PackageNamesProvider
      */
     private $packageNamesProvider;
-    public function __construct(\MonorepoBuilder20210705\Symplify\MonorepoBuilder\Package\PackageNamesProvider $packageNamesProvider)
+    public function __construct(\Symplify\MonorepoBuilder\Package\PackageNamesProvider $packageNamesProvider)
     {
         $this->packageNamesProvider = $packageNamesProvider;
     }
@@ -22,7 +22,7 @@ final class UsedPackagesResolver
     public function resolveForPackage(array $packageComposerJson) : array
     {
         $usedPackageNames = [];
-        foreach ([\MonorepoBuilder20210705\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE, \MonorepoBuilder20210705\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE_DEV] as $section) {
+        foreach ([\MonorepoBuilder20210706\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE, \MonorepoBuilder20210706\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE_DEV] as $section) {
             if (!isset($packageComposerJson[$section])) {
                 continue;
             }

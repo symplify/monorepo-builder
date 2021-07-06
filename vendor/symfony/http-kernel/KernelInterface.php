@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210705\Symfony\Component\HttpKernel;
+namespace MonorepoBuilder20210706\Symfony\Component\HttpKernel;
 
-use MonorepoBuilder20210705\Symfony\Component\Config\Loader\LoaderInterface;
-use MonorepoBuilder20210705\Symfony\Component\DependencyInjection\ContainerInterface;
-use MonorepoBuilder20210705\Symfony\Component\HttpKernel\Bundle\BundleInterface;
+use MonorepoBuilder20210706\Symfony\Component\Config\Loader\LoaderInterface;
+use MonorepoBuilder20210706\Symfony\Component\DependencyInjection\ContainerInterface;
+use MonorepoBuilder20210706\Symfony\Component\HttpKernel\Bundle\BundleInterface;
 /**
  * The Kernel is the heart of the Symfony system.
  *
@@ -24,7 +24,7 @@ use MonorepoBuilder20210705\Symfony\Component\HttpKernel\Bundle\BundleInterface;
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-interface KernelInterface extends \MonorepoBuilder20210705\Symfony\Component\HttpKernel\HttpKernelInterface
+interface KernelInterface extends \MonorepoBuilder20210706\Symfony\Component\HttpKernel\HttpKernelInterface
 {
     /**
      * Returns an array of bundles to register.
@@ -35,7 +35,7 @@ interface KernelInterface extends \MonorepoBuilder20210705\Symfony\Component\Htt
     /**
      * Loads the container configuration.
      */
-    public function registerContainerConfiguration(\MonorepoBuilder20210705\Symfony\Component\Config\Loader\LoaderInterface $loader);
+    public function registerContainerConfiguration(\MonorepoBuilder20210706\Symfony\Component\Config\Loader\LoaderInterface $loader);
     /**
      * Boots the current kernel.
      */

@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20210705\Symplify\MonorepoBuilder\Validator;
+namespace Symplify\MonorepoBuilder\Validator;
 
-use MonorepoBuilder20210705\Symplify\MonorepoBuilder\Exception\Validator\InvalidComposerJsonSetupException;
-use MonorepoBuilder20210705\Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider;
-use MonorepoBuilder20210705\Symplify\MonorepoBuilder\ValueObject\Option;
-use MonorepoBuilder20210705\Symplify\PackageBuilder\Parameter\ParameterProvider;
+use Symplify\MonorepoBuilder\Exception\Validator\InvalidComposerJsonSetupException;
+use Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider;
+use Symplify\MonorepoBuilder\ValueObject\Option;
+use MonorepoBuilder20210706\Symplify\PackageBuilder\Parameter\ParameterProvider;
 final class SourcesPresenceValidator
 {
     /**
@@ -17,10 +17,10 @@ final class SourcesPresenceValidator
      * @var \Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider
      */
     private $composerJsonProvider;
-    public function __construct(\MonorepoBuilder20210705\Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider $composerJsonProvider, \MonorepoBuilder20210705\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider)
+    public function __construct(\Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider $composerJsonProvider, \MonorepoBuilder20210706\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider)
     {
         $this->composerJsonProvider = $composerJsonProvider;
-        $this->packageDirectories = $parameterProvider->provideArrayParameter(\MonorepoBuilder20210705\Symplify\MonorepoBuilder\ValueObject\Option::PACKAGE_DIRECTORIES);
+        $this->packageDirectories = $parameterProvider->provideArrayParameter(\Symplify\MonorepoBuilder\ValueObject\Option::PACKAGE_DIRECTORIES);
     }
     public function validatePackageComposerJsons() : void
     {
@@ -28,7 +28,7 @@ final class SourcesPresenceValidator
         if ($composerPackageFiles !== []) {
             return;
         }
-        throw new \MonorepoBuilder20210705\Symplify\MonorepoBuilder\Exception\Validator\InvalidComposerJsonSetupException(\sprintf('No package "composer.json" was found in package directories: "%s". Add "composer.json" or configure another directory in "parameters > package_directories"', \implode('", "', $this->packageDirectories)));
+        throw new \Symplify\MonorepoBuilder\Exception\Validator\InvalidComposerJsonSetupException(\sprintf('No package "composer.json" was found in package directories: "%s". Add "composer.json" or configure another directory in "parameters > package_directories"', \implode('", "', $this->packageDirectories)));
     }
     public function validateRootComposerJsonName() : void
     {
@@ -36,6 +36,6 @@ final class SourcesPresenceValidator
         if ($rootComposerJson->getName() !== null) {
             return;
         }
-        throw new \MonorepoBuilder20210705\Symplify\MonorepoBuilder\Exception\Validator\InvalidComposerJsonSetupException('Complete "name" to your root "composer.json".');
+        throw new \Symplify\MonorepoBuilder\Exception\Validator\InvalidComposerJsonSetupException('Complete "name" to your root "composer.json".');
     }
 }

@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210705\Symfony\Component\HttpKernel\Profiler;
+namespace MonorepoBuilder20210706\Symfony\Component\HttpKernel\Profiler;
 
-use MonorepoBuilder20210705\Symfony\Component\HttpKernel\DataCollector\DataCollectorInterface;
+use MonorepoBuilder20210706\Symfony\Component\HttpKernel\DataCollector\DataCollectorInterface;
 /**
  * Profile.
  *
@@ -223,7 +223,7 @@ class Profile
     /**
      * Adds a Collector.
      */
-    public function addCollector(\MonorepoBuilder20210705\Symfony\Component\HttpKernel\DataCollector\DataCollectorInterface $collector)
+    public function addCollector(\MonorepoBuilder20210706\Symfony\Component\HttpKernel\DataCollector\DataCollectorInterface $collector)
     {
         $this->collectors[$collector->getName()] = $collector;
     }

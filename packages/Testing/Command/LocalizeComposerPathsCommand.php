@@ -1,19 +1,19 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20210705\Symplify\MonorepoBuilder\Testing\Command;
+namespace Symplify\MonorepoBuilder\Testing\Command;
 
-use MonorepoBuilder20210705\Symfony\Component\Console\Input\InputArgument;
-use MonorepoBuilder20210705\Symfony\Component\Console\Input\InputInterface;
-use MonorepoBuilder20210705\Symfony\Component\Console\Output\OutputInterface;
-use MonorepoBuilder20210705\Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider;
-use MonorepoBuilder20210705\Symplify\MonorepoBuilder\Testing\ComposerJsonRepositoriesUpdater;
-use MonorepoBuilder20210705\Symplify\MonorepoBuilder\Testing\ComposerJsonRequireUpdater;
-use MonorepoBuilder20210705\Symplify\MonorepoBuilder\Testing\ValueObject\Option;
-use MonorepoBuilder20210705\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
-use MonorepoBuilder20210705\Symplify\PackageBuilder\Console\ShellCode;
-use MonorepoBuilder20210705\Symplify\SmartFileSystem\SmartFileInfo;
-final class LocalizeComposerPathsCommand extends \MonorepoBuilder20210705\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand
+use MonorepoBuilder20210706\Symfony\Component\Console\Input\InputArgument;
+use MonorepoBuilder20210706\Symfony\Component\Console\Input\InputInterface;
+use MonorepoBuilder20210706\Symfony\Component\Console\Output\OutputInterface;
+use Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider;
+use Symplify\MonorepoBuilder\Testing\ComposerJsonRepositoriesUpdater;
+use Symplify\MonorepoBuilder\Testing\ComposerJsonRequireUpdater;
+use Symplify\MonorepoBuilder\Testing\ValueObject\Option;
+use MonorepoBuilder20210706\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
+use MonorepoBuilder20210706\Symplify\PackageBuilder\Console\ShellCode;
+use MonorepoBuilder20210706\Symplify\SmartFileSystem\SmartFileInfo;
+final class LocalizeComposerPathsCommand extends \MonorepoBuilder20210706\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand
 {
     /**
      * @var \Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider
@@ -27,7 +27,7 @@ final class LocalizeComposerPathsCommand extends \MonorepoBuilder20210705\Sympli
      * @var \Symplify\MonorepoBuilder\Testing\ComposerJsonRepositoriesUpdater
      */
     private $composerJsonRepositoriesUpdater;
-    public function __construct(\MonorepoBuilder20210705\Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider $composerJsonProvider, \MonorepoBuilder20210705\Symplify\MonorepoBuilder\Testing\ComposerJsonRequireUpdater $composerJsonRequireUpdater, \MonorepoBuilder20210705\Symplify\MonorepoBuilder\Testing\ComposerJsonRepositoriesUpdater $composerJsonRepositoriesUpdater)
+    public function __construct(\Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider $composerJsonProvider, \Symplify\MonorepoBuilder\Testing\ComposerJsonRequireUpdater $composerJsonRequireUpdater, \Symplify\MonorepoBuilder\Testing\ComposerJsonRepositoriesUpdater $composerJsonRepositoriesUpdater)
     {
         $this->composerJsonProvider = $composerJsonProvider;
         $this->composerJsonRequireUpdater = $composerJsonRequireUpdater;
@@ -37,13 +37,13 @@ final class LocalizeComposerPathsCommand extends \MonorepoBuilder20210705\Sympli
     protected function configure() : void
     {
         $this->setDescription('Set mutual package paths to local packages - use for pre-split package testing');
-        $this->addArgument(\MonorepoBuilder20210705\Symplify\MonorepoBuilder\Testing\ValueObject\Option::PACKAGE_COMPOSER_JSON, \MonorepoBuilder20210705\Symfony\Component\Console\Input\InputArgument::REQUIRED, 'Path to package "composer.json"');
+        $this->addArgument(\Symplify\MonorepoBuilder\Testing\ValueObject\Option::PACKAGE_COMPOSER_JSON, \MonorepoBuilder20210706\Symfony\Component\Console\Input\InputArgument::REQUIRED, 'Path to package "composer.json"');
     }
-    protected function execute(\MonorepoBuilder20210705\Symfony\Component\Console\Input\InputInterface $input, \MonorepoBuilder20210705\Symfony\Component\Console\Output\OutputInterface $output) : int
+    protected function execute(\MonorepoBuilder20210706\Symfony\Component\Console\Input\InputInterface $input, \MonorepoBuilder20210706\Symfony\Component\Console\Output\OutputInterface $output) : int
     {
-        $packageComposerJson = (string) $input->getArgument(\MonorepoBuilder20210705\Symplify\MonorepoBuilder\Testing\ValueObject\Option::PACKAGE_COMPOSER_JSON);
+        $packageComposerJson = (string) $input->getArgument(\Symplify\MonorepoBuilder\Testing\ValueObject\Option::PACKAGE_COMPOSER_JSON);
         $this->fileSystemGuard->ensureFileExists($packageComposerJson, __METHOD__);
-        $packageComposerJsonFileInfo = new \MonorepoBuilder20210705\Symplify\SmartFileSystem\SmartFileInfo($packageComposerJson);
+        $packageComposerJsonFileInfo = new \MonorepoBuilder20210706\Symplify\SmartFileSystem\SmartFileInfo($packageComposerJson);
         $rootComposerJson = $this->composerJsonProvider->getRootComposerJson();
         // 1. update "require" to "*" for all local packages
         $packagesFileInfos = $this->composerJsonProvider->getPackagesComposerFileInfos();
@@ -54,6 +54,6 @@ final class LocalizeComposerPathsCommand extends \MonorepoBuilder20210705\Sympli
         $this->composerJsonRepositoriesUpdater->processPackage($packageComposerJsonFileInfo, $rootComposerJson, \false);
         $message = \sprintf('Package paths in "%s" have been updated', $packageComposerJsonFileInfo->getRelativeFilePathFromCwd());
         $this->symfonyStyle->success($message);
-        return \MonorepoBuilder20210705\Symplify\PackageBuilder\Console\ShellCode::SUCCESS;
+        return \MonorepoBuilder20210706\Symplify\PackageBuilder\Console\ShellCode::SUCCESS;
     }
 }

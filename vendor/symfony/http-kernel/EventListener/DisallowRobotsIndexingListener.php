@@ -8,20 +8,20 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210705\Symfony\Component\HttpKernel\EventListener;
+namespace MonorepoBuilder20210706\Symfony\Component\HttpKernel\EventListener;
 
-use MonorepoBuilder20210705\Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use MonorepoBuilder20210705\Symfony\Component\HttpKernel\Event\ResponseEvent;
-use MonorepoBuilder20210705\Symfony\Component\HttpKernel\KernelEvents;
+use MonorepoBuilder20210706\Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use MonorepoBuilder20210706\Symfony\Component\HttpKernel\Event\ResponseEvent;
+use MonorepoBuilder20210706\Symfony\Component\HttpKernel\KernelEvents;
 /**
  * Ensures that the application is not indexed by search engines.
  *
  * @author Gary PEGEOT <garypegeot@gmail.com>
  */
-class DisallowRobotsIndexingListener implements \MonorepoBuilder20210705\Symfony\Component\EventDispatcher\EventSubscriberInterface
+class DisallowRobotsIndexingListener implements \MonorepoBuilder20210706\Symfony\Component\EventDispatcher\EventSubscriberInterface
 {
     private const HEADER_NAME = 'X-Robots-Tag';
-    public function onResponse(\MonorepoBuilder20210705\Symfony\Component\HttpKernel\Event\ResponseEvent $event) : void
+    public function onResponse(\MonorepoBuilder20210706\Symfony\Component\HttpKernel\Event\ResponseEvent $event) : void
     {
         if (!$event->getResponse()->headers->has(static::HEADER_NAME)) {
             $event->getResponse()->headers->set(static::HEADER_NAME, 'noindex');
@@ -32,6 +32,6 @@ class DisallowRobotsIndexingListener implements \MonorepoBuilder20210705\Symfony
      */
     public static function getSubscribedEvents()
     {
-        return [\MonorepoBuilder20210705\Symfony\Component\HttpKernel\KernelEvents::RESPONSE => ['onResponse', -255]];
+        return [\MonorepoBuilder20210706\Symfony\Component\HttpKernel\KernelEvents::RESPONSE => ['onResponse', -255]];
     }
 }
