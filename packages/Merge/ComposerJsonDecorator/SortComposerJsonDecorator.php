@@ -3,10 +3,10 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Merge\ComposerJsonDecorator;
 
-use MonorepoBuilder20210706\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
+use MonorepoBuilder20210707\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
 use Symplify\MonorepoBuilder\Merge\Contract\ComposerJsonDecoratorInterface;
 use Symplify\MonorepoBuilder\ValueObject\Option;
-use MonorepoBuilder20210706\Symplify\PackageBuilder\Parameter\ParameterProvider;
+use MonorepoBuilder20210707\Symplify\PackageBuilder\Parameter\ParameterProvider;
 /**
  * @see \Symplify\MonorepoBuilder\Tests\Merge\ComposerJsonDecorator\SortComposerJsonDecorator\SortComposerJsonDecoratorTest
  */
@@ -16,11 +16,11 @@ final class SortComposerJsonDecorator implements \Symplify\MonorepoBuilder\Merge
      * @var string[]
      */
     private $sectionOrder = [];
-    public function __construct(\MonorepoBuilder20210706\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider)
+    public function __construct(\MonorepoBuilder20210707\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider)
     {
         $this->sectionOrder = $parameterProvider->provideArrayParameter(\Symplify\MonorepoBuilder\ValueObject\Option::SECTION_ORDER);
     }
-    public function decorate(\MonorepoBuilder20210706\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJson) : void
+    public function decorate(\MonorepoBuilder20210707\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJson) : void
     {
         $orderedKeys = $composerJson->getOrderedKeys();
         \usort($orderedKeys, function (string $key1, string $key2) : int {

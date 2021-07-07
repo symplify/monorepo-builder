@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210706\Symfony\Component\HttpKernel\Fragment;
+namespace MonorepoBuilder20210707\Symfony\Component\HttpKernel\Fragment;
 
-use MonorepoBuilder20210706\Symfony\Component\HttpFoundation\Request;
-use MonorepoBuilder20210706\Symfony\Component\HttpKernel\Controller\ControllerReference;
+use MonorepoBuilder20210707\Symfony\Component\HttpFoundation\Request;
+use MonorepoBuilder20210707\Symfony\Component\HttpKernel\Controller\ControllerReference;
 /**
  * Interface implemented by rendering strategies able to generate an URL for a fragment.
  *
@@ -28,5 +28,5 @@ interface FragmentUriGeneratorInterface
      *
      * @return string A fragment URI
      */
-    public function generate(\MonorepoBuilder20210706\Symfony\Component\HttpKernel\Controller\ControllerReference $controller, \MonorepoBuilder20210706\Symfony\Component\HttpFoundation\Request $request = null, bool $absolute = \false, bool $strict = \true, bool $sign = \true) : string;
+    public function generate(\MonorepoBuilder20210707\Symfony\Component\HttpKernel\Controller\ControllerReference $controller, \MonorepoBuilder20210707\Symfony\Component\HttpFoundation\Request $request = null, bool $absolute = \false, bool $strict = \true, bool $sign = \true) : string;
 }

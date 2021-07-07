@@ -8,21 +8,21 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210706\Symfony\Component\ErrorHandler\ErrorEnhancer;
+namespace MonorepoBuilder20210707\Symfony\Component\ErrorHandler\ErrorEnhancer;
 
-use MonorepoBuilder20210706\Symfony\Component\ErrorHandler\Error\FatalError;
-use MonorepoBuilder20210706\Symfony\Component\ErrorHandler\Error\UndefinedFunctionError;
+use MonorepoBuilder20210707\Symfony\Component\ErrorHandler\Error\FatalError;
+use MonorepoBuilder20210707\Symfony\Component\ErrorHandler\Error\UndefinedFunctionError;
 /**
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class UndefinedFunctionErrorEnhancer implements \MonorepoBuilder20210706\Symfony\Component\ErrorHandler\ErrorEnhancer\ErrorEnhancerInterface
+class UndefinedFunctionErrorEnhancer implements \MonorepoBuilder20210707\Symfony\Component\ErrorHandler\ErrorEnhancer\ErrorEnhancerInterface
 {
     /**
      * {@inheritdoc}
      */
     public function enhance(\Throwable $error) : ?\Throwable
     {
-        if ($error instanceof \MonorepoBuilder20210706\Symfony\Component\ErrorHandler\Error\FatalError) {
+        if ($error instanceof \MonorepoBuilder20210707\Symfony\Component\ErrorHandler\Error\FatalError) {
             return null;
         }
         $message = $error->getMessage();
@@ -72,6 +72,6 @@ class UndefinedFunctionErrorEnhancer implements \MonorepoBuilder20210706\Symfony
             }
             $message .= "\nDid you mean to call " . $candidates;
         }
-        return new \MonorepoBuilder20210706\Symfony\Component\ErrorHandler\Error\UndefinedFunctionError($message, $error);
+        return new \MonorepoBuilder20210707\Symfony\Component\ErrorHandler\Error\UndefinedFunctionError($message, $error);
     }
 }

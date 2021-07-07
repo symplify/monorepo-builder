@@ -9,8 +9,8 @@ declare (strict_types=1);
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210706\PharIo\Version;
+namespace MonorepoBuilder20210707\PharIo\Version;
 
-final class UnsupportedVersionConstraintException extends \RuntimeException implements \MonorepoBuilder20210706\PharIo\Version\Exception
+final class UnsupportedVersionConstraintException extends \RuntimeException implements \MonorepoBuilder20210707\PharIo\Version\Exception
 {
 }

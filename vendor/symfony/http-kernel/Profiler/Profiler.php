@@ -8,21 +8,21 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210706\Symfony\Component\HttpKernel\Profiler;
+namespace MonorepoBuilder20210707\Symfony\Component\HttpKernel\Profiler;
 
-use MonorepoBuilder20210706\Psr\Log\LoggerInterface;
-use MonorepoBuilder20210706\Symfony\Component\HttpFoundation\Exception\ConflictingHeadersException;
-use MonorepoBuilder20210706\Symfony\Component\HttpFoundation\Request;
-use MonorepoBuilder20210706\Symfony\Component\HttpFoundation\Response;
-use MonorepoBuilder20210706\Symfony\Component\HttpKernel\DataCollector\DataCollectorInterface;
-use MonorepoBuilder20210706\Symfony\Component\HttpKernel\DataCollector\LateDataCollectorInterface;
-use MonorepoBuilder20210706\Symfony\Contracts\Service\ResetInterface;
+use MonorepoBuilder20210707\Psr\Log\LoggerInterface;
+use MonorepoBuilder20210707\Symfony\Component\HttpFoundation\Exception\ConflictingHeadersException;
+use MonorepoBuilder20210707\Symfony\Component\HttpFoundation\Request;
+use MonorepoBuilder20210707\Symfony\Component\HttpFoundation\Response;
+use MonorepoBuilder20210707\Symfony\Component\HttpKernel\DataCollector\DataCollectorInterface;
+use MonorepoBuilder20210707\Symfony\Component\HttpKernel\DataCollector\LateDataCollectorInterface;
+use MonorepoBuilder20210707\Symfony\Contracts\Service\ResetInterface;
 /**
  * Profiler.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class Profiler implements \MonorepoBuilder20210706\Symfony\Contracts\Service\ResetInterface
+class Profiler implements \MonorepoBuilder20210707\Symfony\Contracts\Service\ResetInterface
 {
     private $storage;
     /**
@@ -32,7 +32,7 @@ class Profiler implements \MonorepoBuilder20210706\Symfony\Contracts\Service\Res
     private $logger;
     private $initiallyEnabled = \true;
     private $enabled = \true;
-    public function __construct(\MonorepoBuilder20210706\Symfony\Component\HttpKernel\Profiler\ProfilerStorageInterface $storage, \MonorepoBuilder20210706\Psr\Log\LoggerInterface $logger = null, bool $enable = \true)
+    public function __construct(\MonorepoBuilder20210707\Symfony\Component\HttpKernel\Profiler\ProfilerStorageInterface $storage, \MonorepoBuilder20210707\Psr\Log\LoggerInterface $logger = null, bool $enable = \true)
     {
         $this->storage = $storage;
         $this->logger = $logger;
@@ -57,7 +57,7 @@ class Profiler implements \MonorepoBuilder20210706\Symfony\Contracts\Service\Res
      *
      * @return Profile|null A Profile instance
      */
-    public function loadProfileFromResponse(\MonorepoBuilder20210706\Symfony\Component\HttpFoundation\Response $response)
+    public function loadProfileFromResponse(\MonorepoBuilder20210707\Symfony\Component\HttpFoundation\Response $response)
     {
         if (!($token = $response->headers->get('X-Debug-Token'))) {
             return null;
@@ -78,11 +78,11 @@ class Profiler implements \MonorepoBuilder20210706\Symfony\Contracts\Service\Res
      *
      * @return bool
      */
-    public function saveProfile(\MonorepoBuilder20210706\Symfony\Component\HttpKernel\Profiler\Profile $profile)
+    public function saveProfile(\MonorepoBuilder20210707\Symfony\Component\HttpKernel\Profiler\Profile $profile)
     {
         // late collect
         foreach ($profile->getCollectors() as $collector) {
-            if ($collector instanceof \MonorepoBuilder20210706\Symfony\Component\HttpKernel\DataCollector\LateDataCollectorInterface) {
+            if ($collector instanceof \MonorepoBuilder20210707\Symfony\Component\HttpKernel\DataCollector\LateDataCollectorInterface) {
                 $collector->lateCollect();
             }
         }
@@ -118,19 +118,19 @@ class Profiler implements \MonorepoBuilder20210706\Symfony\Contracts\Service\Res
      *
      * @return Profile|null A Profile instance or null if the profiler is disabled
      */
-    public function collect(\MonorepoBuilder20210706\Symfony\Component\HttpFoundation\Request $request, \MonorepoBuilder20210706\Symfony\Component\HttpFoundation\Response $response, \Throwable $exception = null)
+    public function collect(\MonorepoBuilder20210707\Symfony\Component\HttpFoundation\Request $request, \MonorepoBuilder20210707\Symfony\Component\HttpFoundation\Response $response, \Throwable $exception = null)
     {
         if (\false === $this->enabled) {
             return null;
         }
-        $profile = new \MonorepoBuilder20210706\Symfony\Component\HttpKernel\Profiler\Profile(\substr(\hash('sha256', \uniqid(\mt_rand(), \true)), 0, 6));
+        $profile = new \MonorepoBuilder20210707\Symfony\Component\HttpKernel\Profiler\Profile(\substr(\hash('sha256', \uniqid(\mt_rand(), \true)), 0, 6));
         $profile->setTime(\time());
         $profile->setUrl($request->getUri());
         $profile->setMethod($request->getMethod());
         $profile->setStatusCode($response->getStatusCode());
         try {
             $profile->setIp($request->getClientIp());
-        } catch (\MonorepoBuilder20210706\Symfony\Component\HttpFoundation\Exception\ConflictingHeadersException $e) {
+        } catch (\MonorepoBuilder20210707\Symfony\Component\HttpFoundation\Exception\ConflictingHeadersException $e) {
             $profile->setIp('Unknown');
         }
         if ($prevToken = $response->headers->get('X-Debug-Token')) {
@@ -175,7 +175,7 @@ class Profiler implements \MonorepoBuilder20210706\Symfony\Contracts\Service\Res
     /**
      * Adds a Collector.
      */
-    public function add(\MonorepoBuilder20210706\Symfony\Component\HttpKernel\DataCollector\DataCollectorInterface $collector)
+    public function add(\MonorepoBuilder20210707\Symfony\Component\HttpKernel\DataCollector\DataCollectorInterface $collector)
     {
         $this->collectors[$collector->getName()] = $collector;
     }

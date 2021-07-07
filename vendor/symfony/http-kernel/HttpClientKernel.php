@@ -8,35 +8,35 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210706\Symfony\Component\HttpKernel;
+namespace MonorepoBuilder20210707\Symfony\Component\HttpKernel;
 
-use MonorepoBuilder20210706\Symfony\Component\HttpClient\HttpClient;
-use MonorepoBuilder20210706\Symfony\Component\HttpFoundation\Request;
-use MonorepoBuilder20210706\Symfony\Component\HttpFoundation\Response;
-use MonorepoBuilder20210706\Symfony\Component\HttpFoundation\ResponseHeaderBag;
-use MonorepoBuilder20210706\Symfony\Component\Mime\Part\AbstractPart;
-use MonorepoBuilder20210706\Symfony\Component\Mime\Part\DataPart;
-use MonorepoBuilder20210706\Symfony\Component\Mime\Part\Multipart\FormDataPart;
-use MonorepoBuilder20210706\Symfony\Component\Mime\Part\TextPart;
-use MonorepoBuilder20210706\Symfony\Contracts\HttpClient\HttpClientInterface;
+use MonorepoBuilder20210707\Symfony\Component\HttpClient\HttpClient;
+use MonorepoBuilder20210707\Symfony\Component\HttpFoundation\Request;
+use MonorepoBuilder20210707\Symfony\Component\HttpFoundation\Response;
+use MonorepoBuilder20210707\Symfony\Component\HttpFoundation\ResponseHeaderBag;
+use MonorepoBuilder20210707\Symfony\Component\Mime\Part\AbstractPart;
+use MonorepoBuilder20210707\Symfony\Component\Mime\Part\DataPart;
+use MonorepoBuilder20210707\Symfony\Component\Mime\Part\Multipart\FormDataPart;
+use MonorepoBuilder20210707\Symfony\Component\Mime\Part\TextPart;
+use MonorepoBuilder20210707\Symfony\Contracts\HttpClient\HttpClientInterface;
 // Help opcache.preload discover always-needed symbols
-\class_exists(\MonorepoBuilder20210706\Symfony\Component\HttpFoundation\ResponseHeaderBag::class);
+\class_exists(\MonorepoBuilder20210707\Symfony\Component\HttpFoundation\ResponseHeaderBag::class);
 /**
  * An implementation of a Symfony HTTP kernel using a "real" HTTP client.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-final class HttpClientKernel implements \MonorepoBuilder20210706\Symfony\Component\HttpKernel\HttpKernelInterface
+final class HttpClientKernel implements \MonorepoBuilder20210707\Symfony\Component\HttpKernel\HttpKernelInterface
 {
     private $client;
-    public function __construct(\MonorepoBuilder20210706\Symfony\Contracts\HttpClient\HttpClientInterface $client = null)
+    public function __construct(\MonorepoBuilder20210707\Symfony\Contracts\HttpClient\HttpClientInterface $client = null)
     {
-        if (null === $client && !\class_exists(\MonorepoBuilder20210706\Symfony\Component\HttpClient\HttpClient::class)) {
+        if (null === $client && !\class_exists(\MonorepoBuilder20210707\Symfony\Component\HttpClient\HttpClient::class)) {
             throw new \LogicException(\sprintf('You cannot use "%s" as the HttpClient component is not installed. Try running "composer require symfony/http-client".', __CLASS__));
         }
-        $this->client = $client ?? \MonorepoBuilder20210706\Symfony\Component\HttpClient\HttpClient::create();
+        $this->client = $client ?? \MonorepoBuilder20210707\Symfony\Component\HttpClient\HttpClient::create();
     }
-    public function handle(\MonorepoBuilder20210706\Symfony\Component\HttpFoundation\Request $request, int $type = \MonorepoBuilder20210706\Symfony\Component\HttpKernel\HttpKernelInterface::MAIN_REQUEST, bool $catch = \true) : \MonorepoBuilder20210706\Symfony\Component\HttpFoundation\Response
+    public function handle(\MonorepoBuilder20210707\Symfony\Component\HttpFoundation\Request $request, int $type = \MonorepoBuilder20210707\Symfony\Component\HttpKernel\HttpKernelInterface::MAIN_REQUEST, bool $catch = \true) : \MonorepoBuilder20210707\Symfony\Component\HttpFoundation\Response
     {
         $headers = $this->getHeaders($request);
         $body = '';
@@ -45,11 +45,11 @@ final class HttpClientKernel implements \MonorepoBuilder20210706\Symfony\Compone
             $body = $part->bodyToIterable();
         }
         $response = $this->client->request($request->getMethod(), $request->getUri(), ['headers' => $headers, 'body' => $body] + $request->attributes->get('http_client_options', []));
-        $response = new \MonorepoBuilder20210706\Symfony\Component\HttpFoundation\Response($response->getContent(!$catch), $response->getStatusCode(), $response->getHeaders(!$catch));
+        $response = new \MonorepoBuilder20210707\Symfony\Component\HttpFoundation\Response($response->getContent(!$catch), $response->getStatusCode(), $response->getHeaders(!$catch));
         $response->headers->remove('X-Body-File');
         $response->headers->remove('X-Body-Eval');
         $response->headers->remove('X-Content-Digest');
-        $response->headers = new class($response->headers->all()) extends \MonorepoBuilder20210706\Symfony\Component\HttpFoundation\ResponseHeaderBag
+        $response->headers = new class($response->headers->all()) extends \MonorepoBuilder20210707\Symfony\Component\HttpFoundation\ResponseHeaderBag
         {
             protected function computeCacheControlValue() : string
             {
@@ -59,24 +59,24 @@ final class HttpClientKernel implements \MonorepoBuilder20210706\Symfony\Compone
         };
         return $response;
     }
-    private function getBody(\MonorepoBuilder20210706\Symfony\Component\HttpFoundation\Request $request) : ?\MonorepoBuilder20210706\Symfony\Component\Mime\Part\AbstractPart
+    private function getBody(\MonorepoBuilder20210707\Symfony\Component\HttpFoundation\Request $request) : ?\MonorepoBuilder20210707\Symfony\Component\Mime\Part\AbstractPart
     {
         if (\in_array($request->getMethod(), ['GET', 'HEAD'])) {
             return null;
         }
-        if (!\class_exists(\MonorepoBuilder20210706\Symfony\Component\Mime\Part\AbstractPart::class)) {
+        if (!\class_exists(\MonorepoBuilder20210707\Symfony\Component\Mime\Part\AbstractPart::class)) {
             throw new \LogicException('You cannot pass non-empty bodies as the Mime component is not installed. Try running "composer require symfony/mime".');
         }
         if ($content = $request->getContent()) {
-            return new \MonorepoBuilder20210706\Symfony\Component\Mime\Part\TextPart($content, 'utf-8', 'plain', '8bit');
+            return new \MonorepoBuilder20210707\Symfony\Component\Mime\Part\TextPart($content, 'utf-8', 'plain', '8bit');
         }
         $fields = $request->request->all();
         foreach ($request->files->all() as $name => $file) {
-            $fields[$name] = \MonorepoBuilder20210706\Symfony\Component\Mime\Part\DataPart::fromPath($file->getPathname(), $file->getClientOriginalName(), $file->getClientMimeType());
+            $fields[$name] = \MonorepoBuilder20210707\Symfony\Component\Mime\Part\DataPart::fromPath($file->getPathname(), $file->getClientOriginalName(), $file->getClientMimeType());
         }
-        return new \MonorepoBuilder20210706\Symfony\Component\Mime\Part\Multipart\FormDataPart($fields);
+        return new \MonorepoBuilder20210707\Symfony\Component\Mime\Part\Multipart\FormDataPart($fields);
     }
-    private function getHeaders(\MonorepoBuilder20210706\Symfony\Component\HttpFoundation\Request $request) : array
+    private function getHeaders(\MonorepoBuilder20210707\Symfony\Component\HttpFoundation\Request $request) : array
     {
         $headers = [];
         foreach ($request->headers as $key => $value) {

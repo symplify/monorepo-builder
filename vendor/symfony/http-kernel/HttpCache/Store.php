@@ -11,16 +11,16 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210706\Symfony\Component\HttpKernel\HttpCache;
+namespace MonorepoBuilder20210707\Symfony\Component\HttpKernel\HttpCache;
 
-use MonorepoBuilder20210706\Symfony\Component\HttpFoundation\Request;
-use MonorepoBuilder20210706\Symfony\Component\HttpFoundation\Response;
+use MonorepoBuilder20210707\Symfony\Component\HttpFoundation\Request;
+use MonorepoBuilder20210707\Symfony\Component\HttpFoundation\Response;
 /**
  * Store implements all the logic for storing cache metadata (Request and Response headers).
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class Store implements \MonorepoBuilder20210706\Symfony\Component\HttpKernel\HttpCache\StoreInterface
+class Store implements \MonorepoBuilder20210707\Symfony\Component\HttpKernel\HttpCache\StoreInterface
 {
     protected $root;
     private $keyCache;
@@ -54,7 +54,7 @@ class Store implements \MonorepoBuilder20210706\Symfony\Component\HttpKernel\Htt
      *
      * @return bool|string true if the lock is acquired, the path to the current lock otherwise
      */
-    public function lock(\MonorepoBuilder20210706\Symfony\Component\HttpFoundation\Request $request)
+    public function lock(\MonorepoBuilder20210707\Symfony\Component\HttpFoundation\Request $request)
     {
         $key = $this->getCacheKey($request);
         if (!isset($this->locks[$key])) {
@@ -76,7 +76,7 @@ class Store implements \MonorepoBuilder20210706\Symfony\Component\HttpKernel\Htt
      *
      * @return bool False if the lock file does not exist or cannot be unlocked, true otherwise
      */
-    public function unlock(\MonorepoBuilder20210706\Symfony\Component\HttpFoundation\Request $request)
+    public function unlock(\MonorepoBuilder20210707\Symfony\Component\HttpFoundation\Request $request)
     {
         $key = $this->getCacheKey($request);
         if (isset($this->locks[$key])) {
@@ -87,7 +87,7 @@ class Store implements \MonorepoBuilder20210706\Symfony\Component\HttpKernel\Htt
         }
         return \false;
     }
-    public function isLocked(\MonorepoBuilder20210706\Symfony\Component\HttpFoundation\Request $request)
+    public function isLocked(\MonorepoBuilder20210707\Symfony\Component\HttpFoundation\Request $request)
     {
         $key = $this->getCacheKey($request);
         if (isset($this->locks[$key])) {
@@ -109,7 +109,7 @@ class Store implements \MonorepoBuilder20210706\Symfony\Component\HttpKernel\Htt
      *
      * @return Response|null A Response instance, or null if no cache entry was found
      */
-    public function lookup(\MonorepoBuilder20210706\Symfony\Component\HttpFoundation\Request $request)
+    public function lookup(\MonorepoBuilder20210707\Symfony\Component\HttpFoundation\Request $request)
     {
         $key = $this->getCacheKey($request);
         if (!($entries = $this->getMetadata($key))) {
@@ -145,7 +145,7 @@ class Store implements \MonorepoBuilder20210706\Symfony\Component\HttpKernel\Htt
      *
      * @throws \RuntimeException
      */
-    public function write(\MonorepoBuilder20210706\Symfony\Component\HttpFoundation\Request $request, \MonorepoBuilder20210706\Symfony\Component\HttpFoundation\Response $response)
+    public function write(\MonorepoBuilder20210707\Symfony\Component\HttpFoundation\Request $request, \MonorepoBuilder20210707\Symfony\Component\HttpFoundation\Response $response)
     {
         $key = $this->getCacheKey($request);
         $storedEnv = $this->persistRequest($request);
@@ -193,7 +193,7 @@ class Store implements \MonorepoBuilder20210706\Symfony\Component\HttpKernel\Htt
      *
      * @return string
      */
-    protected function generateContentDigest(\MonorepoBuilder20210706\Symfony\Component\HttpFoundation\Response $response)
+    protected function generateContentDigest(\MonorepoBuilder20210707\Symfony\Component\HttpFoundation\Response $response)
     {
         return 'en' . \hash('sha256', $response->getContent());
     }
@@ -202,7 +202,7 @@ class Store implements \MonorepoBuilder20210706\Symfony\Component\HttpKernel\Htt
      *
      * @throws \RuntimeException
      */
-    public function invalidate(\MonorepoBuilder20210706\Symfony\Component\HttpFoundation\Request $request)
+    public function invalidate(\MonorepoBuilder20210707\Symfony\Component\HttpFoundation\Request $request)
     {
         $modified = \false;
         $key = $this->getCacheKey($request);
@@ -276,7 +276,7 @@ class Store implements \MonorepoBuilder20210706\Symfony\Component\HttpKernel\Htt
      */
     private function doPurge(string $url) : bool
     {
-        $key = $this->getCacheKey(\MonorepoBuilder20210706\Symfony\Component\HttpFoundation\Request::create($url));
+        $key = $this->getCacheKey(\MonorepoBuilder20210707\Symfony\Component\HttpFoundation\Request::create($url));
         if (isset($this->locks[$key])) {
             \flock($this->locks[$key], \LOCK_UN);
             \fclose($this->locks[$key]);
@@ -353,14 +353,14 @@ class Store implements \MonorepoBuilder20210706\Symfony\Component\HttpKernel\Htt
      *
      * @return string A key for the given Request
      */
-    protected function generateCacheKey(\MonorepoBuilder20210706\Symfony\Component\HttpFoundation\Request $request)
+    protected function generateCacheKey(\MonorepoBuilder20210707\Symfony\Component\HttpFoundation\Request $request)
     {
         return 'md' . \hash('sha256', $request->getUri());
     }
     /**
      * Returns a cache key for the given Request.
      */
-    private function getCacheKey(\MonorepoBuilder20210706\Symfony\Component\HttpFoundation\Request $request) : string
+    private function getCacheKey(\MonorepoBuilder20210707\Symfony\Component\HttpFoundation\Request $request) : string
     {
         if (isset($this->keyCache[$request])) {
             return $this->keyCache[$request];
@@ -370,14 +370,14 @@ class Store implements \MonorepoBuilder20210706\Symfony\Component\HttpKernel\Htt
     /**
      * Persists the Request HTTP headers.
      */
-    private function persistRequest(\MonorepoBuilder20210706\Symfony\Component\HttpFoundation\Request $request) : array
+    private function persistRequest(\MonorepoBuilder20210707\Symfony\Component\HttpFoundation\Request $request) : array
     {
         return $request->headers->all();
     }
     /**
      * Persists the Response HTTP headers.
      */
-    private function persistResponse(\MonorepoBuilder20210706\Symfony\Component\HttpFoundation\Response $response) : array
+    private function persistResponse(\MonorepoBuilder20210707\Symfony\Component\HttpFoundation\Response $response) : array
     {
         $headers = $response->headers->all();
         $headers['X-Status'] = [$response->getStatusCode()];
@@ -386,13 +386,13 @@ class Store implements \MonorepoBuilder20210706\Symfony\Component\HttpKernel\Htt
     /**
      * Restores a Response from the HTTP headers and body.
      */
-    private function restoreResponse(array $headers, string $path = null) : \MonorepoBuilder20210706\Symfony\Component\HttpFoundation\Response
+    private function restoreResponse(array $headers, string $path = null) : \MonorepoBuilder20210707\Symfony\Component\HttpFoundation\Response
     {
         $status = $headers['X-Status'][0];
         unset($headers['X-Status']);
         if (null !== $path) {
             $headers['X-Body-File'] = [$path];
         }
-        return new \MonorepoBuilder20210706\Symfony\Component\HttpFoundation\Response($path, $status, $headers);
+        return new \MonorepoBuilder20210707\Symfony\Component\HttpFoundation\Response($path, $status, $headers);
     }
 }

@@ -8,22 +8,22 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Compiler;
+namespace MonorepoBuilder20210707\Symfony\Component\DependencyInjection\Compiler;
 
-use MonorepoBuilder20210706\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
-use MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Reference;
+use MonorepoBuilder20210707\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder20210707\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
+use MonorepoBuilder20210707\Symfony\Component\DependencyInjection\Reference;
 /**
  * Replaces all references to aliases with references to the actual service.
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class ResolveReferencesToAliasesPass extends \MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Compiler\AbstractRecursivePass
+class ResolveReferencesToAliasesPass extends \MonorepoBuilder20210707\Symfony\Component\DependencyInjection\Compiler\AbstractRecursivePass
 {
     /**
      * {@inheritdoc}
      */
-    public function process(\MonorepoBuilder20210706\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    public function process(\MonorepoBuilder20210707\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
         parent::process($container);
         foreach ($container->getAliases() as $id => $alias) {
@@ -39,13 +39,13 @@ class ResolveReferencesToAliasesPass extends \MonorepoBuilder20210706\Symfony\Co
      */
     protected function processValue($value, bool $isRoot = \false)
     {
-        if (!$value instanceof \MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Reference) {
+        if (!$value instanceof \MonorepoBuilder20210707\Symfony\Component\DependencyInjection\Reference) {
             return parent::processValue($value, $isRoot);
         }
         $defId = $this->getDefinitionId($id = (string) $value, $this->container);
-        return $defId !== $id ? new \MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Reference($defId, $value->getInvalidBehavior()) : $value;
+        return $defId !== $id ? new \MonorepoBuilder20210707\Symfony\Component\DependencyInjection\Reference($defId, $value->getInvalidBehavior()) : $value;
     }
-    private function getDefinitionId(string $id, \MonorepoBuilder20210706\Symfony\Component\DependencyInjection\ContainerBuilder $container) : string
+    private function getDefinitionId(string $id, \MonorepoBuilder20210707\Symfony\Component\DependencyInjection\ContainerBuilder $container) : string
     {
         if (!$container->hasAlias($id)) {
             return $id;
@@ -61,7 +61,7 @@ class ResolveReferencesToAliasesPass extends \MonorepoBuilder20210706\Symfony\Co
         $seen = [];
         do {
             if (isset($seen[$id])) {
-                throw new \MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException($id, \array_merge(\array_keys($seen), [$id]));
+                throw new \MonorepoBuilder20210707\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException($id, \array_merge(\array_keys($seen), [$id]));
             }
             $seen[$id] = \true;
             $id = (string) $container->getAlias($id);

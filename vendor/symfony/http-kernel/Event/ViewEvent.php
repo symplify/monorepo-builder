@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210706\Symfony\Component\HttpKernel\Event;
+namespace MonorepoBuilder20210707\Symfony\Component\HttpKernel\Event;
 
-use MonorepoBuilder20210706\Symfony\Component\HttpFoundation\Request;
-use MonorepoBuilder20210706\Symfony\Component\HttpKernel\HttpKernelInterface;
+use MonorepoBuilder20210707\Symfony\Component\HttpFoundation\Request;
+use MonorepoBuilder20210707\Symfony\Component\HttpKernel\HttpKernelInterface;
 /**
  * Allows to create a response for the return value of a controller.
  *
@@ -21,7 +21,7 @@ use MonorepoBuilder20210706\Symfony\Component\HttpKernel\HttpKernelInterface;
  *
  * @author Bernhard Schussek <bschussek@gmail.com>
  */
-final class ViewEvent extends \MonorepoBuilder20210706\Symfony\Component\HttpKernel\Event\RequestEvent
+final class ViewEvent extends \MonorepoBuilder20210707\Symfony\Component\HttpKernel\Event\RequestEvent
 {
     /**
      * The return value of the controller.
@@ -29,7 +29,7 @@ final class ViewEvent extends \MonorepoBuilder20210706\Symfony\Component\HttpKer
      * @var mixed
      */
     private $controllerResult;
-    public function __construct(\MonorepoBuilder20210706\Symfony\Component\HttpKernel\HttpKernelInterface $kernel, \MonorepoBuilder20210706\Symfony\Component\HttpFoundation\Request $request, int $requestType, $controllerResult)
+    public function __construct(\MonorepoBuilder20210707\Symfony\Component\HttpKernel\HttpKernelInterface $kernel, \MonorepoBuilder20210707\Symfony\Component\HttpFoundation\Request $request, int $requestType, $controllerResult)
     {
         parent::__construct($kernel, $request, $requestType);
         $this->controllerResult = $controllerResult;

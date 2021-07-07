@@ -3,17 +3,17 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Merge\Command;
 
-use MonorepoBuilder20210706\Symfony\Component\Console\Input\InputInterface;
-use MonorepoBuilder20210706\Symfony\Component\Console\Output\OutputInterface;
-use MonorepoBuilder20210706\Symplify\ComposerJsonManipulator\ComposerJsonFactory;
-use MonorepoBuilder20210706\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
+use MonorepoBuilder20210707\Symfony\Component\Console\Input\InputInterface;
+use MonorepoBuilder20210707\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder20210707\Symplify\ComposerJsonManipulator\ComposerJsonFactory;
+use MonorepoBuilder20210707\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
 use Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider;
 use Symplify\MonorepoBuilder\Merge\Application\MergedAndDecoratedComposerJsonFactory;
 use Symplify\MonorepoBuilder\Merge\Guard\ConflictingVersionsGuard;
 use Symplify\MonorepoBuilder\Validator\SourcesPresenceValidator;
-use MonorepoBuilder20210706\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
-use MonorepoBuilder20210706\Symplify\PackageBuilder\Console\ShellCode;
-final class MergeCommand extends \MonorepoBuilder20210706\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand
+use MonorepoBuilder20210707\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
+use MonorepoBuilder20210707\Symplify\PackageBuilder\Console\ShellCode;
+final class MergeCommand extends \MonorepoBuilder20210707\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand
 {
     /**
      * @var \Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider
@@ -39,7 +39,7 @@ final class MergeCommand extends \MonorepoBuilder20210706\Symplify\PackageBuilde
      * @var \Symplify\MonorepoBuilder\Merge\Guard\ConflictingVersionsGuard
      */
     private $conflictingVersionsGuard;
-    public function __construct(\Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider $composerJsonProvider, \MonorepoBuilder20210706\Symplify\ComposerJsonManipulator\ComposerJsonFactory $composerJsonFactory, \MonorepoBuilder20210706\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager $jsonFileManager, \Symplify\MonorepoBuilder\Merge\Application\MergedAndDecoratedComposerJsonFactory $mergedAndDecoratedComposerJsonFactory, \Symplify\MonorepoBuilder\Validator\SourcesPresenceValidator $sourcesPresenceValidator, \Symplify\MonorepoBuilder\Merge\Guard\ConflictingVersionsGuard $conflictingVersionsGuard)
+    public function __construct(\Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider $composerJsonProvider, \MonorepoBuilder20210707\Symplify\ComposerJsonManipulator\ComposerJsonFactory $composerJsonFactory, \MonorepoBuilder20210707\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager $jsonFileManager, \Symplify\MonorepoBuilder\Merge\Application\MergedAndDecoratedComposerJsonFactory $mergedAndDecoratedComposerJsonFactory, \Symplify\MonorepoBuilder\Validator\SourcesPresenceValidator $sourcesPresenceValidator, \Symplify\MonorepoBuilder\Merge\Guard\ConflictingVersionsGuard $conflictingVersionsGuard)
     {
         $this->composerJsonProvider = $composerJsonProvider;
         $this->composerJsonFactory = $composerJsonFactory;
@@ -53,7 +53,7 @@ final class MergeCommand extends \MonorepoBuilder20210706\Symplify\PackageBuilde
     {
         $this->setDescription('Merge "composer.json" from all found packages to root one');
     }
-    protected function execute(\MonorepoBuilder20210706\Symfony\Component\Console\Input\InputInterface $input, \MonorepoBuilder20210706\Symfony\Component\Console\Output\OutputInterface $output) : int
+    protected function execute(\MonorepoBuilder20210707\Symfony\Component\Console\Input\InputInterface $input, \MonorepoBuilder20210707\Symfony\Component\Console\Output\OutputInterface $output) : int
     {
         $this->sourcesPresenceValidator->validatePackageComposerJsons();
         $this->conflictingVersionsGuard->ensureNoConflictingPackageVersions();
@@ -63,6 +63,6 @@ final class MergeCommand extends \MonorepoBuilder20210706\Symplify\PackageBuilde
         $this->mergedAndDecoratedComposerJsonFactory->createFromRootConfigAndPackageFileInfos($mainComposerJson, $packageFileInfos);
         $this->jsonFileManager->printComposerJsonToFilePath($mainComposerJson, $mainComposerJsonFilePath);
         $this->symfonyStyle->success('Main "composer.json" was updated.');
-        return \MonorepoBuilder20210706\Symplify\PackageBuilder\Console\ShellCode::SUCCESS;
+        return \MonorepoBuilder20210707\Symplify\PackageBuilder\Console\ShellCode::SUCCESS;
     }
 }

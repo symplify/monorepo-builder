@@ -3,10 +3,10 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Utils;
 
-use MonorepoBuilder20210706\PharIo\Version\Version;
+use MonorepoBuilder20210707\PharIo\Version\Version;
 use Symplify\MonorepoBuilder\ValueObject\Option;
 use Symplify\MonorepoBuilder\ValueObjectFactory\VersionFactory;
-use MonorepoBuilder20210706\Symplify\PackageBuilder\Parameter\ParameterProvider;
+use MonorepoBuilder20210707\Symplify\PackageBuilder\Parameter\ParameterProvider;
 /**
  * @see \Symplify\MonorepoBuilder\Tests\Utils\VersionUtilsTest
  */
@@ -20,7 +20,7 @@ final class VersionUtils
      * @var \Symplify\MonorepoBuilder\ValueObjectFactory\VersionFactory
      */
     private $versionFactory;
-    public function __construct(\MonorepoBuilder20210706\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider, \Symplify\MonorepoBuilder\ValueObjectFactory\VersionFactory $versionFactory)
+    public function __construct(\MonorepoBuilder20210707\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider, \Symplify\MonorepoBuilder\ValueObjectFactory\VersionFactory $versionFactory)
     {
         $this->versionFactory = $versionFactory;
         $this->packageAliasFormat = $parameterProvider->provideStringParameter(\Symplify\MonorepoBuilder\ValueObject\Option::PACKAGE_ALIAS_FORMAT);
@@ -60,14 +60,14 @@ final class VersionUtils
     /**
      * @param \PharIo\Version\Version|string $version
      */
-    private function normalizeVersion($version) : \MonorepoBuilder20210706\PharIo\Version\Version
+    private function normalizeVersion($version) : \MonorepoBuilder20210707\PharIo\Version\Version
     {
         if (\is_string($version)) {
             return $this->versionFactory->create($version);
         }
         return $version;
     }
-    private function getNextMinorNumber(\MonorepoBuilder20210706\PharIo\Version\Version $version) : int
+    private function getNextMinorNumber(\MonorepoBuilder20210707\PharIo\Version\Version $version) : int
     {
         if ($version->hasPreReleaseSuffix()) {
             return (int) $version->getMinor()->getValue();

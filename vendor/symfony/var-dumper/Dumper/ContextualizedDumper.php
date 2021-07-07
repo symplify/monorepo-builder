@@ -8,26 +8,26 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210706\Symfony\Component\VarDumper\Dumper;
+namespace MonorepoBuilder20210707\Symfony\Component\VarDumper\Dumper;
 
-use MonorepoBuilder20210706\Symfony\Component\VarDumper\Cloner\Data;
-use MonorepoBuilder20210706\Symfony\Component\VarDumper\Dumper\ContextProvider\ContextProviderInterface;
+use MonorepoBuilder20210707\Symfony\Component\VarDumper\Cloner\Data;
+use MonorepoBuilder20210707\Symfony\Component\VarDumper\Dumper\ContextProvider\ContextProviderInterface;
 /**
  * @author Kévin Thérage <therage.kevin@gmail.com>
  */
-class ContextualizedDumper implements \MonorepoBuilder20210706\Symfony\Component\VarDumper\Dumper\DataDumperInterface
+class ContextualizedDumper implements \MonorepoBuilder20210707\Symfony\Component\VarDumper\Dumper\DataDumperInterface
 {
     private $wrappedDumper;
     private $contextProviders;
     /**
      * @param ContextProviderInterface[] $contextProviders
      */
-    public function __construct(\MonorepoBuilder20210706\Symfony\Component\VarDumper\Dumper\DataDumperInterface $wrappedDumper, array $contextProviders)
+    public function __construct(\MonorepoBuilder20210707\Symfony\Component\VarDumper\Dumper\DataDumperInterface $wrappedDumper, array $contextProviders)
     {
         $this->wrappedDumper = $wrappedDumper;
         $this->contextProviders = $contextProviders;
     }
-    public function dump(\MonorepoBuilder20210706\Symfony\Component\VarDumper\Cloner\Data $data)
+    public function dump(\MonorepoBuilder20210707\Symfony\Component\VarDumper\Cloner\Data $data)
     {
         $context = [];
         foreach ($this->contextProviders as $contextProvider) {

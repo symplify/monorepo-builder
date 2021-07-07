@@ -8,18 +8,18 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210706\Symfony\Component\HttpKernel\DependencyInjection;
+namespace MonorepoBuilder20210707\Symfony\Component\HttpKernel\DependencyInjection;
 
-use MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
-use MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
-use MonorepoBuilder20210706\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder20210706\Symfony\Component\DependencyInjection\ContainerInterface;
-use MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Exception\RuntimeException;
-use MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Reference;
+use MonorepoBuilder20210707\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
+use MonorepoBuilder20210707\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
+use MonorepoBuilder20210707\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder20210707\Symfony\Component\DependencyInjection\ContainerInterface;
+use MonorepoBuilder20210707\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use MonorepoBuilder20210707\Symfony\Component\DependencyInjection\Reference;
 /**
  * @author Alexander M. Turek <me@derrabus.de>
  */
-class ResettableServicePass implements \MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
+class ResettableServicePass implements \MonorepoBuilder20210707\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
 {
     private $tagName;
     public function __construct(string $tagName = 'kernel.reset')
@@ -32,17 +32,17 @@ class ResettableServicePass implements \MonorepoBuilder20210706\Symfony\Componen
     /**
      * {@inheritdoc}
      */
-    public function process(\MonorepoBuilder20210706\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    public function process(\MonorepoBuilder20210707\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
         if (!$container->has('services_resetter')) {
             return;
         }
         $services = $methods = [];
         foreach ($container->findTaggedServiceIds($this->tagName, \true) as $id => $tags) {
-            $services[$id] = new \MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Reference($id, \MonorepoBuilder20210706\Symfony\Component\DependencyInjection\ContainerInterface::IGNORE_ON_UNINITIALIZED_REFERENCE);
+            $services[$id] = new \MonorepoBuilder20210707\Symfony\Component\DependencyInjection\Reference($id, \MonorepoBuilder20210707\Symfony\Component\DependencyInjection\ContainerInterface::IGNORE_ON_UNINITIALIZED_REFERENCE);
             foreach ($tags as $attributes) {
                 if (!isset($attributes['method'])) {
-                    throw new \MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Exception\RuntimeException(\sprintf('Tag "%s" requires the "method" attribute to be set.', $this->tagName));
+                    throw new \MonorepoBuilder20210707\Symfony\Component\DependencyInjection\Exception\RuntimeException(\sprintf('Tag "%s" requires the "method" attribute to be set.', $this->tagName));
                 }
                 if (!isset($methods[$id])) {
                     $methods[$id] = [];
@@ -55,6 +55,6 @@ class ResettableServicePass implements \MonorepoBuilder20210706\Symfony\Componen
             $container->removeDefinition('services_resetter');
             return;
         }
-        $container->findDefinition('services_resetter')->setArgument(0, new \MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Argument\IteratorArgument($services))->setArgument(1, $methods);
+        $container->findDefinition('services_resetter')->setArgument(0, new \MonorepoBuilder20210707\Symfony\Component\DependencyInjection\Argument\IteratorArgument($services))->setArgument(1, $methods);
     }
 }

@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210706\Symfony\Component\EventDispatcher;
+namespace MonorepoBuilder20210707\Symfony\Component\EventDispatcher;
 
-use MonorepoBuilder20210706\Psr\EventDispatcher\StoppableEventInterface;
-use MonorepoBuilder20210706\Symfony\Component\EventDispatcher\Debug\WrappedListener;
+use MonorepoBuilder20210707\Psr\EventDispatcher\StoppableEventInterface;
+use MonorepoBuilder20210707\Symfony\Component\EventDispatcher\Debug\WrappedListener;
 /**
  * The EventDispatcherInterface is the central point of Symfony's event listener system.
  *
@@ -27,7 +27,7 @@ use MonorepoBuilder20210706\Symfony\Component\EventDispatcher\Debug\WrappedListe
  * @author Jordan Alliot <jordan.alliot@gmail.com>
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class EventDispatcher implements \MonorepoBuilder20210706\Symfony\Component\EventDispatcher\EventDispatcherInterface
+class EventDispatcher implements \MonorepoBuilder20210707\Symfony\Component\EventDispatcher\EventDispatcherInterface
 {
     private $listeners = [];
     private $sorted = [];
@@ -156,7 +156,7 @@ class EventDispatcher implements \MonorepoBuilder20210706\Symfony\Component\Even
     /**
      * {@inheritdoc}
      */
-    public function addSubscriber(\MonorepoBuilder20210706\Symfony\Component\EventDispatcher\EventSubscriberInterface $subscriber)
+    public function addSubscriber(\MonorepoBuilder20210707\Symfony\Component\EventDispatcher\EventSubscriberInterface $subscriber)
     {
         foreach ($subscriber->getSubscribedEvents() as $eventName => $params) {
             if (\is_string($params)) {
@@ -173,7 +173,7 @@ class EventDispatcher implements \MonorepoBuilder20210706\Symfony\Component\Even
     /**
      * {@inheritdoc}
      */
-    public function removeSubscriber(\MonorepoBuilder20210706\Symfony\Component\EventDispatcher\EventSubscriberInterface $subscriber)
+    public function removeSubscriber(\MonorepoBuilder20210707\Symfony\Component\EventDispatcher\EventSubscriberInterface $subscriber)
     {
         foreach ($subscriber->getSubscribedEvents() as $eventName => $params) {
             if (\is_array($params) && \is_array($params[0])) {
@@ -197,7 +197,7 @@ class EventDispatcher implements \MonorepoBuilder20210706\Symfony\Component\Even
      */
     protected function callListeners(iterable $listeners, string $eventName, $event)
     {
-        $stoppable = $event instanceof \MonorepoBuilder20210706\Psr\EventDispatcher\StoppableEventInterface;
+        $stoppable = $event instanceof \MonorepoBuilder20210707\Psr\EventDispatcher\StoppableEventInterface;
         foreach ($listeners as $listener) {
             if ($stoppable && $event->isPropagationStopped()) {
                 break;
@@ -241,7 +241,7 @@ class EventDispatcher implements \MonorepoBuilder20210706\Symfony\Component\Even
                         ($closure = \Closure::fromCallable($listener))(...$args);
                     };
                 } else {
-                    $closure = $listener instanceof \Closure || $listener instanceof \MonorepoBuilder20210706\Symfony\Component\EventDispatcher\Debug\WrappedListener ? $listener : \Closure::fromCallable($listener);
+                    $closure = $listener instanceof \Closure || $listener instanceof \MonorepoBuilder20210707\Symfony\Component\EventDispatcher\Debug\WrappedListener ? $listener : \Closure::fromCallable($listener);
                 }
             }
         }

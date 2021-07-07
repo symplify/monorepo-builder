@@ -8,17 +8,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210706\Symfony\Component\Config\Definition;
+namespace MonorepoBuilder20210707\Symfony\Component\Config\Definition;
 
-use MonorepoBuilder20210706\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
-use MonorepoBuilder20210706\Symfony\Component\Config\Definition\Exception\InvalidTypeException;
-use MonorepoBuilder20210706\Symfony\Component\Config\Definition\Exception\UnsetKeyException;
+use MonorepoBuilder20210707\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
+use MonorepoBuilder20210707\Symfony\Component\Config\Definition\Exception\InvalidTypeException;
+use MonorepoBuilder20210707\Symfony\Component\Config\Definition\Exception\UnsetKeyException;
 /**
  * Represents an Array node in the config tree.
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class ArrayNode extends \MonorepoBuilder20210706\Symfony\Component\Config\Definition\BaseNode implements \MonorepoBuilder20210706\Symfony\Component\Config\Definition\PrototypeNodeInterface
+class ArrayNode extends \MonorepoBuilder20210707\Symfony\Component\Config\Definition\BaseNode implements \MonorepoBuilder20210707\Symfony\Component\Config\Definition\PrototypeNodeInterface
 {
     protected $xmlRemappings = [];
     protected $children = [];
@@ -160,7 +160,7 @@ class ArrayNode extends \MonorepoBuilder20210706\Symfony\Component\Config\Defini
      * @throws \InvalidArgumentException when the child node has no name
      * @throws \InvalidArgumentException when the child node's name is not unique
      */
-    public function addChild(\MonorepoBuilder20210706\Symfony\Component\Config\Definition\NodeInterface $node)
+    public function addChild(\MonorepoBuilder20210707\Symfony\Component\Config\Definition\NodeInterface $node)
     {
         $name = $node->getName();
         if (!\strlen($name)) {
@@ -180,7 +180,7 @@ class ArrayNode extends \MonorepoBuilder20210706\Symfony\Component\Config\Defini
     protected function finalizeValue($value)
     {
         if (\false === $value) {
-            throw new \MonorepoBuilder20210706\Symfony\Component\Config\Definition\Exception\UnsetKeyException(\sprintf('Unsetting key for path "%s", value: %s.', $this->getPath(), \json_encode($value)));
+            throw new \MonorepoBuilder20210707\Symfony\Component\Config\Definition\Exception\UnsetKeyException(\sprintf('Unsetting key for path "%s", value: %s.', $this->getPath(), \json_encode($value)));
         }
         foreach ($this->children as $name => $child) {
             if (!\array_key_exists($name, $value)) {
@@ -191,7 +191,7 @@ class ArrayNode extends \MonorepoBuilder20210706\Symfony\Component\Config\Defini
                     } else {
                         $message .= '.';
                     }
-                    $ex = new \MonorepoBuilder20210706\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException($message);
+                    $ex = new \MonorepoBuilder20210707\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException($message);
                     $ex->setPath($this->getPath());
                     throw $ex;
                 }
@@ -206,7 +206,7 @@ class ArrayNode extends \MonorepoBuilder20210706\Symfony\Component\Config\Defini
             }
             try {
                 $value[$name] = $child->finalize($value[$name]);
-            } catch (\MonorepoBuilder20210706\Symfony\Component\Config\Definition\Exception\UnsetKeyException $e) {
+            } catch (\MonorepoBuilder20210707\Symfony\Component\Config\Definition\Exception\UnsetKeyException $e) {
                 unset($value[$name]);
             }
         }
@@ -218,7 +218,7 @@ class ArrayNode extends \MonorepoBuilder20210706\Symfony\Component\Config\Defini
     protected function validateType($value)
     {
         if (!\is_array($value) && (!$this->allowFalse || \false !== $value)) {
-            $ex = new \MonorepoBuilder20210706\Symfony\Component\Config\Definition\Exception\InvalidTypeException(\sprintf('Invalid type for path "%s". Expected "array", but got "%s"', $this->getPath(), \get_debug_type($value)));
+            $ex = new \MonorepoBuilder20210707\Symfony\Component\Config\Definition\Exception\InvalidTypeException(\sprintf('Invalid type for path "%s". Expected "array", but got "%s"', $this->getPath(), \get_debug_type($value)));
             if ($hint = $this->getInfo()) {
                 $ex->addHint($hint);
             }
@@ -242,7 +242,7 @@ class ArrayNode extends \MonorepoBuilder20210706\Symfony\Component\Config\Defini
             if (isset($this->children[$name])) {
                 try {
                     $normalized[$name] = $this->children[$name]->normalize($val);
-                } catch (\MonorepoBuilder20210706\Symfony\Component\Config\Definition\Exception\UnsetKeyException $e) {
+                } catch (\MonorepoBuilder20210707\Symfony\Component\Config\Definition\Exception\UnsetKeyException $e) {
                 }
                 unset($value[$name]);
             } elseif (!$this->removeExtraKeys) {
@@ -271,7 +271,7 @@ class ArrayNode extends \MonorepoBuilder20210706\Symfony\Component\Config\Defini
             } else {
                 $msg .= \sprintf('. Available option%s %s "%s".', 1 === \count($proposals) ? '' : 's', 1 === \count($proposals) ? 'is' : 'are', \implode('", "', $proposals));
             }
-            $ex = new \MonorepoBuilder20210706\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException($msg);
+            $ex = new \MonorepoBuilder20210707\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException($msg);
             $ex->setPath($this->getPath());
             throw $ex;
         }
@@ -288,7 +288,7 @@ class ArrayNode extends \MonorepoBuilder20210706\Symfony\Component\Config\Defini
             if (!isset($value[$singular])) {
                 continue;
             }
-            $value[$plural] = \MonorepoBuilder20210706\Symfony\Component\Config\Definition\Processor::normalizeConfig($value, $singular, $plural);
+            $value[$plural] = \MonorepoBuilder20210707\Symfony\Component\Config\Definition\Processor::normalizeConfig($value, $singular, $plural);
             unset($value[$singular]);
         }
         return $value;
@@ -313,7 +313,7 @@ class ArrayNode extends \MonorepoBuilder20210706\Symfony\Component\Config\Defini
             // no conflict
             if (!\array_key_exists($k, $leftSide)) {
                 if (!$this->allowNewKeys) {
-                    $ex = new \MonorepoBuilder20210706\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException(\sprintf('You are not allowed to define new elements for path "%s". Please define all elements for this path in one config file. If you are trying to overwrite an element, make sure you redefine it with the same name.', $this->getPath()));
+                    $ex = new \MonorepoBuilder20210707\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException(\sprintf('You are not allowed to define new elements for path "%s". Please define all elements for this path in one config file. If you are trying to overwrite an element, make sure you redefine it with the same name.', $this->getPath()));
                     $ex->setPath($this->getPath());
                     throw $ex;
                 }

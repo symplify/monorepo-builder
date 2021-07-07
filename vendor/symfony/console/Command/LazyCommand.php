@@ -8,17 +8,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210706\Symfony\Component\Console\Command;
+namespace MonorepoBuilder20210707\Symfony\Component\Console\Command;
 
-use MonorepoBuilder20210706\Symfony\Component\Console\Application;
-use MonorepoBuilder20210706\Symfony\Component\Console\Helper\HelperSet;
-use MonorepoBuilder20210706\Symfony\Component\Console\Input\InputDefinition;
-use MonorepoBuilder20210706\Symfony\Component\Console\Input\InputInterface;
-use MonorepoBuilder20210706\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder20210707\Symfony\Component\Console\Application;
+use MonorepoBuilder20210707\Symfony\Component\Console\Helper\HelperSet;
+use MonorepoBuilder20210707\Symfony\Component\Console\Input\InputDefinition;
+use MonorepoBuilder20210707\Symfony\Component\Console\Input\InputInterface;
+use MonorepoBuilder20210707\Symfony\Component\Console\Output\OutputInterface;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-final class LazyCommand extends \MonorepoBuilder20210706\Symfony\Component\Console\Command\Command
+final class LazyCommand extends \MonorepoBuilder20210707\Symfony\Component\Console\Command\Command
 {
     private $command;
     private $isEnabled;
@@ -32,14 +32,14 @@ final class LazyCommand extends \MonorepoBuilder20210706\Symfony\Component\Conso
     {
         $this->getCommand()->ignoreValidationErrors();
     }
-    public function setApplication(\MonorepoBuilder20210706\Symfony\Component\Console\Application $application = null) : void
+    public function setApplication(\MonorepoBuilder20210707\Symfony\Component\Console\Application $application = null) : void
     {
         if ($this->command instanceof parent) {
             $this->command->setApplication($application);
         }
         parent::setApplication($application);
     }
-    public function setHelperSet(\MonorepoBuilder20210706\Symfony\Component\Console\Helper\HelperSet $helperSet) : void
+    public function setHelperSet(\MonorepoBuilder20210707\Symfony\Component\Console\Helper\HelperSet $helperSet) : void
     {
         if ($this->command instanceof parent) {
             $this->command->setHelperSet($helperSet);
@@ -81,11 +81,11 @@ final class LazyCommand extends \MonorepoBuilder20210706\Symfony\Component\Conso
         $this->getCommand()->setDefinition($definition);
         return $this;
     }
-    public function getDefinition() : \MonorepoBuilder20210706\Symfony\Component\Console\Input\InputDefinition
+    public function getDefinition() : \MonorepoBuilder20210707\Symfony\Component\Console\Input\InputDefinition
     {
         return $this->getCommand()->getDefinition();
     }
-    public function getNativeDefinition() : \MonorepoBuilder20210706\Symfony\Component\Console\Input\InputDefinition
+    public function getNativeDefinition() : \MonorepoBuilder20210707\Symfony\Component\Console\Input\InputDefinition
     {
         return $this->getCommand()->getNativeDefinition();
     }

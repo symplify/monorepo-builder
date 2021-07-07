@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210706\Symfony\Component\HttpFoundation\Test\Constraint;
+namespace MonorepoBuilder20210707\Symfony\Component\HttpFoundation\Test\Constraint;
 
-use MonorepoBuilder20210706\PHPUnit\Framework\Constraint\Constraint;
-use MonorepoBuilder20210706\Symfony\Component\HttpFoundation\Response;
-final class ResponseHasHeader extends \MonorepoBuilder20210706\PHPUnit\Framework\Constraint\Constraint
+use MonorepoBuilder20210707\PHPUnit\Framework\Constraint\Constraint;
+use MonorepoBuilder20210707\Symfony\Component\HttpFoundation\Response;
+final class ResponseHasHeader extends \MonorepoBuilder20210707\PHPUnit\Framework\Constraint\Constraint
 {
     private $headerName;
     public function __construct(string $headerName)

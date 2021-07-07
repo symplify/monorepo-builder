@@ -9,9 +9,9 @@ declare (strict_types=1);
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210706\PharIo\Version;
+namespace MonorepoBuilder20210707\PharIo\Version;
 
-class OrVersionConstraintGroup extends \MonorepoBuilder20210706\PharIo\Version\AbstractVersionConstraint
+class OrVersionConstraintGroup extends \MonorepoBuilder20210707\PharIo\Version\AbstractVersionConstraint
 {
     /** @var VersionConstraint[] */
     private $constraints = [];
@@ -24,7 +24,7 @@ class OrVersionConstraintGroup extends \MonorepoBuilder20210706\PharIo\Version\A
         parent::__construct($originalValue);
         $this->constraints = $constraints;
     }
-    public function complies(\MonorepoBuilder20210706\PharIo\Version\Version $version) : bool
+    public function complies(\MonorepoBuilder20210707\PharIo\Version\Version $version) : bool
     {
         foreach ($this->constraints as $constraint) {
             if ($constraint->complies($version)) {

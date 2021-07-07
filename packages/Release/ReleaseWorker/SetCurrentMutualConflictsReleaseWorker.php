@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Release\ReleaseWorker;
 
-use MonorepoBuilder20210706\PharIo\Version\Version;
+use MonorepoBuilder20210707\PharIo\Version\Version;
 use Symplify\MonorepoBuilder\ConflictingUpdater;
 use Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider;
 use Symplify\MonorepoBuilder\Package\PackageNamesProvider;
@@ -34,13 +34,13 @@ final class SetCurrentMutualConflictsReleaseWorker implements \Symplify\Monorepo
         $this->packageNamesProvider = $packageNamesProvider;
         $this->conflictingUpdater = $conflictingUpdater;
     }
-    public function work(\MonorepoBuilder20210706\PharIo\Version\Version $version) : void
+    public function work(\MonorepoBuilder20210707\PharIo\Version\Version $version) : void
     {
         $this->conflictingUpdater->updateFileInfosWithVendorAndVersion($this->composerJsonProvider->getPackagesComposerFileInfos(), $this->packageNamesProvider->provide(), $version);
         // give time to propagate printed composer.json values before commit
         \sleep(1);
     }
-    public function getDescription(\MonorepoBuilder20210706\PharIo\Version\Version $version) : string
+    public function getDescription(\MonorepoBuilder20210707\PharIo\Version\Version $version) : string
     {
         $versionInString = $this->versionUtils->getRequiredFormat($version);
         return \sprintf('Set packages mutual conflicts to "%s" version', $versionInString);

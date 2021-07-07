@@ -8,16 +8,16 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210706\Symfony\Component\EventDispatcher\Debug;
+namespace MonorepoBuilder20210707\Symfony\Component\EventDispatcher\Debug;
 
-use MonorepoBuilder20210706\Psr\EventDispatcher\StoppableEventInterface;
-use MonorepoBuilder20210706\Psr\Log\LoggerInterface;
-use MonorepoBuilder20210706\Symfony\Component\EventDispatcher\EventDispatcherInterface;
-use MonorepoBuilder20210706\Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use MonorepoBuilder20210706\Symfony\Component\HttpFoundation\Request;
-use MonorepoBuilder20210706\Symfony\Component\HttpFoundation\RequestStack;
-use MonorepoBuilder20210706\Symfony\Component\Stopwatch\Stopwatch;
-use MonorepoBuilder20210706\Symfony\Contracts\Service\ResetInterface;
+use MonorepoBuilder20210707\Psr\EventDispatcher\StoppableEventInterface;
+use MonorepoBuilder20210707\Psr\Log\LoggerInterface;
+use MonorepoBuilder20210707\Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use MonorepoBuilder20210707\Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use MonorepoBuilder20210707\Symfony\Component\HttpFoundation\Request;
+use MonorepoBuilder20210707\Symfony\Component\HttpFoundation\RequestStack;
+use MonorepoBuilder20210707\Symfony\Component\Stopwatch\Stopwatch;
+use MonorepoBuilder20210707\Symfony\Contracts\Service\ResetInterface;
 /**
  * Collects some data about event listeners.
  *
@@ -25,7 +25,7 @@ use MonorepoBuilder20210706\Symfony\Contracts\Service\ResetInterface;
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class TraceableEventDispatcher implements \MonorepoBuilder20210706\Symfony\Component\EventDispatcher\EventDispatcherInterface, \MonorepoBuilder20210706\Symfony\Contracts\Service\ResetInterface
+class TraceableEventDispatcher implements \MonorepoBuilder20210707\Symfony\Component\EventDispatcher\EventDispatcherInterface, \MonorepoBuilder20210707\Symfony\Contracts\Service\ResetInterface
 {
     protected $logger;
     protected $stopwatch;
@@ -35,7 +35,7 @@ class TraceableEventDispatcher implements \MonorepoBuilder20210706\Symfony\Compo
     private $orphanedEvents;
     private $requestStack;
     private $currentRequestHash = '';
-    public function __construct(\MonorepoBuilder20210706\Symfony\Component\EventDispatcher\EventDispatcherInterface $dispatcher, \MonorepoBuilder20210706\Symfony\Component\Stopwatch\Stopwatch $stopwatch, \MonorepoBuilder20210706\Psr\Log\LoggerInterface $logger = null, \MonorepoBuilder20210706\Symfony\Component\HttpFoundation\RequestStack $requestStack = null)
+    public function __construct(\MonorepoBuilder20210707\Symfony\Component\EventDispatcher\EventDispatcherInterface $dispatcher, \MonorepoBuilder20210707\Symfony\Component\Stopwatch\Stopwatch $stopwatch, \MonorepoBuilder20210707\Psr\Log\LoggerInterface $logger = null, \MonorepoBuilder20210707\Symfony\Component\HttpFoundation\RequestStack $requestStack = null)
     {
         $this->dispatcher = $dispatcher;
         $this->stopwatch = $stopwatch;
@@ -54,7 +54,7 @@ class TraceableEventDispatcher implements \MonorepoBuilder20210706\Symfony\Compo
     /**
      * {@inheritdoc}
      */
-    public function addSubscriber(\MonorepoBuilder20210706\Symfony\Component\EventDispatcher\EventSubscriberInterface $subscriber)
+    public function addSubscriber(\MonorepoBuilder20210707\Symfony\Component\EventDispatcher\EventSubscriberInterface $subscriber)
     {
         $this->dispatcher->addSubscriber($subscriber);
     }
@@ -77,7 +77,7 @@ class TraceableEventDispatcher implements \MonorepoBuilder20210706\Symfony\Compo
     /**
      * {@inheritdoc}
      */
-    public function removeSubscriber(\MonorepoBuilder20210706\Symfony\Component\EventDispatcher\EventSubscriberInterface $subscriber)
+    public function removeSubscriber(\MonorepoBuilder20210707\Symfony\Component\EventDispatcher\EventSubscriberInterface $subscriber)
     {
         return $this->dispatcher->removeSubscriber($subscriber);
     }
@@ -124,7 +124,7 @@ class TraceableEventDispatcher implements \MonorepoBuilder20210706\Symfony\Compo
             $this->callStack = new \SplObjectStorage();
         }
         $currentRequestHash = $this->currentRequestHash = $this->requestStack && ($request = $this->requestStack->getCurrentRequest()) ? \spl_object_hash($request) : '';
-        if (null !== $this->logger && $event instanceof \MonorepoBuilder20210706\Psr\EventDispatcher\StoppableEventInterface && $event->isPropagationStopped()) {
+        if (null !== $this->logger && $event instanceof \MonorepoBuilder20210707\Psr\EventDispatcher\StoppableEventInterface && $event->isPropagationStopped()) {
             $this->logger->debug(\sprintf('The "%s" event is already stopped. No listeners have been called.', $eventName));
         }
         $this->preProcess($eventName);
@@ -151,7 +151,7 @@ class TraceableEventDispatcher implements \MonorepoBuilder20210706\Symfony\Compo
     /**
      * @return array
      */
-    public function getCalledListeners(\MonorepoBuilder20210706\Symfony\Component\HttpFoundation\Request $request = null)
+    public function getCalledListeners(\MonorepoBuilder20210707\Symfony\Component\HttpFoundation\Request $request = null)
     {
         if (null === $this->callStack) {
             return [];
@@ -169,7 +169,7 @@ class TraceableEventDispatcher implements \MonorepoBuilder20210706\Symfony\Compo
     /**
      * @return array
      */
-    public function getNotCalledListeners(\MonorepoBuilder20210706\Symfony\Component\HttpFoundation\Request $request = null)
+    public function getNotCalledListeners(\MonorepoBuilder20210707\Symfony\Component\HttpFoundation\Request $request = null)
     {
         try {
             $allListeners = $this->getListeners();
@@ -194,8 +194,8 @@ class TraceableEventDispatcher implements \MonorepoBuilder20210706\Symfony\Compo
         foreach ($allListeners as $eventName => $listeners) {
             foreach ($listeners as $listener) {
                 if (!\in_array($listener, $calledListeners, \true)) {
-                    if (!$listener instanceof \MonorepoBuilder20210706\Symfony\Component\EventDispatcher\Debug\WrappedListener) {
-                        $listener = new \MonorepoBuilder20210706\Symfony\Component\EventDispatcher\Debug\WrappedListener($listener, null, $this->stopwatch, $this);
+                    if (!$listener instanceof \MonorepoBuilder20210707\Symfony\Component\EventDispatcher\Debug\WrappedListener) {
+                        $listener = new \MonorepoBuilder20210707\Symfony\Component\EventDispatcher\Debug\WrappedListener($listener, null, $this->stopwatch, $this);
                     }
                     $notCalled[] = $listener->getInfo($eventName);
                 }
@@ -204,7 +204,7 @@ class TraceableEventDispatcher implements \MonorepoBuilder20210706\Symfony\Compo
         \uasort($notCalled, [$this, 'sortNotCalledListeners']);
         return $notCalled;
     }
-    public function getOrphanedEvents(\MonorepoBuilder20210706\Symfony\Component\HttpFoundation\Request $request = null) : array
+    public function getOrphanedEvents(\MonorepoBuilder20210707\Symfony\Component\HttpFoundation\Request $request = null) : array
     {
         if ($request) {
             return $this->orphanedEvents[\spl_object_hash($request)] ?? [];
@@ -254,7 +254,7 @@ class TraceableEventDispatcher implements \MonorepoBuilder20210706\Symfony\Compo
         }
         foreach ($this->dispatcher->getListeners($eventName) as $listener) {
             $priority = $this->getListenerPriority($eventName, $listener);
-            $wrappedListener = new \MonorepoBuilder20210706\Symfony\Component\EventDispatcher\Debug\WrappedListener($listener instanceof \MonorepoBuilder20210706\Symfony\Component\EventDispatcher\Debug\WrappedListener ? $listener->getWrappedListener() : $listener, null, $this->stopwatch, $this);
+            $wrappedListener = new \MonorepoBuilder20210707\Symfony\Component\EventDispatcher\Debug\WrappedListener($listener instanceof \MonorepoBuilder20210707\Symfony\Component\EventDispatcher\Debug\WrappedListener ? $listener->getWrappedListener() : $listener, null, $this->stopwatch, $this);
             $this->wrappedListeners[$eventName][] = $wrappedListener;
             $this->dispatcher->removeListener($eventName, $listener);
             $this->dispatcher->addListener($eventName, $wrappedListener, $priority);
@@ -266,7 +266,7 @@ class TraceableEventDispatcher implements \MonorepoBuilder20210706\Symfony\Compo
         unset($this->wrappedListeners[$eventName]);
         $skipped = \false;
         foreach ($this->dispatcher->getListeners($eventName) as $listener) {
-            if (!$listener instanceof \MonorepoBuilder20210706\Symfony\Component\EventDispatcher\Debug\WrappedListener) {
+            if (!$listener instanceof \MonorepoBuilder20210707\Symfony\Component\EventDispatcher\Debug\WrappedListener) {
                 // #12845: a new listener was added during dispatch.
                 continue;
             }

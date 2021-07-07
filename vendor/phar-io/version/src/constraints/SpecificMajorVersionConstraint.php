@@ -9,9 +9,9 @@ declare (strict_types=1);
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210706\PharIo\Version;
+namespace MonorepoBuilder20210707\PharIo\Version;
 
-class SpecificMajorVersionConstraint extends \MonorepoBuilder20210706\PharIo\Version\AbstractVersionConstraint
+class SpecificMajorVersionConstraint extends \MonorepoBuilder20210707\PharIo\Version\AbstractVersionConstraint
 {
     /** @var int */
     private $major;
@@ -20,7 +20,7 @@ class SpecificMajorVersionConstraint extends \MonorepoBuilder20210706\PharIo\Ver
         parent::__construct($originalValue);
         $this->major = $major;
     }
-    public function complies(\MonorepoBuilder20210706\PharIo\Version\Version $version) : bool
+    public function complies(\MonorepoBuilder20210707\PharIo\Version\Version $version) : bool
     {
         return $version->getMajor()->getValue() === $this->major;
     }

@@ -8,40 +8,40 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210706\Symfony\Component\HttpKernel;
+namespace MonorepoBuilder20210707\Symfony\Component\HttpKernel;
 
-use MonorepoBuilder20210706\Symfony\Bridge\ProxyManager\LazyProxy\Instantiator\RuntimeInstantiator;
-use MonorepoBuilder20210706\Symfony\Bridge\ProxyManager\LazyProxy\PhpDumper\ProxyDumper;
-use MonorepoBuilder20210706\Symfony\Component\Config\Builder\ConfigBuilderGenerator;
-use MonorepoBuilder20210706\Symfony\Component\Config\ConfigCache;
-use MonorepoBuilder20210706\Symfony\Component\Config\Loader\DelegatingLoader;
-use MonorepoBuilder20210706\Symfony\Component\Config\Loader\LoaderResolver;
-use MonorepoBuilder20210706\Symfony\Component\Debug\DebugClassLoader as LegacyDebugClassLoader;
-use MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
-use MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Compiler\PassConfig;
-use MonorepoBuilder20210706\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder20210706\Symfony\Component\DependencyInjection\ContainerInterface;
-use MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Dumper\PhpDumper;
-use MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Dumper\Preloader;
-use MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
-use MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Loader\ClosureLoader;
-use MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Loader\DirectoryLoader;
-use MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Loader\GlobFileLoader;
-use MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Loader\IniFileLoader;
-use MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
-use MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
-use MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
-use MonorepoBuilder20210706\Symfony\Component\ErrorHandler\DebugClassLoader;
-use MonorepoBuilder20210706\Symfony\Component\Filesystem\Filesystem;
-use MonorepoBuilder20210706\Symfony\Component\HttpFoundation\Request;
-use MonorepoBuilder20210706\Symfony\Component\HttpFoundation\Response;
-use MonorepoBuilder20210706\Symfony\Component\HttpKernel\Bundle\BundleInterface;
-use MonorepoBuilder20210706\Symfony\Component\HttpKernel\CacheWarmer\WarmableInterface;
-use MonorepoBuilder20210706\Symfony\Component\HttpKernel\Config\FileLocator;
-use MonorepoBuilder20210706\Symfony\Component\HttpKernel\DependencyInjection\AddAnnotatedClassesToCachePass;
-use MonorepoBuilder20210706\Symfony\Component\HttpKernel\DependencyInjection\MergeExtensionConfigurationPass;
+use MonorepoBuilder20210707\Symfony\Bridge\ProxyManager\LazyProxy\Instantiator\RuntimeInstantiator;
+use MonorepoBuilder20210707\Symfony\Bridge\ProxyManager\LazyProxy\PhpDumper\ProxyDumper;
+use MonorepoBuilder20210707\Symfony\Component\Config\Builder\ConfigBuilderGenerator;
+use MonorepoBuilder20210707\Symfony\Component\Config\ConfigCache;
+use MonorepoBuilder20210707\Symfony\Component\Config\Loader\DelegatingLoader;
+use MonorepoBuilder20210707\Symfony\Component\Config\Loader\LoaderResolver;
+use MonorepoBuilder20210707\Symfony\Component\Debug\DebugClassLoader as LegacyDebugClassLoader;
+use MonorepoBuilder20210707\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
+use MonorepoBuilder20210707\Symfony\Component\DependencyInjection\Compiler\PassConfig;
+use MonorepoBuilder20210707\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder20210707\Symfony\Component\DependencyInjection\ContainerInterface;
+use MonorepoBuilder20210707\Symfony\Component\DependencyInjection\Dumper\PhpDumper;
+use MonorepoBuilder20210707\Symfony\Component\DependencyInjection\Dumper\Preloader;
+use MonorepoBuilder20210707\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
+use MonorepoBuilder20210707\Symfony\Component\DependencyInjection\Loader\ClosureLoader;
+use MonorepoBuilder20210707\Symfony\Component\DependencyInjection\Loader\DirectoryLoader;
+use MonorepoBuilder20210707\Symfony\Component\DependencyInjection\Loader\GlobFileLoader;
+use MonorepoBuilder20210707\Symfony\Component\DependencyInjection\Loader\IniFileLoader;
+use MonorepoBuilder20210707\Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
+use MonorepoBuilder20210707\Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
+use MonorepoBuilder20210707\Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
+use MonorepoBuilder20210707\Symfony\Component\ErrorHandler\DebugClassLoader;
+use MonorepoBuilder20210707\Symfony\Component\Filesystem\Filesystem;
+use MonorepoBuilder20210707\Symfony\Component\HttpFoundation\Request;
+use MonorepoBuilder20210707\Symfony\Component\HttpFoundation\Response;
+use MonorepoBuilder20210707\Symfony\Component\HttpKernel\Bundle\BundleInterface;
+use MonorepoBuilder20210707\Symfony\Component\HttpKernel\CacheWarmer\WarmableInterface;
+use MonorepoBuilder20210707\Symfony\Component\HttpKernel\Config\FileLocator;
+use MonorepoBuilder20210707\Symfony\Component\HttpKernel\DependencyInjection\AddAnnotatedClassesToCachePass;
+use MonorepoBuilder20210707\Symfony\Component\HttpKernel\DependencyInjection\MergeExtensionConfigurationPass;
 // Help opcache.preload discover always-needed symbols
-\class_exists(\MonorepoBuilder20210706\Symfony\Component\Config\ConfigCache::class);
+\class_exists(\MonorepoBuilder20210707\Symfony\Component\Config\ConfigCache::class);
 /**
  * The Kernel is the heart of the Symfony system.
  *
@@ -52,7 +52,7 @@ use MonorepoBuilder20210706\Symfony\Component\HttpKernel\DependencyInjection\Mer
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-abstract class Kernel implements \MonorepoBuilder20210706\Symfony\Component\HttpKernel\KernelInterface, \MonorepoBuilder20210706\Symfony\Component\HttpKernel\RebootableInterface, \MonorepoBuilder20210706\Symfony\Component\HttpKernel\TerminableInterface
+abstract class Kernel implements \MonorepoBuilder20210707\Symfony\Component\HttpKernel\KernelInterface, \MonorepoBuilder20210707\Symfony\Component\HttpKernel\RebootableInterface, \MonorepoBuilder20210707\Symfony\Component\HttpKernel\TerminableInterface
 {
     /**
      * @var BundleInterface[]
@@ -128,12 +128,12 @@ abstract class Kernel implements \MonorepoBuilder20210706\Symfony\Component\Http
     /**
      * {@inheritdoc}
      */
-    public function terminate(\MonorepoBuilder20210706\Symfony\Component\HttpFoundation\Request $request, \MonorepoBuilder20210706\Symfony\Component\HttpFoundation\Response $response)
+    public function terminate(\MonorepoBuilder20210707\Symfony\Component\HttpFoundation\Request $request, \MonorepoBuilder20210707\Symfony\Component\HttpFoundation\Response $response)
     {
         if (\false === $this->booted) {
             return;
         }
-        if ($this->getHttpKernel() instanceof \MonorepoBuilder20210706\Symfony\Component\HttpKernel\TerminableInterface) {
+        if ($this->getHttpKernel() instanceof \MonorepoBuilder20210707\Symfony\Component\HttpKernel\TerminableInterface) {
             $this->getHttpKernel()->terminate($request, $response);
         }
     }
@@ -157,7 +157,7 @@ abstract class Kernel implements \MonorepoBuilder20210706\Symfony\Component\Http
     /**
      * {@inheritdoc}
      */
-    public function handle(\MonorepoBuilder20210706\Symfony\Component\HttpFoundation\Request $request, int $type = \MonorepoBuilder20210706\Symfony\Component\HttpKernel\HttpKernelInterface::MAIN_REQUEST, bool $catch = \true)
+    public function handle(\MonorepoBuilder20210707\Symfony\Component\HttpFoundation\Request $request, int $type = \MonorepoBuilder20210707\Symfony\Component\HttpKernel\HttpKernelInterface::MAIN_REQUEST, bool $catch = \true)
     {
         if (!$this->booted) {
             $container = $this->container ?? $this->preBoot();
@@ -341,7 +341,7 @@ abstract class Kernel implements \MonorepoBuilder20210706\Symfony\Component\Http
      *
      * Use this method to register compiler passes and manipulate the container during the building process.
      */
-    protected function build(\MonorepoBuilder20210706\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    protected function build(\MonorepoBuilder20210707\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
     }
     /**
@@ -354,7 +354,7 @@ abstract class Kernel implements \MonorepoBuilder20210706\Symfony\Component\Http
     protected function getContainerClass()
     {
         $class = static::class;
-        $class = \false !== \strpos($class, "@anonymous\0") ? \get_parent_class($class) . \str_replace('.', '_', \MonorepoBuilder20210706\Symfony\Component\DependencyInjection\ContainerBuilder::hash($class)) : $class;
+        $class = \false !== \strpos($class, "@anonymous\0") ? \get_parent_class($class) . \str_replace('.', '_', \MonorepoBuilder20210707\Symfony\Component\DependencyInjection\ContainerBuilder::hash($class)) : $class;
         $class = \str_replace('\\', '_', $class) . \ucfirst($this->environment) . ($this->debug ? 'Debug' : '') . 'Container';
         if (!\preg_match('/^[a-zA-Z_\\x7f-\\xff][a-zA-Z0-9_\\x7f-\\xff]*$/', $class)) {
             throw new \InvalidArgumentException(\sprintf('The environment "%s" contains invalid characters, it can only contain characters allowed in PHP class names.', $this->environment));
@@ -382,7 +382,7 @@ abstract class Kernel implements \MonorepoBuilder20210706\Symfony\Component\Http
     {
         $class = $this->getContainerClass();
         $buildDir = $this->warmupDir ?: $this->getBuildDir();
-        $cache = new \MonorepoBuilder20210706\Symfony\Component\Config\ConfigCache($buildDir . '/' . $class . '.php', $this->debug);
+        $cache = new \MonorepoBuilder20210707\Symfony\Component\Config\ConfigCache($buildDir . '/' . $class . '.php', $this->debug);
         $cachePath = $cache->getPath();
         // Silence E_WARNING to ignore "include" failures - don't use "@" to prevent silencing fatal errors
         $errorLevel = \error_reporting(\E_ALL ^ \E_WARNING);
@@ -447,7 +447,7 @@ abstract class Kernel implements \MonorepoBuilder20210706\Symfony\Component\Http
                 }
                 // Remove frames added by DebugClassLoader.
                 for ($i = \count($backtrace) - 2; 0 < $i; --$i) {
-                    if (\in_array($backtrace[$i]['class'] ?? null, [\MonorepoBuilder20210706\Symfony\Component\ErrorHandler\DebugClassLoader::class, \MonorepoBuilder20210706\Symfony\Component\Debug\DebugClassLoader::class], \true)) {
+                    if (\in_array($backtrace[$i]['class'] ?? null, [\MonorepoBuilder20210707\Symfony\Component\ErrorHandler\DebugClassLoader::class, \MonorepoBuilder20210707\Symfony\Component\Debug\DebugClassLoader::class], \true)) {
                         $backtrace = [$backtrace[$i + 1]];
                         break;
                     }
@@ -483,17 +483,17 @@ abstract class Kernel implements \MonorepoBuilder20210706\Symfony\Component\Http
             $legacyContainers[$oldContainerDir . '.legacy'] = \true;
             foreach (\glob(\dirname($oldContainerDir) . \DIRECTORY_SEPARATOR . '*.legacy', \GLOB_NOSORT) as $legacyContainer) {
                 if (!isset($legacyContainers[$legacyContainer]) && @\unlink($legacyContainer)) {
-                    (new \MonorepoBuilder20210706\Symfony\Component\Filesystem\Filesystem())->remove(\substr($legacyContainer, 0, -7));
+                    (new \MonorepoBuilder20210707\Symfony\Component\Filesystem\Filesystem())->remove(\substr($legacyContainer, 0, -7));
                 }
             }
             \touch($oldContainerDir . '.legacy');
         }
-        $preload = $this instanceof \MonorepoBuilder20210706\Symfony\Component\HttpKernel\CacheWarmer\WarmableInterface ? (array) $this->warmUp($this->container->getParameter('kernel.cache_dir')) : [];
+        $preload = $this instanceof \MonorepoBuilder20210707\Symfony\Component\HttpKernel\CacheWarmer\WarmableInterface ? (array) $this->warmUp($this->container->getParameter('kernel.cache_dir')) : [];
         if ($this->container->has('cache_warmer')) {
             $preload = \array_merge($preload, (array) $this->container->get('cache_warmer')->warmUp($this->container->getParameter('kernel.cache_dir')));
         }
-        if ($preload && \method_exists(\MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Dumper\Preloader::class, 'append') && \file_exists($preloadFile = $buildDir . '/' . $class . '.preload.php')) {
-            \MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Dumper\Preloader::append($preloadFile, $preload);
+        if ($preload && \method_exists(\MonorepoBuilder20210707\Symfony\Component\DependencyInjection\Dumper\Preloader::class, 'append') && \file_exists($preloadFile = $buildDir . '/' . $class . '.preload.php')) {
+            \MonorepoBuilder20210707\Symfony\Component\DependencyInjection\Dumper\Preloader::append($preloadFile, $preload);
         }
     }
     /**
@@ -536,13 +536,13 @@ abstract class Kernel implements \MonorepoBuilder20210706\Symfony\Component\Http
             trigger_deprecation('symfony/http-kernel', '5.3', 'Returning a ContainerBuilder from "%s::registerContainerConfiguration()" is deprecated.', \get_debug_type($this));
             $container->merge($cont);
         }
-        $container->addCompilerPass(new \MonorepoBuilder20210706\Symfony\Component\HttpKernel\DependencyInjection\AddAnnotatedClassesToCachePass($this));
+        $container->addCompilerPass(new \MonorepoBuilder20210707\Symfony\Component\HttpKernel\DependencyInjection\AddAnnotatedClassesToCachePass($this));
         return $container;
     }
     /**
      * Prepares the ContainerBuilder before it is compiled.
      */
-    protected function prepareContainer(\MonorepoBuilder20210706\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    protected function prepareContainer(\MonorepoBuilder20210707\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
         $extensions = [];
         foreach ($this->bundles as $bundle) {
@@ -561,7 +561,7 @@ abstract class Kernel implements \MonorepoBuilder20210706\Symfony\Component\Http
             $extensions[] = $extension->getAlias();
         }
         // ensure these extensions are implicitly loaded
-        $container->getCompilerPassConfig()->setMergePass(new \MonorepoBuilder20210706\Symfony\Component\HttpKernel\DependencyInjection\MergeExtensionConfigurationPass($extensions));
+        $container->getCompilerPassConfig()->setMergePass(new \MonorepoBuilder20210707\Symfony\Component\HttpKernel\DependencyInjection\MergeExtensionConfigurationPass($extensions));
     }
     /**
      * Gets a new ContainerBuilder instance used to build the service container.
@@ -570,16 +570,16 @@ abstract class Kernel implements \MonorepoBuilder20210706\Symfony\Component\Http
      */
     protected function getContainerBuilder()
     {
-        $container = new \MonorepoBuilder20210706\Symfony\Component\DependencyInjection\ContainerBuilder();
+        $container = new \MonorepoBuilder20210707\Symfony\Component\DependencyInjection\ContainerBuilder();
         $container->getParameterBag()->add($this->getKernelParameters());
-        if ($this instanceof \MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Extension\ExtensionInterface) {
+        if ($this instanceof \MonorepoBuilder20210707\Symfony\Component\DependencyInjection\Extension\ExtensionInterface) {
             $container->registerExtension($this);
         }
-        if ($this instanceof \MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface) {
-            $container->addCompilerPass($this, \MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Compiler\PassConfig::TYPE_BEFORE_OPTIMIZATION, -10000);
+        if ($this instanceof \MonorepoBuilder20210707\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface) {
+            $container->addCompilerPass($this, \MonorepoBuilder20210707\Symfony\Component\DependencyInjection\Compiler\PassConfig::TYPE_BEFORE_OPTIMIZATION, -10000);
         }
-        if (\class_exists(\MonorepoBuilder20210706\ProxyManager\Configuration::class) && \class_exists(\MonorepoBuilder20210706\Symfony\Bridge\ProxyManager\LazyProxy\Instantiator\RuntimeInstantiator::class)) {
-            $container->setProxyInstantiator(new \MonorepoBuilder20210706\Symfony\Bridge\ProxyManager\LazyProxy\Instantiator\RuntimeInstantiator());
+        if (\class_exists(\MonorepoBuilder20210707\ProxyManager\Configuration::class) && \class_exists(\MonorepoBuilder20210707\Symfony\Bridge\ProxyManager\LazyProxy\Instantiator\RuntimeInstantiator::class)) {
+            $container->setProxyInstantiator(new \MonorepoBuilder20210707\Symfony\Bridge\ProxyManager\LazyProxy\Instantiator\RuntimeInstantiator());
         }
         return $container;
     }
@@ -589,17 +589,17 @@ abstract class Kernel implements \MonorepoBuilder20210706\Symfony\Component\Http
      * @param string $class     The name of the class to generate
      * @param string $baseClass The name of the container's base class
      */
-    protected function dumpContainer(\MonorepoBuilder20210706\Symfony\Component\Config\ConfigCache $cache, \MonorepoBuilder20210706\Symfony\Component\DependencyInjection\ContainerBuilder $container, string $class, string $baseClass)
+    protected function dumpContainer(\MonorepoBuilder20210707\Symfony\Component\Config\ConfigCache $cache, \MonorepoBuilder20210707\Symfony\Component\DependencyInjection\ContainerBuilder $container, string $class, string $baseClass)
     {
         // cache the container
-        $dumper = new \MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Dumper\PhpDumper($container);
-        if (\class_exists(\MonorepoBuilder20210706\ProxyManager\Configuration::class) && \class_exists(\MonorepoBuilder20210706\Symfony\Bridge\ProxyManager\LazyProxy\PhpDumper\ProxyDumper::class)) {
-            $dumper->setProxyDumper(new \MonorepoBuilder20210706\Symfony\Bridge\ProxyManager\LazyProxy\PhpDumper\ProxyDumper());
+        $dumper = new \MonorepoBuilder20210707\Symfony\Component\DependencyInjection\Dumper\PhpDumper($container);
+        if (\class_exists(\MonorepoBuilder20210707\ProxyManager\Configuration::class) && \class_exists(\MonorepoBuilder20210707\Symfony\Bridge\ProxyManager\LazyProxy\PhpDumper\ProxyDumper::class)) {
+            $dumper->setProxyDumper(new \MonorepoBuilder20210707\Symfony\Bridge\ProxyManager\LazyProxy\PhpDumper\ProxyDumper());
         }
         $content = $dumper->dump(['class' => $class, 'base_class' => $baseClass, 'file' => $cache->getPath(), 'as_files' => \true, 'debug' => $this->debug, 'build_time' => $container->hasParameter('kernel.container_build_time') ? $container->getParameter('kernel.container_build_time') : \time(), 'preload_classes' => \array_map('get_class', $this->bundles)]);
         $rootCode = \array_pop($content);
         $dir = \dirname($cache->getPath()) . '/';
-        $fs = new \MonorepoBuilder20210706\Symfony\Component\Filesystem\Filesystem();
+        $fs = new \MonorepoBuilder20210707\Symfony\Component\Filesystem\Filesystem();
         foreach ($content as $file => $code) {
             $fs->dumpFile($dir . $file, $code);
             @\chmod($dir . $file, 0666 & ~\umask());
@@ -615,14 +615,14 @@ abstract class Kernel implements \MonorepoBuilder20210706\Symfony\Component\Http
      *
      * @return DelegatingLoader The loader
      */
-    protected function getContainerLoader(\MonorepoBuilder20210706\Symfony\Component\DependencyInjection\ContainerInterface $container)
+    protected function getContainerLoader(\MonorepoBuilder20210707\Symfony\Component\DependencyInjection\ContainerInterface $container)
     {
         $env = $this->getEnvironment();
-        $locator = new \MonorepoBuilder20210706\Symfony\Component\HttpKernel\Config\FileLocator($this);
-        $resolver = new \MonorepoBuilder20210706\Symfony\Component\Config\Loader\LoaderResolver([new \MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Loader\XmlFileLoader($container, $locator, $env), new \MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Loader\YamlFileLoader($container, $locator, $env), new \MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Loader\IniFileLoader($container, $locator, $env), new \MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Loader\PhpFileLoader($container, $locator, $env, \class_exists(\MonorepoBuilder20210706\Symfony\Component\Config\Builder\ConfigBuilderGenerator::class) ? new \MonorepoBuilder20210706\Symfony\Component\Config\Builder\ConfigBuilderGenerator($this->getBuildDir()) : null), new \MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Loader\GlobFileLoader($container, $locator, $env), new \MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Loader\DirectoryLoader($container, $locator, $env), new \MonorepoBuilder20210706\Symfony\Component\DependencyInjection\Loader\ClosureLoader($container, $env)]);
-        return new \MonorepoBuilder20210706\Symfony\Component\Config\Loader\DelegatingLoader($resolver);
+        $locator = new \MonorepoBuilder20210707\Symfony\Component\HttpKernel\Config\FileLocator($this);
+        $resolver = new \MonorepoBuilder20210707\Symfony\Component\Config\Loader\LoaderResolver([new \MonorepoBuilder20210707\Symfony\Component\DependencyInjection\Loader\XmlFileLoader($container, $locator, $env), new \MonorepoBuilder20210707\Symfony\Component\DependencyInjection\Loader\YamlFileLoader($container, $locator, $env), new \MonorepoBuilder20210707\Symfony\Component\DependencyInjection\Loader\IniFileLoader($container, $locator, $env), new \MonorepoBuilder20210707\Symfony\Component\DependencyInjection\Loader\PhpFileLoader($container, $locator, $env, \class_exists(\MonorepoBuilder20210707\Symfony\Component\Config\Builder\ConfigBuilderGenerator::class) ? new \MonorepoBuilder20210707\Symfony\Component\Config\Builder\ConfigBuilderGenerator($this->getBuildDir()) : null), new \MonorepoBuilder20210707\Symfony\Component\DependencyInjection\Loader\GlobFileLoader($container, $locator, $env), new \MonorepoBuilder20210707\Symfony\Component\DependencyInjection\Loader\DirectoryLoader($container, $locator, $env), new \MonorepoBuilder20210707\Symfony\Component\DependencyInjection\Loader\ClosureLoader($container, $env)]);
+        return new \MonorepoBuilder20210707\Symfony\Component\Config\Loader\DelegatingLoader($resolver);
     }
-    private function preBoot() : \MonorepoBuilder20210706\Symfony\Component\DependencyInjection\ContainerInterface
+    private function preBoot() : \MonorepoBuilder20210707\Symfony\Component\DependencyInjection\ContainerInterface
     {
         if ($this->debug) {
             $this->startTime = \microtime(\true);
@@ -636,10 +636,10 @@ abstract class Kernel implements \MonorepoBuilder20210706\Symfony\Component\Http
         $this->initializeContainer();
         $container = $this->container;
         if ($container->hasParameter('kernel.trusted_hosts') && ($trustedHosts = $container->getParameter('kernel.trusted_hosts'))) {
-            \MonorepoBuilder20210706\Symfony\Component\HttpFoundation\Request::setTrustedHosts($trustedHosts);
+            \MonorepoBuilder20210707\Symfony\Component\HttpFoundation\Request::setTrustedHosts($trustedHosts);
         }
         if ($container->hasParameter('kernel.trusted_proxies') && $container->hasParameter('kernel.trusted_headers') && ($trustedProxies = $container->getParameter('kernel.trusted_proxies'))) {
-            \MonorepoBuilder20210706\Symfony\Component\HttpFoundation\Request::setTrustedProxies(\is_array($trustedProxies) ? $trustedProxies : \array_map('trim', \explode(',', $trustedProxies)), $container->getParameter('kernel.trusted_headers'));
+            \MonorepoBuilder20210707\Symfony\Component\HttpFoundation\Request::setTrustedProxies(\is_array($trustedProxies) ? $trustedProxies : \array_map('trim', \explode(',', $trustedProxies)), $container->getParameter('kernel.trusted_headers'));
         }
         return $container;
     }

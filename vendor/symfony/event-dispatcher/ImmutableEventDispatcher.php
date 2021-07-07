@@ -8,17 +8,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210706\Symfony\Component\EventDispatcher;
+namespace MonorepoBuilder20210707\Symfony\Component\EventDispatcher;
 
 /**
  * A read-only proxy for an event dispatcher.
  *
  * @author Bernhard Schussek <bschussek@gmail.com>
  */
-class ImmutableEventDispatcher implements \MonorepoBuilder20210706\Symfony\Component\EventDispatcher\EventDispatcherInterface
+class ImmutableEventDispatcher implements \MonorepoBuilder20210707\Symfony\Component\EventDispatcher\EventDispatcherInterface
 {
     private $dispatcher;
-    public function __construct(\MonorepoBuilder20210706\Symfony\Component\EventDispatcher\EventDispatcherInterface $dispatcher)
+    public function __construct(\MonorepoBuilder20210707\Symfony\Component\EventDispatcher\EventDispatcherInterface $dispatcher)
     {
         $this->dispatcher = $dispatcher;
     }
@@ -42,7 +42,7 @@ class ImmutableEventDispatcher implements \MonorepoBuilder20210706\Symfony\Compo
     /**
      * {@inheritdoc}
      */
-    public function addSubscriber(\MonorepoBuilder20210706\Symfony\Component\EventDispatcher\EventSubscriberInterface $subscriber)
+    public function addSubscriber(\MonorepoBuilder20210707\Symfony\Component\EventDispatcher\EventSubscriberInterface $subscriber)
     {
         throw new \BadMethodCallException('Unmodifiable event dispatchers must not be modified.');
     }
@@ -56,7 +56,7 @@ class ImmutableEventDispatcher implements \MonorepoBuilder20210706\Symfony\Compo
     /**
      * {@inheritdoc}
      */
-    public function removeSubscriber(\MonorepoBuilder20210706\Symfony\Component\EventDispatcher\EventSubscriberInterface $subscriber)
+    public function removeSubscriber(\MonorepoBuilder20210707\Symfony\Component\EventDispatcher\EventSubscriberInterface $subscriber)
     {
         throw new \BadMethodCallException('Unmodifiable event dispatchers must not be modified.');
     }
