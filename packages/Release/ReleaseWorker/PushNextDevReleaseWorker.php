@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Release\ReleaseWorker;
 
-use MonorepoBuilder20210707\PharIo\Version\Version;
+use PharIo\Version\Version;
 use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface;
 use Symplify\MonorepoBuilder\Release\Process\ProcessRunner;
 use Symplify\MonorepoBuilder\Utils\VersionUtils;
@@ -29,18 +29,18 @@ final class PushNextDevReleaseWorker implements \Symplify\MonorepoBuilder\Releas
         $this->versionUtils = $versionUtils;
         $this->branchName = $parameterProvider->provideStringParameter(\Symplify\MonorepoBuilder\ValueObject\Option::DEFAULT_BRANCH_NAME);
     }
-    public function work(\MonorepoBuilder20210707\PharIo\Version\Version $version) : void
+    public function work(\PharIo\Version\Version $version) : void
     {
         $versionInString = $this->getVersionDev($version);
         $gitAddCommitCommand = \sprintf('git add . && git commit --allow-empty -m "open %s" && git push origin "%s"', $versionInString, $this->branchName);
         $this->processRunner->run($gitAddCommitCommand);
     }
-    public function getDescription(\MonorepoBuilder20210707\PharIo\Version\Version $version) : string
+    public function getDescription(\PharIo\Version\Version $version) : string
     {
         $versionInString = $this->getVersionDev($version);
         return \sprintf('Push "%s" open to remote repository', $versionInString);
     }
-    private function getVersionDev(\MonorepoBuilder20210707\PharIo\Version\Version $version) : string
+    private function getVersionDev(\PharIo\Version\Version $version) : string
     {
         return $this->versionUtils->getNextAliasFormat($version);
     }

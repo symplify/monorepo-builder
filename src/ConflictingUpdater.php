@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder;
 
-use MonorepoBuilder20210707\PharIo\Version\Version;
+use PharIo\Version\Version;
 use MonorepoBuilder20210707\Symplify\ComposerJsonManipulator\ComposerJsonFactory;
 use MonorepoBuilder20210707\Symplify\ComposerJsonManipulator\Printer\ComposerJsonPrinter;
 use MonorepoBuilder20210707\Symplify\SmartFileSystem\SmartFileInfo;
@@ -29,7 +29,7 @@ final class ConflictingUpdater
      * @param string[] $packageNames
      * @param SmartFileInfo[] $packageComposerFileInfos
      */
-    public function updateFileInfosWithVendorAndVersion(array $packageComposerFileInfos, array $packageNames, \MonorepoBuilder20210707\PharIo\Version\Version $conflictingVersion) : void
+    public function updateFileInfosWithVendorAndVersion(array $packageComposerFileInfos, array $packageNames, \PharIo\Version\Version $conflictingVersion) : void
     {
         foreach ($packageComposerFileInfos as $packageComposerFileInfo) {
             $composerJson = $this->composerJsonFactory->createFromFileInfo($packageComposerFileInfo);

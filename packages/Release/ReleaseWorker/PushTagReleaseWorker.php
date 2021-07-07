@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Release\ReleaseWorker;
 
-use MonorepoBuilder20210707\PharIo\Version\Version;
+use PharIo\Version\Version;
 use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface;
 use Symplify\MonorepoBuilder\Release\Process\ProcessRunner;
 final class PushTagReleaseWorker implements \Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface
@@ -16,11 +16,11 @@ final class PushTagReleaseWorker implements \Symplify\MonorepoBuilder\Release\Co
     {
         $this->processRunner = $processRunner;
     }
-    public function work(\MonorepoBuilder20210707\PharIo\Version\Version $version) : void
+    public function work(\PharIo\Version\Version $version) : void
     {
         $this->processRunner->run('git push --tags');
     }
-    public function getDescription(\MonorepoBuilder20210707\PharIo\Version\Version $version) : string
+    public function getDescription(\PharIo\Version\Version $version) : string
     {
         return \sprintf('Push "%s" tag to remote repository', $version->getVersionString());
     }

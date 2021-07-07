@@ -6,11 +6,8 @@ $loader = require_once __DIR__.'/autoload.php';
 
 // Aliases for the whitelisted classes. For more information see:
 // https://github.com/humbug/php-scoper/blob/master/README.md#class-whitelisting
-if (!class_exists('ComposerAutoloaderInit6c4764fde94e7af9ec80697099890472', false) && !interface_exists('ComposerAutoloaderInit6c4764fde94e7af9ec80697099890472', false) && !trait_exists('ComposerAutoloaderInit6c4764fde94e7af9ec80697099890472', false)) {
-    spl_autoload_call('MonorepoBuilder20210707\ComposerAutoloaderInit6c4764fde94e7af9ec80697099890472');
-}
-if (!class_exists('PharIo\Version\Version', false) && !interface_exists('PharIo\Version\Version', false) && !trait_exists('PharIo\Version\Version', false)) {
-    spl_autoload_call('MonorepoBuilder20210707\PharIo\Version\Version');
+if (!class_exists('ComposerAutoloaderInita27650bfc3ca9145edfd5d0ed3e5dcd9', false) && !interface_exists('ComposerAutoloaderInita27650bfc3ca9145edfd5d0ed3e5dcd9', false) && !trait_exists('ComposerAutoloaderInita27650bfc3ca9145edfd5d0ed3e5dcd9', false)) {
+    spl_autoload_call('MonorepoBuilder20210707\ComposerAutoloaderInita27650bfc3ca9145edfd5d0ed3e5dcd9');
 }
 if (!class_exists('Normalizer', false) && !interface_exists('Normalizer', false) && !trait_exists('Normalizer', false)) {
     spl_autoload_call('MonorepoBuilder20210707\Normalizer');
@@ -41,9 +38,9 @@ if (!function_exists('resolveConfigFileInfo')) {
         return \MonorepoBuilder20210707\resolveConfigFileInfo(...func_get_args());
     }
 }
-if (!function_exists('composerRequire6c4764fde94e7af9ec80697099890472')) {
-    function composerRequire6c4764fde94e7af9ec80697099890472() {
-        return \MonorepoBuilder20210707\composerRequire6c4764fde94e7af9ec80697099890472(...func_get_args());
+if (!function_exists('composerRequirea27650bfc3ca9145edfd5d0ed3e5dcd9')) {
+    function composerRequirea27650bfc3ca9145edfd5d0ed3e5dcd9() {
+        return \MonorepoBuilder20210707\composerRequirea27650bfc3ca9145edfd5d0ed3e5dcd9(...func_get_args());
     }
 }
 if (!function_exists('setproctitle')) {

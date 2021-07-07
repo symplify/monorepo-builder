@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Utils;
 
-use MonorepoBuilder20210707\PharIo\Version\Version;
+use PharIo\Version\Version;
 use Symplify\MonorepoBuilder\ValueObject\Option;
 use Symplify\MonorepoBuilder\ValueObjectFactory\VersionFactory;
 use MonorepoBuilder20210707\Symplify\PackageBuilder\Parameter\ParameterProvider;
@@ -60,14 +60,14 @@ final class VersionUtils
     /**
      * @param \PharIo\Version\Version|string $version
      */
-    private function normalizeVersion($version) : \MonorepoBuilder20210707\PharIo\Version\Version
+    private function normalizeVersion($version) : \PharIo\Version\Version
     {
         if (\is_string($version)) {
             return $this->versionFactory->create($version);
         }
         return $version;
     }
-    private function getNextMinorNumber(\MonorepoBuilder20210707\PharIo\Version\Version $version) : int
+    private function getNextMinorNumber(\PharIo\Version\Version $version) : int
     {
         if ($version->hasPreReleaseSuffix()) {
             return (int) $version->getMinor()->getValue();

@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit6c4764fde94e7af9ec80697099890472
+class ComposerStaticInita27650bfc3ca9145edfd5d0ed3e5dcd9
 {
     public static $files = array (
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
@@ -254,25 +254,6 @@ class ComposerStaticInit6c4764fde94e7af9ec80697099890472
         'MonorepoBuilder20210707\\Nette\\Utils\\Strings' => __DIR__ . '/..' . '/nette/utils/src/Utils/Strings.php',
         'MonorepoBuilder20210707\\Nette\\Utils\\UnknownImageFileException' => __DIR__ . '/..' . '/nette/utils/src/Utils/exceptions.php',
         'MonorepoBuilder20210707\\Nette\\Utils\\Validators' => __DIR__ . '/..' . '/nette/utils/src/Utils/Validators.php',
-        'MonorepoBuilder20210707\\PharIo\\Version\\AbstractVersionConstraint' => __DIR__ . '/..' . '/phar-io/version/src/constraints/AbstractVersionConstraint.php',
-        'MonorepoBuilder20210707\\PharIo\\Version\\AndVersionConstraintGroup' => __DIR__ . '/..' . '/phar-io/version/src/constraints/AndVersionConstraintGroup.php',
-        'MonorepoBuilder20210707\\PharIo\\Version\\AnyVersionConstraint' => __DIR__ . '/..' . '/phar-io/version/src/constraints/AnyVersionConstraint.php',
-        'MonorepoBuilder20210707\\PharIo\\Version\\ExactVersionConstraint' => __DIR__ . '/..' . '/phar-io/version/src/constraints/ExactVersionConstraint.php',
-        'MonorepoBuilder20210707\\PharIo\\Version\\Exception' => __DIR__ . '/..' . '/phar-io/version/src/exceptions/Exception.php',
-        'MonorepoBuilder20210707\\PharIo\\Version\\GreaterThanOrEqualToVersionConstraint' => __DIR__ . '/..' . '/phar-io/version/src/constraints/GreaterThanOrEqualToVersionConstraint.php',
-        'MonorepoBuilder20210707\\PharIo\\Version\\InvalidPreReleaseSuffixException' => __DIR__ . '/..' . '/phar-io/version/src/exceptions/InvalidPreReleaseSuffixException.php',
-        'MonorepoBuilder20210707\\PharIo\\Version\\InvalidVersionException' => __DIR__ . '/..' . '/phar-io/version/src/exceptions/InvalidVersionException.php',
-        'MonorepoBuilder20210707\\PharIo\\Version\\NoPreReleaseSuffixException' => __DIR__ . '/..' . '/phar-io/version/src/exceptions/NoPreReleaseSuffixException.php',
-        'MonorepoBuilder20210707\\PharIo\\Version\\OrVersionConstraintGroup' => __DIR__ . '/..' . '/phar-io/version/src/constraints/OrVersionConstraintGroup.php',
-        'MonorepoBuilder20210707\\PharIo\\Version\\PreReleaseSuffix' => __DIR__ . '/..' . '/phar-io/version/src/PreReleaseSuffix.php',
-        'MonorepoBuilder20210707\\PharIo\\Version\\SpecificMajorAndMinorVersionConstraint' => __DIR__ . '/..' . '/phar-io/version/src/constraints/SpecificMajorAndMinorVersionConstraint.php',
-        'MonorepoBuilder20210707\\PharIo\\Version\\SpecificMajorVersionConstraint' => __DIR__ . '/..' . '/phar-io/version/src/constraints/SpecificMajorVersionConstraint.php',
-        'MonorepoBuilder20210707\\PharIo\\Version\\UnsupportedVersionConstraintException' => __DIR__ . '/..' . '/phar-io/version/src/exceptions/UnsupportedVersionConstraintException.php',
-        'MonorepoBuilder20210707\\PharIo\\Version\\Version' => __DIR__ . '/..' . '/phar-io/version/src/Version.php',
-        'MonorepoBuilder20210707\\PharIo\\Version\\VersionConstraint' => __DIR__ . '/..' . '/phar-io/version/src/constraints/VersionConstraint.php',
-        'MonorepoBuilder20210707\\PharIo\\Version\\VersionConstraintParser' => __DIR__ . '/..' . '/phar-io/version/src/VersionConstraintParser.php',
-        'MonorepoBuilder20210707\\PharIo\\Version\\VersionConstraintValue' => __DIR__ . '/..' . '/phar-io/version/src/VersionConstraintValue.php',
-        'MonorepoBuilder20210707\\PharIo\\Version\\VersionNumber' => __DIR__ . '/..' . '/phar-io/version/src/VersionNumber.php',
         'MonorepoBuilder20210707\\Psr\\Container\\ContainerExceptionInterface' => __DIR__ . '/..' . '/psr/container/src/ContainerExceptionInterface.php',
         'MonorepoBuilder20210707\\Psr\\Container\\ContainerInterface' => __DIR__ . '/..' . '/psr/container/src/ContainerInterface.php',
         'MonorepoBuilder20210707\\Psr\\Container\\NotFoundExceptionInterface' => __DIR__ . '/..' . '/psr/container/src/NotFoundExceptionInterface.php',
@@ -1156,6 +1137,25 @@ class ComposerStaticInit6c4764fde94e7af9ec80697099890472
         'MonorepoBuilder20210707\\Symplify\\SymplifyKernel\\Strings\\StringsConverter' => __DIR__ . '/..' . '/symplify/symplify-kernel/src/Strings/StringsConverter.php',
         'MonorepoBuilder20210707\\Symplify\\SymplifyKernel\\ValueObject\\KernelBootAndApplicationRun' => __DIR__ . '/..' . '/symplify/symplify-kernel/src/ValueObject/KernelBootAndApplicationRun.php',
         'Normalizer' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/Resources/stubs/Normalizer.php',
+        'PharIo\\Version\\AbstractVersionConstraint' => __DIR__ . '/..' . '/phar-io/version/src/constraints/AbstractVersionConstraint.php',
+        'PharIo\\Version\\AndVersionConstraintGroup' => __DIR__ . '/..' . '/phar-io/version/src/constraints/AndVersionConstraintGroup.php',
+        'PharIo\\Version\\AnyVersionConstraint' => __DIR__ . '/..' . '/phar-io/version/src/constraints/AnyVersionConstraint.php',
+        'PharIo\\Version\\ExactVersionConstraint' => __DIR__ . '/..' . '/phar-io/version/src/constraints/ExactVersionConstraint.php',
+        'PharIo\\Version\\Exception' => __DIR__ . '/..' . '/phar-io/version/src/exceptions/Exception.php',
+        'PharIo\\Version\\GreaterThanOrEqualToVersionConstraint' => __DIR__ . '/..' . '/phar-io/version/src/constraints/GreaterThanOrEqualToVersionConstraint.php',
+        'PharIo\\Version\\InvalidPreReleaseSuffixException' => __DIR__ . '/..' . '/phar-io/version/src/exceptions/InvalidPreReleaseSuffixException.php',
+        'PharIo\\Version\\InvalidVersionException' => __DIR__ . '/..' . '/phar-io/version/src/exceptions/InvalidVersionException.php',
+        'PharIo\\Version\\NoPreReleaseSuffixException' => __DIR__ . '/..' . '/phar-io/version/src/exceptions/NoPreReleaseSuffixException.php',
+        'PharIo\\Version\\OrVersionConstraintGroup' => __DIR__ . '/..' . '/phar-io/version/src/constraints/OrVersionConstraintGroup.php',
+        'PharIo\\Version\\PreReleaseSuffix' => __DIR__ . '/..' . '/phar-io/version/src/PreReleaseSuffix.php',
+        'PharIo\\Version\\SpecificMajorAndMinorVersionConstraint' => __DIR__ . '/..' . '/phar-io/version/src/constraints/SpecificMajorAndMinorVersionConstraint.php',
+        'PharIo\\Version\\SpecificMajorVersionConstraint' => __DIR__ . '/..' . '/phar-io/version/src/constraints/SpecificMajorVersionConstraint.php',
+        'PharIo\\Version\\UnsupportedVersionConstraintException' => __DIR__ . '/..' . '/phar-io/version/src/exceptions/UnsupportedVersionConstraintException.php',
+        'PharIo\\Version\\Version' => __DIR__ . '/..' . '/phar-io/version/src/Version.php',
+        'PharIo\\Version\\VersionConstraint' => __DIR__ . '/..' . '/phar-io/version/src/constraints/VersionConstraint.php',
+        'PharIo\\Version\\VersionConstraintParser' => __DIR__ . '/..' . '/phar-io/version/src/VersionConstraintParser.php',
+        'PharIo\\Version\\VersionConstraintValue' => __DIR__ . '/..' . '/phar-io/version/src/VersionConstraintValue.php',
+        'PharIo\\Version\\VersionNumber' => __DIR__ . '/..' . '/phar-io/version/src/VersionNumber.php',
         'ReturnTypeWillChange' => __DIR__ . '/..' . '/symfony/polyfill-php81/Resources/stubs/ReturnTypeWillChange.php',
         'Stringable' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
         'Symplify\\MonorepoBuilder\\Command\\BumpInterdependencyCommand' => __DIR__ . '/../..' . '/src/Command/BumpInterdependencyCommand.php',
@@ -1254,9 +1254,9 @@ class ComposerStaticInit6c4764fde94e7af9ec80697099890472
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit6c4764fde94e7af9ec80697099890472::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit6c4764fde94e7af9ec80697099890472::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit6c4764fde94e7af9ec80697099890472::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInita27650bfc3ca9145edfd5d0ed3e5dcd9::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInita27650bfc3ca9145edfd5d0ed3e5dcd9::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInita27650bfc3ca9145edfd5d0ed3e5dcd9::$classMap;
 
         }, null, ClassLoader::class);
     }

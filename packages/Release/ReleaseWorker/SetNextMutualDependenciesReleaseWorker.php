@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Release\ReleaseWorker;
 
-use MonorepoBuilder20210707\PharIo\Version\Version;
+use PharIo\Version\Version;
 use Symplify\MonorepoBuilder\DependencyUpdater;
 use Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider;
 use Symplify\MonorepoBuilder\Package\PackageNamesProvider;
@@ -34,12 +34,12 @@ final class SetNextMutualDependenciesReleaseWorker implements \Symplify\Monorepo
         $this->packageNamesProvider = $packageNamesProvider;
         $this->versionUtils = $versionUtils;
     }
-    public function work(\MonorepoBuilder20210707\PharIo\Version\Version $version) : void
+    public function work(\PharIo\Version\Version $version) : void
     {
         $versionInString = $this->versionUtils->getRequiredNextFormat($version);
         $this->dependencyUpdater->updateFileInfosWithPackagesAndVersion($this->composerJsonProvider->getPackagesComposerFileInfos(), $this->packageNamesProvider->provide(), $versionInString);
     }
-    public function getDescription(\MonorepoBuilder20210707\PharIo\Version\Version $version) : string
+    public function getDescription(\PharIo\Version\Version $version) : string
     {
         $versionInString = $this->versionUtils->getRequiredNextFormat($version);
         return \sprintf('Set packages mutual dependencies to "%s" (alias of dev version)', $versionInString);

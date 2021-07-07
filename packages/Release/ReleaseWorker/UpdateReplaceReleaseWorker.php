@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Release\ReleaseWorker;
 
-use MonorepoBuilder20210707\PharIo\Version\Version;
+use PharIo\Version\Version;
 use MonorepoBuilder20210707\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
 use MonorepoBuilder20210707\Symplify\EasyCI\Exception\ShouldNotHappenException;
 use Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider;
@@ -24,7 +24,7 @@ final class UpdateReplaceReleaseWorker implements \Symplify\MonorepoBuilder\Rele
         $this->composerJsonProvider = $composerJsonProvider;
         $this->jsonFileManager = $jsonFileManager;
     }
-    public function work(\MonorepoBuilder20210707\PharIo\Version\Version $version) : void
+    public function work(\PharIo\Version\Version $version) : void
     {
         $rootComposerJson = $this->composerJsonProvider->getRootComposerJson();
         $replace = $rootComposerJson->getReplace();
@@ -42,7 +42,7 @@ final class UpdateReplaceReleaseWorker implements \Symplify\MonorepoBuilder\Rele
         }
         $this->jsonFileManager->printJsonToFileInfo($rootComposerJson->getJsonArray(), $rootFileInfo);
     }
-    public function getDescription(\MonorepoBuilder20210707\PharIo\Version\Version $version) : string
+    public function getDescription(\PharIo\Version\Version $version) : string
     {
         return 'Update "replace" version in "composer.json" to new tag to avoid circular dependencies conflicts';
     }
