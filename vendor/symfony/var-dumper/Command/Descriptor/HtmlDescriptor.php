@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210707\Symfony\Component\VarDumper\Command\Descriptor;
+namespace MonorepoBuilder20210708\Symfony\Component\VarDumper\Command\Descriptor;
 
-use MonorepoBuilder20210707\Symfony\Component\Console\Output\OutputInterface;
-use MonorepoBuilder20210707\Symfony\Component\VarDumper\Cloner\Data;
-use MonorepoBuilder20210707\Symfony\Component\VarDumper\Dumper\HtmlDumper;
+use MonorepoBuilder20210708\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder20210708\Symfony\Component\VarDumper\Cloner\Data;
+use MonorepoBuilder20210708\Symfony\Component\VarDumper\Dumper\HtmlDumper;
 /**
  * Describe collected data clones for html output.
  *
@@ -20,15 +20,15 @@ use MonorepoBuilder20210707\Symfony\Component\VarDumper\Dumper\HtmlDumper;
  *
  * @final
  */
-class HtmlDescriptor implements \MonorepoBuilder20210707\Symfony\Component\VarDumper\Command\Descriptor\DumpDescriptorInterface
+class HtmlDescriptor implements \MonorepoBuilder20210708\Symfony\Component\VarDumper\Command\Descriptor\DumpDescriptorInterface
 {
     private $dumper;
     private $initialized = \false;
-    public function __construct(\MonorepoBuilder20210707\Symfony\Component\VarDumper\Dumper\HtmlDumper $dumper)
+    public function __construct(\MonorepoBuilder20210708\Symfony\Component\VarDumper\Dumper\HtmlDumper $dumper)
     {
         $this->dumper = $dumper;
     }
-    public function describe(\MonorepoBuilder20210707\Symfony\Component\Console\Output\OutputInterface $output, \MonorepoBuilder20210707\Symfony\Component\VarDumper\Cloner\Data $data, array $context, int $clientId) : void
+    public function describe(\MonorepoBuilder20210708\Symfony\Component\Console\Output\OutputInterface $output, \MonorepoBuilder20210708\Symfony\Component\VarDumper\Cloner\Data $data, array $context, int $clientId) : void
     {
         if (!$this->initialized) {
             $styles = \file_get_contents(__DIR__ . '/../../Resources/css/htmlDescriptor.css');

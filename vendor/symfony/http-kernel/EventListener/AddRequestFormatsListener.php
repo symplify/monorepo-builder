@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210707\Symfony\Component\HttpKernel\EventListener;
+namespace MonorepoBuilder20210708\Symfony\Component\HttpKernel\EventListener;
 
-use MonorepoBuilder20210707\Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use MonorepoBuilder20210707\Symfony\Component\HttpKernel\Event\RequestEvent;
-use MonorepoBuilder20210707\Symfony\Component\HttpKernel\KernelEvents;
+use MonorepoBuilder20210708\Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use MonorepoBuilder20210708\Symfony\Component\HttpKernel\Event\RequestEvent;
+use MonorepoBuilder20210708\Symfony\Component\HttpKernel\KernelEvents;
 /**
  * Adds configured formats to each request.
  *
@@ -20,7 +20,7 @@ use MonorepoBuilder20210707\Symfony\Component\HttpKernel\KernelEvents;
  *
  * @final
  */
-class AddRequestFormatsListener implements \MonorepoBuilder20210707\Symfony\Component\EventDispatcher\EventSubscriberInterface
+class AddRequestFormatsListener implements \MonorepoBuilder20210708\Symfony\Component\EventDispatcher\EventSubscriberInterface
 {
     protected $formats;
     public function __construct(array $formats)
@@ -30,7 +30,7 @@ class AddRequestFormatsListener implements \MonorepoBuilder20210707\Symfony\Comp
     /**
      * Adds request formats.
      */
-    public function onKernelRequest(\MonorepoBuilder20210707\Symfony\Component\HttpKernel\Event\RequestEvent $event)
+    public function onKernelRequest(\MonorepoBuilder20210708\Symfony\Component\HttpKernel\Event\RequestEvent $event)
     {
         $request = $event->getRequest();
         foreach ($this->formats as $format => $mimeTypes) {
@@ -42,6 +42,6 @@ class AddRequestFormatsListener implements \MonorepoBuilder20210707\Symfony\Comp
      */
     public static function getSubscribedEvents() : array
     {
-        return [\MonorepoBuilder20210707\Symfony\Component\HttpKernel\KernelEvents::REQUEST => ['onKernelRequest', 100]];
+        return [\MonorepoBuilder20210708\Symfony\Component\HttpKernel\KernelEvents::REQUEST => ['onKernelRequest', 100]];
     }
 }

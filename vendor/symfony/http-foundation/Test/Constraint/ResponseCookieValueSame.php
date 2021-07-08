@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210707\Symfony\Component\HttpFoundation\Test\Constraint;
+namespace MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Test\Constraint;
 
-use MonorepoBuilder20210707\PHPUnit\Framework\Constraint\Constraint;
-use MonorepoBuilder20210707\Symfony\Component\HttpFoundation\Cookie;
-use MonorepoBuilder20210707\Symfony\Component\HttpFoundation\Response;
-final class ResponseCookieValueSame extends \MonorepoBuilder20210707\PHPUnit\Framework\Constraint\Constraint
+use MonorepoBuilder20210708\PHPUnit\Framework\Constraint\Constraint;
+use MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Cookie;
+use MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Response;
+final class ResponseCookieValueSame extends \MonorepoBuilder20210708\PHPUnit\Framework\Constraint\Constraint
 {
     private $name;
     private $value;
@@ -63,10 +63,10 @@ final class ResponseCookieValueSame extends \MonorepoBuilder20210707\PHPUnit\Fra
     {
         return 'the Response ' . $this->toString();
     }
-    protected function getCookie(\MonorepoBuilder20210707\Symfony\Component\HttpFoundation\Response $response) : ?\MonorepoBuilder20210707\Symfony\Component\HttpFoundation\Cookie
+    protected function getCookie(\MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Response $response) : ?\MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Cookie
     {
         $cookies = $response->headers->getCookies();
-        $filteredCookies = \array_filter($cookies, function (\MonorepoBuilder20210707\Symfony\Component\HttpFoundation\Cookie $cookie) {
+        $filteredCookies = \array_filter($cookies, function (\MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Cookie $cookie) {
             return $cookie->getName() === $this->name && $cookie->getPath() === $this->path && $cookie->getDomain() === $this->domain;
         });
         return \reset($filteredCookies) ?: null;

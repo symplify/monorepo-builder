@@ -22,7 +22,7 @@
     },
     "autoload": {
         "psr-4": {
-            "MonorepoBuilder20210707\\Psr\\Container\\": "src\/"
+            "MonorepoBuilder20210708\\Psr\\Container\\": "src\/"
         }
     }
 }

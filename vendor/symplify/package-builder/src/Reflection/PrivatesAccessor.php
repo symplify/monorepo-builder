@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20210707\Symplify\PackageBuilder\Reflection;
+namespace MonorepoBuilder20210708\Symplify\PackageBuilder\Reflection;
 
 use ReflectionProperty;
-use MonorepoBuilder20210707\Symplify\PHPStanRules\Exception\ShouldNotHappenException;
+use MonorepoBuilder20210708\Symplify\PHPStanRules\Exception\ShouldNotHappenException;
 /**
  * @see \Symplify\PackageBuilder\Tests\Reflection\PrivatesAccessorTest
  */
@@ -39,7 +39,7 @@ final class PrivatesAccessor
         }
         $parentClass = \get_parent_class($object);
         if ($parentClass === \false) {
-            throw new \MonorepoBuilder20210707\Symplify\PHPStanRules\Exception\ShouldNotHappenException();
+            throw new \MonorepoBuilder20210708\Symplify\PHPStanRules\Exception\ShouldNotHappenException();
         }
         return new \ReflectionProperty($parentClass, $propertyName);
     }

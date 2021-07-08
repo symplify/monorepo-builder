@@ -5,9 +5,9 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace MonorepoBuilder20210707\Nette\Utils;
+namespace MonorepoBuilder20210708\Nette\Utils;
 
-use MonorepoBuilder20210707\Nette;
+use MonorepoBuilder20210708\Nette;
 /**
  * Nette\Object behaviour mixin.
  * @deprecated
@@ -19,7 +19,7 @@ final class ObjectMixin
     public static function getSuggestion(array $possibilities, string $value) : ?string
     {
         \trigger_error(__METHOD__ . '() has been renamed to Nette\\Utils\\ObjectHelpers::getSuggestion()', \E_USER_DEPRECATED);
-        return \MonorepoBuilder20210707\Nette\Utils\ObjectHelpers::getSuggestion($possibilities, $value);
+        return \MonorepoBuilder20210708\Nette\Utils\ObjectHelpers::getSuggestion($possibilities, $value);
     }
     public static function setExtensionMethod() : void
     {

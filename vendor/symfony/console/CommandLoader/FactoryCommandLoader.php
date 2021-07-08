@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210707\Symfony\Component\Console\CommandLoader;
+namespace MonorepoBuilder20210708\Symfony\Component\Console\CommandLoader;
 
-use MonorepoBuilder20210707\Symfony\Component\Console\Exception\CommandNotFoundException;
+use MonorepoBuilder20210708\Symfony\Component\Console\Exception\CommandNotFoundException;
 /**
  * A simple command loader using factories to instantiate commands lazily.
  *
  * @author Maxime Steinhausser <maxime.steinhausser@gmail.com>
  */
-class FactoryCommandLoader implements \MonorepoBuilder20210707\Symfony\Component\Console\CommandLoader\CommandLoaderInterface
+class FactoryCommandLoader implements \MonorepoBuilder20210708\Symfony\Component\Console\CommandLoader\CommandLoaderInterface
 {
     private $factories;
     /**
@@ -39,7 +39,7 @@ class FactoryCommandLoader implements \MonorepoBuilder20210707\Symfony\Component
     public function get(string $name)
     {
         if (!isset($this->factories[$name])) {
-            throw new \MonorepoBuilder20210707\Symfony\Component\Console\Exception\CommandNotFoundException(\sprintf('Command "%s" does not exist.', $name));
+            throw new \MonorepoBuilder20210708\Symfony\Component\Console\Exception\CommandNotFoundException(\sprintf('Command "%s" does not exist.', $name));
         }
         $factory = $this->factories[$name];
         return $factory();

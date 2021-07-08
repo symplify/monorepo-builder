@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210707\Symfony\Contracts\HttpClient;
+namespace MonorepoBuilder20210708\Symfony\Contracts\HttpClient;
 
-use MonorepoBuilder20210707\Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
-use MonorepoBuilder20210707\Symfony\Contracts\HttpClient\Exception\DecodingExceptionInterface;
-use MonorepoBuilder20210707\Symfony\Contracts\HttpClient\Exception\ExceptionInterface;
-use MonorepoBuilder20210707\Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
-use MonorepoBuilder20210707\Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
-use MonorepoBuilder20210707\Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
+use MonorepoBuilder20210708\Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
+use MonorepoBuilder20210708\Symfony\Contracts\HttpClient\Exception\DecodingExceptionInterface;
+use MonorepoBuilder20210708\Symfony\Contracts\HttpClient\Exception\ExceptionInterface;
+use MonorepoBuilder20210708\Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
+use MonorepoBuilder20210708\Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
+use MonorepoBuilder20210708\Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 /**
  * A (lazily retrieved) HTTP response.
  *

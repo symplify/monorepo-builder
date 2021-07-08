@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210707\Symfony\Component\ErrorHandler\ErrorRenderer;
+namespace MonorepoBuilder20210708\Symfony\Component\ErrorHandler\ErrorRenderer;
 
-use MonorepoBuilder20210707\Symfony\Component\ErrorHandler\Exception\FlattenException;
+use MonorepoBuilder20210708\Symfony\Component\ErrorHandler\Exception\FlattenException;
 /**
  * Formats an exception to be used as response content.
  *
@@ -21,5 +21,5 @@ interface ErrorRendererInterface
     /**
      * Renders a Throwable as a FlattenException.
      */
-    public function render(\Throwable $exception) : \MonorepoBuilder20210707\Symfony\Component\ErrorHandler\Exception\FlattenException;
+    public function render(\Throwable $exception) : \MonorepoBuilder20210708\Symfony\Component\ErrorHandler\Exception\FlattenException;
 }

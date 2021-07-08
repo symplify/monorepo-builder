@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210707\Symfony\Component\Config;
+namespace MonorepoBuilder20210708\Symfony\Component\Config;
 
 /**
  * Basic implementation of ConfigCacheFactoryInterface that
@@ -19,7 +19,7 @@ namespace MonorepoBuilder20210707\Symfony\Component\Config;
  *
  * @author Matthias Pigulla <mp@webfactory.de>
  */
-class ConfigCacheFactory implements \MonorepoBuilder20210707\Symfony\Component\Config\ConfigCacheFactoryInterface
+class ConfigCacheFactory implements \MonorepoBuilder20210708\Symfony\Component\Config\ConfigCacheFactoryInterface
 {
     private $debug;
     /**
@@ -34,7 +34,7 @@ class ConfigCacheFactory implements \MonorepoBuilder20210707\Symfony\Component\C
      */
     public function cache(string $file, callable $callback)
     {
-        $cache = new \MonorepoBuilder20210707\Symfony\Component\Config\ConfigCache($file, $this->debug);
+        $cache = new \MonorepoBuilder20210708\Symfony\Component\Config\ConfigCache($file, $this->debug);
         if (!$cache->isFresh()) {
             $callback($cache);
         }

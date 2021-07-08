@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210707\Symfony\Component\Console\Descriptor;
+namespace MonorepoBuilder20210708\Symfony\Component\Console\Descriptor;
 
-use MonorepoBuilder20210707\Symfony\Component\Console\Application;
-use MonorepoBuilder20210707\Symfony\Component\Console\Command\Command;
-use MonorepoBuilder20210707\Symfony\Component\Console\Formatter\OutputFormatter;
-use MonorepoBuilder20210707\Symfony\Component\Console\Helper\Helper;
-use MonorepoBuilder20210707\Symfony\Component\Console\Input\InputArgument;
-use MonorepoBuilder20210707\Symfony\Component\Console\Input\InputDefinition;
-use MonorepoBuilder20210707\Symfony\Component\Console\Input\InputOption;
+use MonorepoBuilder20210708\Symfony\Component\Console\Application;
+use MonorepoBuilder20210708\Symfony\Component\Console\Command\Command;
+use MonorepoBuilder20210708\Symfony\Component\Console\Formatter\OutputFormatter;
+use MonorepoBuilder20210708\Symfony\Component\Console\Helper\Helper;
+use MonorepoBuilder20210708\Symfony\Component\Console\Input\InputArgument;
+use MonorepoBuilder20210708\Symfony\Component\Console\Input\InputDefinition;
+use MonorepoBuilder20210708\Symfony\Component\Console\Input\InputOption;
 /**
  * Text descriptor.
  *
@@ -24,19 +24,19 @@ use MonorepoBuilder20210707\Symfony\Component\Console\Input\InputOption;
  *
  * @internal
  */
-class TextDescriptor extends \MonorepoBuilder20210707\Symfony\Component\Console\Descriptor\Descriptor
+class TextDescriptor extends \MonorepoBuilder20210708\Symfony\Component\Console\Descriptor\Descriptor
 {
     /**
      * {@inheritdoc}
      */
-    protected function describeInputArgument(\MonorepoBuilder20210707\Symfony\Component\Console\Input\InputArgument $argument, array $options = [])
+    protected function describeInputArgument(\MonorepoBuilder20210708\Symfony\Component\Console\Input\InputArgument $argument, array $options = [])
     {
         if (null !== $argument->getDefault() && (!\is_array($argument->getDefault()) || \count($argument->getDefault()))) {
             $default = \sprintf('<comment> [default: %s]</comment>', $this->formatDefaultValue($argument->getDefault()));
         } else {
             $default = '';
         }
-        $totalWidth = $options['total_width'] ?? \MonorepoBuilder20210707\Symfony\Component\Console\Helper\Helper::width($argument->getName());
+        $totalWidth = $options['total_width'] ?? \MonorepoBuilder20210708\Symfony\Component\Console\Helper\Helper::width($argument->getName());
         $spacingWidth = $totalWidth - \strlen($argument->getName());
         $this->writeText(\sprintf(
             '  <info>%s</info>  %s%s%s',
@@ -50,7 +50,7 @@ class TextDescriptor extends \MonorepoBuilder20210707\Symfony\Component\Console\
     /**
      * {@inheritdoc}
      */
-    protected function describeInputOption(\MonorepoBuilder20210707\Symfony\Component\Console\Input\InputOption $option, array $options = [])
+    protected function describeInputOption(\MonorepoBuilder20210708\Symfony\Component\Console\Input\InputOption $option, array $options = [])
     {
         if ($option->acceptValue() && null !== $option->getDefault() && (!\is_array($option->getDefault()) || \count($option->getDefault()))) {
             $default = \sprintf('<comment> [default: %s]</comment>', $this->formatDefaultValue($option->getDefault()));
@@ -66,7 +66,7 @@ class TextDescriptor extends \MonorepoBuilder20210707\Symfony\Component\Console\
         }
         $totalWidth = $options['total_width'] ?? $this->calculateTotalWidthForOptions([$option]);
         $synopsis = \sprintf('%s%s', $option->getShortcut() ? \sprintf('-%s, ', $option->getShortcut()) : '    ', \sprintf($option->isNegatable() ? '--%1$s|--no-%1$s' : '--%1$s%2$s', $option->getName(), $value));
-        $spacingWidth = $totalWidth - \MonorepoBuilder20210707\Symfony\Component\Console\Helper\Helper::width($synopsis);
+        $spacingWidth = $totalWidth - \MonorepoBuilder20210708\Symfony\Component\Console\Helper\Helper::width($synopsis);
         $this->writeText(\sprintf(
             '  <info>%s</info>  %s%s%s%s',
             $synopsis,
@@ -80,11 +80,11 @@ class TextDescriptor extends \MonorepoBuilder20210707\Symfony\Component\Console\
     /**
      * {@inheritdoc}
      */
-    protected function describeInputDefinition(\MonorepoBuilder20210707\Symfony\Component\Console\Input\InputDefinition $definition, array $options = [])
+    protected function describeInputDefinition(\MonorepoBuilder20210708\Symfony\Component\Console\Input\InputDefinition $definition, array $options = [])
     {
         $totalWidth = $this->calculateTotalWidthForOptions($definition->getOptions());
         foreach ($definition->getArguments() as $argument) {
-            $totalWidth = \max($totalWidth, \MonorepoBuilder20210707\Symfony\Component\Console\Helper\Helper::width($argument->getName()));
+            $totalWidth = \max($totalWidth, \MonorepoBuilder20210708\Symfony\Component\Console\Helper\Helper::width($argument->getName()));
         }
         if ($definition->getArguments()) {
             $this->writeText('<comment>Arguments:</comment>', $options);
@@ -117,7 +117,7 @@ class TextDescriptor extends \MonorepoBuilder20210707\Symfony\Component\Console\
     /**
      * {@inheritdoc}
      */
-    protected function describeCommand(\MonorepoBuilder20210707\Symfony\Component\Console\Command\Command $command, array $options = [])
+    protected function describeCommand(\MonorepoBuilder20210708\Symfony\Component\Console\Command\Command $command, array $options = [])
     {
         $command->mergeApplicationDefinition(\false);
         if ($description = $command->getDescription()) {
@@ -129,7 +129,7 @@ class TextDescriptor extends \MonorepoBuilder20210707\Symfony\Component\Console\
         $this->writeText('<comment>Usage:</comment>', $options);
         foreach (\array_merge([$command->getSynopsis(\true)], $command->getAliases(), $command->getUsages()) as $usage) {
             $this->writeText("\n");
-            $this->writeText('  ' . \MonorepoBuilder20210707\Symfony\Component\Console\Formatter\OutputFormatter::escape($usage), $options);
+            $this->writeText('  ' . \MonorepoBuilder20210708\Symfony\Component\Console\Formatter\OutputFormatter::escape($usage), $options);
         }
         $this->writeText("\n");
         $definition = $command->getDefinition();
@@ -150,10 +150,10 @@ class TextDescriptor extends \MonorepoBuilder20210707\Symfony\Component\Console\
     /**
      * {@inheritdoc}
      */
-    protected function describeApplication(\MonorepoBuilder20210707\Symfony\Component\Console\Application $application, array $options = [])
+    protected function describeApplication(\MonorepoBuilder20210708\Symfony\Component\Console\Application $application, array $options = [])
     {
         $describedNamespace = $options['namespace'] ?? null;
-        $description = new \MonorepoBuilder20210707\Symfony\Component\Console\Descriptor\ApplicationDescription($application, $describedNamespace);
+        $description = new \MonorepoBuilder20210708\Symfony\Component\Console\Descriptor\ApplicationDescription($application, $describedNamespace);
         if (isset($options['raw_text']) && $options['raw_text']) {
             $width = $this->getColumnWidth($description->getCommands());
             foreach ($description->getCommands() as $command) {
@@ -166,7 +166,7 @@ class TextDescriptor extends \MonorepoBuilder20210707\Symfony\Component\Console\
             }
             $this->writeText("<comment>Usage:</comment>\n", $options);
             $this->writeText("  command [options] [arguments]\n\n", $options);
-            $this->describeInputDefinition(new \MonorepoBuilder20210707\Symfony\Component\Console\Input\InputDefinition($application->getDefinition()->getOptions()), $options);
+            $this->describeInputDefinition(new \MonorepoBuilder20210708\Symfony\Component\Console\Input\InputDefinition($application->getDefinition()->getOptions()), $options);
             $this->writeText("\n");
             $this->writeText("\n");
             $commands = $description->getCommands();
@@ -194,13 +194,13 @@ class TextDescriptor extends \MonorepoBuilder20210707\Symfony\Component\Console\
                 if (!$namespace['commands']) {
                     continue;
                 }
-                if (!$describedNamespace && \MonorepoBuilder20210707\Symfony\Component\Console\Descriptor\ApplicationDescription::GLOBAL_NAMESPACE !== $namespace['id']) {
+                if (!$describedNamespace && \MonorepoBuilder20210708\Symfony\Component\Console\Descriptor\ApplicationDescription::GLOBAL_NAMESPACE !== $namespace['id']) {
                     $this->writeText("\n");
                     $this->writeText(' <comment>' . $namespace['id'] . '</comment>', $options);
                 }
                 foreach ($namespace['commands'] as $name) {
                     $this->writeText("\n");
-                    $spacingWidth = $width - \MonorepoBuilder20210707\Symfony\Component\Console\Helper\Helper::width($name);
+                    $spacingWidth = $width - \MonorepoBuilder20210708\Symfony\Component\Console\Helper\Helper::width($name);
                     $command = $commands[$name];
                     $commandAliases = $name === $command->getName() ? $this->getCommandAliasesText($command) : '';
                     $this->writeText(\sprintf('  <info>%s</info>%s%s', $name, \str_repeat(' ', $spacingWidth), $commandAliases . $command->getDescription()), $options);
@@ -219,7 +219,7 @@ class TextDescriptor extends \MonorepoBuilder20210707\Symfony\Component\Console\
     /**
      * Formats command aliases to show them in the command description.
      */
-    private function getCommandAliasesText(\MonorepoBuilder20210707\Symfony\Component\Console\Command\Command $command) : string
+    private function getCommandAliasesText(\MonorepoBuilder20210708\Symfony\Component\Console\Command\Command $command) : string
     {
         $text = '';
         $aliases = $command->getAliases();
@@ -239,11 +239,11 @@ class TextDescriptor extends \MonorepoBuilder20210707\Symfony\Component\Console\
             return 'INF';
         }
         if (\is_string($default)) {
-            $default = \MonorepoBuilder20210707\Symfony\Component\Console\Formatter\OutputFormatter::escape($default);
+            $default = \MonorepoBuilder20210708\Symfony\Component\Console\Formatter\OutputFormatter::escape($default);
         } elseif (\is_array($default)) {
             foreach ($default as $key => $value) {
                 if (\is_string($value)) {
-                    $default[$key] = \MonorepoBuilder20210707\Symfony\Component\Console\Formatter\OutputFormatter::escape($value);
+                    $default[$key] = \MonorepoBuilder20210708\Symfony\Component\Console\Formatter\OutputFormatter::escape($value);
                 }
             }
         }
@@ -256,13 +256,13 @@ class TextDescriptor extends \MonorepoBuilder20210707\Symfony\Component\Console\
     {
         $widths = [];
         foreach ($commands as $command) {
-            if ($command instanceof \MonorepoBuilder20210707\Symfony\Component\Console\Command\Command) {
-                $widths[] = \MonorepoBuilder20210707\Symfony\Component\Console\Helper\Helper::width($command->getName());
+            if ($command instanceof \MonorepoBuilder20210708\Symfony\Component\Console\Command\Command) {
+                $widths[] = \MonorepoBuilder20210708\Symfony\Component\Console\Helper\Helper::width($command->getName());
                 foreach ($command->getAliases() as $alias) {
-                    $widths[] = \MonorepoBuilder20210707\Symfony\Component\Console\Helper\Helper::width($alias);
+                    $widths[] = \MonorepoBuilder20210708\Symfony\Component\Console\Helper\Helper::width($alias);
                 }
             } else {
-                $widths[] = \MonorepoBuilder20210707\Symfony\Component\Console\Helper\Helper::width($command);
+                $widths[] = \MonorepoBuilder20210708\Symfony\Component\Console\Helper\Helper::width($command);
             }
         }
         return $widths ? \max($widths) + 2 : 0;
@@ -275,12 +275,12 @@ class TextDescriptor extends \MonorepoBuilder20210707\Symfony\Component\Console\
         $totalWidth = 0;
         foreach ($options as $option) {
             // "-" + shortcut + ", --" + name
-            $nameLength = 1 + \max(\MonorepoBuilder20210707\Symfony\Component\Console\Helper\Helper::width($option->getShortcut()), 1) + 4 + \MonorepoBuilder20210707\Symfony\Component\Console\Helper\Helper::width($option->getName());
+            $nameLength = 1 + \max(\MonorepoBuilder20210708\Symfony\Component\Console\Helper\Helper::width($option->getShortcut()), 1) + 4 + \MonorepoBuilder20210708\Symfony\Component\Console\Helper\Helper::width($option->getName());
             if ($option->isNegatable()) {
-                $nameLength += 6 + \MonorepoBuilder20210707\Symfony\Component\Console\Helper\Helper::width($option->getName());
+                $nameLength += 6 + \MonorepoBuilder20210708\Symfony\Component\Console\Helper\Helper::width($option->getName());
                 // |--no- + name
             } elseif ($option->acceptValue()) {
-                $valueLength = 1 + \MonorepoBuilder20210707\Symfony\Component\Console\Helper\Helper::width($option->getName());
+                $valueLength = 1 + \MonorepoBuilder20210708\Symfony\Component\Console\Helper\Helper::width($option->getName());
                 // = + value
                 $valueLength += $option->isValueOptional() ? 2 : 0;
                 // [ + ]

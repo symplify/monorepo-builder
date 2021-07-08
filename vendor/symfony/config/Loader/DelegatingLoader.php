@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210707\Symfony\Component\Config\Loader;
+namespace MonorepoBuilder20210708\Symfony\Component\Config\Loader;
 
-use MonorepoBuilder20210707\Symfony\Component\Config\Exception\LoaderLoadException;
+use MonorepoBuilder20210708\Symfony\Component\Config\Exception\LoaderLoadException;
 /**
  * DelegatingLoader delegates loading to other loaders using a loader resolver.
  *
@@ -19,9 +19,9 @@ use MonorepoBuilder20210707\Symfony\Component\Config\Exception\LoaderLoadExcepti
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class DelegatingLoader extends \MonorepoBuilder20210707\Symfony\Component\Config\Loader\Loader
+class DelegatingLoader extends \MonorepoBuilder20210708\Symfony\Component\Config\Loader\Loader
 {
-    public function __construct(\MonorepoBuilder20210707\Symfony\Component\Config\Loader\LoaderResolverInterface $resolver)
+    public function __construct(\MonorepoBuilder20210708\Symfony\Component\Config\Loader\LoaderResolverInterface $resolver)
     {
         $this->resolver = $resolver;
     }
@@ -31,7 +31,7 @@ class DelegatingLoader extends \MonorepoBuilder20210707\Symfony\Component\Config
     public function load($resource, string $type = null)
     {
         if (\false === ($loader = $this->resolver->resolve($resource, $type))) {
-            throw new \MonorepoBuilder20210707\Symfony\Component\Config\Exception\LoaderLoadException($resource, null, 0, null, $type);
+            throw new \MonorepoBuilder20210708\Symfony\Component\Config\Exception\LoaderLoadException($resource, null, 0, null, $type);
         }
         return $loader->load($resource, $type);
     }
