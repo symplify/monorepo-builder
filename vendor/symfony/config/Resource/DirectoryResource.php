@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210708\Symfony\Component\Config\Resource;
+namespace MonorepoBuilder20210710\Symfony\Component\Config\Resource;
 
 /**
  * DirectoryResource represents a resources stored in a subdirectory tree.
@@ -17,7 +17,7 @@ namespace MonorepoBuilder20210708\Symfony\Component\Config\Resource;
  *
  * @final
  */
-class DirectoryResource implements \MonorepoBuilder20210708\Symfony\Component\Config\Resource\SelfCheckingResourceInterface
+class DirectoryResource implements \MonorepoBuilder20210710\Symfony\Component\Config\Resource\SelfCheckingResourceInterface
 {
     private $resource;
     private $pattern;
@@ -58,8 +58,9 @@ class DirectoryResource implements \MonorepoBuilder20210708\Symfony\Component\Co
     }
     /**
      * {@inheritdoc}
+     * @param int $timestamp
      */
-    public function isFresh(int $timestamp) : bool
+    public function isFresh($timestamp) : bool
     {
         if (!\is_dir($this->resource)) {
             return \false;

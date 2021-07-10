@@ -8,36 +8,39 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210708\Symfony\Component\Console\Formatter;
+namespace MonorepoBuilder20210710\Symfony\Component\Console\Formatter;
 
 /**
  * @author Tien Xuan Vo <tien.xuan.vo@gmail.com>
  */
-final class NullOutputFormatter implements \MonorepoBuilder20210708\Symfony\Component\Console\Formatter\OutputFormatterInterface
+final class NullOutputFormatter implements \MonorepoBuilder20210710\Symfony\Component\Console\Formatter\OutputFormatterInterface
 {
     private $style;
     /**
      * {@inheritdoc}
+     * @param string|null $message
      */
-    public function format(?string $message) : void
+    public function format($message) : void
     {
         // do nothing
     }
     /**
      * {@inheritdoc}
+     * @param string $name
      */
-    public function getStyle(string $name) : \MonorepoBuilder20210708\Symfony\Component\Console\Formatter\OutputFormatterStyleInterface
+    public function getStyle($name) : \MonorepoBuilder20210710\Symfony\Component\Console\Formatter\OutputFormatterStyleInterface
     {
         if ($this->style) {
             return $this->style;
         }
         // to comply with the interface we must return a OutputFormatterStyleInterface
-        return $this->style = new \MonorepoBuilder20210708\Symfony\Component\Console\Formatter\NullOutputFormatterStyle();
+        return $this->style = new \MonorepoBuilder20210710\Symfony\Component\Console\Formatter\NullOutputFormatterStyle();
     }
     /**
      * {@inheritdoc}
+     * @param string $name
      */
-    public function hasStyle(string $name) : bool
+    public function hasStyle($name) : bool
     {
         return \false;
     }
@@ -50,15 +53,18 @@ final class NullOutputFormatter implements \MonorepoBuilder20210708\Symfony\Comp
     }
     /**
      * {@inheritdoc}
+     * @param bool $decorated
      */
-    public function setDecorated(bool $decorated) : void
+    public function setDecorated($decorated) : void
     {
         // do nothing
     }
     /**
      * {@inheritdoc}
+     * @param string $name
+     * @param \Symfony\Component\Console\Formatter\OutputFormatterStyleInterface $style
      */
-    public function setStyle(string $name, \MonorepoBuilder20210708\Symfony\Component\Console\Formatter\OutputFormatterStyleInterface $style) : void
+    public function setStyle($name, $style) : void
     {
         // do nothing
     }

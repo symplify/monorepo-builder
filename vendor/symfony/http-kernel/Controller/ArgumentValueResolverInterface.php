@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210708\Symfony\Component\HttpKernel\Controller;
+namespace MonorepoBuilder20210710\Symfony\Component\HttpKernel\Controller;
 
-use MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Request;
-use MonorepoBuilder20210708\Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata;
+use MonorepoBuilder20210710\Symfony\Component\HttpFoundation\Request;
+use MonorepoBuilder20210710\Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata;
 /**
  * Responsible for resolving the value of an argument based on its metadata.
  *
@@ -23,12 +23,16 @@ interface ArgumentValueResolverInterface
      * Whether this resolver can resolve the value for the given ArgumentMetadata.
      *
      * @return bool
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @param \Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata $argument
      */
-    public function supports(\MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Request $request, \MonorepoBuilder20210708\Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata $argument);
+    public function supports($request, $argument);
     /**
      * Returns the possible value(s).
      *
      * @return iterable
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @param \Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata $argument
      */
-    public function resolve(\MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Request $request, \MonorepoBuilder20210708\Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata $argument);
+    public function resolve($request, $argument);
 }

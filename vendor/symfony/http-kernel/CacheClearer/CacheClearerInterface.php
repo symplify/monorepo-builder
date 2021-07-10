@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210708\Symfony\Component\HttpKernel\CacheClearer;
+namespace MonorepoBuilder20210710\Symfony\Component\HttpKernel\CacheClearer;
 
 /**
  * CacheClearerInterface.
@@ -19,6 +19,7 @@ interface CacheClearerInterface
 {
     /**
      * Clears any caches necessary.
+     * @param string $cacheDir
      */
-    public function clear(string $cacheDir);
+    public function clear($cacheDir);
 }

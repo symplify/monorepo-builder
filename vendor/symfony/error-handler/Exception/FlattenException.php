@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210708\Symfony\Component\ErrorHandler\Exception;
+namespace MonorepoBuilder20210710\Symfony\Component\ErrorHandler\Exception;
 
-use MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Exception\RequestExceptionInterface;
-use MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Response;
-use MonorepoBuilder20210708\Symfony\Component\HttpKernel\Exception\HttpExceptionInterface;
+use MonorepoBuilder20210710\Symfony\Component\HttpFoundation\Exception\RequestExceptionInterface;
+use MonorepoBuilder20210710\Symfony\Component\HttpFoundation\Response;
+use MonorepoBuilder20210710\Symfony\Component\HttpKernel\Exception\HttpExceptionInterface;
 /**
  * FlattenException wraps a PHP Error or Exception to be able to serialize it.
  *
@@ -48,30 +48,35 @@ class FlattenException
     private $asString;
     /**
      * @return static
+     * @param \Exception $exception
+     * @param mixed[] $headers
      */
-    public static function create(\Exception $exception, $statusCode = null, array $headers = [])
+    public static function create($exception, $statusCode = null, $headers = [])
     {
         return static::createFromThrowable($exception, $statusCode, $headers);
     }
     /**
      * @return static
+     * @param \Throwable $exception
+     * @param int|null $statusCode
+     * @param mixed[] $headers
      */
-    public static function createFromThrowable(\Throwable $exception, int $statusCode = null, array $headers = [])
+    public static function createFromThrowable($exception, $statusCode = null, $headers = [])
     {
         $e = new static();
         $e->setMessage($exception->getMessage());
         $e->setCode($exception->getCode());
-        if ($exception instanceof \MonorepoBuilder20210708\Symfony\Component\HttpKernel\Exception\HttpExceptionInterface) {
+        if ($exception instanceof \MonorepoBuilder20210710\Symfony\Component\HttpKernel\Exception\HttpExceptionInterface) {
             $statusCode = $exception->getStatusCode();
             $headers = \array_merge($headers, $exception->getHeaders());
-        } elseif ($exception instanceof \MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Exception\RequestExceptionInterface) {
+        } elseif ($exception instanceof \MonorepoBuilder20210710\Symfony\Component\HttpFoundation\Exception\RequestExceptionInterface) {
             $statusCode = 400;
         }
         if (null === $statusCode) {
             $statusCode = 500;
         }
-        if (\class_exists(\MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Response::class) && isset(\MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Response::$statusTexts[$statusCode])) {
-            $statusText = \MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Response::$statusTexts[$statusCode];
+        if (\class_exists(\MonorepoBuilder20210710\Symfony\Component\HttpFoundation\Response::class) && isset(\MonorepoBuilder20210710\Symfony\Component\HttpFoundation\Response::$statusTexts[$statusCode])) {
+            $statusText = \MonorepoBuilder20210710\Symfony\Component\HttpFoundation\Response::$statusTexts[$statusCode];
         } else {
             $statusText = 'Whoops, looks like something went wrong.';
         }
@@ -116,8 +121,9 @@ class FlattenException
     }
     /**
      * @return $this
+     * @param mixed[] $headers
      */
-    public function setHeaders(array $headers)
+    public function setHeaders($headers)
     {
         $this->headers = $headers;
         return $this;
@@ -170,8 +176,9 @@ class FlattenException
     }
     /**
      * @return $this
+     * @param string $statusText
      */
-    public function setStatusText(string $statusText)
+    public function setStatusText($statusText)
     {
         $this->statusText = $statusText;
         return $this;
@@ -246,8 +253,9 @@ class FlattenException
     }
     /**
      * @return $this
+     * @param \Throwable $throwable
      */
-    public function setTraceFromThrowable(\Throwable $throwable)
+    public function setTraceFromThrowable($throwable)
     {
         $this->traceAsString = $throwable->getTraceAsString();
         return $this->setTrace($throwable->getTrace(), $throwable->getFile(), $throwable->getLine());
@@ -319,8 +327,9 @@ class FlattenException
     }
     /**
      * @return $this
+     * @param string|null $asString
      */
-    public function setAsString(?string $asString)
+    public function setAsString($asString)
     {
         $this->asString = $asString;
         return $this;

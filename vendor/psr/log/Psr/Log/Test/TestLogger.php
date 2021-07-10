@@ -1,8 +1,8 @@
 <?php
 
-namespace MonorepoBuilder20210708\Psr\Log\Test;
+namespace MonorepoBuilder20210710\Psr\Log\Test;
 
-use MonorepoBuilder20210708\Psr\Log\AbstractLogger;
+use MonorepoBuilder20210710\Psr\Log\AbstractLogger;
 /**
  * Used for testing purposes.
  *
@@ -53,7 +53,7 @@ use MonorepoBuilder20210708\Psr\Log\AbstractLogger;
  * @method bool hasInfoThatPasses($message)
  * @method bool hasDebugThatPasses($message)
  */
-class TestLogger extends \MonorepoBuilder20210708\Psr\Log\AbstractLogger
+class TestLogger extends \MonorepoBuilder20210710\Psr\Log\AbstractLogger
 {
     /**
      * @var array
@@ -62,8 +62,9 @@ class TestLogger extends \MonorepoBuilder20210708\Psr\Log\AbstractLogger
     public $recordsByLevel = [];
     /**
      * @inheritdoc
+     * @param mixed[] $context
      */
-    public function log($level, $message, array $context = [])
+    public function log($level, $message, $context = [])
     {
         $record = ['level' => $level, 'message' => $message, 'context' => $context];
         $this->recordsByLevel[$record['level']][] = $record;
@@ -100,7 +101,10 @@ class TestLogger extends \MonorepoBuilder20210708\Psr\Log\AbstractLogger
             return \preg_match($regex, $rec['message']) > 0;
         }, $level);
     }
-    public function hasRecordThatPasses(callable $predicate, $level)
+    /**
+     * @param callable $predicate
+     */
+    public function hasRecordThatPasses($predicate, $level)
     {
         if (!isset($this->recordsByLevel[$level])) {
             return \false;

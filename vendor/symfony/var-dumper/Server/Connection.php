@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210708\Symfony\Component\VarDumper\Server;
+namespace MonorepoBuilder20210710\Symfony\Component\VarDumper\Server;
 
-use MonorepoBuilder20210708\Symfony\Component\VarDumper\Cloner\Data;
-use MonorepoBuilder20210708\Symfony\Component\VarDumper\Dumper\ContextProvider\ContextProviderInterface;
+use MonorepoBuilder20210710\Symfony\Component\VarDumper\Cloner\Data;
+use MonorepoBuilder20210710\Symfony\Component\VarDumper\Dumper\ContextProvider\ContextProviderInterface;
 /**
  * Forwards serialized Data clones to a server.
  *
@@ -38,7 +38,10 @@ class Connection
     {
         return $this->contextProviders;
     }
-    public function write(\MonorepoBuilder20210708\Symfony\Component\VarDumper\Cloner\Data $data) : bool
+    /**
+     * @param \Symfony\Component\VarDumper\Cloner\Data $data
+     */
+    public function write($data) : bool
     {
         $socketIsFresh = !$this->socket;
         if (!($this->socket = $this->socket ?: $this->createSocket())) {

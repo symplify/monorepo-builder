@@ -8,17 +8,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210708\Symfony\Component\HttpKernel\Bundle;
+namespace MonorepoBuilder20210710\Symfony\Component\HttpKernel\Bundle;
 
-use MonorepoBuilder20210708\Symfony\Component\DependencyInjection\ContainerAwareInterface;
-use MonorepoBuilder20210708\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
+use MonorepoBuilder20210710\Symfony\Component\DependencyInjection\ContainerAwareInterface;
+use MonorepoBuilder20210710\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 /**
  * BundleInterface.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-interface BundleInterface extends \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\ContainerAwareInterface
+interface BundleInterface extends \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\ContainerAwareInterface
 {
     /**
      * Boots the Bundle.
@@ -32,8 +32,9 @@ interface BundleInterface extends \MonorepoBuilder20210708\Symfony\Component\Dep
      * Builds the bundle.
      *
      * It is only ever called once when the cache is empty.
+     * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
      */
-    public function build(\MonorepoBuilder20210708\Symfony\Component\DependencyInjection\ContainerBuilder $container);
+    public function build($container);
     /**
      * Returns the container extension that should be implicitly loaded.
      *

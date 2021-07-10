@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210708\Symfony\Component\Console\Output;
+namespace MonorepoBuilder20210710\Symfony\Component\Console\Output;
 
-use MonorepoBuilder20210708\Symfony\Component\Console\Formatter\NullOutputFormatter;
-use MonorepoBuilder20210708\Symfony\Component\Console\Formatter\OutputFormatterInterface;
+use MonorepoBuilder20210710\Symfony\Component\Console\Formatter\NullOutputFormatter;
+use MonorepoBuilder20210710\Symfony\Component\Console\Formatter\OutputFormatterInterface;
 /**
  * NullOutput suppresses all output.
  *
@@ -20,13 +20,14 @@ use MonorepoBuilder20210708\Symfony\Component\Console\Formatter\OutputFormatterI
  * @author Fabien Potencier <fabien@symfony.com>
  * @author Tobias Schultze <http://tobion.de>
  */
-class NullOutput implements \MonorepoBuilder20210708\Symfony\Component\Console\Output\OutputInterface
+class NullOutput implements \MonorepoBuilder20210710\Symfony\Component\Console\Output\OutputInterface
 {
     private $formatter;
     /**
      * {@inheritdoc}
+     * @param \Symfony\Component\Console\Formatter\OutputFormatterInterface $formatter
      */
-    public function setFormatter(\MonorepoBuilder20210708\Symfony\Component\Console\Formatter\OutputFormatterInterface $formatter)
+    public function setFormatter($formatter)
     {
         // do nothing
     }
@@ -39,12 +40,13 @@ class NullOutput implements \MonorepoBuilder20210708\Symfony\Component\Console\O
             return $this->formatter;
         }
         // to comply with the interface we must return a OutputFormatterInterface
-        return $this->formatter = new \MonorepoBuilder20210708\Symfony\Component\Console\Formatter\NullOutputFormatter();
+        return $this->formatter = new \MonorepoBuilder20210710\Symfony\Component\Console\Formatter\NullOutputFormatter();
     }
     /**
      * {@inheritdoc}
+     * @param bool $decorated
      */
-    public function setDecorated(bool $decorated)
+    public function setDecorated($decorated)
     {
         // do nothing
     }
@@ -57,8 +59,9 @@ class NullOutput implements \MonorepoBuilder20210708\Symfony\Component\Console\O
     }
     /**
      * {@inheritdoc}
+     * @param int $level
      */
-    public function setVerbosity(int $level)
+    public function setVerbosity($level)
     {
         // do nothing
     }
@@ -99,15 +102,18 @@ class NullOutput implements \MonorepoBuilder20210708\Symfony\Component\Console\O
     }
     /**
      * {@inheritdoc}
+     * @param int $options
      */
-    public function writeln($messages, int $options = self::OUTPUT_NORMAL)
+    public function writeln($messages, $options = self::OUTPUT_NORMAL)
     {
         // do nothing
     }
     /**
      * {@inheritdoc}
+     * @param bool $newline
+     * @param int $options
      */
-    public function write($messages, bool $newline = \false, int $options = self::OUTPUT_NORMAL)
+    public function write($messages, $newline = \false, $options = self::OUTPUT_NORMAL)
     {
         // do nothing
     }

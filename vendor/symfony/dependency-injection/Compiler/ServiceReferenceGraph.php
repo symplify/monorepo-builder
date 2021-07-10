@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Compiler;
+namespace MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Compiler;
 
-use MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
 /**
  * This is a directed graph of your services.
  *
@@ -36,10 +36,10 @@ class ServiceReferenceGraph
      *
      * @throws InvalidArgumentException if no node matches the supplied identifier
      */
-    public function getNode(string $id) : \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Compiler\ServiceReferenceGraphNode
+    public function getNode(string $id) : \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Compiler\ServiceReferenceGraphNode
     {
         if (!isset($this->nodes[$id])) {
-            throw new \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('There is no node with id "%s".', $id));
+            throw new \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('There is no node with id "%s".', $id));
         }
         return $this->nodes[$id];
     }
@@ -72,15 +72,15 @@ class ServiceReferenceGraph
         }
         $sourceNode = $this->createNode($sourceId, $sourceValue);
         $destNode = $this->createNode($destId, $destValue);
-        $edge = new \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Compiler\ServiceReferenceGraphEdge($sourceNode, $destNode, $reference, $lazy, $weak, $byConstructor);
+        $edge = new \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Compiler\ServiceReferenceGraphEdge($sourceNode, $destNode, $reference, $lazy, $weak, $byConstructor);
         $sourceNode->addOutEdge($edge);
         $destNode->addInEdge($edge);
     }
-    private function createNode(string $id, $value) : \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Compiler\ServiceReferenceGraphNode
+    private function createNode(string $id, $value) : \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Compiler\ServiceReferenceGraphNode
     {
         if (isset($this->nodes[$id]) && $this->nodes[$id]->getValue() === $value) {
             return $this->nodes[$id];
         }
-        return $this->nodes[$id] = new \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Compiler\ServiceReferenceGraphNode($id, $value);
+        return $this->nodes[$id] = new \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Compiler\ServiceReferenceGraphNode($id, $value);
     }
 }

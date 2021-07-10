@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210708\Symfony\Component\HttpKernel\Event;
+namespace MonorepoBuilder20210710\Symfony\Component\HttpKernel\Event;
 
-use MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Response;
+use MonorepoBuilder20210710\Symfony\Component\HttpFoundation\Response;
 /**
  * Allows to create a response for a request.
  *
@@ -20,7 +20,7 @@ use MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Response;
  *
  * @author Bernhard Schussek <bschussek@gmail.com>
  */
-class RequestEvent extends \MonorepoBuilder20210708\Symfony\Component\HttpKernel\Event\KernelEvent
+class RequestEvent extends \MonorepoBuilder20210710\Symfony\Component\HttpKernel\Event\KernelEvent
 {
     private $response;
     /**
@@ -34,8 +34,9 @@ class RequestEvent extends \MonorepoBuilder20210708\Symfony\Component\HttpKernel
     }
     /**
      * Sets a response and stops event propagation.
+     * @param \Symfony\Component\HttpFoundation\Response $response
      */
-    public function setResponse(\MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Response $response)
+    public function setResponse($response)
     {
         $this->response = $response;
         $this->stopPropagation();

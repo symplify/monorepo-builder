@@ -8,21 +8,21 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210708\Symfony\Component\Console\Event;
+namespace MonorepoBuilder20210710\Symfony\Component\Console\Event;
 
-use MonorepoBuilder20210708\Symfony\Component\Console\Command\Command;
-use MonorepoBuilder20210708\Symfony\Component\Console\Input\InputInterface;
-use MonorepoBuilder20210708\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder20210710\Symfony\Component\Console\Command\Command;
+use MonorepoBuilder20210710\Symfony\Component\Console\Input\InputInterface;
+use MonorepoBuilder20210710\Symfony\Component\Console\Output\OutputInterface;
 /**
  * Allows to handle throwables thrown while running a command.
  *
  * @author Wouter de Jong <wouter@wouterj.nl>
  */
-final class ConsoleErrorEvent extends \MonorepoBuilder20210708\Symfony\Component\Console\Event\ConsoleEvent
+final class ConsoleErrorEvent extends \MonorepoBuilder20210710\Symfony\Component\Console\Event\ConsoleEvent
 {
     private $error;
     private $exitCode;
-    public function __construct(\MonorepoBuilder20210708\Symfony\Component\Console\Input\InputInterface $input, \MonorepoBuilder20210708\Symfony\Component\Console\Output\OutputInterface $output, \Throwable $error, \MonorepoBuilder20210708\Symfony\Component\Console\Command\Command $command = null)
+    public function __construct(\MonorepoBuilder20210710\Symfony\Component\Console\Input\InputInterface $input, \MonorepoBuilder20210710\Symfony\Component\Console\Output\OutputInterface $output, \Throwable $error, \MonorepoBuilder20210710\Symfony\Component\Console\Command\Command $command = null)
     {
         parent::__construct($command, $input, $output);
         $this->error = $error;
@@ -31,11 +31,17 @@ final class ConsoleErrorEvent extends \MonorepoBuilder20210708\Symfony\Component
     {
         return $this->error;
     }
-    public function setError(\Throwable $error) : void
+    /**
+     * @param \Throwable $error
+     */
+    public function setError($error) : void
     {
         $this->error = $error;
     }
-    public function setExitCode(int $exitCode) : void
+    /**
+     * @param int $exitCode
+     */
+    public function setExitCode($exitCode) : void
     {
         $this->exitCode = $exitCode;
         $r = new \ReflectionProperty($this->error, 'code');

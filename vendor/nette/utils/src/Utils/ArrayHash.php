@@ -5,9 +5,9 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace MonorepoBuilder20210708\Nette\Utils;
+namespace MonorepoBuilder20210710\Nette\Utils;
 
-use MonorepoBuilder20210708\Nette;
+use MonorepoBuilder20210710\Nette;
 /**
  * Provides objects to work as array.
  */
@@ -16,8 +16,10 @@ class ArrayHash extends \stdClass implements \ArrayAccess, \Countable, \Iterator
     /**
      * Transforms array to ArrayHash.
      * @return static
+     * @param mixed[] $array
+     * @param bool $recursive
      */
-    public static function from(array $array, bool $recursive = \true)
+    public static function from($array, $recursive = \true)
     {
         $obj = new static();
         foreach ($array as $key => $value) {
@@ -48,7 +50,7 @@ class ArrayHash extends \stdClass implements \ArrayAccess, \Countable, \Iterator
     {
         if (!\is_scalar($key)) {
             // prevents null
-            throw new \MonorepoBuilder20210708\Nette\InvalidArgumentException(\sprintf('Key must be either a string or an integer, %s given.', \gettype($key)));
+            throw new \MonorepoBuilder20210710\Nette\InvalidArgumentException(\sprintf('Key must be either a string or an integer, %s given.', \gettype($key)));
         }
         $this->{$key} = $value;
     }

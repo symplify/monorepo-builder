@@ -34,14 +34,20 @@ final class SetCurrentMutualDependenciesReleaseWorker implements \Symplify\Monor
         $this->composerJsonProvider = $composerJsonProvider;
         $this->packageNamesProvider = $packageNamesProvider;
     }
-    public function work(\PharIo\Version\Version $version) : void
+    /**
+     * @param \PharIo\Version\Version $version
+     */
+    public function work($version) : void
     {
         $versionInString = $this->versionUtils->getRequiredFormat($version);
         $this->dependencyUpdater->updateFileInfosWithPackagesAndVersion($this->composerJsonProvider->getPackagesComposerFileInfos(), $this->packageNamesProvider->provide(), $versionInString);
         // give time to propagate values before commit
         \sleep(1);
     }
-    public function getDescription(\PharIo\Version\Version $version) : string
+    /**
+     * @param \PharIo\Version\Version $version
+     */
+    public function getDescription($version) : string
     {
         $versionInString = $this->versionUtils->getRequiredFormat($version);
         return \sprintf('Set packages mutual dependencies to "%s" version', $versionInString);

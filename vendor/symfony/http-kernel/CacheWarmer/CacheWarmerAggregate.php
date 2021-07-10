@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210708\Symfony\Component\HttpKernel\CacheWarmer;
+namespace MonorepoBuilder20210710\Symfony\Component\HttpKernel\CacheWarmer;
 
 /**
  * Aggregates several cache warmers into a single one.
@@ -17,7 +17,7 @@ namespace MonorepoBuilder20210708\Symfony\Component\HttpKernel\CacheWarmer;
  *
  * @final
  */
-class CacheWarmerAggregate implements \MonorepoBuilder20210708\Symfony\Component\HttpKernel\CacheWarmer\CacheWarmerInterface
+class CacheWarmerAggregate implements \MonorepoBuilder20210710\Symfony\Component\HttpKernel\CacheWarmer\CacheWarmerInterface
 {
     private $warmers;
     private $debug;
@@ -42,8 +42,9 @@ class CacheWarmerAggregate implements \MonorepoBuilder20210708\Symfony\Component
      * Warms up the cache.
      *
      * @return string[] A list of classes or files to preload on PHP 7.4+
+     * @param string $cacheDir
      */
-    public function warmUp(string $cacheDir)
+    public function warmUp($cacheDir)
     {
         if ($collectDeprecations = $this->debug && !\defined('PHPUNIT_COMPOSER_INSTALL')) {
             $collectedLogs = [];

@@ -8,16 +8,16 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210708\Symfony\Component\HttpKernel\HttpCache;
+namespace MonorepoBuilder20210710\Symfony\Component\HttpKernel\HttpCache;
 
-use MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Request;
-use MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Response;
+use MonorepoBuilder20210710\Symfony\Component\HttpFoundation\Request;
+use MonorepoBuilder20210710\Symfony\Component\HttpFoundation\Response;
 /**
  * Ssi implements the SSI capabilities to Request and Response instances.
  *
  * @author Sebastian Krebs <krebs.seb@gmail.com>
  */
-class Ssi extends \MonorepoBuilder20210708\Symfony\Component\HttpKernel\HttpCache\AbstractSurrogate
+class Ssi extends \MonorepoBuilder20210710\Symfony\Component\HttpKernel\HttpCache\AbstractSurrogate
 {
     /**
      * {@inheritdoc}
@@ -28,8 +28,9 @@ class Ssi extends \MonorepoBuilder20210708\Symfony\Component\HttpKernel\HttpCach
     }
     /**
      * {@inheritdoc}
+     * @param \Symfony\Component\HttpFoundation\Response $response
      */
-    public function addSurrogateControl(\MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Response $response)
+    public function addSurrogateControl($response)
     {
         if (\false !== \strpos($response->getContent(), '<!--#include')) {
             $response->headers->set('Surrogate-Control', 'content="SSI/1.0"');
@@ -37,15 +38,21 @@ class Ssi extends \MonorepoBuilder20210708\Symfony\Component\HttpKernel\HttpCach
     }
     /**
      * {@inheritdoc}
+     * @param string $uri
+     * @param string|null $alt
+     * @param bool $ignoreErrors
+     * @param string $comment
      */
-    public function renderIncludeTag(string $uri, string $alt = null, bool $ignoreErrors = \true, string $comment = '')
+    public function renderIncludeTag($uri, $alt = null, $ignoreErrors = \true, $comment = '')
     {
         return \sprintf('<!--#include virtual="%s" -->', $uri);
     }
     /**
      * {@inheritdoc}
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @param \Symfony\Component\HttpFoundation\Response $response
      */
-    public function process(\MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Request $request, \MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Response $response)
+    public function process($request, $response)
     {
         $type = $response->headers->get('Content-Type');
         if (empty($type)) {

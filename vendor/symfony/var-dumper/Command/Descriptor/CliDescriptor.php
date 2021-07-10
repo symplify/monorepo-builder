@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210708\Symfony\Component\VarDumper\Command\Descriptor;
+namespace MonorepoBuilder20210710\Symfony\Component\VarDumper\Command\Descriptor;
 
-use MonorepoBuilder20210708\Symfony\Component\Console\Formatter\OutputFormatterStyle;
-use MonorepoBuilder20210708\Symfony\Component\Console\Input\ArrayInput;
-use MonorepoBuilder20210708\Symfony\Component\Console\Output\OutputInterface;
-use MonorepoBuilder20210708\Symfony\Component\Console\Style\SymfonyStyle;
-use MonorepoBuilder20210708\Symfony\Component\VarDumper\Cloner\Data;
-use MonorepoBuilder20210708\Symfony\Component\VarDumper\Dumper\CliDumper;
+use MonorepoBuilder20210710\Symfony\Component\Console\Formatter\OutputFormatterStyle;
+use MonorepoBuilder20210710\Symfony\Component\Console\Input\ArrayInput;
+use MonorepoBuilder20210710\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder20210710\Symfony\Component\Console\Style\SymfonyStyle;
+use MonorepoBuilder20210710\Symfony\Component\VarDumper\Cloner\Data;
+use MonorepoBuilder20210710\Symfony\Component\VarDumper\Dumper\CliDumper;
 /**
  * Describe collected data clones for cli output.
  *
@@ -23,19 +23,25 @@ use MonorepoBuilder20210708\Symfony\Component\VarDumper\Dumper\CliDumper;
  *
  * @final
  */
-class CliDescriptor implements \MonorepoBuilder20210708\Symfony\Component\VarDumper\Command\Descriptor\DumpDescriptorInterface
+class CliDescriptor implements \MonorepoBuilder20210710\Symfony\Component\VarDumper\Command\Descriptor\DumpDescriptorInterface
 {
     private $dumper;
     private $lastIdentifier;
     private $supportsHref;
-    public function __construct(\MonorepoBuilder20210708\Symfony\Component\VarDumper\Dumper\CliDumper $dumper)
+    public function __construct(\MonorepoBuilder20210710\Symfony\Component\VarDumper\Dumper\CliDumper $dumper)
     {
         $this->dumper = $dumper;
-        $this->supportsHref = \method_exists(\MonorepoBuilder20210708\Symfony\Component\Console\Formatter\OutputFormatterStyle::class, 'setHref');
+        $this->supportsHref = \method_exists(\MonorepoBuilder20210710\Symfony\Component\Console\Formatter\OutputFormatterStyle::class, 'setHref');
     }
-    public function describe(\MonorepoBuilder20210708\Symfony\Component\Console\Output\OutputInterface $output, \MonorepoBuilder20210708\Symfony\Component\VarDumper\Cloner\Data $data, array $context, int $clientId) : void
+    /**
+     * @param \Symfony\Component\Console\Output\OutputInterface $output
+     * @param \Symfony\Component\VarDumper\Cloner\Data $data
+     * @param mixed[] $context
+     * @param int $clientId
+     */
+    public function describe($output, $data, $context, $clientId) : void
     {
-        $io = $output instanceof \MonorepoBuilder20210708\Symfony\Component\Console\Style\SymfonyStyle ? $output : new \MonorepoBuilder20210708\Symfony\Component\Console\Style\SymfonyStyle(new \MonorepoBuilder20210708\Symfony\Component\Console\Input\ArrayInput([]), $output);
+        $io = $output instanceof \MonorepoBuilder20210710\Symfony\Component\Console\Style\SymfonyStyle ? $output : new \MonorepoBuilder20210710\Symfony\Component\Console\Style\SymfonyStyle(new \MonorepoBuilder20210710\Symfony\Component\Console\Input\ArrayInput([]), $output);
         $this->dumper->setColors($output->isDecorated());
         $rows = [['date', \date('r', (int) $context['timestamp'])]];
         $lastIdentifier = $this->lastIdentifier;

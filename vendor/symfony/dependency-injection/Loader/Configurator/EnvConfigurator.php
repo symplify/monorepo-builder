@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Loader\Configurator;
+namespace MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use MonorepoBuilder20210708\Symfony\Component\Config\Loader\ParamConfigurator;
-class EnvConfigurator extends \MonorepoBuilder20210708\Symfony\Component\Config\Loader\ParamConfigurator
+use MonorepoBuilder20210710\Symfony\Component\Config\Loader\ParamConfigurator;
+class EnvConfigurator extends \MonorepoBuilder20210710\Symfony\Component\Config\Loader\ParamConfigurator
 {
     /**
      * @var string[]
@@ -30,14 +30,15 @@ class EnvConfigurator extends \MonorepoBuilder20210708\Symfony\Component\Config\
      */
     public function __call(string $name, array $arguments)
     {
-        $processor = \strtolower(\preg_replace(['/([A-Z]+)([A-Z][a-z])/', '/([a-z\\d])([A-Z])/'], 'MonorepoBuilder20210708\\1_\\2', $name));
+        $processor = \strtolower(\preg_replace(['/([A-Z]+)([A-Z][a-z])/', '/([a-z\\d])([A-Z])/'], 'MonorepoBuilder20210710\\1_\\2', $name));
         $this->custom($processor, ...$arguments);
         return $this;
     }
     /**
      * @return $this
+     * @param string $processor
      */
-    public function custom(string $processor, ...$args)
+    public function custom($processor, ...$args)
     {
         \array_unshift($this->stack, $processor, ...$args);
         return $this;
@@ -116,8 +117,9 @@ class EnvConfigurator extends \MonorepoBuilder20210708\Symfony\Component\Config\
     }
     /**
      * @return $this
+     * @param string $key
      */
-    public function key(string $key)
+    public function key($key)
     {
         \array_unshift($this->stack, 'key', $key);
         return $this;
@@ -148,8 +150,9 @@ class EnvConfigurator extends \MonorepoBuilder20210708\Symfony\Component\Config\
     }
     /**
      * @return $this
+     * @param string $fallbackParam
      */
-    public function default(string $fallbackParam)
+    public function default($fallbackParam)
     {
         \array_unshift($this->stack, 'default', $fallbackParam);
         return $this;

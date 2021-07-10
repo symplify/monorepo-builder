@@ -23,7 +23,10 @@ class AndVersionConstraintGroup extends \PharIo\Version\AbstractVersionConstrain
         parent::__construct($originalValue);
         $this->constraints = $constraints;
     }
-    public function complies(\PharIo\Version\Version $version) : bool
+    /**
+     * @param \PharIo\Version\Version $version
+     */
+    public function complies($version) : bool
     {
         foreach ($this->constraints as $constraint) {
             if (!$constraint->complies($version)) {

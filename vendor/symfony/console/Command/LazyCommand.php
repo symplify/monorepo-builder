@@ -8,17 +8,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210708\Symfony\Component\Console\Command;
+namespace MonorepoBuilder20210710\Symfony\Component\Console\Command;
 
-use MonorepoBuilder20210708\Symfony\Component\Console\Application;
-use MonorepoBuilder20210708\Symfony\Component\Console\Helper\HelperSet;
-use MonorepoBuilder20210708\Symfony\Component\Console\Input\InputDefinition;
-use MonorepoBuilder20210708\Symfony\Component\Console\Input\InputInterface;
-use MonorepoBuilder20210708\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder20210710\Symfony\Component\Console\Application;
+use MonorepoBuilder20210710\Symfony\Component\Console\Helper\HelperSet;
+use MonorepoBuilder20210710\Symfony\Component\Console\Input\InputDefinition;
+use MonorepoBuilder20210710\Symfony\Component\Console\Input\InputInterface;
+use MonorepoBuilder20210710\Symfony\Component\Console\Output\OutputInterface;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-final class LazyCommand extends \MonorepoBuilder20210708\Symfony\Component\Console\Command\Command
+final class LazyCommand extends \MonorepoBuilder20210710\Symfony\Component\Console\Command\Command
 {
     private $command;
     private $isEnabled;
@@ -32,14 +32,20 @@ final class LazyCommand extends \MonorepoBuilder20210708\Symfony\Component\Conso
     {
         $this->getCommand()->ignoreValidationErrors();
     }
-    public function setApplication(\MonorepoBuilder20210708\Symfony\Component\Console\Application $application = null) : void
+    /**
+     * @param \Symfony\Component\Console\Application|null $application
+     */
+    public function setApplication($application = null) : void
     {
         if ($this->command instanceof parent) {
             $this->command->setApplication($application);
         }
         parent::setApplication($application);
     }
-    public function setHelperSet(\MonorepoBuilder20210708\Symfony\Component\Console\Helper\HelperSet $helperSet) : void
+    /**
+     * @param \Symfony\Component\Console\Helper\HelperSet $helperSet
+     */
+    public function setHelperSet($helperSet) : void
     {
         if ($this->command instanceof parent) {
             $this->command->setHelperSet($helperSet);
@@ -60,16 +66,18 @@ final class LazyCommand extends \MonorepoBuilder20210708\Symfony\Component\Conso
     }
     /**
      * @return $this
+     * @param callable $code
      */
-    public function setCode(callable $code)
+    public function setCode($code)
     {
         $this->getCommand()->setCode($code);
         return $this;
     }
     /**
      * @internal
+     * @param bool $mergeArgs
      */
-    public function mergeApplicationDefinition(bool $mergeArgs = \true) : void
+    public function mergeApplicationDefinition($mergeArgs = \true) : void
     {
         $this->getCommand()->mergeApplicationDefinition($mergeArgs);
     }
@@ -81,42 +89,50 @@ final class LazyCommand extends \MonorepoBuilder20210708\Symfony\Component\Conso
         $this->getCommand()->setDefinition($definition);
         return $this;
     }
-    public function getDefinition() : \MonorepoBuilder20210708\Symfony\Component\Console\Input\InputDefinition
+    public function getDefinition() : \MonorepoBuilder20210710\Symfony\Component\Console\Input\InputDefinition
     {
         return $this->getCommand()->getDefinition();
     }
-    public function getNativeDefinition() : \MonorepoBuilder20210708\Symfony\Component\Console\Input\InputDefinition
+    public function getNativeDefinition() : \MonorepoBuilder20210710\Symfony\Component\Console\Input\InputDefinition
     {
         return $this->getCommand()->getNativeDefinition();
     }
     /**
      * @return $this
+     * @param string $name
+     * @param int|null $mode
+     * @param string $description
      */
-    public function addArgument(string $name, int $mode = null, string $description = '', $default = null)
+    public function addArgument($name, $mode = null, $description = '', $default = null)
     {
         $this->getCommand()->addArgument($name, $mode, $description, $default);
         return $this;
     }
     /**
      * @return $this
+     * @param string $name
+     * @param int|null $mode
+     * @param string $description
      */
-    public function addOption(string $name, $shortcut = null, int $mode = null, string $description = '', $default = null)
+    public function addOption($name, $shortcut = null, $mode = null, $description = '', $default = null)
     {
         $this->getCommand()->addOption($name, $shortcut, $mode, $description, $default);
         return $this;
     }
     /**
      * @return $this
+     * @param string $title
      */
-    public function setProcessTitle(string $title)
+    public function setProcessTitle($title)
     {
         $this->getCommand()->setProcessTitle($title);
         return $this;
     }
     /**
      * @return $this
+     * @param string $help
      */
-    public function setHelp(string $help)
+    public function setHelp($help)
     {
         $this->getCommand()->setHelp($help);
         return $this;
@@ -129,14 +145,18 @@ final class LazyCommand extends \MonorepoBuilder20210708\Symfony\Component\Conso
     {
         return $this->getCommand()->getProcessedHelp();
     }
-    public function getSynopsis(bool $short = \false) : string
+    /**
+     * @param bool $short
+     */
+    public function getSynopsis($short = \false) : string
     {
         return $this->getCommand()->getSynopsis($short);
     }
     /**
      * @return $this
+     * @param string $usage
      */
-    public function addUsage(string $usage)
+    public function addUsage($usage)
     {
         $this->getCommand()->addUsage($usage);
         return $this;
@@ -147,8 +167,9 @@ final class LazyCommand extends \MonorepoBuilder20210708\Symfony\Component\Conso
     }
     /**
      * @return mixed
+     * @param string $name
      */
-    public function getHelper(string $name)
+    public function getHelper($name)
     {
         return $this->getCommand()->getHelper($name);
     }

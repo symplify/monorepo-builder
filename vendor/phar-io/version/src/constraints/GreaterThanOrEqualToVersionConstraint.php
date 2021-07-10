@@ -20,7 +20,10 @@ class GreaterThanOrEqualToVersionConstraint extends \PharIo\Version\AbstractVers
         parent::__construct($originalValue);
         $this->minimalVersion = $minimalVersion;
     }
-    public function complies(\PharIo\Version\Version $version) : bool
+    /**
+     * @param \PharIo\Version\Version $version
+     */
+    public function complies($version) : bool
     {
         return $version->getVersionString() === $this->minimalVersion->getVersionString() || $version->isGreaterThan($this->minimalVersion);
     }

@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210708\Symfony\Component\HttpKernel\DataCollector;
+namespace MonorepoBuilder20210710\Symfony\Component\HttpKernel\DataCollector;
 
-use MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Request;
-use MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Response;
+use MonorepoBuilder20210710\Symfony\Component\HttpFoundation\Request;
+use MonorepoBuilder20210710\Symfony\Component\HttpFoundation\Response;
 /**
  * AjaxDataCollector.
  *
@@ -19,9 +19,14 @@ use MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Response;
  *
  * @final
  */
-class AjaxDataCollector extends \MonorepoBuilder20210708\Symfony\Component\HttpKernel\DataCollector\DataCollector
+class AjaxDataCollector extends \MonorepoBuilder20210710\Symfony\Component\HttpKernel\DataCollector\DataCollector
 {
-    public function collect(\MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Request $request, \MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Response $response, \Throwable $exception = null)
+    /**
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @param \Symfony\Component\HttpFoundation\Response $response
+     * @param \Throwable|null $exception
+     */
+    public function collect($request, $response, $exception = null)
     {
         // all collecting is done client side
     }

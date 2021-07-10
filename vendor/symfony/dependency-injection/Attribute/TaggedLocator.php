@@ -8,11 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Attribute;
+namespace MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Attribute;
 
-/**
- * @annotation
- */
+#[\Attribute(\Attribute::TARGET_PARAMETER)]
 class TaggedLocator
 {
     /**

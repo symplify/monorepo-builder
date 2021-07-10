@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210708\Symfony\Component\HttpKernel\HttpCache;
+namespace MonorepoBuilder20210710\Symfony\Component\HttpKernel\HttpCache;
 
-use MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Response;
+use MonorepoBuilder20210710\Symfony\Component\HttpFoundation\Response;
 /**
  * ResponseCacheStrategy knows how to compute the Response cache HTTP header
  * based on the different response cache headers.
@@ -20,7 +20,7 @@ use MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Response;
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class ResponseCacheStrategy implements \MonorepoBuilder20210708\Symfony\Component\HttpKernel\HttpCache\ResponseCacheStrategyInterface
+class ResponseCacheStrategy implements \MonorepoBuilder20210710\Symfony\Component\HttpKernel\HttpCache\ResponseCacheStrategyInterface
 {
     /**
      * Cache-Control headers that are sent to the final response if they appear in ANY of the responses.
@@ -37,8 +37,9 @@ class ResponseCacheStrategy implements \MonorepoBuilder20210708\Symfony\Componen
     private $ageDirectives = ['max-age' => null, 's-maxage' => null, 'expires' => null];
     /**
      * {@inheritdoc}
+     * @param \Symfony\Component\HttpFoundation\Response $response
      */
-    public function add(\MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Response $response)
+    public function add($response)
     {
         ++$this->embeddedResponses;
         foreach (self::OVERRIDE_DIRECTIVES as $directive) {
@@ -68,8 +69,9 @@ class ResponseCacheStrategy implements \MonorepoBuilder20210708\Symfony\Componen
     }
     /**
      * {@inheritdoc}
+     * @param \Symfony\Component\HttpFoundation\Response $response
      */
-    public function update(\MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Response $response)
+    public function update($response)
     {
         // if we have no embedded Response, do nothing
         if (0 === $this->embeddedResponses) {
@@ -117,7 +119,7 @@ class ResponseCacheStrategy implements \MonorepoBuilder20210708\Symfony\Componen
      *
      * @see https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html#sec13.4
      */
-    private function willMakeFinalResponseUncacheable(\MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Response $response) : bool
+    private function willMakeFinalResponseUncacheable(\MonorepoBuilder20210710\Symfony\Component\HttpFoundation\Response $response) : bool
     {
         // RFC2616: A response received with a status code of 200, 203, 300, 301 or 410
         // MAY be stored by a cache […] unless a cache-control directive prohibits caching.

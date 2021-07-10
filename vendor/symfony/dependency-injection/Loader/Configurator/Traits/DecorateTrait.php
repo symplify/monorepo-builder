@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Loader\Configurator\Traits;
+namespace MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Loader\Configurator\Traits;
 
-use MonorepoBuilder20210708\Symfony\Component\DependencyInjection\ContainerInterface;
-use MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use MonorepoBuilder20210710\Symfony\Component\DependencyInjection\ContainerInterface;
+use MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
 trait DecorateTrait
 {
     /**
@@ -22,8 +22,11 @@ trait DecorateTrait
      * @return $this
      *
      * @throws InvalidArgumentException in case the decorated service id and the new decorated service id are equals
+     * @param string|null $renamedId
+     * @param int $priority
+     * @param int $invalidBehavior
      */
-    public final function decorate(?string $id, string $renamedId = null, int $priority = 0, int $invalidBehavior = \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\ContainerInterface::EXCEPTION_ON_INVALID_REFERENCE)
+    public final function decorate($id, $renamedId = null, $priority = 0, $invalidBehavior = \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\ContainerInterface::EXCEPTION_ON_INVALID_REFERENCE)
     {
         $this->definition->setDecoratedService($id, $renamedId, $priority, $invalidBehavior);
         return $this;

@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210708\Symfony\Component\HttpKernel\CacheClearer;
+namespace MonorepoBuilder20210710\Symfony\Component\HttpKernel\CacheClearer;
 
 /**
  * ChainCacheClearer.
@@ -17,7 +17,7 @@ namespace MonorepoBuilder20210708\Symfony\Component\HttpKernel\CacheClearer;
  *
  * @final
  */
-class ChainCacheClearer implements \MonorepoBuilder20210708\Symfony\Component\HttpKernel\CacheClearer\CacheClearerInterface
+class ChainCacheClearer implements \MonorepoBuilder20210710\Symfony\Component\HttpKernel\CacheClearer\CacheClearerInterface
 {
     private $clearers;
     public function __construct(iterable $clearers = [])
@@ -26,8 +26,9 @@ class ChainCacheClearer implements \MonorepoBuilder20210708\Symfony\Component\Ht
     }
     /**
      * {@inheritdoc}
+     * @param string $cacheDir
      */
-    public function clear(string $cacheDir)
+    public function clear($cacheDir)
     {
         foreach ($this->clearers as $clearer) {
             $clearer->clear($cacheDir);

@@ -1,6 +1,6 @@
 <?php
 
-namespace MonorepoBuilder20210708\Psr\Log;
+namespace MonorepoBuilder20210710\Psr\Log;
 
 /**
  * Describes a logger-aware instance.
@@ -14,5 +14,5 @@ interface LoggerAwareInterface
      *
      * @return void
      */
-    public function setLogger(\MonorepoBuilder20210708\Psr\Log\LoggerInterface $logger);
+    public function setLogger($logger);
 }

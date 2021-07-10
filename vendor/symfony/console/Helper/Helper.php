@@ -8,22 +8,23 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210708\Symfony\Component\Console\Helper;
+namespace MonorepoBuilder20210710\Symfony\Component\Console\Helper;
 
-use MonorepoBuilder20210708\Symfony\Component\Console\Formatter\OutputFormatterInterface;
-use MonorepoBuilder20210708\Symfony\Component\String\UnicodeString;
+use MonorepoBuilder20210710\Symfony\Component\Console\Formatter\OutputFormatterInterface;
+use MonorepoBuilder20210710\Symfony\Component\String\UnicodeString;
 /**
  * Helper is the base class for all helper classes.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-abstract class Helper implements \MonorepoBuilder20210708\Symfony\Component\Console\Helper\HelperInterface
+abstract class Helper implements \MonorepoBuilder20210710\Symfony\Component\Console\Helper\HelperInterface
 {
     protected $helperSet = null;
     /**
      * {@inheritdoc}
+     * @param \Symfony\Component\Console\Helper\HelperSet|null $helperSet
      */
-    public function setHelperSet(\MonorepoBuilder20210708\Symfony\Component\Console\Helper\HelperSet $helperSet = null)
+    public function setHelperSet($helperSet = null)
     {
         $this->helperSet = $helperSet;
     }
@@ -40,8 +41,9 @@ abstract class Helper implements \MonorepoBuilder20210708\Symfony\Component\Cons
      * @deprecated since 5.3
      *
      * @return int The length of the string
+     * @param string|null $string
      */
-    public static function strlen(?string $string)
+    public static function strlen($string)
     {
         trigger_deprecation('symfony/console', '5.3', 'Method "%s()" is deprecated and will be removed in Symfony 6.0. Use Helper::width() or Helper::length() instead.', __METHOD__);
         return self::width($string);
@@ -49,12 +51,13 @@ abstract class Helper implements \MonorepoBuilder20210708\Symfony\Component\Cons
     /**
      * Returns the width of a string, using mb_strwidth if it is available.
      * The width is how many characters positions the string will use.
+     * @param string|null $string
      */
-    public static function width(?string $string) : int
+    public static function width($string) : int
     {
         $string ?? ($string = '');
         if (\preg_match('//u', $string)) {
-            return (new \MonorepoBuilder20210708\Symfony\Component\String\UnicodeString($string))->width(\false);
+            return (new \MonorepoBuilder20210710\Symfony\Component\String\UnicodeString($string))->width(\false);
         }
         if (\false === ($encoding = \mb_detect_encoding($string, null, \true))) {
             return \strlen($string);
@@ -64,12 +67,13 @@ abstract class Helper implements \MonorepoBuilder20210708\Symfony\Component\Cons
     /**
      * Returns the length of a string, using mb_strlen if it is available.
      * The length is related to how many bytes the string will use.
+     * @param string|null $string
      */
-    public static function length(?string $string) : int
+    public static function length($string) : int
     {
         $string ?? ($string = '');
         if (\preg_match('//u', $string)) {
-            return (new \MonorepoBuilder20210708\Symfony\Component\String\UnicodeString($string))->length();
+            return (new \MonorepoBuilder20210710\Symfony\Component\String\UnicodeString($string))->length();
         }
         if (\false === ($encoding = \mb_detect_encoding($string, null, \true))) {
             return \strlen($string);
@@ -80,8 +84,11 @@ abstract class Helper implements \MonorepoBuilder20210708\Symfony\Component\Cons
      * Returns the subset of a string, using mb_substr if it is available.
      *
      * @return string The string subset
+     * @param string|null $string
+     * @param int $from
+     * @param int|null $length
      */
-    public static function substr(?string $string, int $from, int $length = null)
+    public static function substr($string, $from, $length = null)
     {
         $string ?? ($string = '');
         if (\false === ($encoding = \mb_detect_encoding($string, null, \true))) {
@@ -103,7 +110,10 @@ abstract class Helper implements \MonorepoBuilder20210708\Symfony\Component\Cons
             }
         }
     }
-    public static function formatMemory(int $memory)
+    /**
+     * @param int $memory
+     */
+    public static function formatMemory($memory)
     {
         if ($memory >= 1024 * 1024 * 1024) {
             return \sprintf('%.1f GiB', $memory / 1024 / 1024 / 1024);
@@ -118,13 +128,19 @@ abstract class Helper implements \MonorepoBuilder20210708\Symfony\Component\Cons
     }
     /**
      * @deprecated since 5.3
+     * @param \Symfony\Component\Console\Formatter\OutputFormatterInterface $formatter
+     * @param string|null $string
      */
-    public static function strlenWithoutDecoration(\MonorepoBuilder20210708\Symfony\Component\Console\Formatter\OutputFormatterInterface $formatter, ?string $string)
+    public static function strlenWithoutDecoration($formatter, $string)
     {
         trigger_deprecation('symfony/console', '5.3', 'Method "%s()" is deprecated and will be removed in Symfony 6.0. Use Helper::removeDecoration() instead.', __METHOD__);
         return self::width(self::removeDecoration($formatter, $string));
     }
-    public static function removeDecoration(\MonorepoBuilder20210708\Symfony\Component\Console\Formatter\OutputFormatterInterface $formatter, ?string $string)
+    /**
+     * @param \Symfony\Component\Console\Formatter\OutputFormatterInterface $formatter
+     * @param string|null $string
+     */
+    public static function removeDecoration($formatter, $string)
     {
         $isDecorated = $formatter->isDecorated();
         $formatter->setDecorated(\false);

@@ -8,19 +8,20 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Loader;
+namespace MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Loader;
 
 /**
  * DirectoryLoader is a recursive loader to go through directories.
  *
  * @author Sebastien Lavoie <seb@wemakecustom.com>
  */
-class DirectoryLoader extends \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Loader\FileLoader
+class DirectoryLoader extends \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Loader\FileLoader
 {
     /**
      * {@inheritdoc}
+     * @param string|null $type
      */
-    public function load($file, string $type = null)
+    public function load($file, $type = null)
     {
         $file = \rtrim($file, '/');
         $path = $this->locator->locate($file);
@@ -38,8 +39,9 @@ class DirectoryLoader extends \MonorepoBuilder20210708\Symfony\Component\Depende
     }
     /**
      * {@inheritdoc}
+     * @param string|null $type
      */
-    public function supports($resource, string $type = null)
+    public function supports($resource, $type = null)
     {
         if ('directory' === $type) {
             return \true;

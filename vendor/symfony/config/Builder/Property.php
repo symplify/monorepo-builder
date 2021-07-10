@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210708\Symfony\Component\Config\Builder;
+namespace MonorepoBuilder20210710\Symfony\Component\Config\Builder;
 
 /**
  * Represents a property when building classes.
@@ -37,7 +37,10 @@ class Property
     {
         return $this->originalName;
     }
-    public function setType(string $type) : void
+    /**
+     * @param string $type
+     */
+    public function setType($type) : void
     {
         $this->array = \false;
         $this->type = $type;
@@ -54,7 +57,10 @@ class Property
     {
         return $this->content;
     }
-    public function setContent(string $content) : void
+    /**
+     * @param string $content
+     */
+    public function setContent($content) : void
     {
         $this->content = $content;
     }

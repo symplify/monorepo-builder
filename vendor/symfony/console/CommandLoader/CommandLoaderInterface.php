@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210708\Symfony\Component\Console\CommandLoader;
+namespace MonorepoBuilder20210710\Symfony\Component\Console\CommandLoader;
 
-use MonorepoBuilder20210708\Symfony\Component\Console\Command\Command;
-use MonorepoBuilder20210708\Symfony\Component\Console\Exception\CommandNotFoundException;
+use MonorepoBuilder20210710\Symfony\Component\Console\Command\Command;
+use MonorepoBuilder20210710\Symfony\Component\Console\Exception\CommandNotFoundException;
 /**
  * @author Robin Chalas <robin.chalas@gmail.com>
  */
@@ -23,14 +23,16 @@ interface CommandLoaderInterface
      * @return Command
      *
      * @throws CommandNotFoundException
+     * @param string $name
      */
-    public function get(string $name);
+    public function get($name);
     /**
      * Checks if a command exists.
      *
      * @return bool
+     * @param string $name
      */
-    public function has(string $name);
+    public function has($name);
     /**
      * @return string[] All registered command names
      */

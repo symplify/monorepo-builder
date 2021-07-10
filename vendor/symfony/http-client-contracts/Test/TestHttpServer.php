@@ -8,14 +8,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210708\Symfony\Contracts\HttpClient\Test;
+namespace MonorepoBuilder20210710\Symfony\Contracts\HttpClient\Test;
 
-use MonorepoBuilder20210708\Symfony\Component\Process\PhpExecutableFinder;
-use MonorepoBuilder20210708\Symfony\Component\Process\Process;
+use MonorepoBuilder20210710\Symfony\Component\Process\PhpExecutableFinder;
+use MonorepoBuilder20210710\Symfony\Component\Process\Process;
 class TestHttpServer
 {
     private static $process = [];
-    public static function start(int $port = 8057)
+    /**
+     * @param int $port
+     */
+    public static function start($port = 8057)
     {
         if (isset(self::$process[$port])) {
             self::$process[$port]->stop();
@@ -24,8 +27,8 @@ class TestHttpServer
                 self::$process[$port]->stop();
             });
         }
-        $finder = new \MonorepoBuilder20210708\Symfony\Component\Process\PhpExecutableFinder();
-        $process = new \MonorepoBuilder20210708\Symfony\Component\Process\Process(\array_merge([$finder->find(\false)], $finder->findArguments(), ['-dopcache.enable=0', '-dvariables_order=EGPCS', '-S', '127.0.0.1:' . $port]));
+        $finder = new \MonorepoBuilder20210710\Symfony\Component\Process\PhpExecutableFinder();
+        $process = new \MonorepoBuilder20210710\Symfony\Component\Process\Process(\array_merge([$finder->find(\false)], $finder->findArguments(), ['-dopcache.enable=0', '-dvariables_order=EGPCS', '-S', '127.0.0.1:' . $port]));
         $process->setWorkingDirectory(__DIR__ . '/Fixtures/web');
         $process->start();
         self::$process[$port] = $process;

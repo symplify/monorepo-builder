@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210708\Symfony\Component\HttpKernel\Event;
+namespace MonorepoBuilder20210710\Symfony\Component\HttpKernel\Event;
 
-use MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Request;
-use MonorepoBuilder20210708\Symfony\Component\HttpKernel\HttpKernelInterface;
+use MonorepoBuilder20210710\Symfony\Component\HttpFoundation\Request;
+use MonorepoBuilder20210710\Symfony\Component\HttpKernel\HttpKernelInterface;
 /**
  * Allows filtering of controller arguments.
  *
@@ -24,11 +24,11 @@ use MonorepoBuilder20210708\Symfony\Component\HttpKernel\HttpKernelInterface;
  *
  * @author Christophe Coevoet <stof@notk.org>
  */
-final class ControllerArgumentsEvent extends \MonorepoBuilder20210708\Symfony\Component\HttpKernel\Event\KernelEvent
+final class ControllerArgumentsEvent extends \MonorepoBuilder20210710\Symfony\Component\HttpKernel\Event\KernelEvent
 {
     private $controller;
     private $arguments;
-    public function __construct(\MonorepoBuilder20210708\Symfony\Component\HttpKernel\HttpKernelInterface $kernel, callable $controller, array $arguments, \MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Request $request, ?int $requestType)
+    public function __construct(\MonorepoBuilder20210710\Symfony\Component\HttpKernel\HttpKernelInterface $kernel, callable $controller, array $arguments, \MonorepoBuilder20210710\Symfony\Component\HttpFoundation\Request $request, ?int $requestType)
     {
         parent::__construct($kernel, $request, $requestType);
         $this->controller = $controller;
@@ -38,7 +38,10 @@ final class ControllerArgumentsEvent extends \MonorepoBuilder20210708\Symfony\Co
     {
         return $this->controller;
     }
-    public function setController(callable $controller)
+    /**
+     * @param callable $controller
+     */
+    public function setController($controller)
     {
         $this->controller = $controller;
     }
@@ -46,7 +49,10 @@ final class ControllerArgumentsEvent extends \MonorepoBuilder20210708\Symfony\Co
     {
         return $this->arguments;
     }
-    public function setArguments(array $arguments)
+    /**
+     * @param mixed[] $arguments
+     */
+    public function setArguments($arguments)
     {
         $this->arguments = $arguments;
     }

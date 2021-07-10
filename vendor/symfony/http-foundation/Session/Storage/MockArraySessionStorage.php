@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Session\Storage;
+namespace MonorepoBuilder20210710\Symfony\Component\HttpFoundation\Session\Storage;
 
-use MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Session\SessionBagInterface;
+use MonorepoBuilder20210710\Symfony\Component\HttpFoundation\Session\SessionBagInterface;
 /**
  * MockArraySessionStorage mocks the session for unit tests.
  *
@@ -23,7 +23,7 @@ use MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Session\SessionBagI
  * @author Bulat Shakirzyanov <mallluhuct@gmail.com>
  * @author Drak <drak@zikula.org>
  */
-class MockArraySessionStorage implements \MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Session\Storage\SessionStorageInterface
+class MockArraySessionStorage implements \MonorepoBuilder20210710\Symfony\Component\HttpFoundation\Session\Storage\SessionStorageInterface
 {
     /**
      * @var string
@@ -53,12 +53,15 @@ class MockArraySessionStorage implements \MonorepoBuilder20210708\Symfony\Compon
      * @var array|SessionBagInterface[]
      */
     protected $bags = [];
-    public function __construct(string $name = 'MOCKSESSID', \MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Session\Storage\MetadataBag $metaBag = null)
+    public function __construct(string $name = 'MOCKSESSID', \MonorepoBuilder20210710\Symfony\Component\HttpFoundation\Session\Storage\MetadataBag $metaBag = null)
     {
         $this->name = $name;
         $this->setMetadataBag($metaBag);
     }
-    public function setSessionData(array $array)
+    /**
+     * @param mixed[] $array
+     */
+    public function setSessionData($array)
     {
         $this->data = $array;
     }
@@ -78,8 +81,10 @@ class MockArraySessionStorage implements \MonorepoBuilder20210708\Symfony\Compon
     }
     /**
      * {@inheritdoc}
+     * @param bool $destroy
+     * @param int|null $lifetime
      */
-    public function regenerate(bool $destroy = \false, int $lifetime = null)
+    public function regenerate($destroy = \false, $lifetime = null)
     {
         if (!$this->started) {
             $this->start();
@@ -97,8 +102,9 @@ class MockArraySessionStorage implements \MonorepoBuilder20210708\Symfony\Compon
     }
     /**
      * {@inheritdoc}
+     * @param string $id
      */
-    public function setId(string $id)
+    public function setId($id)
     {
         if ($this->started) {
             throw new \LogicException('Cannot set session ID after the session has started.');
@@ -114,8 +120,9 @@ class MockArraySessionStorage implements \MonorepoBuilder20210708\Symfony\Compon
     }
     /**
      * {@inheritdoc}
+     * @param string $name
      */
-    public function setName(string $name)
+    public function setName($name)
     {
         $this->name = $name;
     }
@@ -147,15 +154,17 @@ class MockArraySessionStorage implements \MonorepoBuilder20210708\Symfony\Compon
     }
     /**
      * {@inheritdoc}
+     * @param \Symfony\Component\HttpFoundation\Session\SessionBagInterface $bag
      */
-    public function registerBag(\MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Session\SessionBagInterface $bag)
+    public function registerBag($bag)
     {
         $this->bags[$bag->getName()] = $bag;
     }
     /**
      * {@inheritdoc}
+     * @param string $name
      */
-    public function getBag(string $name)
+    public function getBag($name)
     {
         if (!isset($this->bags[$name])) {
             throw new \InvalidArgumentException(\sprintf('The SessionBagInterface "%s" is not registered.', $name));
@@ -172,10 +181,13 @@ class MockArraySessionStorage implements \MonorepoBuilder20210708\Symfony\Compon
     {
         return $this->started;
     }
-    public function setMetadataBag(\MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Session\Storage\MetadataBag $bag = null)
+    /**
+     * @param \Symfony\Component\HttpFoundation\Session\Storage\MetadataBag|null $bag
+     */
+    public function setMetadataBag($bag = null)
     {
         if (null === $bag) {
-            $bag = new \MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Session\Storage\MetadataBag();
+            $bag = new \MonorepoBuilder20210710\Symfony\Component\HttpFoundation\Session\Storage\MetadataBag();
         }
         $this->metadataBag = $bag;
     }

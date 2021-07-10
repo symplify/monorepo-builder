@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210708\Symfony\Component\Console\CI;
+namespace MonorepoBuilder20210710\Symfony\Component\Console\CI;
 
-use MonorepoBuilder20210708\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder20210710\Symfony\Component\Console\Output\OutputInterface;
 /**
  * Utility class for Github actions.
  *
@@ -27,7 +27,7 @@ class GithubActionReporter
      * @see https://github.com/actions/toolkit/blob/5e5e1b7aacba68a53836a34db4a288c3c1c1585b/packages/core/src/command.ts#L87-L94
      */
     private const ESCAPED_PROPERTIES = ['%' => '%25', "\r" => '%0D', "\n" => '%0A', ':' => '%3A', ',' => '%2C'];
-    public function __construct(\MonorepoBuilder20210708\Symfony\Component\Console\Output\OutputInterface $output)
+    public function __construct(\MonorepoBuilder20210710\Symfony\Component\Console\Output\OutputInterface $output)
     {
         $this->output = $output;
     }
@@ -39,8 +39,12 @@ class GithubActionReporter
      * Output an error using the Github annotations format.
      *
      * @see https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-commands-for-github-actions#setting-an-error-message
+     * @param string $message
+     * @param string|null $file
+     * @param int|null $line
+     * @param int|null $col
      */
-    public function error(string $message, string $file = null, int $line = null, int $col = null) : void
+    public function error($message, $file = null, $line = null, $col = null) : void
     {
         $this->log('error', $message, $file, $line, $col);
     }
@@ -48,8 +52,12 @@ class GithubActionReporter
      * Output a warning using the Github annotations format.
      *
      * @see https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-commands-for-github-actions#setting-a-warning-message
+     * @param string $message
+     * @param string|null $file
+     * @param int|null $line
+     * @param int|null $col
      */
-    public function warning(string $message, string $file = null, int $line = null, int $col = null) : void
+    public function warning($message, $file = null, $line = null, $col = null) : void
     {
         $this->log('warning', $message, $file, $line, $col);
     }
@@ -57,8 +65,12 @@ class GithubActionReporter
      * Output a debug log using the Github annotations format.
      *
      * @see https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-commands-for-github-actions#setting-a-debug-message
+     * @param string $message
+     * @param string|null $file
+     * @param int|null $line
+     * @param int|null $col
      */
-    public function debug(string $message, string $file = null, int $line = null, int $col = null) : void
+    public function debug($message, $file = null, $line = null, $col = null) : void
     {
         $this->log('debug', $message, $file, $line, $col);
     }

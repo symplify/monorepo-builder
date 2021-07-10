@@ -3,9 +3,9 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Merge\ComposerKeyMerger;
 
-use MonorepoBuilder20210708\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
+use MonorepoBuilder20210710\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
 use Symplify\MonorepoBuilder\Merge\Contract\ComposerKeyMergerInterface;
-use MonorepoBuilder20210708\Symplify\PackageBuilder\Yaml\ParametersMerger;
+use MonorepoBuilder20210710\Symplify\PackageBuilder\Yaml\ParametersMerger;
 final class ExtraComposerKeyMerger implements \Symplify\MonorepoBuilder\Merge\Contract\ComposerKeyMergerInterface
 {
     /**
@@ -16,11 +16,15 @@ final class ExtraComposerKeyMerger implements \Symplify\MonorepoBuilder\Merge\Co
      * @var \Symplify\PackageBuilder\Yaml\ParametersMerger
      */
     private $parametersMerger;
-    public function __construct(\MonorepoBuilder20210708\Symplify\PackageBuilder\Yaml\ParametersMerger $parametersMerger)
+    public function __construct(\MonorepoBuilder20210710\Symplify\PackageBuilder\Yaml\ParametersMerger $parametersMerger)
     {
         $this->parametersMerger = $parametersMerger;
     }
-    public function merge(\MonorepoBuilder20210708\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $mainComposerJson, \MonorepoBuilder20210708\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $newComposerJson) : void
+    /**
+     * @param \Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $mainComposerJson
+     * @param \Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $newComposerJson
+     */
+    public function merge($mainComposerJson, $newComposerJson) : void
     {
         if ($newComposerJson->getExtra() === []) {
             return;

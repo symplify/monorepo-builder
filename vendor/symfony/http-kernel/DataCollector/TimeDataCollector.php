@@ -8,38 +8,41 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210708\Symfony\Component\HttpKernel\DataCollector;
+namespace MonorepoBuilder20210710\Symfony\Component\HttpKernel\DataCollector;
 
-use MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Request;
-use MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Response;
-use MonorepoBuilder20210708\Symfony\Component\HttpKernel\KernelInterface;
-use MonorepoBuilder20210708\Symfony\Component\Stopwatch\Stopwatch;
-use MonorepoBuilder20210708\Symfony\Component\Stopwatch\StopwatchEvent;
+use MonorepoBuilder20210710\Symfony\Component\HttpFoundation\Request;
+use MonorepoBuilder20210710\Symfony\Component\HttpFoundation\Response;
+use MonorepoBuilder20210710\Symfony\Component\HttpKernel\KernelInterface;
+use MonorepoBuilder20210710\Symfony\Component\Stopwatch\Stopwatch;
+use MonorepoBuilder20210710\Symfony\Component\Stopwatch\StopwatchEvent;
 /**
  * @author Fabien Potencier <fabien@symfony.com>
  *
  * @final
  */
-class TimeDataCollector extends \MonorepoBuilder20210708\Symfony\Component\HttpKernel\DataCollector\DataCollector implements \MonorepoBuilder20210708\Symfony\Component\HttpKernel\DataCollector\LateDataCollectorInterface
+class TimeDataCollector extends \MonorepoBuilder20210710\Symfony\Component\HttpKernel\DataCollector\DataCollector implements \MonorepoBuilder20210710\Symfony\Component\HttpKernel\DataCollector\LateDataCollectorInterface
 {
     protected $kernel;
     protected $stopwatch;
-    public function __construct(\MonorepoBuilder20210708\Symfony\Component\HttpKernel\KernelInterface $kernel = null, \MonorepoBuilder20210708\Symfony\Component\Stopwatch\Stopwatch $stopwatch = null)
+    public function __construct(\MonorepoBuilder20210710\Symfony\Component\HttpKernel\KernelInterface $kernel = null, \MonorepoBuilder20210710\Symfony\Component\Stopwatch\Stopwatch $stopwatch = null)
     {
         $this->kernel = $kernel;
         $this->stopwatch = $stopwatch;
     }
     /**
      * {@inheritdoc}
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @param \Symfony\Component\HttpFoundation\Response $response
+     * @param \Throwable|null $exception
      */
-    public function collect(\MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Request $request, \MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Response $response, \Throwable $exception = null)
+    public function collect($request, $response, $exception = null)
     {
         if (null !== $this->kernel) {
             $startTime = $this->kernel->getStartTime();
         } else {
             $startTime = $request->server->get('REQUEST_TIME_FLOAT');
         }
-        $this->data = ['token' => $response->headers->get('X-Debug-Token'), 'start_time' => $startTime * 1000, 'events' => [], 'stopwatch_installed' => \class_exists(\MonorepoBuilder20210708\Symfony\Component\Stopwatch\Stopwatch::class, \false)];
+        $this->data = ['token' => $response->headers->get('X-Debug-Token'), 'start_time' => $startTime * 1000, 'events' => [], 'stopwatch_installed' => \class_exists(\MonorepoBuilder20210710\Symfony\Component\Stopwatch\Stopwatch::class, \false)];
     }
     /**
      * {@inheritdoc}
@@ -66,7 +69,7 @@ class TimeDataCollector extends \MonorepoBuilder20210708\Symfony\Component\HttpK
      *
      * @param StopwatchEvent[] $events The request events
      */
-    public function setEvents(array $events)
+    public function setEvents($events)
     {
         foreach ($events as $event) {
             $event->ensureStopped();

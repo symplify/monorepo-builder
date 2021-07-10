@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Compiler;
+namespace MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Compiler;
 
-use MonorepoBuilder20210708\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
+use MonorepoBuilder20210710\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
 /**
  * Checks your services for circular references.
  *
@@ -22,14 +22,15 @@ use MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Exception\Serv
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class CheckCircularReferencesPass implements \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
+class CheckCircularReferencesPass implements \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
 {
     private $currentPath;
     private $checkedNodes;
     /**
      * Checks the ContainerBuilder object for circular references.
+     * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
      */
-    public function process(\MonorepoBuilder20210708\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    public function process($container)
     {
         $graph = $container->getCompiler()->getServiceReferenceGraph();
         $this->checkedNodes = [];
@@ -56,7 +57,7 @@ class CheckCircularReferencesPass implements \MonorepoBuilder20210708\Symfony\Co
                     $searchKey = \array_search($id, $this->currentPath);
                     $this->currentPath[] = $id;
                     if (\false !== $searchKey) {
-                        throw new \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException($id, \array_slice($this->currentPath, $searchKey));
+                        throw new \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException($id, \array_slice($this->currentPath, $searchKey));
                     }
                     $this->checkOutEdges($node->getOutEdges());
                 }

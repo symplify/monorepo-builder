@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210708\Symfony\Component\Config\Builder;
+namespace MonorepoBuilder20210710\Symfony\Component\Config\Builder;
 
 /**
  * Build PHP classes to generate config.
@@ -100,21 +100,36 @@ BODY
     {
         $this->require[] = $class;
     }
-    public function addUse(string $class) : void
+    /**
+     * @param string $class
+     */
+    public function addUse($class) : void
     {
         $this->use[$class] = \true;
     }
-    public function addImplements(string $interface) : void
+    /**
+     * @param string $interface
+     */
+    public function addImplements($interface) : void
     {
         $this->implements[] = '\\' . \ltrim($interface, '\\');
     }
-    public function addMethod(string $name, string $body, array $params = []) : void
+    /**
+     * @param string $name
+     * @param string $body
+     * @param mixed[] $params
+     */
+    public function addMethod($name, $body, $params = []) : void
     {
-        $this->methods[] = new \MonorepoBuilder20210708\Symfony\Component\Config\Builder\Method(\strtr($body, ['NAME' => $this->camelCase($name)] + $params));
+        $this->methods[] = new \MonorepoBuilder20210710\Symfony\Component\Config\Builder\Method(\strtr($body, ['NAME' => $this->camelCase($name)] + $params));
     }
-    public function addProperty(string $name, string $classType = null) : \MonorepoBuilder20210708\Symfony\Component\Config\Builder\Property
+    /**
+     * @param string $name
+     * @param string|null $classType
+     */
+    public function addProperty($name, $classType = null) : \MonorepoBuilder20210710\Symfony\Component\Config\Builder\Property
     {
-        $property = new \MonorepoBuilder20210708\Symfony\Component\Config\Builder\Property($name, $this->camelCase($name));
+        $property = new \MonorepoBuilder20210710\Symfony\Component\Config\Builder\Property($name, $this->camelCase($name));
         if (null !== $classType) {
             $property->setType($classType);
         }

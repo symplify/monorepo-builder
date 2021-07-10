@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210708\Symfony\Component\Config;
+namespace MonorepoBuilder20210710\Symfony\Component\Config;
 
-use MonorepoBuilder20210708\Symfony\Component\Config\Exception\FileLocatorFileNotFoundException;
+use MonorepoBuilder20210710\Symfony\Component\Config\Exception\FileLocatorFileNotFoundException;
 /**
  * @author Fabien Potencier <fabien@symfony.com>
  */
@@ -28,5 +28,5 @@ interface FileLocatorInterface
      * @throws \InvalidArgumentException        If $name is empty
      * @throws FileLocatorFileNotFoundException If a file is not found
      */
-    public function locate(string $name, string $currentPath = null, bool $first = \true);
+    public function locate($name, $currentPath = null, $first = \true);
 }

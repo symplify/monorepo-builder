@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210708\Symfony\Component\Console\Descriptor;
+namespace MonorepoBuilder20210710\Symfony\Component\Console\Descriptor;
 
-use MonorepoBuilder20210708\Symfony\Component\Console\Application;
-use MonorepoBuilder20210708\Symfony\Component\Console\Command\Command;
-use MonorepoBuilder20210708\Symfony\Component\Console\Input\InputArgument;
-use MonorepoBuilder20210708\Symfony\Component\Console\Input\InputDefinition;
-use MonorepoBuilder20210708\Symfony\Component\Console\Input\InputOption;
+use MonorepoBuilder20210710\Symfony\Component\Console\Application;
+use MonorepoBuilder20210710\Symfony\Component\Console\Command\Command;
+use MonorepoBuilder20210710\Symfony\Component\Console\Input\InputArgument;
+use MonorepoBuilder20210710\Symfony\Component\Console\Input\InputDefinition;
+use MonorepoBuilder20210710\Symfony\Component\Console\Input\InputOption;
 /**
  * XML descriptor.
  *
@@ -22,9 +22,12 @@ use MonorepoBuilder20210708\Symfony\Component\Console\Input\InputOption;
  *
  * @internal
  */
-class XmlDescriptor extends \MonorepoBuilder20210708\Symfony\Component\Console\Descriptor\Descriptor
+class XmlDescriptor extends \MonorepoBuilder20210710\Symfony\Component\Console\Descriptor\Descriptor
 {
-    public function getInputDefinitionDocument(\MonorepoBuilder20210708\Symfony\Component\Console\Input\InputDefinition $definition) : \DOMDocument
+    /**
+     * @param \Symfony\Component\Console\Input\InputDefinition $definition
+     */
+    public function getInputDefinitionDocument($definition) : \DOMDocument
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $dom->appendChild($definitionXML = $dom->createElement('definition'));
@@ -38,7 +41,11 @@ class XmlDescriptor extends \MonorepoBuilder20210708\Symfony\Component\Console\D
         }
         return $dom;
     }
-    public function getCommandDocument(\MonorepoBuilder20210708\Symfony\Component\Console\Command\Command $command, bool $short = \false) : \DOMDocument
+    /**
+     * @param \Symfony\Component\Console\Command\Command $command
+     * @param bool $short
+     */
+    public function getCommandDocument($command, $short = \false) : \DOMDocument
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $dom->appendChild($commandXML = $dom->createElement('command'));
@@ -64,7 +71,12 @@ class XmlDescriptor extends \MonorepoBuilder20210708\Symfony\Component\Console\D
         }
         return $dom;
     }
-    public function getApplicationDocument(\MonorepoBuilder20210708\Symfony\Component\Console\Application $application, string $namespace = null, bool $short = \false) : \DOMDocument
+    /**
+     * @param \Symfony\Component\Console\Application $application
+     * @param string|null $namespace
+     * @param bool $short
+     */
+    public function getApplicationDocument($application, $namespace = null, $short = \false) : \DOMDocument
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $dom->appendChild($rootXml = $dom->createElement('symfony'));
@@ -75,7 +87,7 @@ class XmlDescriptor extends \MonorepoBuilder20210708\Symfony\Component\Console\D
             }
         }
         $rootXml->appendChild($commandsXML = $dom->createElement('commands'));
-        $description = new \MonorepoBuilder20210708\Symfony\Component\Console\Descriptor\ApplicationDescription($application, $namespace, \true);
+        $description = new \MonorepoBuilder20210710\Symfony\Component\Console\Descriptor\ApplicationDescription($application, $namespace, \true);
         if ($namespace) {
             $commandsXML->setAttribute('namespace', $namespace);
         }
@@ -97,36 +109,46 @@ class XmlDescriptor extends \MonorepoBuilder20210708\Symfony\Component\Console\D
     }
     /**
      * {@inheritdoc}
+     * @param \Symfony\Component\Console\Input\InputArgument $argument
+     * @param mixed[] $options
      */
-    protected function describeInputArgument(\MonorepoBuilder20210708\Symfony\Component\Console\Input\InputArgument $argument, array $options = [])
+    protected function describeInputArgument($argument, $options = [])
     {
         $this->writeDocument($this->getInputArgumentDocument($argument));
     }
     /**
      * {@inheritdoc}
+     * @param \Symfony\Component\Console\Input\InputOption $option
+     * @param mixed[] $options
      */
-    protected function describeInputOption(\MonorepoBuilder20210708\Symfony\Component\Console\Input\InputOption $option, array $options = [])
+    protected function describeInputOption($option, $options = [])
     {
         $this->writeDocument($this->getInputOptionDocument($option));
     }
     /**
      * {@inheritdoc}
+     * @param \Symfony\Component\Console\Input\InputDefinition $definition
+     * @param mixed[] $options
      */
-    protected function describeInputDefinition(\MonorepoBuilder20210708\Symfony\Component\Console\Input\InputDefinition $definition, array $options = [])
+    protected function describeInputDefinition($definition, $options = [])
     {
         $this->writeDocument($this->getInputDefinitionDocument($definition));
     }
     /**
      * {@inheritdoc}
+     * @param \Symfony\Component\Console\Command\Command $command
+     * @param mixed[] $options
      */
-    protected function describeCommand(\MonorepoBuilder20210708\Symfony\Component\Console\Command\Command $command, array $options = [])
+    protected function describeCommand($command, $options = [])
     {
         $this->writeDocument($this->getCommandDocument($command, $options['short'] ?? \false));
     }
     /**
      * {@inheritdoc}
+     * @param \Symfony\Component\Console\Application $application
+     * @param mixed[] $options
      */
-    protected function describeApplication(\MonorepoBuilder20210708\Symfony\Component\Console\Application $application, array $options = [])
+    protected function describeApplication($application, $options = [])
     {
         $this->writeDocument($this->getApplicationDocument($application, $options['namespace'] ?? null, $options['short'] ?? \false));
     }
@@ -147,7 +169,7 @@ class XmlDescriptor extends \MonorepoBuilder20210708\Symfony\Component\Console\D
         $dom->formatOutput = \true;
         $this->write($dom->saveXML());
     }
-    private function getInputArgumentDocument(\MonorepoBuilder20210708\Symfony\Component\Console\Input\InputArgument $argument) : \DOMDocument
+    private function getInputArgumentDocument(\MonorepoBuilder20210710\Symfony\Component\Console\Input\InputArgument $argument) : \DOMDocument
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $dom->appendChild($objectXML = $dom->createElement('argument'));
@@ -164,7 +186,7 @@ class XmlDescriptor extends \MonorepoBuilder20210708\Symfony\Component\Console\D
         }
         return $dom;
     }
-    private function getInputOptionDocument(\MonorepoBuilder20210708\Symfony\Component\Console\Input\InputOption $option) : \DOMDocument
+    private function getInputOptionDocument(\MonorepoBuilder20210710\Symfony\Component\Console\Input\InputOption $option) : \DOMDocument
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $dom->appendChild($objectXML = $dom->createElement('option'));

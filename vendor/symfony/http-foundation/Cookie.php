@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210708\Symfony\Component\HttpFoundation;
+namespace MonorepoBuilder20210710\Symfony\Component\HttpFoundation;
 
 /**
  * Represents a cookie.
@@ -37,15 +37,17 @@ class Cookie
      * Creates cookie from raw header string.
      *
      * @return static
+     * @param string $cookie
+     * @param bool $decode
      */
-    public static function fromString(string $cookie, bool $decode = \false)
+    public static function fromString($cookie, $decode = \false)
     {
         $data = ['expires' => 0, 'path' => '/', 'domain' => null, 'secure' => \false, 'httponly' => \false, 'raw' => !$decode, 'samesite' => null];
-        $parts = \MonorepoBuilder20210708\Symfony\Component\HttpFoundation\HeaderUtils::split($cookie, ';=');
+        $parts = \MonorepoBuilder20210710\Symfony\Component\HttpFoundation\HeaderUtils::split($cookie, ';=');
         $part = \array_shift($parts);
         $name = $decode ? \urldecode($part[0]) : $part[0];
         $value = isset($part[1]) ? $decode ? \urldecode($part[1]) : $part[1] : null;
-        $data = \MonorepoBuilder20210708\Symfony\Component\HttpFoundation\HeaderUtils::combine($parts) + $data;
+        $data = \MonorepoBuilder20210710\Symfony\Component\HttpFoundation\HeaderUtils::combine($parts) + $data;
         $data['expires'] = self::expiresTimestamp($data['expires']);
         if (isset($data['max-age']) && ($data['max-age'] > 0 || $data['expires'] > \time())) {
             $data['expires'] = \time() + (int) $data['max-age'];
@@ -54,8 +56,16 @@ class Cookie
     }
     /**
      * @return $this
+     * @param string $name
+     * @param string|null $value
+     * @param string|null $path
+     * @param string|null $domain
+     * @param bool|null $secure
+     * @param bool $httpOnly
+     * @param bool $raw
+     * @param string|null $sameSite
      */
-    public static function create(string $name, string $value = null, $expire = 0, ?string $path = '/', string $domain = null, bool $secure = null, bool $httpOnly = \true, bool $raw = \false, ?string $sameSite = self::SAMESITE_LAX)
+    public static function create($name, $value = null, $expire = 0, $path = '/', $domain = null, $secure = null, $httpOnly = \true, $raw = \false, $sameSite = self::SAMESITE_LAX)
     {
         return new self($name, $value, $expire, $path, $domain, $secure, $httpOnly, $raw, $sameSite);
     }
@@ -95,8 +105,9 @@ class Cookie
      * Creates a cookie copy with a new value.
      *
      * @return static
+     * @param string|null $value
      */
-    public function withValue(?string $value)
+    public function withValue($value)
     {
         $cookie = clone $this;
         $cookie->value = $value;
@@ -106,8 +117,9 @@ class Cookie
      * Creates a cookie copy with a new domain that the cookie is available to.
      *
      * @return static
+     * @param string|null $domain
      */
-    public function withDomain(?string $domain)
+    public function withDomain($domain)
     {
         $cookie = clone $this;
         $cookie->domain = $domain;
@@ -150,8 +162,9 @@ class Cookie
      * Creates a cookie copy with a new path on the server in which the cookie will be available on.
      *
      * @return static
+     * @param string $path
      */
-    public function withPath(string $path)
+    public function withPath($path)
     {
         $cookie = clone $this;
         $cookie->path = '' === $path ? '/' : $path;
@@ -161,8 +174,9 @@ class Cookie
      * Creates a cookie copy that only be transmitted over a secure HTTPS connection from the client.
      *
      * @return static
+     * @param bool $secure
      */
-    public function withSecure(bool $secure = \true)
+    public function withSecure($secure = \true)
     {
         $cookie = clone $this;
         $cookie->secure = $secure;
@@ -172,8 +186,9 @@ class Cookie
      * Creates a cookie copy that be accessible only through the HTTP protocol.
      *
      * @return static
+     * @param bool $httpOnly
      */
-    public function withHttpOnly(bool $httpOnly = \true)
+    public function withHttpOnly($httpOnly = \true)
     {
         $cookie = clone $this;
         $cookie->httpOnly = $httpOnly;
@@ -183,8 +198,9 @@ class Cookie
      * Creates a cookie copy that uses no url encoding.
      *
      * @return static
+     * @param bool $raw
      */
-    public function withRaw(bool $raw = \true)
+    public function withRaw($raw = \true)
     {
         if ($raw && \false !== \strpbrk($this->name, self::$reservedCharsList)) {
             throw new \InvalidArgumentException(\sprintf('The cookie name "%s" contains invalid characters.', $this->name));
@@ -197,8 +213,9 @@ class Cookie
      * Creates a cookie copy with SameSite attribute.
      *
      * @return static
+     * @param string|null $sameSite
      */
-    public function withSameSite(?string $sameSite)
+    public function withSameSite($sameSite)
     {
         if ('' === $sameSite) {
             $sameSite = null;
@@ -353,7 +370,7 @@ class Cookie
     /**
      * @param bool $default The default value of the "secure" flag when it is set to null
      */
-    public function setSecureDefault(bool $default) : void
+    public function setSecureDefault($default) : void
     {
         $this->secureDefault = $default;
     }

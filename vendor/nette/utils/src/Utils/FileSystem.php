@@ -5,9 +5,9 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace MonorepoBuilder20210708\Nette\Utils;
+namespace MonorepoBuilder20210710\Nette\Utils;
 
-use MonorepoBuilder20210708\Nette;
+use MonorepoBuilder20210710\Nette;
 /**
  * File system tool.
  */
@@ -17,25 +17,30 @@ final class FileSystem
     /**
      * Creates a directory if it doesn't exist.
      * @throws Nette\IOException  on error occurred
+     * @param string $dir
+     * @param int $mode
      */
-    public static function createDir(string $dir, int $mode = 0777) : void
+    public static function createDir($dir, $mode = 0777) : void
     {
         if (!\is_dir($dir) && !@\mkdir($dir, $mode, \true) && !\is_dir($dir)) {
             // @ - dir may already exist
-            throw new \MonorepoBuilder20210708\Nette\IOException("Unable to create directory '{$dir}' with mode " . \decoct($mode) . '. ' . \MonorepoBuilder20210708\Nette\Utils\Helpers::getLastError());
+            throw new \MonorepoBuilder20210710\Nette\IOException("Unable to create directory '{$dir}' with mode " . \decoct($mode) . '. ' . \MonorepoBuilder20210710\Nette\Utils\Helpers::getLastError());
         }
     }
     /**
      * Copies a file or a directory. Overwrites existing files and directories by default.
      * @throws Nette\IOException  on error occurred
      * @throws Nette\InvalidStateException  if $overwrite is set to false and destination already exists
+     * @param string $origin
+     * @param string $target
+     * @param bool $overwrite
      */
-    public static function copy(string $origin, string $target, bool $overwrite = \true) : void
+    public static function copy($origin, $target, $overwrite = \true) : void
     {
         if (\stream_is_local($origin) && !\file_exists($origin)) {
-            throw new \MonorepoBuilder20210708\Nette\IOException("File or directory '{$origin}' not found.");
+            throw new \MonorepoBuilder20210710\Nette\IOException("File or directory '{$origin}' not found.");
         } elseif (!$overwrite && \file_exists($target)) {
-            throw new \MonorepoBuilder20210708\Nette\InvalidStateException("File or directory '{$target}' already exists.");
+            throw new \MonorepoBuilder20210710\Nette\InvalidStateException("File or directory '{$target}' already exists.");
         } elseif (\is_dir($origin)) {
             static::createDir($target);
             foreach (new \FilesystemIterator($target) as $item) {
@@ -52,21 +57,22 @@ final class FileSystem
             static::createDir(\dirname($target));
             if (($s = @\fopen($origin, 'rb')) && ($d = @\fopen($target, 'wb')) && @\stream_copy_to_stream($s, $d) === \false) {
                 // @ is escalated to exception
-                throw new \MonorepoBuilder20210708\Nette\IOException("Unable to copy file '{$origin}' to '{$target}'. " . \MonorepoBuilder20210708\Nette\Utils\Helpers::getLastError());
+                throw new \MonorepoBuilder20210710\Nette\IOException("Unable to copy file '{$origin}' to '{$target}'. " . \MonorepoBuilder20210710\Nette\Utils\Helpers::getLastError());
             }
         }
     }
     /**
      * Deletes a file or directory if exists.
      * @throws Nette\IOException  on error occurred
+     * @param string $path
      */
-    public static function delete(string $path) : void
+    public static function delete($path) : void
     {
         if (\is_file($path) || \is_link($path)) {
             $func = \DIRECTORY_SEPARATOR === '\\' && \is_dir($path) ? 'rmdir' : 'unlink';
             if (!@$func($path)) {
                 // @ is escalated to exception
-                throw new \MonorepoBuilder20210708\Nette\IOException("Unable to delete '{$path}'. " . \MonorepoBuilder20210708\Nette\Utils\Helpers::getLastError());
+                throw new \MonorepoBuilder20210710\Nette\IOException("Unable to delete '{$path}'. " . \MonorepoBuilder20210710\Nette\Utils\Helpers::getLastError());
             }
         } elseif (\is_dir($path)) {
             foreach (new \FilesystemIterator($path) as $item) {
@@ -74,7 +80,7 @@ final class FileSystem
             }
             if (!@\rmdir($path)) {
                 // @ is escalated to exception
-                throw new \MonorepoBuilder20210708\Nette\IOException("Unable to delete directory '{$path}'. " . \MonorepoBuilder20210708\Nette\Utils\Helpers::getLastError());
+                throw new \MonorepoBuilder20210710\Nette\IOException("Unable to delete directory '{$path}'. " . \MonorepoBuilder20210710\Nette\Utils\Helpers::getLastError());
             }
         }
     }
@@ -82,13 +88,16 @@ final class FileSystem
      * Renames or moves a file or a directory. Overwrites existing files and directories by default.
      * @throws Nette\IOException  on error occurred
      * @throws Nette\InvalidStateException  if $overwrite is set to false and destination already exists
+     * @param string $origin
+     * @param string $target
+     * @param bool $overwrite
      */
-    public static function rename(string $origin, string $target, bool $overwrite = \true) : void
+    public static function rename($origin, $target, $overwrite = \true) : void
     {
         if (!$overwrite && \file_exists($target)) {
-            throw new \MonorepoBuilder20210708\Nette\InvalidStateException("File or directory '{$target}' already exists.");
+            throw new \MonorepoBuilder20210710\Nette\InvalidStateException("File or directory '{$target}' already exists.");
         } elseif (!\file_exists($origin)) {
-            throw new \MonorepoBuilder20210708\Nette\IOException("File or directory '{$origin}' not found.");
+            throw new \MonorepoBuilder20210710\Nette\IOException("File or directory '{$origin}' not found.");
         } else {
             static::createDir(\dirname($target));
             if (\realpath($origin) !== \realpath($target)) {
@@ -96,50 +105,56 @@ final class FileSystem
             }
             if (!@\rename($origin, $target)) {
                 // @ is escalated to exception
-                throw new \MonorepoBuilder20210708\Nette\IOException("Unable to rename file or directory '{$origin}' to '{$target}'. " . \MonorepoBuilder20210708\Nette\Utils\Helpers::getLastError());
+                throw new \MonorepoBuilder20210710\Nette\IOException("Unable to rename file or directory '{$origin}' to '{$target}'. " . \MonorepoBuilder20210710\Nette\Utils\Helpers::getLastError());
             }
         }
     }
     /**
      * Reads the content of a file.
      * @throws Nette\IOException  on error occurred
+     * @param string $file
      */
-    public static function read(string $file) : string
+    public static function read($file) : string
     {
         $content = @\file_get_contents($file);
         // @ is escalated to exception
         if ($content === \false) {
-            throw new \MonorepoBuilder20210708\Nette\IOException("Unable to read file '{$file}'. " . \MonorepoBuilder20210708\Nette\Utils\Helpers::getLastError());
+            throw new \MonorepoBuilder20210710\Nette\IOException("Unable to read file '{$file}'. " . \MonorepoBuilder20210710\Nette\Utils\Helpers::getLastError());
         }
         return $content;
     }
     /**
      * Writes the string to a file.
      * @throws Nette\IOException  on error occurred
+     * @param string $file
+     * @param string $content
+     * @param int|null $mode
      */
-    public static function write(string $file, string $content, ?int $mode = 0666) : void
+    public static function write($file, $content, $mode = 0666) : void
     {
         static::createDir(\dirname($file));
         if (@\file_put_contents($file, $content) === \false) {
             // @ is escalated to exception
-            throw new \MonorepoBuilder20210708\Nette\IOException("Unable to write file '{$file}'. " . \MonorepoBuilder20210708\Nette\Utils\Helpers::getLastError());
+            throw new \MonorepoBuilder20210710\Nette\IOException("Unable to write file '{$file}'. " . \MonorepoBuilder20210710\Nette\Utils\Helpers::getLastError());
         }
         if ($mode !== null && !@\chmod($file, $mode)) {
             // @ is escalated to exception
-            throw new \MonorepoBuilder20210708\Nette\IOException("Unable to chmod file '{$file}' to mode " . \decoct($mode) . '. ' . \MonorepoBuilder20210708\Nette\Utils\Helpers::getLastError());
+            throw new \MonorepoBuilder20210710\Nette\IOException("Unable to chmod file '{$file}' to mode " . \decoct($mode) . '. ' . \MonorepoBuilder20210710\Nette\Utils\Helpers::getLastError());
         }
     }
     /**
      * Determines if the path is absolute.
+     * @param string $path
      */
-    public static function isAbsolute(string $path) : bool
+    public static function isAbsolute($path) : bool
     {
         return (bool) \preg_match('#([a-z]:)?[/\\\\]|[a-z][a-z0-9+.-]*://#Ai', $path);
     }
     /**
      * Normalizes `..` and `.` and directory separators in path.
+     * @param string $path
      */
-    public static function normalizePath(string $path) : string
+    public static function normalizePath($path) : string
     {
         $parts = $path === '' ? [] : \preg_split('~[/\\\\]+~', $path);
         $res = [];
@@ -154,8 +169,9 @@ final class FileSystem
     }
     /**
      * Joins all segments of the path and normalizes the result.
+     * @param string ...$paths
      */
-    public static function joinPaths(string ...$paths) : string
+    public static function joinPaths(...$paths) : string
     {
         return self::normalizePath(\implode('/', $paths));
     }

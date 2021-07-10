@@ -34,13 +34,19 @@ final class SetCurrentMutualConflictsReleaseWorker implements \Symplify\Monorepo
         $this->packageNamesProvider = $packageNamesProvider;
         $this->conflictingUpdater = $conflictingUpdater;
     }
-    public function work(\PharIo\Version\Version $version) : void
+    /**
+     * @param \PharIo\Version\Version $version
+     */
+    public function work($version) : void
     {
         $this->conflictingUpdater->updateFileInfosWithVendorAndVersion($this->composerJsonProvider->getPackagesComposerFileInfos(), $this->packageNamesProvider->provide(), $version);
         // give time to propagate printed composer.json values before commit
         \sleep(1);
     }
-    public function getDescription(\PharIo\Version\Version $version) : string
+    /**
+     * @param \PharIo\Version\Version $version
+     */
+    public function getDescription($version) : string
     {
         $versionInString = $this->versionUtils->getRequiredFormat($version);
         return \sprintf('Set packages mutual conflicts to "%s" version', $versionInString);

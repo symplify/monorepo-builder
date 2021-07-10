@@ -20,7 +20,10 @@ class SpecificMajorVersionConstraint extends \PharIo\Version\AbstractVersionCons
         parent::__construct($originalValue);
         $this->major = $major;
     }
-    public function complies(\PharIo\Version\Version $version) : bool
+    /**
+     * @param \PharIo\Version\Version $version
+     */
+    public function complies($version) : bool
     {
         return $version->getMajor()->getValue() === $this->major;
     }

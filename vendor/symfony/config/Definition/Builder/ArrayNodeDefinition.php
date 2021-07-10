@@ -8,17 +8,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210708\Symfony\Component\Config\Definition\Builder;
+namespace MonorepoBuilder20210710\Symfony\Component\Config\Definition\Builder;
 
-use MonorepoBuilder20210708\Symfony\Component\Config\Definition\ArrayNode;
-use MonorepoBuilder20210708\Symfony\Component\Config\Definition\Exception\InvalidDefinitionException;
-use MonorepoBuilder20210708\Symfony\Component\Config\Definition\PrototypedArrayNode;
+use MonorepoBuilder20210710\Symfony\Component\Config\Definition\ArrayNode;
+use MonorepoBuilder20210710\Symfony\Component\Config\Definition\Exception\InvalidDefinitionException;
+use MonorepoBuilder20210710\Symfony\Component\Config\Definition\PrototypedArrayNode;
 /**
  * This class provides a fluent interface for defining an array node.
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class ArrayNodeDefinition extends \MonorepoBuilder20210708\Symfony\Component\Config\Definition\Builder\NodeDefinition implements \MonorepoBuilder20210708\Symfony\Component\Config\Definition\Builder\ParentNodeDefinitionInterface
+class ArrayNodeDefinition extends \MonorepoBuilder20210710\Symfony\Component\Config\Definition\Builder\NodeDefinition implements \MonorepoBuilder20210710\Symfony\Component\Config\Definition\Builder\ParentNodeDefinitionInterface
 {
     protected $performDeepMerging = \true;
     protected $ignoreExtraKeys = \false;
@@ -36,7 +36,7 @@ class ArrayNodeDefinition extends \MonorepoBuilder20210708\Symfony\Component\Con
     /**
      * {@inheritdoc}
      */
-    public function __construct(?string $name, \MonorepoBuilder20210708\Symfony\Component\Config\Definition\Builder\NodeParentInterface $parent = null)
+    public function __construct(?string $name, \MonorepoBuilder20210710\Symfony\Component\Config\Definition\Builder\NodeParentInterface $parent = null)
     {
         parent::__construct($name, $parent);
         $this->nullEquivalent = [];
@@ -44,8 +44,9 @@ class ArrayNodeDefinition extends \MonorepoBuilder20210708\Symfony\Component\Con
     }
     /**
      * {@inheritdoc}
+     * @param \Symfony\Component\Config\Definition\Builder\NodeBuilder $builder
      */
-    public function setBuilder(\MonorepoBuilder20210708\Symfony\Component\Config\Definition\Builder\NodeBuilder $builder)
+    public function setBuilder($builder)
     {
         $this->nodeBuilder = $builder;
     }
@@ -60,8 +61,9 @@ class ArrayNodeDefinition extends \MonorepoBuilder20210708\Symfony\Component\Con
      * Sets a prototype for child nodes.
      *
      * @return NodeDefinition
+     * @param string $type
      */
-    public function prototype(string $type)
+    public function prototype($type)
     {
         return $this->prototype = $this->getNodeBuilder()->node(null, $type)->setParent($this);
     }
@@ -174,7 +176,7 @@ class ArrayNodeDefinition extends \MonorepoBuilder20210708\Symfony\Component\Con
      *
      * @return $this
      */
-    public function fixXmlConfig(string $singular, string $plural = null)
+    public function fixXmlConfig($singular, $plural = null)
     {
         $this->normalization()->remap($singular, $plural);
         return $this;
@@ -207,7 +209,7 @@ class ArrayNodeDefinition extends \MonorepoBuilder20210708\Symfony\Component\Con
      *
      * @return $this
      */
-    public function useAttributeAsKey(string $name, bool $removeKeyItem = \true)
+    public function useAttributeAsKey($name, $removeKeyItem = \true)
     {
         $this->key = $name;
         $this->removeKeyItem = $removeKeyItem;
@@ -217,8 +219,9 @@ class ArrayNodeDefinition extends \MonorepoBuilder20210708\Symfony\Component\Con
      * Sets whether the node can be unset.
      *
      * @return $this
+     * @param bool $allow
      */
-    public function canBeUnset(bool $allow = \true)
+    public function canBeUnset($allow = \true)
     {
         $this->merge()->allowUnset($allow);
         return $this;
@@ -281,7 +284,7 @@ class ArrayNodeDefinition extends \MonorepoBuilder20210708\Symfony\Component\Con
      *
      * @return $this
      */
-    public function ignoreExtraKeys(bool $remove = \true)
+    public function ignoreExtraKeys($remove = \true)
     {
         $this->ignoreExtraKeys = \true;
         $this->removeExtraKeys = $remove;
@@ -291,16 +294,18 @@ class ArrayNodeDefinition extends \MonorepoBuilder20210708\Symfony\Component\Con
      * Sets whether to enable key normalization.
      *
      * @return $this
+     * @param bool $bool
      */
-    public function normalizeKeys(bool $bool)
+    public function normalizeKeys($bool)
     {
         $this->normalizeKeys = $bool;
         return $this;
     }
     /**
      * {@inheritdoc}
+     * @param \Symfony\Component\Config\Definition\Builder\NodeDefinition $node
      */
-    public function append(\MonorepoBuilder20210708\Symfony\Component\Config\Definition\Builder\NodeDefinition $node)
+    public function append($node)
     {
         $this->children[$node->name] = $node->setParent($this);
         return $this;
@@ -313,7 +318,7 @@ class ArrayNodeDefinition extends \MonorepoBuilder20210708\Symfony\Component\Con
     protected function getNodeBuilder()
     {
         if (null === $this->nodeBuilder) {
-            $this->nodeBuilder = new \MonorepoBuilder20210708\Symfony\Component\Config\Definition\Builder\NodeBuilder();
+            $this->nodeBuilder = new \MonorepoBuilder20210710\Symfony\Component\Config\Definition\Builder\NodeBuilder();
         }
         return $this->nodeBuilder->setParent($this);
     }
@@ -323,7 +328,7 @@ class ArrayNodeDefinition extends \MonorepoBuilder20210708\Symfony\Component\Con
     protected function createNode()
     {
         if (null === $this->prototype) {
-            $node = new \MonorepoBuilder20210708\Symfony\Component\Config\Definition\ArrayNode($this->name, $this->parent, $this->pathSeparator);
+            $node = new \MonorepoBuilder20210710\Symfony\Component\Config\Definition\ArrayNode($this->name, $this->parent, $this->pathSeparator);
             $this->validateConcreteNode($node);
             $node->setAddIfNotSet($this->addDefaults);
             foreach ($this->children as $child) {
@@ -331,7 +336,7 @@ class ArrayNodeDefinition extends \MonorepoBuilder20210708\Symfony\Component\Con
                 $node->addChild($child->getNode());
             }
         } else {
-            $node = new \MonorepoBuilder20210708\Symfony\Component\Config\Definition\PrototypedArrayNode($this->name, $this->parent, $this->pathSeparator);
+            $node = new \MonorepoBuilder20210710\Symfony\Component\Config\Definition\PrototypedArrayNode($this->name, $this->parent, $this->pathSeparator);
             $this->validatePrototypeNode($node);
             if (null !== $this->key) {
                 $node->setKeyAttribute($this->key, $this->removeKeyItem);
@@ -382,46 +387,48 @@ class ArrayNodeDefinition extends \MonorepoBuilder20210708\Symfony\Component\Con
      * Validate the configuration of a concrete node.
      *
      * @throws InvalidDefinitionException
+     * @param \Symfony\Component\Config\Definition\ArrayNode $node
      */
-    protected function validateConcreteNode(\MonorepoBuilder20210708\Symfony\Component\Config\Definition\ArrayNode $node)
+    protected function validateConcreteNode($node)
     {
         $path = $node->getPath();
         if (null !== $this->key) {
-            throw new \MonorepoBuilder20210708\Symfony\Component\Config\Definition\Exception\InvalidDefinitionException(\sprintf('->useAttributeAsKey() is not applicable to concrete nodes at path "%s".', $path));
+            throw new \MonorepoBuilder20210710\Symfony\Component\Config\Definition\Exception\InvalidDefinitionException(\sprintf('->useAttributeAsKey() is not applicable to concrete nodes at path "%s".', $path));
         }
         if (\false === $this->allowEmptyValue) {
-            throw new \MonorepoBuilder20210708\Symfony\Component\Config\Definition\Exception\InvalidDefinitionException(\sprintf('->cannotBeEmpty() is not applicable to concrete nodes at path "%s".', $path));
+            throw new \MonorepoBuilder20210710\Symfony\Component\Config\Definition\Exception\InvalidDefinitionException(\sprintf('->cannotBeEmpty() is not applicable to concrete nodes at path "%s".', $path));
         }
         if (\true === $this->atLeastOne) {
-            throw new \MonorepoBuilder20210708\Symfony\Component\Config\Definition\Exception\InvalidDefinitionException(\sprintf('->requiresAtLeastOneElement() is not applicable to concrete nodes at path "%s".', $path));
+            throw new \MonorepoBuilder20210710\Symfony\Component\Config\Definition\Exception\InvalidDefinitionException(\sprintf('->requiresAtLeastOneElement() is not applicable to concrete nodes at path "%s".', $path));
         }
         if ($this->default) {
-            throw new \MonorepoBuilder20210708\Symfony\Component\Config\Definition\Exception\InvalidDefinitionException(\sprintf('->defaultValue() is not applicable to concrete nodes at path "%s".', $path));
+            throw new \MonorepoBuilder20210710\Symfony\Component\Config\Definition\Exception\InvalidDefinitionException(\sprintf('->defaultValue() is not applicable to concrete nodes at path "%s".', $path));
         }
         if (\false !== $this->addDefaultChildren) {
-            throw new \MonorepoBuilder20210708\Symfony\Component\Config\Definition\Exception\InvalidDefinitionException(\sprintf('->addDefaultChildrenIfNoneSet() is not applicable to concrete nodes at path "%s".', $path));
+            throw new \MonorepoBuilder20210710\Symfony\Component\Config\Definition\Exception\InvalidDefinitionException(\sprintf('->addDefaultChildrenIfNoneSet() is not applicable to concrete nodes at path "%s".', $path));
         }
     }
     /**
      * Validate the configuration of a prototype node.
      *
      * @throws InvalidDefinitionException
+     * @param \Symfony\Component\Config\Definition\PrototypedArrayNode $node
      */
-    protected function validatePrototypeNode(\MonorepoBuilder20210708\Symfony\Component\Config\Definition\PrototypedArrayNode $node)
+    protected function validatePrototypeNode($node)
     {
         $path = $node->getPath();
         if ($this->addDefaults) {
-            throw new \MonorepoBuilder20210708\Symfony\Component\Config\Definition\Exception\InvalidDefinitionException(\sprintf('->addDefaultsIfNotSet() is not applicable to prototype nodes at path "%s".', $path));
+            throw new \MonorepoBuilder20210710\Symfony\Component\Config\Definition\Exception\InvalidDefinitionException(\sprintf('->addDefaultsIfNotSet() is not applicable to prototype nodes at path "%s".', $path));
         }
         if (\false !== $this->addDefaultChildren) {
             if ($this->default) {
-                throw new \MonorepoBuilder20210708\Symfony\Component\Config\Definition\Exception\InvalidDefinitionException(\sprintf('A default value and default children might not be used together at path "%s".', $path));
+                throw new \MonorepoBuilder20210710\Symfony\Component\Config\Definition\Exception\InvalidDefinitionException(\sprintf('A default value and default children might not be used together at path "%s".', $path));
             }
             if (null !== $this->key && (null === $this->addDefaultChildren || \is_int($this->addDefaultChildren) && $this->addDefaultChildren > 0)) {
-                throw new \MonorepoBuilder20210708\Symfony\Component\Config\Definition\Exception\InvalidDefinitionException(\sprintf('->addDefaultChildrenIfNoneSet() should set default children names as ->useAttributeAsKey() is used at path "%s".', $path));
+                throw new \MonorepoBuilder20210710\Symfony\Component\Config\Definition\Exception\InvalidDefinitionException(\sprintf('->addDefaultChildrenIfNoneSet() should set default children names as ->useAttributeAsKey() is used at path "%s".', $path));
             }
             if (null === $this->key && (\is_string($this->addDefaultChildren) || \is_array($this->addDefaultChildren))) {
-                throw new \MonorepoBuilder20210708\Symfony\Component\Config\Definition\Exception\InvalidDefinitionException(\sprintf('->addDefaultChildrenIfNoneSet() might not set default children names as ->useAttributeAsKey() is not used at path "%s".', $path));
+                throw new \MonorepoBuilder20210710\Symfony\Component\Config\Definition\Exception\InvalidDefinitionException(\sprintf('->addDefaultChildrenIfNoneSet() might not set default children names as ->useAttributeAsKey() is not used at path "%s".', $path));
             }
         }
     }
@@ -437,7 +444,7 @@ class ArrayNodeDefinition extends \MonorepoBuilder20210708\Symfony\Component\Con
      *
      * @param string $nodePath The path of the node to find. e.g "doctrine.orm.mappings"
      */
-    public function find(string $nodePath) : \MonorepoBuilder20210708\Symfony\Component\Config\Definition\Builder\NodeDefinition
+    public function find($nodePath) : \MonorepoBuilder20210710\Symfony\Component\Config\Definition\Builder\NodeDefinition
     {
         $firstPathSegment = \false === ($pathSeparatorPos = \strpos($nodePath, $this->pathSeparator)) ? $nodePath : \substr($nodePath, 0, $pathSeparatorPos);
         if (null === ($node = $this->children[$firstPathSegment] ?? null)) {

@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210708\Symfony\Component\HttpFoundation;
+namespace MonorepoBuilder20210710\Symfony\Component\HttpFoundation;
 
-use MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Exception\SessionNotFoundException;
-use MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Session\SessionInterface;
+use MonorepoBuilder20210710\Symfony\Component\HttpFoundation\Exception\SessionNotFoundException;
+use MonorepoBuilder20210710\Symfony\Component\HttpFoundation\Session\SessionInterface;
 /**
  * Request stack that controls the lifecycle of requests.
  *
@@ -28,8 +28,9 @@ class RequestStack
      *
      * This method should generally not be called directly as the stack
      * management should be taken care of by the application itself.
+     * @param \Symfony\Component\HttpFoundation\Request $request
      */
-    public function push(\MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Request $request)
+    public function push($request)
     {
         $this->requests[] = $request;
     }
@@ -64,7 +65,7 @@ class RequestStack
      * might make it un-compatible with other features of your framework
      * like ESI support.
      */
-    public function getMainRequest() : ?\MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Request
+    public function getMainRequest() : ?\MonorepoBuilder20210710\Symfony\Component\HttpFoundation\Request
     {
         if (!$this->requests) {
             return null;
@@ -107,11 +108,11 @@ class RequestStack
      *
      * @throws SessionNotFoundException
      */
-    public function getSession() : \MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Session\SessionInterface
+    public function getSession() : \MonorepoBuilder20210710\Symfony\Component\HttpFoundation\Session\SessionInterface
     {
         if (null !== ($request = \end($this->requests) ?: null) && $request->hasSession()) {
             return $request->getSession();
         }
-        throw new \MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Exception\SessionNotFoundException();
+        throw new \MonorepoBuilder20210710\Symfony\Component\HttpFoundation\Exception\SessionNotFoundException();
     }
 }

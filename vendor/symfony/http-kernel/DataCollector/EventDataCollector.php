@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210708\Symfony\Component\HttpKernel\DataCollector;
+namespace MonorepoBuilder20210710\Symfony\Component\HttpKernel\DataCollector;
 
-use MonorepoBuilder20210708\Symfony\Component\EventDispatcher\Debug\TraceableEventDispatcher;
-use MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Request;
-use MonorepoBuilder20210708\Symfony\Component\HttpFoundation\RequestStack;
-use MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Response;
-use MonorepoBuilder20210708\Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
-use MonorepoBuilder20210708\Symfony\Contracts\Service\ResetInterface;
+use MonorepoBuilder20210710\Symfony\Component\EventDispatcher\Debug\TraceableEventDispatcher;
+use MonorepoBuilder20210710\Symfony\Component\HttpFoundation\Request;
+use MonorepoBuilder20210710\Symfony\Component\HttpFoundation\RequestStack;
+use MonorepoBuilder20210710\Symfony\Component\HttpFoundation\Response;
+use MonorepoBuilder20210710\Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
+use MonorepoBuilder20210710\Symfony\Contracts\Service\ResetInterface;
 /**
  * EventDataCollector.
  *
@@ -23,20 +23,23 @@ use MonorepoBuilder20210708\Symfony\Contracts\Service\ResetInterface;
  *
  * @final
  */
-class EventDataCollector extends \MonorepoBuilder20210708\Symfony\Component\HttpKernel\DataCollector\DataCollector implements \MonorepoBuilder20210708\Symfony\Component\HttpKernel\DataCollector\LateDataCollectorInterface
+class EventDataCollector extends \MonorepoBuilder20210710\Symfony\Component\HttpKernel\DataCollector\DataCollector implements \MonorepoBuilder20210710\Symfony\Component\HttpKernel\DataCollector\LateDataCollectorInterface
 {
     protected $dispatcher;
     private $requestStack;
     private $currentRequest;
-    public function __construct(\MonorepoBuilder20210708\Symfony\Contracts\EventDispatcher\EventDispatcherInterface $dispatcher = null, \MonorepoBuilder20210708\Symfony\Component\HttpFoundation\RequestStack $requestStack = null)
+    public function __construct(\MonorepoBuilder20210710\Symfony\Contracts\EventDispatcher\EventDispatcherInterface $dispatcher = null, \MonorepoBuilder20210710\Symfony\Component\HttpFoundation\RequestStack $requestStack = null)
     {
         $this->dispatcher = $dispatcher;
         $this->requestStack = $requestStack;
     }
     /**
      * {@inheritdoc}
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @param \Symfony\Component\HttpFoundation\Response $response
+     * @param \Throwable|null $exception
      */
-    public function collect(\MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Request $request, \MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Response $response, \Throwable $exception = null)
+    public function collect($request, $response, $exception = null)
     {
         $this->currentRequest = $this->requestStack && $this->requestStack->getMainRequest() !== $request ? $request : null;
         $this->data = ['called_listeners' => [], 'not_called_listeners' => [], 'orphaned_events' => []];
@@ -44,13 +47,13 @@ class EventDataCollector extends \MonorepoBuilder20210708\Symfony\Component\Http
     public function reset()
     {
         $this->data = [];
-        if ($this->dispatcher instanceof \MonorepoBuilder20210708\Symfony\Contracts\Service\ResetInterface) {
+        if ($this->dispatcher instanceof \MonorepoBuilder20210710\Symfony\Contracts\Service\ResetInterface) {
             $this->dispatcher->reset();
         }
     }
     public function lateCollect()
     {
-        if ($this->dispatcher instanceof \MonorepoBuilder20210708\Symfony\Component\EventDispatcher\Debug\TraceableEventDispatcher) {
+        if ($this->dispatcher instanceof \MonorepoBuilder20210710\Symfony\Component\EventDispatcher\Debug\TraceableEventDispatcher) {
             $this->setCalledListeners($this->dispatcher->getCalledListeners($this->currentRequest));
             $this->setNotCalledListeners($this->dispatcher->getNotCalledListeners($this->currentRequest));
             $this->setOrphanedEvents($this->dispatcher->getOrphanedEvents($this->currentRequest));
@@ -64,7 +67,7 @@ class EventDataCollector extends \MonorepoBuilder20210708\Symfony\Component\Http
      *
      * @see TraceableEventDispatcher
      */
-    public function setCalledListeners(array $listeners)
+    public function setCalledListeners($listeners)
     {
         $this->data['called_listeners'] = $listeners;
     }
@@ -83,8 +86,9 @@ class EventDataCollector extends \MonorepoBuilder20210708\Symfony\Component\Http
      * Sets the not called listeners.
      *
      * @see TraceableEventDispatcher
+     * @param mixed[] $listeners
      */
-    public function setNotCalledListeners(array $listeners)
+    public function setNotCalledListeners($listeners)
     {
         $this->data['not_called_listeners'] = $listeners;
     }
@@ -106,7 +110,7 @@ class EventDataCollector extends \MonorepoBuilder20210708\Symfony\Component\Http
      *
      * @see TraceableEventDispatcher
      */
-    public function setOrphanedEvents(array $events)
+    public function setOrphanedEvents($events)
     {
         $this->data['orphaned_events'] = $events;
     }

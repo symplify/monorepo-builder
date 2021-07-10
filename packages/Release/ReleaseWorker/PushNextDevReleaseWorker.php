@@ -8,7 +8,7 @@ use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterfa
 use Symplify\MonorepoBuilder\Release\Process\ProcessRunner;
 use Symplify\MonorepoBuilder\Utils\VersionUtils;
 use Symplify\MonorepoBuilder\ValueObject\Option;
-use MonorepoBuilder20210708\Symplify\PackageBuilder\Parameter\ParameterProvider;
+use MonorepoBuilder20210710\Symplify\PackageBuilder\Parameter\ParameterProvider;
 final class PushNextDevReleaseWorker implements \Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface
 {
     /**
@@ -23,19 +23,25 @@ final class PushNextDevReleaseWorker implements \Symplify\MonorepoBuilder\Releas
      * @var \Symplify\MonorepoBuilder\Utils\VersionUtils
      */
     private $versionUtils;
-    public function __construct(\Symplify\MonorepoBuilder\Release\Process\ProcessRunner $processRunner, \Symplify\MonorepoBuilder\Utils\VersionUtils $versionUtils, \MonorepoBuilder20210708\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider)
+    public function __construct(\Symplify\MonorepoBuilder\Release\Process\ProcessRunner $processRunner, \Symplify\MonorepoBuilder\Utils\VersionUtils $versionUtils, \MonorepoBuilder20210710\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider)
     {
         $this->processRunner = $processRunner;
         $this->versionUtils = $versionUtils;
         $this->branchName = $parameterProvider->provideStringParameter(\Symplify\MonorepoBuilder\ValueObject\Option::DEFAULT_BRANCH_NAME);
     }
-    public function work(\PharIo\Version\Version $version) : void
+    /**
+     * @param \PharIo\Version\Version $version
+     */
+    public function work($version) : void
     {
         $versionInString = $this->getVersionDev($version);
         $gitAddCommitCommand = \sprintf('git add . && git commit --allow-empty -m "open %s" && git push origin "%s"', $versionInString, $this->branchName);
         $this->processRunner->run($gitAddCommitCommand);
     }
-    public function getDescription(\PharIo\Version\Version $version) : string
+    /**
+     * @param \PharIo\Version\Version $version
+     */
+    public function getDescription($version) : string
     {
         $versionInString = $this->getVersionDev($version);
         return \sprintf('Push "%s" open to remote repository', $versionInString);

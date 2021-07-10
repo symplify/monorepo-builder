@@ -8,17 +8,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Loader\Configurator;
+namespace MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use MonorepoBuilder20210708\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder20210710\Symfony\Component\DependencyInjection\ContainerBuilder;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class ParametersConfigurator extends \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Loader\Configurator\AbstractConfigurator
+class ParametersConfigurator extends \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Loader\Configurator\AbstractConfigurator
 {
     public const FACTORY = 'parameters';
     private $container;
-    public function __construct(\MonorepoBuilder20210708\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    public function __construct(\MonorepoBuilder20210710\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
         $this->container = $container;
     }
@@ -26,8 +26,9 @@ class ParametersConfigurator extends \MonorepoBuilder20210708\Symfony\Component\
      * Creates a parameter.
      *
      * @return $this
+     * @param string $name
      */
-    public final function set(string $name, $value)
+    public final function set($name, $value)
     {
         $this->container->setParameter($name, static::processValue($value, \true));
         return $this;

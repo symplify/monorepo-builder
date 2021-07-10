@@ -15,8 +15,9 @@ class VersionConstraintParser
 {
     /**
      * @throws UnsupportedVersionConstraintException
+     * @param string $value
      */
-    public function parse(string $value) : \PharIo\Version\VersionConstraint
+    public function parse($value) : \PharIo\Version\VersionConstraint
     {
         if (\strpos($value, '||') !== \false) {
             return $this->handleOrGroup($value);

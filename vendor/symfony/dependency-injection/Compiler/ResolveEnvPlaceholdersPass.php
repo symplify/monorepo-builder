@@ -8,20 +8,23 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Compiler;
+namespace MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Compiler;
 
-use MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Definition;
+use MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Definition;
 /**
  * Replaces env var placeholders by their current values.
  */
-class ResolveEnvPlaceholdersPass extends \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Compiler\AbstractRecursivePass
+class ResolveEnvPlaceholdersPass extends \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Compiler\AbstractRecursivePass
 {
-    protected function processValue($value, bool $isRoot = \false)
+    /**
+     * @param bool $isRoot
+     */
+    protected function processValue($value, $isRoot = \false)
     {
         if (\is_string($value)) {
             return $this->container->resolveEnvPlaceholders($value, \true);
         }
-        if ($value instanceof \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Definition) {
+        if ($value instanceof \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Definition) {
             $changes = $value->getChanges();
             if (isset($changes['class'])) {
                 $value->setClass($this->container->resolveEnvPlaceholders($value->getClass(), \true));

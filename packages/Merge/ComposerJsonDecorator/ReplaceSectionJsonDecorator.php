@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Merge\ComposerJsonDecorator;
 
-use MonorepoBuilder20210708\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
+use MonorepoBuilder20210710\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
 use Symplify\MonorepoBuilder\Merge\Configuration\MergedPackagesCollector;
 use Symplify\MonorepoBuilder\Merge\Contract\ComposerJsonDecoratorInterface;
 final class ReplaceSectionJsonDecorator implements \Symplify\MonorepoBuilder\Merge\Contract\ComposerJsonDecoratorInterface
@@ -16,7 +16,10 @@ final class ReplaceSectionJsonDecorator implements \Symplify\MonorepoBuilder\Mer
     {
         $this->mergedPackagesCollector = $mergedPackagesCollector;
     }
-    public function decorate(\MonorepoBuilder20210708\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJson) : void
+    /**
+     * @param \Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJson
+     */
+    public function decorate($composerJson) : void
     {
         $mergedPackages = $this->mergedPackagesCollector->getPackages();
         foreach ($mergedPackages as $mergedPackage) {

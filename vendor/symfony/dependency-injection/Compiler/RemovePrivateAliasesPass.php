@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Compiler;
+namespace MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Compiler;
 
-use MonorepoBuilder20210708\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder20210710\Symfony\Component\DependencyInjection\ContainerBuilder;
 /**
  * Remove private aliases from the container. They were only used to establish
  * dependencies between services, and these dependencies have been resolved in
@@ -18,12 +18,13 @@ use MonorepoBuilder20210708\Symfony\Component\DependencyInjection\ContainerBuild
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class RemovePrivateAliasesPass implements \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
+class RemovePrivateAliasesPass implements \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
 {
     /**
      * Removes private aliases from the ContainerBuilder.
+     * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
      */
-    public function process(\MonorepoBuilder20210708\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    public function process($container)
     {
         foreach ($container->getAliases() as $id => $alias) {
             if ($alias->isPublic()) {

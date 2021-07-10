@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210708\Symfony\Component\HttpFoundation;
+namespace MonorepoBuilder20210710\Symfony\Component\HttpFoundation;
 
 // Help opcache.preload discover always-needed symbols
-\class_exists(\MonorepoBuilder20210708\Symfony\Component\HttpFoundation\AcceptHeaderItem::class);
+\class_exists(\MonorepoBuilder20210710\Symfony\Component\HttpFoundation\AcceptHeaderItem::class);
 /**
  * Represents an Accept-* header.
  *
@@ -43,15 +43,16 @@ class AcceptHeader
      * Builds an AcceptHeader instance from a string.
      *
      * @return self
+     * @param string|null $headerValue
      */
-    public static function fromString(?string $headerValue)
+    public static function fromString($headerValue)
     {
         $index = 0;
-        $parts = \MonorepoBuilder20210708\Symfony\Component\HttpFoundation\HeaderUtils::split($headerValue ?? '', ',;=');
+        $parts = \MonorepoBuilder20210710\Symfony\Component\HttpFoundation\HeaderUtils::split($headerValue ?? '', ',;=');
         return new self(\array_map(function ($subParts) use(&$index) {
             $part = \array_shift($subParts);
-            $attributes = \MonorepoBuilder20210708\Symfony\Component\HttpFoundation\HeaderUtils::combine($subParts);
-            $item = new \MonorepoBuilder20210708\Symfony\Component\HttpFoundation\AcceptHeaderItem($part[0], $attributes);
+            $attributes = \MonorepoBuilder20210710\Symfony\Component\HttpFoundation\HeaderUtils::combine($subParts);
+            $item = new \MonorepoBuilder20210710\Symfony\Component\HttpFoundation\AcceptHeaderItem($part[0], $attributes);
             $item->setIndex($index++);
             return $item;
         }, $parts));
@@ -69,8 +70,9 @@ class AcceptHeader
      * Tests if header has given value.
      *
      * @return bool
+     * @param string $value
      */
-    public function has(string $value)
+    public function has($value)
     {
         return isset($this->items[$value]);
     }
@@ -78,8 +80,9 @@ class AcceptHeader
      * Returns given value's item, if exists.
      *
      * @return AcceptHeaderItem|null
+     * @param string $value
      */
-    public function get(string $value)
+    public function get($value)
     {
         return $this->items[$value] ?? $this->items[\explode('/', $value)[0] . '/*'] ?? $this->items['*/*'] ?? $this->items['*'] ?? null;
     }
@@ -87,8 +90,9 @@ class AcceptHeader
      * Adds an item.
      *
      * @return $this
+     * @param \Symfony\Component\HttpFoundation\AcceptHeaderItem $item
      */
-    public function add(\MonorepoBuilder20210708\Symfony\Component\HttpFoundation\AcceptHeaderItem $item)
+    public function add($item)
     {
         $this->items[$item->getValue()] = $item;
         $this->sorted = \false;
@@ -108,10 +112,11 @@ class AcceptHeader
      * Filters items on their value using given regex.
      *
      * @return self
+     * @param string $pattern
      */
-    public function filter(string $pattern)
+    public function filter($pattern)
     {
-        return new self(\array_filter($this->items, function (\MonorepoBuilder20210708\Symfony\Component\HttpFoundation\AcceptHeaderItem $item) use($pattern) {
+        return new self(\array_filter($this->items, function (\MonorepoBuilder20210710\Symfony\Component\HttpFoundation\AcceptHeaderItem $item) use($pattern) {
             return \preg_match($pattern, $item->getValue());
         }));
     }
@@ -131,7 +136,7 @@ class AcceptHeader
     private function sort() : void
     {
         if (!$this->sorted) {
-            \uasort($this->items, function (\MonorepoBuilder20210708\Symfony\Component\HttpFoundation\AcceptHeaderItem $a, \MonorepoBuilder20210708\Symfony\Component\HttpFoundation\AcceptHeaderItem $b) {
+            \uasort($this->items, function (\MonorepoBuilder20210710\Symfony\Component\HttpFoundation\AcceptHeaderItem $a, \MonorepoBuilder20210710\Symfony\Component\HttpFoundation\AcceptHeaderItem $b) {
                 $qA = $a->getQuality();
                 $qB = $b->getQuality();
                 if ($qA === $qB) {

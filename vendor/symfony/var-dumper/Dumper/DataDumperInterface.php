@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210708\Symfony\Component\VarDumper\Dumper;
+namespace MonorepoBuilder20210710\Symfony\Component\VarDumper\Dumper;
 
-use MonorepoBuilder20210708\Symfony\Component\VarDumper\Cloner\Data;
+use MonorepoBuilder20210710\Symfony\Component\VarDumper\Cloner\Data;
 /**
  * DataDumperInterface for dumping Data objects.
  *
@@ -18,5 +18,8 @@ use MonorepoBuilder20210708\Symfony\Component\VarDumper\Cloner\Data;
  */
 interface DataDumperInterface
 {
-    public function dump(\MonorepoBuilder20210708\Symfony\Component\VarDumper\Cloner\Data $data);
+    /**
+     * @param \Symfony\Component\VarDumper\Cloner\Data $data
+     */
+    public function dump($data);
 }

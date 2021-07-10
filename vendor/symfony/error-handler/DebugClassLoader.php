@@ -8,17 +8,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210708\Symfony\Component\ErrorHandler;
+namespace MonorepoBuilder20210710\Symfony\Component\ErrorHandler;
 
-use MonorepoBuilder20210708\Composer\InstalledVersions;
-use MonorepoBuilder20210708\Doctrine\Common\Persistence\Proxy as LegacyProxy;
-use MonorepoBuilder20210708\Doctrine\Persistence\Proxy;
-use MonorepoBuilder20210708\Mockery\MockInterface;
-use MonorepoBuilder20210708\Phake\IMock;
-use MonorepoBuilder20210708\PHPUnit\Framework\MockObject\Matcher\StatelessInvocation;
-use MonorepoBuilder20210708\PHPUnit\Framework\MockObject\MockObject;
-use MonorepoBuilder20210708\Prophecy\Prophecy\ProphecySubjectInterface;
-use MonorepoBuilder20210708\ProxyManager\Proxy\ProxyInterface;
+use MonorepoBuilder20210710\Composer\InstalledVersions;
+use MonorepoBuilder20210710\Doctrine\Common\Persistence\Proxy as LegacyProxy;
+use MonorepoBuilder20210710\Doctrine\Persistence\Proxy;
+use MonorepoBuilder20210710\Mockery\MockInterface;
+use MonorepoBuilder20210710\Phake\IMock;
+use MonorepoBuilder20210710\PHPUnit\Framework\MockObject\Matcher\StatelessInvocation;
+use MonorepoBuilder20210710\PHPUnit\Framework\MockObject\MockObject;
+use MonorepoBuilder20210710\Prophecy\Prophecy\ProphecySubjectInterface;
+use MonorepoBuilder20210710\ProxyManager\Proxy\ProxyInterface;
 /**
  * Autoloader checking if the class is really defined in the file found.
  *
@@ -113,8 +113,8 @@ class DebugClassLoader
     public static function enable() : void
     {
         // Ensures we don't hit https://bugs.php.net/42098
-        \class_exists(\MonorepoBuilder20210708\Symfony\Component\ErrorHandler\ErrorHandler::class);
-        \class_exists(\MonorepoBuilder20210708\Psr\Log\LogLevel::class);
+        \class_exists(\MonorepoBuilder20210710\Symfony\Component\ErrorHandler\ErrorHandler::class);
+        \class_exists(\MonorepoBuilder20210710\Psr\Log\LogLevel::class);
         if (!\is_array($functions = \spl_autoload_functions())) {
             return;
         }
@@ -165,7 +165,7 @@ class DebugClassLoader
         foreach ($offsets as $getSymbols => $i) {
             $symbols = $getSymbols();
             for (; $i < \count($symbols); ++$i) {
-                if (!\is_subclass_of($symbols[$i], \MonorepoBuilder20210708\PHPUnit\Framework\MockObject\MockObject::class) && !\is_subclass_of($symbols[$i], \MonorepoBuilder20210708\Prophecy\Prophecy\ProphecySubjectInterface::class) && !\is_subclass_of($symbols[$i], \MonorepoBuilder20210708\Doctrine\Persistence\Proxy::class) && !\is_subclass_of($symbols[$i], \MonorepoBuilder20210708\ProxyManager\Proxy\ProxyInterface::class) && !\is_subclass_of($symbols[$i], \MonorepoBuilder20210708\Doctrine\Common\Persistence\Proxy::class) && !\is_subclass_of($symbols[$i], \MonorepoBuilder20210708\Mockery\MockInterface::class) && !\is_subclass_of($symbols[$i], \MonorepoBuilder20210708\Phake\IMock::class)) {
+                if (!\is_subclass_of($symbols[$i], \MonorepoBuilder20210710\PHPUnit\Framework\MockObject\MockObject::class) && !\is_subclass_of($symbols[$i], \MonorepoBuilder20210710\Prophecy\Prophecy\ProphecySubjectInterface::class) && !\is_subclass_of($symbols[$i], \MonorepoBuilder20210710\Doctrine\Persistence\Proxy::class) && !\is_subclass_of($symbols[$i], \MonorepoBuilder20210710\ProxyManager\Proxy\ProxyInterface::class) && !\is_subclass_of($symbols[$i], \MonorepoBuilder20210710\Doctrine\Common\Persistence\Proxy::class) && !\is_subclass_of($symbols[$i], \MonorepoBuilder20210710\Mockery\MockInterface::class) && !\is_subclass_of($symbols[$i], \MonorepoBuilder20210710\Phake\IMock::class)) {
                     $loader->checkClass($symbols[$i]);
                 }
             }
@@ -173,7 +173,10 @@ class DebugClassLoader
         }
         return \true;
     }
-    public function findFile(string $class) : ?string
+    /**
+     * @param string $class
+     */
+    public function findFile($class) : ?string
     {
         return $this->isFinder ? $this->classLoader[0]->findFile($class) ?: null : null;
     }
@@ -181,8 +184,9 @@ class DebugClassLoader
      * Loads the given class or interface.
      *
      * @throws \RuntimeException
+     * @param string $class
      */
-    public function loadClass(string $class) : void
+    public function loadClass($class) : void
     {
         $e = \error_reporting(\error_reporting() | \E_PARSE | \E_ERROR | \E_CORE_ERROR | \E_COMPILE_ERROR);
         try {
@@ -242,7 +246,11 @@ class DebugClassLoader
             throw new \RuntimeException(\sprintf('Case mismatch between class and real file names: "%s" vs "%s" in "%s".', $message[0], $message[1], $message[2]));
         }
     }
-    public function checkAnnotations(\ReflectionClass $refl, string $class) : array
+    /**
+     * @param \ReflectionClass $refl
+     * @param string $class
+     */
+    public function checkAnnotations($refl, $class) : array
     {
         if ('Symfony\\Bridge\\PhpUnit\\Legacy\\SymfonyTestsListenerForV7' === $class || 'Symfony\\Bridge\\PhpUnit\\Legacy\\SymfonyTestsListenerForV6' === $class) {
             return [];
@@ -316,7 +324,7 @@ class DebugClassLoader
                         self::$method[$class] = self::$method[$use];
                     }
                 } elseif (!$refl->isInterface()) {
-                    if (!\strncmp($vendor, \str_replace('_', '\\', $use), $vendorLen) && 0 === \strpos($className, 'Symfony\\') && (!\class_exists(\MonorepoBuilder20210708\Composer\InstalledVersions::class) || 'symfony/symfony' !== \MonorepoBuilder20210708\Composer\InstalledVersions::getRootPackage()['name'])) {
+                    if (!\strncmp($vendor, \str_replace('_', '\\', $use), $vendorLen) && 0 === \strpos($className, 'Symfony\\') && (!\class_exists(\MonorepoBuilder20210710\Composer\InstalledVersions::class) || 'symfony/symfony' !== \MonorepoBuilder20210710\Composer\InstalledVersions::getRootPackage()['name'])) {
                         // skip "same vendor" @method deprecations for Symfony\* classes unless symfony/symfony is being tested
                         continue;
                     }
@@ -449,7 +457,7 @@ class DebugClassLoader
                     $finalOrInternal = \true;
                 }
             }
-            if ($finalOrInternal || $method->isConstructor() || \false === \strpos($doc, '@param') || \MonorepoBuilder20210708\PHPUnit\Framework\MockObject\Matcher\StatelessInvocation::class === $class) {
+            if ($finalOrInternal || $method->isConstructor() || \false === \strpos($doc, '@param') || \MonorepoBuilder20210710\PHPUnit\Framework\MockObject\Matcher\StatelessInvocation::class === $class) {
                 continue;
             }
             if (!\preg_match_all('#\\n\\s+\\* @param +((?(?!callable *\\().*?|callable *\\(.*\\).*?))(?<= )\\$([a-zA-Z0-9_\\x7f-\\xff]++)#', $doc, $matches, \PREG_SET_ORDER)) {
@@ -470,7 +478,12 @@ class DebugClassLoader
         }
         return $deprecations;
     }
-    public function checkCase(\ReflectionClass $refl, string $file, string $class) : ?array
+    /**
+     * @param \ReflectionClass $refl
+     * @param string $file
+     * @param string $class
+     */
+    public function checkCase($refl, $file, $class) : ?array
     {
         $real = \explode('\\', $class . \strrchr($file, '.'));
         $tail = \explode(\DIRECTORY_SEPARATOR, \str_replace('/', \DIRECTORY_SEPARATOR, $file));

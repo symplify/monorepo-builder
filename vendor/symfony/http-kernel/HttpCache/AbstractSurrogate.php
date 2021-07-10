@@ -8,18 +8,18 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210708\Symfony\Component\HttpKernel\HttpCache;
+namespace MonorepoBuilder20210710\Symfony\Component\HttpKernel\HttpCache;
 
-use MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Request;
-use MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Response;
-use MonorepoBuilder20210708\Symfony\Component\HttpKernel\HttpKernelInterface;
+use MonorepoBuilder20210710\Symfony\Component\HttpFoundation\Request;
+use MonorepoBuilder20210710\Symfony\Component\HttpFoundation\Response;
+use MonorepoBuilder20210710\Symfony\Component\HttpKernel\HttpKernelInterface;
 /**
  * Abstract class implementing Surrogate capabilities to Request and Response instances.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  * @author Robin Chalas <robin.chalas@gmail.com>
  */
-abstract class AbstractSurrogate implements \MonorepoBuilder20210708\Symfony\Component\HttpKernel\HttpCache\SurrogateInterface
+abstract class AbstractSurrogate implements \MonorepoBuilder20210710\Symfony\Component\HttpKernel\HttpCache\SurrogateInterface
 {
     protected $contentTypes;
     protected $phpEscapeMap = [['<?', '<%', '<s', '<S'], ['<?php echo "<?"; ?>', '<?php echo "<%"; ?>', '<?php echo "<s"; ?>', '<?php echo "<S"; ?>']];
@@ -38,12 +38,13 @@ abstract class AbstractSurrogate implements \MonorepoBuilder20210708\Symfony\Com
      */
     public function createCacheStrategy()
     {
-        return new \MonorepoBuilder20210708\Symfony\Component\HttpKernel\HttpCache\ResponseCacheStrategy();
+        return new \MonorepoBuilder20210710\Symfony\Component\HttpKernel\HttpCache\ResponseCacheStrategy();
     }
     /**
      * {@inheritdoc}
+     * @param \Symfony\Component\HttpFoundation\Request $request
      */
-    public function hasSurrogateCapability(\MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Request $request)
+    public function hasSurrogateCapability($request)
     {
         if (null === ($value = $request->headers->get('Surrogate-Capability'))) {
             return \false;
@@ -52,8 +53,9 @@ abstract class AbstractSurrogate implements \MonorepoBuilder20210708\Symfony\Com
     }
     /**
      * {@inheritdoc}
+     * @param \Symfony\Component\HttpFoundation\Request $request
      */
-    public function addSurrogateCapability(\MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Request $request)
+    public function addSurrogateCapability($request)
     {
         $current = $request->headers->get('Surrogate-Capability');
         $new = \sprintf('symfony="%s/1.0"', \strtoupper($this->getName()));
@@ -61,8 +63,9 @@ abstract class AbstractSurrogate implements \MonorepoBuilder20210708\Symfony\Com
     }
     /**
      * {@inheritdoc}
+     * @param \Symfony\Component\HttpFoundation\Response $response
      */
-    public function needsParsing(\MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Response $response)
+    public function needsParsing($response)
     {
         if (!($control = $response->headers->get('Surrogate-Control'))) {
             return \false;
@@ -72,12 +75,16 @@ abstract class AbstractSurrogate implements \MonorepoBuilder20210708\Symfony\Com
     }
     /**
      * {@inheritdoc}
+     * @param \Symfony\Component\HttpKernel\HttpCache\HttpCache $cache
+     * @param string $uri
+     * @param string $alt
+     * @param bool $ignoreErrors
      */
-    public function handle(\MonorepoBuilder20210708\Symfony\Component\HttpKernel\HttpCache\HttpCache $cache, string $uri, string $alt, bool $ignoreErrors)
+    public function handle($cache, $uri, $alt, $ignoreErrors)
     {
-        $subRequest = \MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Request::create($uri, \MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Request::METHOD_GET, [], $cache->getRequest()->cookies->all(), [], $cache->getRequest()->server->all());
+        $subRequest = \MonorepoBuilder20210710\Symfony\Component\HttpFoundation\Request::create($uri, \MonorepoBuilder20210710\Symfony\Component\HttpFoundation\Request::METHOD_GET, [], $cache->getRequest()->cookies->all(), [], $cache->getRequest()->server->all());
         try {
-            $response = $cache->handle($subRequest, \MonorepoBuilder20210708\Symfony\Component\HttpKernel\HttpKernelInterface::SUB_REQUEST, \true);
+            $response = $cache->handle($subRequest, \MonorepoBuilder20210710\Symfony\Component\HttpKernel\HttpKernelInterface::SUB_REQUEST, \true);
             if (!$response->isSuccessful()) {
                 throw new \RuntimeException(\sprintf('Error when rendering "%s" (Status code is %d).', $subRequest->getUri(), $response->getStatusCode()));
             }
@@ -94,8 +101,9 @@ abstract class AbstractSurrogate implements \MonorepoBuilder20210708\Symfony\Com
     }
     /**
      * Remove the Surrogate from the Surrogate-Control header.
+     * @param \Symfony\Component\HttpFoundation\Response $response
      */
-    protected function removeFromControl(\MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Response $response)
+    protected function removeFromControl($response)
     {
         if (!$response->headers->has('Surrogate-Control')) {
             return;

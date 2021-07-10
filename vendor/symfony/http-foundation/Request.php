@@ -8,21 +8,21 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210708\Symfony\Component\HttpFoundation;
+namespace MonorepoBuilder20210710\Symfony\Component\HttpFoundation;
 
-use MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Exception\ConflictingHeadersException;
-use MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Exception\JsonException;
-use MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Exception\SessionNotFoundException;
-use MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Exception\SuspiciousOperationException;
-use MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Session\SessionInterface;
+use MonorepoBuilder20210710\Symfony\Component\HttpFoundation\Exception\ConflictingHeadersException;
+use MonorepoBuilder20210710\Symfony\Component\HttpFoundation\Exception\JsonException;
+use MonorepoBuilder20210710\Symfony\Component\HttpFoundation\Exception\SessionNotFoundException;
+use MonorepoBuilder20210710\Symfony\Component\HttpFoundation\Exception\SuspiciousOperationException;
+use MonorepoBuilder20210710\Symfony\Component\HttpFoundation\Session\SessionInterface;
 // Help opcache.preload discover always-needed symbols
-\class_exists(\MonorepoBuilder20210708\Symfony\Component\HttpFoundation\AcceptHeader::class);
-\class_exists(\MonorepoBuilder20210708\Symfony\Component\HttpFoundation\FileBag::class);
-\class_exists(\MonorepoBuilder20210708\Symfony\Component\HttpFoundation\HeaderBag::class);
-\class_exists(\MonorepoBuilder20210708\Symfony\Component\HttpFoundation\HeaderUtils::class);
-\class_exists(\MonorepoBuilder20210708\Symfony\Component\HttpFoundation\InputBag::class);
-\class_exists(\MonorepoBuilder20210708\Symfony\Component\HttpFoundation\ParameterBag::class);
-\class_exists(\MonorepoBuilder20210708\Symfony\Component\HttpFoundation\ServerBag::class);
+\class_exists(\MonorepoBuilder20210710\Symfony\Component\HttpFoundation\AcceptHeader::class);
+\class_exists(\MonorepoBuilder20210710\Symfony\Component\HttpFoundation\FileBag::class);
+\class_exists(\MonorepoBuilder20210710\Symfony\Component\HttpFoundation\HeaderBag::class);
+\class_exists(\MonorepoBuilder20210710\Symfony\Component\HttpFoundation\HeaderUtils::class);
+\class_exists(\MonorepoBuilder20210710\Symfony\Component\HttpFoundation\InputBag::class);
+\class_exists(\MonorepoBuilder20210710\Symfony\Component\HttpFoundation\ParameterBag::class);
+\class_exists(\MonorepoBuilder20210710\Symfony\Component\HttpFoundation\ServerBag::class);
 /**
  * Request represents an HTTP request.
  *
@@ -226,15 +226,15 @@ class Request
      * @param array                $server     The SERVER parameters
      * @param string|resource|null $content    The raw body data
      */
-    public function initialize(array $query = [], array $request = [], array $attributes = [], array $cookies = [], array $files = [], array $server = [], $content = null)
+    public function initialize($query = [], $request = [], $attributes = [], $cookies = [], $files = [], $server = [], $content = null)
     {
-        $this->request = new \MonorepoBuilder20210708\Symfony\Component\HttpFoundation\InputBag($request);
-        $this->query = new \MonorepoBuilder20210708\Symfony\Component\HttpFoundation\InputBag($query);
-        $this->attributes = new \MonorepoBuilder20210708\Symfony\Component\HttpFoundation\ParameterBag($attributes);
-        $this->cookies = new \MonorepoBuilder20210708\Symfony\Component\HttpFoundation\InputBag($cookies);
-        $this->files = new \MonorepoBuilder20210708\Symfony\Component\HttpFoundation\FileBag($files);
-        $this->server = new \MonorepoBuilder20210708\Symfony\Component\HttpFoundation\ServerBag($server);
-        $this->headers = new \MonorepoBuilder20210708\Symfony\Component\HttpFoundation\HeaderBag($this->server->getHeaders());
+        $this->request = new \MonorepoBuilder20210710\Symfony\Component\HttpFoundation\InputBag($request);
+        $this->query = new \MonorepoBuilder20210710\Symfony\Component\HttpFoundation\InputBag($query);
+        $this->attributes = new \MonorepoBuilder20210710\Symfony\Component\HttpFoundation\ParameterBag($attributes);
+        $this->cookies = new \MonorepoBuilder20210710\Symfony\Component\HttpFoundation\InputBag($cookies);
+        $this->files = new \MonorepoBuilder20210710\Symfony\Component\HttpFoundation\FileBag($files);
+        $this->server = new \MonorepoBuilder20210710\Symfony\Component\HttpFoundation\ServerBag($server);
+        $this->headers = new \MonorepoBuilder20210710\Symfony\Component\HttpFoundation\HeaderBag($this->server->getHeaders());
         $this->content = $content;
         $this->languages = null;
         $this->charsets = null;
@@ -257,7 +257,7 @@ class Request
         $request = self::createRequestFromFactory($_GET, $_POST, [], $_COOKIE, $_FILES, $_SERVER);
         if (0 === \strpos($request->headers->get('CONTENT_TYPE', ''), 'application/x-www-form-urlencoded') && \in_array(\strtoupper($request->server->get('REQUEST_METHOD', 'GET')), ['PUT', 'DELETE', 'PATCH'])) {
             \parse_str($request->getContent(), $data);
-            $request->request = new \MonorepoBuilder20210708\Symfony\Component\HttpFoundation\InputBag($data);
+            $request->request = new \MonorepoBuilder20210710\Symfony\Component\HttpFoundation\InputBag($data);
         }
         return $request;
     }
@@ -277,7 +277,7 @@ class Request
      *
      * @return static
      */
-    public static function create(string $uri, string $method = 'GET', array $parameters = [], array $cookies = [], array $files = [], array $server = [], $content = null)
+    public static function create($uri, $method = 'GET', $parameters = [], $cookies = [], $files = [], $server = [], $content = null)
     {
         $server = \array_replace(['SERVER_NAME' => 'localhost', 'SERVER_PORT' => 80, 'HTTP_HOST' => 'localhost', 'HTTP_USER_AGENT' => 'Symfony', 'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8', 'HTTP_ACCEPT_LANGUAGE' => 'en-us,en;q=0.5', 'HTTP_ACCEPT_CHARSET' => 'ISO-8859-1,utf-8;q=0.7,*;q=0.7', 'REMOTE_ADDR' => '127.0.0.1', 'SCRIPT_NAME' => '', 'SCRIPT_FILENAME' => '', 'SERVER_PROTOCOL' => 'HTTP/1.1', 'REQUEST_TIME' => \time(), 'REQUEST_TIME_FLOAT' => \microtime(\true)], $server);
         $server['PATH_INFO'] = '';
@@ -349,8 +349,9 @@ class Request
      * This is mainly useful when you need to override the Request class
      * to keep BC with an existing system. It should not be used for any
      * other purpose.
+     * @param callable|null $callable
      */
-    public static function setFactory(?callable $callable)
+    public static function setFactory($callable)
     {
         self::$requestFactory = $callable;
     }
@@ -366,27 +367,27 @@ class Request
      *
      * @return static
      */
-    public function duplicate(array $query = null, array $request = null, array $attributes = null, array $cookies = null, array $files = null, array $server = null)
+    public function duplicate($query = null, $request = null, $attributes = null, $cookies = null, $files = null, $server = null)
     {
         $dup = clone $this;
         if (null !== $query) {
-            $dup->query = new \MonorepoBuilder20210708\Symfony\Component\HttpFoundation\InputBag($query);
+            $dup->query = new \MonorepoBuilder20210710\Symfony\Component\HttpFoundation\InputBag($query);
         }
         if (null !== $request) {
-            $dup->request = new \MonorepoBuilder20210708\Symfony\Component\HttpFoundation\InputBag($request);
+            $dup->request = new \MonorepoBuilder20210710\Symfony\Component\HttpFoundation\InputBag($request);
         }
         if (null !== $attributes) {
-            $dup->attributes = new \MonorepoBuilder20210708\Symfony\Component\HttpFoundation\ParameterBag($attributes);
+            $dup->attributes = new \MonorepoBuilder20210710\Symfony\Component\HttpFoundation\ParameterBag($attributes);
         }
         if (null !== $cookies) {
-            $dup->cookies = new \MonorepoBuilder20210708\Symfony\Component\HttpFoundation\InputBag($cookies);
+            $dup->cookies = new \MonorepoBuilder20210710\Symfony\Component\HttpFoundation\InputBag($cookies);
         }
         if (null !== $files) {
-            $dup->files = new \MonorepoBuilder20210708\Symfony\Component\HttpFoundation\FileBag($files);
+            $dup->files = new \MonorepoBuilder20210710\Symfony\Component\HttpFoundation\FileBag($files);
         }
         if (null !== $server) {
-            $dup->server = new \MonorepoBuilder20210708\Symfony\Component\HttpFoundation\ServerBag($server);
-            $dup->headers = new \MonorepoBuilder20210708\Symfony\Component\HttpFoundation\HeaderBag($dup->server->getHeaders());
+            $dup->server = new \MonorepoBuilder20210710\Symfony\Component\HttpFoundation\ServerBag($server);
+            $dup->headers = new \MonorepoBuilder20210710\Symfony\Component\HttpFoundation\HeaderBag($dup->server->getHeaders());
         }
         $dup->languages = null;
         $dup->charsets = null;
@@ -478,7 +479,7 @@ class Request
      * @param array $proxies          A list of trusted proxies, the string 'REMOTE_ADDR' will be replaced with $_SERVER['REMOTE_ADDR']
      * @param int   $trustedHeaderSet A bit field of Request::HEADER_*, to set which headers to trust from your proxies
      */
-    public static function setTrustedProxies(array $proxies, int $trustedHeaderSet)
+    public static function setTrustedProxies($proxies, $trustedHeaderSet)
     {
         if (self::HEADER_X_FORWARDED_ALL === $trustedHeaderSet) {
             trigger_deprecation('symfony/http-foundation', '5.2', 'The "HEADER_X_FORWARDED_ALL" constant is deprecated, use either "HEADER_X_FORWARDED_FOR | HEADER_X_FORWARDED_HOST | HEADER_X_FORWARDED_PORT | HEADER_X_FORWARDED_PROTO" or "HEADER_X_FORWARDED_AWS_ELB" or "HEADER_X_FORWARDED_TRAEFIK" constants instead.');
@@ -518,7 +519,7 @@ class Request
      *
      * @param array $hostPatterns A list of trusted host patterns
      */
-    public static function setTrustedHosts(array $hostPatterns)
+    public static function setTrustedHosts($hostPatterns)
     {
         self::$trustedHostPatterns = \array_map(function ($hostPattern) {
             return \sprintf('{%s}i', $hostPattern);
@@ -542,13 +543,14 @@ class Request
      * have consistent escaping and unneeded delimiters are removed.
      *
      * @return string A normalized query string for the Request
+     * @param string|null $qs
      */
-    public static function normalizeQueryString(?string $qs)
+    public static function normalizeQueryString($qs)
     {
         if ('' === ($qs ?? '')) {
             return '';
         }
-        $qs = \MonorepoBuilder20210708\Symfony\Component\HttpFoundation\HeaderUtils::parseQuery($qs);
+        $qs = \MonorepoBuilder20210710\Symfony\Component\HttpFoundation\HeaderUtils::parseQuery($qs);
         \ksort($qs);
         return \http_build_query($qs, '', '&', \PHP_QUERY_RFC3986);
     }
@@ -588,8 +590,9 @@ class Request
      * @param mixed $default The default value if the parameter key does not exist
      *
      * @return mixed
+     * @param string $key
      */
-    public function get(string $key, $default = null)
+    public function get($key, $default = null)
     {
         if ($this !== ($result = $this->attributes->get($key, $this))) {
             return $result;
@@ -610,11 +613,11 @@ class Request
     public function getSession()
     {
         $session = $this->session;
-        if (!$session instanceof \MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Session\SessionInterface && null !== $session) {
+        if (!$session instanceof \MonorepoBuilder20210710\Symfony\Component\HttpFoundation\Session\SessionInterface && null !== $session) {
             $this->setSession($session = $session());
         }
         if (null === $session) {
-            throw new \MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Exception\SessionNotFoundException('Session has not been set.');
+            throw new \MonorepoBuilder20210710\Symfony\Component\HttpFoundation\Exception\SessionNotFoundException('Session has not been set.');
         }
         return $session;
     }
@@ -642,14 +645,18 @@ class Request
     {
         return null !== $this->session;
     }
-    public function setSession(\MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Session\SessionInterface $session)
+    /**
+     * @param \Symfony\Component\HttpFoundation\Session\SessionInterface $session
+     */
+    public function setSession($session)
     {
         $this->session = $session;
     }
     /**
      * @internal
+     * @param callable $factory
      */
-    public function setSessionFactory(callable $factory)
+    public function setSessionFactory($factory)
     {
         $this->session = $factory;
     }
@@ -909,7 +916,7 @@ class Request
      *
      * @return string The normalized URI for the path
      */
-    public function getUriForPath(string $path)
+    public function getUriForPath($path)
     {
         return $this->getSchemeAndHttpHost() . $this->getBaseUrl() . $path;
     }
@@ -929,8 +936,9 @@ class Request
      * - "/a/x/y"       -> "../../x/y"
      *
      * @return string The relative target path
+     * @param string $path
      */
-    public function getRelativeUriForPath(string $path)
+    public function getRelativeUriForPath($path)
     {
         // be sure that we are dealing with an absolute path
         if (!isset($path[0]) || '/' !== $path[0]) {
@@ -1021,7 +1029,7 @@ class Request
                 return '';
             }
             $this->isHostValid = \false;
-            throw new \MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Exception\SuspiciousOperationException(\sprintf('Invalid Host "%s".', $host));
+            throw new \MonorepoBuilder20210710\Symfony\Component\HttpFoundation\Exception\SuspiciousOperationException(\sprintf('Invalid Host "%s".', $host));
         }
         if (\count(self::$trustedHostPatterns) > 0) {
             // to avoid host header injection attacks, you should provide a list of trusted host patterns
@@ -1038,14 +1046,15 @@ class Request
                 return '';
             }
             $this->isHostValid = \false;
-            throw new \MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Exception\SuspiciousOperationException(\sprintf('Untrusted Host "%s".', $host));
+            throw new \MonorepoBuilder20210710\Symfony\Component\HttpFoundation\Exception\SuspiciousOperationException(\sprintf('Untrusted Host "%s".', $host));
         }
         return $host;
     }
     /**
      * Sets the request method.
+     * @param string $method
      */
-    public function setMethod(string $method)
+    public function setMethod($method)
     {
         $this->method = null;
         $this->server->set('REQUEST_METHOD', $method);
@@ -1086,7 +1095,7 @@ class Request
             return $this->method = $method;
         }
         if (!\preg_match('/^[A-Z]++$/D', $method)) {
-            throw new \MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Exception\SuspiciousOperationException(\sprintf('Invalid method override "%s".', $method));
+            throw new \MonorepoBuilder20210710\Symfony\Component\HttpFoundation\Exception\SuspiciousOperationException(\sprintf('Invalid method override "%s".', $method));
         }
         return $this->method = $method;
     }
@@ -1105,8 +1114,9 @@ class Request
      * Gets the mime type associated with the format.
      *
      * @return string|null The associated mime type (null if not found)
+     * @param string $format
      */
-    public function getMimeType(string $format)
+    public function getMimeType($format)
     {
         if (null === static::$formats) {
             static::initializeFormats();
@@ -1117,8 +1127,9 @@ class Request
      * Gets the mime types associated with the format.
      *
      * @return array The associated mime types
+     * @param string $format
      */
-    public static function getMimeTypes(string $format)
+    public static function getMimeTypes($format)
     {
         if (null === static::$formats) {
             static::initializeFormats();
@@ -1129,8 +1140,9 @@ class Request
      * Gets the format associated with the mime type.
      *
      * @return string|null The format (null if not found)
+     * @param string|null $mimeType
      */
-    public function getFormat(?string $mimeType)
+    public function getFormat($mimeType)
     {
         $canonicalMimeType = null;
         if (\false !== ($pos = \strpos($mimeType, ';'))) {
@@ -1153,8 +1165,9 @@ class Request
      * Associates a format with mime types.
      *
      * @param string|array $mimeTypes The associated mime types (the preferred one must be the first as it will be used as the content type)
+     * @param string|null $format
      */
-    public function setFormat(?string $format, $mimeTypes)
+    public function setFormat($format, $mimeTypes)
     {
         if (null === static::$formats) {
             static::initializeFormats();
@@ -1173,8 +1186,9 @@ class Request
      * @see getPreferredFormat
      *
      * @return string|null The request format
+     * @param string|null $default
      */
-    public function getRequestFormat(?string $default = 'html')
+    public function getRequestFormat($default = 'html')
     {
         if (null === $this->format) {
             $this->format = $this->attributes->get('_format');
@@ -1183,8 +1197,9 @@ class Request
     }
     /**
      * Sets the request format.
+     * @param string|null $format
      */
-    public function setRequestFormat(?string $format)
+    public function setRequestFormat($format)
     {
         $this->format = $format;
     }
@@ -1199,8 +1214,9 @@ class Request
     }
     /**
      * Sets the default locale.
+     * @param string $locale
      */
-    public function setDefaultLocale(string $locale)
+    public function setDefaultLocale($locale)
     {
         $this->defaultLocale = $locale;
         if (null === $this->locale) {
@@ -1218,8 +1234,9 @@ class Request
     }
     /**
      * Sets the locale.
+     * @param string $locale
      */
-    public function setLocale(string $locale)
+    public function setLocale($locale)
     {
         $this->setPhpDefaultLocale($this->locale = $locale);
     }
@@ -1239,7 +1256,7 @@ class Request
      *
      * @return bool
      */
-    public function isMethod(string $method)
+    public function isMethod($method)
     {
         return $this->getMethod() === \strtoupper($method);
     }
@@ -1302,7 +1319,7 @@ class Request
      *
      * @return string|resource The request body content or a resource to read the body stream
      */
-    public function getContent(bool $asResource = \false)
+    public function getContent($asResource = \false)
     {
         $currentContentIsResource = \is_resource($this->content);
         if (\true === $asResource) {
@@ -1339,18 +1356,18 @@ class Request
     public function toArray()
     {
         if ('' === ($content = $this->getContent())) {
-            throw new \MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Exception\JsonException('Request body is empty.');
+            throw new \MonorepoBuilder20210710\Symfony\Component\HttpFoundation\Exception\JsonException('Request body is empty.');
         }
         try {
             $content = \json_decode($content, \true, 512, \JSON_BIGINT_AS_STRING | (\PHP_VERSION_ID >= 70300 ? \JSON_THROW_ON_ERROR : 0));
         } catch (\JsonException $e) {
-            throw new \MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Exception\JsonException('Could not decode request body.', $e->getCode(), $e);
+            throw new \MonorepoBuilder20210710\Symfony\Component\HttpFoundation\Exception\JsonException('Could not decode request body.', $e->getCode(), $e);
         }
         if (\PHP_VERSION_ID < 70300 && \JSON_ERROR_NONE !== \json_last_error()) {
-            throw new \MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Exception\JsonException('Could not decode request body: ' . \json_last_error_msg(), \json_last_error());
+            throw new \MonorepoBuilder20210710\Symfony\Component\HttpFoundation\Exception\JsonException('Could not decode request body: ' . \json_last_error_msg(), \json_last_error());
         }
         if (!\is_array($content)) {
-            throw new \MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Exception\JsonException(\sprintf('JSON content was expected to decode to an array, "%s" returned.', \get_debug_type($content)));
+            throw new \MonorepoBuilder20210710\Symfony\Component\HttpFoundation\Exception\JsonException(\sprintf('JSON content was expected to decode to an array, "%s" returned.', \get_debug_type($content)));
         }
         return $content;
     }
@@ -1377,8 +1394,9 @@ class Request
      *
      * Note that if you use this method, you should send the "Vary: Accept" header
      * in the response to prevent any issues with intermediary HTTP caches.
+     * @param string|null $default
      */
-    public function getPreferredFormat(?string $default = 'html') : ?string
+    public function getPreferredFormat($default = 'html') : ?string
     {
         if (null !== $this->preferredFormat || null !== ($this->preferredFormat = $this->getRequestFormat(null))) {
             return $this->preferredFormat;
@@ -1397,7 +1415,7 @@ class Request
      *
      * @return string|null The preferred locale
      */
-    public function getPreferredLanguage(array $locales = null)
+    public function getPreferredLanguage($locales = null)
     {
         $preferredLanguages = $this->getLanguages();
         if (empty($locales)) {
@@ -1429,7 +1447,7 @@ class Request
         if (null !== $this->languages) {
             return $this->languages;
         }
-        $languages = \MonorepoBuilder20210708\Symfony\Component\HttpFoundation\AcceptHeader::fromString($this->headers->get('Accept-Language'))->all();
+        $languages = \MonorepoBuilder20210710\Symfony\Component\HttpFoundation\AcceptHeader::fromString($this->headers->get('Accept-Language'))->all();
         $this->languages = [];
         foreach ($languages as $lang => $acceptHeaderItem) {
             if (\false !== \strpos($lang, '-')) {
@@ -1465,7 +1483,7 @@ class Request
         if (null !== $this->charsets) {
             return $this->charsets;
         }
-        return $this->charsets = \array_keys(\MonorepoBuilder20210708\Symfony\Component\HttpFoundation\AcceptHeader::fromString($this->headers->get('Accept-Charset'))->all());
+        return $this->charsets = \array_keys(\MonorepoBuilder20210710\Symfony\Component\HttpFoundation\AcceptHeader::fromString($this->headers->get('Accept-Charset'))->all());
     }
     /**
      * Gets a list of encodings acceptable by the client browser.
@@ -1477,7 +1495,7 @@ class Request
         if (null !== $this->encodings) {
             return $this->encodings;
         }
-        return $this->encodings = \array_keys(\MonorepoBuilder20210708\Symfony\Component\HttpFoundation\AcceptHeader::fromString($this->headers->get('Accept-Encoding'))->all());
+        return $this->encodings = \array_keys(\MonorepoBuilder20210710\Symfony\Component\HttpFoundation\AcceptHeader::fromString($this->headers->get('Accept-Encoding'))->all());
     }
     /**
      * Gets a list of content types acceptable by the client browser.
@@ -1489,7 +1507,7 @@ class Request
         if (null !== $this->acceptableContentTypes) {
             return $this->acceptableContentTypes;
         }
-        return $this->acceptableContentTypes = \array_keys(\MonorepoBuilder20210708\Symfony\Component\HttpFoundation\AcceptHeader::fromString($this->headers->get('Accept'))->all());
+        return $this->acceptableContentTypes = \array_keys(\MonorepoBuilder20210710\Symfony\Component\HttpFoundation\AcceptHeader::fromString($this->headers->get('Accept'))->all());
     }
     /**
      * Returns true if the request is an XMLHttpRequest.
@@ -1520,7 +1538,7 @@ class Request
             $this->isSafeContentPreferred = \false;
             return $this->isSafeContentPreferred;
         }
-        $this->isSafeContentPreferred = \MonorepoBuilder20210708\Symfony\Component\HttpFoundation\AcceptHeader::fromString($this->headers->get('Prefer'))->has('safe');
+        $this->isSafeContentPreferred = \MonorepoBuilder20210710\Symfony\Component\HttpFoundation\AcceptHeader::fromString($this->headers->get('Prefer'))->has('safe');
         return $this->isSafeContentPreferred;
     }
     /*
@@ -1736,7 +1754,7 @@ class Request
      */
     public function isFromTrustedProxy()
     {
-        return self::$trustedProxies && \MonorepoBuilder20210708\Symfony\Component\HttpFoundation\IpUtils::checkIp($this->server->get('REMOTE_ADDR', ''), self::$trustedProxies);
+        return self::$trustedProxies && \MonorepoBuilder20210710\Symfony\Component\HttpFoundation\IpUtils::checkIp($this->server->get('REMOTE_ADDR', ''), self::$trustedProxies);
     }
     private function getTrustedValues(int $type, string $ip = null) : array
     {
@@ -1749,11 +1767,11 @@ class Request
         }
         if (self::$trustedHeaderSet & self::HEADER_FORWARDED && isset(self::FORWARDED_PARAMS[$type]) && $this->headers->has(self::TRUSTED_HEADERS[self::HEADER_FORWARDED])) {
             $forwarded = $this->headers->get(self::TRUSTED_HEADERS[self::HEADER_FORWARDED]);
-            $parts = \MonorepoBuilder20210708\Symfony\Component\HttpFoundation\HeaderUtils::split($forwarded, ',;=');
+            $parts = \MonorepoBuilder20210710\Symfony\Component\HttpFoundation\HeaderUtils::split($forwarded, ',;=');
             $forwardedValues = [];
             $param = self::FORWARDED_PARAMS[$type];
             foreach ($parts as $subParts) {
-                if (null === ($v = \MonorepoBuilder20210708\Symfony\Component\HttpFoundation\HeaderUtils::combine($subParts)[$param] ?? null)) {
+                if (null === ($v = \MonorepoBuilder20210710\Symfony\Component\HttpFoundation\HeaderUtils::combine($subParts)[$param] ?? null)) {
                     continue;
                 }
                 if (self::HEADER_X_FORWARDED_PORT === $type) {
@@ -1779,7 +1797,7 @@ class Request
             return null !== $ip ? ['0.0.0.0', $ip] : [];
         }
         $this->isForwardedValid = \false;
-        throw new \MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Exception\ConflictingHeadersException(\sprintf('The request has both a trusted "%s" header and a trusted "%s" header, conflicting with each other. You should either configure your proxy to remove one of them, or configure your project to distrust the offending one.', self::TRUSTED_HEADERS[self::HEADER_FORWARDED], self::TRUSTED_HEADERS[$type]));
+        throw new \MonorepoBuilder20210710\Symfony\Component\HttpFoundation\Exception\ConflictingHeadersException(\sprintf('The request has both a trusted "%s" header and a trusted "%s" header, conflicting with each other. You should either configure your proxy to remove one of them, or configure your project to distrust the offending one.', self::TRUSTED_HEADERS[self::HEADER_FORWARDED], self::TRUSTED_HEADERS[$type]));
     }
     private function normalizeAndFilterClientIps(array $clientIps, string $ip) : array
     {
@@ -1806,7 +1824,7 @@ class Request
                 unset($clientIps[$key]);
                 continue;
             }
-            if (\MonorepoBuilder20210708\Symfony\Component\HttpFoundation\IpUtils::checkIp($clientIp, self::$trustedProxies)) {
+            if (\MonorepoBuilder20210710\Symfony\Component\HttpFoundation\IpUtils::checkIp($clientIp, self::$trustedProxies)) {
                 unset($clientIps[$key]);
                 // Fallback to this when the client IP falls into the range of trusted proxies
                 if (null === $firstTrustedIp) {

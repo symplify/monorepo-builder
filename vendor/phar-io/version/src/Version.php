@@ -51,11 +51,17 @@ class Version
     {
         return $this->preReleaseSuffix !== null;
     }
-    public function equals(\PharIo\Version\Version $other) : bool
+    /**
+     * @param \PharIo\Version\Version $other
+     */
+    public function equals($other) : bool
     {
         return $this->getVersionString() === $other->getVersionString();
     }
-    public function isGreaterThan(\PharIo\Version\Version $version) : bool
+    /**
+     * @param \PharIo\Version\Version $version
+     */
+    public function isGreaterThan($version) : bool
     {
         if ($version->getMajor()->getValue() > $this->getMajor()->getValue()) {
             return \false;

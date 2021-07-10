@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Session\Storage;
+namespace MonorepoBuilder20210710\Symfony\Component\HttpFoundation\Session\Storage;
 
-use MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Session\SessionBagInterface;
+use MonorepoBuilder20210710\Symfony\Component\HttpFoundation\Session\SessionBagInterface;
 /**
  * Metadata container.
  *
@@ -18,7 +18,7 @@ use MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Session\SessionBagI
  *
  * @author Drak <drak@zikula.org>
  */
-class MetadataBag implements \MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Session\SessionBagInterface
+class MetadataBag implements \MonorepoBuilder20210710\Symfony\Component\HttpFoundation\Session\SessionBagInterface
 {
     public const CREATED = 'c';
     public const UPDATED = 'u';
@@ -56,8 +56,9 @@ class MetadataBag implements \MonorepoBuilder20210708\Symfony\Component\HttpFoun
     }
     /**
      * {@inheritdoc}
+     * @param mixed[] $array
      */
-    public function initialize(array &$array)
+    public function initialize(&$array)
     {
         $this->meta =& $array;
         if (isset($array[self::CREATED])) {
@@ -87,7 +88,7 @@ class MetadataBag implements \MonorepoBuilder20210708\Symfony\Component\HttpFoun
      *                      to expire with browser session. Time is in seconds, and is
      *                      not a Unix timestamp.
      */
-    public function stampNew(int $lifetime = null)
+    public function stampNew($lifetime = null)
     {
         $this->stampCreated($lifetime);
     }
@@ -132,8 +133,9 @@ class MetadataBag implements \MonorepoBuilder20210708\Symfony\Component\HttpFoun
     }
     /**
      * Sets name.
+     * @param string $name
      */
-    public function setName(string $name)
+    public function setName($name)
     {
         $this->name = $name;
     }

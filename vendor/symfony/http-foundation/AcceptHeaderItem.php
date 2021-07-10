@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210708\Symfony\Component\HttpFoundation;
+namespace MonorepoBuilder20210710\Symfony\Component\HttpFoundation;
 
 /**
  * Represents an Accept-* header item.
@@ -32,12 +32,13 @@ class AcceptHeaderItem
      * Builds an AcceptHeaderInstance instance from a string.
      *
      * @return self
+     * @param string|null $itemValue
      */
-    public static function fromString(?string $itemValue)
+    public static function fromString($itemValue)
     {
-        $parts = \MonorepoBuilder20210708\Symfony\Component\HttpFoundation\HeaderUtils::split($itemValue ?? '', ';=');
+        $parts = \MonorepoBuilder20210710\Symfony\Component\HttpFoundation\HeaderUtils::split($itemValue ?? '', ';=');
         $part = \array_shift($parts);
-        $attributes = \MonorepoBuilder20210708\Symfony\Component\HttpFoundation\HeaderUtils::combine($parts);
+        $attributes = \MonorepoBuilder20210710\Symfony\Component\HttpFoundation\HeaderUtils::combine($parts);
         return new self($part[0], $attributes);
     }
     /**
@@ -49,7 +50,7 @@ class AcceptHeaderItem
     {
         $string = $this->value . ($this->quality < 1 ? ';q=' . $this->quality : '');
         if (\count($this->attributes) > 0) {
-            $string .= '; ' . \MonorepoBuilder20210708\Symfony\Component\HttpFoundation\HeaderUtils::toString($this->attributes, ';');
+            $string .= '; ' . \MonorepoBuilder20210710\Symfony\Component\HttpFoundation\HeaderUtils::toString($this->attributes, ';');
         }
         return $string;
     }
@@ -57,8 +58,9 @@ class AcceptHeaderItem
      * Set the item value.
      *
      * @return $this
+     * @param string $value
      */
-    public function setValue(string $value)
+    public function setValue($value)
     {
         $this->value = $value;
         return $this;
@@ -76,8 +78,9 @@ class AcceptHeaderItem
      * Set the item quality.
      *
      * @return $this
+     * @param float $quality
      */
-    public function setQuality(float $quality)
+    public function setQuality($quality)
     {
         $this->quality = $quality;
         return $this;
@@ -95,8 +98,9 @@ class AcceptHeaderItem
      * Set the item index.
      *
      * @return $this
+     * @param int $index
      */
-    public function setIndex(int $index)
+    public function setIndex($index)
     {
         $this->index = $index;
         return $this;
@@ -114,8 +118,9 @@ class AcceptHeaderItem
      * Tests if an attribute exists.
      *
      * @return bool
+     * @param string $name
      */
-    public function hasAttribute(string $name)
+    public function hasAttribute($name)
     {
         return isset($this->attributes[$name]);
     }
@@ -125,8 +130,9 @@ class AcceptHeaderItem
      * @param mixed $default
      *
      * @return mixed
+     * @param string $name
      */
-    public function getAttribute(string $name, $default = null)
+    public function getAttribute($name, $default = null)
     {
         return $this->attributes[$name] ?? $default;
     }
@@ -143,8 +149,10 @@ class AcceptHeaderItem
      * Set an attribute.
      *
      * @return $this
+     * @param string $name
+     * @param string $value
      */
-    public function setAttribute(string $name, string $value)
+    public function setAttribute($name, $value)
     {
         if ('q' === $name) {
             $this->quality = (float) $value;

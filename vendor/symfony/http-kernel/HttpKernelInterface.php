@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210708\Symfony\Component\HttpKernel;
+namespace MonorepoBuilder20210710\Symfony\Component\HttpKernel;
 
-use MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Request;
-use MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Response;
+use MonorepoBuilder20210710\Symfony\Component\HttpFoundation\Request;
+use MonorepoBuilder20210710\Symfony\Component\HttpFoundation\Response;
 /**
  * HttpKernelInterface handles a Request to convert it to a Response.
  *
@@ -39,6 +39,7 @@ interface HttpKernelInterface
      * @return Response A Response instance
      *
      * @throws \Exception When an Exception occurs during processing
+     * @param \Symfony\Component\HttpFoundation\Request $request
      */
-    public function handle(\MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Request $request, int $type = self::MAIN_REQUEST, bool $catch = \true);
+    public function handle($request, $type = self::MAIN_REQUEST, $catch = \true);
 }

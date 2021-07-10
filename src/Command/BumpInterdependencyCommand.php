@@ -3,16 +3,16 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Command;
 
-use MonorepoBuilder20210708\Symfony\Component\Console\Input\InputArgument;
-use MonorepoBuilder20210708\Symfony\Component\Console\Input\InputInterface;
-use MonorepoBuilder20210708\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder20210710\Symfony\Component\Console\Input\InputArgument;
+use MonorepoBuilder20210710\Symfony\Component\Console\Input\InputInterface;
+use MonorepoBuilder20210710\Symfony\Component\Console\Output\OutputInterface;
 use Symplify\MonorepoBuilder\DependencyUpdater;
 use Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider;
 use Symplify\MonorepoBuilder\Validator\SourcesPresenceValidator;
-use MonorepoBuilder20210708\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
-use MonorepoBuilder20210708\Symplify\PackageBuilder\Console\ShellCode;
-use MonorepoBuilder20210708\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
-final class BumpInterdependencyCommand extends \MonorepoBuilder20210708\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand
+use MonorepoBuilder20210710\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
+use MonorepoBuilder20210710\Symplify\PackageBuilder\Console\ShellCode;
+use MonorepoBuilder20210710\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
+final class BumpInterdependencyCommand extends \MonorepoBuilder20210710\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand
 {
     /**
      * @var string
@@ -40,9 +40,13 @@ final class BumpInterdependencyCommand extends \MonorepoBuilder20210708\Symplify
     protected function configure() : void
     {
         $this->setDescription('Bump dependency of split packages on each other');
-        $this->addArgument(self::VERSION_ARGUMENT, \MonorepoBuilder20210708\Symfony\Component\Console\Input\InputArgument::REQUIRED, 'New version of inter-dependencies, e.g. "^4.4.2"');
+        $this->addArgument(self::VERSION_ARGUMENT, \MonorepoBuilder20210710\Symfony\Component\Console\Input\InputArgument::REQUIRED, 'New version of inter-dependencies, e.g. "^4.4.2"');
     }
-    protected function execute(\MonorepoBuilder20210708\Symfony\Component\Console\Input\InputInterface $input, \MonorepoBuilder20210708\Symfony\Component\Console\Output\OutputInterface $output) : int
+    /**
+     * @param \Symfony\Component\Console\Input\InputInterface $input
+     * @param \Symfony\Component\Console\Output\OutputInterface $output
+     */
+    protected function execute($input, $output) : int
     {
         $this->sourcesPresenceValidator->validateRootComposerJsonName();
         /** @var string $version */
@@ -52,11 +56,11 @@ final class BumpInterdependencyCommand extends \MonorepoBuilder20210708\Symplify
         // see https://github.com/symplify/symplify/pull/1037/files
         $vendorName = $rootComposerJson->getVendorName();
         if ($vendorName === null) {
-            throw new \MonorepoBuilder20210708\Symplify\SymplifyKernel\Exception\ShouldNotHappenException();
+            throw new \MonorepoBuilder20210710\Symplify\SymplifyKernel\Exception\ShouldNotHappenException();
         }
         $this->dependencyUpdater->updateFileInfosWithVendorAndVersion($this->composerJsonProvider->getPackagesComposerFileInfos(), $vendorName, $version);
         $successMessage = \sprintf('Inter-dependencies of packages were updated to "%s".', $version);
         $this->symfonyStyle->success($successMessage);
-        return \MonorepoBuilder20210708\Symplify\PackageBuilder\Console\ShellCode::SUCCESS;
+        return \MonorepoBuilder20210710\Symplify\PackageBuilder\Console\ShellCode::SUCCESS;
     }
 }

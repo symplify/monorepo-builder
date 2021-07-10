@@ -8,49 +8,49 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210708\Symfony\Component\DependencyInjection;
+namespace MonorepoBuilder20210710\Symfony\Component\DependencyInjection;
 
-use MonorepoBuilder20210708\Composer\InstalledVersions;
-use MonorepoBuilder20210708\Psr\Container\ContainerInterface as PsrContainerInterface;
-use MonorepoBuilder20210708\Symfony\Component\Config\Resource\ClassExistenceResource;
-use MonorepoBuilder20210708\Symfony\Component\Config\Resource\ComposerResource;
-use MonorepoBuilder20210708\Symfony\Component\Config\Resource\DirectoryResource;
-use MonorepoBuilder20210708\Symfony\Component\Config\Resource\FileExistenceResource;
-use MonorepoBuilder20210708\Symfony\Component\Config\Resource\FileResource;
-use MonorepoBuilder20210708\Symfony\Component\Config\Resource\GlobResource;
-use MonorepoBuilder20210708\Symfony\Component\Config\Resource\ReflectionClassResource;
-use MonorepoBuilder20210708\Symfony\Component\Config\Resource\ResourceInterface;
-use MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Argument\AbstractArgument;
-use MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
-use MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Argument\RewindableGenerator;
-use MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
-use MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Argument\ServiceLocator;
-use MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
-use MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Attribute\Target;
-use MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Compiler\Compiler;
-use MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
-use MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Compiler\PassConfig;
-use MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Compiler\ResolveEnvPlaceholdersPass;
-use MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Exception\BadMethodCallException;
-use MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Exception\LogicException;
-use MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Exception\RuntimeException;
-use MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
-use MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
-use MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
-use MonorepoBuilder20210708\Symfony\Component\DependencyInjection\LazyProxy\Instantiator\InstantiatorInterface;
-use MonorepoBuilder20210708\Symfony\Component\DependencyInjection\LazyProxy\Instantiator\RealServiceInstantiator;
-use MonorepoBuilder20210708\Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag;
-use MonorepoBuilder20210708\Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
-use MonorepoBuilder20210708\Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
-use MonorepoBuilder20210708\Symfony\Component\ExpressionLanguage\Expression;
-use MonorepoBuilder20210708\Symfony\Component\ExpressionLanguage\ExpressionFunctionProviderInterface;
+use MonorepoBuilder20210710\Composer\InstalledVersions;
+use MonorepoBuilder20210710\Psr\Container\ContainerInterface as PsrContainerInterface;
+use MonorepoBuilder20210710\Symfony\Component\Config\Resource\ClassExistenceResource;
+use MonorepoBuilder20210710\Symfony\Component\Config\Resource\ComposerResource;
+use MonorepoBuilder20210710\Symfony\Component\Config\Resource\DirectoryResource;
+use MonorepoBuilder20210710\Symfony\Component\Config\Resource\FileExistenceResource;
+use MonorepoBuilder20210710\Symfony\Component\Config\Resource\FileResource;
+use MonorepoBuilder20210710\Symfony\Component\Config\Resource\GlobResource;
+use MonorepoBuilder20210710\Symfony\Component\Config\Resource\ReflectionClassResource;
+use MonorepoBuilder20210710\Symfony\Component\Config\Resource\ResourceInterface;
+use MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Argument\AbstractArgument;
+use MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
+use MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Argument\RewindableGenerator;
+use MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
+use MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Argument\ServiceLocator;
+use MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
+use MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Attribute\Target;
+use MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Compiler\Compiler;
+use MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
+use MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Compiler\PassConfig;
+use MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Compiler\ResolveEnvPlaceholdersPass;
+use MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Exception\BadMethodCallException;
+use MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Exception\LogicException;
+use MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
+use MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
+use MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
+use MonorepoBuilder20210710\Symfony\Component\DependencyInjection\LazyProxy\Instantiator\InstantiatorInterface;
+use MonorepoBuilder20210710\Symfony\Component\DependencyInjection\LazyProxy\Instantiator\RealServiceInstantiator;
+use MonorepoBuilder20210710\Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag;
+use MonorepoBuilder20210710\Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
+use MonorepoBuilder20210710\Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
+use MonorepoBuilder20210710\Symfony\Component\ExpressionLanguage\Expression;
+use MonorepoBuilder20210710\Symfony\Component\ExpressionLanguage\ExpressionFunctionProviderInterface;
 /**
  * ContainerBuilder is a DI container that provides an API to easily describe services.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class ContainerBuilder extends \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Container implements \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\TaggedContainerInterface
+class ContainerBuilder extends \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Container implements \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\TaggedContainerInterface
 {
     /**
      * @var ExtensionInterface[]
@@ -114,13 +114,13 @@ class ContainerBuilder extends \MonorepoBuilder20210708\Symfony\Component\Depend
     private $removedIds = [];
     private $removedBindingIds = [];
     private const INTERNAL_TYPES = ['int' => \true, 'float' => \true, 'string' => \true, 'bool' => \true, 'resource' => \true, 'object' => \true, 'array' => \true, 'null' => \true, 'callable' => \true, 'iterable' => \true, 'mixed' => \true];
-    public function __construct(\MonorepoBuilder20210708\Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface $parameterBag = null)
+    public function __construct(\MonorepoBuilder20210710\Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface $parameterBag = null)
     {
         parent::__construct($parameterBag);
-        $this->trackResources = \interface_exists(\MonorepoBuilder20210708\Symfony\Component\Config\Resource\ResourceInterface::class);
-        $this->setDefinition('service_container', (new \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Definition(\MonorepoBuilder20210708\Symfony\Component\DependencyInjection\ContainerInterface::class))->setSynthetic(\true)->setPublic(\true));
-        $this->setAlias(\MonorepoBuilder20210708\Psr\Container\ContainerInterface::class, new \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Alias('service_container', \false))->setDeprecated('symfony/dependency-injection', '5.1', $deprecationMessage = 'The "%alias_id%" autowiring alias is deprecated. Define it explicitly in your app if you want to keep using it.');
-        $this->setAlias(\MonorepoBuilder20210708\Symfony\Component\DependencyInjection\ContainerInterface::class, new \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Alias('service_container', \false))->setDeprecated('symfony/dependency-injection', '5.1', $deprecationMessage);
+        $this->trackResources = \interface_exists(\MonorepoBuilder20210710\Symfony\Component\Config\Resource\ResourceInterface::class);
+        $this->setDefinition('service_container', (new \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Definition(\MonorepoBuilder20210710\Symfony\Component\DependencyInjection\ContainerInterface::class))->setSynthetic(\true)->setPublic(\true));
+        $this->setAlias(\MonorepoBuilder20210710\Psr\Container\ContainerInterface::class, new \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Alias('service_container', \false))->setDeprecated('symfony/dependency-injection', '5.1', $deprecationMessage = 'The "%alias_id%" autowiring alias is deprecated. Define it explicitly in your app if you want to keep using it.');
+        $this->setAlias(\MonorepoBuilder20210710\Symfony\Component\DependencyInjection\ContainerInterface::class, new \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Alias('service_container', \false))->setDeprecated('symfony/dependency-injection', '5.1', $deprecationMessage);
     }
     /**
      * @var \ReflectionClass[] a list of class reflectors
@@ -131,8 +131,9 @@ class ContainerBuilder extends \MonorepoBuilder20210708\Symfony\Component\Depend
      *
      * If you are not using the loaders and therefore don't want
      * to depend on the Config component, set this flag to false.
+     * @param bool $track
      */
-    public function setResourceTracking(bool $track)
+    public function setResourceTracking($track)
     {
         $this->trackResources = $track;
     }
@@ -147,12 +148,16 @@ class ContainerBuilder extends \MonorepoBuilder20210708\Symfony\Component\Depend
     }
     /**
      * Sets the instantiator to be used when fetching proxies.
+     * @param \Symfony\Component\DependencyInjection\LazyProxy\Instantiator\InstantiatorInterface $proxyInstantiator
      */
-    public function setProxyInstantiator(\MonorepoBuilder20210708\Symfony\Component\DependencyInjection\LazyProxy\Instantiator\InstantiatorInterface $proxyInstantiator)
+    public function setProxyInstantiator($proxyInstantiator)
     {
         $this->proxyInstantiator = $proxyInstantiator;
     }
-    public function registerExtension(\MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Extension\ExtensionInterface $extension)
+    /**
+     * @param \Symfony\Component\DependencyInjection\Extension\ExtensionInterface $extension
+     */
+    public function registerExtension($extension)
     {
         $this->extensions[$extension->getAlias()] = $extension;
         if (\false !== $extension->getNamespace()) {
@@ -165,8 +170,9 @@ class ContainerBuilder extends \MonorepoBuilder20210708\Symfony\Component\Depend
      * @return ExtensionInterface An extension instance
      *
      * @throws LogicException if the extension is not registered
+     * @param string $name
      */
-    public function getExtension(string $name)
+    public function getExtension($name)
     {
         if (isset($this->extensions[$name])) {
             return $this->extensions[$name];
@@ -174,7 +180,7 @@ class ContainerBuilder extends \MonorepoBuilder20210708\Symfony\Component\Depend
         if (isset($this->extensionsByNs[$name])) {
             return $this->extensionsByNs[$name];
         }
-        throw new \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Exception\LogicException(\sprintf('Container extension "%s" is not registered.', $name));
+        throw new \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Exception\LogicException(\sprintf('Container extension "%s" is not registered.', $name));
     }
     /**
      * Returns all registered extensions.
@@ -189,8 +195,9 @@ class ContainerBuilder extends \MonorepoBuilder20210708\Symfony\Component\Depend
      * Checks if we have an extension.
      *
      * @return bool If the extension exists
+     * @param string $name
      */
-    public function hasExtension(string $name)
+    public function hasExtension($name)
     {
         return isset($this->extensions[$name]) || isset($this->extensionsByNs[$name]);
     }
@@ -205,13 +212,14 @@ class ContainerBuilder extends \MonorepoBuilder20210708\Symfony\Component\Depend
     }
     /**
      * @return $this
+     * @param \Symfony\Component\Config\Resource\ResourceInterface $resource
      */
-    public function addResource(\MonorepoBuilder20210708\Symfony\Component\Config\Resource\ResourceInterface $resource)
+    public function addResource($resource)
     {
         if (!$this->trackResources) {
             return $this;
         }
-        if ($resource instanceof \MonorepoBuilder20210708\Symfony\Component\Config\Resource\GlobResource && $this->inVendors($resource->getPrefix())) {
+        if ($resource instanceof \MonorepoBuilder20210710\Symfony\Component\Config\Resource\GlobResource && $this->inVendors($resource->getPrefix())) {
             return $this;
         }
         $this->resources[(string) $resource] = $resource;
@@ -224,7 +232,7 @@ class ContainerBuilder extends \MonorepoBuilder20210708\Symfony\Component\Depend
      *
      * @return $this
      */
-    public function setResources(array $resources)
+    public function setResources($resources)
     {
         if (!$this->trackResources) {
             return $this;
@@ -276,8 +284,10 @@ class ContainerBuilder extends \MonorepoBuilder20210708\Symfony\Component\Depend
      * @throws \ReflectionException when a parent class/interface/trait is not found and $throw is true
      *
      * @final
+     * @param string|null $class
+     * @param bool $throw
      */
-    public function getReflectionClass(?string $class, bool $throw = \true) : ?\ReflectionClass
+    public function getReflectionClass($class, $throw = \true) : ?\ReflectionClass
     {
         if (!($class = $this->getParameterBag()->resolveValue($class))) {
             return null;
@@ -289,8 +299,8 @@ class ContainerBuilder extends \MonorepoBuilder20210708\Symfony\Component\Depend
         try {
             if (isset($this->classReflectors[$class])) {
                 $classReflector = $this->classReflectors[$class];
-            } elseif (\class_exists(\MonorepoBuilder20210708\Symfony\Component\Config\Resource\ClassExistenceResource::class)) {
-                $resource = new \MonorepoBuilder20210708\Symfony\Component\Config\Resource\ClassExistenceResource($class, \false);
+            } elseif (\class_exists(\MonorepoBuilder20210710\Symfony\Component\Config\Resource\ClassExistenceResource::class)) {
+                $resource = new \MonorepoBuilder20210710\Symfony\Component\Config\Resource\ClassExistenceResource($class, \false);
                 $classReflector = $resource->isFresh(0) ? \false : new \ReflectionClass($class);
             } else {
                 $classReflector = \class_exists($class) ? new \ReflectionClass($class) : \false;
@@ -302,11 +312,11 @@ class ContainerBuilder extends \MonorepoBuilder20210708\Symfony\Component\Depend
         }
         if ($this->trackResources) {
             if (!$classReflector) {
-                $this->addResource($resource ?? new \MonorepoBuilder20210708\Symfony\Component\Config\Resource\ClassExistenceResource($class, \false));
+                $this->addResource($resource ?? new \MonorepoBuilder20210710\Symfony\Component\Config\Resource\ClassExistenceResource($class, \false));
             } elseif (!$classReflector->isInternal()) {
                 $path = $classReflector->getFileName();
                 if (!$this->inVendors($path)) {
-                    $this->addResource(new \MonorepoBuilder20210708\Symfony\Component\Config\Resource\ReflectionClassResource($classReflector, $this->vendors));
+                    $this->addResource(new \MonorepoBuilder20210710\Symfony\Component\Config\Resource\ReflectionClassResource($classReflector, $this->vendors));
                 }
             }
             $this->classReflectors[$class] = $classReflector;
@@ -322,24 +332,24 @@ class ContainerBuilder extends \MonorepoBuilder20210708\Symfony\Component\Depend
      *
      * @final
      */
-    public function fileExists(string $path, $trackContents = \true) : bool
+    public function fileExists($path, $trackContents = \true) : bool
     {
         $exists = \file_exists($path);
         if (!$this->trackResources || $this->inVendors($path)) {
             return $exists;
         }
         if (!$exists) {
-            $this->addResource(new \MonorepoBuilder20210708\Symfony\Component\Config\Resource\FileExistenceResource($path));
+            $this->addResource(new \MonorepoBuilder20210710\Symfony\Component\Config\Resource\FileExistenceResource($path));
             return $exists;
         }
         if (\is_dir($path)) {
             if ($trackContents) {
-                $this->addResource(new \MonorepoBuilder20210708\Symfony\Component\Config\Resource\DirectoryResource($path, \is_string($trackContents) ? $trackContents : null));
+                $this->addResource(new \MonorepoBuilder20210710\Symfony\Component\Config\Resource\DirectoryResource($path, \is_string($trackContents) ? $trackContents : null));
             } else {
-                $this->addResource(new \MonorepoBuilder20210708\Symfony\Component\Config\Resource\GlobResource($path, '/*', \false));
+                $this->addResource(new \MonorepoBuilder20210710\Symfony\Component\Config\Resource\GlobResource($path, '/*', \false));
             }
         } elseif ($trackContents) {
-            $this->addResource(new \MonorepoBuilder20210708\Symfony\Component\Config\Resource\FileResource($path));
+            $this->addResource(new \MonorepoBuilder20210710\Symfony\Component\Config\Resource\FileResource($path));
         }
         return $exists;
     }
@@ -354,10 +364,10 @@ class ContainerBuilder extends \MonorepoBuilder20210708\Symfony\Component\Depend
      * @throws BadMethodCallException When this ContainerBuilder is compiled
      * @throws \LogicException        if the extension is not registered
      */
-    public function loadFromExtension(string $extension, array $values = null)
+    public function loadFromExtension($extension, $values = null)
     {
         if ($this->isCompiled()) {
-            throw new \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Exception\BadMethodCallException('Cannot load from an extension on a compiled container.');
+            throw new \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Exception\BadMethodCallException('Cannot load from an extension on a compiled container.');
         }
         if (\func_num_args() < 2) {
             $values = [];
@@ -373,8 +383,9 @@ class ContainerBuilder extends \MonorepoBuilder20210708\Symfony\Component\Depend
      * @param int    $priority Used to sort the passes
      *
      * @return $this
+     * @param \Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface $pass
      */
-    public function addCompilerPass(\MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface $pass, string $type = \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Compiler\PassConfig::TYPE_BEFORE_OPTIMIZATION, int $priority = 0)
+    public function addCompilerPass($pass, $type = \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Compiler\PassConfig::TYPE_BEFORE_OPTIMIZATION, $priority = 0)
     {
         $this->getCompiler()->addPass($pass, $type, $priority);
         $this->addObjectResource($pass);
@@ -397,7 +408,7 @@ class ContainerBuilder extends \MonorepoBuilder20210708\Symfony\Component\Depend
     public function getCompiler()
     {
         if (null === $this->compiler) {
-            $this->compiler = new \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Compiler\Compiler();
+            $this->compiler = new \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Compiler\Compiler();
         }
         return $this->compiler;
     }
@@ -406,20 +417,22 @@ class ContainerBuilder extends \MonorepoBuilder20210708\Symfony\Component\Depend
      *
      * @throws BadMethodCallException When this ContainerBuilder is compiled
      * @param object|null $service
+     * @param string $id
      */
-    public function set(string $id, $service)
+    public function set($id, $service)
     {
         if ($this->isCompiled() && (isset($this->definitions[$id]) && !$this->definitions[$id]->isSynthetic())) {
             // setting a synthetic service on a compiled container is alright
-            throw new \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Exception\BadMethodCallException(\sprintf('Setting service "%s" for an unknown or non-synthetic service definition on a compiled container is not allowed.', $id));
+            throw new \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Exception\BadMethodCallException(\sprintf('Setting service "%s" for an unknown or non-synthetic service definition on a compiled container is not allowed.', $id));
         }
         unset($this->definitions[$id], $this->aliasDefinitions[$id], $this->removedIds[$id]);
         parent::set($id, $service);
     }
     /**
      * Removes a service definition.
+     * @param string $id
      */
-    public function removeDefinition(string $id)
+    public function removeDefinition($id)
     {
         if (isset($this->definitions[$id])) {
             unset($this->definitions[$id]);
@@ -452,14 +465,14 @@ class ContainerBuilder extends \MonorepoBuilder20210708\Symfony\Component\Depend
      *
      * @see Reference
      */
-    public function get($id, $invalidBehavior = \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\ContainerInterface::EXCEPTION_ON_INVALID_REFERENCE)
+    public function get($id, $invalidBehavior = \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\ContainerInterface::EXCEPTION_ON_INVALID_REFERENCE)
     {
-        if ($this->isCompiled() && isset($this->removedIds[$id]) && \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\ContainerInterface::EXCEPTION_ON_INVALID_REFERENCE >= $invalidBehavior) {
+        if ($this->isCompiled() && isset($this->removedIds[$id]) && \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\ContainerInterface::EXCEPTION_ON_INVALID_REFERENCE >= $invalidBehavior) {
             return parent::get($id);
         }
         return $this->doGet($id, $invalidBehavior);
     }
-    private function doGet(string $id, int $invalidBehavior = \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\ContainerInterface::EXCEPTION_ON_INVALID_REFERENCE, array &$inlineServices = null, bool $isConstructorArgument = \false)
+    private function doGet(string $id, int $invalidBehavior = \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\ContainerInterface::EXCEPTION_ON_INVALID_REFERENCE, array &$inlineServices = null, bool $isConstructorArgument = \false)
     {
         if (isset($inlineServices[$id])) {
             return $inlineServices[$id];
@@ -469,13 +482,13 @@ class ContainerBuilder extends \MonorepoBuilder20210708\Symfony\Component\Depend
             $inlineServices = [];
         }
         try {
-            if (\MonorepoBuilder20210708\Symfony\Component\DependencyInjection\ContainerInterface::IGNORE_ON_UNINITIALIZED_REFERENCE === $invalidBehavior) {
+            if (\MonorepoBuilder20210710\Symfony\Component\DependencyInjection\ContainerInterface::IGNORE_ON_UNINITIALIZED_REFERENCE === $invalidBehavior) {
                 return parent::get($id, $invalidBehavior);
             }
-            if ($service = parent::get($id, \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\ContainerInterface::NULL_ON_INVALID_REFERENCE)) {
+            if ($service = parent::get($id, \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\ContainerInterface::NULL_ON_INVALID_REFERENCE)) {
                 return $service;
             }
-        } catch (\MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException $e) {
+        } catch (\MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException $e) {
             if ($isConstructorArgument) {
                 throw $e;
             }
@@ -490,14 +503,14 @@ class ContainerBuilder extends \MonorepoBuilder20210708\Symfony\Component\Depend
         }
         try {
             $definition = $this->getDefinition($id);
-        } catch (\MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException $e) {
-            if (\MonorepoBuilder20210708\Symfony\Component\DependencyInjection\ContainerInterface::EXCEPTION_ON_INVALID_REFERENCE < $invalidBehavior) {
+        } catch (\MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException $e) {
+            if (\MonorepoBuilder20210710\Symfony\Component\DependencyInjection\ContainerInterface::EXCEPTION_ON_INVALID_REFERENCE < $invalidBehavior) {
                 return null;
             }
             throw $e;
         }
         if ($definition->hasErrors() && ($e = $definition->getErrors())) {
-            throw new \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Exception\RuntimeException(\reset($e));
+            throw new \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Exception\RuntimeException(\reset($e));
         }
         if ($isConstructorArgument) {
             $this->loading[$id] = \true;
@@ -534,7 +547,7 @@ class ContainerBuilder extends \MonorepoBuilder20210708\Symfony\Component\Depend
     public function merge($container)
     {
         if ($this->isCompiled()) {
-            throw new \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Exception\BadMethodCallException('Cannot merge on a compiled container.');
+            throw new \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Exception\BadMethodCallException('Cannot merge on a compiled container.');
         }
         $this->addDefinitions($container->getDefinitions());
         $this->addAliases($container->getAliases());
@@ -550,7 +563,7 @@ class ContainerBuilder extends \MonorepoBuilder20210708\Symfony\Component\Depend
             }
             $this->extensionConfigs[$name] = \array_merge($this->extensionConfigs[$name], $container->getExtensionConfig($name));
         }
-        if ($this->getParameterBag() instanceof \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag && $container->getParameterBag() instanceof \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag) {
+        if ($this->getParameterBag() instanceof \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag && $container->getParameterBag() instanceof \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag) {
             $envPlaceholders = $container->getParameterBag()->getEnvPlaceholders();
             $this->getParameterBag()->mergeEnvPlaceholders($container->getParameterBag());
         } else {
@@ -568,13 +581,13 @@ class ContainerBuilder extends \MonorepoBuilder20210708\Symfony\Component\Depend
         }
         foreach ($container->getAutoconfiguredInstanceof() as $interface => $childDefinition) {
             if (isset($this->autoconfiguredInstanceof[$interface])) {
-                throw new \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('"%s" has already been autoconfigured and merge() does not support merging autoconfiguration for the same class/interface.', $interface));
+                throw new \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('"%s" has already been autoconfigured and merge() does not support merging autoconfiguration for the same class/interface.', $interface));
             }
             $this->autoconfiguredInstanceof[$interface] = $childDefinition;
         }
         foreach ($container->getAutoconfiguredAttributes() as $attribute => $configurator) {
             if (isset($this->autoconfiguredAttributes[$attribute])) {
-                throw new \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('"%s" has already been autoconfigured and merge() does not support merging autoconfiguration for the same attribute.', $attribute));
+                throw new \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('"%s" has already been autoconfigured and merge() does not support merging autoconfiguration for the same attribute.', $attribute));
             }
             $this->autoconfiguredAttributes[$attribute] = $configurator;
         }
@@ -583,8 +596,9 @@ class ContainerBuilder extends \MonorepoBuilder20210708\Symfony\Component\Depend
      * Returns the configuration array for the given extension.
      *
      * @return array An array of configuration
+     * @param string $name
      */
-    public function getExtensionConfig(string $name)
+    public function getExtensionConfig($name)
     {
         if (!isset($this->extensionConfigs[$name])) {
             $this->extensionConfigs[$name] = [];
@@ -593,8 +607,10 @@ class ContainerBuilder extends \MonorepoBuilder20210708\Symfony\Component\Depend
     }
     /**
      * Prepends a config array to the configs of the given extension.
+     * @param string $name
+     * @param mixed[] $config
      */
-    public function prependExtensionConfig(string $name, array $config)
+    public function prependExtensionConfig($name, $config)
     {
         if (!isset($this->extensionConfigs[$name])) {
             $this->extensionConfigs[$name] = [];
@@ -629,8 +645,8 @@ class ContainerBuilder extends \MonorepoBuilder20210708\Symfony\Component\Depend
             }
         }
         $bag = $this->getParameterBag();
-        if ($resolveEnvPlaceholders && $bag instanceof \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag) {
-            $compiler->addPass(new \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Compiler\ResolveEnvPlaceholdersPass(), \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Compiler\PassConfig::TYPE_AFTER_REMOVING, -1000);
+        if ($resolveEnvPlaceholders && $bag instanceof \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag) {
+            $compiler->addPass(new \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Compiler\ResolveEnvPlaceholdersPass(), \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Compiler\PassConfig::TYPE_AFTER_REMOVING, -1000);
         }
         $compiler->compile($this);
         foreach ($this->definitions as $id => $definition) {
@@ -639,9 +655,9 @@ class ContainerBuilder extends \MonorepoBuilder20210708\Symfony\Component\Depend
             }
         }
         $this->extensionConfigs = [];
-        if ($bag instanceof \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag) {
+        if ($bag instanceof \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag) {
             if ($resolveEnvPlaceholders) {
-                $this->parameterBag = new \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\ParameterBag\ParameterBag($this->resolveEnvPlaceholders($bag->all(), \true));
+                $this->parameterBag = new \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\ParameterBag\ParameterBag($this->resolveEnvPlaceholders($bag->all(), \true));
             }
             $this->envPlaceholders = $bag->getEnvPlaceholders();
         }
@@ -670,8 +686,9 @@ class ContainerBuilder extends \MonorepoBuilder20210708\Symfony\Component\Depend
     }
     /**
      * Adds the service aliases.
+     * @param mixed[] $aliases
      */
-    public function addAliases(array $aliases)
+    public function addAliases($aliases)
     {
         foreach ($aliases as $alias => $id) {
             $this->setAlias($alias, $id);
@@ -679,8 +696,9 @@ class ContainerBuilder extends \MonorepoBuilder20210708\Symfony\Component\Depend
     }
     /**
      * Sets the service aliases.
+     * @param mixed[] $aliases
      */
-    public function setAliases(array $aliases)
+    public function setAliases($aliases)
     {
         $this->aliasDefinitions = [];
         $this->addAliases($aliases);
@@ -696,18 +714,18 @@ class ContainerBuilder extends \MonorepoBuilder20210708\Symfony\Component\Depend
      * @throws InvalidArgumentException if the id is not a string or an Alias
      * @throws InvalidArgumentException if the alias is for itself
      */
-    public function setAlias(string $alias, $id)
+    public function setAlias($alias, $id)
     {
         if ('' === $alias || '\\' === $alias[-1] || \strlen($alias) !== \strcspn($alias, "\0\r\n'")) {
-            throw new \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Invalid alias id: "%s".', $alias));
+            throw new \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Invalid alias id: "%s".', $alias));
         }
         if (\is_string($id)) {
-            $id = new \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Alias($id);
-        } elseif (!$id instanceof \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Alias) {
-            throw new \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException('$id must be a string, or an Alias object.');
+            $id = new \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Alias($id);
+        } elseif (!$id instanceof \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Alias) {
+            throw new \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException('$id must be a string, or an Alias object.');
         }
         if ($alias === (string) $id) {
-            throw new \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('An alias can not reference itself, got a circular reference on "%s".', $alias));
+            throw new \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('An alias can not reference itself, got a circular reference on "%s".', $alias));
         }
         unset($this->definitions[$alias], $this->removedIds[$alias]);
         return $this->aliasDefinitions[$alias] = $id;
@@ -717,7 +735,7 @@ class ContainerBuilder extends \MonorepoBuilder20210708\Symfony\Component\Depend
      *
      * @param string $alias The alias to remove
      */
-    public function removeAlias(string $alias)
+    public function removeAlias($alias)
     {
         if (isset($this->aliasDefinitions[$alias])) {
             unset($this->aliasDefinitions[$alias]);
@@ -728,8 +746,9 @@ class ContainerBuilder extends \MonorepoBuilder20210708\Symfony\Component\Depend
      * Returns true if an alias exists under the given identifier.
      *
      * @return bool true if the alias exists, false otherwise
+     * @param string $id
      */
-    public function hasAlias(string $id)
+    public function hasAlias($id)
     {
         return isset($this->aliasDefinitions[$id]);
     }
@@ -748,11 +767,12 @@ class ContainerBuilder extends \MonorepoBuilder20210708\Symfony\Component\Depend
      * @return Alias An Alias instance
      *
      * @throws InvalidArgumentException if the alias does not exist
+     * @param string $id
      */
-    public function getAlias(string $id)
+    public function getAlias($id)
     {
         if (!isset($this->aliasDefinitions[$id])) {
-            throw new \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('The service alias "%s" does not exist.', $id));
+            throw new \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('The service alias "%s" does not exist.', $id));
         }
         return $this->aliasDefinitions[$id];
     }
@@ -763,10 +783,12 @@ class ContainerBuilder extends \MonorepoBuilder20210708\Symfony\Component\Depend
      * with a fluid interface.
      *
      * @return Definition A Definition instance
+     * @param string $id
+     * @param string|null $class
      */
-    public function register(string $id, string $class = null)
+    public function register($id, $class = null)
     {
-        return $this->setDefinition($id, new \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Definition($class));
+        return $this->setDefinition($id, new \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Definition($class));
     }
     /**
      * Registers an autowired service definition.
@@ -775,17 +797,19 @@ class ContainerBuilder extends \MonorepoBuilder20210708\Symfony\Component\Depend
      * an autowired definition.
      *
      * @return Definition The created definition
+     * @param string $id
+     * @param string|null $class
      */
-    public function autowire(string $id, string $class = null)
+    public function autowire($id, $class = null)
     {
-        return $this->setDefinition($id, (new \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Definition($class))->setAutowired(\true));
+        return $this->setDefinition($id, (new \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Definition($class))->setAutowired(\true));
     }
     /**
      * Adds the service definitions.
      *
      * @param Definition[] $definitions An array of service definitions
      */
-    public function addDefinitions(array $definitions)
+    public function addDefinitions($definitions)
     {
         foreach ($definitions as $id => $definition) {
             $this->setDefinition($id, $definition);
@@ -796,7 +820,7 @@ class ContainerBuilder extends \MonorepoBuilder20210708\Symfony\Component\Depend
      *
      * @param Definition[] $definitions An array of service definitions
      */
-    public function setDefinitions(array $definitions)
+    public function setDefinitions($definitions)
     {
         $this->definitions = [];
         $this->addDefinitions($definitions);
@@ -816,14 +840,16 @@ class ContainerBuilder extends \MonorepoBuilder20210708\Symfony\Component\Depend
      * @return Definition the service definition
      *
      * @throws BadMethodCallException When this ContainerBuilder is compiled
+     * @param string $id
+     * @param \Symfony\Component\DependencyInjection\Definition $definition
      */
-    public function setDefinition(string $id, \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Definition $definition)
+    public function setDefinition($id, $definition)
     {
         if ($this->isCompiled()) {
-            throw new \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Exception\BadMethodCallException('Adding definition to a compiled container is not allowed.');
+            throw new \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Exception\BadMethodCallException('Adding definition to a compiled container is not allowed.');
         }
         if ('' === $id || '\\' === $id[-1] || \strlen($id) !== \strcspn($id, "\0\r\n'")) {
-            throw new \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Invalid service id: "%s".', $id));
+            throw new \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Invalid service id: "%s".', $id));
         }
         unset($this->aliasDefinitions[$id], $this->removedIds[$id]);
         return $this->definitions[$id] = $definition;
@@ -832,8 +858,9 @@ class ContainerBuilder extends \MonorepoBuilder20210708\Symfony\Component\Depend
      * Returns true if a service definition exists under the given identifier.
      *
      * @return bool true if the service definition exists, false otherwise
+     * @param string $id
      */
-    public function hasDefinition(string $id)
+    public function hasDefinition($id)
     {
         return isset($this->definitions[$id]);
     }
@@ -843,11 +870,12 @@ class ContainerBuilder extends \MonorepoBuilder20210708\Symfony\Component\Depend
      * @return Definition A Definition instance
      *
      * @throws ServiceNotFoundException if the service definition does not exist
+     * @param string $id
      */
-    public function getDefinition(string $id)
+    public function getDefinition($id)
     {
         if (!isset($this->definitions[$id])) {
-            throw new \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException($id);
+            throw new \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException($id);
         }
         return $this->definitions[$id];
     }
@@ -859,8 +887,9 @@ class ContainerBuilder extends \MonorepoBuilder20210708\Symfony\Component\Depend
      * @return Definition A Definition instance
      *
      * @throws ServiceNotFoundException if the service definition does not exist
+     * @param string $id
      */
-    public function findDefinition(string $id)
+    public function findDefinition($id)
     {
         $seen = [];
         while (isset($this->aliasDefinitions[$id])) {
@@ -869,7 +898,7 @@ class ContainerBuilder extends \MonorepoBuilder20210708\Symfony\Component\Depend
                 $seen = \array_values($seen);
                 $seen = \array_slice($seen, \array_search($id, $seen));
                 $seen[] = $id;
-                throw new \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException($id, $seen);
+                throw new \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException($id, $seen);
             }
             $seen[$id] = $id;
         }
@@ -884,22 +913,22 @@ class ContainerBuilder extends \MonorepoBuilder20210708\Symfony\Component\Depend
      * @throws RuntimeException         When the service is a synthetic service
      * @throws InvalidArgumentException When configure callable is not callable
      */
-    private function createService(\MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Definition $definition, array &$inlineServices, bool $isConstructorArgument = \false, string $id = null, bool $tryProxy = \true)
+    private function createService(\MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Definition $definition, array &$inlineServices, bool $isConstructorArgument = \false, string $id = null, bool $tryProxy = \true)
     {
         if (null === $id && isset($inlineServices[$h = \spl_object_hash($definition)])) {
             return $inlineServices[$h];
         }
-        if ($definition instanceof \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\ChildDefinition) {
-            throw new \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Exception\RuntimeException(\sprintf('Constructing service "%s" from a parent definition is not supported at build time.', $id));
+        if ($definition instanceof \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\ChildDefinition) {
+            throw new \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Exception\RuntimeException(\sprintf('Constructing service "%s" from a parent definition is not supported at build time.', $id));
         }
         if ($definition->isSynthetic()) {
-            throw new \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Exception\RuntimeException(\sprintf('You have requested a synthetic service ("%s"). The DIC does not know how to construct this service.', $id));
+            throw new \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Exception\RuntimeException(\sprintf('You have requested a synthetic service ("%s"). The DIC does not know how to construct this service.', $id));
         }
         if ($definition->isDeprecated()) {
             $deprecation = $definition->getDeprecation($id);
             trigger_deprecation($deprecation['package'], $deprecation['version'], $deprecation['message']);
         }
-        if ($tryProxy && $definition->isLazy() && !($tryProxy = !($proxy = $this->proxyInstantiator) || $proxy instanceof \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\LazyProxy\Instantiator\RealServiceInstantiator)) {
+        if ($tryProxy && $definition->isLazy() && !($tryProxy = !($proxy = $this->proxyInstantiator) || $proxy instanceof \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\LazyProxy\Instantiator\RealServiceInstantiator)) {
             $proxy = $proxy->instantiateProxy($this, $definition, $id, function () use($definition, &$inlineServices, $id) {
                 return $this->createService($definition, $inlineServices, \true, $id, \false);
             });
@@ -915,7 +944,7 @@ class ContainerBuilder extends \MonorepoBuilder20210708\Symfony\Component\Depend
             if (\is_array($factory)) {
                 $factory = [$this->doResolveServices($parameterBag->resolveValue($factory[0]), $inlineServices, $isConstructorArgument), $factory[1]];
             } elseif (!\is_string($factory)) {
-                throw new \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Exception\RuntimeException(\sprintf('Cannot create service "%s" because of invalid factory.', $id));
+                throw new \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Exception\RuntimeException(\sprintf('Cannot create service "%s" because of invalid factory.', $id));
             }
         }
         if (null !== $id && $definition->isShared() && isset($this->services[$id]) && ($tryProxy || !$definition->isLazy())) {
@@ -960,14 +989,14 @@ class ContainerBuilder extends \MonorepoBuilder20210708\Symfony\Component\Depend
         if ($callable = $definition->getConfigurator()) {
             if (\is_array($callable)) {
                 $callable[0] = $parameterBag->resolveValue($callable[0]);
-                if ($callable[0] instanceof \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Reference) {
+                if ($callable[0] instanceof \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Reference) {
                     $callable[0] = $this->doGet((string) $callable[0], $callable[0]->getInvalidBehavior(), $inlineServices);
-                } elseif ($callable[0] instanceof \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Definition) {
+                } elseif ($callable[0] instanceof \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Definition) {
                     $callable[0] = $this->createService($callable[0], $inlineServices);
                 }
             }
             if (!\is_callable($callable)) {
-                throw new \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('The configure callable for class "%s" is not a callable.', \get_debug_type($service)));
+                throw new \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('The configure callable for class "%s" is not a callable.', \get_debug_type($service)));
             }
             $callable($service);
         }
@@ -991,13 +1020,13 @@ class ContainerBuilder extends \MonorepoBuilder20210708\Symfony\Component\Depend
             foreach ($value as $k => $v) {
                 $value[$k] = $this->doResolveServices($v, $inlineServices, $isConstructorArgument);
             }
-        } elseif ($value instanceof \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument) {
+        } elseif ($value instanceof \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument) {
             $reference = $value->getValues()[0];
             $value = function () use($reference) {
                 return $this->resolveServices($reference);
             };
-        } elseif ($value instanceof \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Argument\IteratorArgument) {
-            $value = new \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Argument\RewindableGenerator(function () use($value, &$inlineServices) {
+        } elseif ($value instanceof \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Argument\IteratorArgument) {
+            $value = new \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Argument\RewindableGenerator(function () use($value, &$inlineServices) {
                 foreach ($value->getValues() as $k => $v) {
                     foreach (self::getServiceConditionals($v) as $s) {
                         if (!$this->has($s)) {
@@ -1005,7 +1034,7 @@ class ContainerBuilder extends \MonorepoBuilder20210708\Symfony\Component\Depend
                         }
                     }
                     foreach (self::getInitializedConditionals($v) as $s) {
-                        if (!$this->doGet($s, \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\ContainerInterface::IGNORE_ON_UNINITIALIZED_REFERENCE, $inlineServices)) {
+                        if (!$this->doGet($s, \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\ContainerInterface::IGNORE_ON_UNINITIALIZED_REFERENCE, $inlineServices)) {
                             continue 2;
                         }
                     }
@@ -1020,7 +1049,7 @@ class ContainerBuilder extends \MonorepoBuilder20210708\Symfony\Component\Depend
                         }
                     }
                     foreach (self::getInitializedConditionals($v) as $s) {
-                        if (!$this->doGet($s, \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\ContainerInterface::IGNORE_ON_UNINITIALIZED_REFERENCE)) {
+                        if (!$this->doGet($s, \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\ContainerInterface::IGNORE_ON_UNINITIALIZED_REFERENCE)) {
                             continue 2;
                         }
                     }
@@ -1028,25 +1057,25 @@ class ContainerBuilder extends \MonorepoBuilder20210708\Symfony\Component\Depend
                 }
                 return $count;
             });
-        } elseif ($value instanceof \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument) {
+        } elseif ($value instanceof \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument) {
             $refs = $types = [];
             foreach ($value->getValues() as $k => $v) {
                 if ($v) {
                     $refs[$k] = [$v];
-                    $types[$k] = $v instanceof \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\TypedReference ? $v->getType() : '?';
+                    $types[$k] = $v instanceof \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\TypedReference ? $v->getType() : '?';
                 }
             }
-            $value = new \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Argument\ServiceLocator(\Closure::fromCallable([$this, 'resolveServices']), $refs, $types);
-        } elseif ($value instanceof \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Reference) {
+            $value = new \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Argument\ServiceLocator(\Closure::fromCallable([$this, 'resolveServices']), $refs, $types);
+        } elseif ($value instanceof \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Reference) {
             $value = $this->doGet((string) $value, $value->getInvalidBehavior(), $inlineServices, $isConstructorArgument);
-        } elseif ($value instanceof \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Definition) {
+        } elseif ($value instanceof \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Definition) {
             $value = $this->createService($value, $inlineServices, $isConstructorArgument);
-        } elseif ($value instanceof \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Parameter) {
+        } elseif ($value instanceof \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Parameter) {
             $value = $this->getParameter((string) $value);
-        } elseif ($value instanceof \MonorepoBuilder20210708\Symfony\Component\ExpressionLanguage\Expression) {
+        } elseif ($value instanceof \MonorepoBuilder20210710\Symfony\Component\ExpressionLanguage\Expression) {
             $value = $this->getExpressionLanguage()->evaluate($value, ['container' => $this]);
-        } elseif ($value instanceof \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Argument\AbstractArgument) {
-            throw new \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Exception\RuntimeException($value->getTextWithContext());
+        } elseif ($value instanceof \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Argument\AbstractArgument) {
+            throw new \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Exception\RuntimeException($value->getTextWithContext());
         }
         return $value;
     }
@@ -1065,16 +1094,17 @@ class ContainerBuilder extends \MonorepoBuilder20210708\Symfony\Component\Depend
      *     }
      *
      * @return array An array of tags with the tagged service as key, holding a list of attribute arrays
+     * @param string $name
      * @param bool $throwOnAbstract
      */
-    public function findTaggedServiceIds(string $name, $throwOnAbstract = \false)
+    public function findTaggedServiceIds($name, $throwOnAbstract = \false)
     {
         $this->usedTags[] = $name;
         $tags = [];
         foreach ($this->getDefinitions() as $id => $definition) {
             if ($definition->hasTag($name)) {
                 if ($throwOnAbstract && $definition->isAbstract()) {
-                    throw new \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('The service "%s" tagged "%s" must not be abstract.', $id, $name));
+                    throw new \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('The service "%s" tagged "%s" must not be abstract.', $id, $name));
                 }
                 $tags[$id] = $definition->getTag($name);
             }
@@ -1103,7 +1133,10 @@ class ContainerBuilder extends \MonorepoBuilder20210708\Symfony\Component\Depend
     {
         return \array_values(\array_diff($this->findTags(), $this->usedTags));
     }
-    public function addExpressionLanguageProvider(\MonorepoBuilder20210708\Symfony\Component\ExpressionLanguage\ExpressionFunctionProviderInterface $provider)
+    /**
+     * @param \Symfony\Component\ExpressionLanguage\ExpressionFunctionProviderInterface $provider
+     */
+    public function addExpressionLanguageProvider($provider)
     {
         $this->expressionLanguageProviders[] = $provider;
     }
@@ -1118,11 +1151,12 @@ class ContainerBuilder extends \MonorepoBuilder20210708\Symfony\Component\Depend
      * Returns a ChildDefinition that will be used for autoconfiguring the interface/class.
      *
      * @return ChildDefinition
+     * @param string $interface
      */
-    public function registerForAutoconfiguration(string $interface)
+    public function registerForAutoconfiguration($interface)
     {
         if (!isset($this->autoconfiguredInstanceof[$interface])) {
-            $this->autoconfiguredInstanceof[$interface] = new \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\ChildDefinition('');
+            $this->autoconfiguredInstanceof[$interface] = new \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\ChildDefinition('');
         }
         return $this->autoconfiguredInstanceof[$interface];
     }
@@ -1130,8 +1164,10 @@ class ContainerBuilder extends \MonorepoBuilder20210708\Symfony\Component\Depend
      * Registers an attribute that will be used for autoconfiguring annotated classes.
      *
      * The configurator will receive a ChildDefinition instance, an instance of the attribute and the corresponding \ReflectionClass, in that order.
+     * @param string $attributeClass
+     * @param callable $configurator
      */
-    public function registerAttributeForAutoconfiguration(string $attributeClass, callable $configurator) : void
+    public function registerAttributeForAutoconfiguration($attributeClass, $configurator) : void
     {
         $this->autoconfiguredAttributes[$attributeClass] = $configurator;
     }
@@ -1142,12 +1178,15 @@ class ContainerBuilder extends \MonorepoBuilder20210708\Symfony\Component\Depend
      * using camel case: "foo.bar" or "foo_bar" creates an alias bound to
      * "$fooBar"-named arguments with $type as type-hint. Such arguments will
      * receive the service $id when autowiring is used.
+     * @param string $id
+     * @param string $type
+     * @param string|null $name
      */
-    public function registerAliasForArgument(string $id, string $type, string $name = null) : \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Alias
+    public function registerAliasForArgument($id, $type, $name = null) : \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Alias
     {
-        $name = (new \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Attribute\Target($name ?? $id))->name;
+        $name = (new \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Attribute\Target($name ?? $id))->name;
         if (!\preg_match('/^[a-zA-Z_\\x7f-\\xff]/', $name)) {
-            throw new \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Invalid argument name "%s" for service "%s": the first character must be a letter.', $name, $id));
+            throw new \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Invalid argument name "%s" for service "%s": the first character must be a letter.', $name, $id));
         }
         return $this->setAlias($type . ' $' . $name, $id);
     }
@@ -1178,7 +1217,7 @@ class ContainerBuilder extends \MonorepoBuilder20210708\Symfony\Component\Depend
      *
      * @return mixed The value with env parameters resolved if a string or an array is passed
      */
-    public function resolveEnvPlaceholders($value, $format = null, array &$usedEnvs = null)
+    public function resolveEnvPlaceholders($value, $format = null, &$usedEnvs = null)
     {
         if (null === $format) {
             $format = '%%env(%s)%%';
@@ -1187,7 +1226,7 @@ class ContainerBuilder extends \MonorepoBuilder20210708\Symfony\Component\Depend
         if (\true === $format) {
             $value = $bag->resolveValue($value);
         }
-        if ($value instanceof \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Definition) {
+        if ($value instanceof \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Definition) {
             $value = (array) $value;
         }
         if (\is_array($value)) {
@@ -1200,7 +1239,7 @@ class ContainerBuilder extends \MonorepoBuilder20210708\Symfony\Component\Depend
         if (!\is_string($value) || 38 > \strlen($value)) {
             return $value;
         }
-        $envPlaceholders = $bag instanceof \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag ? $bag->getEnvPlaceholders() : $this->envPlaceholders;
+        $envPlaceholders = $bag instanceof \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag ? $bag->getEnvPlaceholders() : $this->envPlaceholders;
         $completed = \false;
         foreach ($envPlaceholders as $env => $placeholders) {
             foreach ($placeholders as $placeholder) {
@@ -1215,7 +1254,7 @@ class ContainerBuilder extends \MonorepoBuilder20210708\Symfony\Component\Depend
                         $completed = \true;
                     } else {
                         if (!\is_string($resolved) && !\is_numeric($resolved)) {
-                            throw new \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Exception\RuntimeException(\sprintf('A string value must be composed of strings and/or numbers, but found parameter "env(%s)" of type "%s" inside string value "%s".', $env, \get_debug_type($resolved), $this->resolveEnvPlaceholders($value)));
+                            throw new \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Exception\RuntimeException(\sprintf('A string value must be composed of strings and/or numbers, but found parameter "env(%s)" of type "%s" inside string value "%s".', $env, \get_debug_type($resolved), $this->resolveEnvPlaceholders($value)));
                         }
                         $value = \str_ireplace($placeholder, $resolved, $value);
                     }
@@ -1237,7 +1276,7 @@ class ContainerBuilder extends \MonorepoBuilder20210708\Symfony\Component\Depend
     public function getEnvCounters()
     {
         $bag = $this->getParameterBag();
-        $envPlaceholders = $bag instanceof \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag ? $bag->getEnvPlaceholders() : $this->envPlaceholders;
+        $envPlaceholders = $bag instanceof \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag ? $bag->getEnvPlaceholders() : $this->envPlaceholders;
         foreach ($envPlaceholders as $env => $placeholders) {
             if (!isset($this->envCounters[$env])) {
                 $this->envCounters[$env] = 0;
@@ -1247,8 +1286,10 @@ class ContainerBuilder extends \MonorepoBuilder20210708\Symfony\Component\Depend
     }
     /**
      * @final
+     * @param \Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface $pass
+     * @param string $message
      */
-    public function log(\MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface $pass, string $message)
+    public function log($pass, $message)
     {
         $this->getCompiler()->log($pass, $this->resolveEnvPlaceholders($message));
     }
@@ -1257,22 +1298,25 @@ class ContainerBuilder extends \MonorepoBuilder20210708\Symfony\Component\Depend
      *
      * When parent packages are provided and if any of them is in dev-only mode,
      * the class will be considered available even if it is also in dev-only mode.
+     * @param string $package
+     * @param string $class
+     * @param mixed[] $parentPackages
      */
-    public static final function willBeAvailable(string $package, string $class, array $parentPackages) : bool
+    public static final function willBeAvailable($package, $class, $parentPackages) : bool
     {
         if (!\class_exists($class) && !\interface_exists($class, \false) && !\trait_exists($class, \false)) {
             return \false;
         }
-        if (!\class_exists(\MonorepoBuilder20210708\Composer\InstalledVersions::class) || !\MonorepoBuilder20210708\Composer\InstalledVersions::isInstalled($package) || \MonorepoBuilder20210708\Composer\InstalledVersions::isInstalled($package, \false)) {
+        if (!\class_exists(\MonorepoBuilder20210710\Composer\InstalledVersions::class) || !\MonorepoBuilder20210710\Composer\InstalledVersions::isInstalled($package) || \MonorepoBuilder20210710\Composer\InstalledVersions::isInstalled($package, \false)) {
             return \true;
         }
         // the package is installed but in dev-mode only, check if this applies to one of the parent packages too
-        $rootPackage = \MonorepoBuilder20210708\Composer\InstalledVersions::getRootPackage()['name'] ?? '';
+        $rootPackage = \MonorepoBuilder20210710\Composer\InstalledVersions::getRootPackage()['name'] ?? '';
         if ('symfony/symfony' === $rootPackage) {
             return \true;
         }
         foreach ($parentPackages as $parentPackage) {
-            if ($rootPackage === $parentPackage || \MonorepoBuilder20210708\Composer\InstalledVersions::isInstalled($parentPackage) && !\MonorepoBuilder20210708\Composer\InstalledVersions::isInstalled($parentPackage, \false)) {
+            if ($rootPackage === $parentPackage || \MonorepoBuilder20210710\Composer\InstalledVersions::isInstalled($parentPackage) && !\MonorepoBuilder20210710\Composer\InstalledVersions::isInstalled($parentPackage, \false)) {
                 return \true;
             }
         }
@@ -1291,8 +1335,9 @@ class ContainerBuilder extends \MonorepoBuilder20210708\Symfony\Component\Depend
      * Removes bindings for a service.
      *
      * @internal
+     * @param string $id
      */
-    public function removeBindings(string $id)
+    public function removeBindings($id)
     {
         if ($this->hasDefinition($id)) {
             foreach ($this->getDefinition($id)->getBindings() as $key => $binding) {
@@ -1315,7 +1360,7 @@ class ContainerBuilder extends \MonorepoBuilder20210708\Symfony\Component\Depend
             foreach ($value as $v) {
                 $services = \array_unique(\array_merge($services, self::getServiceConditionals($v)));
             }
-        } elseif ($value instanceof \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Reference && \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\ContainerInterface::IGNORE_ON_INVALID_REFERENCE === $value->getInvalidBehavior()) {
+        } elseif ($value instanceof \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Reference && \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\ContainerInterface::IGNORE_ON_INVALID_REFERENCE === $value->getInvalidBehavior()) {
             $services[] = (string) $value;
         }
         return $services;
@@ -1334,7 +1379,7 @@ class ContainerBuilder extends \MonorepoBuilder20210708\Symfony\Component\Depend
             foreach ($value as $v) {
                 $services = \array_unique(\array_merge($services, self::getInitializedConditionals($v)));
             }
-        } elseif ($value instanceof \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Reference && \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\ContainerInterface::IGNORE_ON_UNINITIALIZED_REFERENCE === $value->getInvalidBehavior()) {
+        } elseif ($value instanceof \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Reference && \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\ContainerInterface::IGNORE_ON_UNINITIALIZED_REFERENCE === $value->getInvalidBehavior()) {
             $services[] = (string) $value;
         }
         return $services;
@@ -1358,12 +1403,12 @@ class ContainerBuilder extends \MonorepoBuilder20210708\Symfony\Component\Depend
     {
         $value = parent::getEnv($name);
         $bag = $this->getParameterBag();
-        if (!\is_string($value) || !$bag instanceof \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag) {
+        if (!\is_string($value) || !$bag instanceof \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag) {
             return $value;
         }
         $envPlaceholders = $bag->getEnvPlaceholders();
         if (isset($envPlaceholders[$name][$value])) {
-            $bag = new \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\ParameterBag\ParameterBag($bag->all());
+            $bag = new \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\ParameterBag\ParameterBag($bag->all());
             return $bag->unescapeValue($bag->get("env({$name})"));
         }
         foreach ($envPlaceholders as $env => $placeholders) {
@@ -1386,7 +1431,7 @@ class ContainerBuilder extends \MonorepoBuilder20210708\Symfony\Component\Depend
             }
         }
         foreach (self::getInitializedConditionals($call[1]) as $s) {
-            if (!$this->doGet($s, \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\ContainerInterface::IGNORE_ON_UNINITIALIZED_REFERENCE, $inlineServices)) {
+            if (!$this->doGet($s, \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\ContainerInterface::IGNORE_ON_UNINITIALIZED_REFERENCE, $inlineServices)) {
                 return $service;
             }
         }
@@ -1398,7 +1443,7 @@ class ContainerBuilder extends \MonorepoBuilder20210708\Symfony\Component\Depend
      *
      * @param mixed $service
      */
-    private function shareService(\MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Definition $definition, $service, ?string $id, array &$inlineServices)
+    private function shareService(\MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Definition $definition, $service, ?string $id, array &$inlineServices)
     {
         $inlineServices[null !== $id ? $id : \spl_object_hash($definition)] = $service;
         if (null !== $id && $definition->isShared()) {
@@ -1406,25 +1451,25 @@ class ContainerBuilder extends \MonorepoBuilder20210708\Symfony\Component\Depend
             unset($this->loading[$id]);
         }
     }
-    private function getExpressionLanguage() : \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\ExpressionLanguage
+    private function getExpressionLanguage() : \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\ExpressionLanguage
     {
         if (null === $this->expressionLanguage) {
-            if (!\class_exists(\MonorepoBuilder20210708\Symfony\Component\ExpressionLanguage\ExpressionLanguage::class)) {
-                throw new \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\Exception\LogicException('Unable to use expressions as the Symfony ExpressionLanguage component is not installed.');
+            if (!\class_exists(\MonorepoBuilder20210710\Symfony\Component\ExpressionLanguage\ExpressionLanguage::class)) {
+                throw new \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Exception\LogicException('Unable to use expressions as the Symfony ExpressionLanguage component is not installed.');
             }
-            $this->expressionLanguage = new \MonorepoBuilder20210708\Symfony\Component\DependencyInjection\ExpressionLanguage(null, $this->expressionLanguageProviders);
+            $this->expressionLanguage = new \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\ExpressionLanguage(null, $this->expressionLanguageProviders);
         }
         return $this->expressionLanguage;
     }
     private function inVendors(string $path) : bool
     {
         if (null === $this->vendors) {
-            $this->vendors = (new \MonorepoBuilder20210708\Symfony\Component\Config\Resource\ComposerResource())->getVendors();
+            $this->vendors = (new \MonorepoBuilder20210710\Symfony\Component\Config\Resource\ComposerResource())->getVendors();
         }
         $path = \realpath($path) ?: $path;
         foreach ($this->vendors as $vendor) {
             if (0 === \strpos($path, $vendor) && \false !== \strpbrk(\substr($path, \strlen($vendor), 1), '/' . \DIRECTORY_SEPARATOR)) {
-                $this->addResource(new \MonorepoBuilder20210708\Symfony\Component\Config\Resource\FileResource($vendor . '/composer/installed.json'));
+                $this->addResource(new \MonorepoBuilder20210710\Symfony\Component\Config\Resource\FileResource($vendor . '/composer/installed.json'));
                 return \true;
             }
         }

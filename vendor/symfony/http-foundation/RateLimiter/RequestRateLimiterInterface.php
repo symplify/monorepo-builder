@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210708\Symfony\Component\HttpFoundation\RateLimiter;
+namespace MonorepoBuilder20210710\Symfony\Component\HttpFoundation\RateLimiter;
 
-use MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Request;
-use MonorepoBuilder20210708\Symfony\Component\RateLimiter\RateLimit;
+use MonorepoBuilder20210710\Symfony\Component\HttpFoundation\Request;
+use MonorepoBuilder20210710\Symfony\Component\RateLimiter\RateLimit;
 /**
  * A special type of limiter that deals with requests.
  *
@@ -24,6 +24,12 @@ use MonorepoBuilder20210708\Symfony\Component\RateLimiter\RateLimit;
  */
 interface RequestRateLimiterInterface
 {
-    public function consume(\MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Request $request) : \MonorepoBuilder20210708\Symfony\Component\RateLimiter\RateLimit;
-    public function reset(\MonorepoBuilder20210708\Symfony\Component\HttpFoundation\Request $request) : void;
+    /**
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     */
+    public function consume($request) : \MonorepoBuilder20210710\Symfony\Component\RateLimiter\RateLimit;
+    /**
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     */
+    public function reset($request) : void;
 }

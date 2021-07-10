@@ -8,19 +8,19 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210708\Symfony\Component\Config\Definition;
+namespace MonorepoBuilder20210710\Symfony\Component\Config\Definition;
 
-use MonorepoBuilder20210708\Symfony\Component\Config\Definition\Exception\Exception;
-use MonorepoBuilder20210708\Symfony\Component\Config\Definition\Exception\ForbiddenOverwriteException;
-use MonorepoBuilder20210708\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
-use MonorepoBuilder20210708\Symfony\Component\Config\Definition\Exception\InvalidTypeException;
-use MonorepoBuilder20210708\Symfony\Component\Config\Definition\Exception\UnsetKeyException;
+use MonorepoBuilder20210710\Symfony\Component\Config\Definition\Exception\Exception;
+use MonorepoBuilder20210710\Symfony\Component\Config\Definition\Exception\ForbiddenOverwriteException;
+use MonorepoBuilder20210710\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
+use MonorepoBuilder20210710\Symfony\Component\Config\Definition\Exception\InvalidTypeException;
+use MonorepoBuilder20210710\Symfony\Component\Config\Definition\Exception\UnsetKeyException;
 /**
  * The base node class.
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-abstract class BaseNode implements \MonorepoBuilder20210708\Symfony\Component\Config\Definition\NodeInterface
+abstract class BaseNode implements \MonorepoBuilder20210710\Symfony\Component\Config\Definition\NodeInterface
 {
     public const DEFAULT_PATH_SEPARATOR = '.';
     private static $placeholderUniquePrefixes = [];
@@ -39,7 +39,7 @@ abstract class BaseNode implements \MonorepoBuilder20210708\Symfony\Component\Co
     /**
      * @throws \InvalidArgumentException if the name contains a period
      */
-    public function __construct(?string $name, \MonorepoBuilder20210708\Symfony\Component\Config\Definition\NodeInterface $parent = null, string $pathSeparator = self::DEFAULT_PATH_SEPARATOR)
+    public function __construct(?string $name, \MonorepoBuilder20210710\Symfony\Component\Config\Definition\NodeInterface $parent = null, string $pathSeparator = self::DEFAULT_PATH_SEPARATOR)
     {
         if (\false !== \strpos($name = (string) $name, $pathSeparator)) {
             throw new \InvalidArgumentException('The name must not contain ".' . $pathSeparator . '".');
@@ -55,8 +55,10 @@ abstract class BaseNode implements \MonorepoBuilder20210708\Symfony\Component\Co
      * successfully processed the configuration value is returned as is, thus preserving the placeholder.
      *
      * @internal
+     * @param string $placeholder
+     * @param mixed[] $values
      */
-    public static function setPlaceholder(string $placeholder, array $values) : void
+    public static function setPlaceholder($placeholder, $values) : void
     {
         if (!$values) {
             throw new \InvalidArgumentException('At least one value must be provided.');
@@ -70,8 +72,9 @@ abstract class BaseNode implements \MonorepoBuilder20210708\Symfony\Component\Co
      * placeholder. An exact match provided by {@see setPlaceholder()} might take precedence.
      *
      * @internal
+     * @param string $prefix
      */
-    public static function setPlaceholderUniquePrefix(string $prefix) : void
+    public static function setPlaceholderUniquePrefix($prefix) : void
     {
         self::$placeholderUniquePrefixes[] = $prefix;
     }
@@ -85,21 +88,26 @@ abstract class BaseNode implements \MonorepoBuilder20210708\Symfony\Component\Co
         self::$placeholderUniquePrefixes = [];
         self::$placeholders = [];
     }
-    public function setAttribute(string $key, $value)
+    /**
+     * @param string $key
+     */
+    public function setAttribute($key, $value)
     {
         $this->attributes[$key] = $value;
     }
     /**
      * @return mixed
+     * @param string $key
      */
-    public function getAttribute(string $key, $default = null)
+    public function getAttribute($key, $default = null)
     {
         return $this->attributes[$key] ?? $default;
     }
     /**
      * @return bool
+     * @param string $key
      */
-    public function hasAttribute(string $key)
+    public function hasAttribute($key)
     {
         return isset($this->attributes[$key]);
     }
@@ -110,18 +118,25 @@ abstract class BaseNode implements \MonorepoBuilder20210708\Symfony\Component\Co
     {
         return $this->attributes;
     }
-    public function setAttributes(array $attributes)
+    /**
+     * @param mixed[] $attributes
+     */
+    public function setAttributes($attributes)
     {
         $this->attributes = $attributes;
     }
-    public function removeAttribute(string $key)
+    /**
+     * @param string $key
+     */
+    public function removeAttribute($key)
     {
         unset($this->attributes[$key]);
     }
     /**
      * Sets an info message.
+     * @param string $info
      */
-    public function setInfo(string $info)
+    public function setInfo($info)
     {
         $this->setAttribute('info', $info);
     }
@@ -167,7 +182,7 @@ abstract class BaseNode implements \MonorepoBuilder20210708\Symfony\Component\Co
      *
      * @param bool $boolean Required node
      */
-    public function setRequired(bool $boolean)
+    public function setRequired($boolean)
     {
         $this->required = $boolean;
     }
@@ -181,7 +196,7 @@ abstract class BaseNode implements \MonorepoBuilder20210708\Symfony\Component\Co
      * You can use %node% and %path% placeholders in your message to display,
      * respectively, the node name and its complete path
      */
-    public function setDeprecated(?string $package)
+    public function setDeprecated($package)
     {
         $args = \func_get_args();
         if (\func_num_args() < 2) {
@@ -202,8 +217,9 @@ abstract class BaseNode implements \MonorepoBuilder20210708\Symfony\Component\Co
     }
     /**
      * Sets if this node can be overridden.
+     * @param bool $allow
      */
-    public function setAllowOverwrite(bool $allow)
+    public function setAllowOverwrite($allow)
     {
         $this->allowOverwrite = $allow;
     }
@@ -212,7 +228,7 @@ abstract class BaseNode implements \MonorepoBuilder20210708\Symfony\Component\Co
      *
      * @param \Closure[] $closures An array of Closures used for normalization
      */
-    public function setNormalizationClosures(array $closures)
+    public function setNormalizationClosures($closures)
     {
         $this->normalizationClosures = $closures;
     }
@@ -221,7 +237,7 @@ abstract class BaseNode implements \MonorepoBuilder20210708\Symfony\Component\Co
      *
      * @param \Closure[] $closures An array of Closures used for final validation
      */
-    public function setFinalValidationClosures(array $closures)
+    public function setFinalValidationClosures($closures)
     {
         $this->finalValidationClosures = $closures;
     }
@@ -251,7 +267,7 @@ abstract class BaseNode implements \MonorepoBuilder20210708\Symfony\Component\Co
      *
      * @deprecated since Symfony 5.1, use "getDeprecation()" instead.
      */
-    public function getDeprecationMessage(string $node, string $path)
+    public function getDeprecationMessage($node, $path)
     {
         trigger_deprecation('symfony/config', '5.1', 'The "%s()" method is deprecated, use "getDeprecation()" instead.', __METHOD__);
         return $this->getDeprecation($node, $path)['message'];
@@ -260,7 +276,7 @@ abstract class BaseNode implements \MonorepoBuilder20210708\Symfony\Component\Co
      * @param string $node The configuration node name
      * @param string $path The path of the node
      */
-    public function getDeprecation(string $node, string $path) : array
+    public function getDeprecation($node, $path) : array
     {
         return ['package' => $this->deprecation['package'] ?? '', 'version' => $this->deprecation['version'] ?? '', 'message' => \strtr($this->deprecation['message'] ?? '', ['%node%' => $node, '%path%' => $path])];
     }
@@ -287,7 +303,7 @@ abstract class BaseNode implements \MonorepoBuilder20210708\Symfony\Component\Co
     public final function merge($leftSide, $rightSide)
     {
         if (!$this->allowOverwrite) {
-            throw new \MonorepoBuilder20210708\Symfony\Component\Config\Definition\Exception\ForbiddenOverwriteException(\sprintf('Configuration path "%s" cannot be overwritten. You have to define all options for this path, and any of its sub-paths in one configuration section.', $this->getPath()));
+            throw new \MonorepoBuilder20210710\Symfony\Component\Config\Definition\Exception\ForbiddenOverwriteException(\sprintf('Configuration path "%s" cannot be overwritten. You have to define all options for this path, and any of its sub-paths in one configuration section.', $this->getPath()));
         }
         if ($leftSide !== ($leftPlaceholders = self::resolvePlaceholderValue($leftSide))) {
             foreach ($leftPlaceholders as $leftPlaceholder) {
@@ -391,13 +407,13 @@ abstract class BaseNode implements \MonorepoBuilder20210708\Symfony\Component\Co
         foreach ($this->finalValidationClosures as $closure) {
             try {
                 $value = $closure($value);
-            } catch (\MonorepoBuilder20210708\Symfony\Component\Config\Definition\Exception\Exception $e) {
-                if ($e instanceof \MonorepoBuilder20210708\Symfony\Component\Config\Definition\Exception\UnsetKeyException && null !== $this->handlingPlaceholder) {
+            } catch (\MonorepoBuilder20210710\Symfony\Component\Config\Definition\Exception\Exception $e) {
+                if ($e instanceof \MonorepoBuilder20210710\Symfony\Component\Config\Definition\Exception\UnsetKeyException && null !== $this->handlingPlaceholder) {
                     continue;
                 }
                 throw $e;
             } catch (\Exception $e) {
-                throw new \MonorepoBuilder20210708\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException(\sprintf('Invalid configuration for path "%s": ', $this->getPath()) . $e->getMessage(), $e->getCode(), $e);
+                throw new \MonorepoBuilder20210710\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException(\sprintf('Invalid configuration for path "%s": ', $this->getPath()) . $e->getMessage(), $e->getCode(), $e);
             }
         }
         return $value;
@@ -473,7 +489,7 @@ abstract class BaseNode implements \MonorepoBuilder20210708\Symfony\Component\Co
     private function doValidateType($value) : void
     {
         if (null !== $this->handlingPlaceholder && !$this->allowPlaceholders()) {
-            $e = new \MonorepoBuilder20210708\Symfony\Component\Config\Definition\Exception\InvalidTypeException(\sprintf('A dynamic value is not compatible with a "%s" node type at path "%s".', static::class, $this->getPath()));
+            $e = new \MonorepoBuilder20210710\Symfony\Component\Config\Definition\Exception\InvalidTypeException(\sprintf('A dynamic value is not compatible with a "%s" node type at path "%s".', static::class, $this->getPath()));
             $e->setPath($this->getPath());
             throw $e;
         }
@@ -484,7 +500,7 @@ abstract class BaseNode implements \MonorepoBuilder20210708\Symfony\Component\Co
         $knownTypes = \array_keys(self::$placeholders[$this->handlingPlaceholder]);
         $validTypes = $this->getValidPlaceholderTypes();
         if ($validTypes && \array_diff($knownTypes, $validTypes)) {
-            $e = new \MonorepoBuilder20210708\Symfony\Component\Config\Definition\Exception\InvalidTypeException(\sprintf('Invalid type for path "%s". Expected %s, but got %s.', $this->getPath(), 1 === \count($validTypes) ? '"' . \reset($validTypes) . '"' : 'one of "' . \implode('", "', $validTypes) . '"', 1 === \count($knownTypes) ? '"' . \reset($knownTypes) . '"' : 'one of "' . \implode('", "', $knownTypes) . '"'));
+            $e = new \MonorepoBuilder20210710\Symfony\Component\Config\Definition\Exception\InvalidTypeException(\sprintf('Invalid type for path "%s". Expected %s, but got %s.', $this->getPath(), 1 === \count($validTypes) ? '"' . \reset($validTypes) . '"' : 'one of "' . \implode('", "', $validTypes) . '"', 1 === \count($knownTypes) ? '"' . \reset($knownTypes) . '"' : 'one of "' . \implode('", "', $knownTypes) . '"'));
             if ($hint = $this->getInfo()) {
                 $e->addHint($hint);
             }
