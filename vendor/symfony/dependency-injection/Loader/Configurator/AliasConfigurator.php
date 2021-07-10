@@ -16,9 +16,9 @@ use MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Alias;
  */
 class AliasConfigurator extends \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Loader\Configurator\AbstractServiceConfigurator
 {
-    public const FACTORY = 'alias';
     use Traits\DeprecateTrait;
     use Traits\PublicTrait;
+    public const FACTORY = 'alias';
     public function __construct(\MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Loader\Configurator\ServicesConfigurator $parent, \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Alias $alias)
     {
         $this->parent = $parent;

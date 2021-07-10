@@ -22,24 +22,20 @@ class ParameterBag implements \MonorepoBuilder20210710\Symfony\Component\Depende
 {
     protected $parameters = [];
     protected $resolved = \false;
-    /**
-     * @param array $parameters An array of parameters
-     */
     public function __construct(array $parameters = [])
     {
         $this->add($parameters);
     }
     /**
-     * Clears all parameters.
+     * {@inheritdoc}
      */
     public function clear()
     {
         $this->parameters = [];
     }
     /**
-     * Adds parameters to the service container parameters.
-     *
-     * @param array $parameters An array of parameters
+     * {@inheritdoc}
+     * @param mixed[] $parameters
      */
     public function add($parameters)
     {
@@ -90,10 +86,8 @@ class ParameterBag implements \MonorepoBuilder20210710\Symfony\Component\Depende
         return $this->parameters[$name];
     }
     /**
-     * Sets a service container parameter.
-     *
-     * @param string $name  The parameter name
-     * @param mixed  $value The parameter value
+     * {@inheritdoc}
+     * @param string $name
      */
     public function set($name, $value)
     {
@@ -108,9 +102,8 @@ class ParameterBag implements \MonorepoBuilder20210710\Symfony\Component\Depende
         return \array_key_exists((string) $name, $this->parameters);
     }
     /**
-     * Removes a parameter.
-     *
-     * @param string $name The parameter name
+     * {@inheritdoc}
+     * @param string $name
      */
     public function remove($name)
     {

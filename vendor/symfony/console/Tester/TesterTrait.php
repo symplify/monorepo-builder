@@ -10,10 +10,12 @@
  */
 namespace MonorepoBuilder20210710\Symfony\Component\Console\Tester;
 
+use MonorepoBuilder20210710\PHPUnit\Framework\Assert;
 use MonorepoBuilder20210710\Symfony\Component\Console\Input\InputInterface;
 use MonorepoBuilder20210710\Symfony\Component\Console\Output\ConsoleOutput;
 use MonorepoBuilder20210710\Symfony\Component\Console\Output\OutputInterface;
 use MonorepoBuilder20210710\Symfony\Component\Console\Output\StreamOutput;
+use MonorepoBuilder20210710\Symfony\Component\Console\Tester\Constraint\CommandIsSuccessful;
 /**
  * @author Amrouche Hamza <hamza.simperfit@gmail.com>
  */
@@ -93,6 +95,13 @@ trait TesterTrait
             throw new \RuntimeException('Status code not initialized, did you execute the command before requesting the status code?');
         }
         return $this->statusCode;
+    }
+    /**
+     * @param string $message
+     */
+    public function assertCommandIsSuccessful($message = '') : void
+    {
+        \MonorepoBuilder20210710\PHPUnit\Framework\Assert::assertThat($this->statusCode, new \MonorepoBuilder20210710\Symfony\Component\Console\Tester\Constraint\CommandIsSuccessful(), $message);
     }
     /**
      * Sets the user inputs.

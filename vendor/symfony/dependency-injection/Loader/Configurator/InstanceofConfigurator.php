@@ -16,7 +16,6 @@ use MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Definition;
  */
 class InstanceofConfigurator extends \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Loader\Configurator\AbstractServiceConfigurator
 {
-    public const FACTORY = 'instanceof';
     use Traits\AutowireTrait;
     use Traits\BindTrait;
     use Traits\CallTrait;
@@ -26,6 +25,7 @@ class InstanceofConfigurator extends \MonorepoBuilder20210710\Symfony\Component\
     use Traits\PublicTrait;
     use Traits\ShareTrait;
     use Traits\TagTrait;
+    public const FACTORY = 'instanceof';
     private $path;
     public function __construct(\MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Loader\Configurator\ServicesConfigurator $parent, \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Definition $definition, string $id, string $path = null)
     {

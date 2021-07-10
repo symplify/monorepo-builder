@@ -39,9 +39,8 @@ class ChildDefinition extends \MonorepoBuilder20210710\Symfony\Component\Depende
     /**
      * Sets the Definition to inherit from.
      *
-     * @param string $parent
-     *
      * @return $this
+     * @param string $parent
      */
     public function setParent($parent)
     {

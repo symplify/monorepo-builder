@@ -32,6 +32,7 @@ class ServiceLocator extends \MonorepoBuilder20210710\Symfony\Component\Dependen
      * {@inheritdoc}
      *
      * @return mixed
+     * @param string $id
      */
     public function get($id)
     {

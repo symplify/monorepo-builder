@@ -451,11 +451,6 @@ class ContainerBuilder extends \MonorepoBuilder20210710\Symfony\Component\Depend
         return isset($this->definitions[$id]) || isset($this->aliasDefinitions[$id]) || parent::has($id);
     }
     /**
-     * Gets a service.
-     *
-     * @param string $id              The service identifier
-     * @param int    $invalidBehavior The behavior when the service does not exist
-     *
      * @return object|null The associated service
      *
      * @throws InvalidArgumentException          when no definitions are available
@@ -464,6 +459,8 @@ class ContainerBuilder extends \MonorepoBuilder20210710\Symfony\Component\Depend
      * @throws \Exception
      *
      * @see Reference
+     * @param string $id
+     * @param int $invalidBehavior
      */
     public function get($id, $invalidBehavior = \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\ContainerInterface::EXCEPTION_ON_INVALID_REFERENCE)
     {
@@ -731,9 +728,7 @@ class ContainerBuilder extends \MonorepoBuilder20210710\Symfony\Component\Depend
         return $this->aliasDefinitions[$alias] = $id;
     }
     /**
-     * Removes an alias.
-     *
-     * @param string $alias The alias to remove
+     * @param string $alias
      */
     public function removeAlias($alias)
     {
@@ -743,8 +738,6 @@ class ContainerBuilder extends \MonorepoBuilder20210710\Symfony\Component\Depend
         }
     }
     /**
-     * Returns true if an alias exists under the given identifier.
-     *
      * @return bool true if the alias exists, false otherwise
      * @param string $id
      */
@@ -753,8 +746,6 @@ class ContainerBuilder extends \MonorepoBuilder20210710\Symfony\Component\Depend
         return isset($this->aliasDefinitions[$id]);
     }
     /**
-     * Gets all defined aliases.
-     *
      * @return Alias[] An array of aliases
      */
     public function getAliases()
@@ -762,8 +753,6 @@ class ContainerBuilder extends \MonorepoBuilder20210710\Symfony\Component\Depend
         return $this->aliasDefinitions;
     }
     /**
-     * Gets an alias.
-     *
      * @return Alias An Alias instance
      *
      * @throws InvalidArgumentException if the alias does not exist
@@ -1398,6 +1387,7 @@ class ContainerBuilder extends \MonorepoBuilder20210710\Symfony\Component\Depend
     }
     /**
      * {@inheritdoc}
+     * @param string $name
      */
     protected function getEnv($name)
     {
@@ -1423,6 +1413,9 @@ class ContainerBuilder extends \MonorepoBuilder20210710\Symfony\Component\Depend
             unset($this->resolving["env({$name})"]);
         }
     }
+    /**
+     * @param object $service
+     */
     private function callMethod($service, array $call, array &$inlineServices)
     {
         foreach (self::getServiceConditionals($call[1]) as $s) {

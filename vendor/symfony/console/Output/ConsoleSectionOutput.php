@@ -82,6 +82,8 @@ class ConsoleSectionOutput extends \MonorepoBuilder20210710\Symfony\Component\Co
     }
     /**
      * {@inheritdoc}
+     * @param string $message
+     * @param bool $newline
      */
     protected function doWrite($message, $newline)
     {

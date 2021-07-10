@@ -149,7 +149,7 @@ abstract class Output implements \MonorepoBuilder20210710\Symfony\Component\Cons
                     $message = \strip_tags($this->formatter->format($message));
                     break;
             }
-            $this->doWrite($message, $newline);
+            $this->doWrite($message ?? '', $newline);
         }
     }
     /**

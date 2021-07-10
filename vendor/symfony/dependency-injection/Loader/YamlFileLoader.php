@@ -74,7 +74,7 @@ class YamlFileLoader extends \MonorepoBuilder20210710\Symfony\Component\Dependen
             }
         }
     }
-    private function loadContent($content, $path)
+    private function loadContent(array $content, string $path)
     {
         // imports
         $this->parseImports($content, $path);
@@ -549,11 +549,10 @@ class YamlFileLoader extends \MonorepoBuilder20210710\Symfony\Component\Dependen
     /**
      * Loads a YAML file.
      *
-     * @param string $file
-     *
      * @return array The file content
      *
      * @throws InvalidArgumentException when the given file is not a local file or when it does not exist
+     * @param string $file
      */
     protected function loadFile($file)
     {
@@ -709,9 +708,6 @@ class YamlFileLoader extends \MonorepoBuilder20210710\Symfony\Component\Dependen
         }
         return $value;
     }
-    /**
-     * Loads from Extensions.
-     */
     private function loadFromExtensions(array $content)
     {
         foreach ($content as $namespace => $values) {
@@ -724,9 +720,6 @@ class YamlFileLoader extends \MonorepoBuilder20210710\Symfony\Component\Dependen
             $this->container->loadFromExtension($namespace, $values);
         }
     }
-    /**
-     * Checks the keywords used to define a service.
-     */
     private function checkDefinition(string $id, array $definition, string $file)
     {
         if ($this->isLoadingInstanceof) {

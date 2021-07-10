@@ -28,9 +28,6 @@ class ContainerParametersResource implements \MonorepoBuilder20210710\Symfony\Co
     {
         $this->parameters = $parameters;
     }
-    /**
-     * {@inheritdoc}
-     */
     public function __toString() : string
     {
         return 'container_parameters_' . \md5(\serialize($this->parameters));

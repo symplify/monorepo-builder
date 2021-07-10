@@ -33,6 +33,7 @@ class ServiceLocator implements \MonorepoBuilder20210710\Symfony\Contracts\Servi
      * {@inheritdoc}
      *
      * @return mixed
+     * @param string $id
      */
     public function get($id)
     {

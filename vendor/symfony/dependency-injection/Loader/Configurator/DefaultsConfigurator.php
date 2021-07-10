@@ -17,11 +17,11 @@ use MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Exception\Inva
  */
 class DefaultsConfigurator extends \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Loader\Configurator\AbstractServiceConfigurator
 {
-    public const FACTORY = 'defaults';
     use Traits\AutoconfigureTrait;
     use Traits\AutowireTrait;
     use Traits\BindTrait;
     use Traits\PublicTrait;
+    public const FACTORY = 'defaults';
     private $path;
     public function __construct(\MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Loader\Configurator\ServicesConfigurator $parent, \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Definition $definition, string $path = null)
     {

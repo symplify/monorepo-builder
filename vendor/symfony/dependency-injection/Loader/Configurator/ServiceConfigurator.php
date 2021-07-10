@@ -17,7 +17,6 @@ use MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Definition;
  */
 class ServiceConfigurator extends \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Loader\Configurator\AbstractServiceConfigurator
 {
-    public const FACTORY = 'services';
     use Traits\AbstractTrait;
     use Traits\ArgumentTrait;
     use Traits\AutoconfigureTrait;
@@ -37,12 +36,13 @@ class ServiceConfigurator extends \MonorepoBuilder20210710\Symfony\Component\Dep
     use Traits\ShareTrait;
     use Traits\SyntheticTrait;
     use Traits\TagTrait;
+    public const FACTORY = 'services';
     private $container;
     private $instanceof;
     private $allowParent;
     private $path;
     private $destructed = \false;
-    public function __construct(\MonorepoBuilder20210710\Symfony\Component\DependencyInjection\ContainerBuilder $container, array $instanceof, bool $allowParent, \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Loader\Configurator\ServicesConfigurator $parent, \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Definition $definition, $id, array $defaultTags, string $path = null)
+    public function __construct(\MonorepoBuilder20210710\Symfony\Component\DependencyInjection\ContainerBuilder $container, array $instanceof, bool $allowParent, \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Loader\Configurator\ServicesConfigurator $parent, \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Definition $definition, ?string $id, array $defaultTags, string $path = null)
     {
         $this->container = $container;
         $this->instanceof = $instanceof;

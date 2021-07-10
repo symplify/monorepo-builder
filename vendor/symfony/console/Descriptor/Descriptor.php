@@ -30,6 +30,7 @@ abstract class Descriptor implements \MonorepoBuilder20210710\Symfony\Component\
     protected $output;
     /**
      * {@inheritdoc}
+     * @param object $object
      * @param \Symfony\Component\Console\Output\OutputInterface $output
      * @param mixed[] $options
      */

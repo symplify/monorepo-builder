@@ -342,7 +342,7 @@ class AutowirePass extends \MonorepoBuilder20210710\Symfony\Component\Dependency
         }
         $this->ambiguousServiceTypes[$type][] = $id;
     }
-    private function createTypeNotFoundMessageCallback(\MonorepoBuilder20210710\Symfony\Component\DependencyInjection\TypedReference $reference, string $label) : callable
+    private function createTypeNotFoundMessageCallback(\MonorepoBuilder20210710\Symfony\Component\DependencyInjection\TypedReference $reference, string $label) : \Closure
     {
         if (null === $this->typesClone->container) {
             $this->typesClone->container = new \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\ContainerBuilder($this->container->getParameterBag());

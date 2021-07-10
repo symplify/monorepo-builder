@@ -42,6 +42,8 @@ class TrimmedBufferOutput extends \MonorepoBuilder20210710\Symfony\Component\Con
     }
     /**
      * {@inheritdoc}
+     * @param string $message
+     * @param bool $newline
      */
     protected function doWrite($message, $newline)
     {

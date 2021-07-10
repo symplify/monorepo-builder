@@ -114,6 +114,7 @@ abstract class Input implements \MonorepoBuilder20210710\Symfony\Component\Conso
     }
     /**
      * {@inheritdoc}
+     * @param string $name
      */
     public function hasArgument($name)
     {

@@ -17,7 +17,6 @@ use MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Loader\PhpFile
  */
 class PrototypeConfigurator extends \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Loader\Configurator\AbstractServiceConfigurator
 {
-    public const FACTORY = 'load';
     use Traits\AbstractTrait;
     use Traits\ArgumentTrait;
     use Traits\AutoconfigureTrait;
@@ -33,6 +32,7 @@ class PrototypeConfigurator extends \MonorepoBuilder20210710\Symfony\Component\D
     use Traits\PublicTrait;
     use Traits\ShareTrait;
     use Traits\TagTrait;
+    public const FACTORY = 'load';
     private $loader;
     private $resource;
     private $excludes;
