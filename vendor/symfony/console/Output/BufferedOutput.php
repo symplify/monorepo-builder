@@ -29,10 +29,8 @@ class BufferedOutput extends \MonorepoBuilder20210710\Symfony\Component\Console\
     }
     /**
      * {@inheritdoc}
-     * @param string $message
-     * @param bool $newline
      */
-    protected function doWrite($message, $newline)
+    protected function doWrite(string $message, bool $newline)
     {
         $this->buffer .= $message;
         if ($newline) {

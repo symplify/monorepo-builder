@@ -24,9 +24,6 @@ interface ConsoleOutputInterface extends \MonorepoBuilder20210710\Symfony\Compon
      * @return OutputInterface
      */
     public function getErrorOutput();
-    /**
-     * @param \Symfony\Component\Console\Output\OutputInterface $error
-     */
-    public function setErrorOutput($error);
+    public function setErrorOutput(\MonorepoBuilder20210710\Symfony\Component\Console\Output\OutputInterface $error);
     public function section() : \MonorepoBuilder20210710\Symfony\Component\Console\Output\ConsoleSectionOutput;
 }
