@@ -525,12 +525,12 @@
             "source": {
                 "type": "git",
                 "url": "https:\/\/github.com\/symfony\/console.git",
-                "reference": "1fc8b5e92968090cf2104f58d5a65da71cad570a"
+                "reference": "8917484e665b19be79602ec662d2d91280be8c53"
             },
             "dist": {
                 "type": "zip",
-                "url": "https:\/\/api.github.com\/repos\/symfony\/console\/zipball\/1fc8b5e92968090cf2104f58d5a65da71cad570a",
-                "reference": "1fc8b5e92968090cf2104f58d5a65da71cad570a",
+                "url": "https:\/\/api.github.com\/repos\/symfony\/console\/zipball\/8917484e665b19be79602ec662d2d91280be8c53",
+                "reference": "8917484e665b19be79602ec662d2d91280be8c53",
                 "shasum": ""
             },
             "require": {
@@ -567,7 +567,7 @@
                 "symfony\/lock": "",
                 "symfony\/process": ""
             },
-            "time": "2021-07-06T15:01:37+00:00",
+            "time": "2021-07-10T08:59:36+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -626,12 +626,12 @@
             "source": {
                 "type": "git",
                 "url": "https:\/\/github.com\/symfony\/dependency-injection.git",
-                "reference": "ae427fe8e8ee4597021c622e5b85ca00ea826edc"
+                "reference": "7f64feddd37e67e40476042f906800d4e967ce55"
             },
             "dist": {
                 "type": "zip",
-                "url": "https:\/\/api.github.com\/repos\/symfony\/dependency-injection\/zipball\/ae427fe8e8ee4597021c622e5b85ca00ea826edc",
-                "reference": "ae427fe8e8ee4597021c622e5b85ca00ea826edc",
+                "url": "https:\/\/api.github.com\/repos\/symfony\/dependency-injection\/zipball\/7f64feddd37e67e40476042f906800d4e967ce55",
+                "reference": "7f64feddd37e67e40476042f906800d4e967ce55",
                 "shasum": ""
             },
             "require": {
@@ -664,7 +664,7 @@
                 "symfony\/proxy-manager-bridge": "Generate service proxies to lazy load them",
                 "symfony\/yaml": ""
             },
-            "time": "2021-07-05T13:29:30+00:00",
+            "time": "2021-07-10T08:59:36+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {

@@ -187,7 +187,7 @@ class AutowirePass extends \MonorepoBuilder20210710\Symfony\Component\Dependency
                     }
                     if (\MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Attribute\TaggedLocator::class === $attribute->getName()) {
                         $attribute = $attribute->newInstance();
-                        $arguments[$index] = new \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument(new \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument($attribute->tag, $attribute->indexAttribute));
+                        $arguments[$index] = new \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument(new \MonorepoBuilder20210710\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument($attribute->tag, $attribute->indexAttribute, null, \true));
                         break;
                     }
                 }
