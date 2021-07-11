@@ -3,8 +3,8 @@
 declare (strict_types=1);
 namespace MonorepoBuilder20210711;
 
-use MonorepoBuilder20210711\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
-return static function (\MonorepoBuilder20210711\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator $containerConfigurator) : void {
+use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+return static function (\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator $containerConfigurator) : void {
     $services = $containerConfigurator->services();
     $services->defaults()->public()->autowire()->autoconfigure();
     $services->load('Symplify\MonorepoBuilder\\', __DIR__ . '/../packages')->exclude([

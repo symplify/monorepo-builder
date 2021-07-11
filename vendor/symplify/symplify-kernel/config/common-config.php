@@ -5,7 +5,7 @@ namespace MonorepoBuilder20210711;
 
 use MonorepoBuilder20210711\Symfony\Component\Console\Style\SymfonyStyle;
 use MonorepoBuilder20210711\Symfony\Component\DependencyInjection\ContainerInterface;
-use MonorepoBuilder20210711\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use MonorepoBuilder20210711\Symplify\PackageBuilder\Console\Style\SymfonyStyleFactory;
 use MonorepoBuilder20210711\Symplify\PackageBuilder\Parameter\ParameterProvider;
 use MonorepoBuilder20210711\Symplify\PackageBuilder\Reflection\PrivatesAccessor;
@@ -15,7 +15,7 @@ use MonorepoBuilder20210711\Symplify\SmartFileSystem\Finder\FinderSanitizer;
 use MonorepoBuilder20210711\Symplify\SmartFileSystem\Finder\SmartFinder;
 use MonorepoBuilder20210711\Symplify\SmartFileSystem\SmartFileSystem;
 use function MonorepoBuilder20210711\Symfony\Component\DependencyInjection\Loader\Configurator\service;
-return static function (\MonorepoBuilder20210711\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator $containerConfigurator) : void {
+return static function (\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator $containerConfigurator) : void {
     $services = $containerConfigurator->services();
     $services->defaults()->public()->autowire()->autoconfigure();
     // symfony style
