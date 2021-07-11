@@ -94,6 +94,10 @@ class ContainerConfigurator extends \MonorepoBuilder20210711\Symfony\Component\D
     }
 }
 /**
+ * @author Nicolas Grekas <p@tchwork.com>
+ */
+\class_alias('MonorepoBuilder20210711\\Symfony\\Component\\DependencyInjection\\Loader\\Configurator\\ContainerConfigurator', 'Symfony\\Component\\DependencyInjection\\Loader\\Configurator\\ContainerConfigurator', \false);
+/**
  * Creates a parameter.
  */
 function param(string $name) : \MonorepoBuilder20210711\Symfony\Component\Config\Loader\ParamConfigurator
