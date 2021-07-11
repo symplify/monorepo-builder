@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20210710\Symplify\EasyTesting\DataProvider;
+namespace MonorepoBuilder20210711\Symplify\EasyTesting\DataProvider;
 
-use MonorepoBuilder20210710\Symplify\SmartFileSystem\SmartFileInfo;
-use MonorepoBuilder20210710\Symplify\SmartFileSystem\SmartFileSystem;
+use MonorepoBuilder20210711\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder20210711\Symplify\SmartFileSystem\SmartFileSystem;
 final class StaticFixtureUpdater
 {
-    public static function updateFixtureContent(\MonorepoBuilder20210710\Symplify\SmartFileSystem\SmartFileInfo $originalFileInfo, string $changedContent, \MonorepoBuilder20210710\Symplify\SmartFileSystem\SmartFileInfo $fixtureFileInfo) : void
+    public static function updateFixtureContent(\MonorepoBuilder20210711\Symplify\SmartFileSystem\SmartFileInfo $originalFileInfo, string $changedContent, \MonorepoBuilder20210711\Symplify\SmartFileSystem\SmartFileInfo $fixtureFileInfo) : void
     {
         if (!\getenv('UPDATE_TESTS') && !\getenv('UT')) {
             return;
@@ -15,18 +15,18 @@ final class StaticFixtureUpdater
         $newOriginalContent = self::resolveNewFixtureContent($originalFileInfo, $changedContent);
         self::getSmartFileSystem()->dumpFile($fixtureFileInfo->getRealPath(), $newOriginalContent);
     }
-    public static function updateExpectedFixtureContent(string $newOriginalContent, \MonorepoBuilder20210710\Symplify\SmartFileSystem\SmartFileInfo $expectedFixtureFileInfo) : void
+    public static function updateExpectedFixtureContent(string $newOriginalContent, \MonorepoBuilder20210711\Symplify\SmartFileSystem\SmartFileInfo $expectedFixtureFileInfo) : void
     {
         if (!\getenv('UPDATE_TESTS') && !\getenv('UT')) {
             return;
         }
         self::getSmartFileSystem()->dumpFile($expectedFixtureFileInfo->getRealPath(), $newOriginalContent);
     }
-    private static function getSmartFileSystem() : \MonorepoBuilder20210710\Symplify\SmartFileSystem\SmartFileSystem
+    private static function getSmartFileSystem() : \MonorepoBuilder20210711\Symplify\SmartFileSystem\SmartFileSystem
     {
-        return new \MonorepoBuilder20210710\Symplify\SmartFileSystem\SmartFileSystem();
+        return new \MonorepoBuilder20210711\Symplify\SmartFileSystem\SmartFileSystem();
     }
-    private static function resolveNewFixtureContent(\MonorepoBuilder20210710\Symplify\SmartFileSystem\SmartFileInfo $originalFileInfo, string $changedContent) : string
+    private static function resolveNewFixtureContent(\MonorepoBuilder20210711\Symplify\SmartFileSystem\SmartFileInfo $originalFileInfo, string $changedContent) : string
     {
         if ($originalFileInfo->getContents() === $changedContent) {
             return $originalFileInfo->getContents();

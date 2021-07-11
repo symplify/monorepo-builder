@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210710\Symfony\Component\HttpKernel\EventListener;
+namespace MonorepoBuilder20210711\Symfony\Component\HttpKernel\EventListener;
 
-use MonorepoBuilder20210710\Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use MonorepoBuilder20210710\Symfony\Component\HttpKernel\Event\ResponseEvent;
-use MonorepoBuilder20210710\Symfony\Component\HttpKernel\KernelEvents;
+use MonorepoBuilder20210711\Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use MonorepoBuilder20210711\Symfony\Component\HttpKernel\Event\ResponseEvent;
+use MonorepoBuilder20210711\Symfony\Component\HttpKernel\KernelEvents;
 /**
  * ResponseListener fixes the Response headers based on the Request.
  *
@@ -20,7 +20,7 @@ use MonorepoBuilder20210710\Symfony\Component\HttpKernel\KernelEvents;
  *
  * @final
  */
-class ResponseListener implements \MonorepoBuilder20210710\Symfony\Component\EventDispatcher\EventSubscriberInterface
+class ResponseListener implements \MonorepoBuilder20210711\Symfony\Component\EventDispatcher\EventSubscriberInterface
 {
     private $charset;
     public function __construct(string $charset)
@@ -44,6 +44,6 @@ class ResponseListener implements \MonorepoBuilder20210710\Symfony\Component\Eve
     }
     public static function getSubscribedEvents() : array
     {
-        return [\MonorepoBuilder20210710\Symfony\Component\HttpKernel\KernelEvents::RESPONSE => 'onKernelResponse'];
+        return [\MonorepoBuilder20210711\Symfony\Component\HttpKernel\KernelEvents::RESPONSE => 'onKernelResponse'];
     }
 }

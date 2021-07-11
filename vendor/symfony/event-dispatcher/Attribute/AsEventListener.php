@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210710\Symfony\Component\EventDispatcher\Attribute;
+namespace MonorepoBuilder20210711\Symfony\Component\EventDispatcher\Attribute;
 
 /**
  * Service tag to autoconfigure event listeners.

@@ -19,7 +19,7 @@
     },
     "autoload": {
         "psr-4": {
-            "MonorepoBuilder20210710\\Psr\\EventDispatcher\\": "src\/"
+            "MonorepoBuilder20210711\\Psr\\EventDispatcher\\": "src\/"
         }
     },
     "extra": {
