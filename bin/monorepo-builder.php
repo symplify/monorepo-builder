@@ -24,6 +24,10 @@ foreach ($possibleAutoloadPaths as $possibleAutoloadPath) {
         break;
     }
 }
+$scoperAutoloadFilepath = __DIR__ . '/../vendor/scoper-autoload.php';
+if (\file_exists($scoperAutoloadFilepath)) {
+    require_once $scoperAutoloadFilepath;
+}
 $configFileInfos = [];
 $argvInput = new \MonorepoBuilder20210711\Symfony\Component\Console\Input\ArgvInput();
 $configFileInfo = \MonorepoBuilder20210711\resolveConfigFileInfo($argvInput);
