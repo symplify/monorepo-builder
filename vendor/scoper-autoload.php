@@ -6,8 +6,8 @@ $loader = require_once __DIR__.'/autoload.php';
 
 // Aliases for the whitelisted classes. For more information see:
 // https://github.com/humbug/php-scoper/blob/master/README.md#class-whitelisting
-if (!class_exists('ComposerAutoloaderInit60c165929928a19b172b665e87b5f9ea', false) && !interface_exists('ComposerAutoloaderInit60c165929928a19b172b665e87b5f9ea', false) && !trait_exists('ComposerAutoloaderInit60c165929928a19b172b665e87b5f9ea', false)) {
-    spl_autoload_call('MonorepoBuilder20210711\ComposerAutoloaderInit60c165929928a19b172b665e87b5f9ea');
+if (!class_exists('ComposerAutoloaderInit41af36f31c855d6174b69e5485bb2a72', false) && !interface_exists('ComposerAutoloaderInit41af36f31c855d6174b69e5485bb2a72', false) && !trait_exists('ComposerAutoloaderInit41af36f31c855d6174b69e5485bb2a72', false)) {
+    spl_autoload_call('MonorepoBuilder20210711\ComposerAutoloaderInit41af36f31c855d6174b69e5485bb2a72');
 }
 if (!class_exists('Normalizer', false) && !interface_exists('Normalizer', false) && !trait_exists('Normalizer', false)) {
     spl_autoload_call('MonorepoBuilder20210711\Normalizer');
@@ -38,9 +38,9 @@ if (!function_exists('resolveConfigFileInfo')) {
         return \MonorepoBuilder20210711\resolveConfigFileInfo(...func_get_args());
     }
 }
-if (!function_exists('composerRequire60c165929928a19b172b665e87b5f9ea')) {
-    function composerRequire60c165929928a19b172b665e87b5f9ea() {
-        return \MonorepoBuilder20210711\composerRequire60c165929928a19b172b665e87b5f9ea(...func_get_args());
+if (!function_exists('composerRequire41af36f31c855d6174b69e5485bb2a72')) {
+    function composerRequire41af36f31c855d6174b69e5485bb2a72() {
+        return \MonorepoBuilder20210711\composerRequire41af36f31c855d6174b69e5485bb2a72(...func_get_args());
     }
 }
 if (!function_exists('setproctitle')) {
