@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210711\Symfony\Component\HttpFoundation\Session\Storage;
+namespace MonorepoBuilder20210712\Symfony\Component\HttpFoundation\Session\Storage;
 
-use MonorepoBuilder20210711\Symfony\Component\HttpFoundation\Session\SessionBagInterface;
+use MonorepoBuilder20210712\Symfony\Component\HttpFoundation\Session\SessionBagInterface;
 /**
  * StorageInterface.
  *

@@ -5,7 +5,7 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace MonorepoBuilder20210711\Nette;
+namespace MonorepoBuilder20210712\Nette;
 
 /**
  * The exception that is thrown when the value of an argument is
@@ -37,7 +37,7 @@ class NotSupportedException extends \LogicException
 /**
  * The exception that is thrown when a requested method or operation is deprecated.
  */
-class DeprecatedException extends \MonorepoBuilder20210711\Nette\NotSupportedException
+class DeprecatedException extends \MonorepoBuilder20210712\Nette\NotSupportedException
 {
 }
 /**
@@ -55,13 +55,13 @@ class IOException extends \RuntimeException
 /**
  * The exception that is thrown when accessing a file that does not exist on disk.
  */
-class FileNotFoundException extends \MonorepoBuilder20210711\Nette\IOException
+class FileNotFoundException extends \MonorepoBuilder20210712\Nette\IOException
 {
 }
 /**
  * The exception that is thrown when part of a file or directory cannot be found.
  */
-class DirectoryNotFoundException extends \MonorepoBuilder20210711\Nette\IOException
+class DirectoryNotFoundException extends \MonorepoBuilder20210712\Nette\IOException
 {
 }
 /**
