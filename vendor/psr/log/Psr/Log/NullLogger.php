@@ -1,6 +1,6 @@
 <?php
 
-namespace MonorepoBuilder20210712\Psr\Log;
+namespace MonorepoBuilder20210713\Psr\Log;
 
 /**
  * This Logger can be used to avoid conditional log calls.
@@ -10,7 +10,7 @@ namespace MonorepoBuilder20210712\Psr\Log;
  * is a good way to avoid littering your code with `if ($this->logger) { }`
  * blocks.
  */
-class NullLogger extends \MonorepoBuilder20210712\Psr\Log\AbstractLogger
+class NullLogger extends \MonorepoBuilder20210713\Psr\Log\AbstractLogger
 {
     /**
      * Logs with an arbitrary level.

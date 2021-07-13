@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210712\Symfony\Component\Config\Loader;
+namespace MonorepoBuilder20210713\Symfony\Component\Config\Loader;
 
 /**
  * GlobFileLoader loads files from a glob pattern.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class GlobFileLoader extends \MonorepoBuilder20210712\Symfony\Component\Config\Loader\FileLoader
+class GlobFileLoader extends \MonorepoBuilder20210713\Symfony\Component\Config\Loader\FileLoader
 {
     /**
      * {@inheritdoc}

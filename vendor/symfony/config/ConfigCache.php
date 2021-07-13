@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210712\Symfony\Component\Config;
+namespace MonorepoBuilder20210713\Symfony\Component\Config;
 
-use MonorepoBuilder20210712\Symfony\Component\Config\Resource\SelfCheckingResourceChecker;
+use MonorepoBuilder20210713\Symfony\Component\Config\Resource\SelfCheckingResourceChecker;
 /**
  * ConfigCache caches arbitrary content in files on disk.
  *
@@ -21,7 +21,7 @@ use MonorepoBuilder20210712\Symfony\Component\Config\Resource\SelfCheckingResour
  * @author Fabien Potencier <fabien@symfony.com>
  * @author Matthias Pigulla <mp@webfactory.de>
  */
-class ConfigCache extends \MonorepoBuilder20210712\Symfony\Component\Config\ResourceCheckerConfigCache
+class ConfigCache extends \MonorepoBuilder20210713\Symfony\Component\Config\ResourceCheckerConfigCache
 {
     private $debug;
     /**
@@ -33,7 +33,7 @@ class ConfigCache extends \MonorepoBuilder20210712\Symfony\Component\Config\Reso
         $this->debug = $debug;
         $checkers = [];
         if (\true === $this->debug) {
-            $checkers = [new \MonorepoBuilder20210712\Symfony\Component\Config\Resource\SelfCheckingResourceChecker()];
+            $checkers = [new \MonorepoBuilder20210713\Symfony\Component\Config\Resource\SelfCheckingResourceChecker()];
         }
         parent::__construct($file, $checkers);
     }

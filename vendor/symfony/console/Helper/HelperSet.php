@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210712\Symfony\Component\Console\Helper;
+namespace MonorepoBuilder20210713\Symfony\Component\Console\Helper;
 
-use MonorepoBuilder20210712\Symfony\Component\Console\Command\Command;
-use MonorepoBuilder20210712\Symfony\Component\Console\Exception\InvalidArgumentException;
+use MonorepoBuilder20210713\Symfony\Component\Console\Command\Command;
+use MonorepoBuilder20210713\Symfony\Component\Console\Exception\InvalidArgumentException;
 /**
  * HelperSet represents a set of helpers to be used with a command.
  *
@@ -66,7 +66,7 @@ class HelperSet implements \IteratorAggregate
     public function get($name)
     {
         if (!$this->has($name)) {
-            throw new \MonorepoBuilder20210712\Symfony\Component\Console\Exception\InvalidArgumentException(\sprintf('The helper "%s" is not defined.', $name));
+            throw new \MonorepoBuilder20210713\Symfony\Component\Console\Exception\InvalidArgumentException(\sprintf('The helper "%s" is not defined.', $name));
         }
         return $this->helpers[$name];
     }
