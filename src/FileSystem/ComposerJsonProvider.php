@@ -70,10 +70,7 @@ final class ComposerJsonProvider
     }
     public function getRootComposerJson() : \MonorepoBuilder20210713\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson
     {
-        return $this->composerJsonFactory->createFromFileInfo($this->getRootFileInfo());
-    }
-    private function getRootFileInfo() : \MonorepoBuilder20210713\Symplify\SmartFileSystem\SmartFileInfo
-    {
-        return $this->packageComposerFinder->getRootPackageComposerFile();
+        $rootFileInfo = $this->packageComposerFinder->getRootPackageComposerFile();
+        return $this->composerJsonFactory->createFromFileInfo($rootFileInfo);
     }
 }
