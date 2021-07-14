@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210713\Symfony\Component\Config\Definition;
+namespace MonorepoBuilder20210714\Symfony\Component\Config\Definition;
 
-use MonorepoBuilder20210713\Symfony\Component\Config\Definition\Exception\InvalidTypeException;
+use MonorepoBuilder20210714\Symfony\Component\Config\Definition\Exception\InvalidTypeException;
 /**
  * This node represents a float value in the config tree.
  *
  * @author Jeanmonod David <david.jeanmonod@gmail.com>
  */
-class FloatNode extends \MonorepoBuilder20210713\Symfony\Component\Config\Definition\NumericNode
+class FloatNode extends \MonorepoBuilder20210714\Symfony\Component\Config\Definition\NumericNode
 {
     /**
      * {@inheritdoc}
@@ -28,7 +28,7 @@ class FloatNode extends \MonorepoBuilder20210713\Symfony\Component\Config\Defini
             $value = (float) $value;
         }
         if (!\is_float($value)) {
-            $ex = new \MonorepoBuilder20210713\Symfony\Component\Config\Definition\Exception\InvalidTypeException(\sprintf('Invalid type for path "%s". Expected "float", but got "%s".', $this->getPath(), \get_debug_type($value)));
+            $ex = new \MonorepoBuilder20210714\Symfony\Component\Config\Definition\Exception\InvalidTypeException(\sprintf('Invalid type for path "%s". Expected "float", but got "%s".', $this->getPath(), \get_debug_type($value)));
             if ($hint = $this->getInfo()) {
                 $ex->addHint($hint);
             }

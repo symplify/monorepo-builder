@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Merge\ComposerJsonDecorator;
 
-use MonorepoBuilder20210713\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
+use MonorepoBuilder20210714\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
 use Symplify\MonorepoBuilder\Merge\ComposerJsonMerger;
 use Symplify\MonorepoBuilder\Merge\Configuration\ModifyingComposerJsonProvider;
 use Symplify\MonorepoBuilder\Merge\Contract\ComposerJsonDecoratorInterface;
@@ -31,7 +31,7 @@ final class AppenderComposerJsonDecorator implements \Symplify\MonorepoBuilder\M
     public function decorate($mainComposerJson) : void
     {
         $appendingComposerJson = $this->modifyingComposerJsonProvider->getAppendingComposerJson();
-        if (!$appendingComposerJson instanceof \MonorepoBuilder20210713\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson) {
+        if (!$appendingComposerJson instanceof \MonorepoBuilder20210714\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson) {
             return;
         }
         $this->composerJsonMerger->mergeJsonToRoot($mainComposerJson, $appendingComposerJson);

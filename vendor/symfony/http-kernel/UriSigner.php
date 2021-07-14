@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210713\Symfony\Component\HttpKernel;
+namespace MonorepoBuilder20210714\Symfony\Component\HttpKernel;
 
-use MonorepoBuilder20210713\Symfony\Component\HttpFoundation\Request;
+use MonorepoBuilder20210714\Symfony\Component\HttpFoundation\Request;
 /**
  * Signs URIs.
  *

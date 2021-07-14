@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20210713\Symplify\PackageBuilder\Exception\Configuration;
+namespace MonorepoBuilder20210714\Symplify\PackageBuilder\Exception\Configuration;
 
 use Exception;
 final class LevelNotFoundException extends \Exception

@@ -8,17 +8,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210713\Symfony\Component\HttpKernel\Fragment;
+namespace MonorepoBuilder20210714\Symfony\Component\HttpKernel\Fragment;
 
-use MonorepoBuilder20210713\Symfony\Component\HttpFoundation\Request;
-use MonorepoBuilder20210713\Symfony\Component\HttpKernel\Controller\ControllerReference;
-use MonorepoBuilder20210713\Symfony\Component\HttpKernel\EventListener\FragmentListener;
+use MonorepoBuilder20210714\Symfony\Component\HttpFoundation\Request;
+use MonorepoBuilder20210714\Symfony\Component\HttpKernel\Controller\ControllerReference;
+use MonorepoBuilder20210714\Symfony\Component\HttpKernel\EventListener\FragmentListener;
 /**
  * Adds the possibility to generate a fragment URI for a given Controller.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-abstract class RoutableFragmentRenderer implements \MonorepoBuilder20210713\Symfony\Component\HttpKernel\Fragment\FragmentRendererInterface
+abstract class RoutableFragmentRenderer implements \MonorepoBuilder20210714\Symfony\Component\HttpKernel\Fragment\FragmentRendererInterface
 {
     /**
      * @internal
@@ -46,6 +46,6 @@ abstract class RoutableFragmentRenderer implements \MonorepoBuilder20210713\Symf
      */
     protected function generateFragmentUri($reference, $request, $absolute = \false, $strict = \true)
     {
-        return (new \MonorepoBuilder20210713\Symfony\Component\HttpKernel\Fragment\FragmentUriGenerator($this->fragmentPath))->generate($reference, $request, $absolute, $strict, \false);
+        return (new \MonorepoBuilder20210714\Symfony\Component\HttpKernel\Fragment\FragmentUriGenerator($this->fragmentPath))->generate($reference, $request, $absolute, $strict, \false);
     }
 }
