@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210714\Symfony\Component\VarDumper\Caster;
+namespace MonorepoBuilder20210715\Symfony\Component\VarDumper\Caster;
 
-use MonorepoBuilder20210714\Doctrine\Common\Proxy\Proxy as CommonProxy;
-use MonorepoBuilder20210714\Doctrine\ORM\PersistentCollection;
-use MonorepoBuilder20210714\Doctrine\ORM\Proxy\Proxy as OrmProxy;
-use MonorepoBuilder20210714\Symfony\Component\VarDumper\Cloner\Stub;
+use MonorepoBuilder20210715\Doctrine\Common\Proxy\Proxy as CommonProxy;
+use MonorepoBuilder20210715\Doctrine\ORM\PersistentCollection;
+use MonorepoBuilder20210715\Doctrine\ORM\Proxy\Proxy as OrmProxy;
+use MonorepoBuilder20210715\Symfony\Component\VarDumper\Cloner\Stub;
 /**
  * Casts Doctrine related classes to array representation.
  *
@@ -23,7 +23,7 @@ use MonorepoBuilder20210714\Symfony\Component\VarDumper\Cloner\Stub;
  */
 class DoctrineCaster
 {
-    public static function castCommonProxy(\MonorepoBuilder20210714\Doctrine\Common\Proxy\Proxy $proxy, array $a, \MonorepoBuilder20210714\Symfony\Component\VarDumper\Cloner\Stub $stub, bool $isNested)
+    public static function castCommonProxy(\MonorepoBuilder20210715\Doctrine\Common\Proxy\Proxy $proxy, array $a, \MonorepoBuilder20210715\Symfony\Component\VarDumper\Cloner\Stub $stub, bool $isNested)
     {
         foreach (['__cloner__', '__initializer__'] as $k) {
             if (\array_key_exists($k, $a)) {
@@ -33,7 +33,7 @@ class DoctrineCaster
         }
         return $a;
     }
-    public static function castOrmProxy(\MonorepoBuilder20210714\Doctrine\ORM\Proxy\Proxy $proxy, array $a, \MonorepoBuilder20210714\Symfony\Component\VarDumper\Cloner\Stub $stub, bool $isNested)
+    public static function castOrmProxy(\MonorepoBuilder20210715\Doctrine\ORM\Proxy\Proxy $proxy, array $a, \MonorepoBuilder20210715\Symfony\Component\VarDumper\Cloner\Stub $stub, bool $isNested)
     {
         foreach (['_entityPersister', '_identifier'] as $k) {
             if (\array_key_exists($k = "\0Doctrine\\ORM\\Proxy\\Proxy\0" . $k, $a)) {
@@ -43,11 +43,11 @@ class DoctrineCaster
         }
         return $a;
     }
-    public static function castPersistentCollection(\MonorepoBuilder20210714\Doctrine\ORM\PersistentCollection $coll, array $a, \MonorepoBuilder20210714\Symfony\Component\VarDumper\Cloner\Stub $stub, bool $isNested)
+    public static function castPersistentCollection(\MonorepoBuilder20210715\Doctrine\ORM\PersistentCollection $coll, array $a, \MonorepoBuilder20210715\Symfony\Component\VarDumper\Cloner\Stub $stub, bool $isNested)
     {
         foreach (['snapshot', 'association', 'typeClass'] as $k) {
             if (\array_key_exists($k = "\0Doctrine\\ORM\\PersistentCollection\0" . $k, $a)) {
-                $a[$k] = new \MonorepoBuilder20210714\Symfony\Component\VarDumper\Caster\CutStub($a[$k]);
+                $a[$k] = new \MonorepoBuilder20210715\Symfony\Component\VarDumper\Caster\CutStub($a[$k]);
             }
         }
         return $a;

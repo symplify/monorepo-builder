@@ -8,16 +8,16 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210714\Symfony\Component\Console\Helper;
+namespace MonorepoBuilder20210715\Symfony\Component\Console\Helper;
 
-use MonorepoBuilder20210714\Symfony\Component\Console\Formatter\OutputFormatterInterface;
-use MonorepoBuilder20210714\Symfony\Component\String\UnicodeString;
+use MonorepoBuilder20210715\Symfony\Component\Console\Formatter\OutputFormatterInterface;
+use MonorepoBuilder20210715\Symfony\Component\String\UnicodeString;
 /**
  * Helper is the base class for all helper classes.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-abstract class Helper implements \MonorepoBuilder20210714\Symfony\Component\Console\Helper\HelperInterface
+abstract class Helper implements \MonorepoBuilder20210715\Symfony\Component\Console\Helper\HelperInterface
 {
     protected $helperSet = null;
     /**
@@ -57,7 +57,7 @@ abstract class Helper implements \MonorepoBuilder20210714\Symfony\Component\Cons
     {
         $string ?? ($string = '');
         if (\preg_match('//u', $string)) {
-            return (new \MonorepoBuilder20210714\Symfony\Component\String\UnicodeString($string))->width(\false);
+            return (new \MonorepoBuilder20210715\Symfony\Component\String\UnicodeString($string))->width(\false);
         }
         if (\false === ($encoding = \mb_detect_encoding($string, null, \true))) {
             return \strlen($string);
@@ -73,7 +73,7 @@ abstract class Helper implements \MonorepoBuilder20210714\Symfony\Component\Cons
     {
         $string ?? ($string = '');
         if (\preg_match('//u', $string)) {
-            return (new \MonorepoBuilder20210714\Symfony\Component\String\UnicodeString($string))->length();
+            return (new \MonorepoBuilder20210715\Symfony\Component\String\UnicodeString($string))->length();
         }
         if (\false === ($encoding = \mb_detect_encoding($string, null, \true))) {
             return \strlen($string);

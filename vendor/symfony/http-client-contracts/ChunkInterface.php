@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210714\Symfony\Contracts\HttpClient;
+namespace MonorepoBuilder20210715\Symfony\Contracts\HttpClient;
 
-use MonorepoBuilder20210714\Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
+use MonorepoBuilder20210715\Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 /**
  * The interface of chunks returned by ResponseStreamInterface::current().
  *

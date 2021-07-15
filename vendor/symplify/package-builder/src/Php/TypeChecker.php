@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20210714\Symplify\PackageBuilder\Php;
+namespace MonorepoBuilder20210715\Symplify\PackageBuilder\Php;
 
 final class TypeChecker
 {

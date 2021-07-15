@@ -5,7 +5,7 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace MonorepoBuilder20210714\Nette\Localization;
+namespace MonorepoBuilder20210715\Nette\Localization;
 
 /**
  * Translator adapter.
@@ -19,4 +19,4 @@ interface Translator
      */
     function translate($message, ...$parameters) : string;
 }
-\interface_exists(\MonorepoBuilder20210714\Nette\Localization\Nette\Localization\ITranslator::class);
+\interface_exists(\MonorepoBuilder20210715\Nette\Localization\Nette\Localization\ITranslator::class);

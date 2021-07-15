@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210714\Symfony\Component\HttpKernel\DataCollector;
+namespace MonorepoBuilder20210715\Symfony\Component\HttpKernel\DataCollector;
 
 /**
  * LateDataCollectorInterface.

@@ -8,24 +8,24 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210714\Symfony\Component\HttpKernel\Fragment;
+namespace MonorepoBuilder20210715\Symfony\Component\HttpKernel\Fragment;
 
-use MonorepoBuilder20210714\Symfony\Component\HttpFoundation\Request;
-use MonorepoBuilder20210714\Symfony\Component\HttpFoundation\RequestStack;
-use MonorepoBuilder20210714\Symfony\Component\HttpKernel\Controller\ControllerReference;
-use MonorepoBuilder20210714\Symfony\Component\HttpKernel\UriSigner;
+use MonorepoBuilder20210715\Symfony\Component\HttpFoundation\Request;
+use MonorepoBuilder20210715\Symfony\Component\HttpFoundation\RequestStack;
+use MonorepoBuilder20210715\Symfony\Component\HttpKernel\Controller\ControllerReference;
+use MonorepoBuilder20210715\Symfony\Component\HttpKernel\UriSigner;
 /**
  * Generates a fragment URI.
  *
  * @author Kévin Dunglas <kevin@dunglas.fr>
  * @author Fabien Potencier <fabien@symfony.com>
  */
-final class FragmentUriGenerator implements \MonorepoBuilder20210714\Symfony\Component\HttpKernel\Fragment\FragmentUriGeneratorInterface
+final class FragmentUriGenerator implements \MonorepoBuilder20210715\Symfony\Component\HttpKernel\Fragment\FragmentUriGeneratorInterface
 {
     private $fragmentPath;
     private $signer;
     private $requestStack;
-    public function __construct(string $fragmentPath, \MonorepoBuilder20210714\Symfony\Component\HttpKernel\UriSigner $signer = null, \MonorepoBuilder20210714\Symfony\Component\HttpFoundation\RequestStack $requestStack = null)
+    public function __construct(string $fragmentPath, \MonorepoBuilder20210715\Symfony\Component\HttpKernel\UriSigner $signer = null, \MonorepoBuilder20210715\Symfony\Component\HttpFoundation\RequestStack $requestStack = null)
     {
         $this->fragmentPath = $fragmentPath;
         $this->signer = $signer;

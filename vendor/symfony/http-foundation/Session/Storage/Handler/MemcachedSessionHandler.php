@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210714\Symfony\Component\HttpFoundation\Session\Storage\Handler;
+namespace MonorepoBuilder20210715\Symfony\Component\HttpFoundation\Session\Storage\Handler;
 
 /**
  * Memcached based session storage handler based on the Memcached class
@@ -18,7 +18,7 @@ namespace MonorepoBuilder20210714\Symfony\Component\HttpFoundation\Session\Stora
  *
  * @author Drak <drak@zikula.org>
  */
-class MemcachedSessionHandler extends \MonorepoBuilder20210714\Symfony\Component\HttpFoundation\Session\Storage\Handler\AbstractSessionHandler
+class MemcachedSessionHandler extends \MonorepoBuilder20210715\Symfony\Component\HttpFoundation\Session\Storage\Handler\AbstractSessionHandler
 {
     private $memcached;
     /**

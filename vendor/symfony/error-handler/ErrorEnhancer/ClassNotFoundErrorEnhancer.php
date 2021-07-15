@@ -8,16 +8,16 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210714\Symfony\Component\ErrorHandler\ErrorEnhancer;
+namespace MonorepoBuilder20210715\Symfony\Component\ErrorHandler\ErrorEnhancer;
 
-use MonorepoBuilder20210714\Composer\Autoload\ClassLoader;
-use MonorepoBuilder20210714\Symfony\Component\ErrorHandler\DebugClassLoader;
-use MonorepoBuilder20210714\Symfony\Component\ErrorHandler\Error\ClassNotFoundError;
-use MonorepoBuilder20210714\Symfony\Component\ErrorHandler\Error\FatalError;
+use MonorepoBuilder20210715\Composer\Autoload\ClassLoader;
+use MonorepoBuilder20210715\Symfony\Component\ErrorHandler\DebugClassLoader;
+use MonorepoBuilder20210715\Symfony\Component\ErrorHandler\Error\ClassNotFoundError;
+use MonorepoBuilder20210715\Symfony\Component\ErrorHandler\Error\FatalError;
 /**
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class ClassNotFoundErrorEnhancer implements \MonorepoBuilder20210714\Symfony\Component\ErrorHandler\ErrorEnhancer\ErrorEnhancerInterface
+class ClassNotFoundErrorEnhancer implements \MonorepoBuilder20210715\Symfony\Component\ErrorHandler\ErrorEnhancer\ErrorEnhancerInterface
 {
     /**
      * {@inheritdoc}
@@ -26,7 +26,7 @@ class ClassNotFoundErrorEnhancer implements \MonorepoBuilder20210714\Symfony\Com
     public function enhance($error) : ?\Throwable
     {
         // Some specific versions of PHP produce a fatal error when extending a not found class.
-        $message = !$error instanceof \MonorepoBuilder20210714\Symfony\Component\ErrorHandler\Error\FatalError ? $error->getMessage() : $error->getError()['message'];
+        $message = !$error instanceof \MonorepoBuilder20210715\Symfony\Component\ErrorHandler\Error\FatalError ? $error->getMessage() : $error->getError()['message'];
         if (!\preg_match('/^(Class|Interface|Trait) [\'"]([^\'"]+)[\'"] not found$/', $message, $matches)) {
             return null;
         }
@@ -51,7 +51,7 @@ class ClassNotFoundErrorEnhancer implements \MonorepoBuilder20210714\Symfony\Com
             }
         }
         $message .= "\nDid you forget a \"use\" statement" . $tail;
-        return new \MonorepoBuilder20210714\Symfony\Component\ErrorHandler\Error\ClassNotFoundError($message, $error);
+        return new \MonorepoBuilder20210715\Symfony\Component\ErrorHandler\Error\ClassNotFoundError($message, $error);
     }
     /**
      * Tries to guess the full namespace for a given class name.
@@ -75,13 +75,13 @@ class ClassNotFoundErrorEnhancer implements \MonorepoBuilder20210714\Symfony\Com
                 continue;
             }
             // get class loaders wrapped by DebugClassLoader
-            if ($function[0] instanceof \MonorepoBuilder20210714\Symfony\Component\ErrorHandler\DebugClassLoader) {
+            if ($function[0] instanceof \MonorepoBuilder20210715\Symfony\Component\ErrorHandler\DebugClassLoader) {
                 $function = $function[0]->getClassLoader();
                 if (!\is_array($function)) {
                     continue;
                 }
             }
-            if ($function[0] instanceof \MonorepoBuilder20210714\Composer\Autoload\ClassLoader) {
+            if ($function[0] instanceof \MonorepoBuilder20210715\Composer\Autoload\ClassLoader) {
                 foreach ($function[0]->getPrefixes() as $prefix => $paths) {
                     foreach ($paths as $path) {
                         $classes = \array_merge($classes, $this->findClassInPath($path, $class, $prefix));
