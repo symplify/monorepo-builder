@@ -116,9 +116,9 @@ class ArrayInput extends \MonorepoBuilder20210721\Symfony\Component\Console\Inpu
             if ('--' === $key) {
                 return;
             }
-            if (0 === \strpos($key, '--')) {
+            if (\strncmp($key, '--', \strlen('--')) === 0) {
                 $this->addLongOption(\substr($key, 2), $value);
-            } elseif (0 === \strpos($key, '-')) {
+            } elseif (\strncmp($key, '-', \strlen('-')) === 0) {
                 $this->addShortOption(\substr($key, 1), $value);
             } else {
                 $this->addArgument($key, $value);

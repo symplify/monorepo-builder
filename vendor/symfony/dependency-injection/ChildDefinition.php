@@ -85,7 +85,7 @@ class ChildDefinition extends \MonorepoBuilder20210721\Symfony\Component\Depende
     {
         if (\is_int($index)) {
             $this->arguments['index_' . $index] = $value;
-        } elseif (0 === \strpos($index, '$')) {
+        } elseif (\strncmp($index, '$', \strlen('$')) === 0) {
             $this->arguments[$index] = $value;
         } else {
             throw new \MonorepoBuilder20210721\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException('The argument must be an existing index or the name of a constructor\'s parameter.');

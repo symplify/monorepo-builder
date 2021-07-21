@@ -94,7 +94,7 @@ class RegisterServiceSubscribersPass extends \MonorepoBuilder20210721\Symfony\Co
             if ($name) {
                 if (\false !== ($i = \strpos($name, '::get'))) {
                     $name = \lcfirst(\substr($name, 5 + $i));
-                } elseif (\false !== \strpos($name, '::')) {
+                } elseif (\strpos($name, '::') !== \false) {
                     $name = null;
                 }
             }

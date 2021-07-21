@@ -293,7 +293,7 @@ class YamlDumper extends \MonorepoBuilder20210721\Symfony\Component\DependencyIn
         foreach ($parameters as $key => $value) {
             if (\is_array($value)) {
                 $value = $this->prepareParameters($value, $escape);
-            } elseif ($value instanceof \MonorepoBuilder20210721\Symfony\Component\DependencyInjection\Reference || \is_string($value) && 0 === \strpos($value, '@')) {
+            } elseif ($value instanceof \MonorepoBuilder20210721\Symfony\Component\DependencyInjection\Reference || \is_string($value) && \strncmp($value, '@', \strlen('@')) === 0) {
                 $value = '@' . $value;
             }
             $filtered[$key] = $value;

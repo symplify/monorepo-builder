@@ -46,6 +46,6 @@ class DirectoryLoader extends \MonorepoBuilder20210721\Symfony\Component\Depende
         if ('directory' === $type) {
             return \true;
         }
-        return null === $type && \is_string($resource) && '/' === \substr($resource, -1);
+        return null === $type && \is_string($resource) && \substr_compare($resource, '/', -\strlen('/')) === 0;
     }
 }

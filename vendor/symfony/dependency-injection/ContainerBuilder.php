@@ -1461,7 +1461,7 @@ class ContainerBuilder extends \MonorepoBuilder20210721\Symfony\Component\Depend
         }
         $path = \realpath($path) ?: $path;
         foreach ($this->vendors as $vendor) {
-            if (0 === \strpos($path, $vendor) && \false !== \strpbrk(\substr($path, \strlen($vendor), 1), '/' . \DIRECTORY_SEPARATOR)) {
+            if (\strncmp($path, $vendor, \strlen($vendor)) === 0 && \false !== \strpbrk(\substr($path, \strlen($vendor), 1), '/' . \DIRECTORY_SEPARATOR)) {
                 $this->addResource(new \MonorepoBuilder20210721\Symfony\Component\Config\Resource\FileResource($vendor . '/composer/installed.json'));
                 return \true;
             }
