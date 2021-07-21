@@ -3,14 +3,14 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Merge\Cleaner;
 
-use MonorepoBuilder20210715\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
+use MonorepoBuilder20210721\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
 final class RequireRequireDevDuplicateCleaner
 {
     /**
      * @param array<string, mixed> $requireDev
      * @return array<string, mixed>
      */
-    public function unsetPackageFromRequire(\MonorepoBuilder20210715\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $mainComposerJson, array $requireDev) : array
+    public function unsetPackageFromRequire(\MonorepoBuilder20210721\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $mainComposerJson, array $requireDev) : array
     {
         // give require priority
         $requirePackageNames = $mainComposerJson->getRequirePackageNames();

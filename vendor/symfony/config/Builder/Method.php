@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210715\Symfony\Component\Config\Builder;
+namespace MonorepoBuilder20210721\Symfony\Component\Config\Builder;
 
 /**
  * Represents a method when building classes.

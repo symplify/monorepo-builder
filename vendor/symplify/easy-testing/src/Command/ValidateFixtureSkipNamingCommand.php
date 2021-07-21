@@ -1,17 +1,17 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20210715\Symplify\EasyTesting\Command;
+namespace MonorepoBuilder20210721\Symplify\EasyTesting\Command;
 
-use MonorepoBuilder20210715\Symfony\Component\Console\Input\InputArgument;
-use MonorepoBuilder20210715\Symfony\Component\Console\Input\InputInterface;
-use MonorepoBuilder20210715\Symfony\Component\Console\Output\OutputInterface;
-use MonorepoBuilder20210715\Symplify\EasyTesting\Finder\FixtureFinder;
-use MonorepoBuilder20210715\Symplify\EasyTesting\MissplacedSkipPrefixResolver;
-use MonorepoBuilder20210715\Symplify\EasyTesting\ValueObject\Option;
-use MonorepoBuilder20210715\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
-use MonorepoBuilder20210715\Symplify\PackageBuilder\Console\ShellCode;
-final class ValidateFixtureSkipNamingCommand extends \MonorepoBuilder20210715\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand
+use MonorepoBuilder20210721\Symfony\Component\Console\Input\InputArgument;
+use MonorepoBuilder20210721\Symfony\Component\Console\Input\InputInterface;
+use MonorepoBuilder20210721\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder20210721\Symplify\EasyTesting\Finder\FixtureFinder;
+use MonorepoBuilder20210721\Symplify\EasyTesting\MissplacedSkipPrefixResolver;
+use MonorepoBuilder20210721\Symplify\EasyTesting\ValueObject\Option;
+use MonorepoBuilder20210721\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
+use MonorepoBuilder20210721\Symplify\PackageBuilder\Console\ShellCode;
+final class ValidateFixtureSkipNamingCommand extends \MonorepoBuilder20210721\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand
 {
     /**
      * @var \Symplify\EasyTesting\MissplacedSkipPrefixResolver
@@ -21,7 +21,7 @@ final class ValidateFixtureSkipNamingCommand extends \MonorepoBuilder20210715\Sy
      * @var \Symplify\EasyTesting\Finder\FixtureFinder
      */
     private $fixtureFinder;
-    public function __construct(\MonorepoBuilder20210715\Symplify\EasyTesting\MissplacedSkipPrefixResolver $missplacedSkipPrefixResolver, \MonorepoBuilder20210715\Symplify\EasyTesting\Finder\FixtureFinder $fixtureFinder)
+    public function __construct(\MonorepoBuilder20210721\Symplify\EasyTesting\MissplacedSkipPrefixResolver $missplacedSkipPrefixResolver, \MonorepoBuilder20210721\Symplify\EasyTesting\Finder\FixtureFinder $fixtureFinder)
     {
         $this->missplacedSkipPrefixResolver = $missplacedSkipPrefixResolver;
         $this->fixtureFinder = $fixtureFinder;
@@ -29,7 +29,7 @@ final class ValidateFixtureSkipNamingCommand extends \MonorepoBuilder20210715\Sy
     }
     protected function configure() : void
     {
-        $this->addArgument(\MonorepoBuilder20210715\Symplify\EasyTesting\ValueObject\Option::SOURCE, \MonorepoBuilder20210715\Symfony\Component\Console\Input\InputArgument::REQUIRED | \MonorepoBuilder20210715\Symfony\Component\Console\Input\InputArgument::IS_ARRAY, 'Paths to analyse');
+        $this->addArgument(\MonorepoBuilder20210721\Symplify\EasyTesting\ValueObject\Option::SOURCE, \MonorepoBuilder20210721\Symfony\Component\Console\Input\InputArgument::REQUIRED | \MonorepoBuilder20210721\Symfony\Component\Console\Input\InputArgument::IS_ARRAY, 'Paths to analyse');
         $this->setDescription('Check that skipped fixture files (without `-----` separator) have a "skip" prefix');
     }
     /**
@@ -38,13 +38,13 @@ final class ValidateFixtureSkipNamingCommand extends \MonorepoBuilder20210715\Sy
      */
     protected function execute($input, $output) : int
     {
-        $source = (array) $input->getArgument(\MonorepoBuilder20210715\Symplify\EasyTesting\ValueObject\Option::SOURCE);
+        $source = (array) $input->getArgument(\MonorepoBuilder20210721\Symplify\EasyTesting\ValueObject\Option::SOURCE);
         $fixtureFileInfos = $this->fixtureFinder->find($source);
         $missplacedFixtureFileInfos = $this->missplacedSkipPrefixResolver->resolve($fixtureFileInfos);
         if ($missplacedFixtureFileInfos === []) {
             $message = \sprintf('All %d fixture files have valid names', \count($fixtureFileInfos));
             $this->symfonyStyle->success($message);
-            return \MonorepoBuilder20210715\Symplify\PackageBuilder\Console\ShellCode::SUCCESS;
+            return \MonorepoBuilder20210721\Symplify\PackageBuilder\Console\ShellCode::SUCCESS;
         }
         foreach ($missplacedFixtureFileInfos['incorrect_skips'] as $missplacedFixtureFileInfo) {
             $errorMessage = \sprintf('The file "%s" should drop the "skip/keep" prefix', $missplacedFixtureFileInfo->getRelativeFilePathFromCwd());
@@ -58,10 +58,10 @@ final class ValidateFixtureSkipNamingCommand extends \MonorepoBuilder20210715\Sy
         if ($countError === 0) {
             $message = \sprintf('All %d fixture files have valid names', \count($fixtureFileInfos));
             $this->symfonyStyle->success($message);
-            return \MonorepoBuilder20210715\Symplify\PackageBuilder\Console\ShellCode::SUCCESS;
+            return \MonorepoBuilder20210721\Symplify\PackageBuilder\Console\ShellCode::SUCCESS;
         }
         $errorMessage = \sprintf('Found %d test file fixtures with wrong prefix', $countError);
         $this->symfonyStyle->error($errorMessage);
-        return \MonorepoBuilder20210715\Symplify\PackageBuilder\Console\ShellCode::ERROR;
+        return \MonorepoBuilder20210721\Symplify\PackageBuilder\Console\ShellCode::ERROR;
     }
 }

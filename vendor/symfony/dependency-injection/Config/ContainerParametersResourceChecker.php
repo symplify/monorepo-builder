@@ -8,19 +8,19 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210715\Symfony\Component\DependencyInjection\Config;
+namespace MonorepoBuilder20210721\Symfony\Component\DependencyInjection\Config;
 
-use MonorepoBuilder20210715\Symfony\Component\Config\Resource\ResourceInterface;
-use MonorepoBuilder20210715\Symfony\Component\Config\ResourceCheckerInterface;
-use MonorepoBuilder20210715\Symfony\Component\DependencyInjection\ContainerInterface;
+use MonorepoBuilder20210721\Symfony\Component\Config\Resource\ResourceInterface;
+use MonorepoBuilder20210721\Symfony\Component\Config\ResourceCheckerInterface;
+use MonorepoBuilder20210721\Symfony\Component\DependencyInjection\ContainerInterface;
 /**
  * @author Maxime Steinhausser <maxime.steinhausser@gmail.com>
  */
-class ContainerParametersResourceChecker implements \MonorepoBuilder20210715\Symfony\Component\Config\ResourceCheckerInterface
+class ContainerParametersResourceChecker implements \MonorepoBuilder20210721\Symfony\Component\Config\ResourceCheckerInterface
 {
     /** @var ContainerInterface */
     private $container;
-    public function __construct(\MonorepoBuilder20210715\Symfony\Component\DependencyInjection\ContainerInterface $container)
+    public function __construct(\MonorepoBuilder20210721\Symfony\Component\DependencyInjection\ContainerInterface $container)
     {
         $this->container = $container;
     }
@@ -30,7 +30,7 @@ class ContainerParametersResourceChecker implements \MonorepoBuilder20210715\Sym
      */
     public function supports($metadata)
     {
-        return $metadata instanceof \MonorepoBuilder20210715\Symfony\Component\DependencyInjection\Config\ContainerParametersResource;
+        return $metadata instanceof \MonorepoBuilder20210721\Symfony\Component\DependencyInjection\Config\ContainerParametersResource;
     }
     /**
      * {@inheritdoc}

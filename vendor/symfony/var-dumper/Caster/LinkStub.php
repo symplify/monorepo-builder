@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210715\Symfony\Component\VarDumper\Caster;
+namespace MonorepoBuilder20210721\Symfony\Component\VarDumper\Caster;
 
 /**
  * Represents a file or a URL.
  *
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class LinkStub extends \MonorepoBuilder20210715\Symfony\Component\VarDumper\Caster\ConstStub
+class LinkStub extends \MonorepoBuilder20210721\Symfony\Component\VarDumper\Caster\ConstStub
 {
     public $inVendor = \false;
     private static $vendorRoots;
