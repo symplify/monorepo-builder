@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20210721\Symplify\SmartFileSystem\Json;
+namespace MonorepoBuilder20210722\Symplify\SmartFileSystem\Json;
 
-use MonorepoBuilder20210721\Nette\Utils\Arrays;
-use MonorepoBuilder20210721\Nette\Utils\Json;
-use MonorepoBuilder20210721\Symplify\SmartFileSystem\FileSystemGuard;
-use MonorepoBuilder20210721\Symplify\SmartFileSystem\SmartFileSystem;
+use MonorepoBuilder20210722\Nette\Utils\Arrays;
+use MonorepoBuilder20210722\Nette\Utils\Json;
+use MonorepoBuilder20210722\Symplify\SmartFileSystem\FileSystemGuard;
+use MonorepoBuilder20210722\Symplify\SmartFileSystem\SmartFileSystem;
 /**
  * @see \Symplify\SmartFileSystem\Tests\Json\JsonFileSystem\JsonFileSystemTest
  */
@@ -20,7 +20,7 @@ final class JsonFileSystem
      * @var \Symplify\SmartFileSystem\SmartFileSystem
      */
     private $smartFileSystem;
-    public function __construct(\MonorepoBuilder20210721\Symplify\SmartFileSystem\FileSystemGuard $fileSystemGuard, \MonorepoBuilder20210721\Symplify\SmartFileSystem\SmartFileSystem $smartFileSystem)
+    public function __construct(\MonorepoBuilder20210722\Symplify\SmartFileSystem\FileSystemGuard $fileSystemGuard, \MonorepoBuilder20210722\Symplify\SmartFileSystem\SmartFileSystem $smartFileSystem)
     {
         $this->fileSystemGuard = $fileSystemGuard;
         $this->smartFileSystem = $smartFileSystem;
@@ -32,14 +32,14 @@ final class JsonFileSystem
     {
         $this->fileSystemGuard->ensureFileExists($filePath, __METHOD__);
         $fileContent = $this->smartFileSystem->readFile($filePath);
-        return \MonorepoBuilder20210721\Nette\Utils\Json::decode($fileContent, \MonorepoBuilder20210721\Nette\Utils\Json::FORCE_ARRAY);
+        return \MonorepoBuilder20210722\Nette\Utils\Json::decode($fileContent, \MonorepoBuilder20210722\Nette\Utils\Json::FORCE_ARRAY);
     }
     /**
      * @param array<string, mixed> $jsonArray
      */
     public function writeJsonToFilePath(array $jsonArray, string $filePath) : void
     {
-        $jsonContent = \MonorepoBuilder20210721\Nette\Utils\Json::encode($jsonArray, \MonorepoBuilder20210721\Nette\Utils\Json::PRETTY) . \PHP_EOL;
+        $jsonContent = \MonorepoBuilder20210722\Nette\Utils\Json::encode($jsonArray, \MonorepoBuilder20210722\Nette\Utils\Json::PRETTY) . \PHP_EOL;
         $this->smartFileSystem->dumpFile($filePath, $jsonContent);
     }
     /**
@@ -48,7 +48,7 @@ final class JsonFileSystem
     public function mergeArrayToJsonFile(string $filePath, array $newJsonArray) : void
     {
         $jsonArray = $this->loadFilePathToJson($filePath);
-        $newComposerJsonArray = \MonorepoBuilder20210721\Nette\Utils\Arrays::mergeTree($jsonArray, $newJsonArray);
+        $newComposerJsonArray = \MonorepoBuilder20210722\Nette\Utils\Arrays::mergeTree($jsonArray, $newJsonArray);
         $this->writeJsonToFilePath($newComposerJsonArray, $filePath);
     }
 }

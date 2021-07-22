@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210721\Symfony\Component\HttpKernel\DependencyInjection;
+namespace MonorepoBuilder20210722\Symfony\Component\HttpKernel\DependencyInjection;
 
-use MonorepoBuilder20210721\Symfony\Contracts\Service\ResetInterface;
+use MonorepoBuilder20210722\Symfony\Contracts\Service\ResetInterface;
 /**
  * Resets provided services.
  *
@@ -19,7 +19,7 @@ use MonorepoBuilder20210721\Symfony\Contracts\Service\ResetInterface;
  *
  * @internal
  */
-class ServicesResetter implements \MonorepoBuilder20210721\Symfony\Contracts\Service\ResetInterface
+class ServicesResetter implements \MonorepoBuilder20210722\Symfony\Contracts\Service\ResetInterface
 {
     private $resettableServices;
     private $resetMethods;

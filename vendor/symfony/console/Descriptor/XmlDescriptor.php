@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210721\Symfony\Component\Console\Descriptor;
+namespace MonorepoBuilder20210722\Symfony\Component\Console\Descriptor;
 
-use MonorepoBuilder20210721\Symfony\Component\Console\Application;
-use MonorepoBuilder20210721\Symfony\Component\Console\Command\Command;
-use MonorepoBuilder20210721\Symfony\Component\Console\Input\InputArgument;
-use MonorepoBuilder20210721\Symfony\Component\Console\Input\InputDefinition;
-use MonorepoBuilder20210721\Symfony\Component\Console\Input\InputOption;
+use MonorepoBuilder20210722\Symfony\Component\Console\Application;
+use MonorepoBuilder20210722\Symfony\Component\Console\Command\Command;
+use MonorepoBuilder20210722\Symfony\Component\Console\Input\InputArgument;
+use MonorepoBuilder20210722\Symfony\Component\Console\Input\InputDefinition;
+use MonorepoBuilder20210722\Symfony\Component\Console\Input\InputOption;
 /**
  * XML descriptor.
  *
@@ -22,7 +22,7 @@ use MonorepoBuilder20210721\Symfony\Component\Console\Input\InputOption;
  *
  * @internal
  */
-class XmlDescriptor extends \MonorepoBuilder20210721\Symfony\Component\Console\Descriptor\Descriptor
+class XmlDescriptor extends \MonorepoBuilder20210722\Symfony\Component\Console\Descriptor\Descriptor
 {
     /**
      * @param \Symfony\Component\Console\Input\InputDefinition $definition
@@ -87,7 +87,7 @@ class XmlDescriptor extends \MonorepoBuilder20210721\Symfony\Component\Console\D
             }
         }
         $rootXml->appendChild($commandsXML = $dom->createElement('commands'));
-        $description = new \MonorepoBuilder20210721\Symfony\Component\Console\Descriptor\ApplicationDescription($application, $namespace, \true);
+        $description = new \MonorepoBuilder20210722\Symfony\Component\Console\Descriptor\ApplicationDescription($application, $namespace, \true);
         if ($namespace) {
             $commandsXML->setAttribute('namespace', $namespace);
         }
@@ -169,7 +169,7 @@ class XmlDescriptor extends \MonorepoBuilder20210721\Symfony\Component\Console\D
         $dom->formatOutput = \true;
         $this->write($dom->saveXML());
     }
-    private function getInputArgumentDocument(\MonorepoBuilder20210721\Symfony\Component\Console\Input\InputArgument $argument) : \DOMDocument
+    private function getInputArgumentDocument(\MonorepoBuilder20210722\Symfony\Component\Console\Input\InputArgument $argument) : \DOMDocument
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $dom->appendChild($objectXML = $dom->createElement('argument'));
@@ -186,7 +186,7 @@ class XmlDescriptor extends \MonorepoBuilder20210721\Symfony\Component\Console\D
         }
         return $dom;
     }
-    private function getInputOptionDocument(\MonorepoBuilder20210721\Symfony\Component\Console\Input\InputOption $option) : \DOMDocument
+    private function getInputOptionDocument(\MonorepoBuilder20210722\Symfony\Component\Console\Input\InputOption $option) : \DOMDocument
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $dom->appendChild($objectXML = $dom->createElement('option'));

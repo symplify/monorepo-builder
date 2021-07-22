@@ -8,16 +8,16 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210721\Symfony\Component\VarDumper\Caster;
+namespace MonorepoBuilder20210722\Symfony\Component\VarDumper\Caster;
 
-use MonorepoBuilder20210721\Symfony\Component\VarDumper\Cloner\Stub;
+use MonorepoBuilder20210722\Symfony\Component\VarDumper\Cloner\Stub;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class DsPairStub extends \MonorepoBuilder20210721\Symfony\Component\VarDumper\Cloner\Stub
+class DsPairStub extends \MonorepoBuilder20210722\Symfony\Component\VarDumper\Cloner\Stub
 {
     public function __construct($key, $value)
     {
-        $this->value = [\MonorepoBuilder20210721\Symfony\Component\VarDumper\Caster\Caster::PREFIX_VIRTUAL . 'key' => $key, \MonorepoBuilder20210721\Symfony\Component\VarDumper\Caster\Caster::PREFIX_VIRTUAL . 'value' => $value];
+        $this->value = [\MonorepoBuilder20210722\Symfony\Component\VarDumper\Caster\Caster::PREFIX_VIRTUAL . 'key' => $key, \MonorepoBuilder20210722\Symfony\Component\VarDumper\Caster\Caster::PREFIX_VIRTUAL . 'value' => $value];
     }
 }
