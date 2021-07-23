@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210722\Symfony\Component\EventDispatcher;
+namespace MonorepoBuilder20210723\Symfony\Component\EventDispatcher;
 
-use MonorepoBuilder20210722\Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
-trigger_deprecation('symfony/event-dispatcher', '5.1', '%s is deprecated, use the event dispatcher without the proxy.', \MonorepoBuilder20210722\Symfony\Component\EventDispatcher\LegacyEventDispatcherProxy::class);
+use MonorepoBuilder20210723\Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
+trigger_deprecation('symfony/event-dispatcher', '5.1', '%s is deprecated, use the event dispatcher without the proxy.', \MonorepoBuilder20210723\Symfony\Component\EventDispatcher\LegacyEventDispatcherProxy::class);
 /**
  * A helper class to provide BC/FC with the legacy signature of EventDispatcherInterface::dispatch().
  *
@@ -21,7 +21,7 @@ trigger_deprecation('symfony/event-dispatcher', '5.1', '%s is deprecated, use th
  */
 final class LegacyEventDispatcherProxy
 {
-    public static function decorate(?\MonorepoBuilder20210722\Symfony\Contracts\EventDispatcher\EventDispatcherInterface $dispatcher) : ?\MonorepoBuilder20210722\Symfony\Contracts\EventDispatcher\EventDispatcherInterface
+    public static function decorate(?\MonorepoBuilder20210723\Symfony\Contracts\EventDispatcher\EventDispatcherInterface $dispatcher) : ?\MonorepoBuilder20210723\Symfony\Contracts\EventDispatcher\EventDispatcherInterface
     {
         return $dispatcher;
     }

@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210722\Symfony\Component\DependencyInjection\Loader\Configurator\Traits;
+namespace MonorepoBuilder20210723\Symfony\Component\DependencyInjection\Loader\Configurator\Traits;
 
-use MonorepoBuilder20210722\Symfony\Component\DependencyInjection\Argument\BoundArgument;
-use MonorepoBuilder20210722\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use MonorepoBuilder20210722\Symfony\Component\DependencyInjection\Loader\Configurator\DefaultsConfigurator;
-use MonorepoBuilder20210722\Symfony\Component\DependencyInjection\Loader\Configurator\InstanceofConfigurator;
-use MonorepoBuilder20210722\Symfony\Component\DependencyInjection\Reference;
+use MonorepoBuilder20210723\Symfony\Component\DependencyInjection\Argument\BoundArgument;
+use MonorepoBuilder20210723\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use MonorepoBuilder20210723\Symfony\Component\DependencyInjection\Loader\Configurator\DefaultsConfigurator;
+use MonorepoBuilder20210723\Symfony\Component\DependencyInjection\Loader\Configurator\InstanceofConfigurator;
+use MonorepoBuilder20210723\Symfony\Component\DependencyInjection\Reference;
 trait BindTrait
 {
     /**
@@ -32,12 +32,12 @@ trait BindTrait
     public final function bind($nameOrFqcn, $valueOrRef)
     {
         $valueOrRef = static::processValue($valueOrRef, \true);
-        if (!\preg_match('/^(?:(?:array|bool|float|int|string|iterable)[ \\t]*+)?\\$/', $nameOrFqcn) && !$valueOrRef instanceof \MonorepoBuilder20210722\Symfony\Component\DependencyInjection\Reference) {
-            throw new \MonorepoBuilder20210722\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Invalid binding for service "%s": named arguments must start with a "$", and FQCN must map to references. Neither applies to binding "%s".', $this->id, $nameOrFqcn));
+        if (!\preg_match('/^(?:(?:array|bool|float|int|string|iterable)[ \\t]*+)?\\$/', $nameOrFqcn) && !$valueOrRef instanceof \MonorepoBuilder20210723\Symfony\Component\DependencyInjection\Reference) {
+            throw new \MonorepoBuilder20210723\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Invalid binding for service "%s": named arguments must start with a "$", and FQCN must map to references. Neither applies to binding "%s".', $this->id, $nameOrFqcn));
         }
         $bindings = $this->definition->getBindings();
-        $type = $this instanceof \MonorepoBuilder20210722\Symfony\Component\DependencyInjection\Loader\Configurator\DefaultsConfigurator ? \MonorepoBuilder20210722\Symfony\Component\DependencyInjection\Argument\BoundArgument::DEFAULTS_BINDING : ($this instanceof \MonorepoBuilder20210722\Symfony\Component\DependencyInjection\Loader\Configurator\InstanceofConfigurator ? \MonorepoBuilder20210722\Symfony\Component\DependencyInjection\Argument\BoundArgument::INSTANCEOF_BINDING : \MonorepoBuilder20210722\Symfony\Component\DependencyInjection\Argument\BoundArgument::SERVICE_BINDING);
-        $bindings[$nameOrFqcn] = new \MonorepoBuilder20210722\Symfony\Component\DependencyInjection\Argument\BoundArgument($valueOrRef, \true, $type, $this->path ?? null);
+        $type = $this instanceof \MonorepoBuilder20210723\Symfony\Component\DependencyInjection\Loader\Configurator\DefaultsConfigurator ? \MonorepoBuilder20210723\Symfony\Component\DependencyInjection\Argument\BoundArgument::DEFAULTS_BINDING : ($this instanceof \MonorepoBuilder20210723\Symfony\Component\DependencyInjection\Loader\Configurator\InstanceofConfigurator ? \MonorepoBuilder20210723\Symfony\Component\DependencyInjection\Argument\BoundArgument::INSTANCEOF_BINDING : \MonorepoBuilder20210723\Symfony\Component\DependencyInjection\Argument\BoundArgument::SERVICE_BINDING);
+        $bindings[$nameOrFqcn] = new \MonorepoBuilder20210723\Symfony\Component\DependencyInjection\Argument\BoundArgument($valueOrRef, \true, $type, $this->path ?? null);
         $this->definition->setBindings($bindings);
         return $this;
     }

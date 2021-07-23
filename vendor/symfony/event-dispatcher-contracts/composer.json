@@ -31,7 +31,7 @@
     },
     "autoload": {
         "psr-4": {
-            "MonorepoBuilder20210722\\Symfony\\Contracts\\EventDispatcher\\": ""
+            "MonorepoBuilder20210723\\Symfony\\Contracts\\EventDispatcher\\": ""
         }
     },
     "minimum-stability": "dev",

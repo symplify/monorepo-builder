@@ -5,7 +5,7 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace MonorepoBuilder20210722\Nette;
+namespace MonorepoBuilder20210723\Nette;
 
 /**
  * Static class.
@@ -24,6 +24,6 @@ trait StaticClass
      */
     public static function __callStatic(string $name, array $args)
     {
-        \MonorepoBuilder20210722\Nette\Utils\ObjectHelpers::strictStaticCall(static::class, $name);
+        \MonorepoBuilder20210723\Nette\Utils\ObjectHelpers::strictStaticCall(static::class, $name);
     }
 }
