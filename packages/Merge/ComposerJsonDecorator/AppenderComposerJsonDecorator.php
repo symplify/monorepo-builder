@@ -26,14 +26,14 @@ final class AppenderComposerJsonDecorator implements \Symplify\MonorepoBuilder\M
         $this->modifyingComposerJsonProvider = $modifyingComposerJsonProvider;
     }
     /**
-     * @param \Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $mainComposerJson
+     * @param \Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJson
      */
-    public function decorate($mainComposerJson) : void
+    public function decorate($composerJson) : void
     {
         $appendingComposerJson = $this->modifyingComposerJsonProvider->getAppendingComposerJson();
         if (!$appendingComposerJson instanceof \MonorepoBuilder20210724\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson) {
             return;
         }
-        $this->composerJsonMerger->mergeJsonToRoot($mainComposerJson, $appendingComposerJson);
+        $this->composerJsonMerger->mergeJsonToRoot($composerJson, $appendingComposerJson);
     }
 }

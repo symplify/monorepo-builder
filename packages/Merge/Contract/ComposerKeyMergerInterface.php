@@ -8,7 +8,7 @@ interface ComposerKeyMergerInterface
 {
     /**
      * @param \Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $mainComposerJson
-     * @param \Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $newToMerge
+     * @param \Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $newComposerJson
      */
-    public function merge($mainComposerJson, $newToMerge) : void;
+    public function merge($mainComposerJson, $newComposerJson) : void;
 }
