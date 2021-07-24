@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210723\Symfony\Contracts\Service;
+namespace MonorepoBuilder20210724\Symfony\Contracts\Service;
 
-use MonorepoBuilder20210723\Psr\Container\ContainerInterface;
+use MonorepoBuilder20210724\Psr\Container\ContainerInterface;
 /**
  * Implementation of ServiceSubscriberInterface that determines subscribed services from
  * private method return types. Service ids are available as "ClassName::methodName".
@@ -44,7 +44,7 @@ trait ServiceSubscriberTrait
     /**
      * @required
      */
-    public function setContainer(\MonorepoBuilder20210723\Psr\Container\ContainerInterface $container)
+    public function setContainer(\MonorepoBuilder20210724\Psr\Container\ContainerInterface $container)
     {
         $this->container = $container;
         if (\is_callable(['parent', __FUNCTION__])) {

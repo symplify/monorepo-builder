@@ -1,15 +1,15 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20210723\Symplify\SmartFileSystem;
+namespace MonorepoBuilder20210724\Symplify\SmartFileSystem;
 
-use MonorepoBuilder20210723\Nette\Utils\Strings;
-use MonorepoBuilder20210723\Symfony\Component\Filesystem\Exception\IOException;
-use MonorepoBuilder20210723\Symfony\Component\Filesystem\Filesystem;
+use MonorepoBuilder20210724\Nette\Utils\Strings;
+use MonorepoBuilder20210724\Symfony\Component\Filesystem\Exception\IOException;
+use MonorepoBuilder20210724\Symfony\Component\Filesystem\Filesystem;
 /**
  * @see \Symplify\SmartFileSystem\Tests\SmartFileSystem\SmartFileSystemTest
  */
-final class SmartFileSystem extends \MonorepoBuilder20210723\Symfony\Component\Filesystem\Filesystem
+final class SmartFileSystem extends \MonorepoBuilder20210724\Symfony\Component\Filesystem\Filesystem
 {
     /**
      * @var string
@@ -25,16 +25,16 @@ final class SmartFileSystem extends \MonorepoBuilder20210723\Symfony\Component\F
         $source = @\file_get_contents($filename);
         if (!$source) {
             $message = \sprintf('Failed to read "%s" file: "%s"', $filename, $this->getLastError());
-            throw new \MonorepoBuilder20210723\Symfony\Component\Filesystem\Exception\IOException($message, 0, null, $filename);
+            throw new \MonorepoBuilder20210724\Symfony\Component\Filesystem\Exception\IOException($message, 0, null, $filename);
         }
         return $source;
     }
     /**
      * @param string $filename
      */
-    public function readFileToSmartFileInfo($filename) : \MonorepoBuilder20210723\Symplify\SmartFileSystem\SmartFileInfo
+    public function readFileToSmartFileInfo($filename) : \MonorepoBuilder20210724\Symplify\SmartFileSystem\SmartFileInfo
     {
-        return new \MonorepoBuilder20210723\Symplify\SmartFileSystem\SmartFileInfo($filename);
+        return new \MonorepoBuilder20210724\Symplify\SmartFileSystem\SmartFileInfo($filename);
     }
     /**
      * Converts given HTML code to plain text
@@ -68,6 +68,6 @@ final class SmartFileSystem extends \MonorepoBuilder20210723\Symfony\Component\F
     {
         $message = \error_get_last()['message'] ?? '';
         $message = \ini_get('html_errors') ? $this->htmlToText($message) : $message;
-        return \MonorepoBuilder20210723\Nette\Utils\Strings::replace($message, self::BEFORE_COLLON_REGEX, '');
+        return \MonorepoBuilder20210724\Nette\Utils\Strings::replace($message, self::BEFORE_COLLON_REGEX, '');
     }
 }

@@ -1,8 +1,8 @@
 <?php
 
-namespace MonorepoBuilder20210723\Psr\Log\Test;
+namespace MonorepoBuilder20210724\Psr\Log\Test;
 
-use MonorepoBuilder20210723\Psr\Log\AbstractLogger;
+use MonorepoBuilder20210724\Psr\Log\AbstractLogger;
 /**
  * Used for testing purposes.
  *
@@ -53,7 +53,7 @@ use MonorepoBuilder20210723\Psr\Log\AbstractLogger;
  * @method bool hasInfoThatPasses($message)
  * @method bool hasDebugThatPasses($message)
  */
-class TestLogger extends \MonorepoBuilder20210723\Psr\Log\AbstractLogger
+class TestLogger extends \MonorepoBuilder20210724\Psr\Log\AbstractLogger
 {
     /**
      * @var array

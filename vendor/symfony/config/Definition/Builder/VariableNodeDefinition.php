@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210723\Symfony\Component\Config\Definition\Builder;
+namespace MonorepoBuilder20210724\Symfony\Component\Config\Definition\Builder;
 
-use MonorepoBuilder20210723\Symfony\Component\Config\Definition\VariableNode;
+use MonorepoBuilder20210724\Symfony\Component\Config\Definition\VariableNode;
 /**
  * This class provides a fluent interface for defining a node.
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class VariableNodeDefinition extends \MonorepoBuilder20210723\Symfony\Component\Config\Definition\Builder\NodeDefinition
+class VariableNodeDefinition extends \MonorepoBuilder20210724\Symfony\Component\Config\Definition\Builder\NodeDefinition
 {
     /**
      * Instantiate a Node.
@@ -25,7 +25,7 @@ class VariableNodeDefinition extends \MonorepoBuilder20210723\Symfony\Component\
      */
     protected function instantiateNode()
     {
-        return new \MonorepoBuilder20210723\Symfony\Component\Config\Definition\VariableNode($this->name, $this->parent, $this->pathSeparator);
+        return new \MonorepoBuilder20210724\Symfony\Component\Config\Definition\VariableNode($this->name, $this->parent, $this->pathSeparator);
     }
     /**
      * {@inheritdoc}

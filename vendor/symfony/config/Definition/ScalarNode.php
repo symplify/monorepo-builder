@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210723\Symfony\Component\Config\Definition;
+namespace MonorepoBuilder20210724\Symfony\Component\Config\Definition;
 
-use MonorepoBuilder20210723\Symfony\Component\Config\Definition\Exception\InvalidTypeException;
+use MonorepoBuilder20210724\Symfony\Component\Config\Definition\Exception\InvalidTypeException;
 /**
  * This node represents a scalar value in the config tree.
  *
@@ -23,7 +23,7 @@ use MonorepoBuilder20210723\Symfony\Component\Config\Definition\Exception\Invali
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class ScalarNode extends \MonorepoBuilder20210723\Symfony\Component\Config\Definition\VariableNode
+class ScalarNode extends \MonorepoBuilder20210724\Symfony\Component\Config\Definition\VariableNode
 {
     /**
      * {@inheritdoc}
@@ -31,7 +31,7 @@ class ScalarNode extends \MonorepoBuilder20210723\Symfony\Component\Config\Defin
     protected function validateType($value)
     {
         if (!\is_scalar($value) && null !== $value) {
-            $ex = new \MonorepoBuilder20210723\Symfony\Component\Config\Definition\Exception\InvalidTypeException(\sprintf('Invalid type for path "%s". Expected "scalar", but got "%s".', $this->getPath(), \get_debug_type($value)));
+            $ex = new \MonorepoBuilder20210724\Symfony\Component\Config\Definition\Exception\InvalidTypeException(\sprintf('Invalid type for path "%s". Expected "scalar", but got "%s".', $this->getPath(), \get_debug_type($value)));
             if ($hint = $this->getInfo()) {
                 $ex->addHint($hint);
             }

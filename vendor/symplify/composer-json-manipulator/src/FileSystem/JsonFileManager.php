@@ -1,15 +1,15 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20210723\Symplify\ComposerJsonManipulator\FileSystem;
+namespace MonorepoBuilder20210724\Symplify\ComposerJsonManipulator\FileSystem;
 
-use MonorepoBuilder20210723\Nette\Utils\Json;
-use MonorepoBuilder20210723\Symplify\ComposerJsonManipulator\Json\JsonCleaner;
-use MonorepoBuilder20210723\Symplify\ComposerJsonManipulator\Json\JsonInliner;
-use MonorepoBuilder20210723\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
-use MonorepoBuilder20210723\Symplify\PackageBuilder\Configuration\StaticEolConfiguration;
-use MonorepoBuilder20210723\Symplify\SmartFileSystem\SmartFileInfo;
-use MonorepoBuilder20210723\Symplify\SmartFileSystem\SmartFileSystem;
+use MonorepoBuilder20210724\Nette\Utils\Json;
+use MonorepoBuilder20210724\Symplify\ComposerJsonManipulator\Json\JsonCleaner;
+use MonorepoBuilder20210724\Symplify\ComposerJsonManipulator\Json\JsonInliner;
+use MonorepoBuilder20210724\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
+use MonorepoBuilder20210724\Symplify\PackageBuilder\Configuration\StaticEolConfiguration;
+use MonorepoBuilder20210724\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder20210724\Symplify\SmartFileSystem\SmartFileSystem;
 /**
  * @see \Symplify\MonorepoBuilder\Tests\FileSystem\JsonFileManager\JsonFileManagerTest
  */
@@ -31,7 +31,7 @@ final class JsonFileManager
      * @var \Symplify\ComposerJsonManipulator\Json\JsonInliner
      */
     private $jsonInliner;
-    public function __construct(\MonorepoBuilder20210723\Symplify\SmartFileSystem\SmartFileSystem $smartFileSystem, \MonorepoBuilder20210723\Symplify\ComposerJsonManipulator\Json\JsonCleaner $jsonCleaner, \MonorepoBuilder20210723\Symplify\ComposerJsonManipulator\Json\JsonInliner $jsonInliner)
+    public function __construct(\MonorepoBuilder20210724\Symplify\SmartFileSystem\SmartFileSystem $smartFileSystem, \MonorepoBuilder20210724\Symplify\ComposerJsonManipulator\Json\JsonCleaner $jsonCleaner, \MonorepoBuilder20210724\Symplify\ComposerJsonManipulator\Json\JsonInliner $jsonInliner)
     {
         $this->smartFileSystem = $smartFileSystem;
         $this->jsonCleaner = $jsonCleaner;
@@ -40,11 +40,11 @@ final class JsonFileManager
     /**
      * @return mixed[]
      */
-    public function loadFromFileInfo(\MonorepoBuilder20210723\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : array
+    public function loadFromFileInfo(\MonorepoBuilder20210724\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : array
     {
         $realPath = $smartFileInfo->getRealPath();
         if (!isset($this->cachedJSONFiles[$realPath])) {
-            $this->cachedJSONFiles[$realPath] = \MonorepoBuilder20210723\Nette\Utils\Json::decode($smartFileInfo->getContents(), \MonorepoBuilder20210723\Nette\Utils\Json::FORCE_ARRAY);
+            $this->cachedJSONFiles[$realPath] = \MonorepoBuilder20210724\Nette\Utils\Json::decode($smartFileInfo->getContents(), \MonorepoBuilder20210724\Nette\Utils\Json::FORCE_ARRAY);
         }
         return $this->cachedJSONFiles[$realPath];
     }
@@ -54,18 +54,18 @@ final class JsonFileManager
     public function loadFromFilePath(string $filePath) : array
     {
         $fileContent = $this->smartFileSystem->readFile($filePath);
-        return \MonorepoBuilder20210723\Nette\Utils\Json::decode($fileContent, \MonorepoBuilder20210723\Nette\Utils\Json::FORCE_ARRAY);
+        return \MonorepoBuilder20210724\Nette\Utils\Json::decode($fileContent, \MonorepoBuilder20210724\Nette\Utils\Json::FORCE_ARRAY);
     }
     /**
      * @param mixed[] $json
      */
-    public function printJsonToFileInfo(array $json, \MonorepoBuilder20210723\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : string
+    public function printJsonToFileInfo(array $json, \MonorepoBuilder20210724\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : string
     {
         $jsonString = $this->encodeJsonToFileContent($json);
         $this->smartFileSystem->dumpFile($smartFileInfo->getPathname(), $jsonString);
         return $jsonString;
     }
-    public function printComposerJsonToFilePath(\MonorepoBuilder20210723\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJson, string $filePath) : string
+    public function printComposerJsonToFilePath(\MonorepoBuilder20210724\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJson, string $filePath) : string
     {
         $jsonString = $this->encodeJsonToFileContent($composerJson->getJsonArray());
         $this->smartFileSystem->dumpFile($filePath, $jsonString);
@@ -78,7 +78,7 @@ final class JsonFileManager
     {
         // Empty arrays may lead to bad encoding since we can't be sure whether they need to be arrays or objects.
         $json = $this->jsonCleaner->removeEmptyKeysFromJsonArray($json);
-        $jsonContent = \MonorepoBuilder20210723\Nette\Utils\Json::encode($json, \MonorepoBuilder20210723\Nette\Utils\Json::PRETTY) . \MonorepoBuilder20210723\Symplify\PackageBuilder\Configuration\StaticEolConfiguration::getEolChar();
+        $jsonContent = \MonorepoBuilder20210724\Nette\Utils\Json::encode($json, \MonorepoBuilder20210724\Nette\Utils\Json::PRETTY) . \MonorepoBuilder20210724\Symplify\PackageBuilder\Configuration\StaticEolConfiguration::getEolChar();
         return $this->jsonInliner->inlineSections($jsonContent);
     }
 }

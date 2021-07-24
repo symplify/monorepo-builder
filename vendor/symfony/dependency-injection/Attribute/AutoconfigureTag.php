@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210723\Symfony\Component\DependencyInjection\Attribute;
+namespace MonorepoBuilder20210724\Symfony\Component\DependencyInjection\Attribute;
 
 /**
  * An attribute to tell how a base type should be tagged.
@@ -16,7 +16,7 @@ namespace MonorepoBuilder20210723\Symfony\Component\DependencyInjection\Attribut
  * @author Nicolas Grekas <p@tchwork.com>
  */
 #[\Attribute(\Attribute::TARGET_CLASS | \Attribute::IS_REPEATABLE)]
-class AutoconfigureTag extends \MonorepoBuilder20210723\Symfony\Component\DependencyInjection\Attribute\Autoconfigure
+class AutoconfigureTag extends \MonorepoBuilder20210724\Symfony\Component\DependencyInjection\Attribute\Autoconfigure
 {
     public function __construct(string $name = null, array $attributes = [])
     {

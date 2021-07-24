@@ -3,12 +3,12 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Init\Command;
 
-use MonorepoBuilder20210723\Symfony\Component\Console\Input\InputArgument;
-use MonorepoBuilder20210723\Symfony\Component\Console\Input\InputInterface;
-use MonorepoBuilder20210723\Symfony\Component\Console\Output\OutputInterface;
-use MonorepoBuilder20210723\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
-use MonorepoBuilder20210723\Symplify\PackageBuilder\Console\ShellCode;
-final class InitCommand extends \MonorepoBuilder20210723\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand
+use MonorepoBuilder20210724\Symfony\Component\Console\Input\InputArgument;
+use MonorepoBuilder20210724\Symfony\Component\Console\Input\InputInterface;
+use MonorepoBuilder20210724\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder20210724\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
+use MonorepoBuilder20210724\Symplify\PackageBuilder\Console\ShellCode;
+final class InitCommand extends \MonorepoBuilder20210724\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand
 {
     /**
      * @var string
@@ -17,7 +17,7 @@ final class InitCommand extends \MonorepoBuilder20210723\Symplify\PackageBuilder
     protected function configure() : void
     {
         $this->setDescription('Creates empty monorepo directory and composer.json structure.');
-        $this->addArgument(self::OUTPUT, \MonorepoBuilder20210723\Symfony\Component\Console\Input\InputArgument::OPTIONAL, 'Directory to generate monorepo into.', \getcwd());
+        $this->addArgument(self::OUTPUT, \MonorepoBuilder20210724\Symfony\Component\Console\Input\InputArgument::OPTIONAL, 'Directory to generate monorepo into.', \getcwd());
     }
     /**
      * @param \Symfony\Component\Console\Input\InputInterface $input
@@ -31,6 +31,6 @@ final class InitCommand extends \MonorepoBuilder20210723\Symplify\PackageBuilder
         $this->symfonyStyle->success('Congrats! Your first monorepo is here.');
         $message = \sprintf('Try the next step - merge "composer.json" files from packages to the root one:%s "vendor/bin/monorepo-builder merge"', \PHP_EOL);
         $this->symfonyStyle->note($message);
-        return \MonorepoBuilder20210723\Symplify\PackageBuilder\Console\ShellCode::SUCCESS;
+        return \MonorepoBuilder20210724\Symplify\PackageBuilder\Console\ShellCode::SUCCESS;
     }
 }

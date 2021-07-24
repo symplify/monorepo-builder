@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20210723\Symplify\ComposerJsonManipulator\DependencyInjection\Extension;
+namespace MonorepoBuilder20210724\Symplify\ComposerJsonManipulator\DependencyInjection\Extension;
 
-use MonorepoBuilder20210723\Symfony\Component\Config\FileLocator;
-use MonorepoBuilder20210723\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder20210723\Symfony\Component\DependencyInjection\Extension\Extension;
-use MonorepoBuilder20210723\Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
-final class ComposerJsonManipulatorExtension extends \MonorepoBuilder20210723\Symfony\Component\DependencyInjection\Extension\Extension
+use MonorepoBuilder20210724\Symfony\Component\Config\FileLocator;
+use MonorepoBuilder20210724\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder20210724\Symfony\Component\DependencyInjection\Extension\Extension;
+use MonorepoBuilder20210724\Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
+final class ComposerJsonManipulatorExtension extends \MonorepoBuilder20210724\Symfony\Component\DependencyInjection\Extension\Extension
 {
     /**
      * @param string[] $configs
@@ -15,7 +15,7 @@ final class ComposerJsonManipulatorExtension extends \MonorepoBuilder20210723\Sy
      */
     public function load($configs, $containerBuilder) : void
     {
-        $phpFileLoader = new \MonorepoBuilder20210723\Symfony\Component\DependencyInjection\Loader\PhpFileLoader($containerBuilder, new \MonorepoBuilder20210723\Symfony\Component\Config\FileLocator(__DIR__ . '/../../../config'));
+        $phpFileLoader = new \MonorepoBuilder20210724\Symfony\Component\DependencyInjection\Loader\PhpFileLoader($containerBuilder, new \MonorepoBuilder20210724\Symfony\Component\Config\FileLocator(__DIR__ . '/../../../config'));
         $phpFileLoader->load('config.php');
     }
 }
