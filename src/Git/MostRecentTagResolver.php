@@ -40,7 +40,7 @@ final class MostRecentTagResolver
         $tags = \trim($commandResult);
         // Remove all "\r" chars in case the CLI env like the Windows OS.
         // Otherwise (ConEmu, git bash, mingw cli, e.g.), leave as is.
-        $tags = \str_replace("\r", '', $tags);
-        return \explode("\n", $tags);
+        $normalizedTags = \str_replace("\r", '', $tags);
+        return \explode("\n", $normalizedTags);
     }
 }
