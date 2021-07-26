@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210725\Symfony\Component\HttpKernel\Fragment;
+namespace MonorepoBuilder20210726\Symfony\Component\HttpKernel\Fragment;
 
-use MonorepoBuilder20210725\Symfony\Component\HttpFoundation\Request;
-use MonorepoBuilder20210725\Symfony\Component\HttpKernel\Controller\ControllerReference;
+use MonorepoBuilder20210726\Symfony\Component\HttpFoundation\Request;
+use MonorepoBuilder20210726\Symfony\Component\HttpKernel\Controller\ControllerReference;
 /**
  * Interface implemented by rendering strategies able to generate an URL for a fragment.
  *

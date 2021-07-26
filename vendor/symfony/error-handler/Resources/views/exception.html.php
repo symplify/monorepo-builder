@@ -1,5 +1,5 @@
 <div class="exception-summary <?php 
-namespace MonorepoBuilder20210725;
+namespace MonorepoBuilder20210726;
 
 echo !$exceptionMessage ? 'exception-without-message' : '';
 ?>">

@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20210725\Symplify\PackageBuilder\Reflection;
+namespace MonorepoBuilder20210726\Symplify\PackageBuilder\Reflection;
 
 use ReflectionClass;
 final class ClassLikeExistenceChecker

@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210725\Symfony\Component\DependencyInjection\Loader\Configurator\Traits;
+namespace MonorepoBuilder20210726\Symfony\Component\DependencyInjection\Loader\Configurator\Traits;
 
 trait AbstractTrait
 {

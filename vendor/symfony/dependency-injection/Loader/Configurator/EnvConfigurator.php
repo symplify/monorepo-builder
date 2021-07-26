@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210725\Symfony\Component\DependencyInjection\Loader\Configurator;
+namespace MonorepoBuilder20210726\Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use MonorepoBuilder20210725\Symfony\Component\Config\Loader\ParamConfigurator;
-class EnvConfigurator extends \MonorepoBuilder20210725\Symfony\Component\Config\Loader\ParamConfigurator
+use MonorepoBuilder20210726\Symfony\Component\Config\Loader\ParamConfigurator;
+class EnvConfigurator extends \MonorepoBuilder20210726\Symfony\Component\Config\Loader\ParamConfigurator
 {
     /**
      * @var string[]
@@ -30,7 +30,7 @@ class EnvConfigurator extends \MonorepoBuilder20210725\Symfony\Component\Config\
      */
     public function __call(string $name, array $arguments)
     {
-        $processor = \strtolower(\preg_replace(['/([A-Z]+)([A-Z][a-z])/', '/([a-z\\d])([A-Z])/'], 'MonorepoBuilder20210725\\1_\\2', $name));
+        $processor = \strtolower(\preg_replace(['/([A-Z]+)([A-Z][a-z])/', '/([a-z\\d])([A-Z])/'], 'MonorepoBuilder20210726\\1_\\2', $name));
         $this->custom($processor, ...$arguments);
         return $this;
     }
