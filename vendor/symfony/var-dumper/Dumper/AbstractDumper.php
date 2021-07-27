@@ -8,16 +8,16 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210726\Symfony\Component\VarDumper\Dumper;
+namespace MonorepoBuilder20210727\Symfony\Component\VarDumper\Dumper;
 
-use MonorepoBuilder20210726\Symfony\Component\VarDumper\Cloner\Data;
-use MonorepoBuilder20210726\Symfony\Component\VarDumper\Cloner\DumperInterface;
+use MonorepoBuilder20210727\Symfony\Component\VarDumper\Cloner\Data;
+use MonorepoBuilder20210727\Symfony\Component\VarDumper\Cloner\DumperInterface;
 /**
  * Abstract mechanism for dumping a Data object.
  *
  * @author Nicolas Grekas <p@tchwork.com>
  */
-abstract class AbstractDumper implements \MonorepoBuilder20210726\Symfony\Component\VarDumper\Dumper\DataDumperInterface, \MonorepoBuilder20210726\Symfony\Component\VarDumper\Cloner\DumperInterface
+abstract class AbstractDumper implements \MonorepoBuilder20210727\Symfony\Component\VarDumper\Dumper\DataDumperInterface, \MonorepoBuilder20210727\Symfony\Component\VarDumper\Cloner\DumperInterface
 {
     public const DUMP_LIGHT_ARRAY = 1;
     public const DUMP_STRING_LENGTH = 2;
@@ -57,7 +57,7 @@ abstract class AbstractDumper implements \MonorepoBuilder20210726\Symfony\Compon
      */
     public function setOutput($output)
     {
-        $prev = null !== $this->outputStream ? $this->outputStream : $this->lineDumper;
+        $prev = $this->outputStream ?? $this->lineDumper;
         if (\is_callable($output)) {
             $this->outputStream = null;
             $this->lineDumper = $output;

@@ -8,16 +8,16 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210726\Symfony\Component\HttpKernel;
+namespace MonorepoBuilder20210727\Symfony\Component\HttpKernel;
 
-use MonorepoBuilder20210726\Symfony\Component\BrowserKit\AbstractBrowser;
-use MonorepoBuilder20210726\Symfony\Component\BrowserKit\CookieJar;
-use MonorepoBuilder20210726\Symfony\Component\BrowserKit\History;
-use MonorepoBuilder20210726\Symfony\Component\BrowserKit\Request as DomRequest;
-use MonorepoBuilder20210726\Symfony\Component\BrowserKit\Response as DomResponse;
-use MonorepoBuilder20210726\Symfony\Component\HttpFoundation\File\UploadedFile;
-use MonorepoBuilder20210726\Symfony\Component\HttpFoundation\Request;
-use MonorepoBuilder20210726\Symfony\Component\HttpFoundation\Response;
+use MonorepoBuilder20210727\Symfony\Component\BrowserKit\AbstractBrowser;
+use MonorepoBuilder20210727\Symfony\Component\BrowserKit\CookieJar;
+use MonorepoBuilder20210727\Symfony\Component\BrowserKit\History;
+use MonorepoBuilder20210727\Symfony\Component\BrowserKit\Request as DomRequest;
+use MonorepoBuilder20210727\Symfony\Component\BrowserKit\Response as DomResponse;
+use MonorepoBuilder20210727\Symfony\Component\HttpFoundation\File\UploadedFile;
+use MonorepoBuilder20210727\Symfony\Component\HttpFoundation\Request;
+use MonorepoBuilder20210727\Symfony\Component\HttpFoundation\Response;
 /**
  * Simulates a browser and makes requests to an HttpKernel instance.
  *
@@ -26,14 +26,14 @@ use MonorepoBuilder20210726\Symfony\Component\HttpFoundation\Response;
  * @method Request  getRequest()  A Request instance
  * @method Response getResponse() A Response instance
  */
-class HttpKernelBrowser extends \MonorepoBuilder20210726\Symfony\Component\BrowserKit\AbstractBrowser
+class HttpKernelBrowser extends \MonorepoBuilder20210727\Symfony\Component\BrowserKit\AbstractBrowser
 {
     protected $kernel;
     private $catchExceptions = \true;
     /**
      * @param array $server The server parameters (equivalent of $_SERVER)
      */
-    public function __construct(\MonorepoBuilder20210726\Symfony\Component\HttpKernel\HttpKernelInterface $kernel, array $server = [], \MonorepoBuilder20210726\Symfony\Component\BrowserKit\History $history = null, \MonorepoBuilder20210726\Symfony\Component\BrowserKit\CookieJar $cookieJar = null)
+    public function __construct(\MonorepoBuilder20210727\Symfony\Component\HttpKernel\HttpKernelInterface $kernel, array $server = [], \MonorepoBuilder20210727\Symfony\Component\BrowserKit\History $history = null, \MonorepoBuilder20210727\Symfony\Component\BrowserKit\CookieJar $cookieJar = null)
     {
         // These class properties must be set before calling the parent constructor, as it may depend on it.
         $this->kernel = $kernel;
@@ -48,20 +48,24 @@ class HttpKernelBrowser extends \MonorepoBuilder20210726\Symfony\Component\Brows
         $this->catchExceptions = $catchExceptions;
     }
     /**
-     * Makes a request.
+     * {@inheritdoc}
+     *
+     * @param Request $request
      *
      * @return Response A Response instance
      */
     protected function doRequest($request)
     {
-        $response = $this->kernel->handle($request, \MonorepoBuilder20210726\Symfony\Component\HttpKernel\HttpKernelInterface::MAIN_REQUEST, $this->catchExceptions);
-        if ($this->kernel instanceof \MonorepoBuilder20210726\Symfony\Component\HttpKernel\TerminableInterface) {
+        $response = $this->kernel->handle($request, \MonorepoBuilder20210727\Symfony\Component\HttpKernel\HttpKernelInterface::MAIN_REQUEST, $this->catchExceptions);
+        if ($this->kernel instanceof \MonorepoBuilder20210727\Symfony\Component\HttpKernel\TerminableInterface) {
             $this->kernel->terminate($request, $response);
         }
         return $response;
     }
     /**
-     * Returns the script to execute when the request must be insulated.
+     * {@inheritdoc}
+     *
+     * @param Request $request
      *
      * @return string
      */
@@ -108,13 +112,13 @@ echo serialize($response);
 EOF;
     }
     /**
-     * Converts the BrowserKit request to a HttpKernel request.
+     * {@inheritdoc}
      *
      * @return Request A Request instance
      */
-    protected function filterRequest(\MonorepoBuilder20210726\Symfony\Component\BrowserKit\Request $request)
+    protected function filterRequest(\MonorepoBuilder20210727\Symfony\Component\BrowserKit\Request $request)
     {
-        $httpRequest = \MonorepoBuilder20210726\Symfony\Component\HttpFoundation\Request::create($request->getUri(), $request->getMethod(), $request->getParameters(), $request->getCookies(), $request->getFiles(), $server = $request->getServer(), $request->getContent());
+        $httpRequest = \MonorepoBuilder20210727\Symfony\Component\HttpFoundation\Request::create($request->getUri(), $request->getMethod(), $request->getParameters(), $request->getCookies(), $request->getFiles(), $server = $request->getServer(), $request->getContent());
         if (!isset($server['HTTP_ACCEPT'])) {
             $httpRequest->headers->remove('Accept');
         }
@@ -142,18 +146,20 @@ EOF;
         foreach ($files as $key => $value) {
             if (\is_array($value)) {
                 $filtered[$key] = $this->filterFiles($value);
-            } elseif ($value instanceof \MonorepoBuilder20210726\Symfony\Component\HttpFoundation\File\UploadedFile) {
-                if ($value->isValid() && $value->getSize() > \MonorepoBuilder20210726\Symfony\Component\HttpFoundation\File\UploadedFile::getMaxFilesize()) {
-                    $filtered[$key] = new \MonorepoBuilder20210726\Symfony\Component\HttpFoundation\File\UploadedFile('', $value->getClientOriginalName(), $value->getClientMimeType(), \UPLOAD_ERR_INI_SIZE, \true);
+            } elseif ($value instanceof \MonorepoBuilder20210727\Symfony\Component\HttpFoundation\File\UploadedFile) {
+                if ($value->isValid() && $value->getSize() > \MonorepoBuilder20210727\Symfony\Component\HttpFoundation\File\UploadedFile::getMaxFilesize()) {
+                    $filtered[$key] = new \MonorepoBuilder20210727\Symfony\Component\HttpFoundation\File\UploadedFile('', $value->getClientOriginalName(), $value->getClientMimeType(), \UPLOAD_ERR_INI_SIZE, \true);
                 } else {
-                    $filtered[$key] = new \MonorepoBuilder20210726\Symfony\Component\HttpFoundation\File\UploadedFile($value->getPathname(), $value->getClientOriginalName(), $value->getClientMimeType(), $value->getError(), \true);
+                    $filtered[$key] = new \MonorepoBuilder20210727\Symfony\Component\HttpFoundation\File\UploadedFile($value->getPathname(), $value->getClientOriginalName(), $value->getClientMimeType(), $value->getError(), \true);
                 }
             }
         }
         return $filtered;
     }
     /**
-     * Converts the HttpKernel response to a BrowserKit response.
+     * {@inheritdoc}
+     *
+     * @param Request $request
      *
      * @return DomResponse A DomResponse instance
      */
@@ -163,6 +169,6 @@ EOF;
         \ob_start();
         $response->sendContent();
         $content = \ob_get_clean();
-        return new \MonorepoBuilder20210726\Symfony\Component\BrowserKit\Response($content, $response->getStatusCode(), $response->headers->all());
+        return new \MonorepoBuilder20210727\Symfony\Component\BrowserKit\Response($content, $response->getStatusCode(), $response->headers->all());
     }
 }

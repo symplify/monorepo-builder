@@ -8,17 +8,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210726\Symfony\Component\Config\Definition\Builder;
+namespace MonorepoBuilder20210727\Symfony\Component\Config\Definition\Builder;
 
-use MonorepoBuilder20210726\Symfony\Component\Config\Definition\BaseNode;
-use MonorepoBuilder20210726\Symfony\Component\Config\Definition\Exception\InvalidDefinitionException;
-use MonorepoBuilder20210726\Symfony\Component\Config\Definition\NodeInterface;
+use MonorepoBuilder20210727\Symfony\Component\Config\Definition\BaseNode;
+use MonorepoBuilder20210727\Symfony\Component\Config\Definition\Exception\InvalidDefinitionException;
+use MonorepoBuilder20210727\Symfony\Component\Config\Definition\NodeInterface;
 /**
  * This class provides a fluent interface for defining a node.
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-abstract class NodeDefinition implements \MonorepoBuilder20210726\Symfony\Component\Config\Definition\Builder\NodeParentInterface
+abstract class NodeDefinition implements \MonorepoBuilder20210727\Symfony\Component\Config\Definition\Builder\NodeParentInterface
 {
     protected $name;
     protected $normalization;
@@ -32,10 +32,10 @@ abstract class NodeDefinition implements \MonorepoBuilder20210726\Symfony\Compon
     protected $nullEquivalent;
     protected $trueEquivalent = \true;
     protected $falseEquivalent = \false;
-    protected $pathSeparator = \MonorepoBuilder20210726\Symfony\Component\Config\Definition\BaseNode::DEFAULT_PATH_SEPARATOR;
+    protected $pathSeparator = \MonorepoBuilder20210727\Symfony\Component\Config\Definition\BaseNode::DEFAULT_PATH_SEPARATOR;
     protected $parent;
     protected $attributes = [];
-    public function __construct(?string $name, \MonorepoBuilder20210726\Symfony\Component\Config\Definition\Builder\NodeParentInterface $parent = null)
+    public function __construct(?string $name, \MonorepoBuilder20210727\Symfony\Component\Config\Definition\Builder\NodeParentInterface $parent = null)
     {
         $this->parent = $parent;
         $this->name = $name;
@@ -97,9 +97,8 @@ abstract class NodeDefinition implements \MonorepoBuilder20210726\Symfony\Compon
     /**
      * Creates the node.
      *
-     * @param bool $forceRootNode Whether to force this node as the root node
-     *
      * @return NodeInterface
+     * @param bool $forceRootNode
      */
     public function getNode($forceRootNode = \false)
     {
@@ -107,13 +106,13 @@ abstract class NodeDefinition implements \MonorepoBuilder20210726\Symfony\Compon
             $this->parent = null;
         }
         if (null !== $this->normalization) {
-            $this->normalization->before = \MonorepoBuilder20210726\Symfony\Component\Config\Definition\Builder\ExprBuilder::buildExpressions($this->normalization->before);
+            $this->normalization->before = \MonorepoBuilder20210727\Symfony\Component\Config\Definition\Builder\ExprBuilder::buildExpressions($this->normalization->before);
         }
         if (null !== $this->validation) {
-            $this->validation->rules = \MonorepoBuilder20210726\Symfony\Component\Config\Definition\Builder\ExprBuilder::buildExpressions($this->validation->rules);
+            $this->validation->rules = \MonorepoBuilder20210727\Symfony\Component\Config\Definition\Builder\ExprBuilder::buildExpressions($this->validation->rules);
         }
         $node = $this->createNode();
-        if ($node instanceof \MonorepoBuilder20210726\Symfony\Component\Config\Definition\BaseNode) {
+        if ($node instanceof \MonorepoBuilder20210727\Symfony\Component\Config\Definition\BaseNode) {
             $node->setAttributes($this->attributes);
         }
         return $node;
@@ -282,7 +281,7 @@ abstract class NodeDefinition implements \MonorepoBuilder20210726\Symfony\Compon
     protected function validation()
     {
         if (null === $this->validation) {
-            $this->validation = new \MonorepoBuilder20210726\Symfony\Component\Config\Definition\Builder\ValidationBuilder($this);
+            $this->validation = new \MonorepoBuilder20210727\Symfony\Component\Config\Definition\Builder\ValidationBuilder($this);
         }
         return $this->validation;
     }
@@ -294,7 +293,7 @@ abstract class NodeDefinition implements \MonorepoBuilder20210726\Symfony\Compon
     protected function merge()
     {
         if (null === $this->merge) {
-            $this->merge = new \MonorepoBuilder20210726\Symfony\Component\Config\Definition\Builder\MergeBuilder($this);
+            $this->merge = new \MonorepoBuilder20210727\Symfony\Component\Config\Definition\Builder\MergeBuilder($this);
         }
         return $this->merge;
     }
@@ -306,7 +305,7 @@ abstract class NodeDefinition implements \MonorepoBuilder20210726\Symfony\Compon
     protected function normalization()
     {
         if (null === $this->normalization) {
-            $this->normalization = new \MonorepoBuilder20210726\Symfony\Component\Config\Definition\Builder\NormalizationBuilder($this);
+            $this->normalization = new \MonorepoBuilder20210727\Symfony\Component\Config\Definition\Builder\NormalizationBuilder($this);
         }
         return $this->normalization;
     }
@@ -326,7 +325,7 @@ abstract class NodeDefinition implements \MonorepoBuilder20210726\Symfony\Compon
      */
     public function setPathSeparator($separator)
     {
-        if ($this instanceof \MonorepoBuilder20210726\Symfony\Component\Config\Definition\Builder\ParentNodeDefinitionInterface) {
+        if ($this instanceof \MonorepoBuilder20210727\Symfony\Component\Config\Definition\Builder\ParentNodeDefinitionInterface) {
             foreach ($this->getChildNodeDefinitions() as $child) {
                 $child->setPathSeparator($separator);
             }

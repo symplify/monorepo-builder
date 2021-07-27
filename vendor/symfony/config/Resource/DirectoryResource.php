@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210726\Symfony\Component\Config\Resource;
+namespace MonorepoBuilder20210727\Symfony\Component\Config\Resource;
 
 /**
  * DirectoryResource represents a resources stored in a subdirectory tree.
@@ -17,7 +17,7 @@ namespace MonorepoBuilder20210726\Symfony\Component\Config\Resource;
  *
  * @final
  */
-class DirectoryResource implements \MonorepoBuilder20210726\Symfony\Component\Config\Resource\SelfCheckingResourceInterface
+class DirectoryResource implements \MonorepoBuilder20210727\Symfony\Component\Config\Resource\SelfCheckingResourceInterface
 {
     private $resource;
     private $pattern;
@@ -35,9 +35,6 @@ class DirectoryResource implements \MonorepoBuilder20210726\Symfony\Component\Co
             throw new \InvalidArgumentException(\sprintf('The directory "%s" does not exist.', $resource));
         }
     }
-    /**
-     * {@inheritdoc}
-     */
     public function __toString() : string
     {
         return \md5(\serialize([$this->resource, $this->pattern]));
@@ -75,7 +72,7 @@ class DirectoryResource implements \MonorepoBuilder20210726\Symfony\Component\Co
             }
             // always monitor directories for changes, except the .. entries
             // (otherwise deleted files wouldn't get detected)
-            if ($file->isDir() && '/..' === \substr($file, -3)) {
+            if ($file->isDir() && \substr_compare($file, '/..', -\strlen('/..')) === 0) {
                 continue;
             }
             // for broken links

@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210726\Symfony\Component\HttpFoundation;
+namespace MonorepoBuilder20210727\Symfony\Component\HttpFoundation;
 
 // Help opcache.preload discover always-needed symbols
-\class_exists(\MonorepoBuilder20210726\Symfony\Component\HttpFoundation\ResponseHeaderBag::class);
+\class_exists(\MonorepoBuilder20210727\Symfony\Component\HttpFoundation\ResponseHeaderBag::class);
 /**
  * Response represents an HTTP response.
  *
@@ -231,7 +231,7 @@ class Response
      */
     public function __construct(?string $content = '', int $status = 200, array $headers = [])
     {
-        $this->headers = new \MonorepoBuilder20210726\Symfony\Component\HttpFoundation\ResponseHeaderBag($headers);
+        $this->headers = new \MonorepoBuilder20210727\Symfony\Component\HttpFoundation\ResponseHeaderBag($headers);
         $this->setContent($content);
         $this->setStatusCode($status);
         $this->setProtocolVersion('1.0');
@@ -331,7 +331,7 @@ class Response
             $this->setProtocolVersion('1.1');
         }
         // Check if we need to send extra expire info headers
-        if ('1.0' == $this->getProtocolVersion() && \false !== \strpos($headers->get('Cache-Control'), 'no-cache')) {
+        if ('1.0' == $this->getProtocolVersion() && \strpos($headers->get('Cache-Control'), 'no-cache') !== \false) {
             $headers->set('pragma', 'no-cache');
             $headers->set('expires', -1);
         }
@@ -451,6 +451,7 @@ class Response
      *
      * @final
      * @param int $code
+     * @param string|null $text
      */
     public function setStatusCode($code, $text = null)
     {
@@ -866,7 +867,7 @@ class Response
         if (null === $etag) {
             $this->headers->remove('Etag');
         } else {
-            if (0 !== \strpos($etag, '"')) {
+            if (\strncmp($etag, '"', \strlen('"')) !== 0) {
                 $etag = '"' . $etag . '"';
             }
             $this->headers->set('ETag', (\true === $weak ? 'W/' : '') . $etag);

@@ -8,23 +8,23 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210726\Symfony\Component\HttpKernel\DependencyInjection;
+namespace MonorepoBuilder20210727\Symfony\Component\HttpKernel\DependencyInjection;
 
-use MonorepoBuilder20210726\Composer\Autoload\ClassLoader;
-use MonorepoBuilder20210726\Symfony\Component\Debug\DebugClassLoader as LegacyDebugClassLoader;
-use MonorepoBuilder20210726\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
-use MonorepoBuilder20210726\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder20210726\Symfony\Component\ErrorHandler\DebugClassLoader;
-use MonorepoBuilder20210726\Symfony\Component\HttpKernel\Kernel;
+use MonorepoBuilder20210727\Composer\Autoload\ClassLoader;
+use MonorepoBuilder20210727\Symfony\Component\Debug\DebugClassLoader as LegacyDebugClassLoader;
+use MonorepoBuilder20210727\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
+use MonorepoBuilder20210727\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder20210727\Symfony\Component\ErrorHandler\DebugClassLoader;
+use MonorepoBuilder20210727\Symfony\Component\HttpKernel\Kernel;
 /**
  * Sets the classes to compile in the cache for the container.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class AddAnnotatedClassesToCachePass implements \MonorepoBuilder20210726\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
+class AddAnnotatedClassesToCachePass implements \MonorepoBuilder20210727\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
 {
     private $kernel;
-    public function __construct(\MonorepoBuilder20210726\Symfony\Component\HttpKernel\Kernel $kernel)
+    public function __construct(\MonorepoBuilder20210727\Symfony\Component\HttpKernel\Kernel $kernel)
     {
         $this->kernel = $kernel;
     }
@@ -36,7 +36,7 @@ class AddAnnotatedClassesToCachePass implements \MonorepoBuilder20210726\Symfony
     {
         $annotatedClasses = $this->kernel->getAnnotatedClassesToCompile();
         foreach ($container->getExtensions() as $extension) {
-            if ($extension instanceof \MonorepoBuilder20210726\Symfony\Component\HttpKernel\DependencyInjection\Extension) {
+            if ($extension instanceof \MonorepoBuilder20210727\Symfony\Component\HttpKernel\DependencyInjection\Extension) {
                 $annotatedClasses = \array_merge($annotatedClasses, $extension->getAnnotatedClassesToCompile());
             }
         }
@@ -55,7 +55,7 @@ class AddAnnotatedClassesToCachePass implements \MonorepoBuilder20210726\Symfony
         $expanded = [];
         // Explicit classes declared in the patterns are returned directly
         foreach ($patterns as $key => $pattern) {
-            if ('\\' !== \substr($pattern, -1) && \false === \strpos($pattern, '*')) {
+            if (\substr_compare($pattern, '\\', -\strlen('\\')) !== 0 && \strpos($pattern, '*') === \false) {
                 unset($patterns[$key]);
                 $expanded[] = \ltrim($pattern, '\\');
             }
@@ -77,10 +77,10 @@ class AddAnnotatedClassesToCachePass implements \MonorepoBuilder20210726\Symfony
             if (!\is_array($function)) {
                 continue;
             }
-            if ($function[0] instanceof \MonorepoBuilder20210726\Symfony\Component\ErrorHandler\DebugClassLoader || $function[0] instanceof \MonorepoBuilder20210726\Symfony\Component\Debug\DebugClassLoader) {
+            if ($function[0] instanceof \MonorepoBuilder20210727\Symfony\Component\ErrorHandler\DebugClassLoader || $function[0] instanceof \MonorepoBuilder20210727\Symfony\Component\Debug\DebugClassLoader) {
                 $function = $function[0]->getClassLoader();
             }
-            if (\is_array($function) && $function[0] instanceof \MonorepoBuilder20210726\Composer\Autoload\ClassLoader) {
+            if (\is_array($function) && $function[0] instanceof \MonorepoBuilder20210727\Composer\Autoload\ClassLoader) {
                 $classes += \array_filter($function[0]->getClassMap());
             }
         }
@@ -104,9 +104,9 @@ class AddAnnotatedClassesToCachePass implements \MonorepoBuilder20210726\Symfony
     }
     private function matchAnyRegexps(string $class, array $regexps) : bool
     {
-        $isTest = \false !== \strpos($class, 'Test');
+        $isTest = \strpos($class, 'Test') !== \false;
         foreach ($regexps as $regex) {
-            if ($isTest && \false === \strpos($regex, 'Test')) {
+            if ($isTest && \strpos($regex, 'Test') === \false) {
                 continue;
             }
             if (\preg_match($regex, '\\' . $class)) {

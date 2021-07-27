@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210726\Symfony\Component\Config\Resource;
+namespace MonorepoBuilder20210727\Symfony\Component\Config\Resource;
 
 /**
  * ClassExistenceResource represents a class existence.
@@ -20,7 +20,7 @@ namespace MonorepoBuilder20210726\Symfony\Component\Config\Resource;
  *
  * @final
  */
-class ClassExistenceResource implements \MonorepoBuilder20210726\Symfony\Component\Config\Resource\SelfCheckingResourceInterface
+class ClassExistenceResource implements \MonorepoBuilder20210727\Symfony\Component\Config\Resource\SelfCheckingResourceInterface
 {
     private $resource;
     private $exists;
@@ -38,9 +38,6 @@ class ClassExistenceResource implements \MonorepoBuilder20210726\Symfony\Compone
             $this->exists = [(bool) $exists, null];
         }
     }
-    /**
-     * {@inheritdoc}
-     */
     public function __toString() : string
     {
         return $this->resource;

@@ -8,19 +8,19 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210726\Symfony\Component\VarDumper\Caster;
+namespace MonorepoBuilder20210727\Symfony\Component\VarDumper\Caster;
 
 /**
  * Represents a file or a URL.
  *
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class LinkStub extends \MonorepoBuilder20210726\Symfony\Component\VarDumper\Caster\ConstStub
+class LinkStub extends \MonorepoBuilder20210727\Symfony\Component\VarDumper\Caster\ConstStub
 {
     public $inVendor = \false;
     private static $vendorRoots;
     private static $composerRoots;
-    public function __construct($label, int $line = 0, $href = null)
+    public function __construct(string $label, int $line = 0, string $href = null)
     {
         $this->value = $label;
         if (null === $href) {
@@ -29,12 +29,12 @@ class LinkStub extends \MonorepoBuilder20210726\Symfony\Component\VarDumper\Cast
         if (!\is_string($href)) {
             return;
         }
-        if (0 === \strpos($href, 'file://')) {
+        if (\strncmp($href, 'file://', \strlen('file://')) === 0) {
             if ($href === $label) {
                 $label = \substr($label, 7);
             }
             $href = \substr($href, 7);
-        } elseif (\false !== \strpos($href, '://')) {
+        } elseif (\strpos($href, '://') !== \false) {
             $this->attr['href'] = $href;
             return;
         }
@@ -62,7 +62,7 @@ class LinkStub extends \MonorepoBuilder20210726\Symfony\Component\VarDumper\Cast
         if (null === self::$vendorRoots) {
             self::$vendorRoots = [];
             foreach (\get_declared_classes() as $class) {
-                if ('C' === $class[0] && 0 === \strpos($class, 'ComposerAutoloaderInit')) {
+                if ('C' === $class[0] && \strncmp($class, 'ComposerAutoloaderInit', \strlen('ComposerAutoloaderInit')) === 0) {
                     $r = new \ReflectionClass($class);
                     $v = \dirname($r->getFileName(), 2);
                     if (\is_file($v . '/composer/installed.json')) {
@@ -76,7 +76,7 @@ class LinkStub extends \MonorepoBuilder20210726\Symfony\Component\VarDumper\Cast
             return self::$composerRoots[$dir];
         }
         foreach (self::$vendorRoots as $root) {
-            if ($inVendor = 0 === \strpos($file, $root)) {
+            if ($inVendor = \strncmp($file, $root, \strlen($root)) === 0) {
                 return $root;
             }
         }

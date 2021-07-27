@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210726\Symfony\Component\ErrorHandler;
+namespace MonorepoBuilder20210727\Symfony\Component\ErrorHandler;
 
-use MonorepoBuilder20210726\Psr\Log\AbstractLogger;
+use MonorepoBuilder20210727\Psr\Log\AbstractLogger;
 /**
  * A buffering logger that stacks logs for later.
  *
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class BufferingLogger extends \MonorepoBuilder20210726\Psr\Log\AbstractLogger
+class BufferingLogger extends \MonorepoBuilder20210727\Psr\Log\AbstractLogger
 {
     private $logs = [];
     /**
@@ -32,6 +32,9 @@ class BufferingLogger extends \MonorepoBuilder20210726\Psr\Log\AbstractLogger
         $this->logs = [];
         return $logs;
     }
+    /**
+     * @return array
+     */
     public function __sleep()
     {
         throw new \BadMethodCallException('Cannot serialize ' . __CLASS__);

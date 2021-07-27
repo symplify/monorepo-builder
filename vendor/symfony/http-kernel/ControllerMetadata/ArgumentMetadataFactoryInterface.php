@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210726\Symfony\Component\HttpKernel\ControllerMetadata;
+namespace MonorepoBuilder20210727\Symfony\Component\HttpKernel\ControllerMetadata;
 
 /**
  * Builds method argument data.
@@ -18,7 +18,7 @@ namespace MonorepoBuilder20210726\Symfony\Component\HttpKernel\ControllerMetadat
 interface ArgumentMetadataFactoryInterface
 {
     /**
-     * @param mixed $controller The controller to resolve the arguments for
+     * @param string|object|array $controller The controller to resolve the arguments for
      *
      * @return ArgumentMetadata[]
      */

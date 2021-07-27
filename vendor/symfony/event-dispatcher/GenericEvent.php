@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210726\Symfony\Component\EventDispatcher;
+namespace MonorepoBuilder20210727\Symfony\Component\EventDispatcher;
 
-use MonorepoBuilder20210726\Symfony\Contracts\EventDispatcher\Event;
+use MonorepoBuilder20210727\Symfony\Contracts\EventDispatcher\Event;
 /**
  * Event encapsulation class.
  *
@@ -18,7 +18,7 @@ use MonorepoBuilder20210726\Symfony\Contracts\EventDispatcher\Event;
  *
  * @author Drak <drak@zikula.org>
  */
-class GenericEvent extends \MonorepoBuilder20210726\Symfony\Contracts\EventDispatcher\Event implements \ArrayAccess, \IteratorAggregate
+class GenericEvent extends \MonorepoBuilder20210727\Symfony\Contracts\EventDispatcher\Event implements \ArrayAccess, \IteratorAggregate
 {
     protected $subject;
     protected $arguments;
@@ -118,6 +118,8 @@ class GenericEvent extends \MonorepoBuilder20210726\Symfony\Contracts\EventDispa
      *
      * @param string $key   Array key to set
      * @param mixed  $value Value
+     *
+     * @return void
      */
     public function offsetSet($key, $value)
     {
@@ -127,6 +129,8 @@ class GenericEvent extends \MonorepoBuilder20210726\Symfony\Contracts\EventDispa
      * ArrayAccess for unset argument.
      *
      * @param string $key Array key
+     *
+     * @return void
      */
     public function offsetUnset($key)
     {

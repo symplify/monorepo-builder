@@ -8,19 +8,19 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210726\Symfony\Component\HttpKernel\Bundle;
+namespace MonorepoBuilder20210727\Symfony\Component\HttpKernel\Bundle;
 
-use MonorepoBuilder20210726\Symfony\Component\Console\Application;
-use MonorepoBuilder20210726\Symfony\Component\DependencyInjection\Container;
-use MonorepoBuilder20210726\Symfony\Component\DependencyInjection\ContainerAwareTrait;
-use MonorepoBuilder20210726\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder20210726\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
+use MonorepoBuilder20210727\Symfony\Component\Console\Application;
+use MonorepoBuilder20210727\Symfony\Component\DependencyInjection\Container;
+use MonorepoBuilder20210727\Symfony\Component\DependencyInjection\ContainerAwareTrait;
+use MonorepoBuilder20210727\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder20210727\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 /**
  * An implementation of BundleInterface that adds a few conventions for DependencyInjection extensions.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-abstract class Bundle implements \MonorepoBuilder20210726\Symfony\Component\HttpKernel\Bundle\BundleInterface
+abstract class Bundle implements \MonorepoBuilder20210727\Symfony\Component\HttpKernel\Bundle\BundleInterface
 {
     use ContainerAwareTrait;
     protected $name;
@@ -61,12 +61,12 @@ abstract class Bundle implements \MonorepoBuilder20210726\Symfony\Component\Http
         if (null === $this->extension) {
             $extension = $this->createContainerExtension();
             if (null !== $extension) {
-                if (!$extension instanceof \MonorepoBuilder20210726\Symfony\Component\DependencyInjection\Extension\ExtensionInterface) {
+                if (!$extension instanceof \MonorepoBuilder20210727\Symfony\Component\DependencyInjection\Extension\ExtensionInterface) {
                     throw new \LogicException(\sprintf('Extension "%s" must implement Symfony\\Component\\DependencyInjection\\Extension\\ExtensionInterface.', \get_debug_type($extension)));
                 }
                 // check naming convention
                 $basename = \preg_replace('/Bundle$/', '', $this->getName());
-                $expectedAlias = \MonorepoBuilder20210726\Symfony\Component\DependencyInjection\Container::underscore($basename);
+                $expectedAlias = \MonorepoBuilder20210727\Symfony\Component\DependencyInjection\Container::underscore($basename);
                 if ($expectedAlias != $extension->getAlias()) {
                     throw new \LogicException(\sprintf('Users will expect the alias of the default extension of a bundle to be the underscored version of the bundle name ("%s"). You can override "Bundle::getContainerExtension()" if you want to use "%s" or another alias.', $expectedAlias, $extension->getAlias()));
                 }
