@@ -8,17 +8,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210727\Symfony\Component\HttpKernel\Controller\ArgumentResolver;
+namespace MonorepoBuilder20210728\Symfony\Component\HttpKernel\Controller\ArgumentResolver;
 
-use MonorepoBuilder20210727\Symfony\Component\HttpFoundation\Request;
-use MonorepoBuilder20210727\Symfony\Component\HttpKernel\Controller\ArgumentValueResolverInterface;
-use MonorepoBuilder20210727\Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata;
+use MonorepoBuilder20210728\Symfony\Component\HttpFoundation\Request;
+use MonorepoBuilder20210728\Symfony\Component\HttpKernel\Controller\ArgumentValueResolverInterface;
+use MonorepoBuilder20210728\Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata;
 /**
  * Yields a variadic argument's values from the request attributes.
  *
  * @author Iltar van der Berg <kjarli@gmail.com>
  */
-final class VariadicValueResolver implements \MonorepoBuilder20210727\Symfony\Component\HttpKernel\Controller\ArgumentValueResolverInterface
+final class VariadicValueResolver implements \MonorepoBuilder20210728\Symfony\Component\HttpKernel\Controller\ArgumentValueResolverInterface
 {
     /**
      * {@inheritdoc}

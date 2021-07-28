@@ -31,7 +31,7 @@
     },
     "autoload": {
         "psr-4": {
-            "MonorepoBuilder20210727\\Symfony\\Contracts\\Service\\": ""
+            "MonorepoBuilder20210728\\Symfony\\Contracts\\Service\\": ""
         }
     },
     "minimum-stability": "dev",
