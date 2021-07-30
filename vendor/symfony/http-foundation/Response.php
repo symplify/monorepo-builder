@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210728\Symfony\Component\HttpFoundation;
+namespace MonorepoBuilder20210730\Symfony\Component\HttpFoundation;
 
 // Help opcache.preload discover always-needed symbols
-\class_exists(\MonorepoBuilder20210728\Symfony\Component\HttpFoundation\ResponseHeaderBag::class);
+\class_exists(\MonorepoBuilder20210730\Symfony\Component\HttpFoundation\ResponseHeaderBag::class);
 /**
  * Response represents an HTTP response.
  *
@@ -231,7 +231,7 @@ class Response
      */
     public function __construct(?string $content = '', int $status = 200, array $headers = [])
     {
-        $this->headers = new \MonorepoBuilder20210728\Symfony\Component\HttpFoundation\ResponseHeaderBag($headers);
+        $this->headers = new \MonorepoBuilder20210730\Symfony\Component\HttpFoundation\ResponseHeaderBag($headers);
         $this->setContent($content);
         $this->setStatusCode($status);
         $this->setProtocolVersion('1.0');
@@ -331,7 +331,7 @@ class Response
             $this->setProtocolVersion('1.1');
         }
         // Check if we need to send extra expire info headers
-        if ('1.0' == $this->getProtocolVersion() && \strpos($headers->get('Cache-Control'), 'no-cache') !== \false) {
+        if ('1.0' == $this->getProtocolVersion() && \strpos($headers->get('Cache-Control', ''), 'no-cache') !== \false) {
             $headers->set('pragma', 'no-cache');
             $headers->set('expires', -1);
         }

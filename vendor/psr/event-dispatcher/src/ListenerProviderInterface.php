@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20210728\Psr\EventDispatcher;
+namespace MonorepoBuilder20210730\Psr\EventDispatcher;
 
 /**
  * Mapper from an event to the listeners that are applicable to that event.

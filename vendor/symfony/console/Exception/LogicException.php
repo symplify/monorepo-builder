@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210728\Symfony\Component\Console\Exception;
+namespace MonorepoBuilder20210730\Symfony\Component\Console\Exception;
 
 /**
  * @author Jérôme Tamarelle <jerome@tamarelle.net>
  */
-class LogicException extends \LogicException implements \MonorepoBuilder20210728\Symfony\Component\Console\Exception\ExceptionInterface
+class LogicException extends \LogicException implements \MonorepoBuilder20210730\Symfony\Component\Console\Exception\ExceptionInterface
 {
 }

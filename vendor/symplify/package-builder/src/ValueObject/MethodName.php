@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20210728\Symplify\PackageBuilder\ValueObject;
+namespace MonorepoBuilder20210730\Symplify\PackageBuilder\ValueObject;
 
 final class MethodName
 {
