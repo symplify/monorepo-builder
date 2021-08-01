@@ -1,17 +1,17 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20210730\Symplify\PackageBuilder\Console\Command;
+namespace MonorepoBuilder20210801\Symplify\PackageBuilder\Console\Command;
 
-use MonorepoBuilder20210730\Symfony\Component\Console\Command\Command;
-use MonorepoBuilder20210730\Symfony\Component\Console\Input\InputOption;
-use MonorepoBuilder20210730\Symfony\Component\Console\Style\SymfonyStyle;
-use MonorepoBuilder20210730\Symfony\Contracts\Service\Attribute\Required;
-use MonorepoBuilder20210730\Symplify\PackageBuilder\ValueObject\Option;
-use MonorepoBuilder20210730\Symplify\SmartFileSystem\FileSystemGuard;
-use MonorepoBuilder20210730\Symplify\SmartFileSystem\Finder\SmartFinder;
-use MonorepoBuilder20210730\Symplify\SmartFileSystem\SmartFileSystem;
-abstract class AbstractSymplifyCommand extends \MonorepoBuilder20210730\Symfony\Component\Console\Command\Command
+use MonorepoBuilder20210801\Symfony\Component\Console\Command\Command;
+use MonorepoBuilder20210801\Symfony\Component\Console\Input\InputOption;
+use MonorepoBuilder20210801\Symfony\Component\Console\Style\SymfonyStyle;
+use MonorepoBuilder20210801\Symfony\Contracts\Service\Attribute\Required;
+use MonorepoBuilder20210801\Symplify\PackageBuilder\ValueObject\Option;
+use MonorepoBuilder20210801\Symplify\SmartFileSystem\FileSystemGuard;
+use MonorepoBuilder20210801\Symplify\SmartFileSystem\Finder\SmartFinder;
+use MonorepoBuilder20210801\Symplify\SmartFileSystem\SmartFileSystem;
+abstract class AbstractSymplifyCommand extends \MonorepoBuilder20210801\Symfony\Component\Console\Command\Command
 {
     /**
      * @var \Symfony\Component\Console\Style\SymfonyStyle
@@ -32,12 +32,12 @@ abstract class AbstractSymplifyCommand extends \MonorepoBuilder20210730\Symfony\
     public function __construct()
     {
         parent::__construct();
-        $this->addOption(\MonorepoBuilder20210730\Symplify\PackageBuilder\ValueObject\Option::CONFIG, 'c', \MonorepoBuilder20210730\Symfony\Component\Console\Input\InputOption::VALUE_REQUIRED, 'Path to config file');
+        $this->addOption(\MonorepoBuilder20210801\Symplify\PackageBuilder\ValueObject\Option::CONFIG, 'c', \MonorepoBuilder20210801\Symfony\Component\Console\Input\InputOption::VALUE_REQUIRED, 'Path to config file');
     }
     /**
      * @required
      */
-    public function autowireAbstractSymplifyCommand(\MonorepoBuilder20210730\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \MonorepoBuilder20210730\Symplify\SmartFileSystem\SmartFileSystem $smartFileSystem, \MonorepoBuilder20210730\Symplify\SmartFileSystem\Finder\SmartFinder $smartFinder, \MonorepoBuilder20210730\Symplify\SmartFileSystem\FileSystemGuard $fileSystemGuard) : void
+    public function autowireAbstractSymplifyCommand(\MonorepoBuilder20210801\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \MonorepoBuilder20210801\Symplify\SmartFileSystem\SmartFileSystem $smartFileSystem, \MonorepoBuilder20210801\Symplify\SmartFileSystem\Finder\SmartFinder $smartFinder, \MonorepoBuilder20210801\Symplify\SmartFileSystem\FileSystemGuard $fileSystemGuard) : void
     {
         $this->symfonyStyle = $symfonyStyle;
         $this->smartFileSystem = $smartFileSystem;

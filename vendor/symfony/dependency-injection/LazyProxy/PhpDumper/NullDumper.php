@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210730\Symfony\Component\DependencyInjection\LazyProxy\PhpDumper;
+namespace MonorepoBuilder20210801\Symfony\Component\DependencyInjection\LazyProxy\PhpDumper;
 
-use MonorepoBuilder20210730\Symfony\Component\DependencyInjection\Definition;
+use MonorepoBuilder20210801\Symfony\Component\DependencyInjection\Definition;
 /**
  * Null dumper, negates any proxy code generation for any given service definition.
  *
@@ -18,7 +18,7 @@ use MonorepoBuilder20210730\Symfony\Component\DependencyInjection\Definition;
  *
  * @final
  */
-class NullDumper implements \MonorepoBuilder20210730\Symfony\Component\DependencyInjection\LazyProxy\PhpDumper\DumperInterface
+class NullDumper implements \MonorepoBuilder20210801\Symfony\Component\DependencyInjection\LazyProxy\PhpDumper\DumperInterface
 {
     /**
      * {@inheritdoc}

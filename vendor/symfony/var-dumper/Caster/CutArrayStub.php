@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210730\Symfony\Component\VarDumper\Caster;
+namespace MonorepoBuilder20210801\Symfony\Component\VarDumper\Caster;
 
 /**
  * Represents a cut array.
  *
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class CutArrayStub extends \MonorepoBuilder20210730\Symfony\Component\VarDumper\Caster\CutStub
+class CutArrayStub extends \MonorepoBuilder20210801\Symfony\Component\VarDumper\Caster\CutStub
 {
     public $preservedSubset;
     public function __construct(array $value, array $preservedKeys)

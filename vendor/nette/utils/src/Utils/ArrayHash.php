@@ -5,9 +5,9 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace MonorepoBuilder20210730\Nette\Utils;
+namespace MonorepoBuilder20210801\Nette\Utils;
 
-use MonorepoBuilder20210730\Nette;
+use MonorepoBuilder20210801\Nette;
 /**
  * Provides objects to work as array.
  */
@@ -50,7 +50,7 @@ class ArrayHash extends \stdClass implements \ArrayAccess, \Countable, \Iterator
     {
         if (!\is_scalar($key)) {
             // prevents null
-            throw new \MonorepoBuilder20210730\Nette\InvalidArgumentException(\sprintf('Key must be either a string or an integer, %s given.', \gettype($key)));
+            throw new \MonorepoBuilder20210801\Nette\InvalidArgumentException(\sprintf('Key must be either a string or an integer, %s given.', \gettype($key)));
         }
         $this->{$key} = $value;
     }

@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210730\Symfony\Component\HttpKernel\DependencyInjection;
+namespace MonorepoBuilder20210801\Symfony\Component\HttpKernel\DependencyInjection;
 
-use MonorepoBuilder20210730\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder20210801\Symfony\Component\DependencyInjection\ContainerBuilder;
 /**
  * This extension sub-class provides first-class integration with the
  * Config/Definition Component.
@@ -23,7 +23,7 @@ use MonorepoBuilder20210730\Symfony\Component\DependencyInjection\ContainerBuild
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-abstract class ConfigurableExtension extends \MonorepoBuilder20210730\Symfony\Component\HttpKernel\DependencyInjection\Extension
+abstract class ConfigurableExtension extends \MonorepoBuilder20210801\Symfony\Component\HttpKernel\DependencyInjection\Extension
 {
     /**
      * {@inheritdoc}

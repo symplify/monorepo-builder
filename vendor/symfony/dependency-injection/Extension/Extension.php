@@ -8,21 +8,21 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210730\Symfony\Component\DependencyInjection\Extension;
+namespace MonorepoBuilder20210801\Symfony\Component\DependencyInjection\Extension;
 
-use MonorepoBuilder20210730\Symfony\Component\Config\Definition\ConfigurationInterface;
-use MonorepoBuilder20210730\Symfony\Component\Config\Definition\Processor;
-use MonorepoBuilder20210730\Symfony\Component\DependencyInjection\Container;
-use MonorepoBuilder20210730\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder20210730\Symfony\Component\DependencyInjection\Exception\BadMethodCallException;
-use MonorepoBuilder20210730\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use MonorepoBuilder20210730\Symfony\Component\DependencyInjection\Exception\LogicException;
+use MonorepoBuilder20210801\Symfony\Component\Config\Definition\ConfigurationInterface;
+use MonorepoBuilder20210801\Symfony\Component\Config\Definition\Processor;
+use MonorepoBuilder20210801\Symfony\Component\DependencyInjection\Container;
+use MonorepoBuilder20210801\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder20210801\Symfony\Component\DependencyInjection\Exception\BadMethodCallException;
+use MonorepoBuilder20210801\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use MonorepoBuilder20210801\Symfony\Component\DependencyInjection\Exception\LogicException;
 /**
  * Provides useful features shared by many extensions.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-abstract class Extension implements \MonorepoBuilder20210730\Symfony\Component\DependencyInjection\Extension\ExtensionInterface, \MonorepoBuilder20210730\Symfony\Component\DependencyInjection\Extension\ConfigurationExtensionInterface
+abstract class Extension implements \MonorepoBuilder20210801\Symfony\Component\DependencyInjection\Extension\ExtensionInterface, \MonorepoBuilder20210801\Symfony\Component\DependencyInjection\Extension\ConfigurationExtensionInterface
 {
     private $processedConfigs = [];
     /**
@@ -63,10 +63,10 @@ abstract class Extension implements \MonorepoBuilder20210730\Symfony\Component\D
     {
         $className = static::class;
         if (\substr_compare($className, 'Extension', -\strlen('Extension')) !== 0) {
-            throw new \MonorepoBuilder20210730\Symfony\Component\DependencyInjection\Exception\BadMethodCallException('This extension does not follow the naming convention; you must overwrite the getAlias() method.');
+            throw new \MonorepoBuilder20210801\Symfony\Component\DependencyInjection\Exception\BadMethodCallException('This extension does not follow the naming convention; you must overwrite the getAlias() method.');
         }
         $classBaseName = \substr(\strrchr($className, '\\'), 1, -9);
-        return \MonorepoBuilder20210730\Symfony\Component\DependencyInjection\Container::underscore($classBaseName);
+        return \MonorepoBuilder20210801\Symfony\Component\DependencyInjection\Container::underscore($classBaseName);
     }
     /**
      * {@inheritdoc}
@@ -85,8 +85,8 @@ abstract class Extension implements \MonorepoBuilder20210730\Symfony\Component\D
         if (!$class) {
             return null;
         }
-        if (!$class->implementsInterface(\MonorepoBuilder20210730\Symfony\Component\Config\Definition\ConfigurationInterface::class)) {
-            throw new \MonorepoBuilder20210730\Symfony\Component\DependencyInjection\Exception\LogicException(\sprintf('The extension configuration class "%s" must implement "%s".', $class->getName(), \MonorepoBuilder20210730\Symfony\Component\Config\Definition\ConfigurationInterface::class));
+        if (!$class->implementsInterface(\MonorepoBuilder20210801\Symfony\Component\Config\Definition\ConfigurationInterface::class)) {
+            throw new \MonorepoBuilder20210801\Symfony\Component\DependencyInjection\Exception\LogicException(\sprintf('The extension configuration class "%s" must implement "%s".', $class->getName(), \MonorepoBuilder20210801\Symfony\Component\Config\Definition\ConfigurationInterface::class));
         }
         if (!($constructor = $class->getConstructor()) || !$constructor->getNumberOfRequiredParameters()) {
             return $class->newInstance();
@@ -99,7 +99,7 @@ abstract class Extension implements \MonorepoBuilder20210730\Symfony\Component\D
      */
     protected final function processConfiguration($configuration, $configs) : array
     {
-        $processor = new \MonorepoBuilder20210730\Symfony\Component\Config\Definition\Processor();
+        $processor = new \MonorepoBuilder20210801\Symfony\Component\Config\Definition\Processor();
         return $this->processedConfigs[] = $processor->processConfiguration($configuration, $configs);
     }
     /**
@@ -123,7 +123,7 @@ abstract class Extension implements \MonorepoBuilder20210730\Symfony\Component\D
     protected function isConfigEnabled($container, $config)
     {
         if (!\array_key_exists('enabled', $config)) {
-            throw new \MonorepoBuilder20210730\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException("The config array has no 'enabled' key.");
+            throw new \MonorepoBuilder20210801\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException("The config array has no 'enabled' key.");
         }
         return (bool) $container->getParameterBag()->resolveValue($config['enabled']);
     }

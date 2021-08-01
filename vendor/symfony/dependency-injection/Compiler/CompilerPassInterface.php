@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210730\Symfony\Component\DependencyInjection\Compiler;
+namespace MonorepoBuilder20210801\Symfony\Component\DependencyInjection\Compiler;
 
-use MonorepoBuilder20210730\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder20210801\Symfony\Component\DependencyInjection\ContainerBuilder;
 /**
  * Interface that must be implemented by compilation passes.
  *
