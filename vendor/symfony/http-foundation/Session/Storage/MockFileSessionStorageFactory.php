@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210801\Symfony\Component\HttpFoundation\Session\Storage;
+namespace MonorepoBuilder20210802\Symfony\Component\HttpFoundation\Session\Storage;
 
-use MonorepoBuilder20210801\Symfony\Component\HttpFoundation\Request;
+use MonorepoBuilder20210802\Symfony\Component\HttpFoundation\Request;
 // Help opcache.preload discover always-needed symbols
-\class_exists(\MonorepoBuilder20210801\Symfony\Component\HttpFoundation\Session\Storage\MockFileSessionStorage::class);
+\class_exists(\MonorepoBuilder20210802\Symfony\Component\HttpFoundation\Session\Storage\MockFileSessionStorage::class);
 /**
  * @author Jérémy Derussé <jeremy@derusse.com>
  */
-class MockFileSessionStorageFactory implements \MonorepoBuilder20210801\Symfony\Component\HttpFoundation\Session\Storage\SessionStorageFactoryInterface
+class MockFileSessionStorageFactory implements \MonorepoBuilder20210802\Symfony\Component\HttpFoundation\Session\Storage\SessionStorageFactoryInterface
 {
     private $savePath;
     private $name;
@@ -24,7 +24,7 @@ class MockFileSessionStorageFactory implements \MonorepoBuilder20210801\Symfony\
     /**
      * @see MockFileSessionStorage constructor.
      */
-    public function __construct(string $savePath = null, string $name = 'MOCKSESSID', \MonorepoBuilder20210801\Symfony\Component\HttpFoundation\Session\Storage\MetadataBag $metaBag = null)
+    public function __construct(string $savePath = null, string $name = 'MOCKSESSID', \MonorepoBuilder20210802\Symfony\Component\HttpFoundation\Session\Storage\MetadataBag $metaBag = null)
     {
         $this->savePath = $savePath;
         $this->name = $name;
@@ -33,8 +33,8 @@ class MockFileSessionStorageFactory implements \MonorepoBuilder20210801\Symfony\
     /**
      * @param \Symfony\Component\HttpFoundation\Request|null $request
      */
-    public function createStorage($request) : \MonorepoBuilder20210801\Symfony\Component\HttpFoundation\Session\Storage\SessionStorageInterface
+    public function createStorage($request) : \MonorepoBuilder20210802\Symfony\Component\HttpFoundation\Session\Storage\SessionStorageInterface
     {
-        return new \MonorepoBuilder20210801\Symfony\Component\HttpFoundation\Session\Storage\MockFileSessionStorage($this->savePath, $this->name, $this->metaBag);
+        return new \MonorepoBuilder20210802\Symfony\Component\HttpFoundation\Session\Storage\MockFileSessionStorage($this->savePath, $this->name, $this->metaBag);
     }
 }

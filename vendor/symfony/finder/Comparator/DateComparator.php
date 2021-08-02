@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210801\Symfony\Component\Finder\Comparator;
+namespace MonorepoBuilder20210802\Symfony\Component\Finder\Comparator;
 
 /**
  * DateCompare compiles date comparisons.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class DateComparator extends \MonorepoBuilder20210801\Symfony\Component\Finder\Comparator\Comparator
+class DateComparator extends \MonorepoBuilder20210802\Symfony\Component\Finder\Comparator\Comparator
 {
     /**
      * @param string $test A comparison string

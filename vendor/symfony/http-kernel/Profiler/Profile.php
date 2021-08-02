@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210801\Symfony\Component\HttpKernel\Profiler;
+namespace MonorepoBuilder20210802\Symfony\Component\HttpKernel\Profiler;
 
-use MonorepoBuilder20210801\Symfony\Component\HttpKernel\DataCollector\DataCollectorInterface;
+use MonorepoBuilder20210802\Symfony\Component\HttpKernel\DataCollector\DataCollectorInterface;
 /**
  * Profile.
  *

@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210801\Symfony\Component\HttpKernel\DataCollector;
+namespace MonorepoBuilder20210802\Symfony\Component\HttpKernel\DataCollector;
 
-use MonorepoBuilder20210801\Symfony\Component\HttpFoundation\Request;
-use MonorepoBuilder20210801\Symfony\Component\HttpFoundation\Response;
+use MonorepoBuilder20210802\Symfony\Component\HttpFoundation\Request;
+use MonorepoBuilder20210802\Symfony\Component\HttpFoundation\Response;
 /**
  * AjaxDataCollector.
  *
@@ -19,7 +19,7 @@ use MonorepoBuilder20210801\Symfony\Component\HttpFoundation\Response;
  *
  * @final
  */
-class AjaxDataCollector extends \MonorepoBuilder20210801\Symfony\Component\HttpKernel\DataCollector\DataCollector
+class AjaxDataCollector extends \MonorepoBuilder20210802\Symfony\Component\HttpKernel\DataCollector\DataCollector
 {
     /**
      * @param \Symfony\Component\HttpFoundation\Request $request
