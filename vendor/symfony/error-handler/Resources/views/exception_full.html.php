@@ -1,5 +1,5 @@
 <!-- <?php 
-namespace MonorepoBuilder20210802;
+namespace MonorepoBuilder20210803;
 
 echo $_message = \sprintf('%s (%d %s)', $exceptionMessage, $statusCode, $statusText);
 ?> -->
@@ -32,7 +32,7 @@ echo $this->include('assets/css/exception_full.css');
         </script>
 
         <?php 
-if (\class_exists(\MonorepoBuilder20210802\Symfony\Component\HttpKernel\Kernel::class)) {
+if (\class_exists(\MonorepoBuilder20210803\Symfony\Component\HttpKernel\Kernel::class)) {
     ?>
             <header>
                 <div class="container">
@@ -42,7 +42,7 @@ if (\class_exists(\MonorepoBuilder20210802\Symfony\Component\HttpKernel\Kernel::
 
                     <div class="help-link">
                         <a href="https://symfony.com/doc/<?php 
-    echo \MonorepoBuilder20210802\Symfony\Component\HttpKernel\Kernel::VERSION;
+    echo \MonorepoBuilder20210803\Symfony\Component\HttpKernel\Kernel::VERSION;
     ?>/index.html">
                             <span class="icon"><?php 
     echo $this->include('assets/images/icon-book.svg');
