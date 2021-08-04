@@ -25,12 +25,12 @@ final class ProcessRunner
     /**
      * @param string|string[] $commandLine
      */
-    public function run($commandLine) : string
+    public function run($commandLine, ?string $cwd = null) : string
     {
         if ($this->symfonyStyle->isVerbose()) {
             $this->symfonyStyle->note('Running process: ' . $this->normalizeToString($commandLine));
         }
-        $process = $this->createProcess($commandLine);
+        $process = $this->createProcess($commandLine, $cwd);
         $process->run();
         $this->reportResult($process);
         return $process->getOutput();
@@ -48,13 +48,13 @@ final class ProcessRunner
     /**
      * @param string|string[] $commandLine
      */
-    private function createProcess($commandLine) : \MonorepoBuilder20210804\Symfony\Component\Process\Process
+    private function createProcess($commandLine, ?string $cwd) : \MonorepoBuilder20210804\Symfony\Component\Process\Process
     {
         // @since Symfony 4.2: https://github.com/symfony/symfony/pull/27821
         if (\is_string($commandLine) && \method_exists(\MonorepoBuilder20210804\Symfony\Component\Process\Process::class, 'fromShellCommandline')) {
-            return \MonorepoBuilder20210804\Symfony\Component\Process\Process::fromShellCommandline($commandLine, null, null, null, self::TIMEOUT);
+            return \MonorepoBuilder20210804\Symfony\Component\Process\Process::fromShellCommandline($commandLine, $cwd, null, null, self::TIMEOUT);
         }
-        return new \MonorepoBuilder20210804\Symfony\Component\Process\Process($commandLine, null, null, null, self::TIMEOUT);
+        return new \MonorepoBuilder20210804\Symfony\Component\Process\Process($commandLine, $cwd, null, null, self::TIMEOUT);
     }
     private function reportResult(\MonorepoBuilder20210804\Symfony\Component\Process\Process $process) : void
     {
