@@ -6,7 +6,7 @@ namespace Symplify\MonorepoBuilder\Merge\Guard;
 use Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider;
 use Symplify\MonorepoBuilder\Validator\ConflictingPackageVersionsReporter;
 use Symplify\MonorepoBuilder\VersionValidator;
-use MonorepoBuilder20210803\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
+use MonorepoBuilder20210804\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
 final class ConflictingVersionsGuard
 {
     /**
@@ -34,6 +34,6 @@ final class ConflictingVersionsGuard
             return;
         }
         $this->conflictingPackageVersionsReporter->report($conflictingPackageVersions);
-        throw new \MonorepoBuilder20210803\Symplify\SymplifyKernel\Exception\ShouldNotHappenException('Fix conflicting package version first');
+        throw new \MonorepoBuilder20210804\Symplify\SymplifyKernel\Exception\ShouldNotHappenException('Fix conflicting package version first');
     }
 }

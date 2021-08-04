@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20210803\Symplify\ComposerJsonManipulator\ValueObject;
+namespace MonorepoBuilder20210804\Symplify\ComposerJsonManipulator\ValueObject;
 
 /**
  * @api
@@ -100,7 +100,7 @@ final class ComposerJsonSection
     /**
      * @var string
      */
-    public const SUGGESTS = 'suggests';
+    public const SUGGEST = 'suggest';
     /**
      * @var string
      */

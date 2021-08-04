@@ -3,11 +3,11 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Testing\ComposerJson;
 
-use MonorepoBuilder20210803\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
-use MonorepoBuilder20210803\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
+use MonorepoBuilder20210804\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
+use MonorepoBuilder20210804\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
 use Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider;
 use Symplify\MonorepoBuilder\Testing\PathResolver\PackagePathResolver;
-use MonorepoBuilder20210803\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder20210804\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\MonorepoBuilder\Tests\Testing\ComposerJson\ComposerJsonSymlinkerTest
  */
@@ -37,7 +37,7 @@ final class ComposerJsonSymlinker
      * @var \Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager
      */
     private $jsonFileManager;
-    public function __construct(\Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider $composerJsonProvider, \Symplify\MonorepoBuilder\Testing\PathResolver\PackagePathResolver $packagePathResolver, \MonorepoBuilder20210803\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager $jsonFileManager)
+    public function __construct(\Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider $composerJsonProvider, \Symplify\MonorepoBuilder\Testing\PathResolver\PackagePathResolver $packagePathResolver, \MonorepoBuilder20210804\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager $jsonFileManager)
     {
         $this->composerJsonProvider = $composerJsonProvider;
         $this->packagePathResolver = $packagePathResolver;
@@ -51,7 +51,7 @@ final class ComposerJsonSymlinker
      * @param string[] $packageNames
      * @return mixed[]
      */
-    public function decoratePackageComposerJsonWithPackageSymlinks(\MonorepoBuilder20210803\Symplify\SmartFileSystem\SmartFileInfo $packageFileInfo, array $packageNames, \MonorepoBuilder20210803\Symplify\SmartFileSystem\SmartFileInfo $mainComposerJsonFileInfo, bool $symlink) : array
+    public function decoratePackageComposerJsonWithPackageSymlinks(\MonorepoBuilder20210804\Symplify\SmartFileSystem\SmartFileInfo $packageFileInfo, array $packageNames, \MonorepoBuilder20210804\Symplify\SmartFileSystem\SmartFileInfo $mainComposerJsonFileInfo, bool $symlink) : array
     {
         $relativePathFromTargetPackageToRoot = $this->packagePathResolver->resolveRelativeFolderPathToLocalPackage($mainComposerJsonFileInfo, $packageFileInfo);
         $packageComposerJson = $this->jsonFileManager->loadFromFileInfo($packageFileInfo);
@@ -61,10 +61,10 @@ final class ComposerJsonSymlinker
             $relativeDirectoryFromRootToLocalPackage = $this->packagePathResolver->resolveRelativeDirectoryToRoot($mainComposerJsonFileInfo, $usedPackageFileInfo);
             $relativePathToLocalPackage = $relativePathFromTargetPackageToRoot . $relativeDirectoryFromRootToLocalPackage;
             $repositoriesContent = [self::TYPE => 'path', self::URL => $relativePathToLocalPackage, self::OPTIONS => ['symlink' => $symlink]];
-            if (\array_key_exists(\MonorepoBuilder20210803\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REPOSITORIES, $packageComposerJson)) {
+            if (\array_key_exists(\MonorepoBuilder20210804\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REPOSITORIES, $packageComposerJson)) {
                 $packageComposerJson = $this->addRepositoryEntryToPackageComposerJson($packageComposerJson, $repositoriesContent);
             } else {
-                $packageComposerJson[\MonorepoBuilder20210803\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REPOSITORIES][] = $repositoriesContent;
+                $packageComposerJson[\MonorepoBuilder20210804\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REPOSITORIES][] = $repositoriesContent;
             }
         }
         return $packageComposerJson;
@@ -77,19 +77,19 @@ final class ComposerJsonSymlinker
     private function addRepositoryEntryToPackageComposerJson(array $packageComposerJson, array $repositoriesContent) : array
     {
         // First check if this entry already exists and, if so, replace it
-        foreach ($packageComposerJson[\MonorepoBuilder20210803\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REPOSITORIES] as $key => $repository) {
+        foreach ($packageComposerJson[\MonorepoBuilder20210804\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REPOSITORIES] as $key => $repository) {
             if ($this->isSamePackageEntry($repository, $repositoriesContent)) {
                 // Just override the "options"
                 if (isset($repositoriesContent[self::OPTIONS])) {
-                    $packageComposerJson[\MonorepoBuilder20210803\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REPOSITORIES][$key][self::OPTIONS] = $repositoriesContent[self::OPTIONS];
+                    $packageComposerJson[\MonorepoBuilder20210804\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REPOSITORIES][$key][self::OPTIONS] = $repositoriesContent[self::OPTIONS];
                 } else {
-                    unset($packageComposerJson[\MonorepoBuilder20210803\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REPOSITORIES][$key][self::OPTIONS]);
+                    unset($packageComposerJson[\MonorepoBuilder20210804\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REPOSITORIES][$key][self::OPTIONS]);
                 }
                 return $packageComposerJson;
             }
         }
         // Add the new entry
-        \array_unshift($packageComposerJson[\MonorepoBuilder20210803\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REPOSITORIES], $repositoriesContent);
+        \array_unshift($packageComposerJson[\MonorepoBuilder20210804\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REPOSITORIES], $repositoriesContent);
         return $packageComposerJson;
     }
     /**

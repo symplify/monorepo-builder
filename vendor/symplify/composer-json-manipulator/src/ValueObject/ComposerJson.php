@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20210803\Symplify\ComposerJsonManipulator\ValueObject;
+namespace MonorepoBuilder20210804\Symplify\ComposerJsonManipulator\ValueObject;
 
-use MonorepoBuilder20210803\Nette\Utils\Arrays;
-use MonorepoBuilder20210803\Nette\Utils\Strings;
-use MonorepoBuilder20210803\Symplify\ComposerJsonManipulator\Sorter\ComposerPackageSorter;
-use MonorepoBuilder20210803\Symplify\SmartFileSystem\SmartFileInfo;
-use MonorepoBuilder20210803\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
+use MonorepoBuilder20210804\Nette\Utils\Arrays;
+use MonorepoBuilder20210804\Nette\Utils\Strings;
+use MonorepoBuilder20210804\Symplify\ComposerJsonManipulator\Sorter\ComposerPackageSorter;
+use MonorepoBuilder20210804\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder20210804\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
 /**
  * @api
  * @see \Symplify\ComposerJsonManipulator\Tests\ValueObject\ComposerJsonTest
@@ -119,14 +119,18 @@ final class ComposerJson
      */
     private $scriptsDescriptions = [];
     /**
+     * @var array<string, string>
+     */
+    private $suggest = [];
+    /**
      * @var string|null
      */
     private $version;
     public function __construct()
     {
-        $this->composerPackageSorter = new \MonorepoBuilder20210803\Symplify\ComposerJsonManipulator\Sorter\ComposerPackageSorter();
+        $this->composerPackageSorter = new \MonorepoBuilder20210804\Symplify\ComposerJsonManipulator\Sorter\ComposerPackageSorter();
     }
-    public function setOriginalFileInfo(\MonorepoBuilder20210803\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
+    public function setOriginalFileInfo(\MonorepoBuilder20210804\Symplify\SmartFileSystem\SmartFileInfo $fileInfo) : void
     {
         $this->fileInfo = $fileInfo;
     }
@@ -213,7 +217,7 @@ final class ComposerJson
     public function getAbsoluteAutoloadDirectories() : array
     {
         if ($this->fileInfo === null) {
-            throw new \MonorepoBuilder20210803\Symplify\SymplifyKernel\Exception\ShouldNotHappenException();
+            throw new \MonorepoBuilder20210804\Symplify\SymplifyKernel\Exception\ShouldNotHappenException();
         }
         $autoloadDirectories = $this->getAutoloadDirectories();
         $absoluteAutoloadDirectories = [];
@@ -316,7 +320,7 @@ final class ComposerJson
         if ($this->name === null) {
             return null;
         }
-        return \MonorepoBuilder20210803\Nette\Utils\Strings::after($this->name, '/', -1);
+        return \MonorepoBuilder20210804\Nette\Utils\Strings::after($this->name, '/', -1);
     }
     /**
      * @return string[]
@@ -346,14 +350,14 @@ final class ComposerJson
      */
     public function getJsonArray() : array
     {
-        $array = \array_filter([\MonorepoBuilder20210803\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::NAME => $this->name, \MonorepoBuilder20210803\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::DESCRIPTION => $this->description, \MonorepoBuilder20210803\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::KEYWORDS => $this->keywords, \MonorepoBuilder20210803\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::HOMEPAGE => $this->homepage, \MonorepoBuilder20210803\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::LICENSE => $this->license, \MonorepoBuilder20210803\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::AUTHORS => $this->authors, \MonorepoBuilder20210803\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::TYPE => $this->type, \MonorepoBuilder20210803\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE => $this->require, \MonorepoBuilder20210803\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE_DEV => $this->requireDev, \MonorepoBuilder20210803\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::AUTOLOAD => $this->autoload, \MonorepoBuilder20210803\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::AUTOLOAD_DEV => $this->autoloadDev, \MonorepoBuilder20210803\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REPOSITORIES => $this->repositories, \MonorepoBuilder20210803\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::EXTRA => $this->extra, \MonorepoBuilder20210803\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::BIN => $this->bin, \MonorepoBuilder20210803\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::SCRIPTS => $this->scripts, \MonorepoBuilder20210803\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::SCRIPTS_DESCRIPTIONS => $this->scriptsDescriptions, \MonorepoBuilder20210803\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::CONFIG => $this->config, \MonorepoBuilder20210803\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REPLACE => $this->replace, \MonorepoBuilder20210803\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::CONFLICT => $this->conflicts, \MonorepoBuilder20210803\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::VERSION => $this->version]);
+        $array = \array_filter([\MonorepoBuilder20210804\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::NAME => $this->name, \MonorepoBuilder20210804\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::DESCRIPTION => $this->description, \MonorepoBuilder20210804\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::KEYWORDS => $this->keywords, \MonorepoBuilder20210804\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::HOMEPAGE => $this->homepage, \MonorepoBuilder20210804\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::LICENSE => $this->license, \MonorepoBuilder20210804\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::AUTHORS => $this->authors, \MonorepoBuilder20210804\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::TYPE => $this->type, \MonorepoBuilder20210804\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE => $this->require, \MonorepoBuilder20210804\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE_DEV => $this->requireDev, \MonorepoBuilder20210804\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::AUTOLOAD => $this->autoload, \MonorepoBuilder20210804\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::AUTOLOAD_DEV => $this->autoloadDev, \MonorepoBuilder20210804\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REPOSITORIES => $this->repositories, \MonorepoBuilder20210804\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::EXTRA => $this->extra, \MonorepoBuilder20210804\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::BIN => $this->bin, \MonorepoBuilder20210804\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::SCRIPTS => $this->scripts, \MonorepoBuilder20210804\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::SCRIPTS_DESCRIPTIONS => $this->scriptsDescriptions, \MonorepoBuilder20210804\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::SUGGEST => $this->suggest, \MonorepoBuilder20210804\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::CONFIG => $this->config, \MonorepoBuilder20210804\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REPLACE => $this->replace, \MonorepoBuilder20210804\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::CONFLICT => $this->conflicts, \MonorepoBuilder20210804\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::VERSION => $this->version]);
         if ($this->minimumStability !== null) {
-            $array[\MonorepoBuilder20210803\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::MINIMUM_STABILITY] = $this->minimumStability;
-            $this->moveValueToBack(\MonorepoBuilder20210803\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::MINIMUM_STABILITY);
+            $array[\MonorepoBuilder20210804\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::MINIMUM_STABILITY] = $this->minimumStability;
+            $this->moveValueToBack(\MonorepoBuilder20210804\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::MINIMUM_STABILITY);
         }
         if ($this->preferStable !== null) {
-            $array[\MonorepoBuilder20210803\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::PREFER_STABLE] = $this->preferStable;
-            $this->moveValueToBack(\MonorepoBuilder20210803\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::PREFER_STABLE);
+            $array[\MonorepoBuilder20210804\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::PREFER_STABLE] = $this->preferStable;
+            $this->moveValueToBack(\MonorepoBuilder20210804\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::PREFER_STABLE);
         }
         return $this->sortItemsByOrderedListOfKeys($array, $this->orderedKeys);
     }
@@ -507,7 +511,7 @@ final class ComposerJson
             $this->addRequiredDevPackage($newPackageName, $targetVersion);
         }
     }
-    public function getFileInfo() : ?\MonorepoBuilder20210803\Symplify\SmartFileSystem\SmartFileInfo
+    public function getFileInfo() : ?\MonorepoBuilder20210804\Symplify\SmartFileSystem\SmartFileInfo
     {
         return $this->fileInfo;
     }
@@ -556,6 +560,13 @@ final class ComposerJson
         return $this->scriptsDescriptions;
     }
     /**
+     * @return array<string, string>
+     */
+    public function getSuggest() : array
+    {
+        return $this->suggest;
+    }
+    /**
      * @return string[]
      */
     public function getAllClassmaps() : array
@@ -584,7 +595,7 @@ final class ComposerJson
     public function getAutoloadDirectories() : array
     {
         $autoloadDirectories = \array_merge($this->getPsr4AndClassmapDirectories(), $this->getPsr4AndClassmapDevDirectories());
-        return \MonorepoBuilder20210803\Nette\Utils\Arrays::flatten($autoloadDirectories);
+        return \MonorepoBuilder20210804\Nette\Utils\Arrays::flatten($autoloadDirectories);
     }
     /**
      * @return string[]
@@ -601,6 +612,13 @@ final class ComposerJson
     public function setScriptsDescriptions(array $scriptsDescriptions) : void
     {
         $this->scriptsDescriptions = $scriptsDescriptions;
+    }
+    /**
+     * @param array<string, string> $suggest
+     */
+    public function setSuggest(array $suggest) : void
+    {
+        $this->suggest = $suggest;
     }
     /**
      * @return string[]
@@ -654,7 +672,7 @@ final class ComposerJson
     private function resolveExistingAutoloadDirectory(string $autoloadDirectory) : string
     {
         if ($this->fileInfo === null) {
-            throw new \MonorepoBuilder20210803\Symplify\SymplifyKernel\Exception\ShouldNotHappenException();
+            throw new \MonorepoBuilder20210804\Symplify\SymplifyKernel\Exception\ShouldNotHappenException();
         }
         $filePathCandidates = [
             $this->fileInfo->getPath() . \DIRECTORY_SEPARATOR . $autoloadDirectory,

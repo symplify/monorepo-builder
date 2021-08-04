@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20210803\Symplify\SmartFileSystem\Normalizer;
+namespace MonorepoBuilder20210804\Symplify\SmartFileSystem\Normalizer;
 
-use MonorepoBuilder20210803\Nette\Utils\Strings;
+use MonorepoBuilder20210804\Nette\Utils\Strings;
 /**
  * Used from
  * https://github.com/phpstan/phpstan-src/blob/02425e61aa48f0668b4efb3e73d52ad544048f65/src/File/FileHelper.php#L40,
@@ -29,7 +29,7 @@ final class PathNormalizer
     private const SCHEME_UNDEFINED = 'undefined';
     public function normalizePath(string $originalPath, string $directorySeparator = \DIRECTORY_SEPARATOR) : string
     {
-        $matches = \MonorepoBuilder20210803\Nette\Utils\Strings::match($originalPath, self::SCHEME_PATH_REGEX);
+        $matches = \MonorepoBuilder20210804\Nette\Utils\Strings::match($originalPath, self::SCHEME_PATH_REGEX);
         if ($matches !== null) {
             [, $scheme, $path] = $matches;
         } else {
@@ -37,7 +37,7 @@ final class PathNormalizer
             $path = $originalPath;
         }
         $normalizedPath = \str_replace('\\', '/', $path);
-        $path = \MonorepoBuilder20210803\Nette\Utils\Strings::replace($normalizedPath, self::TWO_AND_MORE_SLASHES_REGEX, '/');
+        $path = \MonorepoBuilder20210804\Nette\Utils\Strings::replace($normalizedPath, self::TWO_AND_MORE_SLASHES_REGEX, '/');
         $pathRoot = \strncmp($path, '/', \strlen('/')) === 0 ? $directorySeparator : '';
         $pathParts = \explode('/', \trim($path, '/'));
         $normalizedPathParts = $this->normalizePathParts($pathParts, $scheme);
