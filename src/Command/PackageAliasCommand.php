@@ -3,14 +3,14 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Command;
 
-use MonorepoBuilder20210804\Symfony\Component\Console\Input\InputInterface;
-use MonorepoBuilder20210804\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder20210805\Symfony\Component\Console\Input\InputInterface;
+use MonorepoBuilder20210805\Symfony\Component\Console\Output\OutputInterface;
 use Symplify\MonorepoBuilder\DevMasterAliasUpdater;
 use Symplify\MonorepoBuilder\Finder\PackageComposerFinder;
 use Symplify\MonorepoBuilder\Git\ExpectedAliasResolver;
-use MonorepoBuilder20210804\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
-use MonorepoBuilder20210804\Symplify\PackageBuilder\Console\ShellCode;
-final class PackageAliasCommand extends \MonorepoBuilder20210804\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand
+use MonorepoBuilder20210805\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
+use MonorepoBuilder20210805\Symplify\PackageBuilder\Console\ShellCode;
+final class PackageAliasCommand extends \MonorepoBuilder20210805\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand
 {
     /**
      * @var \Symplify\MonorepoBuilder\Finder\PackageComposerFinder
@@ -44,12 +44,12 @@ final class PackageAliasCommand extends \MonorepoBuilder20210804\Symplify\Packag
         $composerPackageFiles = $this->packageComposerFinder->getPackageComposerFiles();
         if ($composerPackageFiles === []) {
             $this->symfonyStyle->error('No "composer.json" were found in packages.');
-            return \MonorepoBuilder20210804\Symplify\PackageBuilder\Console\ShellCode::ERROR;
+            return \MonorepoBuilder20210805\Symplify\PackageBuilder\Console\ShellCode::ERROR;
         }
         $expectedAlias = $this->expectedAliasResolver->resolve();
         $this->devMasterAliasUpdater->updateFileInfosWithAlias($composerPackageFiles, $expectedAlias);
         $message = \sprintf('Alias was updated to "%s" in all packages.', $expectedAlias);
         $this->symfonyStyle->success($message);
-        return \MonorepoBuilder20210804\Symplify\PackageBuilder\Console\ShellCode::SUCCESS;
+        return \MonorepoBuilder20210805\Symplify\PackageBuilder\Console\ShellCode::SUCCESS;
     }
 }

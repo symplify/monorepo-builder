@@ -8,8 +8,8 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210804\Symfony\Component\ErrorHandler\Error;
+namespace MonorepoBuilder20210805\Symfony\Component\ErrorHandler\Error;
 
-class OutOfMemoryError extends \MonorepoBuilder20210804\Symfony\Component\ErrorHandler\Error\FatalError
+class OutOfMemoryError extends \MonorepoBuilder20210805\Symfony\Component\ErrorHandler\Error\FatalError
 {
 }

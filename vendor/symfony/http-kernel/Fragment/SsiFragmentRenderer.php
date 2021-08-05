@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210804\Symfony\Component\HttpKernel\Fragment;
+namespace MonorepoBuilder20210805\Symfony\Component\HttpKernel\Fragment;
 
 /**
  * Implements the SSI rendering strategy.
  *
  * @author Sebastian Krebs <krebs.seb@gmail.com>
  */
-class SsiFragmentRenderer extends \MonorepoBuilder20210804\Symfony\Component\HttpKernel\Fragment\AbstractSurrogateFragmentRenderer
+class SsiFragmentRenderer extends \MonorepoBuilder20210805\Symfony\Component\HttpKernel\Fragment\AbstractSurrogateFragmentRenderer
 {
     /**
      * {@inheritdoc}

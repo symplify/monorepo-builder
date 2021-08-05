@@ -27,7 +27,7 @@
     },
     "autoload": {
         "psr-4": {
-            "MonorepoBuilder20210804\\Symfony\\Component\\ErrorHandler\\": ""
+            "MonorepoBuilder20210805\\Symfony\\Component\\ErrorHandler\\": ""
         },
         "exclude-from-classmap": [
             "\/Tests\/"

@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210804\Symfony\Component\HttpFoundation\Test\Constraint;
+namespace MonorepoBuilder20210805\Symfony\Component\HttpFoundation\Test\Constraint;
 
-use MonorepoBuilder20210804\PHPUnit\Framework\Constraint\Constraint;
-use MonorepoBuilder20210804\Symfony\Component\HttpFoundation\Response;
-final class ResponseIsSuccessful extends \MonorepoBuilder20210804\PHPUnit\Framework\Constraint\Constraint
+use MonorepoBuilder20210805\PHPUnit\Framework\Constraint\Constraint;
+use MonorepoBuilder20210805\Symfony\Component\HttpFoundation\Response;
+final class ResponseIsSuccessful extends \MonorepoBuilder20210805\PHPUnit\Framework\Constraint\Constraint
 {
     /**
      * {@inheritdoc}
