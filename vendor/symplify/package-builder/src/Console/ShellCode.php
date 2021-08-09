@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20210805\Symplify\PackageBuilder\Console;
+namespace MonorepoBuilder20210809\Symplify\PackageBuilder\Console;
 
 final class ShellCode
 {
