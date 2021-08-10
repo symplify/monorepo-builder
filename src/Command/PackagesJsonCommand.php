@@ -3,15 +3,15 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Command;
 
-use MonorepoBuilder20210809\Nette\Utils\Json;
-use MonorepoBuilder20210809\Symfony\Component\Console\Input\InputInterface;
-use MonorepoBuilder20210809\Symfony\Component\Console\Input\InputOption;
-use MonorepoBuilder20210809\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder20210810\Nette\Utils\Json;
+use MonorepoBuilder20210810\Symfony\Component\Console\Input\InputInterface;
+use MonorepoBuilder20210810\Symfony\Component\Console\Input\InputOption;
+use MonorepoBuilder20210810\Symfony\Component\Console\Output\OutputInterface;
 use Symplify\MonorepoBuilder\Json\PackageJsonProvider;
 use Symplify\MonorepoBuilder\ValueObject\Option;
-use MonorepoBuilder20210809\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
-use MonorepoBuilder20210809\Symplify\PackageBuilder\Console\ShellCode;
-final class PackagesJsonCommand extends \MonorepoBuilder20210809\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand
+use MonorepoBuilder20210810\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
+use MonorepoBuilder20210810\Symplify\PackageBuilder\Console\ShellCode;
+final class PackagesJsonCommand extends \MonorepoBuilder20210810\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand
 {
     /**
      * @var \Symplify\MonorepoBuilder\Json\PackageJsonProvider
@@ -25,8 +25,8 @@ final class PackagesJsonCommand extends \MonorepoBuilder20210809\Symplify\Packag
     protected function configure() : void
     {
         $this->setDescription('Provides package paths in json format. Useful for GitHub Actions Workflow');
-        $this->addOption(\Symplify\MonorepoBuilder\ValueObject\Option::TESTS, null, \MonorepoBuilder20210809\Symfony\Component\Console\Input\InputOption::VALUE_NONE, 'Only with /tests directory');
-        $this->addOption(\Symplify\MonorepoBuilder\ValueObject\Option::EXCLUDE_PACKAGE, null, \MonorepoBuilder20210809\Symfony\Component\Console\Input\InputOption::VALUE_IS_ARRAY | \MonorepoBuilder20210809\Symfony\Component\Console\Input\InputOption::VALUE_REQUIRED, 'Exclude one or more package from the list, useful e.g. when scoping one package instead of bare split');
+        $this->addOption(\Symplify\MonorepoBuilder\ValueObject\Option::TESTS, null, \MonorepoBuilder20210810\Symfony\Component\Console\Input\InputOption::VALUE_NONE, 'Only with /tests directory');
+        $this->addOption(\Symplify\MonorepoBuilder\ValueObject\Option::EXCLUDE_PACKAGE, null, \MonorepoBuilder20210810\Symfony\Component\Console\Input\InputOption::VALUE_IS_ARRAY | \MonorepoBuilder20210810\Symfony\Component\Console\Input\InputOption::VALUE_REQUIRED, 'Exclude one or more package from the list, useful e.g. when scoping one package instead of bare split');
     }
     /**
      * @param \Symfony\Component\Console\Input\InputInterface $input
@@ -45,8 +45,8 @@ final class PackagesJsonCommand extends \MonorepoBuilder20210809\Symplify\Packag
         // re-index from 0
         $allowedPackagePaths = \array_values($allowedPackagePaths);
         // must be without spaces, otherwise it breaks GitHub Actions json
-        $json = \MonorepoBuilder20210809\Nette\Utils\Json::encode($allowedPackagePaths);
+        $json = \MonorepoBuilder20210810\Nette\Utils\Json::encode($allowedPackagePaths);
         echo $json;
-        return \MonorepoBuilder20210809\Symplify\PackageBuilder\Console\ShellCode::SUCCESS;
+        return \MonorepoBuilder20210810\Symplify\PackageBuilder\Console\ShellCode::SUCCESS;
     }
 }

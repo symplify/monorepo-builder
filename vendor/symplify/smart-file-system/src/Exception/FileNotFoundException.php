@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20210809\Symplify\SmartFileSystem\Exception;
+namespace MonorepoBuilder20210810\Symplify\SmartFileSystem\Exception;
 
 use Exception;
 final class FileNotFoundException extends \Exception

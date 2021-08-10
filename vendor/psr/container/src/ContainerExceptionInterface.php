@@ -1,6 +1,6 @@
 <?php
 
-namespace MonorepoBuilder20210809\Psr\Container;
+namespace MonorepoBuilder20210810\Psr\Container;
 
 /**
  * Base interface representing a generic exception in a container.

@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210809\Symfony\Component\Console\Output;
+namespace MonorepoBuilder20210810\Symfony\Component\Console\Output;
 
 /**
  * @author Jean-François Simon <contact@jfsimon.fr>
  */
-class BufferedOutput extends \MonorepoBuilder20210809\Symfony\Component\Console\Output\Output
+class BufferedOutput extends \MonorepoBuilder20210810\Symfony\Component\Console\Output\Output
 {
     private $buffer = '';
     /**

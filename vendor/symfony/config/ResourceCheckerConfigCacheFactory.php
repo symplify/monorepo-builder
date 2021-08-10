@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210809\Symfony\Component\Config;
+namespace MonorepoBuilder20210810\Symfony\Component\Config;
 
 /**
  * A ConfigCacheFactory implementation that validates the
@@ -16,7 +16,7 @@ namespace MonorepoBuilder20210809\Symfony\Component\Config;
  *
  * @author Matthias Pigulla <mp@webfactory.de>
  */
-class ResourceCheckerConfigCacheFactory implements \MonorepoBuilder20210809\Symfony\Component\Config\ConfigCacheFactoryInterface
+class ResourceCheckerConfigCacheFactory implements \MonorepoBuilder20210810\Symfony\Component\Config\ConfigCacheFactoryInterface
 {
     private $resourceCheckers = [];
     /**
@@ -33,7 +33,7 @@ class ResourceCheckerConfigCacheFactory implements \MonorepoBuilder20210809\Symf
      */
     public function cache($file, $callable)
     {
-        $cache = new \MonorepoBuilder20210809\Symfony\Component\Config\ResourceCheckerConfigCache($file, $this->resourceCheckers);
+        $cache = new \MonorepoBuilder20210810\Symfony\Component\Config\ResourceCheckerConfigCache($file, $this->resourceCheckers);
         if (!$cache->isFresh()) {
             $callable($cache);
         }

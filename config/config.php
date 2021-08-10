@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20210809;
+namespace MonorepoBuilder20210810;
 
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 return static function (\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator $containerConfigurator) : void {

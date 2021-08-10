@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20210809\Symplify\PackageBuilder\Exception;
+namespace MonorepoBuilder20210810\Symplify\PackageBuilder\Exception;
 
 use Exception;
 final class NotImplementedYetException extends \Exception
