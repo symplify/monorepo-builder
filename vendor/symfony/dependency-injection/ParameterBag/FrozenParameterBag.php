@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210810\Symfony\Component\DependencyInjection\ParameterBag;
+namespace MonorepoBuilder20210811\Symfony\Component\DependencyInjection\ParameterBag;
 
-use MonorepoBuilder20210810\Symfony\Component\DependencyInjection\Exception\LogicException;
+use MonorepoBuilder20210811\Symfony\Component\DependencyInjection\Exception\LogicException;
 /**
  * Holds read-only parameters.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class FrozenParameterBag extends \MonorepoBuilder20210810\Symfony\Component\DependencyInjection\ParameterBag\ParameterBag
+class FrozenParameterBag extends \MonorepoBuilder20210811\Symfony\Component\DependencyInjection\ParameterBag\ParameterBag
 {
     /**
      * For performance reasons, the constructor assumes that
@@ -36,7 +36,7 @@ class FrozenParameterBag extends \MonorepoBuilder20210810\Symfony\Component\Depe
      */
     public function clear()
     {
-        throw new \MonorepoBuilder20210810\Symfony\Component\DependencyInjection\Exception\LogicException('Impossible to call clear() on a frozen ParameterBag.');
+        throw new \MonorepoBuilder20210811\Symfony\Component\DependencyInjection\Exception\LogicException('Impossible to call clear() on a frozen ParameterBag.');
     }
     /**
      * {@inheritdoc}
@@ -44,7 +44,7 @@ class FrozenParameterBag extends \MonorepoBuilder20210810\Symfony\Component\Depe
      */
     public function add($parameters)
     {
-        throw new \MonorepoBuilder20210810\Symfony\Component\DependencyInjection\Exception\LogicException('Impossible to call add() on a frozen ParameterBag.');
+        throw new \MonorepoBuilder20210811\Symfony\Component\DependencyInjection\Exception\LogicException('Impossible to call add() on a frozen ParameterBag.');
     }
     /**
      * {@inheritdoc}
@@ -52,7 +52,7 @@ class FrozenParameterBag extends \MonorepoBuilder20210810\Symfony\Component\Depe
      */
     public function set($name, $value)
     {
-        throw new \MonorepoBuilder20210810\Symfony\Component\DependencyInjection\Exception\LogicException('Impossible to call set() on a frozen ParameterBag.');
+        throw new \MonorepoBuilder20210811\Symfony\Component\DependencyInjection\Exception\LogicException('Impossible to call set() on a frozen ParameterBag.');
     }
     /**
      * {@inheritdoc}
@@ -60,6 +60,6 @@ class FrozenParameterBag extends \MonorepoBuilder20210810\Symfony\Component\Depe
      */
     public function remove($name)
     {
-        throw new \MonorepoBuilder20210810\Symfony\Component\DependencyInjection\Exception\LogicException('Impossible to call remove() on a frozen ParameterBag.');
+        throw new \MonorepoBuilder20210811\Symfony\Component\DependencyInjection\Exception\LogicException('Impossible to call remove() on a frozen ParameterBag.');
     }
 }

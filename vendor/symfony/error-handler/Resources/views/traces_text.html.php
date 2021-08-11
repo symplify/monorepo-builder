@@ -2,7 +2,7 @@
     <thead class="trace-head">
         <tr>
             <th class="sf-toggle" data-toggle-selector="#trace-text-<?php 
-namespace MonorepoBuilder20210810;
+namespace MonorepoBuilder20210811;
 
 echo $index;
 ?>" data-toggle-initial="<?php 
