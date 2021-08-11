@@ -11,7 +11,6 @@ use Symplify\MonorepoBuilder\Testing\ComposerJsonRepositoriesUpdater;
 use Symplify\MonorepoBuilder\Testing\ComposerJsonRequireUpdater;
 use Symplify\MonorepoBuilder\Testing\ValueObject\Option;
 use MonorepoBuilder20210811\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
-use MonorepoBuilder20210811\Symplify\PackageBuilder\Console\ShellCode;
 use MonorepoBuilder20210811\Symplify\SmartFileSystem\SmartFileInfo;
 final class LocalizeComposerPathsCommand extends \MonorepoBuilder20210811\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand
 {
@@ -58,6 +57,6 @@ final class LocalizeComposerPathsCommand extends \MonorepoBuilder20210811\Sympli
         $this->composerJsonRepositoriesUpdater->processPackage($packageComposerJsonFileInfo, $rootComposerJson, \false);
         $message = \sprintf('Package paths in "%s" have been updated', $packageComposerJsonFileInfo->getRelativeFilePathFromCwd());
         $this->symfonyStyle->success($message);
-        return \MonorepoBuilder20210811\Symplify\PackageBuilder\Console\ShellCode::SUCCESS;
+        return self::SUCCESS;
     }
 }

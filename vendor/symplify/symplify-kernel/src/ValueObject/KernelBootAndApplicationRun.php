@@ -4,9 +4,9 @@ declare (strict_types=1);
 namespace MonorepoBuilder20210811\Symplify\SymplifyKernel\ValueObject;
 
 use MonorepoBuilder20210811\Symfony\Component\Console\Application;
+use MonorepoBuilder20210811\Symfony\Component\Console\Command\Command;
 use MonorepoBuilder20210811\Symfony\Component\HttpKernel\KernelInterface;
 use MonorepoBuilder20210811\Symplify\PackageBuilder\Console\Input\StaticInputDetector;
-use MonorepoBuilder20210811\Symplify\PackageBuilder\Console\ShellCode;
 use MonorepoBuilder20210811\Symplify\PackageBuilder\Console\Style\SymfonyStyleFactory;
 use MonorepoBuilder20210811\Symplify\PackageBuilder\Contract\HttpKernel\ExtraConfigAwareKernelInterface;
 use MonorepoBuilder20210811\Symplify\SmartFileSystem\SmartFileInfo;
@@ -39,7 +39,7 @@ final class KernelBootAndApplicationRun
             $symfonyStyleFactory = new \MonorepoBuilder20210811\Symplify\PackageBuilder\Console\Style\SymfonyStyleFactory();
             $symfonyStyle = $symfonyStyleFactory->create();
             $symfonyStyle->error($throwable->getMessage());
-            exit(\MonorepoBuilder20210811\Symplify\PackageBuilder\Console\ShellCode::ERROR);
+            exit(\MonorepoBuilder20210811\Symfony\Component\Console\Command\Command::FAILURE);
         }
     }
     private function createKernel() : \MonorepoBuilder20210811\Symfony\Component\HttpKernel\KernelInterface

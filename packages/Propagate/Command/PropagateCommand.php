@@ -10,7 +10,6 @@ use MonorepoBuilder20210811\Symplify\ComposerJsonManipulator\FileSystem\JsonFile
 use Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider;
 use Symplify\MonorepoBuilder\Propagate\VersionPropagator;
 use MonorepoBuilder20210811\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
-use MonorepoBuilder20210811\Symplify\PackageBuilder\Console\ShellCode;
 use MonorepoBuilder20210811\Symplify\SmartFileSystem\SmartFileInfo;
 final class PropagateCommand extends \MonorepoBuilder20210811\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand
 {
@@ -59,6 +58,6 @@ final class PropagateCommand extends \MonorepoBuilder20210811\Symplify\PackageBu
             $this->symfonyStyle->note($message);
         }
         $this->symfonyStyle->success('Propagation was successful');
-        return \MonorepoBuilder20210811\Symplify\PackageBuilder\Console\ShellCode::SUCCESS;
+        return self::SUCCESS;
     }
 }

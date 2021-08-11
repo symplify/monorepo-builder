@@ -10,7 +10,6 @@ use MonorepoBuilder20210811\Symfony\Component\Console\Output\OutputInterface;
 use Symplify\MonorepoBuilder\Json\PackageJsonProvider;
 use Symplify\MonorepoBuilder\ValueObject\Option;
 use MonorepoBuilder20210811\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
-use MonorepoBuilder20210811\Symplify\PackageBuilder\Console\ShellCode;
 final class PackagesJsonCommand extends \MonorepoBuilder20210811\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand
 {
     /**
@@ -47,6 +46,6 @@ final class PackagesJsonCommand extends \MonorepoBuilder20210811\Symplify\Packag
         // must be without spaces, otherwise it breaks GitHub Actions json
         $json = \MonorepoBuilder20210811\Nette\Utils\Json::encode($allowedPackagePaths);
         echo $json;
-        return \MonorepoBuilder20210811\Symplify\PackageBuilder\Console\ShellCode::SUCCESS;
+        return self::SUCCESS;
     }
 }

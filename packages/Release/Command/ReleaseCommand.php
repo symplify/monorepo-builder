@@ -17,7 +17,6 @@ use Symplify\MonorepoBuilder\Validator\SourcesPresenceValidator;
 use Symplify\MonorepoBuilder\ValueObject\File;
 use Symplify\MonorepoBuilder\ValueObject\Option;
 use MonorepoBuilder20210811\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
-use MonorepoBuilder20210811\Symplify\PackageBuilder\Console\ShellCode;
 final class ReleaseCommand extends \MonorepoBuilder20210811\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand
 {
     /**
@@ -70,7 +69,7 @@ final class ReleaseCommand extends \MonorepoBuilder20210811\Symplify\PackageBuil
         if ($activeReleaseWorkers === []) {
             $errorMessage = \sprintf('There are no release workers registered. Be sure to add them to "%s"', \Symplify\MonorepoBuilder\ValueObject\File::CONFIG);
             $this->symfonyStyle->error($errorMessage);
-            return \MonorepoBuilder20210811\Symplify\PackageBuilder\Console\ShellCode::ERROR;
+            return self::FAILURE;
         }
         $totalWorkerCount = \count($activeReleaseWorkers);
         $i = 0;
@@ -93,6 +92,6 @@ final class ReleaseCommand extends \MonorepoBuilder20210811\Symplify\PackageBuil
             $finishedMessage = \sprintf('Stage "%s" for version "%s" is now finished!', $stage, $version->getVersionString());
             $this->symfonyStyle->success($finishedMessage);
         }
-        return \MonorepoBuilder20210811\Symplify\PackageBuilder\Console\ShellCode::SUCCESS;
+        return self::SUCCESS;
     }
 }

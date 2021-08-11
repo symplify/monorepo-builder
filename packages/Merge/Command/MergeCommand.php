@@ -12,7 +12,6 @@ use Symplify\MonorepoBuilder\Merge\Application\MergedAndDecoratedComposerJsonFac
 use Symplify\MonorepoBuilder\Merge\Guard\ConflictingVersionsGuard;
 use Symplify\MonorepoBuilder\Validator\SourcesPresenceValidator;
 use MonorepoBuilder20210811\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
-use MonorepoBuilder20210811\Symplify\PackageBuilder\Console\ShellCode;
 final class MergeCommand extends \MonorepoBuilder20210811\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand
 {
     /**
@@ -67,6 +66,6 @@ final class MergeCommand extends \MonorepoBuilder20210811\Symplify\PackageBuilde
         $this->mergedAndDecoratedComposerJsonFactory->createFromRootConfigAndPackageFileInfos($mainComposerJson, $packageFileInfos);
         $this->jsonFileManager->printComposerJsonToFilePath($mainComposerJson, $mainComposerJsonFilePath);
         $this->symfonyStyle->success('Main "composer.json" was updated.');
-        return \MonorepoBuilder20210811\Symplify\PackageBuilder\Console\ShellCode::SUCCESS;
+        return self::SUCCESS;
     }
 }

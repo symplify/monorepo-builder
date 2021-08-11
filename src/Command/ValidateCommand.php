@@ -10,7 +10,6 @@ use Symplify\MonorepoBuilder\Validator\ConflictingPackageVersionsReporter;
 use Symplify\MonorepoBuilder\Validator\SourcesPresenceValidator;
 use Symplify\MonorepoBuilder\VersionValidator;
 use MonorepoBuilder20210811\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
-use MonorepoBuilder20210811\Symplify\PackageBuilder\Console\ShellCode;
 final class ValidateCommand extends \MonorepoBuilder20210811\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand
 {
     /**
@@ -51,9 +50,9 @@ final class ValidateCommand extends \MonorepoBuilder20210811\Symplify\PackageBui
         $conflictingPackageVersions = $this->versionValidator->findConflictingPackageVersionsInFileInfos($this->composerJsonProvider->getRootAndPackageFileInfos());
         if ($conflictingPackageVersions === []) {
             $this->symfonyStyle->success('All packages "composer.json" files use same package versions.');
-            return \MonorepoBuilder20210811\Symplify\PackageBuilder\Console\ShellCode::SUCCESS;
+            return self::SUCCESS;
         }
         $this->conflictingPackageVersionsReporter->report($conflictingPackageVersions);
-        return \MonorepoBuilder20210811\Symplify\PackageBuilder\Console\ShellCode::ERROR;
+        return self::FAILURE;
     }
 }

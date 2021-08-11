@@ -10,7 +10,6 @@ use Symplify\MonorepoBuilder\DependencyUpdater;
 use Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider;
 use Symplify\MonorepoBuilder\Validator\SourcesPresenceValidator;
 use MonorepoBuilder20210811\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
-use MonorepoBuilder20210811\Symplify\PackageBuilder\Console\ShellCode;
 use MonorepoBuilder20210811\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
 final class BumpInterdependencyCommand extends \MonorepoBuilder20210811\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand
 {
@@ -61,6 +60,6 @@ final class BumpInterdependencyCommand extends \MonorepoBuilder20210811\Symplify
         $this->dependencyUpdater->updateFileInfosWithVendorAndVersion($this->composerJsonProvider->getPackagesComposerFileInfos(), $vendorName, $version);
         $successMessage = \sprintf('Inter-dependencies of packages were updated to "%s".', $version);
         $this->symfonyStyle->success($successMessage);
-        return \MonorepoBuilder20210811\Symplify\PackageBuilder\Console\ShellCode::SUCCESS;
+        return self::SUCCESS;
     }
 }
