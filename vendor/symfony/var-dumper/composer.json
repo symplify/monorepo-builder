@@ -43,7 +43,7 @@
             "Resources\/functions\/dump.php"
         ],
         "psr-4": {
-            "MonorepoBuilder20210811\\Symfony\\Component\\VarDumper\\": ""
+            "MonorepoBuilder20210814\\Symfony\\Component\\VarDumper\\": ""
         },
         "exclude-from-classmap": [
             "\/Tests\/"

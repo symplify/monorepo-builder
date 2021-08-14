@@ -1,18 +1,18 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20210811;
+namespace MonorepoBuilder20210814;
 
-use MonorepoBuilder20210811\Symfony\Component\Console\Application;
+use MonorepoBuilder20210814\Symfony\Component\Console\Application;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
-use MonorepoBuilder20210811\Symplify\EasyTesting\Console\EasyTestingConsoleApplication;
-use MonorepoBuilder20210811\Symplify\PackageBuilder\Console\Command\CommandNaming;
+use MonorepoBuilder20210814\Symplify\EasyTesting\Console\EasyTestingConsoleApplication;
+use MonorepoBuilder20210814\Symplify\PackageBuilder\Console\Command\CommandNaming;
 return static function (\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator $containerConfigurator) : void {
     $services = $containerConfigurator->services();
     $services->defaults()->public()->autowire()->autoconfigure();
-    $services->load('MonorepoBuilder20210811\Symplify\EasyTesting\\', __DIR__ . '/../src')->exclude([__DIR__ . '/../src/DataProvider', __DIR__ . '/../src/HttpKernel', __DIR__ . '/../src/ValueObject']);
+    $services->load('MonorepoBuilder20210814\Symplify\EasyTesting\\', __DIR__ . '/../src')->exclude([__DIR__ . '/../src/DataProvider', __DIR__ . '/../src/HttpKernel', __DIR__ . '/../src/ValueObject']);
     // console
-    $services->set(\MonorepoBuilder20210811\Symplify\EasyTesting\Console\EasyTestingConsoleApplication::class);
-    $services->alias(\MonorepoBuilder20210811\Symfony\Component\Console\Application::class, \MonorepoBuilder20210811\Symplify\EasyTesting\Console\EasyTestingConsoleApplication::class);
-    $services->set(\MonorepoBuilder20210811\Symplify\PackageBuilder\Console\Command\CommandNaming::class);
+    $services->set(\MonorepoBuilder20210814\Symplify\EasyTesting\Console\EasyTestingConsoleApplication::class);
+    $services->alias(\MonorepoBuilder20210814\Symfony\Component\Console\Application::class, \MonorepoBuilder20210814\Symplify\EasyTesting\Console\EasyTestingConsoleApplication::class);
+    $services->set(\MonorepoBuilder20210814\Symplify\PackageBuilder\Console\Command\CommandNaming::class);
 };

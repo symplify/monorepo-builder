@@ -1,6 +1,6 @@
 <?php
 
-namespace MonorepoBuilder20210811\Psr\Log;
+namespace MonorepoBuilder20210814\Psr\Log;
 
 class InvalidArgumentException extends \InvalidArgumentException
 {

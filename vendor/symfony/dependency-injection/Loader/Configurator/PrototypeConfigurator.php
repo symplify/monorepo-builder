@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210811\Symfony\Component\DependencyInjection\Loader\Configurator;
+namespace MonorepoBuilder20210814\Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use MonorepoBuilder20210811\Symfony\Component\DependencyInjection\Definition;
-use MonorepoBuilder20210811\Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
+use MonorepoBuilder20210814\Symfony\Component\DependencyInjection\Definition;
+use MonorepoBuilder20210814\Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class PrototypeConfigurator extends \MonorepoBuilder20210811\Symfony\Component\DependencyInjection\Loader\Configurator\AbstractServiceConfigurator
+class PrototypeConfigurator extends \MonorepoBuilder20210814\Symfony\Component\DependencyInjection\Loader\Configurator\AbstractServiceConfigurator
 {
     use Traits\AbstractTrait;
     use Traits\ArgumentTrait;
@@ -37,9 +37,9 @@ class PrototypeConfigurator extends \MonorepoBuilder20210811\Symfony\Component\D
     private $resource;
     private $excludes;
     private $allowParent;
-    public function __construct(\MonorepoBuilder20210811\Symfony\Component\DependencyInjection\Loader\Configurator\ServicesConfigurator $parent, \MonorepoBuilder20210811\Symfony\Component\DependencyInjection\Loader\PhpFileLoader $loader, \MonorepoBuilder20210811\Symfony\Component\DependencyInjection\Definition $defaults, string $namespace, string $resource, bool $allowParent)
+    public function __construct(\MonorepoBuilder20210814\Symfony\Component\DependencyInjection\Loader\Configurator\ServicesConfigurator $parent, \MonorepoBuilder20210814\Symfony\Component\DependencyInjection\Loader\PhpFileLoader $loader, \MonorepoBuilder20210814\Symfony\Component\DependencyInjection\Definition $defaults, string $namespace, string $resource, bool $allowParent)
     {
-        $definition = new \MonorepoBuilder20210811\Symfony\Component\DependencyInjection\Definition();
+        $definition = new \MonorepoBuilder20210814\Symfony\Component\DependencyInjection\Definition();
         if (!$defaults->isPublic() || !$defaults->isPrivate()) {
             $definition->setPublic($defaults->isPublic());
         }

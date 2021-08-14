@@ -8,17 +8,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210811\Symfony\Component\HttpKernel\EventListener;
+namespace MonorepoBuilder20210814\Symfony\Component\HttpKernel\EventListener;
 
-use MonorepoBuilder20210811\Psr\Container\ContainerInterface;
-use MonorepoBuilder20210811\Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use MonorepoBuilder20210811\Symfony\Component\HttpFoundation\Session\Session;
-use MonorepoBuilder20210811\Symfony\Component\HttpFoundation\Session\SessionInterface;
-use MonorepoBuilder20210811\Symfony\Component\HttpKernel\Event\FinishRequestEvent;
-use MonorepoBuilder20210811\Symfony\Component\HttpKernel\Event\RequestEvent;
-use MonorepoBuilder20210811\Symfony\Component\HttpKernel\Event\ResponseEvent;
-use MonorepoBuilder20210811\Symfony\Component\HttpKernel\Exception\UnexpectedSessionUsageException;
-use MonorepoBuilder20210811\Symfony\Component\HttpKernel\KernelEvents;
+use MonorepoBuilder20210814\Psr\Container\ContainerInterface;
+use MonorepoBuilder20210814\Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use MonorepoBuilder20210814\Symfony\Component\HttpFoundation\Session\Session;
+use MonorepoBuilder20210814\Symfony\Component\HttpFoundation\Session\SessionInterface;
+use MonorepoBuilder20210814\Symfony\Component\HttpKernel\Event\FinishRequestEvent;
+use MonorepoBuilder20210814\Symfony\Component\HttpKernel\Event\RequestEvent;
+use MonorepoBuilder20210814\Symfony\Component\HttpKernel\Event\ResponseEvent;
+use MonorepoBuilder20210814\Symfony\Component\HttpKernel\Exception\UnexpectedSessionUsageException;
+use MonorepoBuilder20210814\Symfony\Component\HttpKernel\KernelEvents;
 /**
  * Sets the session onto the request on the "kernel.request" event and saves
  * it on the "kernel.response" event.
@@ -34,13 +34,13 @@ use MonorepoBuilder20210811\Symfony\Component\HttpKernel\KernelEvents;
  *
  * @internal
  */
-abstract class AbstractSessionListener implements \MonorepoBuilder20210811\Symfony\Component\EventDispatcher\EventSubscriberInterface
+abstract class AbstractSessionListener implements \MonorepoBuilder20210814\Symfony\Component\EventDispatcher\EventSubscriberInterface
 {
     public const NO_AUTO_CACHE_CONTROL_HEADER = 'Symfony-Session-NoAutoCacheControl';
     protected $container;
     private $sessionUsageStack = [];
     private $debug;
-    public function __construct(\MonorepoBuilder20210811\Psr\Container\ContainerInterface $container = null, bool $debug = \false)
+    public function __construct(\MonorepoBuilder20210814\Psr\Container\ContainerInterface $container = null, bool $debug = \false)
     {
         $this->container = $container;
         $this->debug = $debug;
@@ -61,7 +61,7 @@ abstract class AbstractSessionListener implements \MonorepoBuilder20210811\Symfo
             });
         }
         $session = $this->container && $this->container->has('initialized_session') ? $this->container->get('initialized_session') : null;
-        $this->sessionUsageStack[] = $session instanceof \MonorepoBuilder20210811\Symfony\Component\HttpFoundation\Session\Session ? $session->getUsageIndex() : 0;
+        $this->sessionUsageStack[] = $session instanceof \MonorepoBuilder20210814\Symfony\Component\HttpFoundation\Session\Session ? $session->getUsageIndex() : 0;
     }
     /**
      * @param \Symfony\Component\HttpKernel\Event\ResponseEvent $event
@@ -106,7 +106,7 @@ abstract class AbstractSessionListener implements \MonorepoBuilder20210811\Symfo
              */
             $session->save();
         }
-        if ($session instanceof \MonorepoBuilder20210811\Symfony\Component\HttpFoundation\Session\Session ? $session->getUsageIndex() === \end($this->sessionUsageStack) : !$session->isStarted()) {
+        if ($session instanceof \MonorepoBuilder20210814\Symfony\Component\HttpFoundation\Session\Session ? $session->getUsageIndex() === \end($this->sessionUsageStack) : !$session->isStarted()) {
             return;
         }
         if ($autoCacheControl) {
@@ -116,7 +116,7 @@ abstract class AbstractSessionListener implements \MonorepoBuilder20210811\Symfo
             return;
         }
         if ($this->debug) {
-            throw new \MonorepoBuilder20210811\Symfony\Component\HttpKernel\Exception\UnexpectedSessionUsageException('Session was used while the request was declared stateless.');
+            throw new \MonorepoBuilder20210814\Symfony\Component\HttpKernel\Exception\UnexpectedSessionUsageException('Session was used while the request was declared stateless.');
         }
         if ($this->container->has('logger')) {
             $this->container->get('logger')->warning('Session was used while the request was declared stateless.');
@@ -156,15 +156,15 @@ abstract class AbstractSessionListener implements \MonorepoBuilder20210811\Symfo
         if ($session->isStarted()) {
             $session->save();
         }
-        throw new \MonorepoBuilder20210811\Symfony\Component\HttpKernel\Exception\UnexpectedSessionUsageException('Session was used while the request was declared stateless.');
+        throw new \MonorepoBuilder20210814\Symfony\Component\HttpKernel\Exception\UnexpectedSessionUsageException('Session was used while the request was declared stateless.');
     }
     public static function getSubscribedEvents() : array
     {
         return [
-            \MonorepoBuilder20210811\Symfony\Component\HttpKernel\KernelEvents::REQUEST => ['onKernelRequest', 128],
+            \MonorepoBuilder20210814\Symfony\Component\HttpKernel\KernelEvents::REQUEST => ['onKernelRequest', 128],
             // low priority to come after regular response listeners, but higher than StreamedResponseListener
-            \MonorepoBuilder20210811\Symfony\Component\HttpKernel\KernelEvents::RESPONSE => ['onKernelResponse', -1000],
-            \MonorepoBuilder20210811\Symfony\Component\HttpKernel\KernelEvents::FINISH_REQUEST => ['onFinishRequest'],
+            \MonorepoBuilder20210814\Symfony\Component\HttpKernel\KernelEvents::RESPONSE => ['onKernelResponse', -1000],
+            \MonorepoBuilder20210814\Symfony\Component\HttpKernel\KernelEvents::FINISH_REQUEST => ['onFinishRequest'],
         ];
     }
     /**

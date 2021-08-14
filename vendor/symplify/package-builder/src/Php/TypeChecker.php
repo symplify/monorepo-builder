@@ -1,12 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20210811\Symplify\PackageBuilder\Php;
+namespace MonorepoBuilder20210814\Symplify\PackageBuilder\Php;
 
 final class TypeChecker
 {
     /**
      * @param array<class-string> $types
+     * @param object|string $object
      */
     public function isInstanceOf($object, array $types) : bool
     {
