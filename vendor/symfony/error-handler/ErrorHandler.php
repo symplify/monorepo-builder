@@ -8,19 +8,19 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210814\Symfony\Component\ErrorHandler;
+namespace MonorepoBuilder20210816\Symfony\Component\ErrorHandler;
 
-use MonorepoBuilder20210814\Psr\Log\LoggerInterface;
-use MonorepoBuilder20210814\Psr\Log\LogLevel;
-use MonorepoBuilder20210814\Symfony\Component\ErrorHandler\Error\FatalError;
-use MonorepoBuilder20210814\Symfony\Component\ErrorHandler\Error\OutOfMemoryError;
-use MonorepoBuilder20210814\Symfony\Component\ErrorHandler\ErrorEnhancer\ClassNotFoundErrorEnhancer;
-use MonorepoBuilder20210814\Symfony\Component\ErrorHandler\ErrorEnhancer\ErrorEnhancerInterface;
-use MonorepoBuilder20210814\Symfony\Component\ErrorHandler\ErrorEnhancer\UndefinedFunctionErrorEnhancer;
-use MonorepoBuilder20210814\Symfony\Component\ErrorHandler\ErrorEnhancer\UndefinedMethodErrorEnhancer;
-use MonorepoBuilder20210814\Symfony\Component\ErrorHandler\ErrorRenderer\CliErrorRenderer;
-use MonorepoBuilder20210814\Symfony\Component\ErrorHandler\ErrorRenderer\HtmlErrorRenderer;
-use MonorepoBuilder20210814\Symfony\Component\ErrorHandler\Exception\SilencedErrorContext;
+use MonorepoBuilder20210816\Psr\Log\LoggerInterface;
+use MonorepoBuilder20210816\Psr\Log\LogLevel;
+use MonorepoBuilder20210816\Symfony\Component\ErrorHandler\Error\FatalError;
+use MonorepoBuilder20210816\Symfony\Component\ErrorHandler\Error\OutOfMemoryError;
+use MonorepoBuilder20210816\Symfony\Component\ErrorHandler\ErrorEnhancer\ClassNotFoundErrorEnhancer;
+use MonorepoBuilder20210816\Symfony\Component\ErrorHandler\ErrorEnhancer\ErrorEnhancerInterface;
+use MonorepoBuilder20210816\Symfony\Component\ErrorHandler\ErrorEnhancer\UndefinedFunctionErrorEnhancer;
+use MonorepoBuilder20210816\Symfony\Component\ErrorHandler\ErrorEnhancer\UndefinedMethodErrorEnhancer;
+use MonorepoBuilder20210816\Symfony\Component\ErrorHandler\ErrorRenderer\CliErrorRenderer;
+use MonorepoBuilder20210816\Symfony\Component\ErrorHandler\ErrorRenderer\HtmlErrorRenderer;
+use MonorepoBuilder20210816\Symfony\Component\ErrorHandler\Exception\SilencedErrorContext;
 /**
  * A generic ErrorHandler for the PHP engine.
  *
@@ -49,7 +49,7 @@ use MonorepoBuilder20210814\Symfony\Component\ErrorHandler\Exception\SilencedErr
 class ErrorHandler
 {
     private $levels = [\E_DEPRECATED => 'Deprecated', \E_USER_DEPRECATED => 'User Deprecated', \E_NOTICE => 'Notice', \E_USER_NOTICE => 'User Notice', \E_STRICT => 'Runtime Notice', \E_WARNING => 'Warning', \E_USER_WARNING => 'User Warning', \E_COMPILE_WARNING => 'Compile Warning', \E_CORE_WARNING => 'Core Warning', \E_USER_ERROR => 'User Error', \E_RECOVERABLE_ERROR => 'Catchable Fatal Error', \E_COMPILE_ERROR => 'Compile Error', \E_PARSE => 'Parse Error', \E_ERROR => 'Error', \E_CORE_ERROR => 'Core Error'];
-    private $loggers = [\E_DEPRECATED => [null, \MonorepoBuilder20210814\Psr\Log\LogLevel::INFO], \E_USER_DEPRECATED => [null, \MonorepoBuilder20210814\Psr\Log\LogLevel::INFO], \E_NOTICE => [null, \MonorepoBuilder20210814\Psr\Log\LogLevel::WARNING], \E_USER_NOTICE => [null, \MonorepoBuilder20210814\Psr\Log\LogLevel::WARNING], \E_STRICT => [null, \MonorepoBuilder20210814\Psr\Log\LogLevel::WARNING], \E_WARNING => [null, \MonorepoBuilder20210814\Psr\Log\LogLevel::WARNING], \E_USER_WARNING => [null, \MonorepoBuilder20210814\Psr\Log\LogLevel::WARNING], \E_COMPILE_WARNING => [null, \MonorepoBuilder20210814\Psr\Log\LogLevel::WARNING], \E_CORE_WARNING => [null, \MonorepoBuilder20210814\Psr\Log\LogLevel::WARNING], \E_USER_ERROR => [null, \MonorepoBuilder20210814\Psr\Log\LogLevel::CRITICAL], \E_RECOVERABLE_ERROR => [null, \MonorepoBuilder20210814\Psr\Log\LogLevel::CRITICAL], \E_COMPILE_ERROR => [null, \MonorepoBuilder20210814\Psr\Log\LogLevel::CRITICAL], \E_PARSE => [null, \MonorepoBuilder20210814\Psr\Log\LogLevel::CRITICAL], \E_ERROR => [null, \MonorepoBuilder20210814\Psr\Log\LogLevel::CRITICAL], \E_CORE_ERROR => [null, \MonorepoBuilder20210814\Psr\Log\LogLevel::CRITICAL]];
+    private $loggers = [\E_DEPRECATED => [null, \MonorepoBuilder20210816\Psr\Log\LogLevel::INFO], \E_USER_DEPRECATED => [null, \MonorepoBuilder20210816\Psr\Log\LogLevel::INFO], \E_NOTICE => [null, \MonorepoBuilder20210816\Psr\Log\LogLevel::WARNING], \E_USER_NOTICE => [null, \MonorepoBuilder20210816\Psr\Log\LogLevel::WARNING], \E_STRICT => [null, \MonorepoBuilder20210816\Psr\Log\LogLevel::WARNING], \E_WARNING => [null, \MonorepoBuilder20210816\Psr\Log\LogLevel::WARNING], \E_USER_WARNING => [null, \MonorepoBuilder20210816\Psr\Log\LogLevel::WARNING], \E_COMPILE_WARNING => [null, \MonorepoBuilder20210816\Psr\Log\LogLevel::WARNING], \E_CORE_WARNING => [null, \MonorepoBuilder20210816\Psr\Log\LogLevel::WARNING], \E_USER_ERROR => [null, \MonorepoBuilder20210816\Psr\Log\LogLevel::CRITICAL], \E_RECOVERABLE_ERROR => [null, \MonorepoBuilder20210816\Psr\Log\LogLevel::CRITICAL], \E_COMPILE_ERROR => [null, \MonorepoBuilder20210816\Psr\Log\LogLevel::CRITICAL], \E_PARSE => [null, \MonorepoBuilder20210816\Psr\Log\LogLevel::CRITICAL], \E_ERROR => [null, \MonorepoBuilder20210816\Psr\Log\LogLevel::CRITICAL], \E_CORE_ERROR => [null, \MonorepoBuilder20210816\Psr\Log\LogLevel::CRITICAL]];
     private $thrownErrors = 0x1fff;
     // E_ALL - E_DEPRECATED - E_USER_DEPRECATED
     private $scopedErrors = 0x1fff;
@@ -139,7 +139,7 @@ class ErrorHandler
             \restore_error_handler();
         }
     }
-    public function __construct(\MonorepoBuilder20210814\Symfony\Component\ErrorHandler\BufferingLogger $bootstrappingLogger = null, bool $debug = \false)
+    public function __construct(\MonorepoBuilder20210816\Symfony\Component\ErrorHandler\BufferingLogger $bootstrappingLogger = null, bool $debug = \false)
     {
         if ($bootstrappingLogger) {
             $this->bootstrappingLogger = $bootstrappingLogger;
@@ -163,7 +163,7 @@ class ErrorHandler
      * @param array|int|null  $levels  An array map of E_* to LogLevel::* or an integer bit field of E_* constants
      * @param bool            $replace Whether to replace or not any existing logger
      */
-    public function setDefaultLogger(\MonorepoBuilder20210814\Psr\Log\LoggerInterface $logger, $levels = \E_ALL, bool $replace = \false) : void
+    public function setDefaultLogger(\MonorepoBuilder20210816\Psr\Log\LoggerInterface $logger, $levels = \E_ALL, bool $replace = \false) : void
     {
         $loggers = [];
         if (\is_array($levels)) {
@@ -210,7 +210,7 @@ class ErrorHandler
             }
             if (null === $log[0]) {
                 $this->loggedErrors &= ~$type;
-            } elseif ($log[0] instanceof \MonorepoBuilder20210814\Psr\Log\LoggerInterface) {
+            } elseif ($log[0] instanceof \MonorepoBuilder20210816\Psr\Log\LoggerInterface) {
                 $this->loggedErrors |= $type;
             } else {
                 throw new \InvalidArgumentException('Invalid logger provided.');
@@ -223,7 +223,7 @@ class ErrorHandler
         $this->reRegister($prevLogged | $this->thrownErrors);
         if ($flush) {
             foreach ($this->bootstrappingLogger->cleanLogs() as $log) {
-                $type = \MonorepoBuilder20210814\Symfony\Component\ErrorHandler\ThrowableUtils::getSeverity($log[2]['exception']);
+                $type = \MonorepoBuilder20210816\Symfony\Component\ErrorHandler\ThrowableUtils::getSeverity($log[2]['exception']);
                 if (!isset($flush[$type])) {
                     $this->bootstrappingLogger->log($log[0], $log[1], $log[2]);
                 } elseif ($this->loggers[$type][0]) {
@@ -370,7 +370,7 @@ class ErrorHandler
         } elseif (!$throw && !($type & $level)) {
             if (!isset(self::$silencedErrorCache[$id = $file . ':' . $line])) {
                 $lightTrace = $this->tracedErrors & $type ? $this->cleanTrace(\debug_backtrace(\DEBUG_BACKTRACE_IGNORE_ARGS, 5), $type, $file, $line, \false) : [];
-                $errorAsException = new \MonorepoBuilder20210814\Symfony\Component\ErrorHandler\Exception\SilencedErrorContext($type, $file, $line, isset($lightTrace[1]) ? [$lightTrace[0]] : $lightTrace);
+                $errorAsException = new \MonorepoBuilder20210816\Symfony\Component\ErrorHandler\Exception\SilencedErrorContext($type, $file, $line, isset($lightTrace[1]) ? [$lightTrace[0]] : $lightTrace);
             } elseif (isset(self::$silencedErrorCache[$id][$message])) {
                 $lightTrace = null;
                 $errorAsException = self::$silencedErrorCache[$id][$message];
@@ -447,7 +447,7 @@ class ErrorHandler
             }
             try {
                 $this->isRecursive = \true;
-                $level = $type & $level ? $this->loggers[$type][1] : \MonorepoBuilder20210814\Psr\Log\LogLevel::DEBUG;
+                $level = $type & $level ? $this->loggers[$type][1] : \MonorepoBuilder20210816\Psr\Log\LogLevel::DEBUG;
                 $this->loggers[$type][0]->log($level, $logMessage, $errorAsException ? ['exception' => $errorAsException] : []);
             } finally {
                 $this->isRecursive = \false;
@@ -466,9 +466,9 @@ class ErrorHandler
     public function handleException(\Throwable $exception)
     {
         $handlerException = null;
-        if (!$exception instanceof \MonorepoBuilder20210814\Symfony\Component\ErrorHandler\Error\FatalError) {
+        if (!$exception instanceof \MonorepoBuilder20210816\Symfony\Component\ErrorHandler\Error\FatalError) {
             self::$exitCode = 255;
-            $type = \MonorepoBuilder20210814\Symfony\Component\ErrorHandler\ThrowableUtils::getSeverity($exception);
+            $type = \MonorepoBuilder20210816\Symfony\Component\ErrorHandler\ThrowableUtils::getSeverity($exception);
         } else {
             $type = $exception->getError()['type'];
         }
@@ -476,7 +476,7 @@ class ErrorHandler
             if (\false !== \strpos($message = $exception->getMessage(), "@anonymous\0")) {
                 $message = $this->parseAnonymousClass($message);
             }
-            if ($exception instanceof \MonorepoBuilder20210814\Symfony\Component\ErrorHandler\Error\FatalError) {
+            if ($exception instanceof \MonorepoBuilder20210816\Symfony\Component\ErrorHandler\Error\FatalError) {
                 $message = 'Fatal ' . $message;
             } elseif ($exception instanceof \Error) {
                 $message = 'Uncaught Error: ' . $message;
@@ -490,7 +490,7 @@ class ErrorHandler
             } catch (\Throwable $handlerException) {
             }
         }
-        if (!$exception instanceof \MonorepoBuilder20210814\Symfony\Component\ErrorHandler\Error\OutOfMemoryError) {
+        if (!$exception instanceof \MonorepoBuilder20210816\Symfony\Component\ErrorHandler\Error\OutOfMemoryError) {
             foreach ($this->getErrorEnhancers() as $errorEnhancer) {
                 if ($e = $errorEnhancer->enhance($exception)) {
                     $exception = $e;
@@ -574,9 +574,9 @@ class ErrorHandler
             $handler->throwAt(0, \true);
             $trace = $error['backtrace'] ?? null;
             if (0 === \strpos($error['message'], 'Allowed memory') || 0 === \strpos($error['message'], 'Out of memory')) {
-                $fatalError = new \MonorepoBuilder20210814\Symfony\Component\ErrorHandler\Error\OutOfMemoryError($handler->levels[$error['type']] . ': ' . $error['message'], 0, $error, 2, \false, $trace);
+                $fatalError = new \MonorepoBuilder20210816\Symfony\Component\ErrorHandler\Error\OutOfMemoryError($handler->levels[$error['type']] . ': ' . $error['message'], 0, $error, 2, \false, $trace);
             } else {
-                $fatalError = new \MonorepoBuilder20210814\Symfony\Component\ErrorHandler\Error\FatalError($handler->levels[$error['type']] . ': ' . $error['message'], 0, $error, 2, \true, $trace);
+                $fatalError = new \MonorepoBuilder20210816\Symfony\Component\ErrorHandler\Error\FatalError($handler->levels[$error['type']] . ': ' . $error['message'], 0, $error, 2, \true, $trace);
             }
         } else {
             $fatalError = null;
@@ -586,7 +586,7 @@ class ErrorHandler
                 self::$exitCode = 255;
                 $handler->handleException($fatalError);
             }
-        } catch (\MonorepoBuilder20210814\Symfony\Component\ErrorHandler\Error\FatalError $e) {
+        } catch (\MonorepoBuilder20210816\Symfony\Component\ErrorHandler\Error\FatalError $e) {
             // Ignore this re-throw
         }
         if ($exit && self::$exitCode) {
@@ -604,7 +604,7 @@ class ErrorHandler
      */
     private function renderException(\Throwable $exception) : void
     {
-        $renderer = \in_array(\PHP_SAPI, ['cli', 'phpdbg'], \true) ? new \MonorepoBuilder20210814\Symfony\Component\ErrorHandler\ErrorRenderer\CliErrorRenderer() : new \MonorepoBuilder20210814\Symfony\Component\ErrorHandler\ErrorRenderer\HtmlErrorRenderer($this->debug);
+        $renderer = \in_array(\PHP_SAPI, ['cli', 'phpdbg'], \true) ? new \MonorepoBuilder20210816\Symfony\Component\ErrorHandler\ErrorRenderer\CliErrorRenderer() : new \MonorepoBuilder20210816\Symfony\Component\ErrorHandler\ErrorRenderer\HtmlErrorRenderer($this->debug);
         $exception = $renderer->render($exception);
         if (!\headers_sent()) {
             \http_response_code($exception->getStatusCode());
@@ -621,7 +621,7 @@ class ErrorHandler
      */
     protected function getErrorEnhancers() : iterable
     {
-        return [new \MonorepoBuilder20210814\Symfony\Component\ErrorHandler\ErrorEnhancer\UndefinedFunctionErrorEnhancer(), new \MonorepoBuilder20210814\Symfony\Component\ErrorHandler\ErrorEnhancer\UndefinedMethodErrorEnhancer(), new \MonorepoBuilder20210814\Symfony\Component\ErrorHandler\ErrorEnhancer\ClassNotFoundErrorEnhancer()];
+        return [new \MonorepoBuilder20210816\Symfony\Component\ErrorHandler\ErrorEnhancer\UndefinedFunctionErrorEnhancer(), new \MonorepoBuilder20210816\Symfony\Component\ErrorHandler\ErrorEnhancer\UndefinedMethodErrorEnhancer(), new \MonorepoBuilder20210816\Symfony\Component\ErrorHandler\ErrorEnhancer\ClassNotFoundErrorEnhancer()];
     }
     /**
      * Cleans the trace by removing function arguments and the frames added by the error handler and DebugClassLoader.
@@ -648,9 +648,9 @@ class ErrorHandler
                 }
             }
         }
-        if (\class_exists(\MonorepoBuilder20210814\Symfony\Component\ErrorHandler\DebugClassLoader::class, \false)) {
+        if (\class_exists(\MonorepoBuilder20210816\Symfony\Component\ErrorHandler\DebugClassLoader::class, \false)) {
             for ($i = \count($lightTrace) - 2; 0 < $i; --$i) {
-                if (\MonorepoBuilder20210814\Symfony\Component\ErrorHandler\DebugClassLoader::class === ($lightTrace[$i]['class'] ?? null)) {
+                if (\MonorepoBuilder20210816\Symfony\Component\ErrorHandler\DebugClassLoader::class === ($lightTrace[$i]['class'] ?? null)) {
                     \array_splice($lightTrace, --$i, 2);
                 }
             }
