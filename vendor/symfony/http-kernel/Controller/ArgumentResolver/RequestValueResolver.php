@@ -8,17 +8,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210816\Symfony\Component\HttpKernel\Controller\ArgumentResolver;
+namespace MonorepoBuilder20210818\Symfony\Component\HttpKernel\Controller\ArgumentResolver;
 
-use MonorepoBuilder20210816\Symfony\Component\HttpFoundation\Request;
-use MonorepoBuilder20210816\Symfony\Component\HttpKernel\Controller\ArgumentValueResolverInterface;
-use MonorepoBuilder20210816\Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata;
+use MonorepoBuilder20210818\Symfony\Component\HttpFoundation\Request;
+use MonorepoBuilder20210818\Symfony\Component\HttpKernel\Controller\ArgumentValueResolverInterface;
+use MonorepoBuilder20210818\Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata;
 /**
  * Yields the same instance as the request object passed along.
  *
  * @author Iltar van der Berg <kjarli@gmail.com>
  */
-final class RequestValueResolver implements \MonorepoBuilder20210816\Symfony\Component\HttpKernel\Controller\ArgumentValueResolverInterface
+final class RequestValueResolver implements \MonorepoBuilder20210818\Symfony\Component\HttpKernel\Controller\ArgumentValueResolverInterface
 {
     /**
      * {@inheritdoc}
@@ -27,7 +27,7 @@ final class RequestValueResolver implements \MonorepoBuilder20210816\Symfony\Com
      */
     public function supports($request, $argument) : bool
     {
-        return \MonorepoBuilder20210816\Symfony\Component\HttpFoundation\Request::class === $argument->getType() || \is_subclass_of($argument->getType(), \MonorepoBuilder20210816\Symfony\Component\HttpFoundation\Request::class);
+        return \MonorepoBuilder20210818\Symfony\Component\HttpFoundation\Request::class === $argument->getType() || \is_subclass_of($argument->getType(), \MonorepoBuilder20210818\Symfony\Component\HttpFoundation\Request::class);
     }
     /**
      * {@inheritdoc}

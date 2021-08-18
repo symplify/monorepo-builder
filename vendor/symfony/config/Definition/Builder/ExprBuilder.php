@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210816\Symfony\Component\Config\Definition\Builder;
+namespace MonorepoBuilder20210818\Symfony\Component\Config\Definition\Builder;
 
-use MonorepoBuilder20210816\Symfony\Component\Config\Definition\Exception\UnsetKeyException;
+use MonorepoBuilder20210818\Symfony\Component\Config\Definition\Exception\UnsetKeyException;
 /**
  * This class builds an if expression.
  *
@@ -22,7 +22,7 @@ class ExprBuilder
     protected $node;
     public $ifPart;
     public $thenPart;
-    public function __construct(\MonorepoBuilder20210816\Symfony\Component\Config\Definition\Builder\NodeDefinition $node)
+    public function __construct(\MonorepoBuilder20210818\Symfony\Component\Config\Definition\Builder\NodeDefinition $node)
     {
         $this->node = $node;
     }
@@ -199,7 +199,7 @@ class ExprBuilder
     public function thenUnset()
     {
         $this->thenPart = function () {
-            throw new \MonorepoBuilder20210816\Symfony\Component\Config\Definition\Exception\UnsetKeyException('Unsetting key.');
+            throw new \MonorepoBuilder20210818\Symfony\Component\Config\Definition\Exception\UnsetKeyException('Unsetting key.');
         };
         return $this;
     }
