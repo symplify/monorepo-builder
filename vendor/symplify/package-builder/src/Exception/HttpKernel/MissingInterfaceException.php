@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20210818\Symplify\PackageBuilder\Exception\HttpKernel;
+namespace MonorepoBuilder20210819\Symplify\PackageBuilder\Exception\HttpKernel;
 
 use Exception;
 final class MissingInterfaceException extends \Exception

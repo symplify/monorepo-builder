@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Merge\ComposerKeyMerger;
 
-use MonorepoBuilder20210818\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
+use MonorepoBuilder20210819\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
 use Symplify\MonorepoBuilder\Merge\Arrays\SortedParameterMerger;
 use Symplify\MonorepoBuilder\Merge\Contract\ComposerKeyMergerInterface;
 final class RepositoriesComposerKeyMerger implements \Symplify\MonorepoBuilder\Merge\Contract\ComposerKeyMergerInterface
