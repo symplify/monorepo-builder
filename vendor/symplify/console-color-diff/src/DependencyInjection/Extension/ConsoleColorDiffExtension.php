@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20210820\Symplify\ConsoleColorDiff\DependencyInjection\Extension;
+namespace MonorepoBuilder20210821\Symplify\ConsoleColorDiff\DependencyInjection\Extension;
 
-use MonorepoBuilder20210820\Symfony\Component\Config\FileLocator;
-use MonorepoBuilder20210820\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder20210820\Symfony\Component\DependencyInjection\Extension\Extension;
-use MonorepoBuilder20210820\Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
-final class ConsoleColorDiffExtension extends \MonorepoBuilder20210820\Symfony\Component\DependencyInjection\Extension\Extension
+use MonorepoBuilder20210821\Symfony\Component\Config\FileLocator;
+use MonorepoBuilder20210821\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder20210821\Symfony\Component\DependencyInjection\Extension\Extension;
+use MonorepoBuilder20210821\Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
+final class ConsoleColorDiffExtension extends \MonorepoBuilder20210821\Symfony\Component\DependencyInjection\Extension\Extension
 {
     /**
      * @param string[] $configs
@@ -15,7 +15,7 @@ final class ConsoleColorDiffExtension extends \MonorepoBuilder20210820\Symfony\C
      */
     public function load($configs, $containerBuilder) : void
     {
-        $phpFileLoader = new \MonorepoBuilder20210820\Symfony\Component\DependencyInjection\Loader\PhpFileLoader($containerBuilder, new \MonorepoBuilder20210820\Symfony\Component\Config\FileLocator(__DIR__ . '/../../../config'));
+        $phpFileLoader = new \MonorepoBuilder20210821\Symfony\Component\DependencyInjection\Loader\PhpFileLoader($containerBuilder, new \MonorepoBuilder20210821\Symfony\Component\Config\FileLocator(__DIR__ . '/../../../config'));
         $phpFileLoader->load('config.php');
     }
 }

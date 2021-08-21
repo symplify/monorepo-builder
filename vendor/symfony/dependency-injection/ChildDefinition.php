@@ -8,16 +8,16 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210820\Symfony\Component\DependencyInjection;
+namespace MonorepoBuilder20210821\Symfony\Component\DependencyInjection;
 
-use MonorepoBuilder20210820\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use MonorepoBuilder20210820\Symfony\Component\DependencyInjection\Exception\OutOfBoundsException;
+use MonorepoBuilder20210821\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use MonorepoBuilder20210821\Symfony\Component\DependencyInjection\Exception\OutOfBoundsException;
 /**
  * This definition extends another definition.
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class ChildDefinition extends \MonorepoBuilder20210820\Symfony\Component\DependencyInjection\Definition
+class ChildDefinition extends \MonorepoBuilder20210821\Symfony\Component\DependencyInjection\Definition
 {
     private $parent;
     /**
@@ -88,7 +88,7 @@ class ChildDefinition extends \MonorepoBuilder20210820\Symfony\Component\Depende
         } elseif (\strncmp($index, '$', \strlen('$')) === 0) {
             $this->arguments[$index] = $value;
         } else {
-            throw new \MonorepoBuilder20210820\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException('The argument must be an existing index or the name of a constructor\'s parameter.');
+            throw new \MonorepoBuilder20210821\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException('The argument must be an existing index or the name of a constructor\'s parameter.');
         }
         return $this;
     }

@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210820\Symfony\Component\HttpKernel\DataCollector;
+namespace MonorepoBuilder20210821\Symfony\Component\HttpKernel\DataCollector;
 
-use MonorepoBuilder20210820\Symfony\Component\HttpFoundation\Request;
-use MonorepoBuilder20210820\Symfony\Component\HttpFoundation\Response;
+use MonorepoBuilder20210821\Symfony\Component\HttpFoundation\Request;
+use MonorepoBuilder20210821\Symfony\Component\HttpFoundation\Response;
 /**
  * MemoryDataCollector.
  *
@@ -19,7 +19,7 @@ use MonorepoBuilder20210820\Symfony\Component\HttpFoundation\Response;
  *
  * @final
  */
-class MemoryDataCollector extends \MonorepoBuilder20210820\Symfony\Component\HttpKernel\DataCollector\DataCollector implements \MonorepoBuilder20210820\Symfony\Component\HttpKernel\DataCollector\LateDataCollectorInterface
+class MemoryDataCollector extends \MonorepoBuilder20210821\Symfony\Component\HttpKernel\DataCollector\DataCollector implements \MonorepoBuilder20210821\Symfony\Component\HttpKernel\DataCollector\LateDataCollectorInterface
 {
     public function __construct()
     {

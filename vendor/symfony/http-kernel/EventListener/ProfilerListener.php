@@ -8,16 +8,16 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210820\Symfony\Component\HttpKernel\EventListener;
+namespace MonorepoBuilder20210821\Symfony\Component\HttpKernel\EventListener;
 
-use MonorepoBuilder20210820\Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use MonorepoBuilder20210820\Symfony\Component\HttpFoundation\RequestMatcherInterface;
-use MonorepoBuilder20210820\Symfony\Component\HttpFoundation\RequestStack;
-use MonorepoBuilder20210820\Symfony\Component\HttpKernel\Event\ExceptionEvent;
-use MonorepoBuilder20210820\Symfony\Component\HttpKernel\Event\ResponseEvent;
-use MonorepoBuilder20210820\Symfony\Component\HttpKernel\Event\TerminateEvent;
-use MonorepoBuilder20210820\Symfony\Component\HttpKernel\KernelEvents;
-use MonorepoBuilder20210820\Symfony\Component\HttpKernel\Profiler\Profiler;
+use MonorepoBuilder20210821\Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use MonorepoBuilder20210821\Symfony\Component\HttpFoundation\RequestMatcherInterface;
+use MonorepoBuilder20210821\Symfony\Component\HttpFoundation\RequestStack;
+use MonorepoBuilder20210821\Symfony\Component\HttpKernel\Event\ExceptionEvent;
+use MonorepoBuilder20210821\Symfony\Component\HttpKernel\Event\ResponseEvent;
+use MonorepoBuilder20210821\Symfony\Component\HttpKernel\Event\TerminateEvent;
+use MonorepoBuilder20210821\Symfony\Component\HttpKernel\KernelEvents;
+use MonorepoBuilder20210821\Symfony\Component\HttpKernel\Profiler\Profiler;
 /**
  * ProfilerListener collects data for the current request by listening to the kernel events.
  *
@@ -25,7 +25,7 @@ use MonorepoBuilder20210820\Symfony\Component\HttpKernel\Profiler\Profiler;
  *
  * @final
  */
-class ProfilerListener implements \MonorepoBuilder20210820\Symfony\Component\EventDispatcher\EventSubscriberInterface
+class ProfilerListener implements \MonorepoBuilder20210821\Symfony\Component\EventDispatcher\EventSubscriberInterface
 {
     protected $profiler;
     protected $matcher;
@@ -39,7 +39,7 @@ class ProfilerListener implements \MonorepoBuilder20210820\Symfony\Component\Eve
      * @param bool $onlyException    True if the profiler only collects data when an exception occurs, false otherwise
      * @param bool $onlyMainRequests True if the profiler only collects data when the request is the main request, false otherwise
      */
-    public function __construct(\MonorepoBuilder20210820\Symfony\Component\HttpKernel\Profiler\Profiler $profiler, \MonorepoBuilder20210820\Symfony\Component\HttpFoundation\RequestStack $requestStack, \MonorepoBuilder20210820\Symfony\Component\HttpFoundation\RequestMatcherInterface $matcher = null, bool $onlyException = \false, bool $onlyMainRequests = \false)
+    public function __construct(\MonorepoBuilder20210821\Symfony\Component\HttpKernel\Profiler\Profiler $profiler, \MonorepoBuilder20210821\Symfony\Component\HttpFoundation\RequestStack $requestStack, \MonorepoBuilder20210821\Symfony\Component\HttpFoundation\RequestMatcherInterface $matcher = null, bool $onlyException = \false, bool $onlyMainRequests = \false)
     {
         $this->profiler = $profiler;
         $this->matcher = $matcher;
@@ -106,6 +106,6 @@ class ProfilerListener implements \MonorepoBuilder20210820\Symfony\Component\Eve
     }
     public static function getSubscribedEvents() : array
     {
-        return [\MonorepoBuilder20210820\Symfony\Component\HttpKernel\KernelEvents::RESPONSE => ['onKernelResponse', -100], \MonorepoBuilder20210820\Symfony\Component\HttpKernel\KernelEvents::EXCEPTION => ['onKernelException', 0], \MonorepoBuilder20210820\Symfony\Component\HttpKernel\KernelEvents::TERMINATE => ['onKernelTerminate', -1024]];
+        return [\MonorepoBuilder20210821\Symfony\Component\HttpKernel\KernelEvents::RESPONSE => ['onKernelResponse', -100], \MonorepoBuilder20210821\Symfony\Component\HttpKernel\KernelEvents::EXCEPTION => ['onKernelException', 0], \MonorepoBuilder20210821\Symfony\Component\HttpKernel\KernelEvents::TERMINATE => ['onKernelTerminate', -1024]];
     }
 }
