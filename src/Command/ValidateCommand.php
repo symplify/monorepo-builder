@@ -3,14 +3,14 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Command;
 
-use MonorepoBuilder20210822\Symfony\Component\Console\Input\InputInterface;
-use MonorepoBuilder20210822\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder20210823\Symfony\Component\Console\Input\InputInterface;
+use MonorepoBuilder20210823\Symfony\Component\Console\Output\OutputInterface;
 use Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider;
 use Symplify\MonorepoBuilder\Validator\ConflictingPackageVersionsReporter;
 use Symplify\MonorepoBuilder\Validator\SourcesPresenceValidator;
 use Symplify\MonorepoBuilder\VersionValidator;
-use MonorepoBuilder20210822\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
-final class ValidateCommand extends \MonorepoBuilder20210822\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand
+use MonorepoBuilder20210823\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
+final class ValidateCommand extends \MonorepoBuilder20210823\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand
 {
     /**
      * @var \Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider

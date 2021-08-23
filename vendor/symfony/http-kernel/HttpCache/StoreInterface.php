@@ -11,10 +11,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210822\Symfony\Component\HttpKernel\HttpCache;
+namespace MonorepoBuilder20210823\Symfony\Component\HttpKernel\HttpCache;
 
-use MonorepoBuilder20210822\Symfony\Component\HttpFoundation\Request;
-use MonorepoBuilder20210822\Symfony\Component\HttpFoundation\Response;
+use MonorepoBuilder20210823\Symfony\Component\HttpFoundation\Request;
+use MonorepoBuilder20210823\Symfony\Component\HttpFoundation\Response;
 /**
  * Interface implemented by HTTP cache stores.
  *

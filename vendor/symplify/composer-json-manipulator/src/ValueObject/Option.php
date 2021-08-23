@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20210822\Symplify\ComposerJsonManipulator\ValueObject;
+namespace MonorepoBuilder20210823\Symplify\ComposerJsonManipulator\ValueObject;
 
 final class Option
 {
