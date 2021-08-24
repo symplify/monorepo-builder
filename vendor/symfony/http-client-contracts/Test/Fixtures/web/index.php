@@ -1,6 +1,6 @@
 <?php
 
-namespace MonorepoBuilder20210823;
+namespace MonorepoBuilder20210824;
 
 if ('cli-server' !== \PHP_SAPI) {
     // safe guard against unwanted execution

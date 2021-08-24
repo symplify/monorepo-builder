@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210823\Symfony\Component\ErrorHandler;
+namespace MonorepoBuilder20210824\Symfony\Component\ErrorHandler;
 
-use MonorepoBuilder20210823\Psr\Log\AbstractLogger;
+use MonorepoBuilder20210824\Psr\Log\AbstractLogger;
 /**
  * A buffering logger that stacks logs for later.
  *
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class BufferingLogger extends \MonorepoBuilder20210823\Psr\Log\AbstractLogger
+class BufferingLogger extends \MonorepoBuilder20210824\Psr\Log\AbstractLogger
 {
     private $logs = [];
     /**

@@ -8,21 +8,21 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210823\Symfony\Component\HttpKernel\DependencyInjection;
+namespace MonorepoBuilder20210824\Symfony\Component\HttpKernel\DependencyInjection;
 
-use MonorepoBuilder20210823\Psr\Container\ContainerInterface;
-use MonorepoBuilder20210823\Symfony\Component\HttpFoundation\RequestStack;
-use MonorepoBuilder20210823\Symfony\Component\HttpKernel\Fragment\FragmentHandler;
+use MonorepoBuilder20210824\Psr\Container\ContainerInterface;
+use MonorepoBuilder20210824\Symfony\Component\HttpFoundation\RequestStack;
+use MonorepoBuilder20210824\Symfony\Component\HttpKernel\Fragment\FragmentHandler;
 /**
  * Lazily loads fragment renderers from the dependency injection container.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class LazyLoadingFragmentHandler extends \MonorepoBuilder20210823\Symfony\Component\HttpKernel\Fragment\FragmentHandler
+class LazyLoadingFragmentHandler extends \MonorepoBuilder20210824\Symfony\Component\HttpKernel\Fragment\FragmentHandler
 {
     private $container;
     private $initialized = [];
-    public function __construct(\MonorepoBuilder20210823\Psr\Container\ContainerInterface $container, \MonorepoBuilder20210823\Symfony\Component\HttpFoundation\RequestStack $requestStack, bool $debug = \false)
+    public function __construct(\MonorepoBuilder20210824\Psr\Container\ContainerInterface $container, \MonorepoBuilder20210824\Symfony\Component\HttpFoundation\RequestStack $requestStack, bool $debug = \false)
     {
         $this->container = $container;
         parent::__construct($requestStack, [], $debug);

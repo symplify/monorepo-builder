@@ -8,16 +8,16 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210823\Symfony\Component\HttpKernel;
+namespace MonorepoBuilder20210824\Symfony\Component\HttpKernel;
 
-use MonorepoBuilder20210823\Symfony\Component\HttpKernel\Event\ControllerArgumentsEvent;
-use MonorepoBuilder20210823\Symfony\Component\HttpKernel\Event\ControllerEvent;
-use MonorepoBuilder20210823\Symfony\Component\HttpKernel\Event\ExceptionEvent;
-use MonorepoBuilder20210823\Symfony\Component\HttpKernel\Event\FinishRequestEvent;
-use MonorepoBuilder20210823\Symfony\Component\HttpKernel\Event\RequestEvent;
-use MonorepoBuilder20210823\Symfony\Component\HttpKernel\Event\ResponseEvent;
-use MonorepoBuilder20210823\Symfony\Component\HttpKernel\Event\TerminateEvent;
-use MonorepoBuilder20210823\Symfony\Component\HttpKernel\Event\ViewEvent;
+use MonorepoBuilder20210824\Symfony\Component\HttpKernel\Event\ControllerArgumentsEvent;
+use MonorepoBuilder20210824\Symfony\Component\HttpKernel\Event\ControllerEvent;
+use MonorepoBuilder20210824\Symfony\Component\HttpKernel\Event\ExceptionEvent;
+use MonorepoBuilder20210824\Symfony\Component\HttpKernel\Event\FinishRequestEvent;
+use MonorepoBuilder20210824\Symfony\Component\HttpKernel\Event\RequestEvent;
+use MonorepoBuilder20210824\Symfony\Component\HttpKernel\Event\ResponseEvent;
+use MonorepoBuilder20210824\Symfony\Component\HttpKernel\Event\TerminateEvent;
+use MonorepoBuilder20210824\Symfony\Component\HttpKernel\Event\ViewEvent;
 /**
  * Contains all events thrown in the HttpKernel component.
  *
@@ -105,5 +105,5 @@ final class KernelEvents
      *
      * These aliases can be consumed by RegisterListenersPass.
      */
-    public const ALIASES = [\MonorepoBuilder20210823\Symfony\Component\HttpKernel\Event\ControllerArgumentsEvent::class => self::CONTROLLER_ARGUMENTS, \MonorepoBuilder20210823\Symfony\Component\HttpKernel\Event\ControllerEvent::class => self::CONTROLLER, \MonorepoBuilder20210823\Symfony\Component\HttpKernel\Event\ResponseEvent::class => self::RESPONSE, \MonorepoBuilder20210823\Symfony\Component\HttpKernel\Event\FinishRequestEvent::class => self::FINISH_REQUEST, \MonorepoBuilder20210823\Symfony\Component\HttpKernel\Event\RequestEvent::class => self::REQUEST, \MonorepoBuilder20210823\Symfony\Component\HttpKernel\Event\ViewEvent::class => self::VIEW, \MonorepoBuilder20210823\Symfony\Component\HttpKernel\Event\ExceptionEvent::class => self::EXCEPTION, \MonorepoBuilder20210823\Symfony\Component\HttpKernel\Event\TerminateEvent::class => self::TERMINATE];
+    public const ALIASES = [\MonorepoBuilder20210824\Symfony\Component\HttpKernel\Event\ControllerArgumentsEvent::class => self::CONTROLLER_ARGUMENTS, \MonorepoBuilder20210824\Symfony\Component\HttpKernel\Event\ControllerEvent::class => self::CONTROLLER, \MonorepoBuilder20210824\Symfony\Component\HttpKernel\Event\ResponseEvent::class => self::RESPONSE, \MonorepoBuilder20210824\Symfony\Component\HttpKernel\Event\FinishRequestEvent::class => self::FINISH_REQUEST, \MonorepoBuilder20210824\Symfony\Component\HttpKernel\Event\RequestEvent::class => self::REQUEST, \MonorepoBuilder20210824\Symfony\Component\HttpKernel\Event\ViewEvent::class => self::VIEW, \MonorepoBuilder20210824\Symfony\Component\HttpKernel\Event\ExceptionEvent::class => self::EXCEPTION, \MonorepoBuilder20210824\Symfony\Component\HttpKernel\Event\TerminateEvent::class => self::TERMINATE];
 }

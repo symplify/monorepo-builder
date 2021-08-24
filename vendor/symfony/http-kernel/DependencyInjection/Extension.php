@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210823\Symfony\Component\HttpKernel\DependencyInjection;
+namespace MonorepoBuilder20210824\Symfony\Component\HttpKernel\DependencyInjection;
 
-use MonorepoBuilder20210823\Symfony\Component\DependencyInjection\Extension\Extension as BaseExtension;
+use MonorepoBuilder20210824\Symfony\Component\DependencyInjection\Extension\Extension as BaseExtension;
 /**
  * Allow adding classes to the class cache.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-abstract class Extension extends \MonorepoBuilder20210823\Symfony\Component\DependencyInjection\Extension\Extension
+abstract class Extension extends \MonorepoBuilder20210824\Symfony\Component\DependencyInjection\Extension\Extension
 {
     private $annotatedClasses = [];
     /**

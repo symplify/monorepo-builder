@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20210823\Symplify\EasyTesting\ValueObject;
+namespace MonorepoBuilder20210824\Symplify\EasyTesting\ValueObject;
 
-use MonorepoBuilder20210823\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder20210824\Symplify\SmartFileSystem\SmartFileInfo;
 final class InputFileInfoAndExpectedFileInfo
 {
     /**
@@ -14,16 +14,16 @@ final class InputFileInfoAndExpectedFileInfo
      * @var \Symplify\SmartFileSystem\SmartFileInfo
      */
     private $expectedFileInfo;
-    public function __construct(\MonorepoBuilder20210823\Symplify\SmartFileSystem\SmartFileInfo $inputFileInfo, \MonorepoBuilder20210823\Symplify\SmartFileSystem\SmartFileInfo $expectedFileInfo)
+    public function __construct(\MonorepoBuilder20210824\Symplify\SmartFileSystem\SmartFileInfo $inputFileInfo, \MonorepoBuilder20210824\Symplify\SmartFileSystem\SmartFileInfo $expectedFileInfo)
     {
         $this->inputFileInfo = $inputFileInfo;
         $this->expectedFileInfo = $expectedFileInfo;
     }
-    public function getInputFileInfo() : \MonorepoBuilder20210823\Symplify\SmartFileSystem\SmartFileInfo
+    public function getInputFileInfo() : \MonorepoBuilder20210824\Symplify\SmartFileSystem\SmartFileInfo
     {
         return $this->inputFileInfo;
     }
-    public function getExpectedFileInfo() : \MonorepoBuilder20210823\Symplify\SmartFileSystem\SmartFileInfo
+    public function getExpectedFileInfo() : \MonorepoBuilder20210824\Symplify\SmartFileSystem\SmartFileInfo
     {
         return $this->expectedFileInfo;
     }

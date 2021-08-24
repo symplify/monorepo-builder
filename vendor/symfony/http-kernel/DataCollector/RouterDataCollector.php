@@ -8,16 +8,16 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210823\Symfony\Component\HttpKernel\DataCollector;
+namespace MonorepoBuilder20210824\Symfony\Component\HttpKernel\DataCollector;
 
-use MonorepoBuilder20210823\Symfony\Component\HttpFoundation\RedirectResponse;
-use MonorepoBuilder20210823\Symfony\Component\HttpFoundation\Request;
-use MonorepoBuilder20210823\Symfony\Component\HttpFoundation\Response;
-use MonorepoBuilder20210823\Symfony\Component\HttpKernel\Event\ControllerEvent;
+use MonorepoBuilder20210824\Symfony\Component\HttpFoundation\RedirectResponse;
+use MonorepoBuilder20210824\Symfony\Component\HttpFoundation\Request;
+use MonorepoBuilder20210824\Symfony\Component\HttpFoundation\Response;
+use MonorepoBuilder20210824\Symfony\Component\HttpKernel\Event\ControllerEvent;
 /**
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class RouterDataCollector extends \MonorepoBuilder20210823\Symfony\Component\HttpKernel\DataCollector\DataCollector
+class RouterDataCollector extends \MonorepoBuilder20210824\Symfony\Component\HttpKernel\DataCollector\DataCollector
 {
     /**
      * @var \SplObjectStorage
@@ -37,7 +37,7 @@ class RouterDataCollector extends \MonorepoBuilder20210823\Symfony\Component\Htt
      */
     public function collect($request, $response, $exception = null)
     {
-        if ($response instanceof \MonorepoBuilder20210823\Symfony\Component\HttpFoundation\RedirectResponse) {
+        if ($response instanceof \MonorepoBuilder20210824\Symfony\Component\HttpFoundation\RedirectResponse) {
             $this->data['redirect'] = \true;
             $this->data['url'] = $response->getTargetUrl();
             if ($this->controllers->contains($request)) {
