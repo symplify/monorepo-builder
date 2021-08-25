@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20210824\Psr\EventDispatcher;
+namespace MonorepoBuilder20210825\Psr\EventDispatcher;
 
 /**
  * An Event whose processing may be interrupted when the event has been handled.

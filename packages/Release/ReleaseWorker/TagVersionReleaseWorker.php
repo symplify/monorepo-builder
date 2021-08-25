@@ -7,7 +7,7 @@ use PharIo\Version\Version;
 use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface;
 use Symplify\MonorepoBuilder\Release\Process\ProcessRunner;
 use Symplify\MonorepoBuilder\ValueObject\Option;
-use MonorepoBuilder20210824\Symplify\PackageBuilder\Parameter\ParameterProvider;
+use MonorepoBuilder20210825\Symplify\PackageBuilder\Parameter\ParameterProvider;
 use Throwable;
 final class TagVersionReleaseWorker implements \Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface
 {
@@ -19,7 +19,7 @@ final class TagVersionReleaseWorker implements \Symplify\MonorepoBuilder\Release
      * @var \Symplify\MonorepoBuilder\Release\Process\ProcessRunner
      */
     private $processRunner;
-    public function __construct(\Symplify\MonorepoBuilder\Release\Process\ProcessRunner $processRunner, \MonorepoBuilder20210824\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider)
+    public function __construct(\Symplify\MonorepoBuilder\Release\Process\ProcessRunner $processRunner, \MonorepoBuilder20210825\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider)
     {
         $this->processRunner = $processRunner;
         $this->branchName = $parameterProvider->provideStringParameter(\Symplify\MonorepoBuilder\ValueObject\Option::DEFAULT_BRANCH_NAME);
