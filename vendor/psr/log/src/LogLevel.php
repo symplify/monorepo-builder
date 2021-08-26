@@ -1,6 +1,6 @@
 <?php
 
-namespace MonorepoBuilder20210825\Psr\Log;
+namespace MonorepoBuilder20210826\Psr\Log;
 
 /**
  * Describes log levels.

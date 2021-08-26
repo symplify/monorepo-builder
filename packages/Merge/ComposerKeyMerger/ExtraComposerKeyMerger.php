@@ -3,9 +3,9 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Merge\ComposerKeyMerger;
 
-use MonorepoBuilder20210825\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
+use MonorepoBuilder20210826\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
 use Symplify\MonorepoBuilder\Merge\Contract\ComposerKeyMergerInterface;
-use MonorepoBuilder20210825\Symplify\PackageBuilder\Yaml\ParametersMerger;
+use MonorepoBuilder20210826\Symplify\PackageBuilder\Yaml\ParametersMerger;
 final class ExtraComposerKeyMerger implements \Symplify\MonorepoBuilder\Merge\Contract\ComposerKeyMergerInterface
 {
     /**
@@ -16,7 +16,7 @@ final class ExtraComposerKeyMerger implements \Symplify\MonorepoBuilder\Merge\Co
      * @var \Symplify\PackageBuilder\Yaml\ParametersMerger
      */
     private $parametersMerger;
-    public function __construct(\MonorepoBuilder20210825\Symplify\PackageBuilder\Yaml\ParametersMerger $parametersMerger)
+    public function __construct(\MonorepoBuilder20210826\Symplify\PackageBuilder\Yaml\ParametersMerger $parametersMerger)
     {
         $this->parametersMerger = $parametersMerger;
     }
