@@ -32,7 +32,7 @@
     },
     "autoload": {
         "psr-4": {
-            "MonorepoBuilder20210826\\Symfony\\Component\\HttpFoundation\\": ""
+            "MonorepoBuilder20210827\\Symfony\\Component\\HttpFoundation\\": ""
         },
         "exclude-from-classmap": [
             "\/Tests\/"

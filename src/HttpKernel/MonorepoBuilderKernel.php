@@ -3,16 +3,16 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\HttpKernel;
 
-use MonorepoBuilder20210826\Symfony\Component\Config\Loader\LoaderInterface;
-use MonorepoBuilder20210826\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder20210826\Symfony\Component\HttpKernel\Bundle\BundleInterface;
-use MonorepoBuilder20210826\Symplify\ComposerJsonManipulator\Bundle\ComposerJsonManipulatorBundle;
-use MonorepoBuilder20210826\Symplify\ConsoleColorDiff\Bundle\ConsoleColorDiffBundle;
+use MonorepoBuilder20210827\Symfony\Component\Config\Loader\LoaderInterface;
+use MonorepoBuilder20210827\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder20210827\Symfony\Component\HttpKernel\Bundle\BundleInterface;
+use MonorepoBuilder20210827\Symplify\ComposerJsonManipulator\Bundle\ComposerJsonManipulatorBundle;
+use MonorepoBuilder20210827\Symplify\ConsoleColorDiff\Bundle\ConsoleColorDiffBundle;
 use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface;
-use MonorepoBuilder20210826\Symplify\PackageBuilder\DependencyInjection\CompilerPass\AutowireInterfacesCompilerPass;
-use MonorepoBuilder20210826\Symplify\SymplifyKernel\Bundle\SymplifyKernelBundle;
-use MonorepoBuilder20210826\Symplify\SymplifyKernel\HttpKernel\AbstractSymplifyKernel;
-final class MonorepoBuilderKernel extends \MonorepoBuilder20210826\Symplify\SymplifyKernel\HttpKernel\AbstractSymplifyKernel
+use MonorepoBuilder20210827\Symplify\PackageBuilder\DependencyInjection\CompilerPass\AutowireInterfacesCompilerPass;
+use MonorepoBuilder20210827\Symplify\SymplifyKernel\Bundle\SymplifyKernelBundle;
+use MonorepoBuilder20210827\Symplify\SymplifyKernel\HttpKernel\AbstractSymplifyKernel;
+final class MonorepoBuilderKernel extends \MonorepoBuilder20210827\Symplify\SymplifyKernel\HttpKernel\AbstractSymplifyKernel
 {
     /**
      * @param \Symfony\Component\Config\Loader\LoaderInterface $loader
@@ -27,13 +27,13 @@ final class MonorepoBuilderKernel extends \MonorepoBuilder20210826\Symplify\Symp
      */
     public function registerBundles() : iterable
     {
-        return [new \MonorepoBuilder20210826\Symplify\ComposerJsonManipulator\Bundle\ComposerJsonManipulatorBundle(), new \MonorepoBuilder20210826\Symplify\SymplifyKernel\Bundle\SymplifyKernelBundle(), new \MonorepoBuilder20210826\Symplify\ConsoleColorDiff\Bundle\ConsoleColorDiffBundle()];
+        return [new \MonorepoBuilder20210827\Symplify\ComposerJsonManipulator\Bundle\ComposerJsonManipulatorBundle(), new \MonorepoBuilder20210827\Symplify\SymplifyKernel\Bundle\SymplifyKernelBundle(), new \MonorepoBuilder20210827\Symplify\ConsoleColorDiff\Bundle\ConsoleColorDiffBundle()];
     }
     /**
      * @param \Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder
      */
     protected function build($containerBuilder) : void
     {
-        $containerBuilder->addCompilerPass(new \MonorepoBuilder20210826\Symplify\PackageBuilder\DependencyInjection\CompilerPass\AutowireInterfacesCompilerPass([\Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface::class]));
+        $containerBuilder->addCompilerPass(new \MonorepoBuilder20210827\Symplify\PackageBuilder\DependencyInjection\CompilerPass\AutowireInterfacesCompilerPass([\Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface::class]));
     }
 }

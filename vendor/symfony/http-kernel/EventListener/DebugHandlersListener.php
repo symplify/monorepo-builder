@@ -8,17 +8,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210826\Symfony\Component\HttpKernel\EventListener;
+namespace MonorepoBuilder20210827\Symfony\Component\HttpKernel\EventListener;
 
-use MonorepoBuilder20210826\Psr\Log\LoggerInterface;
-use MonorepoBuilder20210826\Symfony\Component\Console\ConsoleEvents;
-use MonorepoBuilder20210826\Symfony\Component\Console\Event\ConsoleEvent;
-use MonorepoBuilder20210826\Symfony\Component\Console\Output\ConsoleOutputInterface;
-use MonorepoBuilder20210826\Symfony\Component\ErrorHandler\ErrorHandler;
-use MonorepoBuilder20210826\Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use MonorepoBuilder20210826\Symfony\Component\HttpKernel\Debug\FileLinkFormatter;
-use MonorepoBuilder20210826\Symfony\Component\HttpKernel\Event\KernelEvent;
-use MonorepoBuilder20210826\Symfony\Component\HttpKernel\KernelEvents;
+use MonorepoBuilder20210827\Psr\Log\LoggerInterface;
+use MonorepoBuilder20210827\Symfony\Component\Console\ConsoleEvents;
+use MonorepoBuilder20210827\Symfony\Component\Console\Event\ConsoleEvent;
+use MonorepoBuilder20210827\Symfony\Component\Console\Output\ConsoleOutputInterface;
+use MonorepoBuilder20210827\Symfony\Component\ErrorHandler\ErrorHandler;
+use MonorepoBuilder20210827\Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use MonorepoBuilder20210827\Symfony\Component\HttpKernel\Debug\FileLinkFormatter;
+use MonorepoBuilder20210827\Symfony\Component\HttpKernel\Event\KernelEvent;
+use MonorepoBuilder20210827\Symfony\Component\HttpKernel\KernelEvents;
 /**
  * Configures errors and exceptions handlers.
  *
@@ -28,7 +28,7 @@ use MonorepoBuilder20210826\Symfony\Component\HttpKernel\KernelEvents;
  *
  * @internal since Symfony 5.3
  */
-class DebugHandlersListener implements \MonorepoBuilder20210826\Symfony\Component\EventDispatcher\EventSubscriberInterface
+class DebugHandlersListener implements \MonorepoBuilder20210827\Symfony\Component\EventDispatcher\EventSubscriberInterface
 {
     private $earlyHandler;
     private $exceptionHandler;
@@ -49,7 +49,7 @@ class DebugHandlersListener implements \MonorepoBuilder20210826\Symfony\Componen
      * @param string|FileLinkFormatter|null $fileLinkFormat   The format for links to source files
      * @param bool                          $scope            Enables/disables scoping mode
      */
-    public function __construct(callable $exceptionHandler = null, \MonorepoBuilder20210826\Psr\Log\LoggerInterface $logger = null, $levels = \E_ALL, ?int $throwAt = \E_ALL, bool $scream = \true, $fileLinkFormat = null, bool $scope = \true, \MonorepoBuilder20210826\Psr\Log\LoggerInterface $deprecationLogger = null)
+    public function __construct(callable $exceptionHandler = null, \MonorepoBuilder20210827\Psr\Log\LoggerInterface $logger = null, $levels = \E_ALL, ?int $throwAt = \E_ALL, bool $scream = \true, $fileLinkFormat = null, bool $scope = \true, \MonorepoBuilder20210827\Psr\Log\LoggerInterface $deprecationLogger = null)
     {
         $handler = \set_exception_handler('var_dump');
         $this->earlyHandler = \is_array($handler) ? $handler[0] : null;
@@ -69,20 +69,20 @@ class DebugHandlersListener implements \MonorepoBuilder20210826\Symfony\Componen
      */
     public function configure($event = null)
     {
-        if ($event instanceof \MonorepoBuilder20210826\Symfony\Component\Console\Event\ConsoleEvent && !\in_array(\PHP_SAPI, ['cli', 'phpdbg'], \true)) {
+        if ($event instanceof \MonorepoBuilder20210827\Symfony\Component\Console\Event\ConsoleEvent && !\in_array(\PHP_SAPI, ['cli', 'phpdbg'], \true)) {
             return;
         }
-        if (!$event instanceof \MonorepoBuilder20210826\Symfony\Component\HttpKernel\Event\KernelEvent ? !$this->firstCall : !$event->isMainRequest()) {
+        if (!$event instanceof \MonorepoBuilder20210827\Symfony\Component\HttpKernel\Event\KernelEvent ? !$this->firstCall : !$event->isMainRequest()) {
             return;
         }
         $this->firstCall = $this->hasTerminatedWithException = \false;
         $handler = \set_exception_handler('var_dump');
         $handler = \is_array($handler) ? $handler[0] : null;
         \restore_exception_handler();
-        if (!$handler instanceof \MonorepoBuilder20210826\Symfony\Component\ErrorHandler\ErrorHandler) {
+        if (!$handler instanceof \MonorepoBuilder20210827\Symfony\Component\ErrorHandler\ErrorHandler) {
             $handler = $this->earlyHandler;
         }
-        if ($handler instanceof \MonorepoBuilder20210826\Symfony\Component\ErrorHandler\ErrorHandler) {
+        if ($handler instanceof \MonorepoBuilder20210827\Symfony\Component\ErrorHandler\ErrorHandler) {
             if ($this->logger || $this->deprecationLogger) {
                 $this->setDefaultLoggers($handler);
                 if (\is_array($this->levels)) {
@@ -108,7 +108,7 @@ class DebugHandlersListener implements \MonorepoBuilder20210826\Symfony\Componen
             }
         }
         if (!$this->exceptionHandler) {
-            if ($event instanceof \MonorepoBuilder20210826\Symfony\Component\HttpKernel\Event\KernelEvent) {
+            if ($event instanceof \MonorepoBuilder20210827\Symfony\Component\HttpKernel\Event\KernelEvent) {
                 if (\method_exists($kernel = $event->getKernel(), 'terminateWithException')) {
                     $request = $event->getRequest();
                     $hasRun =& $this->hasTerminatedWithException;
@@ -120,9 +120,9 @@ class DebugHandlersListener implements \MonorepoBuilder20210826\Symfony\Componen
                         $kernel->terminateWithException($e, $request);
                     };
                 }
-            } elseif ($event instanceof \MonorepoBuilder20210826\Symfony\Component\Console\Event\ConsoleEvent && ($app = $event->getCommand()->getApplication())) {
+            } elseif ($event instanceof \MonorepoBuilder20210827\Symfony\Component\Console\Event\ConsoleEvent && ($app = $event->getCommand()->getApplication())) {
                 $output = $event->getOutput();
-                if ($output instanceof \MonorepoBuilder20210826\Symfony\Component\Console\Output\ConsoleOutputInterface) {
+                if ($output instanceof \MonorepoBuilder20210827\Symfony\Component\Console\Output\ConsoleOutputInterface) {
                     $output = $output->getErrorOutput();
                 }
                 $this->exceptionHandler = static function (\Throwable $e) use($app, $output) {
@@ -131,13 +131,13 @@ class DebugHandlersListener implements \MonorepoBuilder20210826\Symfony\Componen
             }
         }
         if ($this->exceptionHandler) {
-            if ($handler instanceof \MonorepoBuilder20210826\Symfony\Component\ErrorHandler\ErrorHandler) {
+            if ($handler instanceof \MonorepoBuilder20210827\Symfony\Component\ErrorHandler\ErrorHandler) {
                 $handler->setExceptionHandler($this->exceptionHandler);
             }
             $this->exceptionHandler = null;
         }
     }
-    private function setDefaultLoggers(\MonorepoBuilder20210826\Symfony\Component\ErrorHandler\ErrorHandler $handler) : void
+    private function setDefaultLoggers(\MonorepoBuilder20210827\Symfony\Component\ErrorHandler\ErrorHandler $handler) : void
     {
         if (\is_array($this->levels)) {
             $levelsDeprecatedOnly = [];
@@ -164,9 +164,9 @@ class DebugHandlersListener implements \MonorepoBuilder20210826\Symfony\Componen
     }
     public static function getSubscribedEvents() : array
     {
-        $events = [\MonorepoBuilder20210826\Symfony\Component\HttpKernel\KernelEvents::REQUEST => ['configure', 2048]];
+        $events = [\MonorepoBuilder20210827\Symfony\Component\HttpKernel\KernelEvents::REQUEST => ['configure', 2048]];
         if (\defined('Symfony\\Component\\Console\\ConsoleEvents::COMMAND')) {
-            $events[\MonorepoBuilder20210826\Symfony\Component\Console\ConsoleEvents::COMMAND] = ['configure', 2048];
+            $events[\MonorepoBuilder20210827\Symfony\Component\Console\ConsoleEvents::COMMAND] = ['configure', 2048];
         }
         return $events;
     }

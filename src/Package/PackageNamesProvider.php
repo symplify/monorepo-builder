@@ -3,9 +3,9 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Package;
 
-use MonorepoBuilder20210826\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
+use MonorepoBuilder20210827\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
 use Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider;
-use MonorepoBuilder20210826\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder20210827\Symplify\SmartFileSystem\SmartFileInfo;
 final class PackageNamesProvider
 {
     /**
@@ -20,7 +20,7 @@ final class PackageNamesProvider
      * @var \Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager
      */
     private $jsonFileManager;
-    public function __construct(\Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider $composerJsonProvider, \MonorepoBuilder20210826\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager $jsonFileManager)
+    public function __construct(\Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider $composerJsonProvider, \MonorepoBuilder20210827\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager $jsonFileManager)
     {
         $this->composerJsonProvider = $composerJsonProvider;
         $this->jsonFileManager = $jsonFileManager;
@@ -42,7 +42,7 @@ final class PackageNamesProvider
         }
         return $this->names;
     }
-    private function extractNameFromFileInfo(\MonorepoBuilder20210826\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : ?string
+    private function extractNameFromFileInfo(\MonorepoBuilder20210827\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : ?string
     {
         $json = $this->jsonFileManager->loadFromFileInfo($smartFileInfo);
         return $json['name'] ?? null;
