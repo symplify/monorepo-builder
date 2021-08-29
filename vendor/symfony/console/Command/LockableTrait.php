@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210827\Symfony\Component\Console\Command;
+namespace MonorepoBuilder20210829\Symfony\Component\Console\Command;
 
-use MonorepoBuilder20210827\Symfony\Component\Console\Exception\LogicException;
-use MonorepoBuilder20210827\Symfony\Component\Lock\Lock;
-use MonorepoBuilder20210827\Symfony\Component\Lock\LockFactory;
-use MonorepoBuilder20210827\Symfony\Component\Lock\Store\FlockStore;
-use MonorepoBuilder20210827\Symfony\Component\Lock\Store\SemaphoreStore;
+use MonorepoBuilder20210829\Symfony\Component\Console\Exception\LogicException;
+use MonorepoBuilder20210829\Symfony\Component\Lock\Lock;
+use MonorepoBuilder20210829\Symfony\Component\Lock\LockFactory;
+use MonorepoBuilder20210829\Symfony\Component\Lock\Store\FlockStore;
+use MonorepoBuilder20210829\Symfony\Component\Lock\Store\SemaphoreStore;
 /**
  * Basic lock feature for commands.
  *
@@ -29,18 +29,18 @@ trait LockableTrait
      */
     private function lock(string $name = null, bool $blocking = \false) : bool
     {
-        if (!\class_exists(\MonorepoBuilder20210827\Symfony\Component\Lock\Store\SemaphoreStore::class)) {
-            throw new \MonorepoBuilder20210827\Symfony\Component\Console\Exception\LogicException('To enable the locking feature you must install the symfony/lock component.');
+        if (!\class_exists(\MonorepoBuilder20210829\Symfony\Component\Lock\Store\SemaphoreStore::class)) {
+            throw new \MonorepoBuilder20210829\Symfony\Component\Console\Exception\LogicException('To enable the locking feature you must install the symfony/lock component.');
         }
         if (null !== $this->lock) {
-            throw new \MonorepoBuilder20210827\Symfony\Component\Console\Exception\LogicException('A lock is already in place.');
+            throw new \MonorepoBuilder20210829\Symfony\Component\Console\Exception\LogicException('A lock is already in place.');
         }
-        if (\MonorepoBuilder20210827\Symfony\Component\Lock\Store\SemaphoreStore::isSupported()) {
-            $store = new \MonorepoBuilder20210827\Symfony\Component\Lock\Store\SemaphoreStore();
+        if (\MonorepoBuilder20210829\Symfony\Component\Lock\Store\SemaphoreStore::isSupported()) {
+            $store = new \MonorepoBuilder20210829\Symfony\Component\Lock\Store\SemaphoreStore();
         } else {
-            $store = new \MonorepoBuilder20210827\Symfony\Component\Lock\Store\FlockStore();
+            $store = new \MonorepoBuilder20210829\Symfony\Component\Lock\Store\FlockStore();
         }
-        $this->lock = (new \MonorepoBuilder20210827\Symfony\Component\Lock\LockFactory($store))->createLock($name ?: $this->getName());
+        $this->lock = (new \MonorepoBuilder20210829\Symfony\Component\Lock\LockFactory($store))->createLock($name ?: $this->getName());
         if (!$this->lock->acquire($blocking)) {
             $this->lock = null;
             return \false;

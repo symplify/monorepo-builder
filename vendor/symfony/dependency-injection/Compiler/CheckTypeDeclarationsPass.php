@@ -8,23 +8,23 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210827\Symfony\Component\DependencyInjection\Compiler;
+namespace MonorepoBuilder20210829\Symfony\Component\DependencyInjection\Compiler;
 
-use MonorepoBuilder20210827\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
-use MonorepoBuilder20210827\Symfony\Component\DependencyInjection\Argument\RewindableGenerator;
-use MonorepoBuilder20210827\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
-use MonorepoBuilder20210827\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
-use MonorepoBuilder20210827\Symfony\Component\DependencyInjection\Container;
-use MonorepoBuilder20210827\Symfony\Component\DependencyInjection\Definition;
-use MonorepoBuilder20210827\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use MonorepoBuilder20210827\Symfony\Component\DependencyInjection\Exception\InvalidParameterTypeException;
-use MonorepoBuilder20210827\Symfony\Component\DependencyInjection\Exception\RuntimeException;
-use MonorepoBuilder20210827\Symfony\Component\DependencyInjection\ExpressionLanguage;
-use MonorepoBuilder20210827\Symfony\Component\DependencyInjection\Parameter;
-use MonorepoBuilder20210827\Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag;
-use MonorepoBuilder20210827\Symfony\Component\DependencyInjection\Reference;
-use MonorepoBuilder20210827\Symfony\Component\DependencyInjection\ServiceLocator;
-use MonorepoBuilder20210827\Symfony\Component\ExpressionLanguage\Expression;
+use MonorepoBuilder20210829\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
+use MonorepoBuilder20210829\Symfony\Component\DependencyInjection\Argument\RewindableGenerator;
+use MonorepoBuilder20210829\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
+use MonorepoBuilder20210829\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
+use MonorepoBuilder20210829\Symfony\Component\DependencyInjection\Container;
+use MonorepoBuilder20210829\Symfony\Component\DependencyInjection\Definition;
+use MonorepoBuilder20210829\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use MonorepoBuilder20210829\Symfony\Component\DependencyInjection\Exception\InvalidParameterTypeException;
+use MonorepoBuilder20210829\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use MonorepoBuilder20210829\Symfony\Component\DependencyInjection\ExpressionLanguage;
+use MonorepoBuilder20210829\Symfony\Component\DependencyInjection\Parameter;
+use MonorepoBuilder20210829\Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag;
+use MonorepoBuilder20210829\Symfony\Component\DependencyInjection\Reference;
+use MonorepoBuilder20210829\Symfony\Component\DependencyInjection\ServiceLocator;
+use MonorepoBuilder20210829\Symfony\Component\ExpressionLanguage\Expression;
 /**
  * Checks whether injected parameters are compatible with type declarations.
  *
@@ -37,7 +37,7 @@ use MonorepoBuilder20210827\Symfony\Component\ExpressionLanguage\Expression;
  * @author Nicolas Grekas <p@tchwork.com>
  * @author Julien Maulny <jmaulny@darkmira.fr>
  */
-final class CheckTypeDeclarationsPass extends \MonorepoBuilder20210827\Symfony\Component\DependencyInjection\Compiler\AbstractRecursivePass
+final class CheckTypeDeclarationsPass extends \MonorepoBuilder20210829\Symfony\Component\DependencyInjection\Compiler\AbstractRecursivePass
 {
     private const SCALAR_TYPES = ['int' => \true, 'float' => \true, 'bool' => \true, 'string' => \true];
     private const BUILTIN_TYPES = ['array' => \true, 'bool' => \true, 'callable' => \true, 'float' => \true, 'int' => \true, 'iterable' => \true, 'object' => \true, 'string' => \true];
@@ -63,7 +63,7 @@ final class CheckTypeDeclarationsPass extends \MonorepoBuilder20210827\Symfony\C
         if (isset($this->skippedIds[$this->currentId])) {
             return $value;
         }
-        if (!$value instanceof \MonorepoBuilder20210827\Symfony\Component\DependencyInjection\Definition || $value->hasErrors() || $value->isDeprecated()) {
+        if (!$value instanceof \MonorepoBuilder20210829\Symfony\Component\DependencyInjection\Definition || $value->hasErrors() || $value->isDeprecated()) {
             return parent::processValue($value, $isRoot);
         }
         if (!$this->autoload) {
@@ -74,7 +74,7 @@ final class CheckTypeDeclarationsPass extends \MonorepoBuilder20210827\Symfony\C
                 return parent::processValue($value, $isRoot);
             }
         }
-        if (\MonorepoBuilder20210827\Symfony\Component\DependencyInjection\ServiceLocator::class === $value->getClass()) {
+        if (\MonorepoBuilder20210829\Symfony\Component\DependencyInjection\ServiceLocator::class === $value->getClass()) {
             return parent::processValue($value, $isRoot);
         }
         if ($constructor = $this->getConstructor($value, \false)) {
@@ -83,7 +83,7 @@ final class CheckTypeDeclarationsPass extends \MonorepoBuilder20210827\Symfony\C
         foreach ($value->getMethodCalls() as $methodCall) {
             try {
                 $reflectionMethod = $this->getReflectionMethod($value, $methodCall[0]);
-            } catch (\MonorepoBuilder20210827\Symfony\Component\DependencyInjection\Exception\RuntimeException $e) {
+            } catch (\MonorepoBuilder20210829\Symfony\Component\DependencyInjection\Exception\RuntimeException $e) {
                 if ($value->getFactory()) {
                     continue;
                 }
@@ -96,15 +96,15 @@ final class CheckTypeDeclarationsPass extends \MonorepoBuilder20210827\Symfony\C
     /**
      * @throws InvalidArgumentException When not enough parameters are defined for the method
      */
-    private function checkTypeDeclarations(\MonorepoBuilder20210827\Symfony\Component\DependencyInjection\Definition $checkedDefinition, \ReflectionFunctionAbstract $reflectionFunction, array $values) : void
+    private function checkTypeDeclarations(\MonorepoBuilder20210829\Symfony\Component\DependencyInjection\Definition $checkedDefinition, \ReflectionFunctionAbstract $reflectionFunction, array $values) : void
     {
         $numberOfRequiredParameters = $reflectionFunction->getNumberOfRequiredParameters();
         if (\count($values) < $numberOfRequiredParameters) {
-            throw new \MonorepoBuilder20210827\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Invalid definition for service "%s": "%s::%s()" requires %d arguments, %d passed.', $this->currentId, $reflectionFunction->class, $reflectionFunction->name, $numberOfRequiredParameters, \count($values)));
+            throw new \MonorepoBuilder20210829\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Invalid definition for service "%s": "%s::%s()" requires %d arguments, %d passed.', $this->currentId, $reflectionFunction->class, $reflectionFunction->name, $numberOfRequiredParameters, \count($values)));
         }
         $reflectionParameters = $reflectionFunction->getParameters();
         $checksCount = \min($reflectionFunction->getNumberOfParameters(), \count($values));
-        $envPlaceholderUniquePrefix = $this->container->getParameterBag() instanceof \MonorepoBuilder20210827\Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag ? $this->container->getParameterBag()->getEnvPlaceholderUniquePrefix() : null;
+        $envPlaceholderUniquePrefix = $this->container->getParameterBag() instanceof \MonorepoBuilder20210829\Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag ? $this->container->getParameterBag()->getEnvPlaceholderUniquePrefix() : null;
         for ($i = 0; $i < $checksCount; ++$i) {
             if (!$reflectionParameters[$i]->hasType() || $reflectionParameters[$i]->isVariadic()) {
                 continue;
@@ -121,7 +121,7 @@ final class CheckTypeDeclarationsPass extends \MonorepoBuilder20210827\Symfony\C
     /**
      * @throws InvalidParameterTypeException When a parameter is not compatible with the declared type
      */
-    private function checkType(\MonorepoBuilder20210827\Symfony\Component\DependencyInjection\Definition $checkedDefinition, $value, \ReflectionParameter $parameter, ?string $envPlaceholderUniquePrefix, \ReflectionType $reflectionType = null) : void
+    private function checkType(\MonorepoBuilder20210829\Symfony\Component\DependencyInjection\Definition $checkedDefinition, $value, \ReflectionParameter $parameter, ?string $envPlaceholderUniquePrefix, \ReflectionType $reflectionType = null) : void
     {
         $reflectionType = $reflectionType ?? $parameter->getType();
         if ($reflectionType instanceof \ReflectionUnionType) {
@@ -129,12 +129,12 @@ final class CheckTypeDeclarationsPass extends \MonorepoBuilder20210827\Symfony\C
                 try {
                     $this->checkType($checkedDefinition, $value, $parameter, $envPlaceholderUniquePrefix, $t);
                     return;
-                } catch (\MonorepoBuilder20210827\Symfony\Component\DependencyInjection\Exception\InvalidParameterTypeException $e) {
+                } catch (\MonorepoBuilder20210829\Symfony\Component\DependencyInjection\Exception\InvalidParameterTypeException $e) {
                 }
             }
-            throw new \MonorepoBuilder20210827\Symfony\Component\DependencyInjection\Exception\InvalidParameterTypeException($this->currentId, $e->getCode(), $parameter);
+            throw new \MonorepoBuilder20210829\Symfony\Component\DependencyInjection\Exception\InvalidParameterTypeException($this->currentId, $e->getCode(), $parameter);
         }
-        if ($reflectionType instanceof \MonorepoBuilder20210827\ReflectionIntersectionType) {
+        if ($reflectionType instanceof \MonorepoBuilder20210829\ReflectionIntersectionType) {
             foreach ($reflectionType->getTypes() as $t) {
                 $this->checkType($checkedDefinition, $value, $parameter, $envPlaceholderUniquePrefix, $t);
             }
@@ -144,11 +144,11 @@ final class CheckTypeDeclarationsPass extends \MonorepoBuilder20210827\Symfony\C
             return;
         }
         $type = $reflectionType->getName();
-        if ($value instanceof \MonorepoBuilder20210827\Symfony\Component\DependencyInjection\Reference) {
+        if ($value instanceof \MonorepoBuilder20210829\Symfony\Component\DependencyInjection\Reference) {
             if (!$this->container->has($value = (string) $value)) {
                 return;
             }
-            if ('service_container' === $value && \is_a($type, \MonorepoBuilder20210827\Symfony\Component\DependencyInjection\Container::class, \true)) {
+            if ('service_container' === $value && \is_a($type, \MonorepoBuilder20210829\Symfony\Component\DependencyInjection\Container::class, \true)) {
                 return;
             }
             $value = $this->container->findDefinition($value);
@@ -160,16 +160,16 @@ final class CheckTypeDeclarationsPass extends \MonorepoBuilder20210827\Symfony\C
             $type = $checkedDefinition->getClass();
         }
         $class = null;
-        if ($value instanceof \MonorepoBuilder20210827\Symfony\Component\DependencyInjection\Definition) {
+        if ($value instanceof \MonorepoBuilder20210829\Symfony\Component\DependencyInjection\Definition) {
             $class = $value->getClass();
             if ($class && isset(self::BUILTIN_TYPES[\strtolower($class)])) {
                 $class = \strtolower($class);
             } elseif (!$class || !$this->autoload && !\class_exists($class, \false) && !\interface_exists($class, \false)) {
                 return;
             }
-        } elseif ($value instanceof \MonorepoBuilder20210827\Symfony\Component\DependencyInjection\Parameter) {
+        } elseif ($value instanceof \MonorepoBuilder20210829\Symfony\Component\DependencyInjection\Parameter) {
             $value = $this->container->getParameter($value);
-        } elseif ($value instanceof \MonorepoBuilder20210827\Symfony\Component\ExpressionLanguage\Expression) {
+        } elseif ($value instanceof \MonorepoBuilder20210829\Symfony\Component\ExpressionLanguage\Expression) {
             try {
                 $value = $this->getExpressionLanguage()->evaluate($value, ['container' => $this->container]);
             } catch (\Exception $e) {
@@ -197,12 +197,12 @@ final class CheckTypeDeclarationsPass extends \MonorepoBuilder20210827\Symfony\C
             return;
         }
         if (null === $class) {
-            if ($value instanceof \MonorepoBuilder20210827\Symfony\Component\DependencyInjection\Argument\IteratorArgument) {
-                $class = \MonorepoBuilder20210827\Symfony\Component\DependencyInjection\Argument\RewindableGenerator::class;
-            } elseif ($value instanceof \MonorepoBuilder20210827\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument) {
+            if ($value instanceof \MonorepoBuilder20210829\Symfony\Component\DependencyInjection\Argument\IteratorArgument) {
+                $class = \MonorepoBuilder20210829\Symfony\Component\DependencyInjection\Argument\RewindableGenerator::class;
+            } elseif ($value instanceof \MonorepoBuilder20210829\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument) {
                 $class = \Closure::class;
-            } elseif ($value instanceof \MonorepoBuilder20210827\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument) {
-                $class = \MonorepoBuilder20210827\Symfony\Component\DependencyInjection\ServiceLocator::class;
+            } elseif ($value instanceof \MonorepoBuilder20210829\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument) {
+                $class = \MonorepoBuilder20210829\Symfony\Component\DependencyInjection\ServiceLocator::class;
             } elseif (\is_object($value)) {
                 $class = \get_class($value);
             } else {
@@ -219,7 +219,7 @@ final class CheckTypeDeclarationsPass extends \MonorepoBuilder20210827\Symfony\C
         if ('callable' === $type && (\Closure::class === $class || \method_exists($class, '__invoke'))) {
             return;
         }
-        if ('callable' === $type && \is_array($value) && isset($value[0]) && ($value[0] instanceof \MonorepoBuilder20210827\Symfony\Component\DependencyInjection\Reference || $value[0] instanceof \MonorepoBuilder20210827\Symfony\Component\DependencyInjection\Definition || \is_string($value[0]))) {
+        if ('callable' === $type && \is_array($value) && isset($value[0]) && ($value[0] instanceof \MonorepoBuilder20210829\Symfony\Component\DependencyInjection\Reference || $value[0] instanceof \MonorepoBuilder20210829\Symfony\Component\DependencyInjection\Definition || \is_string($value[0]))) {
             return;
         }
         if ('iterable' === $type && (\is_array($value) || 'array' === $class || \is_subclass_of($class, \Traversable::class))) {
@@ -247,12 +247,12 @@ final class CheckTypeDeclarationsPass extends \MonorepoBuilder20210827\Symfony\C
                 return;
             }
         }
-        throw new \MonorepoBuilder20210827\Symfony\Component\DependencyInjection\Exception\InvalidParameterTypeException($this->currentId, \is_object($value) ? $class : \get_debug_type($value), $parameter);
+        throw new \MonorepoBuilder20210829\Symfony\Component\DependencyInjection\Exception\InvalidParameterTypeException($this->currentId, \is_object($value) ? $class : \get_debug_type($value), $parameter);
     }
-    private function getExpressionLanguage() : \MonorepoBuilder20210827\Symfony\Component\DependencyInjection\ExpressionLanguage
+    private function getExpressionLanguage() : \MonorepoBuilder20210829\Symfony\Component\DependencyInjection\ExpressionLanguage
     {
         if (null === $this->expressionLanguage) {
-            $this->expressionLanguage = new \MonorepoBuilder20210827\Symfony\Component\DependencyInjection\ExpressionLanguage(null, $this->container->getExpressionLanguageProviders());
+            $this->expressionLanguage = new \MonorepoBuilder20210829\Symfony\Component\DependencyInjection\ExpressionLanguage(null, $this->container->getExpressionLanguageProviders());
         }
         return $this->expressionLanguage;
     }
