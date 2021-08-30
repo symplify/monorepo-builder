@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20210829\Symplify\EasyTesting\HttpKernel;
+namespace MonorepoBuilder20210830\Symplify\EasyTesting\HttpKernel;
 
-use MonorepoBuilder20210829\Symfony\Component\Config\Loader\LoaderInterface;
-use MonorepoBuilder20210829\Symplify\SymplifyKernel\HttpKernel\AbstractSymplifyKernel;
-final class EasyTestingKernel extends \MonorepoBuilder20210829\Symplify\SymplifyKernel\HttpKernel\AbstractSymplifyKernel
+use MonorepoBuilder20210830\Symfony\Component\Config\Loader\LoaderInterface;
+use MonorepoBuilder20210830\Symplify\SymplifyKernel\HttpKernel\AbstractSymplifyKernel;
+final class EasyTestingKernel extends \MonorepoBuilder20210830\Symplify\SymplifyKernel\HttpKernel\AbstractSymplifyKernel
 {
     /**
      * @param \Symfony\Component\Config\Loader\LoaderInterface $loader

@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210829\Symfony\Component\EventDispatcher;
+namespace MonorepoBuilder20210830\Symfony\Component\EventDispatcher;
 
-use MonorepoBuilder20210829\Symfony\Contracts\EventDispatcher\Event;
+use MonorepoBuilder20210830\Symfony\Contracts\EventDispatcher\Event;
 /**
  * Event encapsulation class.
  *
@@ -18,7 +18,7 @@ use MonorepoBuilder20210829\Symfony\Contracts\EventDispatcher\Event;
  *
  * @author Drak <drak@zikula.org>
  */
-class GenericEvent extends \MonorepoBuilder20210829\Symfony\Contracts\EventDispatcher\Event implements \ArrayAccess, \IteratorAggregate
+class GenericEvent extends \MonorepoBuilder20210830\Symfony\Contracts\EventDispatcher\Event implements \ArrayAccess, \IteratorAggregate
 {
     protected $subject;
     protected $arguments;
@@ -109,6 +109,7 @@ class GenericEvent extends \MonorepoBuilder20210829\Symfony\Contracts\EventDispa
      *
      * @throws \InvalidArgumentException if key does not exist in $this->args
      */
+    #[\ReturnTypeWillChange]
     public function offsetGet($key)
     {
         return $this->getArgument($key);
@@ -121,6 +122,7 @@ class GenericEvent extends \MonorepoBuilder20210829\Symfony\Contracts\EventDispa
      *
      * @return void
      */
+    #[\ReturnTypeWillChange]
     public function offsetSet($key, $value)
     {
         $this->setArgument($key, $value);
@@ -132,6 +134,7 @@ class GenericEvent extends \MonorepoBuilder20210829\Symfony\Contracts\EventDispa
      *
      * @return void
      */
+    #[\ReturnTypeWillChange]
     public function offsetUnset($key)
     {
         if ($this->hasArgument($key)) {
@@ -145,6 +148,7 @@ class GenericEvent extends \MonorepoBuilder20210829\Symfony\Contracts\EventDispa
      *
      * @return bool
      */
+    #[\ReturnTypeWillChange]
     public function offsetExists($key)
     {
         return $this->hasArgument($key);
@@ -154,6 +158,7 @@ class GenericEvent extends \MonorepoBuilder20210829\Symfony\Contracts\EventDispa
      *
      * @return \ArrayIterator
      */
+    #[\ReturnTypeWillChange]
     public function getIterator()
     {
         return new \ArrayIterator($this->arguments);

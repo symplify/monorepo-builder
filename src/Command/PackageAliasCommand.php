@@ -3,13 +3,13 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Command;
 
-use MonorepoBuilder20210829\Symfony\Component\Console\Input\InputInterface;
-use MonorepoBuilder20210829\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder20210830\Symfony\Component\Console\Input\InputInterface;
+use MonorepoBuilder20210830\Symfony\Component\Console\Output\OutputInterface;
 use Symplify\MonorepoBuilder\DevMasterAliasUpdater;
 use Symplify\MonorepoBuilder\Finder\PackageComposerFinder;
 use Symplify\MonorepoBuilder\Git\ExpectedAliasResolver;
-use MonorepoBuilder20210829\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
-final class PackageAliasCommand extends \MonorepoBuilder20210829\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand
+use MonorepoBuilder20210830\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
+final class PackageAliasCommand extends \MonorepoBuilder20210830\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand
 {
     /**
      * @var \Symplify\MonorepoBuilder\Finder\PackageComposerFinder

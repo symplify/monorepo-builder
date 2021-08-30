@@ -1,22 +1,22 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20210829;
+namespace MonorepoBuilder20210830;
 
-use MonorepoBuilder20210829\Symfony\Component\Console\Application;
+use MonorepoBuilder20210830\Symfony\Component\Console\Application;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symplify\MonorepoBuilder\Console\MonorepoBuilderConsoleApplication;
-use MonorepoBuilder20210829\Symplify\PackageBuilder\Console\Command\CommandNaming;
-use MonorepoBuilder20210829\Symplify\PackageBuilder\Reflection\PrivatesCaller;
-use MonorepoBuilder20210829\Symplify\PackageBuilder\Yaml\ParametersMerger;
+use MonorepoBuilder20210830\Symplify\PackageBuilder\Console\Command\CommandNaming;
+use MonorepoBuilder20210830\Symplify\PackageBuilder\Reflection\PrivatesCaller;
+use MonorepoBuilder20210830\Symplify\PackageBuilder\Yaml\ParametersMerger;
 return static function (\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator $containerConfigurator) : void {
     $services = $containerConfigurator->services();
     $services->defaults()->public()->autowire()->autoconfigure();
     $services->load('Symplify\MonorepoBuilder\\', __DIR__ . '/../src')->exclude([__DIR__ . '/../src/Exception', __DIR__ . '/../src/HttpKernel', __DIR__ . '/../src/ValueObject']);
     // console
     $services->set(\Symplify\MonorepoBuilder\Console\MonorepoBuilderConsoleApplication::class);
-    $services->alias(\MonorepoBuilder20210829\Symfony\Component\Console\Application::class, \Symplify\MonorepoBuilder\Console\MonorepoBuilderConsoleApplication::class);
-    $services->set(\MonorepoBuilder20210829\Symplify\PackageBuilder\Console\Command\CommandNaming::class);
-    $services->set(\MonorepoBuilder20210829\Symplify\PackageBuilder\Reflection\PrivatesCaller::class);
-    $services->set(\MonorepoBuilder20210829\Symplify\PackageBuilder\Yaml\ParametersMerger::class);
+    $services->alias(\MonorepoBuilder20210830\Symfony\Component\Console\Application::class, \Symplify\MonorepoBuilder\Console\MonorepoBuilderConsoleApplication::class);
+    $services->set(\MonorepoBuilder20210830\Symplify\PackageBuilder\Console\Command\CommandNaming::class);
+    $services->set(\MonorepoBuilder20210830\Symplify\PackageBuilder\Reflection\PrivatesCaller::class);
+    $services->set(\MonorepoBuilder20210830\Symplify\PackageBuilder\Yaml\ParametersMerger::class);
 };

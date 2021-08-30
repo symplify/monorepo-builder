@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210829\Symfony\Component\HttpKernel\Log;
+namespace MonorepoBuilder20210830\Symfony\Component\HttpKernel\Log;
 
-use MonorepoBuilder20210829\Symfony\Component\HttpFoundation\Request;
+use MonorepoBuilder20210830\Symfony\Component\HttpFoundation\Request;
 /**
  * DebugLoggerInterface.
  *

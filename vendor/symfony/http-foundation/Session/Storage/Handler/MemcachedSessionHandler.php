@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210829\Symfony\Component\HttpFoundation\Session\Storage\Handler;
+namespace MonorepoBuilder20210830\Symfony\Component\HttpFoundation\Session\Storage\Handler;
 
 /**
  * Memcached based session storage handler based on the Memcached class
@@ -18,7 +18,7 @@ namespace MonorepoBuilder20210829\Symfony\Component\HttpFoundation\Session\Stora
  *
  * @author Drak <drak@zikula.org>
  */
-class MemcachedSessionHandler extends \MonorepoBuilder20210829\Symfony\Component\HttpFoundation\Session\Storage\Handler\AbstractSessionHandler
+class MemcachedSessionHandler extends \MonorepoBuilder20210830\Symfony\Component\HttpFoundation\Session\Storage\Handler\AbstractSessionHandler
 {
     private $memcached;
     /**
@@ -50,6 +50,7 @@ class MemcachedSessionHandler extends \MonorepoBuilder20210829\Symfony\Component
     /**
      * @return bool
      */
+    #[\ReturnTypeWillChange]
     public function close()
     {
         return $this->memcached->quit();
@@ -65,6 +66,7 @@ class MemcachedSessionHandler extends \MonorepoBuilder20210829\Symfony\Component
     /**
      * @return bool
      */
+    #[\ReturnTypeWillChange]
     public function updateTimestamp($sessionId, $data)
     {
         $this->memcached->touch($this->prefix . $sessionId, \time() + $this->ttl);

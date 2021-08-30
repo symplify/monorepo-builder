@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210829\Symfony\Component\HttpFoundation\Session\Attribute;
+namespace MonorepoBuilder20210830\Symfony\Component\HttpFoundation\Session\Attribute;
 
 /**
  * This class relates to session attribute storage.
  */
-class AttributeBag implements \MonorepoBuilder20210829\Symfony\Component\HttpFoundation\Session\Attribute\AttributeBagInterface, \IteratorAggregate, \Countable
+class AttributeBag implements \MonorepoBuilder20210830\Symfony\Component\HttpFoundation\Session\Attribute\AttributeBagInterface, \IteratorAggregate, \Countable
 {
     private $name = 'attributes';
     private $storageKey;
@@ -123,6 +123,7 @@ class AttributeBag implements \MonorepoBuilder20210829\Symfony\Component\HttpFou
      *
      * @return \ArrayIterator An \ArrayIterator instance
      */
+    #[\ReturnTypeWillChange]
     public function getIterator()
     {
         return new \ArrayIterator($this->attributes);
@@ -132,6 +133,7 @@ class AttributeBag implements \MonorepoBuilder20210829\Symfony\Component\HttpFou
      *
      * @return int The number of attributes
      */
+    #[\ReturnTypeWillChange]
     public function count()
     {
         return \count($this->attributes);
