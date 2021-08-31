@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210830\Symfony\Component\DependencyInjection\Exception;
+namespace MonorepoBuilder20210831\Symfony\Component\DependencyInjection\Exception;
 
 /**
  * Thrown when trying to inject a parameter into a constructor/method with an incompatible type.
@@ -16,7 +16,7 @@ namespace MonorepoBuilder20210830\Symfony\Component\DependencyInjection\Exceptio
  * @author Nicolas Grekas <p@tchwork.com>
  * @author Julien Maulny <jmaulny@darkmira.fr>
  */
-class InvalidParameterTypeException extends \MonorepoBuilder20210830\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException
+class InvalidParameterTypeException extends \MonorepoBuilder20210831\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException
 {
     public function __construct(string $serviceId, string $type, \ReflectionParameter $parameter)
     {

@@ -2,13 +2,13 @@
 
 // decoupled in own "*.php" file, so ECS, Rector and PHPStan works out of the box here
 declare (strict_types=1);
-namespace MonorepoBuilder20210830;
+namespace MonorepoBuilder20210831;
 
-use MonorepoBuilder20210830\Symfony\Component\Console\Input\ArgvInput;
+use MonorepoBuilder20210831\Symfony\Component\Console\Input\ArgvInput;
 use Symplify\MonorepoBuilder\HttpKernel\MonorepoBuilderKernel;
 use Symplify\MonorepoBuilder\ValueObject\File;
-use MonorepoBuilder20210830\Symplify\SmartFileSystem\SmartFileInfo;
-use MonorepoBuilder20210830\Symplify\SymplifyKernel\ValueObject\KernelBootAndApplicationRun;
+use MonorepoBuilder20210831\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder20210831\Symplify\SymplifyKernel\ValueObject\KernelBootAndApplicationRun;
 # 1. autoload
 $possibleAutoloadPaths = [
     // after split package
@@ -29,24 +29,24 @@ if (\file_exists($scoperAutoloadFilepath)) {
     require_once $scoperAutoloadFilepath;
 }
 $configFileInfos = [];
-$argvInput = new \MonorepoBuilder20210830\Symfony\Component\Console\Input\ArgvInput();
-$configFileInfo = \MonorepoBuilder20210830\resolveConfigFileInfo($argvInput);
-if ($configFileInfo instanceof \MonorepoBuilder20210830\Symplify\SmartFileSystem\SmartFileInfo) {
+$argvInput = new \MonorepoBuilder20210831\Symfony\Component\Console\Input\ArgvInput();
+$configFileInfo = \MonorepoBuilder20210831\resolveConfigFileInfo($argvInput);
+if ($configFileInfo instanceof \MonorepoBuilder20210831\Symplify\SmartFileSystem\SmartFileInfo) {
     $configFileInfos[] = $configFileInfo;
 }
-$kernelBootAndApplicationRun = new \MonorepoBuilder20210830\Symplify\SymplifyKernel\ValueObject\KernelBootAndApplicationRun(\Symplify\MonorepoBuilder\HttpKernel\MonorepoBuilderKernel::class, $configFileInfos);
+$kernelBootAndApplicationRun = new \MonorepoBuilder20210831\Symplify\SymplifyKernel\ValueObject\KernelBootAndApplicationRun(\Symplify\MonorepoBuilder\HttpKernel\MonorepoBuilderKernel::class, $configFileInfos);
 $kernelBootAndApplicationRun->run();
-function resolveConfigFileInfo(\MonorepoBuilder20210830\Symfony\Component\Console\Input\ArgvInput $argvInput) : ?\MonorepoBuilder20210830\Symplify\SmartFileSystem\SmartFileInfo
+function resolveConfigFileInfo(\MonorepoBuilder20210831\Symfony\Component\Console\Input\ArgvInput $argvInput) : ?\MonorepoBuilder20210831\Symplify\SmartFileSystem\SmartFileInfo
 {
     if ($argvInput->hasParameterOption(['-c', '--config'])) {
         $configOption = $argvInput->getParameterOption(['-c', '--config']);
         if (\is_string($configOption) && \file_exists($configOption)) {
-            return new \MonorepoBuilder20210830\Symplify\SmartFileSystem\SmartFileInfo($configOption);
+            return new \MonorepoBuilder20210831\Symplify\SmartFileSystem\SmartFileInfo($configOption);
         }
     }
     $defaultConfigFilePath = \getcwd() . '/' . \Symplify\MonorepoBuilder\ValueObject\File::CONFIG;
     if (\file_exists($defaultConfigFilePath)) {
-        return new \MonorepoBuilder20210830\Symplify\SmartFileSystem\SmartFileInfo($defaultConfigFilePath);
+        return new \MonorepoBuilder20210831\Symplify\SmartFileSystem\SmartFileInfo($defaultConfigFilePath);
     }
     return null;
 }
