@@ -8,23 +8,23 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210831\Symfony\Component\Console\Event;
+namespace MonorepoBuilder20210902\Symfony\Component\Console\Event;
 
-use MonorepoBuilder20210831\Symfony\Component\Console\Command\Command;
-use MonorepoBuilder20210831\Symfony\Component\Console\Input\InputInterface;
-use MonorepoBuilder20210831\Symfony\Component\Console\Output\OutputInterface;
-use MonorepoBuilder20210831\Symfony\Contracts\EventDispatcher\Event;
+use MonorepoBuilder20210902\Symfony\Component\Console\Command\Command;
+use MonorepoBuilder20210902\Symfony\Component\Console\Input\InputInterface;
+use MonorepoBuilder20210902\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder20210902\Symfony\Contracts\EventDispatcher\Event;
 /**
  * Allows to inspect input and output of a command.
  *
  * @author Francesco Levorato <git@flevour.net>
  */
-class ConsoleEvent extends \MonorepoBuilder20210831\Symfony\Contracts\EventDispatcher\Event
+class ConsoleEvent extends \MonorepoBuilder20210902\Symfony\Contracts\EventDispatcher\Event
 {
     protected $command;
     private $input;
     private $output;
-    public function __construct(?\MonorepoBuilder20210831\Symfony\Component\Console\Command\Command $command, \MonorepoBuilder20210831\Symfony\Component\Console\Input\InputInterface $input, \MonorepoBuilder20210831\Symfony\Component\Console\Output\OutputInterface $output)
+    public function __construct(?\MonorepoBuilder20210902\Symfony\Component\Console\Command\Command $command, \MonorepoBuilder20210902\Symfony\Component\Console\Input\InputInterface $input, \MonorepoBuilder20210902\Symfony\Component\Console\Output\OutputInterface $output)
     {
         $this->command = $command;
         $this->input = $input;

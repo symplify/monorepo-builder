@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210831\Symfony\Component\Config\Builder;
+namespace MonorepoBuilder20210902\Symfony\Component\Config\Builder;
 
 /**
  * A ConfigBuilder provides helper methods to build a large complex array.
