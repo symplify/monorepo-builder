@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Testing\PackageDependency;
 
-use MonorepoBuilder20210902\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
+use MonorepoBuilder20210903\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
 use Symplify\MonorepoBuilder\Package\PackageNamesProvider;
 final class UsedPackagesResolver
 {
@@ -22,7 +22,7 @@ final class UsedPackagesResolver
     public function resolveForPackage(array $packageComposerJson) : array
     {
         $usedPackageNames = [];
-        foreach ([\MonorepoBuilder20210902\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE, \MonorepoBuilder20210902\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE_DEV] as $section) {
+        foreach ([\MonorepoBuilder20210903\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE, \MonorepoBuilder20210903\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE_DEV] as $section) {
             if (!isset($packageComposerJson[$section])) {
                 continue;
             }

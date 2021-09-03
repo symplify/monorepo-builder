@@ -8,18 +8,18 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210902\Symfony\Component\HttpKernel\DependencyInjection;
+namespace MonorepoBuilder20210903\Symfony\Component\HttpKernel\DependencyInjection;
 
-use MonorepoBuilder20210902\Psr\Log\LoggerInterface;
-use MonorepoBuilder20210902\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
-use MonorepoBuilder20210902\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder20210902\Symfony\Component\HttpKernel\Log\Logger;
+use MonorepoBuilder20210903\Psr\Log\LoggerInterface;
+use MonorepoBuilder20210903\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
+use MonorepoBuilder20210903\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder20210903\Symfony\Component\HttpKernel\Log\Logger;
 /**
  * Registers the default logger if necessary.
  *
  * @author Kévin Dunglas <dunglas@gmail.com>
  */
-class LoggerPass implements \MonorepoBuilder20210902\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
+class LoggerPass implements \MonorepoBuilder20210903\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
 {
     /**
      * {@inheritdoc}
@@ -27,10 +27,10 @@ class LoggerPass implements \MonorepoBuilder20210902\Symfony\Component\Dependenc
      */
     public function process($container)
     {
-        $container->setAlias(\MonorepoBuilder20210902\Psr\Log\LoggerInterface::class, 'logger')->setPublic(\false);
+        $container->setAlias(\MonorepoBuilder20210903\Psr\Log\LoggerInterface::class, 'logger')->setPublic(\false);
         if ($container->has('logger')) {
             return;
         }
-        $container->register('logger', \MonorepoBuilder20210902\Symfony\Component\HttpKernel\Log\Logger::class)->setPublic(\false);
+        $container->register('logger', \MonorepoBuilder20210903\Symfony\Component\HttpKernel\Log\Logger::class)->setPublic(\false);
     }
 }

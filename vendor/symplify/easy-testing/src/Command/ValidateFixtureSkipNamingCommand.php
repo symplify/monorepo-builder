@@ -1,16 +1,16 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20210902\Symplify\EasyTesting\Command;
+namespace MonorepoBuilder20210903\Symplify\EasyTesting\Command;
 
-use MonorepoBuilder20210902\Symfony\Component\Console\Input\InputArgument;
-use MonorepoBuilder20210902\Symfony\Component\Console\Input\InputInterface;
-use MonorepoBuilder20210902\Symfony\Component\Console\Output\OutputInterface;
-use MonorepoBuilder20210902\Symplify\EasyTesting\Finder\FixtureFinder;
-use MonorepoBuilder20210902\Symplify\EasyTesting\MissplacedSkipPrefixResolver;
-use MonorepoBuilder20210902\Symplify\EasyTesting\ValueObject\Option;
-use MonorepoBuilder20210902\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
-final class ValidateFixtureSkipNamingCommand extends \MonorepoBuilder20210902\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand
+use MonorepoBuilder20210903\Symfony\Component\Console\Input\InputArgument;
+use MonorepoBuilder20210903\Symfony\Component\Console\Input\InputInterface;
+use MonorepoBuilder20210903\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder20210903\Symplify\EasyTesting\Finder\FixtureFinder;
+use MonorepoBuilder20210903\Symplify\EasyTesting\MissplacedSkipPrefixResolver;
+use MonorepoBuilder20210903\Symplify\EasyTesting\ValueObject\Option;
+use MonorepoBuilder20210903\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
+final class ValidateFixtureSkipNamingCommand extends \MonorepoBuilder20210903\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand
 {
     /**
      * @var \Symplify\EasyTesting\MissplacedSkipPrefixResolver
@@ -20,7 +20,7 @@ final class ValidateFixtureSkipNamingCommand extends \MonorepoBuilder20210902\Sy
      * @var \Symplify\EasyTesting\Finder\FixtureFinder
      */
     private $fixtureFinder;
-    public function __construct(\MonorepoBuilder20210902\Symplify\EasyTesting\MissplacedSkipPrefixResolver $missplacedSkipPrefixResolver, \MonorepoBuilder20210902\Symplify\EasyTesting\Finder\FixtureFinder $fixtureFinder)
+    public function __construct(\MonorepoBuilder20210903\Symplify\EasyTesting\MissplacedSkipPrefixResolver $missplacedSkipPrefixResolver, \MonorepoBuilder20210903\Symplify\EasyTesting\Finder\FixtureFinder $fixtureFinder)
     {
         $this->missplacedSkipPrefixResolver = $missplacedSkipPrefixResolver;
         $this->fixtureFinder = $fixtureFinder;
@@ -28,7 +28,7 @@ final class ValidateFixtureSkipNamingCommand extends \MonorepoBuilder20210902\Sy
     }
     protected function configure() : void
     {
-        $this->addArgument(\MonorepoBuilder20210902\Symplify\EasyTesting\ValueObject\Option::SOURCE, \MonorepoBuilder20210902\Symfony\Component\Console\Input\InputArgument::REQUIRED | \MonorepoBuilder20210902\Symfony\Component\Console\Input\InputArgument::IS_ARRAY, 'Paths to analyse');
+        $this->addArgument(\MonorepoBuilder20210903\Symplify\EasyTesting\ValueObject\Option::SOURCE, \MonorepoBuilder20210903\Symfony\Component\Console\Input\InputArgument::REQUIRED | \MonorepoBuilder20210903\Symfony\Component\Console\Input\InputArgument::IS_ARRAY, 'Paths to analyse');
         $this->setDescription('Check that skipped fixture files (without `-----` separator) have a "skip" prefix');
     }
     /**
@@ -37,7 +37,7 @@ final class ValidateFixtureSkipNamingCommand extends \MonorepoBuilder20210902\Sy
      */
     protected function execute($input, $output) : int
     {
-        $source = (array) $input->getArgument(\MonorepoBuilder20210902\Symplify\EasyTesting\ValueObject\Option::SOURCE);
+        $source = (array) $input->getArgument(\MonorepoBuilder20210903\Symplify\EasyTesting\ValueObject\Option::SOURCE);
         $fixtureFileInfos = $this->fixtureFinder->find($source);
         $missplacedFixtureFileInfos = $this->missplacedSkipPrefixResolver->resolve($fixtureFileInfos);
         if ($missplacedFixtureFileInfos === []) {

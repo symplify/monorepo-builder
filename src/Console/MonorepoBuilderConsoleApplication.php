@@ -3,15 +3,15 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Console;
 
-use MonorepoBuilder20210902\Symfony\Component\Console\Application;
-use MonorepoBuilder20210902\Symfony\Component\Console\Command\Command;
-use MonorepoBuilder20210902\Symplify\PackageBuilder\Console\Command\CommandNaming;
-final class MonorepoBuilderConsoleApplication extends \MonorepoBuilder20210902\Symfony\Component\Console\Application
+use MonorepoBuilder20210903\Symfony\Component\Console\Application;
+use MonorepoBuilder20210903\Symfony\Component\Console\Command\Command;
+use MonorepoBuilder20210903\Symplify\PackageBuilder\Console\Command\CommandNaming;
+final class MonorepoBuilderConsoleApplication extends \MonorepoBuilder20210903\Symfony\Component\Console\Application
 {
     /**
      * @param Command[] $commands
      */
-    public function __construct(\MonorepoBuilder20210902\Symplify\PackageBuilder\Console\Command\CommandNaming $commandNaming, array $commands)
+    public function __construct(\MonorepoBuilder20210903\Symplify\PackageBuilder\Console\Command\CommandNaming $commandNaming, array $commands)
     {
         foreach ($commands as $command) {
             $commandName = $commandNaming->resolveFromCommand($command);
