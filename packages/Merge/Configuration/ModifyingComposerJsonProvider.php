@@ -3,10 +3,10 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Merge\Configuration;
 
-use MonorepoBuilder20210903\Symplify\ComposerJsonManipulator\ComposerJsonFactory;
-use MonorepoBuilder20210903\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
+use MonorepoBuilder20210904\Symplify\ComposerJsonManipulator\ComposerJsonFactory;
+use MonorepoBuilder20210904\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
 use Symplify\MonorepoBuilder\ValueObject\Option;
-use MonorepoBuilder20210903\Symplify\PackageBuilder\Parameter\ParameterProvider;
+use MonorepoBuilder20210904\Symplify\PackageBuilder\Parameter\ParameterProvider;
 final class ModifyingComposerJsonProvider
 {
     /**
@@ -17,12 +17,12 @@ final class ModifyingComposerJsonProvider
      * @var \Symplify\PackageBuilder\Parameter\ParameterProvider
      */
     private $parameterProvider;
-    public function __construct(\MonorepoBuilder20210903\Symplify\ComposerJsonManipulator\ComposerJsonFactory $composerJsonFactory, \MonorepoBuilder20210903\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider)
+    public function __construct(\MonorepoBuilder20210904\Symplify\ComposerJsonManipulator\ComposerJsonFactory $composerJsonFactory, \MonorepoBuilder20210904\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider)
     {
         $this->composerJsonFactory = $composerJsonFactory;
         $this->parameterProvider = $parameterProvider;
     }
-    public function getRemovingComposerJson() : ?\MonorepoBuilder20210903\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson
+    public function getRemovingComposerJson() : ?\MonorepoBuilder20210904\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson
     {
         $dataToRemove = $this->parameterProvider->provideArrayParameter(\Symplify\MonorepoBuilder\ValueObject\Option::DATA_TO_REMOVE);
         if ($dataToRemove === []) {
@@ -30,7 +30,7 @@ final class ModifyingComposerJsonProvider
         }
         return $this->composerJsonFactory->createFromArray($dataToRemove);
     }
-    public function getAppendingComposerJson() : ?\MonorepoBuilder20210903\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson
+    public function getAppendingComposerJson() : ?\MonorepoBuilder20210904\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson
     {
         $dataToAppend = $this->parameterProvider->provideArrayParameter(\Symplify\MonorepoBuilder\ValueObject\Option::DATA_TO_APPEND);
         if ($dataToAppend === []) {

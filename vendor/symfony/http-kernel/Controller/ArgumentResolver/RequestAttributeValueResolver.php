@@ -8,17 +8,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210903\Symfony\Component\HttpKernel\Controller\ArgumentResolver;
+namespace MonorepoBuilder20210904\Symfony\Component\HttpKernel\Controller\ArgumentResolver;
 
-use MonorepoBuilder20210903\Symfony\Component\HttpFoundation\Request;
-use MonorepoBuilder20210903\Symfony\Component\HttpKernel\Controller\ArgumentValueResolverInterface;
-use MonorepoBuilder20210903\Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata;
+use MonorepoBuilder20210904\Symfony\Component\HttpFoundation\Request;
+use MonorepoBuilder20210904\Symfony\Component\HttpKernel\Controller\ArgumentValueResolverInterface;
+use MonorepoBuilder20210904\Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata;
 /**
  * Yields a non-variadic argument's value from the request attributes.
  *
  * @author Iltar van der Berg <kjarli@gmail.com>
  */
-final class RequestAttributeValueResolver implements \MonorepoBuilder20210903\Symfony\Component\HttpKernel\Controller\ArgumentValueResolverInterface
+final class RequestAttributeValueResolver implements \MonorepoBuilder20210904\Symfony\Component\HttpKernel\Controller\ArgumentValueResolverInterface
 {
     /**
      * {@inheritdoc}
