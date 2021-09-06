@@ -8,28 +8,28 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210904\Symfony\Component\HttpKernel\EventListener;
+namespace MonorepoBuilder20210906\Symfony\Component\HttpKernel\EventListener;
 
-use MonorepoBuilder20210904\Psr\Log\LoggerInterface;
-use MonorepoBuilder20210904\Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use MonorepoBuilder20210904\Symfony\Component\HttpFoundation\Request;
-use MonorepoBuilder20210904\Symfony\Component\HttpFoundation\RequestStack;
-use MonorepoBuilder20210904\Symfony\Component\HttpFoundation\Response;
-use MonorepoBuilder20210904\Symfony\Component\HttpKernel\Event\ExceptionEvent;
-use MonorepoBuilder20210904\Symfony\Component\HttpKernel\Event\FinishRequestEvent;
-use MonorepoBuilder20210904\Symfony\Component\HttpKernel\Event\RequestEvent;
-use MonorepoBuilder20210904\Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
-use MonorepoBuilder20210904\Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
-use MonorepoBuilder20210904\Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use MonorepoBuilder20210904\Symfony\Component\HttpKernel\Kernel;
-use MonorepoBuilder20210904\Symfony\Component\HttpKernel\KernelEvents;
-use MonorepoBuilder20210904\Symfony\Component\Routing\Exception\MethodNotAllowedException;
-use MonorepoBuilder20210904\Symfony\Component\Routing\Exception\NoConfigurationException;
-use MonorepoBuilder20210904\Symfony\Component\Routing\Exception\ResourceNotFoundException;
-use MonorepoBuilder20210904\Symfony\Component\Routing\Matcher\RequestMatcherInterface;
-use MonorepoBuilder20210904\Symfony\Component\Routing\Matcher\UrlMatcherInterface;
-use MonorepoBuilder20210904\Symfony\Component\Routing\RequestContext;
-use MonorepoBuilder20210904\Symfony\Component\Routing\RequestContextAwareInterface;
+use MonorepoBuilder20210906\Psr\Log\LoggerInterface;
+use MonorepoBuilder20210906\Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use MonorepoBuilder20210906\Symfony\Component\HttpFoundation\Request;
+use MonorepoBuilder20210906\Symfony\Component\HttpFoundation\RequestStack;
+use MonorepoBuilder20210906\Symfony\Component\HttpFoundation\Response;
+use MonorepoBuilder20210906\Symfony\Component\HttpKernel\Event\ExceptionEvent;
+use MonorepoBuilder20210906\Symfony\Component\HttpKernel\Event\FinishRequestEvent;
+use MonorepoBuilder20210906\Symfony\Component\HttpKernel\Event\RequestEvent;
+use MonorepoBuilder20210906\Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
+use MonorepoBuilder20210906\Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
+use MonorepoBuilder20210906\Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use MonorepoBuilder20210906\Symfony\Component\HttpKernel\Kernel;
+use MonorepoBuilder20210906\Symfony\Component\HttpKernel\KernelEvents;
+use MonorepoBuilder20210906\Symfony\Component\Routing\Exception\MethodNotAllowedException;
+use MonorepoBuilder20210906\Symfony\Component\Routing\Exception\NoConfigurationException;
+use MonorepoBuilder20210906\Symfony\Component\Routing\Exception\ResourceNotFoundException;
+use MonorepoBuilder20210906\Symfony\Component\Routing\Matcher\RequestMatcherInterface;
+use MonorepoBuilder20210906\Symfony\Component\Routing\Matcher\UrlMatcherInterface;
+use MonorepoBuilder20210906\Symfony\Component\Routing\RequestContext;
+use MonorepoBuilder20210906\Symfony\Component\Routing\RequestContextAwareInterface;
 /**
  * Initializes the context from the request and sets request attributes based on a matching route.
  *
@@ -38,7 +38,7 @@ use MonorepoBuilder20210904\Symfony\Component\Routing\RequestContextAwareInterfa
  *
  * @final
  */
-class RouterListener implements \MonorepoBuilder20210904\Symfony\Component\EventDispatcher\EventSubscriberInterface
+class RouterListener implements \MonorepoBuilder20210906\Symfony\Component\EventDispatcher\EventSubscriberInterface
 {
     private $matcher;
     private $context;
@@ -53,12 +53,12 @@ class RouterListener implements \MonorepoBuilder20210904\Symfony\Component\Event
      *
      * @throws \InvalidArgumentException
      */
-    public function __construct($matcher, \MonorepoBuilder20210904\Symfony\Component\HttpFoundation\RequestStack $requestStack, \MonorepoBuilder20210904\Symfony\Component\Routing\RequestContext $context = null, \MonorepoBuilder20210904\Psr\Log\LoggerInterface $logger = null, string $projectDir = null, bool $debug = \true)
+    public function __construct($matcher, \MonorepoBuilder20210906\Symfony\Component\HttpFoundation\RequestStack $requestStack, \MonorepoBuilder20210906\Symfony\Component\Routing\RequestContext $context = null, \MonorepoBuilder20210906\Psr\Log\LoggerInterface $logger = null, string $projectDir = null, bool $debug = \true)
     {
-        if (!$matcher instanceof \MonorepoBuilder20210904\Symfony\Component\Routing\Matcher\UrlMatcherInterface && !$matcher instanceof \MonorepoBuilder20210904\Symfony\Component\Routing\Matcher\RequestMatcherInterface) {
+        if (!$matcher instanceof \MonorepoBuilder20210906\Symfony\Component\Routing\Matcher\UrlMatcherInterface && !$matcher instanceof \MonorepoBuilder20210906\Symfony\Component\Routing\Matcher\RequestMatcherInterface) {
             throw new \InvalidArgumentException('Matcher must either implement UrlMatcherInterface or RequestMatcherInterface.');
         }
-        if (null === $context && !$matcher instanceof \MonorepoBuilder20210904\Symfony\Component\Routing\RequestContextAwareInterface) {
+        if (null === $context && !$matcher instanceof \MonorepoBuilder20210906\Symfony\Component\Routing\RequestContextAwareInterface) {
             throw new \InvalidArgumentException('You must either pass a RequestContext or the matcher must implement RequestContextAwareInterface.');
         }
         $this->matcher = $matcher;
@@ -68,13 +68,13 @@ class RouterListener implements \MonorepoBuilder20210904\Symfony\Component\Event
         $this->projectDir = $projectDir;
         $this->debug = $debug;
     }
-    private function setCurrentRequest(\MonorepoBuilder20210904\Symfony\Component\HttpFoundation\Request $request = null)
+    private function setCurrentRequest(\MonorepoBuilder20210906\Symfony\Component\HttpFoundation\Request $request = null)
     {
         if (null !== $request) {
             try {
                 $this->context->fromRequest($request);
             } catch (\UnexpectedValueException $e) {
-                throw new \MonorepoBuilder20210904\Symfony\Component\HttpKernel\Exception\BadRequestHttpException($e->getMessage(), $e, $e->getCode());
+                throw new \MonorepoBuilder20210906\Symfony\Component\HttpKernel\Exception\BadRequestHttpException($e->getMessage(), $e, $e->getCode());
             }
         }
     }
@@ -101,7 +101,7 @@ class RouterListener implements \MonorepoBuilder20210904\Symfony\Component\Event
         // add attributes based on the request (routing)
         try {
             // matching a request is more powerful than matching a URL path + context, so try that first
-            if ($this->matcher instanceof \MonorepoBuilder20210904\Symfony\Component\Routing\Matcher\RequestMatcherInterface) {
+            if ($this->matcher instanceof \MonorepoBuilder20210906\Symfony\Component\Routing\Matcher\RequestMatcherInterface) {
                 $parameters = $this->matcher->matchRequest($request);
             } else {
                 $parameters = $this->matcher->match($request->getPathInfo());
@@ -112,15 +112,15 @@ class RouterListener implements \MonorepoBuilder20210904\Symfony\Component\Event
             $request->attributes->add($parameters);
             unset($parameters['_route'], $parameters['_controller']);
             $request->attributes->set('_route_params', $parameters);
-        } catch (\MonorepoBuilder20210904\Symfony\Component\Routing\Exception\ResourceNotFoundException $e) {
+        } catch (\MonorepoBuilder20210906\Symfony\Component\Routing\Exception\ResourceNotFoundException $e) {
             $message = \sprintf('No route found for "%s %s"', $request->getMethod(), $request->getUriForPath($request->getPathInfo()));
             if ($referer = $request->headers->get('referer')) {
                 $message .= \sprintf(' (from "%s")', $referer);
             }
-            throw new \MonorepoBuilder20210904\Symfony\Component\HttpKernel\Exception\NotFoundHttpException($message, $e);
-        } catch (\MonorepoBuilder20210904\Symfony\Component\Routing\Exception\MethodNotAllowedException $e) {
+            throw new \MonorepoBuilder20210906\Symfony\Component\HttpKernel\Exception\NotFoundHttpException($message, $e);
+        } catch (\MonorepoBuilder20210906\Symfony\Component\Routing\Exception\MethodNotAllowedException $e) {
             $message = \sprintf('No route found for "%s %s": Method Not Allowed (Allow: %s)', $request->getMethod(), $request->getUriForPath($request->getPathInfo()), \implode(', ', $e->getAllowedMethods()));
-            throw new \MonorepoBuilder20210904\Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException($e->getAllowedMethods(), $message, $e);
+            throw new \MonorepoBuilder20210906\Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException($e->getAllowedMethods(), $message, $e);
         }
     }
     /**
@@ -128,24 +128,24 @@ class RouterListener implements \MonorepoBuilder20210904\Symfony\Component\Event
      */
     public function onKernelException($event)
     {
-        if (!$this->debug || !($e = $event->getThrowable()) instanceof \MonorepoBuilder20210904\Symfony\Component\HttpKernel\Exception\NotFoundHttpException) {
+        if (!$this->debug || !($e = $event->getThrowable()) instanceof \MonorepoBuilder20210906\Symfony\Component\HttpKernel\Exception\NotFoundHttpException) {
             return;
         }
-        if ($e->getPrevious() instanceof \MonorepoBuilder20210904\Symfony\Component\Routing\Exception\NoConfigurationException) {
+        if ($e->getPrevious() instanceof \MonorepoBuilder20210906\Symfony\Component\Routing\Exception\NoConfigurationException) {
             $event->setResponse($this->createWelcomeResponse());
         }
     }
     public static function getSubscribedEvents() : array
     {
-        return [\MonorepoBuilder20210904\Symfony\Component\HttpKernel\KernelEvents::REQUEST => [['onKernelRequest', 32]], \MonorepoBuilder20210904\Symfony\Component\HttpKernel\KernelEvents::FINISH_REQUEST => [['onKernelFinishRequest', 0]], \MonorepoBuilder20210904\Symfony\Component\HttpKernel\KernelEvents::EXCEPTION => ['onKernelException', -64]];
+        return [\MonorepoBuilder20210906\Symfony\Component\HttpKernel\KernelEvents::REQUEST => [['onKernelRequest', 32]], \MonorepoBuilder20210906\Symfony\Component\HttpKernel\KernelEvents::FINISH_REQUEST => [['onKernelFinishRequest', 0]], \MonorepoBuilder20210906\Symfony\Component\HttpKernel\KernelEvents::EXCEPTION => ['onKernelException', -64]];
     }
-    private function createWelcomeResponse() : \MonorepoBuilder20210904\Symfony\Component\HttpFoundation\Response
+    private function createWelcomeResponse() : \MonorepoBuilder20210906\Symfony\Component\HttpFoundation\Response
     {
-        $version = \MonorepoBuilder20210904\Symfony\Component\HttpKernel\Kernel::VERSION;
+        $version = \MonorepoBuilder20210906\Symfony\Component\HttpKernel\Kernel::VERSION;
         $projectDir = \realpath((string) $this->projectDir) . \DIRECTORY_SEPARATOR;
-        $docVersion = \substr(\MonorepoBuilder20210904\Symfony\Component\HttpKernel\Kernel::VERSION, 0, 3);
+        $docVersion = \substr(\MonorepoBuilder20210906\Symfony\Component\HttpKernel\Kernel::VERSION, 0, 3);
         \ob_start();
         include \dirname(__DIR__) . '/Resources/welcome.html.php';
-        return new \MonorepoBuilder20210904\Symfony\Component\HttpFoundation\Response(\ob_get_clean(), \MonorepoBuilder20210904\Symfony\Component\HttpFoundation\Response::HTTP_NOT_FOUND);
+        return new \MonorepoBuilder20210906\Symfony\Component\HttpFoundation\Response(\ob_get_clean(), \MonorepoBuilder20210906\Symfony\Component\HttpFoundation\Response::HTTP_NOT_FOUND);
     }
 }

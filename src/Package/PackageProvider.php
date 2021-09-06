@@ -3,11 +3,11 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Package;
 
-use MonorepoBuilder20210904\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
+use MonorepoBuilder20210906\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
 use Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider;
 use Symplify\MonorepoBuilder\ValueObject\Package;
-use MonorepoBuilder20210904\Symplify\SmartFileSystem\SmartFileInfo;
-use MonorepoBuilder20210904\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
+use MonorepoBuilder20210906\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder20210906\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
 final class PackageProvider
 {
     /**
@@ -18,7 +18,7 @@ final class PackageProvider
      * @var \Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager
      */
     private $jsonFileManager;
-    public function __construct(\Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider $composerJsonProvider, \MonorepoBuilder20210904\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager $jsonFileManager)
+    public function __construct(\Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider $composerJsonProvider, \MonorepoBuilder20210906\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager $jsonFileManager)
     {
         $this->composerJsonProvider = $composerJsonProvider;
         $this->jsonFileManager = $jsonFileManager;
@@ -39,11 +39,11 @@ final class PackageProvider
         });
         return $packages;
     }
-    private function detectNameFromFileInfo(\MonorepoBuilder20210904\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : string
+    private function detectNameFromFileInfo(\MonorepoBuilder20210906\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : string
     {
         $json = $this->jsonFileManager->loadFromFileInfo($smartFileInfo);
         if (!isset($json['name'])) {
-            throw new \MonorepoBuilder20210904\Symplify\SymplifyKernel\Exception\ShouldNotHappenException();
+            throw new \MonorepoBuilder20210906\Symplify\SymplifyKernel\Exception\ShouldNotHappenException();
         }
         return (string) $json['name'];
     }

@@ -3,10 +3,10 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder;
 
-use MonorepoBuilder20210904\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
+use MonorepoBuilder20210906\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
 use Symplify\MonorepoBuilder\ValueObject\Option;
-use MonorepoBuilder20210904\Symplify\PackageBuilder\Parameter\ParameterProvider;
-use MonorepoBuilder20210904\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder20210906\Symplify\PackageBuilder\Parameter\ParameterProvider;
+use MonorepoBuilder20210906\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\MonorepoBuilder\Tests\DevMasterAliasUpdater\DevMasterAliasUpdaterTest
  */
@@ -32,7 +32,7 @@ final class DevMasterAliasUpdater
      * @var \Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager
      */
     private $jsonFileManager;
-    public function __construct(\MonorepoBuilder20210904\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager $jsonFileManager, \MonorepoBuilder20210904\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider)
+    public function __construct(\MonorepoBuilder20210906\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager $jsonFileManager, \MonorepoBuilder20210906\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider)
     {
         $this->jsonFileManager = $jsonFileManager;
         $this->branchAliasTarget = self::COMPOSER_BRANCH_PREFIX . $parameterProvider->provideStringParameter(\Symplify\MonorepoBuilder\ValueObject\Option::DEFAULT_BRANCH_NAME);

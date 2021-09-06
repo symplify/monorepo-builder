@@ -1,30 +1,30 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20210904\Symplify\EasyTesting\FixtureSplitter;
+namespace MonorepoBuilder20210906\Symplify\EasyTesting\FixtureSplitter;
 
-use MonorepoBuilder20210904\Nette\Utils\Strings;
-use MonorepoBuilder20210904\Symplify\EasyTesting\ValueObject\FixtureSplit\TrioContent;
-use MonorepoBuilder20210904\Symplify\EasyTesting\ValueObject\SplitLine;
-use MonorepoBuilder20210904\Symplify\SmartFileSystem\SmartFileInfo;
-use MonorepoBuilder20210904\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
+use MonorepoBuilder20210906\Nette\Utils\Strings;
+use MonorepoBuilder20210906\Symplify\EasyTesting\ValueObject\FixtureSplit\TrioContent;
+use MonorepoBuilder20210906\Symplify\EasyTesting\ValueObject\SplitLine;
+use MonorepoBuilder20210906\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder20210906\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
 final class TrioFixtureSplitter
 {
-    public function splitFileInfo(\MonorepoBuilder20210904\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : \MonorepoBuilder20210904\Symplify\EasyTesting\ValueObject\FixtureSplit\TrioContent
+    public function splitFileInfo(\MonorepoBuilder20210906\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : \MonorepoBuilder20210906\Symplify\EasyTesting\ValueObject\FixtureSplit\TrioContent
     {
-        $parts = \MonorepoBuilder20210904\Nette\Utils\Strings::split($smartFileInfo->getContents(), \MonorepoBuilder20210904\Symplify\EasyTesting\ValueObject\SplitLine::SPLIT_LINE_REGEX);
+        $parts = \MonorepoBuilder20210906\Nette\Utils\Strings::split($smartFileInfo->getContents(), \MonorepoBuilder20210906\Symplify\EasyTesting\ValueObject\SplitLine::SPLIT_LINE_REGEX);
         $this->ensureHasThreeParts($parts, $smartFileInfo);
-        return new \MonorepoBuilder20210904\Symplify\EasyTesting\ValueObject\FixtureSplit\TrioContent($parts[0], $parts[1], $parts[2]);
+        return new \MonorepoBuilder20210906\Symplify\EasyTesting\ValueObject\FixtureSplit\TrioContent($parts[0], $parts[1], $parts[2]);
     }
     /**
      * @param mixed[] $parts
      */
-    private function ensureHasThreeParts(array $parts, \MonorepoBuilder20210904\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : void
+    private function ensureHasThreeParts(array $parts, \MonorepoBuilder20210906\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : void
     {
         if (\count($parts) === 3) {
             return;
         }
         $message = \sprintf('The fixture "%s" should have 3 parts. %d found', $smartFileInfo->getRelativeFilePathFromCwd(), \count($parts));
-        throw new \MonorepoBuilder20210904\Symplify\SymplifyKernel\Exception\ShouldNotHappenException($message);
+        throw new \MonorepoBuilder20210906\Symplify\SymplifyKernel\Exception\ShouldNotHappenException($message);
     }
 }

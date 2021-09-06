@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20210904\Symplify\PackageBuilder\Reflection;
+namespace MonorepoBuilder20210906\Symplify\PackageBuilder\Reflection;
 
 use ReflectionClass;
 use ReflectionMethod;
-use MonorepoBuilder20210904\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
+use MonorepoBuilder20210906\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
 /**
  * @see \Symplify\PackageBuilder\Tests\Reflection\PrivatesCallerTest
  */
@@ -59,6 +59,6 @@ final class PrivatesCaller
             return;
         }
         $errorMessage = \sprintf('Value passed to "%s()" method cannot be null', $location);
-        throw new \MonorepoBuilder20210904\Symplify\SymplifyKernel\Exception\ShouldNotHappenException($errorMessage);
+        throw new \MonorepoBuilder20210906\Symplify\SymplifyKernel\Exception\ShouldNotHappenException($errorMessage);
     }
 }

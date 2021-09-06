@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20210904\Symplify\AutowireArrayParameter\Skipper;
+namespace MonorepoBuilder20210906\Symplify\AutowireArrayParameter\Skipper;
 
 use ReflectionMethod;
 use ReflectionParameter;
-use MonorepoBuilder20210904\Symfony\Component\DependencyInjection\Definition;
-use MonorepoBuilder20210904\Symplify\AutowireArrayParameter\TypeResolver\ParameterTypeResolver;
+use MonorepoBuilder20210906\Symfony\Component\DependencyInjection\Definition;
+use MonorepoBuilder20210906\Symplify\AutowireArrayParameter\TypeResolver\ParameterTypeResolver;
 final class ParameterSkipper
 {
     /**
@@ -14,7 +14,7 @@ final class ParameterSkipper
      *
      * @var string[]
      */
-    private const DEFAULT_EXCLUDED_FATAL_CLASSES = ['MonorepoBuilder20210904\\Symfony\\Component\\Form\\FormExtensionInterface', 'MonorepoBuilder20210904\\Symfony\\Component\\Asset\\PackageInterface', 'MonorepoBuilder20210904\\Symfony\\Component\\Config\\Loader\\LoaderInterface', 'MonorepoBuilder20210904\\Symfony\\Component\\VarDumper\\Dumper\\ContextProvider\\ContextProviderInterface', 'MonorepoBuilder20210904\\EasyCorp\\Bundle\\EasyAdminBundle\\Form\\Type\\Configurator\\TypeConfiguratorInterface', 'MonorepoBuilder20210904\\Sonata\\CoreBundle\\Model\\Adapter\\AdapterInterface', 'MonorepoBuilder20210904\\Sonata\\Doctrine\\Adapter\\AdapterChain', 'MonorepoBuilder20210904\\Sonata\\Twig\\Extension\\TemplateExtension'];
+    private const DEFAULT_EXCLUDED_FATAL_CLASSES = ['MonorepoBuilder20210906\\Symfony\\Component\\Form\\FormExtensionInterface', 'MonorepoBuilder20210906\\Symfony\\Component\\Asset\\PackageInterface', 'MonorepoBuilder20210906\\Symfony\\Component\\Config\\Loader\\LoaderInterface', 'MonorepoBuilder20210906\\Symfony\\Component\\VarDumper\\Dumper\\ContextProvider\\ContextProviderInterface', 'MonorepoBuilder20210906\\EasyCorp\\Bundle\\EasyAdminBundle\\Form\\Type\\Configurator\\TypeConfiguratorInterface', 'MonorepoBuilder20210906\\Sonata\\CoreBundle\\Model\\Adapter\\AdapterInterface', 'MonorepoBuilder20210906\\Sonata\\Doctrine\\Adapter\\AdapterChain', 'MonorepoBuilder20210906\\Sonata\\Twig\\Extension\\TemplateExtension'];
     /**
      * @var string[]
      */
@@ -26,12 +26,12 @@ final class ParameterSkipper
     /**
      * @param string[] $excludedFatalClasses
      */
-    public function __construct(\MonorepoBuilder20210904\Symplify\AutowireArrayParameter\TypeResolver\ParameterTypeResolver $parameterTypeResolver, array $excludedFatalClasses)
+    public function __construct(\MonorepoBuilder20210906\Symplify\AutowireArrayParameter\TypeResolver\ParameterTypeResolver $parameterTypeResolver, array $excludedFatalClasses)
     {
         $this->parameterTypeResolver = $parameterTypeResolver;
         $this->excludedFatalClasses = \array_merge(self::DEFAULT_EXCLUDED_FATAL_CLASSES, $excludedFatalClasses);
     }
-    public function shouldSkipParameter(\ReflectionMethod $reflectionMethod, \MonorepoBuilder20210904\Symfony\Component\DependencyInjection\Definition $definition, \ReflectionParameter $reflectionParameter) : bool
+    public function shouldSkipParameter(\ReflectionMethod $reflectionMethod, \MonorepoBuilder20210906\Symfony\Component\DependencyInjection\Definition $definition, \ReflectionParameter $reflectionParameter) : bool
     {
         if (!$this->isArrayType($reflectionParameter)) {
             return \true;
