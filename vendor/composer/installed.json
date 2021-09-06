@@ -2342,7 +2342,7 @@
             "dist": {
                 "type": "path",
                 "url": "..\/..\/packages\/autowire-array-parameter",
-                "reference": "20518806bb3b194af7cfad8520e714934ff63eff"
+                "reference": "3ef141e509b31779d272b4edb11377f1122234d9"
             },
             "require": {
                 "nette\/utils": "^3.2",
@@ -2368,7 +2368,6 @@
                 "symplify\/php-config-printer": "<9.4.53",
                 "symplify\/phpstan-extensions": "<9.4.53",
                 "symplify\/phpstan-rules": "<9.4.53",
-                "symplify\/phpunit-upgrader": "<9.4.53",
                 "symplify\/psr4-switcher": "<9.4.53",
                 "symplify\/rule-doc-generator": "<9.4.53",
                 "symplify\/rule-doc-generator-contracts": "<9.4.53",
@@ -2417,7 +2416,7 @@
             "dist": {
                 "type": "path",
                 "url": "..\/..\/packages\/composer-json-manipulator",
-                "reference": "2c075ae8c3598324ff3235ad80f9c40242750548"
+                "reference": "7b16294782ed0d41aaea049b1d5e23c73f15e18c"
             },
             "require": {
                 "nette\/utils": "^3.2",
@@ -2447,7 +2446,6 @@
                 "symplify\/php-config-printer": "<9.4.53",
                 "symplify\/phpstan-extensions": "<9.4.53",
                 "symplify\/phpstan-rules": "<9.4.53",
-                "symplify\/phpunit-upgrader": "<9.4.53",
                 "symplify\/psr4-switcher": "<9.4.53",
                 "symplify\/rule-doc-generator": "<9.4.53",
                 "symplify\/rule-doc-generator-contracts": "<9.4.53",
@@ -2495,7 +2493,7 @@
             "dist": {
                 "type": "path",
                 "url": "..\/..\/packages\/console-color-diff",
-                "reference": "ef883e48d7a53474ee1db064da321464d5858a0e"
+                "reference": "9bda71c8aa7d79deacb1017cd400294ecc83f64b"
             },
             "require": {
                 "nette\/utils": "^3.2",
@@ -2524,7 +2522,6 @@
                 "symplify\/php-config-printer": "<9.4.53",
                 "symplify\/phpstan-extensions": "<9.4.53",
                 "symplify\/phpstan-rules": "<9.4.53",
-                "symplify\/phpunit-upgrader": "<9.4.53",
                 "symplify\/psr4-switcher": "<9.4.53",
                 "symplify\/rule-doc-generator": "<9.4.53",
                 "symplify\/rule-doc-generator-contracts": "<9.4.53",
@@ -2573,7 +2570,7 @@
             "dist": {
                 "type": "path",
                 "url": "..\/..\/packages\/console-package-builder",
-                "reference": "7db9326007740ea0b4bc2fbe14d697543be8ab01"
+                "reference": "a52283b04f1b3e239bf036f8acaf976ea4eeaa49"
             },
             "require": {
                 "php": ">=8.0",
@@ -2600,7 +2597,6 @@
                 "symplify\/php-config-printer": "<9.4.53",
                 "symplify\/phpstan-extensions": "<9.4.53",
                 "symplify\/phpstan-rules": "<9.4.53",
-                "symplify\/phpunit-upgrader": "<9.4.53",
                 "symplify\/psr4-switcher": "<9.4.53",
                 "symplify\/rule-doc-generator": "<9.4.53",
                 "symplify\/rule-doc-generator-contracts": "<9.4.53",
@@ -2650,7 +2646,7 @@
             "dist": {
                 "type": "path",
                 "url": "..\/..\/packages\/easy-testing",
-                "reference": "7af328d71f10a6f4931d4ed6fb2d13bae22792d7"
+                "reference": "7cbfecb157b9c8233d0e97ff9a061d192ec63288"
             },
             "require": {
                 "nette\/utils": "^3.2",
@@ -2681,7 +2677,6 @@
                 "symplify\/php-config-printer": "<9.4.53",
                 "symplify\/phpstan-extensions": "<9.4.53",
                 "symplify\/phpstan-rules": "<9.4.53",
-                "symplify\/phpunit-upgrader": "<9.4.53",
                 "symplify\/psr4-switcher": "<9.4.53",
                 "symplify\/rule-doc-generator": "<9.4.53",
                 "symplify\/rule-doc-generator-contracts": "<9.4.53",
@@ -2731,7 +2726,7 @@
             "dist": {
                 "type": "path",
                 "url": "..\/..\/packages\/package-builder",
-                "reference": "e928b94270681dd08a45ba84b7ec4fba8f0f4ea7"
+                "reference": "df6a87d8df00d9a03185d27fcae0e2995193b8a0"
             },
             "require": {
                 "nette\/neon": "^3.2",
@@ -2763,7 +2758,6 @@
                 "symplify\/php-config-printer": "<9.4.53",
                 "symplify\/phpstan-extensions": "<9.4.53",
                 "symplify\/phpstan-rules": "<9.4.53",
-                "symplify\/phpunit-upgrader": "<9.4.53",
                 "symplify\/psr4-switcher": "<9.4.53",
                 "symplify\/rule-doc-generator": "<9.4.53",
                 "symplify\/rule-doc-generator-contracts": "<9.4.53",
@@ -2811,7 +2805,7 @@
             "dist": {
                 "type": "path",
                 "url": "..\/..\/packages\/smart-file-system",
-                "reference": "a183a5708b2b7b0452f154891eaf55794cd0ae4c"
+                "reference": "7a465168f7d6ce367bdb748292d59da2053e4db2"
             },
             "require": {
                 "nette\/utils": "^3.2",
@@ -2839,7 +2833,6 @@
                 "symplify\/php-config-printer": "<9.4.53",
                 "symplify\/phpstan-extensions": "<9.4.53",
                 "symplify\/phpstan-rules": "<9.4.53",
-                "symplify\/phpunit-upgrader": "<9.4.53",
                 "symplify\/psr4-switcher": "<9.4.53",
                 "symplify\/rule-doc-generator": "<9.4.53",
                 "symplify\/rule-doc-generator-contracts": "<9.4.53",
@@ -2888,7 +2881,7 @@
             "dist": {
                 "type": "path",
                 "url": "..\/..\/packages\/symplify-kernel",
-                "reference": "c38ab81ad3c528ad40609fd61a9b75abf32cd7f4"
+                "reference": "10e64e205ad804c3715e0005c63594d0da7acea1"
             },
             "require": {
                 "php": ">=8.0",
@@ -2917,7 +2910,6 @@
                 "symplify\/php-config-printer": "<9.4.53",
                 "symplify\/phpstan-extensions": "<9.4.53",
                 "symplify\/phpstan-rules": "<9.4.53",
-                "symplify\/phpunit-upgrader": "<9.4.53",
                 "symplify\/psr4-switcher": "<9.4.53",
                 "symplify\/rule-doc-generator": "<9.4.53",
                 "symplify\/rule-doc-generator-contracts": "<9.4.53",
