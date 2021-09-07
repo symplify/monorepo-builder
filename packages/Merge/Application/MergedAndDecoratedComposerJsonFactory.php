@@ -3,10 +3,10 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Merge\Application;
 
-use MonorepoBuilder20210906\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
+use MonorepoBuilder20210907\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
 use Symplify\MonorepoBuilder\Merge\ComposerJsonMerger;
 use Symplify\MonorepoBuilder\Merge\Contract\ComposerJsonDecoratorInterface;
-use MonorepoBuilder20210906\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder20210907\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\MonorepoBuilder\Tests\Merge\Application\MergedAndDecoratedComposerJsonFactoryTest
  */
@@ -31,7 +31,7 @@ final class MergedAndDecoratedComposerJsonFactory
     /**
      * @param SmartFileInfo[] $packageFileInfos
      */
-    public function createFromRootConfigAndPackageFileInfos(\MonorepoBuilder20210906\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $mainComposerJson, array $packageFileInfos) : void
+    public function createFromRootConfigAndPackageFileInfos(\MonorepoBuilder20210907\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $mainComposerJson, array $packageFileInfos) : void
     {
         $mergedAndDecoratedComposerJson = $this->mergePackageFileInfosAndDecorate($packageFileInfos);
         $this->composerJsonMerger->mergeJsonToRoot($mainComposerJson, $mergedAndDecoratedComposerJson);
@@ -39,7 +39,7 @@ final class MergedAndDecoratedComposerJsonFactory
     /**
      * @param SmartFileInfo[] $packageFileInfos
      */
-    private function mergePackageFileInfosAndDecorate(array $packageFileInfos) : \MonorepoBuilder20210906\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson
+    private function mergePackageFileInfosAndDecorate(array $packageFileInfos) : \MonorepoBuilder20210907\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson
     {
         $mergedComposerJson = $this->composerJsonMerger->mergeFileInfos($packageFileInfos);
         foreach ($this->composerJsonDecorators as $composerJsonDecorator) {

@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210906\Symfony\Component\HttpFoundation\Session\Attribute;
+namespace MonorepoBuilder20210907\Symfony\Component\HttpFoundation\Session\Attribute;
 
-use MonorepoBuilder20210906\Symfony\Component\HttpFoundation\Session\SessionBagInterface;
+use MonorepoBuilder20210907\Symfony\Component\HttpFoundation\Session\SessionBagInterface;
 /**
  * Attributes store.
  *
  * @author Drak <drak@zikula.org>
  */
-interface AttributeBagInterface extends \MonorepoBuilder20210906\Symfony\Component\HttpFoundation\Session\SessionBagInterface
+interface AttributeBagInterface extends \MonorepoBuilder20210907\Symfony\Component\HttpFoundation\Session\SessionBagInterface
 {
     /**
      * Checks if an attribute is defined.

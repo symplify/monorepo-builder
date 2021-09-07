@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20210906\Symplify\PackageBuilder\Configuration;
+namespace MonorepoBuilder20210907\Symplify\PackageBuilder\Configuration;
 
 final class StaticEolConfiguration
 {

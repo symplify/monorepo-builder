@@ -6,7 +6,7 @@
     <title>Welcome to Symfony!</title>
     <style>
         <?php 
-namespace MonorepoBuilder20210906;
+namespace MonorepoBuilder20210907;
 
 $hue = \random_int(0, 360);
 ?>
