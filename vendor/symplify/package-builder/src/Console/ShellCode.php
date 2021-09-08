@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20210907\Symplify\PackageBuilder\Console;
+namespace MonorepoBuilder20210908\Symplify\PackageBuilder\Console;
 
-use MonorepoBuilder20210907\Symfony\Component\Console\Command\Command;
+use MonorepoBuilder20210908\Symfony\Component\Console\Command\Command;
 /**
  * @deprecated Use symfony constants in directly
  * @see Command::FAILURE

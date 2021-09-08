@@ -5,9 +5,9 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace MonorepoBuilder20210907\Nette\Utils;
+namespace MonorepoBuilder20210908\Nette\Utils;
 
-use MonorepoBuilder20210907\Nette;
+use MonorepoBuilder20210908\Nette;
 /**
  * Floating-point numbers comparison.
  */

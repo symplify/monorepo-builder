@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210907\Symfony\Component\HttpKernel\EventListener;
+namespace MonorepoBuilder20210908\Symfony\Component\HttpKernel\EventListener;
 
-use MonorepoBuilder20210907\Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use MonorepoBuilder20210907\Symfony\Component\HttpFoundation\Request;
-use MonorepoBuilder20210907\Symfony\Component\HttpKernel\Event\RequestEvent;
-use MonorepoBuilder20210907\Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
-use MonorepoBuilder20210907\Symfony\Component\HttpKernel\KernelEvents;
-use MonorepoBuilder20210907\Symfony\Component\HttpKernel\UriSigner;
+use MonorepoBuilder20210908\Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use MonorepoBuilder20210908\Symfony\Component\HttpFoundation\Request;
+use MonorepoBuilder20210908\Symfony\Component\HttpKernel\Event\RequestEvent;
+use MonorepoBuilder20210908\Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use MonorepoBuilder20210908\Symfony\Component\HttpKernel\KernelEvents;
+use MonorepoBuilder20210908\Symfony\Component\HttpKernel\UriSigner;
 /**
  * Handles content fragments represented by special URIs.
  *
@@ -29,14 +29,14 @@ use MonorepoBuilder20210907\Symfony\Component\HttpKernel\UriSigner;
  *
  * @final
  */
-class FragmentListener implements \MonorepoBuilder20210907\Symfony\Component\EventDispatcher\EventSubscriberInterface
+class FragmentListener implements \MonorepoBuilder20210908\Symfony\Component\EventDispatcher\EventSubscriberInterface
 {
     private $signer;
     private $fragmentPath;
     /**
      * @param string $fragmentPath The path that triggers this listener
      */
-    public function __construct(\MonorepoBuilder20210907\Symfony\Component\HttpKernel\UriSigner $signer, string $fragmentPath = '/_fragment')
+    public function __construct(\MonorepoBuilder20210908\Symfony\Component\HttpKernel\UriSigner $signer, string $fragmentPath = '/_fragment')
     {
         $this->signer = $signer;
         $this->fragmentPath = $fragmentPath;
@@ -73,16 +73,16 @@ class FragmentListener implements \MonorepoBuilder20210907\Symfony\Component\Eve
     {
         // is the Request safe?
         if (!$request->isMethodSafe()) {
-            throw new \MonorepoBuilder20210907\Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException();
+            throw new \MonorepoBuilder20210908\Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException();
         }
         // is the Request signed?
         if ($this->signer->checkRequest($request)) {
             return;
         }
-        throw new \MonorepoBuilder20210907\Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException();
+        throw new \MonorepoBuilder20210908\Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException();
     }
     public static function getSubscribedEvents() : array
     {
-        return [\MonorepoBuilder20210907\Symfony\Component\HttpKernel\KernelEvents::REQUEST => [['onKernelRequest', 48]]];
+        return [\MonorepoBuilder20210908\Symfony\Component\HttpKernel\KernelEvents::REQUEST => [['onKernelRequest', 48]]];
     }
 }
