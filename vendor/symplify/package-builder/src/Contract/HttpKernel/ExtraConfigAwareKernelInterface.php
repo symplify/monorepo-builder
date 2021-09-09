@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20210908\Symplify\PackageBuilder\Contract\HttpKernel;
+namespace MonorepoBuilder20210909\Symplify\PackageBuilder\Contract\HttpKernel;
 
-use MonorepoBuilder20210908\Symfony\Component\HttpKernel\KernelInterface;
-use MonorepoBuilder20210908\Symplify\SmartFileSystem\SmartFileInfo;
-interface ExtraConfigAwareKernelInterface extends \MonorepoBuilder20210908\Symfony\Component\HttpKernel\KernelInterface
+use MonorepoBuilder20210909\Symfony\Component\HttpKernel\KernelInterface;
+use MonorepoBuilder20210909\Symplify\SmartFileSystem\SmartFileInfo;
+interface ExtraConfigAwareKernelInterface extends \MonorepoBuilder20210909\Symfony\Component\HttpKernel\KernelInterface
 {
     /**
      * @param string[]|SmartFileInfo[] $configs

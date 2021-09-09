@@ -4,9 +4,9 @@ declare (strict_types=1);
 namespace Symplify\MonorepoBuilder;
 
 use PharIo\Version\Version;
-use MonorepoBuilder20210908\Symplify\ComposerJsonManipulator\ComposerJsonFactory;
-use MonorepoBuilder20210908\Symplify\ComposerJsonManipulator\Printer\ComposerJsonPrinter;
-use MonorepoBuilder20210908\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder20210909\Symplify\ComposerJsonManipulator\ComposerJsonFactory;
+use MonorepoBuilder20210909\Symplify\ComposerJsonManipulator\Printer\ComposerJsonPrinter;
+use MonorepoBuilder20210909\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\MonorepoBuilder\Tests\ConflictingUpdater\ConflictingUpdaterTest
  */
@@ -20,7 +20,7 @@ final class ConflictingUpdater
      * @var \Symplify\ComposerJsonManipulator\Printer\ComposerJsonPrinter
      */
     private $composerJsonPrinter;
-    public function __construct(\MonorepoBuilder20210908\Symplify\ComposerJsonManipulator\ComposerJsonFactory $composerJsonFactory, \MonorepoBuilder20210908\Symplify\ComposerJsonManipulator\Printer\ComposerJsonPrinter $composerJsonPrinter)
+    public function __construct(\MonorepoBuilder20210909\Symplify\ComposerJsonManipulator\ComposerJsonFactory $composerJsonFactory, \MonorepoBuilder20210909\Symplify\ComposerJsonManipulator\Printer\ComposerJsonPrinter $composerJsonPrinter)
     {
         $this->composerJsonFactory = $composerJsonFactory;
         $this->composerJsonPrinter = $composerJsonPrinter;

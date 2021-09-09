@@ -71,7 +71,7 @@
     },
     "autoload": {
         "psr-4": {
-            "MonorepoBuilder20210908\\Symfony\\Component\\HttpKernel\\": ""
+            "MonorepoBuilder20210909\\Symfony\\Component\\HttpKernel\\": ""
         },
         "exclude-from-classmap": [
             "\/Tests\/"

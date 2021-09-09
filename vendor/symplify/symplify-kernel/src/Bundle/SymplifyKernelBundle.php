@@ -1,23 +1,23 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20210908\Symplify\SymplifyKernel\Bundle;
+namespace MonorepoBuilder20210909\Symplify\SymplifyKernel\Bundle;
 
-use MonorepoBuilder20210908\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder20210908\Symfony\Component\HttpKernel\Bundle\Bundle;
-use MonorepoBuilder20210908\Symplify\AutowireArrayParameter\DependencyInjection\CompilerPass\AutowireArrayParameterCompilerPass;
-use MonorepoBuilder20210908\Symplify\SymplifyKernel\DependencyInjection\Extension\SymplifyKernelExtension;
-final class SymplifyKernelBundle extends \MonorepoBuilder20210908\Symfony\Component\HttpKernel\Bundle\Bundle
+use MonorepoBuilder20210909\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder20210909\Symfony\Component\HttpKernel\Bundle\Bundle;
+use MonorepoBuilder20210909\Symplify\AutowireArrayParameter\DependencyInjection\CompilerPass\AutowireArrayParameterCompilerPass;
+use MonorepoBuilder20210909\Symplify\SymplifyKernel\DependencyInjection\Extension\SymplifyKernelExtension;
+final class SymplifyKernelBundle extends \MonorepoBuilder20210909\Symfony\Component\HttpKernel\Bundle\Bundle
 {
     /**
      * @param \Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder
      */
     public function build($containerBuilder) : void
     {
-        $containerBuilder->addCompilerPass(new \MonorepoBuilder20210908\Symplify\AutowireArrayParameter\DependencyInjection\CompilerPass\AutowireArrayParameterCompilerPass());
+        $containerBuilder->addCompilerPass(new \MonorepoBuilder20210909\Symplify\AutowireArrayParameter\DependencyInjection\CompilerPass\AutowireArrayParameterCompilerPass());
     }
-    protected function createContainerExtension() : ?\MonorepoBuilder20210908\Symfony\Component\DependencyInjection\Extension\ExtensionInterface
+    protected function createContainerExtension() : ?\MonorepoBuilder20210909\Symfony\Component\DependencyInjection\Extension\ExtensionInterface
     {
-        return new \MonorepoBuilder20210908\Symplify\SymplifyKernel\DependencyInjection\Extension\SymplifyKernelExtension();
+        return new \MonorepoBuilder20210909\Symplify\SymplifyKernel\DependencyInjection\Extension\SymplifyKernelExtension();
     }
 }
