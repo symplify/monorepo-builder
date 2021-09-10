@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210909\Symfony\Component\Console;
+namespace MonorepoBuilder20210910\Symfony\Component\Console;
 
-use MonorepoBuilder20210909\Symfony\Component\Console\Event\ConsoleCommandEvent;
-use MonorepoBuilder20210909\Symfony\Component\Console\Event\ConsoleErrorEvent;
-use MonorepoBuilder20210909\Symfony\Component\Console\Event\ConsoleSignalEvent;
-use MonorepoBuilder20210909\Symfony\Component\Console\Event\ConsoleTerminateEvent;
+use MonorepoBuilder20210910\Symfony\Component\Console\Event\ConsoleCommandEvent;
+use MonorepoBuilder20210910\Symfony\Component\Console\Event\ConsoleErrorEvent;
+use MonorepoBuilder20210910\Symfony\Component\Console\Event\ConsoleSignalEvent;
+use MonorepoBuilder20210910\Symfony\Component\Console\Event\ConsoleTerminateEvent;
 /**
  * Contains all events dispatched by an Application.
  *
@@ -57,5 +57,5 @@ final class ConsoleEvents
      *
      * These aliases can be consumed by RegisterListenersPass.
      */
-    public const ALIASES = [\MonorepoBuilder20210909\Symfony\Component\Console\Event\ConsoleCommandEvent::class => self::COMMAND, \MonorepoBuilder20210909\Symfony\Component\Console\Event\ConsoleErrorEvent::class => self::ERROR, \MonorepoBuilder20210909\Symfony\Component\Console\Event\ConsoleSignalEvent::class => self::SIGNAL, \MonorepoBuilder20210909\Symfony\Component\Console\Event\ConsoleTerminateEvent::class => self::TERMINATE];
+    public const ALIASES = [\MonorepoBuilder20210910\Symfony\Component\Console\Event\ConsoleCommandEvent::class => self::COMMAND, \MonorepoBuilder20210910\Symfony\Component\Console\Event\ConsoleErrorEvent::class => self::ERROR, \MonorepoBuilder20210910\Symfony\Component\Console\Event\ConsoleSignalEvent::class => self::SIGNAL, \MonorepoBuilder20210910\Symfony\Component\Console\Event\ConsoleTerminateEvent::class => self::TERMINATE];
 }

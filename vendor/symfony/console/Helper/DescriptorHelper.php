@@ -8,21 +8,21 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210909\Symfony\Component\Console\Helper;
+namespace MonorepoBuilder20210910\Symfony\Component\Console\Helper;
 
-use MonorepoBuilder20210909\Symfony\Component\Console\Descriptor\DescriptorInterface;
-use MonorepoBuilder20210909\Symfony\Component\Console\Descriptor\JsonDescriptor;
-use MonorepoBuilder20210909\Symfony\Component\Console\Descriptor\MarkdownDescriptor;
-use MonorepoBuilder20210909\Symfony\Component\Console\Descriptor\TextDescriptor;
-use MonorepoBuilder20210909\Symfony\Component\Console\Descriptor\XmlDescriptor;
-use MonorepoBuilder20210909\Symfony\Component\Console\Exception\InvalidArgumentException;
-use MonorepoBuilder20210909\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder20210910\Symfony\Component\Console\Descriptor\DescriptorInterface;
+use MonorepoBuilder20210910\Symfony\Component\Console\Descriptor\JsonDescriptor;
+use MonorepoBuilder20210910\Symfony\Component\Console\Descriptor\MarkdownDescriptor;
+use MonorepoBuilder20210910\Symfony\Component\Console\Descriptor\TextDescriptor;
+use MonorepoBuilder20210910\Symfony\Component\Console\Descriptor\XmlDescriptor;
+use MonorepoBuilder20210910\Symfony\Component\Console\Exception\InvalidArgumentException;
+use MonorepoBuilder20210910\Symfony\Component\Console\Output\OutputInterface;
 /**
  * This class adds helper method to describe objects in various formats.
  *
  * @author Jean-François Simon <contact@jfsimon.fr>
  */
-class DescriptorHelper extends \MonorepoBuilder20210909\Symfony\Component\Console\Helper\Helper
+class DescriptorHelper extends \MonorepoBuilder20210910\Symfony\Component\Console\Helper\Helper
 {
     /**
      * @var DescriptorInterface[]
@@ -30,7 +30,7 @@ class DescriptorHelper extends \MonorepoBuilder20210909\Symfony\Component\Consol
     private $descriptors = [];
     public function __construct()
     {
-        $this->register('txt', new \MonorepoBuilder20210909\Symfony\Component\Console\Descriptor\TextDescriptor())->register('xml', new \MonorepoBuilder20210909\Symfony\Component\Console\Descriptor\XmlDescriptor())->register('json', new \MonorepoBuilder20210909\Symfony\Component\Console\Descriptor\JsonDescriptor())->register('md', new \MonorepoBuilder20210909\Symfony\Component\Console\Descriptor\MarkdownDescriptor());
+        $this->register('txt', new \MonorepoBuilder20210910\Symfony\Component\Console\Descriptor\TextDescriptor())->register('xml', new \MonorepoBuilder20210910\Symfony\Component\Console\Descriptor\XmlDescriptor())->register('json', new \MonorepoBuilder20210910\Symfony\Component\Console\Descriptor\JsonDescriptor())->register('md', new \MonorepoBuilder20210910\Symfony\Component\Console\Descriptor\MarkdownDescriptor());
     }
     /**
      * Describes an object if supported.
@@ -48,7 +48,7 @@ class DescriptorHelper extends \MonorepoBuilder20210909\Symfony\Component\Consol
     {
         $options = \array_merge(['raw_text' => \false, 'format' => 'txt'], $options);
         if (!isset($this->descriptors[$options['format']])) {
-            throw new \MonorepoBuilder20210909\Symfony\Component\Console\Exception\InvalidArgumentException(\sprintf('Unsupported format "%s".', $options['format']));
+            throw new \MonorepoBuilder20210910\Symfony\Component\Console\Exception\InvalidArgumentException(\sprintf('Unsupported format "%s".', $options['format']));
         }
         $descriptor = $this->descriptors[$options['format']];
         $descriptor->describe($output, $object, $options);

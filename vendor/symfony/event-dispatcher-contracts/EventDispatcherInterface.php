@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210909\Symfony\Contracts\EventDispatcher;
+namespace MonorepoBuilder20210910\Symfony\Contracts\EventDispatcher;
 
-use MonorepoBuilder20210909\Psr\EventDispatcher\EventDispatcherInterface as PsrEventDispatcherInterface;
+use MonorepoBuilder20210910\Psr\EventDispatcher\EventDispatcherInterface as PsrEventDispatcherInterface;
 /**
  * Allows providing hooks on domain-specific lifecycles by dispatching events.
  */
-interface EventDispatcherInterface extends \MonorepoBuilder20210909\Psr\EventDispatcher\EventDispatcherInterface
+interface EventDispatcherInterface extends \MonorepoBuilder20210910\Psr\EventDispatcher\EventDispatcherInterface
 {
     /**
      * Dispatches an event to all registered listeners.

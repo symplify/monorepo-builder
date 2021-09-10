@@ -1,18 +1,18 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20210909\Symplify\SmartFileSystem;
+namespace MonorepoBuilder20210910\Symplify\SmartFileSystem;
 
-use MonorepoBuilder20210909\Nette\Utils\Strings;
-use MonorepoBuilder20210909\Symfony\Component\Finder\SplFileInfo;
-use MonorepoBuilder20210909\Symplify\EasyTesting\PHPUnit\StaticPHPUnitEnvironment;
-use MonorepoBuilder20210909\Symplify\EasyTesting\StaticFixtureSplitter;
-use MonorepoBuilder20210909\Symplify\SmartFileSystem\Exception\DirectoryNotFoundException;
-use MonorepoBuilder20210909\Symplify\SmartFileSystem\Exception\FileNotFoundException;
+use MonorepoBuilder20210910\Nette\Utils\Strings;
+use MonorepoBuilder20210910\Symfony\Component\Finder\SplFileInfo;
+use MonorepoBuilder20210910\Symplify\EasyTesting\PHPUnit\StaticPHPUnitEnvironment;
+use MonorepoBuilder20210910\Symplify\EasyTesting\StaticFixtureSplitter;
+use MonorepoBuilder20210910\Symplify\SmartFileSystem\Exception\DirectoryNotFoundException;
+use MonorepoBuilder20210910\Symplify\SmartFileSystem\Exception\FileNotFoundException;
 /**
  * @see \Symplify\SmartFileSystem\Tests\SmartFileInfo\SmartFileInfoTest
  */
-final class SmartFileInfo extends \MonorepoBuilder20210909\Symfony\Component\Finder\SplFileInfo
+final class SmartFileInfo extends \MonorepoBuilder20210910\Symfony\Component\Finder\SplFileInfo
 {
     /**
      * @var string
@@ -25,10 +25,10 @@ final class SmartFileInfo extends \MonorepoBuilder20210909\Symfony\Component\Fin
     private $smartFileSystem;
     public function __construct(string $filePath)
     {
-        $this->smartFileSystem = new \MonorepoBuilder20210909\Symplify\SmartFileSystem\SmartFileSystem();
+        $this->smartFileSystem = new \MonorepoBuilder20210910\Symplify\SmartFileSystem\SmartFileSystem();
         // accepts also dirs
         if (!\file_exists($filePath)) {
-            throw new \MonorepoBuilder20210909\Symplify\SmartFileSystem\Exception\FileNotFoundException(\sprintf('File path "%s" was not found while creating "%s" object.', $filePath, self::class));
+            throw new \MonorepoBuilder20210910\Symplify\SmartFileSystem\Exception\FileNotFoundException(\sprintf('File path "%s" was not found while creating "%s" object.', $filePath, self::class));
         }
         // real path doesn't work in PHAR: https://www.php.net/manual/en/function.realpath.php
         if (\strncmp($filePath, 'phar://', \strlen('phar://')) === 0) {
@@ -58,7 +58,7 @@ final class SmartFileInfo extends \MonorepoBuilder20210909\Symfony\Component\Fin
     }
     public function getRealPathWithoutSuffix() : string
     {
-        return \MonorepoBuilder20210909\Nette\Utils\Strings::replace($this->getRealPath(), self::LAST_SUFFIX_REGEX, '');
+        return \MonorepoBuilder20210910\Nette\Utils\Strings::replace($this->getRealPath(), self::LAST_SUFFIX_REGEX, '');
     }
     public function getRelativeFilePath() : string
     {
@@ -74,7 +74,7 @@ final class SmartFileInfo extends \MonorepoBuilder20210909\Symfony\Component\Fin
     public function getRelativeFilePathFromDirectory($directory) : string
     {
         if (!\file_exists($directory)) {
-            throw new \MonorepoBuilder20210909\Symplify\SmartFileSystem\Exception\DirectoryNotFoundException(\sprintf('Directory "%s" was not found in %s.', $directory, self::class));
+            throw new \MonorepoBuilder20210910\Symplify\SmartFileSystem\Exception\DirectoryNotFoundException(\sprintf('Directory "%s" was not found in %s.', $directory, self::class));
         }
         $relativeFilePath = $this->smartFileSystem->makePathRelative($this->getNormalizedRealPath(), (string) \realpath($directory));
         return \rtrim($relativeFilePath, '/');
@@ -82,8 +82,8 @@ final class SmartFileInfo extends \MonorepoBuilder20210909\Symfony\Component\Fin
     public function getRelativeFilePathFromCwdInTests() : string
     {
         // special case for tests
-        if (\MonorepoBuilder20210909\Symplify\EasyTesting\PHPUnit\StaticPHPUnitEnvironment::isPHPUnitRun()) {
-            return $this->getRelativeFilePathFromDirectory(\MonorepoBuilder20210909\Symplify\EasyTesting\StaticFixtureSplitter::getTemporaryPath());
+        if (\MonorepoBuilder20210910\Symplify\EasyTesting\PHPUnit\StaticPHPUnitEnvironment::isPHPUnitRun()) {
+            return $this->getRelativeFilePathFromDirectory(\MonorepoBuilder20210910\Symplify\EasyTesting\StaticFixtureSplitter::getTemporaryPath());
         }
         return $this->getRelativeFilePathFromDirectory(\getcwd());
     }
