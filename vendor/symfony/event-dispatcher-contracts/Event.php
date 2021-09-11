@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210910\Symfony\Contracts\EventDispatcher;
+namespace MonorepoBuilder20210911\Symfony\Contracts\EventDispatcher;
 
-use MonorepoBuilder20210910\Psr\EventDispatcher\StoppableEventInterface;
+use MonorepoBuilder20210911\Psr\EventDispatcher\StoppableEventInterface;
 /**
  * Event is the base class for classes containing event data.
  *
@@ -26,7 +26,7 @@ use MonorepoBuilder20210910\Psr\EventDispatcher\StoppableEventInterface;
  * @author Bernhard Schussek <bschussek@gmail.com>
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class Event implements \MonorepoBuilder20210910\Psr\EventDispatcher\StoppableEventInterface
+class Event implements \MonorepoBuilder20210911\Psr\EventDispatcher\StoppableEventInterface
 {
     private $propagationStopped = \false;
     /**

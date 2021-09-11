@@ -17,7 +17,7 @@
     },
     "autoload": {
         "psr-4": {
-            "MonorepoBuilder20210910\\Symplify\\SymplifyKernel\\": "src"
+            "MonorepoBuilder20210911\\Symplify\\SymplifyKernel\\": "src"
         }
     },
     "extra": {
