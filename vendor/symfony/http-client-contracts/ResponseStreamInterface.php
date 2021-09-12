@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210911\Symfony\Contracts\HttpClient;
+namespace MonorepoBuilder20210912\Symfony\Contracts\HttpClient;
 
 /**
  * Yields response chunks, returned by HttpClientInterface::stream().
@@ -17,6 +17,6 @@ namespace MonorepoBuilder20210911\Symfony\Contracts\HttpClient;
  */
 interface ResponseStreamInterface extends \Iterator
 {
-    public function key() : \MonorepoBuilder20210911\Symfony\Contracts\HttpClient\ResponseInterface;
-    public function current() : \MonorepoBuilder20210911\Symfony\Contracts\HttpClient\ChunkInterface;
+    public function key() : \MonorepoBuilder20210912\Symfony\Contracts\HttpClient\ResponseInterface;
+    public function current() : \MonorepoBuilder20210912\Symfony\Contracts\HttpClient\ChunkInterface;
 }

@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210911\Symfony\Component\Console\Helper;
+namespace MonorepoBuilder20210912\Symfony\Component\Console\Helper;
 
-use MonorepoBuilder20210911\Symfony\Component\Console\Cursor;
-use MonorepoBuilder20210911\Symfony\Component\Console\Exception\LogicException;
-use MonorepoBuilder20210911\Symfony\Component\Console\Output\ConsoleOutputInterface;
-use MonorepoBuilder20210911\Symfony\Component\Console\Output\ConsoleSectionOutput;
-use MonorepoBuilder20210911\Symfony\Component\Console\Output\OutputInterface;
-use MonorepoBuilder20210911\Symfony\Component\Console\Terminal;
+use MonorepoBuilder20210912\Symfony\Component\Console\Cursor;
+use MonorepoBuilder20210912\Symfony\Component\Console\Exception\LogicException;
+use MonorepoBuilder20210912\Symfony\Component\Console\Output\ConsoleOutputInterface;
+use MonorepoBuilder20210912\Symfony\Component\Console\Output\ConsoleSectionOutput;
+use MonorepoBuilder20210912\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder20210912\Symfony\Component\Console\Terminal;
 /**
  * The ProgressBar provides helpers to display progress output.
  *
@@ -60,14 +60,14 @@ final class ProgressBar
     /**
      * @param int $max Maximum steps (0 if unknown)
      */
-    public function __construct(\MonorepoBuilder20210911\Symfony\Component\Console\Output\OutputInterface $output, int $max = 0, float $minSecondsBetweenRedraws = 1 / 25)
+    public function __construct(\MonorepoBuilder20210912\Symfony\Component\Console\Output\OutputInterface $output, int $max = 0, float $minSecondsBetweenRedraws = 1 / 25)
     {
-        if ($output instanceof \MonorepoBuilder20210911\Symfony\Component\Console\Output\ConsoleOutputInterface) {
+        if ($output instanceof \MonorepoBuilder20210912\Symfony\Component\Console\Output\ConsoleOutputInterface) {
             $output = $output->getErrorOutput();
         }
         $this->output = $output;
         $this->setMaxSteps($max);
-        $this->terminal = new \MonorepoBuilder20210911\Symfony\Component\Console\Terminal();
+        $this->terminal = new \MonorepoBuilder20210912\Symfony\Component\Console\Terminal();
         if (0 < $minSecondsBetweenRedraws) {
             $this->redrawFreq = null;
             $this->minSecondsBetweenRedraws = $minSecondsBetweenRedraws;
@@ -79,7 +79,7 @@ final class ProgressBar
             $this->redrawFreq = null;
         }
         $this->startTime = \time();
-        $this->cursor = new \MonorepoBuilder20210911\Symfony\Component\Console\Cursor($output);
+        $this->cursor = new \MonorepoBuilder20210912\Symfony\Component\Console\Cursor($output);
     }
     /**
      * Sets a placeholder formatter for a given name.
@@ -328,7 +328,7 @@ final class ProgressBar
     {
         $this->format = null;
         $this->max = \max(0, $max);
-        $this->stepWidth = $this->max ? \MonorepoBuilder20210911\Symfony\Component\Console\Helper\Helper::width((string) $this->max) : 4;
+        $this->stepWidth = $this->max ? \MonorepoBuilder20210912\Symfony\Component\Console\Helper\Helper::width((string) $this->max) : 4;
     }
     /**
      * Finishes the progress output.
@@ -349,7 +349,7 @@ final class ProgressBar
      */
     public function display() : void
     {
-        if (\MonorepoBuilder20210911\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_QUIET === $this->output->getVerbosity()) {
+        if (\MonorepoBuilder20210912\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_QUIET === $this->output->getVerbosity()) {
             return;
         }
         if (null === $this->format) {
@@ -397,11 +397,11 @@ final class ProgressBar
         $originalMessage = $message;
         if ($this->overwrite) {
             if (null !== $this->previousMessage) {
-                if ($this->output instanceof \MonorepoBuilder20210911\Symfony\Component\Console\Output\ConsoleSectionOutput) {
+                if ($this->output instanceof \MonorepoBuilder20210912\Symfony\Component\Console\Output\ConsoleSectionOutput) {
                     $messageLines = \explode("\n", $message);
                     $lineCount = \count($messageLines);
                     foreach ($messageLines as $messageLine) {
-                        $messageLineLength = \MonorepoBuilder20210911\Symfony\Component\Console\Helper\Helper::width(\MonorepoBuilder20210911\Symfony\Component\Console\Helper\Helper::removeDecoration($this->output->getFormatter(), $messageLine));
+                        $messageLineLength = \MonorepoBuilder20210912\Symfony\Component\Console\Helper\Helper::width(\MonorepoBuilder20210912\Symfony\Component\Console\Helper\Helper::removeDecoration($this->output->getFormatter(), $messageLine));
                         if ($messageLineLength > $this->terminal->getWidth()) {
                             $lineCount += \floor($messageLineLength / $this->terminal->getWidth());
                         }
@@ -429,11 +429,11 @@ final class ProgressBar
     {
         switch ($this->output->getVerbosity()) {
             // OutputInterface::VERBOSITY_QUIET: display is disabled anyway
-            case \MonorepoBuilder20210911\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_VERBOSE:
+            case \MonorepoBuilder20210912\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_VERBOSE:
                 return $this->max ? self::FORMAT_VERBOSE : self::FORMAT_VERBOSE_NOMAX;
-            case \MonorepoBuilder20210911\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_VERY_VERBOSE:
+            case \MonorepoBuilder20210912\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_VERY_VERBOSE:
                 return $this->max ? self::FORMAT_VERY_VERBOSE : self::FORMAT_VERY_VERBOSE_NOMAX;
-            case \MonorepoBuilder20210911\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_DEBUG:
+            case \MonorepoBuilder20210912\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_DEBUG:
                 return $this->max ? self::FORMAT_DEBUG : self::FORMAT_DEBUG_NOMAX;
             default:
                 return $this->max ? self::FORMAT_NORMAL : self::FORMAT_NORMAL_NOMAX;
@@ -441,28 +441,28 @@ final class ProgressBar
     }
     private static function initPlaceholderFormatters() : array
     {
-        return ['bar' => function (self $bar, \MonorepoBuilder20210911\Symfony\Component\Console\Output\OutputInterface $output) {
+        return ['bar' => function (self $bar, \MonorepoBuilder20210912\Symfony\Component\Console\Output\OutputInterface $output) {
             $completeBars = $bar->getBarOffset();
             $display = \str_repeat($bar->getBarCharacter(), $completeBars);
             if ($completeBars < $bar->getBarWidth()) {
-                $emptyBars = $bar->getBarWidth() - $completeBars - \MonorepoBuilder20210911\Symfony\Component\Console\Helper\Helper::length(\MonorepoBuilder20210911\Symfony\Component\Console\Helper\Helper::removeDecoration($output->getFormatter(), $bar->getProgressCharacter()));
+                $emptyBars = $bar->getBarWidth() - $completeBars - \MonorepoBuilder20210912\Symfony\Component\Console\Helper\Helper::length(\MonorepoBuilder20210912\Symfony\Component\Console\Helper\Helper::removeDecoration($output->getFormatter(), $bar->getProgressCharacter()));
                 $display .= $bar->getProgressCharacter() . \str_repeat($bar->getEmptyBarCharacter(), $emptyBars);
             }
             return $display;
         }, 'elapsed' => function (self $bar) {
-            return \MonorepoBuilder20210911\Symfony\Component\Console\Helper\Helper::formatTime(\time() - $bar->getStartTime());
+            return \MonorepoBuilder20210912\Symfony\Component\Console\Helper\Helper::formatTime(\time() - $bar->getStartTime());
         }, 'remaining' => function (self $bar) {
             if (!$bar->getMaxSteps()) {
-                throw new \MonorepoBuilder20210911\Symfony\Component\Console\Exception\LogicException('Unable to display the remaining time if the maximum number of steps is not set.');
+                throw new \MonorepoBuilder20210912\Symfony\Component\Console\Exception\LogicException('Unable to display the remaining time if the maximum number of steps is not set.');
             }
-            return \MonorepoBuilder20210911\Symfony\Component\Console\Helper\Helper::formatTime($bar->getRemaining());
+            return \MonorepoBuilder20210912\Symfony\Component\Console\Helper\Helper::formatTime($bar->getRemaining());
         }, 'estimated' => function (self $bar) {
             if (!$bar->getMaxSteps()) {
-                throw new \MonorepoBuilder20210911\Symfony\Component\Console\Exception\LogicException('Unable to display the estimated time if the maximum number of steps is not set.');
+                throw new \MonorepoBuilder20210912\Symfony\Component\Console\Exception\LogicException('Unable to display the estimated time if the maximum number of steps is not set.');
             }
-            return \MonorepoBuilder20210911\Symfony\Component\Console\Helper\Helper::formatTime($bar->getEstimated());
+            return \MonorepoBuilder20210912\Symfony\Component\Console\Helper\Helper::formatTime($bar->getEstimated());
         }, 'memory' => function (self $bar) {
-            return \MonorepoBuilder20210911\Symfony\Component\Console\Helper\Helper::formatMemory(\memory_get_usage(\true));
+            return \MonorepoBuilder20210912\Symfony\Component\Console\Helper\Helper::formatMemory(\memory_get_usage(\true));
         }, 'current' => function (self $bar) {
             return \str_pad($bar->getProgress(), $bar->getStepWidth(), ' ', \STR_PAD_LEFT);
         }, 'max' => function (self $bar) {
@@ -494,7 +494,7 @@ final class ProgressBar
         $line = \preg_replace_callback($regex, $callback, $this->format);
         // gets string length for each sub line with multiline format
         $linesLength = \array_map(function ($subLine) {
-            return \MonorepoBuilder20210911\Symfony\Component\Console\Helper\Helper::width(\MonorepoBuilder20210911\Symfony\Component\Console\Helper\Helper::removeDecoration($this->output->getFormatter(), \rtrim($subLine, "\r")));
+            return \MonorepoBuilder20210912\Symfony\Component\Console\Helper\Helper::width(\MonorepoBuilder20210912\Symfony\Component\Console\Helper\Helper::removeDecoration($this->output->getFormatter(), \rtrim($subLine, "\r")));
         }, \explode("\n", $line));
         $linesWidth = \max($linesLength);
         $terminalWidth = $this->terminal->getWidth();

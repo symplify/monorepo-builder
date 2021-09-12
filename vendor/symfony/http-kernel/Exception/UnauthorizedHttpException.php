@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210911\Symfony\Component\HttpKernel\Exception;
+namespace MonorepoBuilder20210912\Symfony\Component\HttpKernel\Exception;
 
 /**
  * @author Ben Ramsey <ben@benramsey.com>
  */
-class UnauthorizedHttpException extends \MonorepoBuilder20210911\Symfony\Component\HttpKernel\Exception\HttpException
+class UnauthorizedHttpException extends \MonorepoBuilder20210912\Symfony\Component\HttpKernel\Exception\HttpException
 {
     /**
      * @param string          $challenge WWW-Authenticate challenge string

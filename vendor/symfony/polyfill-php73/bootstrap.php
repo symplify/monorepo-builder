@@ -10,22 +10,22 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-use MonorepoBuilder20210911\Symfony\Polyfill\Php73 as p;
+use MonorepoBuilder20210912\Symfony\Polyfill\Php73 as p;
 if (\PHP_VERSION_ID >= 70300) {
     return;
 }
 if (!\function_exists('is_countable')) {
     function is_countable($value)
     {
-        return \is_array($value) || $value instanceof \Countable || $value instanceof \ResourceBundle || $value instanceof \MonorepoBuilder20210911\SimpleXmlElement;
+        return \is_array($value) || $value instanceof \Countable || $value instanceof \ResourceBundle || $value instanceof \MonorepoBuilder20210912\SimpleXmlElement;
     }
 }
 if (!\function_exists('hrtime')) {
     require_once __DIR__ . '/Php73.php';
-    \MonorepoBuilder20210911\Symfony\Polyfill\Php73\Php73::$startAt = (int) \microtime(\true);
+    \MonorepoBuilder20210912\Symfony\Polyfill\Php73\Php73::$startAt = (int) \microtime(\true);
     function hrtime($as_number = \false)
     {
-        return \MonorepoBuilder20210911\Symfony\Polyfill\Php73\Php73::hrtime($as_number);
+        return \MonorepoBuilder20210912\Symfony\Polyfill\Php73\Php73::hrtime($as_number);
     }
 }
 if (!\function_exists('array_key_first')) {
