@@ -1,6 +1,6 @@
 <?php
 
-namespace MonorepoBuilder20210912\Psr\Log;
+namespace MonorepoBuilder20210913\Psr\Log;
 
 /**
  * Basic Implementation of LoggerAwareInterface.

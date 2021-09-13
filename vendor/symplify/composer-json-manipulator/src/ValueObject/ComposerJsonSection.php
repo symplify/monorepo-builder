@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20210912\Symplify\ComposerJsonManipulator\ValueObject;
+namespace MonorepoBuilder20210913\Symplify\ComposerJsonManipulator\ValueObject;
 
 /**
  * @api
@@ -109,4 +109,4 @@ final class ComposerJsonSection
 /**
  * @api
  */
-\class_alias('MonorepoBuilder20210912\\Symplify\\ComposerJsonManipulator\\ValueObject\\ComposerJsonSection', 'Symplify\\ComposerJsonManipulator\\ValueObject\\ComposerJsonSection', \false);
+\class_alias('MonorepoBuilder20210913\\Symplify\\ComposerJsonManipulator\\ValueObject\\ComposerJsonSection', 'Symplify\\ComposerJsonManipulator\\ValueObject\\ComposerJsonSection', \false);
