@@ -11,12 +11,12 @@ use MonorepoBuilder20210913\Symplify\SmartFileSystem\SmartFileInfo;
 use MonorepoBuilder20210913\Symplify\SymplifyKernel\ValueObject\KernelBootAndApplicationRun;
 # 1. autoload
 $possibleAutoloadPaths = [
+    // monorepo
+    __DIR__ . '/../../../vendor/autoload.php',
     // after split package
     __DIR__ . '/../vendor/autoload.php',
     // dependency
     __DIR__ . '/../../../autoload.php',
-    // monorepo
-    __DIR__ . '/../../../vendor/autoload.php',
 ];
 foreach ($possibleAutoloadPaths as $possibleAutoloadPath) {
     if (\file_exists($possibleAutoloadPath)) {
