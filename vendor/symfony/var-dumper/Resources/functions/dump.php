@@ -1,6 +1,6 @@
 <?php
 
-namespace MonorepoBuilder20210917;
+namespace MonorepoBuilder20210918;
 
 /*
  * This file is part of the Symfony package.
@@ -10,16 +10,16 @@ namespace MonorepoBuilder20210917;
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-use MonorepoBuilder20210917\Symfony\Component\VarDumper\VarDumper;
-if (!\function_exists('MonorepoBuilder20210917\\dump')) {
+use MonorepoBuilder20210918\Symfony\Component\VarDumper\VarDumper;
+if (!\function_exists('MonorepoBuilder20210918\\dump')) {
     /**
      * @author Nicolas Grekas <p@tchwork.com>
      */
     function dump($var, ...$moreVars)
     {
-        \MonorepoBuilder20210917\Symfony\Component\VarDumper\VarDumper::dump($var);
+        \MonorepoBuilder20210918\Symfony\Component\VarDumper\VarDumper::dump($var);
         foreach ($moreVars as $v) {
-            \MonorepoBuilder20210917\Symfony\Component\VarDumper\VarDumper::dump($v);
+            \MonorepoBuilder20210918\Symfony\Component\VarDumper\VarDumper::dump($v);
         }
         if (1 < \func_num_args()) {
             return \func_get_args();
@@ -27,11 +27,11 @@ if (!\function_exists('MonorepoBuilder20210917\\dump')) {
         return $var;
     }
 }
-if (!\function_exists('MonorepoBuilder20210917\\dd')) {
+if (!\function_exists('MonorepoBuilder20210918\\dd')) {
     function dd(...$vars)
     {
         foreach ($vars as $v) {
-            \MonorepoBuilder20210917\Symfony\Component\VarDumper\VarDumper::dump($v);
+            \MonorepoBuilder20210918\Symfony\Component\VarDumper\VarDumper::dump($v);
         }
         exit(1);
     }

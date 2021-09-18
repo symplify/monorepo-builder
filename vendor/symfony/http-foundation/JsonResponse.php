@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210917\Symfony\Component\HttpFoundation;
+namespace MonorepoBuilder20210918\Symfony\Component\HttpFoundation;
 
 /**
  * Response represents an HTTP response in JSON format.
@@ -21,7 +21,7 @@ namespace MonorepoBuilder20210917\Symfony\Component\HttpFoundation;
  *
  * @author Igor Wiedler <igor@wiedler.ch>
  */
-class JsonResponse extends \MonorepoBuilder20210917\Symfony\Component\HttpFoundation\Response
+class JsonResponse extends \MonorepoBuilder20210918\Symfony\Component\HttpFoundation\Response
 {
     protected $data;
     protected $callback;

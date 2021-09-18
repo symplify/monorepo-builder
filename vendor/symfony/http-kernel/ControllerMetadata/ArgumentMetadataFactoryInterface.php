@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210917\Symfony\Component\HttpKernel\ControllerMetadata;
+namespace MonorepoBuilder20210918\Symfony\Component\HttpKernel\ControllerMetadata;
 
 /**
  * Builds method argument data.

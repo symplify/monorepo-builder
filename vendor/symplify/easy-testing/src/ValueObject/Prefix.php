@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20210917\Symplify\EasyTesting\ValueObject;
+namespace MonorepoBuilder20210918\Symplify\EasyTesting\ValueObject;
 
 final class Prefix
 {

@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210917\Symfony\Component\DependencyInjection\Dumper;
+namespace MonorepoBuilder20210918\Symfony\Component\DependencyInjection\Dumper;
 
-use MonorepoBuilder20210917\Symfony\Component\DependencyInjection\Argument\ArgumentInterface;
-use MonorepoBuilder20210917\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder20210917\Symfony\Component\DependencyInjection\Definition;
-use MonorepoBuilder20210917\Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException;
-use MonorepoBuilder20210917\Symfony\Component\DependencyInjection\Parameter;
-use MonorepoBuilder20210917\Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
-use MonorepoBuilder20210917\Symfony\Component\DependencyInjection\Reference;
+use MonorepoBuilder20210918\Symfony\Component\DependencyInjection\Argument\ArgumentInterface;
+use MonorepoBuilder20210918\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder20210918\Symfony\Component\DependencyInjection\Definition;
+use MonorepoBuilder20210918\Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException;
+use MonorepoBuilder20210918\Symfony\Component\DependencyInjection\Parameter;
+use MonorepoBuilder20210918\Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
+use MonorepoBuilder20210918\Symfony\Component\DependencyInjection\Reference;
 /**
  * GraphvizDumper dumps a service container as a graphviz file.
  *
@@ -26,7 +26,7 @@ use MonorepoBuilder20210917\Symfony\Component\DependencyInjection\Reference;
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class GraphvizDumper extends \MonorepoBuilder20210917\Symfony\Component\DependencyInjection\Dumper\Dumper
+class GraphvizDumper extends \MonorepoBuilder20210918\Symfony\Component\DependencyInjection\Dumper\Dumper
 {
     private $nodes;
     private $edges;
@@ -90,12 +90,12 @@ class GraphvizDumper extends \MonorepoBuilder20210917\Symfony\Component\Dependen
     {
         $edges = [];
         foreach ($arguments as $argument) {
-            if ($argument instanceof \MonorepoBuilder20210917\Symfony\Component\DependencyInjection\Parameter) {
+            if ($argument instanceof \MonorepoBuilder20210918\Symfony\Component\DependencyInjection\Parameter) {
                 $argument = $this->container->hasParameter($argument) ? $this->container->getParameter($argument) : null;
             } elseif (\is_string($argument) && \preg_match('/^%([^%]+)%$/', $argument, $match)) {
                 $argument = $this->container->hasParameter($match[1]) ? $this->container->getParameter($match[1]) : null;
             }
-            if ($argument instanceof \MonorepoBuilder20210917\Symfony\Component\DependencyInjection\Reference) {
+            if ($argument instanceof \MonorepoBuilder20210918\Symfony\Component\DependencyInjection\Reference) {
                 $lazyEdge = $lazy;
                 if (!$this->container->has((string) $argument)) {
                     $this->nodes[(string) $argument] = ['name' => $name, 'required' => $required, 'class' => '', 'attributes' => $this->options['node.missing']];
@@ -103,9 +103,9 @@ class GraphvizDumper extends \MonorepoBuilder20210917\Symfony\Component\Dependen
                     $lazyEdge = $lazy || $this->container->getDefinition((string) $argument)->isLazy();
                 }
                 $edges[] = ['name' => $name, 'required' => $required, 'to' => $argument, 'lazy' => $lazyEdge];
-            } elseif ($argument instanceof \MonorepoBuilder20210917\Symfony\Component\DependencyInjection\Argument\ArgumentInterface) {
+            } elseif ($argument instanceof \MonorepoBuilder20210918\Symfony\Component\DependencyInjection\Argument\ArgumentInterface) {
                 $edges = \array_merge($edges, $this->findEdges($id, $argument->getValues(), $required, $name, \true));
-            } elseif ($argument instanceof \MonorepoBuilder20210917\Symfony\Component\DependencyInjection\Definition) {
+            } elseif ($argument instanceof \MonorepoBuilder20210918\Symfony\Component\DependencyInjection\Definition) {
                 $edges = \array_merge($edges, $this->findEdges($id, $argument->getArguments(), $required, ''), $this->findEdges($id, $argument->getProperties(), \false, ''));
                 foreach ($argument->getMethodCalls() as $call) {
                     $edges = \array_merge($edges, $this->findEdges($id, $call[1], \false, $call[0] . '()'));
@@ -127,10 +127,10 @@ class GraphvizDumper extends \MonorepoBuilder20210917\Symfony\Component\Dependen
             }
             try {
                 $class = $this->container->getParameterBag()->resolveValue($class);
-            } catch (\MonorepoBuilder20210917\Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException $e) {
+            } catch (\MonorepoBuilder20210918\Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException $e) {
             }
             $nodes[$id] = ['class' => \str_replace('\\', '\\\\', $class), 'attributes' => \array_merge($this->options['node.definition'], ['style' => $definition->isShared() ? 'filled' : 'dotted'])];
-            $container->setDefinition($id, new \MonorepoBuilder20210917\Symfony\Component\DependencyInjection\Definition('stdClass'));
+            $container->setDefinition($id, new \MonorepoBuilder20210918\Symfony\Component\DependencyInjection\Definition('stdClass'));
         }
         foreach ($container->getServiceIds() as $id) {
             if (\array_key_exists($id, $container->getAliases())) {
@@ -142,10 +142,10 @@ class GraphvizDumper extends \MonorepoBuilder20210917\Symfony\Component\Dependen
         }
         return $nodes;
     }
-    private function cloneContainer() : \MonorepoBuilder20210917\Symfony\Component\DependencyInjection\ContainerBuilder
+    private function cloneContainer() : \MonorepoBuilder20210918\Symfony\Component\DependencyInjection\ContainerBuilder
     {
-        $parameterBag = new \MonorepoBuilder20210917\Symfony\Component\DependencyInjection\ParameterBag\ParameterBag($this->container->getParameterBag()->all());
-        $container = new \MonorepoBuilder20210917\Symfony\Component\DependencyInjection\ContainerBuilder($parameterBag);
+        $parameterBag = new \MonorepoBuilder20210918\Symfony\Component\DependencyInjection\ParameterBag\ParameterBag($this->container->getParameterBag()->all());
+        $container = new \MonorepoBuilder20210918\Symfony\Component\DependencyInjection\ContainerBuilder($parameterBag);
         $container->setDefinitions($this->container->getDefinitions());
         $container->setAliases($this->container->getAliases());
         $container->setResources($this->container->getResources());

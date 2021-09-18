@@ -9,10 +9,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210917\Composer;
+namespace MonorepoBuilder20210918\Composer;
 
-use MonorepoBuilder20210917\Composer\Autoload\ClassLoader;
-use MonorepoBuilder20210917\Composer\Semver\VersionParser;
+use MonorepoBuilder20210918\Composer\Autoload\ClassLoader;
+use MonorepoBuilder20210918\Composer\Semver\VersionParser;
 /**
  * This class is copied in every Composer installed project and available to all
  *
@@ -264,11 +264,11 @@ class InstalledVersions
     private static function getInstalled()
     {
         if (null === self::$canGetVendors) {
-            self::$canGetVendors = \method_exists('MonorepoBuilder20210917\\Composer\\Autoload\\ClassLoader', 'getRegisteredLoaders');
+            self::$canGetVendors = \method_exists('MonorepoBuilder20210918\\Composer\\Autoload\\ClassLoader', 'getRegisteredLoaders');
         }
         $installed = array();
         if (self::$canGetVendors) {
-            foreach (\MonorepoBuilder20210917\Composer\Autoload\ClassLoader::getRegisteredLoaders() as $vendorDir => $loader) {
+            foreach (\MonorepoBuilder20210918\Composer\Autoload\ClassLoader::getRegisteredLoaders() as $vendorDir => $loader) {
                 if (isset(self::$installedByVendor[$vendorDir])) {
                     $installed[] = self::$installedByVendor[$vendorDir];
                 } elseif (\is_file($vendorDir . '/composer/installed.php')) {

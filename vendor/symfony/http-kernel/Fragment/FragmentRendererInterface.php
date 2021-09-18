@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210917\Symfony\Component\HttpKernel\Fragment;
+namespace MonorepoBuilder20210918\Symfony\Component\HttpKernel\Fragment;
 
-use MonorepoBuilder20210917\Symfony\Component\HttpFoundation\Request;
-use MonorepoBuilder20210917\Symfony\Component\HttpFoundation\Response;
-use MonorepoBuilder20210917\Symfony\Component\HttpKernel\Controller\ControllerReference;
+use MonorepoBuilder20210918\Symfony\Component\HttpFoundation\Request;
+use MonorepoBuilder20210918\Symfony\Component\HttpFoundation\Response;
+use MonorepoBuilder20210918\Symfony\Component\HttpKernel\Controller\ControllerReference;
 /**
  * Interface implemented by all rendering strategies.
  *
