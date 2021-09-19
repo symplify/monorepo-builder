@@ -8,16 +8,16 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210918\Symfony\Component\EventDispatcher\DependencyInjection;
+namespace MonorepoBuilder20210919\Symfony\Component\EventDispatcher\DependencyInjection;
 
-use MonorepoBuilder20210918\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
-use MonorepoBuilder20210918\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder20210919\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
+use MonorepoBuilder20210919\Symfony\Component\DependencyInjection\ContainerBuilder;
 /**
  * This pass allows bundles to extend the list of event aliases.
  *
  * @author Alexander M. Turek <me@derrabus.de>
  */
-class AddEventAliasesPass implements \MonorepoBuilder20210918\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
+class AddEventAliasesPass implements \MonorepoBuilder20210919\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
 {
     private $eventAliases;
     private $eventAliasesParameter;
