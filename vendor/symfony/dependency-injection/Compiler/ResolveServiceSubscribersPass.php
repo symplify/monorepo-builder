@@ -8,18 +8,18 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210919\Symfony\Component\DependencyInjection\Compiler;
+namespace MonorepoBuilder20210920\Symfony\Component\DependencyInjection\Compiler;
 
-use MonorepoBuilder20210919\Psr\Container\ContainerInterface;
-use MonorepoBuilder20210919\Symfony\Component\DependencyInjection\Definition;
-use MonorepoBuilder20210919\Symfony\Component\DependencyInjection\Reference;
-use MonorepoBuilder20210919\Symfony\Contracts\Service\ServiceProviderInterface;
+use MonorepoBuilder20210920\Psr\Container\ContainerInterface;
+use MonorepoBuilder20210920\Symfony\Component\DependencyInjection\Definition;
+use MonorepoBuilder20210920\Symfony\Component\DependencyInjection\Reference;
+use MonorepoBuilder20210920\Symfony\Contracts\Service\ServiceProviderInterface;
 /**
  * Compiler pass to inject their service locator to service subscribers.
  *
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class ResolveServiceSubscribersPass extends \MonorepoBuilder20210919\Symfony\Component\DependencyInjection\Compiler\AbstractRecursivePass
+class ResolveServiceSubscribersPass extends \MonorepoBuilder20210920\Symfony\Component\DependencyInjection\Compiler\AbstractRecursivePass
 {
     private $serviceLocator;
     /**
@@ -27,10 +27,10 @@ class ResolveServiceSubscribersPass extends \MonorepoBuilder20210919\Symfony\Com
      */
     protected function processValue($value, $isRoot = \false)
     {
-        if ($value instanceof \MonorepoBuilder20210919\Symfony\Component\DependencyInjection\Reference && $this->serviceLocator && \in_array((string) $value, [\MonorepoBuilder20210919\Psr\Container\ContainerInterface::class, \MonorepoBuilder20210919\Symfony\Contracts\Service\ServiceProviderInterface::class], \true)) {
-            return new \MonorepoBuilder20210919\Symfony\Component\DependencyInjection\Reference($this->serviceLocator);
+        if ($value instanceof \MonorepoBuilder20210920\Symfony\Component\DependencyInjection\Reference && $this->serviceLocator && \in_array((string) $value, [\MonorepoBuilder20210920\Psr\Container\ContainerInterface::class, \MonorepoBuilder20210920\Symfony\Contracts\Service\ServiceProviderInterface::class], \true)) {
+            return new \MonorepoBuilder20210920\Symfony\Component\DependencyInjection\Reference($this->serviceLocator);
         }
-        if (!$value instanceof \MonorepoBuilder20210919\Symfony\Component\DependencyInjection\Definition) {
+        if (!$value instanceof \MonorepoBuilder20210920\Symfony\Component\DependencyInjection\Definition) {
             return parent::processValue($value, $isRoot);
         }
         $serviceLocator = $this->serviceLocator;

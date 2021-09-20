@@ -22,7 +22,7 @@
     },
     "autoload": {
         "psr-4": {
-            "MonorepoBuilder20210919\\Symfony\\Component\\Filesystem\\": ""
+            "MonorepoBuilder20210920\\Symfony\\Component\\Filesystem\\": ""
         },
         "exclude-from-classmap": [
             "\/Tests\/"
