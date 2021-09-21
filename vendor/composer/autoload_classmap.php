@@ -1043,7 +1043,6 @@ return array(
     'Symplify\\MonorepoBuilder\\Utils\\VersionUtils' => $baseDir . '/src/Utils/VersionUtils.php',
     'Symplify\\MonorepoBuilder\\Validator\\ConflictingPackageVersionsReporter' => $baseDir . '/src/Validator/ConflictingPackageVersionsReporter.php',
     'Symplify\\MonorepoBuilder\\Validator\\SourcesPresenceValidator' => $baseDir . '/src/Validator/SourcesPresenceValidator.php',
-    'Symplify\\MonorepoBuilder\\ValueObjectFactory\\VersionFactory' => $baseDir . '/src/ValueObjectFactory/VersionFactory.php',
     'Symplify\\MonorepoBuilder\\ValueObject\\File' => $baseDir . '/src/ValueObject/File.php',
     'Symplify\\MonorepoBuilder\\ValueObject\\Option' => $baseDir . '/src/ValueObject/Option.php',
     'Symplify\\MonorepoBuilder\\ValueObject\\Package' => $baseDir . '/src/ValueObject/Package.php',
