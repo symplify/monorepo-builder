@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210920\Symfony\Component\VarDumper\Caster;
+namespace MonorepoBuilder20210921\Symfony\Component\VarDumper\Caster;
 
 /**
  * Represents a single backtrace frame as returned by debug_backtrace() or Exception->getTrace().
  *
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class FrameStub extends \MonorepoBuilder20210920\Symfony\Component\VarDumper\Caster\EnumStub
+class FrameStub extends \MonorepoBuilder20210921\Symfony\Component\VarDumper\Caster\EnumStub
 {
     public $keepArgs;
     public $inTraceStub;

@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210920\Symfony\Component\Console\Attribute;
+namespace MonorepoBuilder20210921\Symfony\Component\Console\Attribute;
 
 /**
  * Service tag to autoconfigure commands.

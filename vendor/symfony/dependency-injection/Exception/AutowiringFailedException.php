@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210920\Symfony\Component\DependencyInjection\Exception;
+namespace MonorepoBuilder20210921\Symfony\Component\DependencyInjection\Exception;
 
 /**
  * Thrown when a definition cannot be autowired.
  */
-class AutowiringFailedException extends \MonorepoBuilder20210920\Symfony\Component\DependencyInjection\Exception\RuntimeException
+class AutowiringFailedException extends \MonorepoBuilder20210921\Symfony\Component\DependencyInjection\Exception\RuntimeException
 {
     private $serviceId;
     private $messageCallback;

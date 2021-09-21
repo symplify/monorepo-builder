@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210920\Symfony\Component\HttpKernel\Debug;
+namespace MonorepoBuilder20210921\Symfony\Component\HttpKernel\Debug;
 
-use MonorepoBuilder20210920\Symfony\Component\EventDispatcher\Debug\TraceableEventDispatcher as BaseTraceableEventDispatcher;
-use MonorepoBuilder20210920\Symfony\Component\HttpKernel\KernelEvents;
+use MonorepoBuilder20210921\Symfony\Component\EventDispatcher\Debug\TraceableEventDispatcher as BaseTraceableEventDispatcher;
+use MonorepoBuilder20210921\Symfony\Component\HttpKernel\KernelEvents;
 /**
  * Collects some data about event listeners.
  *
@@ -19,7 +19,7 @@ use MonorepoBuilder20210920\Symfony\Component\HttpKernel\KernelEvents;
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class TraceableEventDispatcher extends \MonorepoBuilder20210920\Symfony\Component\EventDispatcher\Debug\TraceableEventDispatcher
+class TraceableEventDispatcher extends \MonorepoBuilder20210921\Symfony\Component\EventDispatcher\Debug\TraceableEventDispatcher
 {
     /**
      * {@inheritdoc}
@@ -29,18 +29,18 @@ class TraceableEventDispatcher extends \MonorepoBuilder20210920\Symfony\Componen
     protected function beforeDispatch($eventName, $event)
     {
         switch ($eventName) {
-            case \MonorepoBuilder20210920\Symfony\Component\HttpKernel\KernelEvents::REQUEST:
+            case \MonorepoBuilder20210921\Symfony\Component\HttpKernel\KernelEvents::REQUEST:
                 $event->getRequest()->attributes->set('_stopwatch_token', \substr(\hash('sha256', \uniqid(\mt_rand(), \true)), 0, 6));
                 $this->stopwatch->openSection();
                 break;
-            case \MonorepoBuilder20210920\Symfony\Component\HttpKernel\KernelEvents::VIEW:
-            case \MonorepoBuilder20210920\Symfony\Component\HttpKernel\KernelEvents::RESPONSE:
+            case \MonorepoBuilder20210921\Symfony\Component\HttpKernel\KernelEvents::VIEW:
+            case \MonorepoBuilder20210921\Symfony\Component\HttpKernel\KernelEvents::RESPONSE:
                 // stop only if a controller has been executed
                 if ($this->stopwatch->isStarted('controller')) {
                     $this->stopwatch->stop('controller');
                 }
                 break;
-            case \MonorepoBuilder20210920\Symfony\Component\HttpKernel\KernelEvents::TERMINATE:
+            case \MonorepoBuilder20210921\Symfony\Component\HttpKernel\KernelEvents::TERMINATE:
                 $sectionId = $event->getRequest()->attributes->get('_stopwatch_token');
                 if (null === $sectionId) {
                     break;
@@ -65,17 +65,17 @@ class TraceableEventDispatcher extends \MonorepoBuilder20210920\Symfony\Componen
     protected function afterDispatch($eventName, $event)
     {
         switch ($eventName) {
-            case \MonorepoBuilder20210920\Symfony\Component\HttpKernel\KernelEvents::CONTROLLER_ARGUMENTS:
+            case \MonorepoBuilder20210921\Symfony\Component\HttpKernel\KernelEvents::CONTROLLER_ARGUMENTS:
                 $this->stopwatch->start('controller', 'section');
                 break;
-            case \MonorepoBuilder20210920\Symfony\Component\HttpKernel\KernelEvents::RESPONSE:
+            case \MonorepoBuilder20210921\Symfony\Component\HttpKernel\KernelEvents::RESPONSE:
                 $sectionId = $event->getRequest()->attributes->get('_stopwatch_token');
                 if (null === $sectionId) {
                     break;
                 }
                 $this->stopwatch->stopSection($sectionId);
                 break;
-            case \MonorepoBuilder20210920\Symfony\Component\HttpKernel\KernelEvents::TERMINATE:
+            case \MonorepoBuilder20210921\Symfony\Component\HttpKernel\KernelEvents::TERMINATE:
                 // In the special case described in the `preDispatch` method above, the `$token` section
                 // does not exist, then closing it throws an exception which must be caught.
                 $sectionId = $event->getRequest()->attributes->get('_stopwatch_token');

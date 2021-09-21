@@ -9,7 +9,7 @@ declare (strict_types=1);
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210920\SebastianBergmann\Diff;
+namespace MonorepoBuilder20210921\SebastianBergmann\Diff;
 
 use Throwable;
 interface Exception extends \Throwable
