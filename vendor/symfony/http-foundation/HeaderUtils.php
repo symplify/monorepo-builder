@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210921\Symfony\Component\HttpFoundation;
+namespace MonorepoBuilder20210922\Symfony\Component\HttpFoundation;
 
 /**
  * HTTP header utility functions.

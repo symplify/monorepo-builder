@@ -8,18 +8,18 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210921\Symfony\Component\HttpKernel\Controller;
+namespace MonorepoBuilder20210922\Symfony\Component\HttpKernel\Controller;
 
-use MonorepoBuilder20210921\Symfony\Component\HttpFoundation\Request;
-use MonorepoBuilder20210921\Symfony\Component\Stopwatch\Stopwatch;
+use MonorepoBuilder20210922\Symfony\Component\HttpFoundation\Request;
+use MonorepoBuilder20210922\Symfony\Component\Stopwatch\Stopwatch;
 /**
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class TraceableArgumentResolver implements \MonorepoBuilder20210921\Symfony\Component\HttpKernel\Controller\ArgumentResolverInterface
+class TraceableArgumentResolver implements \MonorepoBuilder20210922\Symfony\Component\HttpKernel\Controller\ArgumentResolverInterface
 {
     private $resolver;
     private $stopwatch;
-    public function __construct(\MonorepoBuilder20210921\Symfony\Component\HttpKernel\Controller\ArgumentResolverInterface $resolver, \MonorepoBuilder20210921\Symfony\Component\Stopwatch\Stopwatch $stopwatch)
+    public function __construct(\MonorepoBuilder20210922\Symfony\Component\HttpKernel\Controller\ArgumentResolverInterface $resolver, \MonorepoBuilder20210922\Symfony\Component\Stopwatch\Stopwatch $stopwatch)
     {
         $this->resolver = $resolver;
         $this->stopwatch = $stopwatch;
