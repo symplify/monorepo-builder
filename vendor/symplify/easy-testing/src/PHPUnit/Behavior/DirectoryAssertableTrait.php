@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20210922\Symplify\EasyTesting\PHPUnit\Behavior;
+namespace MonorepoBuilder20210923\Symplify\EasyTesting\PHPUnit\Behavior;
 
-use MonorepoBuilder20210922\Symfony\Component\Finder\Finder;
-use MonorepoBuilder20210922\Symplify\EasyTesting\ValueObject\ExpectedAndOutputFileInfoPair;
-use MonorepoBuilder20210922\Symplify\SmartFileSystem\Finder\FinderSanitizer;
-use MonorepoBuilder20210922\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder20210923\Symfony\Component\Finder\Finder;
+use MonorepoBuilder20210923\Symplify\EasyTesting\ValueObject\ExpectedAndOutputFileInfoPair;
+use MonorepoBuilder20210923\Symplify\SmartFileSystem\Finder\FinderSanitizer;
+use MonorepoBuilder20210923\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * Use only in "\PHPUnit\Framework\TestCase"
  *
@@ -40,9 +40,9 @@ trait DirectoryAssertableTrait
      */
     private function findFileInfosInDirectory(string $directory) : array
     {
-        $firstDirectoryFinder = new \MonorepoBuilder20210922\Symfony\Component\Finder\Finder();
+        $firstDirectoryFinder = new \MonorepoBuilder20210923\Symfony\Component\Finder\Finder();
         $firstDirectoryFinder->files()->in($directory);
-        $finderSanitizer = new \MonorepoBuilder20210922\Symplify\SmartFileSystem\Finder\FinderSanitizer();
+        $finderSanitizer = new \MonorepoBuilder20210923\Symplify\SmartFileSystem\Finder\FinderSanitizer();
         return $finderSanitizer->sanitize($firstDirectoryFinder);
     }
     /**
@@ -57,14 +57,14 @@ trait DirectoryAssertableTrait
             $relativeFilePath = $expectedFileInfo->getRelativeFilePathFromDirectory($expectedDirectory);
             // match output file info
             $outputFileInfo = $this->resolveFileInfoByRelativeFilePath($outputFileInfos, $outputDirectory, $relativeFilePath);
-            $fileInfosByRelativeFilePath[$relativeFilePath] = new \MonorepoBuilder20210922\Symplify\EasyTesting\ValueObject\ExpectedAndOutputFileInfoPair($expectedFileInfo, $outputFileInfo);
+            $fileInfosByRelativeFilePath[$relativeFilePath] = new \MonorepoBuilder20210923\Symplify\EasyTesting\ValueObject\ExpectedAndOutputFileInfoPair($expectedFileInfo, $outputFileInfo);
         }
         return $fileInfosByRelativeFilePath;
     }
     /**
      * @param SmartFileInfo[] $fileInfos
      */
-    private function resolveFileInfoByRelativeFilePath(array $fileInfos, string $directory, string $desiredRelativeFilePath) : ?\MonorepoBuilder20210922\Symplify\SmartFileSystem\SmartFileInfo
+    private function resolveFileInfoByRelativeFilePath(array $fileInfos, string $directory, string $desiredRelativeFilePath) : ?\MonorepoBuilder20210923\Symplify\SmartFileSystem\SmartFileInfo
     {
         foreach ($fileInfos as $fileInfo) {
             $relativeFilePath = $fileInfo->getRelativeFilePathFromDirectory($directory);

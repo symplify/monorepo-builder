@@ -8,31 +8,31 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210922\Symfony\Component\DependencyInjection\Loader;
+namespace MonorepoBuilder20210923\Symfony\Component\DependencyInjection\Loader;
 
-use MonorepoBuilder20210922\Symfony\Component\Config\Util\XmlUtils;
-use MonorepoBuilder20210922\Symfony\Component\DependencyInjection\Alias;
-use MonorepoBuilder20210922\Symfony\Component\DependencyInjection\Argument\AbstractArgument;
-use MonorepoBuilder20210922\Symfony\Component\DependencyInjection\Argument\BoundArgument;
-use MonorepoBuilder20210922\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
-use MonorepoBuilder20210922\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
-use MonorepoBuilder20210922\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
-use MonorepoBuilder20210922\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument;
-use MonorepoBuilder20210922\Symfony\Component\DependencyInjection\ChildDefinition;
-use MonorepoBuilder20210922\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder20210922\Symfony\Component\DependencyInjection\ContainerInterface;
-use MonorepoBuilder20210922\Symfony\Component\DependencyInjection\Definition;
-use MonorepoBuilder20210922\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use MonorepoBuilder20210922\Symfony\Component\DependencyInjection\Exception\RuntimeException;
-use MonorepoBuilder20210922\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
-use MonorepoBuilder20210922\Symfony\Component\DependencyInjection\Reference;
-use MonorepoBuilder20210922\Symfony\Component\ExpressionLanguage\Expression;
+use MonorepoBuilder20210923\Symfony\Component\Config\Util\XmlUtils;
+use MonorepoBuilder20210923\Symfony\Component\DependencyInjection\Alias;
+use MonorepoBuilder20210923\Symfony\Component\DependencyInjection\Argument\AbstractArgument;
+use MonorepoBuilder20210923\Symfony\Component\DependencyInjection\Argument\BoundArgument;
+use MonorepoBuilder20210923\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
+use MonorepoBuilder20210923\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
+use MonorepoBuilder20210923\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
+use MonorepoBuilder20210923\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument;
+use MonorepoBuilder20210923\Symfony\Component\DependencyInjection\ChildDefinition;
+use MonorepoBuilder20210923\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder20210923\Symfony\Component\DependencyInjection\ContainerInterface;
+use MonorepoBuilder20210923\Symfony\Component\DependencyInjection\Definition;
+use MonorepoBuilder20210923\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use MonorepoBuilder20210923\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use MonorepoBuilder20210923\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
+use MonorepoBuilder20210923\Symfony\Component\DependencyInjection\Reference;
+use MonorepoBuilder20210923\Symfony\Component\ExpressionLanguage\Expression;
 /**
  * XmlFileLoader loads XML files service definitions.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class XmlFileLoader extends \MonorepoBuilder20210922\Symfony\Component\DependencyInjection\Loader\FileLoader
+class XmlFileLoader extends \MonorepoBuilder20210923\Symfony\Component\DependencyInjection\Loader\FileLoader
 {
     public const NS = 'http://symfony.com/schema/dic/services';
     protected $autoRegisterAliasesForSinglyImplementedInterfaces = \false;
@@ -109,10 +109,10 @@ class XmlFileLoader extends \MonorepoBuilder20210922\Symfony\Component\Dependenc
         $defaultDirectory = \dirname($file);
         foreach ($imports as $import) {
             $this->setCurrentDir($defaultDirectory);
-            $this->import($import->getAttribute('resource'), \MonorepoBuilder20210922\Symfony\Component\Config\Util\XmlUtils::phpize($import->getAttribute('type')) ?: null, \MonorepoBuilder20210922\Symfony\Component\Config\Util\XmlUtils::phpize($import->getAttribute('ignore-errors')) ?: \false, $file);
+            $this->import($import->getAttribute('resource'), \MonorepoBuilder20210923\Symfony\Component\Config\Util\XmlUtils::phpize($import->getAttribute('type')) ?: null, \MonorepoBuilder20210923\Symfony\Component\Config\Util\XmlUtils::phpize($import->getAttribute('ignore-errors')) ?: \false, $file);
         }
     }
-    private function parseDefinitions(\DOMDocument $xml, string $file, \MonorepoBuilder20210922\Symfony\Component\DependencyInjection\Definition $defaults, \DOMNode $root = null)
+    private function parseDefinitions(\DOMDocument $xml, string $file, \MonorepoBuilder20210923\Symfony\Component\DependencyInjection\Definition $defaults, \DOMNode $root = null)
     {
         $xpath = new \DOMXPath($xml);
         $xpath->registerNamespace('container', self::NS);
@@ -124,7 +124,7 @@ class XmlFileLoader extends \MonorepoBuilder20210922\Symfony\Component\Dependenc
         $this->isLoadingInstanceof = \true;
         $instanceof = $xpath->query('.//container:services/container:instanceof', $root);
         foreach ($instanceof as $service) {
-            $this->setDefinition((string) $service->getAttribute('id'), $this->parseDefinition($service, $file, new \MonorepoBuilder20210922\Symfony\Component\DependencyInjection\Definition()));
+            $this->setDefinition((string) $service->getAttribute('id'), $this->parseDefinition($service, $file, new \MonorepoBuilder20210923\Symfony\Component\DependencyInjection\Definition()));
         }
         $this->isLoadingInstanceof = \false;
         foreach ($services as $service) {
@@ -138,7 +138,7 @@ class XmlFileLoader extends \MonorepoBuilder20210922\Symfony\Component\Dependenc
                     $frame->setAttribute('id', $id . '" at index "' . $k);
                     if ($alias = $frame->getAttribute('alias')) {
                         $this->validateAlias($frame, $file);
-                        $stack[$k] = new \MonorepoBuilder20210922\Symfony\Component\DependencyInjection\Reference($alias);
+                        $stack[$k] = new \MonorepoBuilder20210923\Symfony\Component\DependencyInjection\Reference($alias);
                     } else {
                         $stack[$k] = $this->parseDefinition($frame, $file, $defaults)->setInstanceofConditionals($this->instanceof);
                     }
@@ -149,7 +149,7 @@ class XmlFileLoader extends \MonorepoBuilder20210922\Symfony\Component\Dependenc
                     $excludes = \array_column($this->getChildren($service, 'exclude'), 'nodeValue');
                     if ($service->hasAttribute('exclude')) {
                         if (\count($excludes) > 0) {
-                            throw new \MonorepoBuilder20210922\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException('You cannot use both the attribute "exclude" and <exclude> tags at the same time.');
+                            throw new \MonorepoBuilder20210923\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException('You cannot use both the attribute "exclude" and <exclude> tags at the same time.');
                         }
                         $excludes = [$service->getAttribute('exclude')];
                     }
@@ -160,26 +160,26 @@ class XmlFileLoader extends \MonorepoBuilder20210922\Symfony\Component\Dependenc
             }
         }
     }
-    private function getServiceDefaults(\DOMDocument $xml, string $file, \DOMNode $root = null) : \MonorepoBuilder20210922\Symfony\Component\DependencyInjection\Definition
+    private function getServiceDefaults(\DOMDocument $xml, string $file, \DOMNode $root = null) : \MonorepoBuilder20210923\Symfony\Component\DependencyInjection\Definition
     {
         $xpath = new \DOMXPath($xml);
         $xpath->registerNamespace('container', self::NS);
         if (null === ($defaultsNode = $xpath->query('.//container:services/container:defaults', $root)->item(0))) {
-            return new \MonorepoBuilder20210922\Symfony\Component\DependencyInjection\Definition();
+            return new \MonorepoBuilder20210923\Symfony\Component\DependencyInjection\Definition();
         }
         $defaultsNode->setAttribute('id', '<defaults>');
-        return $this->parseDefinition($defaultsNode, $file, new \MonorepoBuilder20210922\Symfony\Component\DependencyInjection\Definition());
+        return $this->parseDefinition($defaultsNode, $file, new \MonorepoBuilder20210923\Symfony\Component\DependencyInjection\Definition());
     }
     /**
      * Parses an individual Definition.
      */
-    private function parseDefinition(\DOMElement $service, string $file, \MonorepoBuilder20210922\Symfony\Component\DependencyInjection\Definition $defaults) : ?\MonorepoBuilder20210922\Symfony\Component\DependencyInjection\Definition
+    private function parseDefinition(\DOMElement $service, string $file, \MonorepoBuilder20210923\Symfony\Component\DependencyInjection\Definition $defaults) : ?\MonorepoBuilder20210923\Symfony\Component\DependencyInjection\Definition
     {
         if ($alias = $service->getAttribute('alias')) {
             $this->validateAlias($service, $file);
-            $this->container->setAlias((string) $service->getAttribute('id'), $alias = new \MonorepoBuilder20210922\Symfony\Component\DependencyInjection\Alias($alias));
+            $this->container->setAlias((string) $service->getAttribute('id'), $alias = new \MonorepoBuilder20210923\Symfony\Component\DependencyInjection\Alias($alias));
             if ($publicAttr = $service->getAttribute('public')) {
-                $alias->setPublic(\MonorepoBuilder20210922\Symfony\Component\Config\Util\XmlUtils::phpize($publicAttr));
+                $alias->setPublic(\MonorepoBuilder20210923\Symfony\Component\Config\Util\XmlUtils::phpize($publicAttr));
             } elseif ($defaults->getChanges()['public'] ?? \false) {
                 $alias->setPublic($defaults->isPublic());
             }
@@ -198,11 +198,11 @@ class XmlFileLoader extends \MonorepoBuilder20210922\Symfony\Component\Dependenc
             return null;
         }
         if ($this->isLoadingInstanceof) {
-            $definition = new \MonorepoBuilder20210922\Symfony\Component\DependencyInjection\ChildDefinition('');
+            $definition = new \MonorepoBuilder20210923\Symfony\Component\DependencyInjection\ChildDefinition('');
         } elseif ($parent = $service->getAttribute('parent')) {
-            $definition = new \MonorepoBuilder20210922\Symfony\Component\DependencyInjection\ChildDefinition($parent);
+            $definition = new \MonorepoBuilder20210923\Symfony\Component\DependencyInjection\ChildDefinition($parent);
         } else {
-            $definition = new \MonorepoBuilder20210922\Symfony\Component\DependencyInjection\Definition();
+            $definition = new \MonorepoBuilder20210923\Symfony\Component\DependencyInjection\Definition();
         }
         if ($defaults->getChanges()['public'] ?? \false) {
             $definition->setPublic($defaults->isPublic());
@@ -213,20 +213,20 @@ class XmlFileLoader extends \MonorepoBuilder20210922\Symfony\Component\Dependenc
         foreach (['class', 'public', 'shared', 'synthetic', 'abstract'] as $key) {
             if ($value = $service->getAttribute($key)) {
                 $method = 'set' . $key;
-                $definition->{$method}($value = \MonorepoBuilder20210922\Symfony\Component\Config\Util\XmlUtils::phpize($value));
+                $definition->{$method}($value = \MonorepoBuilder20210923\Symfony\Component\Config\Util\XmlUtils::phpize($value));
             }
         }
         if ($value = $service->getAttribute('lazy')) {
-            $definition->setLazy((bool) ($value = \MonorepoBuilder20210922\Symfony\Component\Config\Util\XmlUtils::phpize($value)));
+            $definition->setLazy((bool) ($value = \MonorepoBuilder20210923\Symfony\Component\Config\Util\XmlUtils::phpize($value)));
             if (\is_string($value)) {
                 $definition->addTag('proxy', ['interface' => $value]);
             }
         }
         if ($value = $service->getAttribute('autowire')) {
-            $definition->setAutowired(\MonorepoBuilder20210922\Symfony\Component\Config\Util\XmlUtils::phpize($value));
+            $definition->setAutowired(\MonorepoBuilder20210923\Symfony\Component\Config\Util\XmlUtils::phpize($value));
         }
         if ($value = $service->getAttribute('autoconfigure')) {
-            $definition->setAutoconfigured(\MonorepoBuilder20210922\Symfony\Component\Config\Util\XmlUtils::phpize($value));
+            $definition->setAutoconfigured(\MonorepoBuilder20210923\Symfony\Component\Config\Util\XmlUtils::phpize($value));
         }
         if ($files = $this->getChildren($service, 'file')) {
             $definition->setFile($files[0]->nodeValue);
@@ -243,7 +243,7 @@ class XmlFileLoader extends \MonorepoBuilder20210922\Symfony\Component\Dependenc
             }
             $definition->setDeprecated($package, $version, $message);
         }
-        $definition->setArguments($this->getArgumentsAsPhp($service, 'argument', $file, $definition instanceof \MonorepoBuilder20210922\Symfony\Component\DependencyInjection\ChildDefinition));
+        $definition->setArguments($this->getArgumentsAsPhp($service, 'argument', $file, $definition instanceof \MonorepoBuilder20210923\Symfony\Component\DependencyInjection\ChildDefinition));
         $definition->setProperties($this->getArgumentsAsPhp($service, 'property', $file));
         if ($factories = $this->getChildren($service, 'factory')) {
             $factory = $factories[0];
@@ -251,7 +251,7 @@ class XmlFileLoader extends \MonorepoBuilder20210922\Symfony\Component\Dependenc
                 $definition->setFactory($function);
             } else {
                 if ($childService = $factory->getAttribute('service')) {
-                    $class = new \MonorepoBuilder20210922\Symfony\Component\DependencyInjection\Reference($childService, \MonorepoBuilder20210922\Symfony\Component\DependencyInjection\ContainerInterface::EXCEPTION_ON_INVALID_REFERENCE);
+                    $class = new \MonorepoBuilder20210923\Symfony\Component\DependencyInjection\Reference($childService, \MonorepoBuilder20210923\Symfony\Component\DependencyInjection\ContainerInterface::EXCEPTION_ON_INVALID_REFERENCE);
                 } else {
                     $class = $factory->hasAttribute('class') ? $factory->getAttribute('class') : null;
                 }
@@ -264,7 +264,7 @@ class XmlFileLoader extends \MonorepoBuilder20210922\Symfony\Component\Dependenc
                 $definition->setConfigurator($function);
             } else {
                 if ($childService = $configurator->getAttribute('service')) {
-                    $class = new \MonorepoBuilder20210922\Symfony\Component\DependencyInjection\Reference($childService, \MonorepoBuilder20210922\Symfony\Component\DependencyInjection\ContainerInterface::EXCEPTION_ON_INVALID_REFERENCE);
+                    $class = new \MonorepoBuilder20210923\Symfony\Component\DependencyInjection\Reference($childService, \MonorepoBuilder20210923\Symfony\Component\DependencyInjection\ContainerInterface::EXCEPTION_ON_INVALID_REFERENCE);
                 } else {
                     $class = $configurator->getAttribute('class');
                 }
@@ -272,7 +272,7 @@ class XmlFileLoader extends \MonorepoBuilder20210922\Symfony\Component\Dependenc
             }
         }
         foreach ($this->getChildren($service, 'call') as $call) {
-            $definition->addMethodCall($call->getAttribute('method'), $this->getArgumentsAsPhp($call, 'argument', $file), \MonorepoBuilder20210922\Symfony\Component\Config\Util\XmlUtils::phpize($call->getAttribute('returns-clone')));
+            $definition->addMethodCall($call->getAttribute('method'), $this->getArgumentsAsPhp($call, 'argument', $file), \MonorepoBuilder20210923\Symfony\Component\Config\Util\XmlUtils::phpize($call->getAttribute('returns-clone')));
         }
         $tags = $this->getChildren($service, 'tag');
         foreach ($tags as $tag) {
@@ -283,21 +283,21 @@ class XmlFileLoader extends \MonorepoBuilder20210922\Symfony\Component\Dependenc
                     continue;
                 }
                 if (\strpos($name, '-') !== \false && \strpos($name, '_') === \false && !\array_key_exists($normalizedName = \str_replace('-', '_', $name), $parameters)) {
-                    $parameters[$normalizedName] = \MonorepoBuilder20210922\Symfony\Component\Config\Util\XmlUtils::phpize($node->nodeValue);
+                    $parameters[$normalizedName] = \MonorepoBuilder20210923\Symfony\Component\Config\Util\XmlUtils::phpize($node->nodeValue);
                 }
                 // keep not normalized key
-                $parameters[$name] = \MonorepoBuilder20210922\Symfony\Component\Config\Util\XmlUtils::phpize($node->nodeValue);
+                $parameters[$name] = \MonorepoBuilder20210923\Symfony\Component\Config\Util\XmlUtils::phpize($node->nodeValue);
             }
             if ('' === $tagName && '' === ($tagName = $tag->getAttribute('name'))) {
-                throw new \MonorepoBuilder20210922\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('The tag name for service "%s" in "%s" must be a non-empty string.', (string) $service->getAttribute('id'), $file));
+                throw new \MonorepoBuilder20210923\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('The tag name for service "%s" in "%s" must be a non-empty string.', (string) $service->getAttribute('id'), $file));
             }
             $definition->addTag($tagName, $parameters);
         }
         $definition->setTags(\array_merge_recursive($definition->getTags(), $defaults->getTags()));
         $bindings = $this->getArgumentsAsPhp($service, 'bind', $file);
-        $bindingType = $this->isLoadingInstanceof ? \MonorepoBuilder20210922\Symfony\Component\DependencyInjection\Argument\BoundArgument::INSTANCEOF_BINDING : \MonorepoBuilder20210922\Symfony\Component\DependencyInjection\Argument\BoundArgument::SERVICE_BINDING;
+        $bindingType = $this->isLoadingInstanceof ? \MonorepoBuilder20210923\Symfony\Component\DependencyInjection\Argument\BoundArgument::INSTANCEOF_BINDING : \MonorepoBuilder20210923\Symfony\Component\DependencyInjection\Argument\BoundArgument::SERVICE_BINDING;
         foreach ($bindings as $argument => $value) {
-            $bindings[$argument] = new \MonorepoBuilder20210922\Symfony\Component\DependencyInjection\Argument\BoundArgument($value, \true, $bindingType, $file);
+            $bindings[$argument] = new \MonorepoBuilder20210923\Symfony\Component\DependencyInjection\Argument\BoundArgument($value, \true, $bindingType, $file);
         }
         // deep clone, to avoid multiple process of the same instance in the passes
         $bindings = \array_merge(\unserialize(\serialize($defaults->getBindings())), $bindings);
@@ -307,13 +307,13 @@ class XmlFileLoader extends \MonorepoBuilder20210922\Symfony\Component\Dependenc
         if ($decorates = $service->getAttribute('decorates')) {
             $decorationOnInvalid = $service->getAttribute('decoration-on-invalid') ?: 'exception';
             if ('exception' === $decorationOnInvalid) {
-                $invalidBehavior = \MonorepoBuilder20210922\Symfony\Component\DependencyInjection\ContainerInterface::EXCEPTION_ON_INVALID_REFERENCE;
+                $invalidBehavior = \MonorepoBuilder20210923\Symfony\Component\DependencyInjection\ContainerInterface::EXCEPTION_ON_INVALID_REFERENCE;
             } elseif ('ignore' === $decorationOnInvalid) {
-                $invalidBehavior = \MonorepoBuilder20210922\Symfony\Component\DependencyInjection\ContainerInterface::IGNORE_ON_INVALID_REFERENCE;
+                $invalidBehavior = \MonorepoBuilder20210923\Symfony\Component\DependencyInjection\ContainerInterface::IGNORE_ON_INVALID_REFERENCE;
             } elseif ('null' === $decorationOnInvalid) {
-                $invalidBehavior = \MonorepoBuilder20210922\Symfony\Component\DependencyInjection\ContainerInterface::NULL_ON_INVALID_REFERENCE;
+                $invalidBehavior = \MonorepoBuilder20210923\Symfony\Component\DependencyInjection\ContainerInterface::NULL_ON_INVALID_REFERENCE;
             } else {
-                throw new \MonorepoBuilder20210922\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Invalid value "%s" for attribute "decoration-on-invalid" on service "%s". Did you mean "exception", "ignore" or "null" in "%s"?', $decorationOnInvalid, (string) $service->getAttribute('id'), $file));
+                throw new \MonorepoBuilder20210923\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Invalid value "%s" for attribute "decoration-on-invalid" on service "%s". Did you mean "exception", "ignore" or "null" in "%s"?', $decorationOnInvalid, (string) $service->getAttribute('id'), $file));
             }
             $renameId = $service->hasAttribute('decoration-inner-name') ? $service->getAttribute('decoration-inner-name') : null;
             $priority = $service->hasAttribute('decoration-priority') ? $service->getAttribute('decoration-priority') : 0;
@@ -329,9 +329,9 @@ class XmlFileLoader extends \MonorepoBuilder20210922\Symfony\Component\Dependenc
     private function parseFileToDOM(string $file) : \DOMDocument
     {
         try {
-            $dom = \MonorepoBuilder20210922\Symfony\Component\Config\Util\XmlUtils::loadFile($file, [$this, 'validateSchema']);
+            $dom = \MonorepoBuilder20210923\Symfony\Component\Config\Util\XmlUtils::loadFile($file, [$this, 'validateSchema']);
         } catch (\InvalidArgumentException $e) {
-            throw new \MonorepoBuilder20210922\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Unable to parse file "%s": ', $file) . $e->getMessage(), $e->getCode(), $e);
+            throw new \MonorepoBuilder20210923\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Unable to parse file "%s": ', $file) . $e->getMessage(), $e->getCode(), $e);
         }
         $this->validateExtensions($dom, $file);
         return $dom;
@@ -343,7 +343,7 @@ class XmlFileLoader extends \MonorepoBuilder20210922\Symfony\Component\Dependenc
     {
         $definitions = [];
         $count = 0;
-        $suffix = '~' . \MonorepoBuilder20210922\Symfony\Component\DependencyInjection\ContainerBuilder::hash($file);
+        $suffix = '~' . \MonorepoBuilder20210923\Symfony\Component\DependencyInjection\ContainerBuilder::hash($file);
         $xpath = new \DOMXPath($xml);
         $xpath->registerNamespace('container', self::NS);
         // anonymous services as arguments/properties
@@ -365,13 +365,13 @@ class XmlFileLoader extends \MonorepoBuilder20210922\Symfony\Component\Dependenc
         // anonymous services "in the wild"
         if (\false !== ($nodes = $xpath->query('.//container:services/container:service[not(@id)]', $root))) {
             foreach ($nodes as $node) {
-                throw new \MonorepoBuilder20210922\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Top-level services must have "id" attribute, none found in "%s" at line %d.', $file, $node->getLineNo()));
+                throw new \MonorepoBuilder20210923\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Top-level services must have "id" attribute, none found in "%s" at line %d.', $file, $node->getLineNo()));
             }
         }
         // resolve definitions
         \uksort($definitions, 'strnatcmp');
         foreach (\array_reverse($definitions) as $id => [$domElement, $file]) {
-            if (null !== ($definition = $this->parseDefinition($domElement, $file, new \MonorepoBuilder20210922\Symfony\Component\DependencyInjection\Definition()))) {
+            if (null !== ($definition = $this->parseDefinition($domElement, $file, new \MonorepoBuilder20210923\Symfony\Component\DependencyInjection\Definition()))) {
                 $this->setDefinition($id, $definition);
             }
         }
@@ -396,26 +396,26 @@ class XmlFileLoader extends \MonorepoBuilder20210922\Symfony\Component\Dependenc
                 $key = $arg->getAttribute('key');
             }
             $onInvalid = $arg->getAttribute('on-invalid');
-            $invalidBehavior = \MonorepoBuilder20210922\Symfony\Component\DependencyInjection\ContainerInterface::EXCEPTION_ON_INVALID_REFERENCE;
+            $invalidBehavior = \MonorepoBuilder20210923\Symfony\Component\DependencyInjection\ContainerInterface::EXCEPTION_ON_INVALID_REFERENCE;
             if ('ignore' == $onInvalid) {
-                $invalidBehavior = \MonorepoBuilder20210922\Symfony\Component\DependencyInjection\ContainerInterface::IGNORE_ON_INVALID_REFERENCE;
+                $invalidBehavior = \MonorepoBuilder20210923\Symfony\Component\DependencyInjection\ContainerInterface::IGNORE_ON_INVALID_REFERENCE;
             } elseif ('ignore_uninitialized' == $onInvalid) {
-                $invalidBehavior = \MonorepoBuilder20210922\Symfony\Component\DependencyInjection\ContainerInterface::IGNORE_ON_UNINITIALIZED_REFERENCE;
+                $invalidBehavior = \MonorepoBuilder20210923\Symfony\Component\DependencyInjection\ContainerInterface::IGNORE_ON_UNINITIALIZED_REFERENCE;
             } elseif ('null' == $onInvalid) {
-                $invalidBehavior = \MonorepoBuilder20210922\Symfony\Component\DependencyInjection\ContainerInterface::NULL_ON_INVALID_REFERENCE;
+                $invalidBehavior = \MonorepoBuilder20210923\Symfony\Component\DependencyInjection\ContainerInterface::NULL_ON_INVALID_REFERENCE;
             }
             switch ($arg->getAttribute('type')) {
                 case 'service':
                     if ('' === $arg->getAttribute('id')) {
-                        throw new \MonorepoBuilder20210922\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Tag "<%s>" with type="service" has no or empty "id" attribute in "%s".', $name, $file));
+                        throw new \MonorepoBuilder20210923\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Tag "<%s>" with type="service" has no or empty "id" attribute in "%s".', $name, $file));
                     }
-                    $arguments[$key] = new \MonorepoBuilder20210922\Symfony\Component\DependencyInjection\Reference($arg->getAttribute('id'), $invalidBehavior);
+                    $arguments[$key] = new \MonorepoBuilder20210923\Symfony\Component\DependencyInjection\Reference($arg->getAttribute('id'), $invalidBehavior);
                     break;
                 case 'expression':
-                    if (!\class_exists(\MonorepoBuilder20210922\Symfony\Component\ExpressionLanguage\Expression::class)) {
+                    if (!\class_exists(\MonorepoBuilder20210923\Symfony\Component\ExpressionLanguage\Expression::class)) {
                         throw new \LogicException('The type="expression" attribute cannot be used without the ExpressionLanguage component. Try running "composer require symfony/expression-language".');
                     }
-                    $arguments[$key] = new \MonorepoBuilder20210922\Symfony\Component\ExpressionLanguage\Expression($arg->nodeValue);
+                    $arguments[$key] = new \MonorepoBuilder20210923\Symfony\Component\ExpressionLanguage\Expression($arg->nodeValue);
                     break;
                 case 'collection':
                     $arguments[$key] = $this->getArgumentsAsPhp($arg, $name, $file);
@@ -423,23 +423,23 @@ class XmlFileLoader extends \MonorepoBuilder20210922\Symfony\Component\Dependenc
                 case 'iterator':
                     $arg = $this->getArgumentsAsPhp($arg, $name, $file);
                     try {
-                        $arguments[$key] = new \MonorepoBuilder20210922\Symfony\Component\DependencyInjection\Argument\IteratorArgument($arg);
-                    } catch (\MonorepoBuilder20210922\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException $e) {
-                        throw new \MonorepoBuilder20210922\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Tag "<%s>" with type="iterator" only accepts collections of type="service" references in "%s".', $name, $file));
+                        $arguments[$key] = new \MonorepoBuilder20210923\Symfony\Component\DependencyInjection\Argument\IteratorArgument($arg);
+                    } catch (\MonorepoBuilder20210923\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException $e) {
+                        throw new \MonorepoBuilder20210923\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Tag "<%s>" with type="iterator" only accepts collections of type="service" references in "%s".', $name, $file));
                     }
                     break;
                 case 'service_closure':
                     if ('' === $arg->getAttribute('id')) {
-                        throw new \MonorepoBuilder20210922\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Tag "<%s>" with type="service_closure" has no or empty "id" attribute in "%s".', $name, $file));
+                        throw new \MonorepoBuilder20210923\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Tag "<%s>" with type="service_closure" has no or empty "id" attribute in "%s".', $name, $file));
                     }
-                    $arguments[$key] = new \MonorepoBuilder20210922\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument(new \MonorepoBuilder20210922\Symfony\Component\DependencyInjection\Reference($arg->getAttribute('id'), $invalidBehavior));
+                    $arguments[$key] = new \MonorepoBuilder20210923\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument(new \MonorepoBuilder20210923\Symfony\Component\DependencyInjection\Reference($arg->getAttribute('id'), $invalidBehavior));
                     break;
                 case 'service_locator':
                     $arg = $this->getArgumentsAsPhp($arg, $name, $file);
                     try {
-                        $arguments[$key] = new \MonorepoBuilder20210922\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument($arg);
-                    } catch (\MonorepoBuilder20210922\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException $e) {
-                        throw new \MonorepoBuilder20210922\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Tag "<%s>" with type="service_locator" only accepts maps of type="service" references in "%s".', $name, $file));
+                        $arguments[$key] = new \MonorepoBuilder20210923\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument($arg);
+                    } catch (\MonorepoBuilder20210923\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException $e) {
+                        throw new \MonorepoBuilder20210923\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Tag "<%s>" with type="service_locator" only accepts maps of type="service" references in "%s".', $name, $file));
                     }
                     break;
                 case 'tagged':
@@ -448,21 +448,21 @@ class XmlFileLoader extends \MonorepoBuilder20210922\Symfony\Component\Dependenc
                     $type = $arg->getAttribute('type');
                     $forLocator = 'tagged_locator' === $type;
                     if (!$arg->getAttribute('tag')) {
-                        throw new \MonorepoBuilder20210922\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Tag "<%s>" with type="%s" has no or empty "tag" attribute in "%s".', $name, $type, $file));
+                        throw new \MonorepoBuilder20210923\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Tag "<%s>" with type="%s" has no or empty "tag" attribute in "%s".', $name, $type, $file));
                     }
-                    $arguments[$key] = new \MonorepoBuilder20210922\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument($arg->getAttribute('tag'), $arg->getAttribute('index-by') ?: null, $arg->getAttribute('default-index-method') ?: null, $forLocator, $arg->getAttribute('default-priority-method') ?: null);
+                    $arguments[$key] = new \MonorepoBuilder20210923\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument($arg->getAttribute('tag'), $arg->getAttribute('index-by') ?: null, $arg->getAttribute('default-index-method') ?: null, $forLocator, $arg->getAttribute('default-priority-method') ?: null);
                     if ($forLocator) {
-                        $arguments[$key] = new \MonorepoBuilder20210922\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument($arguments[$key]);
+                        $arguments[$key] = new \MonorepoBuilder20210923\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument($arguments[$key]);
                     }
                     break;
                 case 'binary':
                     if (\false === ($value = \base64_decode($arg->nodeValue))) {
-                        throw new \MonorepoBuilder20210922\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Tag "<%s>" with type="binary" is not a valid base64 encoded string.', $name));
+                        throw new \MonorepoBuilder20210923\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Tag "<%s>" with type="binary" is not a valid base64 encoded string.', $name));
                     }
                     $arguments[$key] = $value;
                     break;
                 case 'abstract':
-                    $arguments[$key] = new \MonorepoBuilder20210922\Symfony\Component\DependencyInjection\Argument\AbstractArgument($arg->nodeValue);
+                    $arguments[$key] = new \MonorepoBuilder20210923\Symfony\Component\DependencyInjection\Argument\AbstractArgument($arg->nodeValue);
                     break;
                 case 'string':
                     $arguments[$key] = $arg->nodeValue;
@@ -471,7 +471,7 @@ class XmlFileLoader extends \MonorepoBuilder20210922\Symfony\Component\Dependenc
                     $arguments[$key] = \constant(\trim($arg->nodeValue));
                     break;
                 default:
-                    $arguments[$key] = \MonorepoBuilder20210922\Symfony\Component\Config\Util\XmlUtils::phpize($arg->nodeValue);
+                    $arguments[$key] = \MonorepoBuilder20210923\Symfony\Component\Config\Util\XmlUtils::phpize($arg->nodeValue);
             }
         }
         return $arguments;
@@ -512,7 +512,7 @@ class XmlFileLoader extends \MonorepoBuilder20210922\Symfony\Component\Dependenc
                     $ns = $extension->getNamespace();
                     $path = \str_replace([$ns, \str_replace('http://', 'https://', $ns)], \str_replace('\\', '/', $extension->getXsdValidationBasePath()) . '/', $items[$i + 1]);
                     if (!\is_file($path)) {
-                        throw new \MonorepoBuilder20210922\Symfony\Component\DependencyInjection\Exception\RuntimeException(\sprintf('Extension "%s" references a non-existent XSD file "%s".', \get_debug_type($extension), $path));
+                        throw new \MonorepoBuilder20210923\Symfony\Component\DependencyInjection\Exception\RuntimeException(\sprintf('Extension "%s" references a non-existent XSD file "%s".', \get_debug_type($extension), $path));
                     }
                     $schemaLocations[$items[$i]] = $path;
                 }
@@ -593,7 +593,7 @@ EOF;
     {
         foreach ($alias->attributes as $name => $node) {
             if (!\in_array($name, ['alias', 'id', 'public'])) {
-                throw new \MonorepoBuilder20210922\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Invalid attribute "%s" defined for alias "%s" in "%s".', $name, $alias->getAttribute('id'), $file));
+                throw new \MonorepoBuilder20210923\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Invalid attribute "%s" defined for alias "%s" in "%s".', $name, $alias->getAttribute('id'), $file));
             }
         }
         foreach ($alias->childNodes as $child) {
@@ -601,7 +601,7 @@ EOF;
                 continue;
             }
             if (!\in_array($child->localName, ['deprecated'], \true)) {
-                throw new \MonorepoBuilder20210922\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Invalid child element "%s" defined for alias "%s" in "%s".', $child->localName, $alias->getAttribute('id'), $file));
+                throw new \MonorepoBuilder20210923\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Invalid child element "%s" defined for alias "%s" in "%s".', $child->localName, $alias->getAttribute('id'), $file));
             }
         }
     }
@@ -618,10 +618,10 @@ EOF;
             }
             // can it be handled by an extension?
             if (!$this->container->hasExtension($node->namespaceURI)) {
-                $extensionNamespaces = \array_filter(\array_map(function (\MonorepoBuilder20210922\Symfony\Component\DependencyInjection\Extension\ExtensionInterface $ext) {
+                $extensionNamespaces = \array_filter(\array_map(function (\MonorepoBuilder20210923\Symfony\Component\DependencyInjection\Extension\ExtensionInterface $ext) {
                     return $ext->getNamespace();
                 }, $this->container->getExtensions()));
-                throw new \MonorepoBuilder20210922\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('There is no extension able to load the configuration for "%s" (in "%s"). Looked for namespace "%s", found "%s".', $node->tagName, $file, $node->namespaceURI, $extensionNamespaces ? \implode('", "', $extensionNamespaces) : 'none'));
+                throw new \MonorepoBuilder20210923\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('There is no extension able to load the configuration for "%s" (in "%s"). Looked for namespace "%s", found "%s".', $node->tagName, $file, $node->namespaceURI, $extensionNamespaces ? \implode('", "', $extensionNamespaces) : 'none'));
             }
         }
     }
@@ -662,6 +662,6 @@ EOF;
      */
     public static function convertDomElementToArray($element)
     {
-        return \MonorepoBuilder20210922\Symfony\Component\Config\Util\XmlUtils::convertDomElementToArray($element);
+        return \MonorepoBuilder20210923\Symfony\Component\Config\Util\XmlUtils::convertDomElementToArray($element);
     }
 }
