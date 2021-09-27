@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210923\Symfony\Component\HttpKernel\Event;
+namespace MonorepoBuilder20210927\Symfony\Component\HttpKernel\Event;
 
-use MonorepoBuilder20210923\Symfony\Component\HttpFoundation\Request;
-use MonorepoBuilder20210923\Symfony\Component\HttpKernel\HttpKernelInterface;
+use MonorepoBuilder20210927\Symfony\Component\HttpFoundation\Request;
+use MonorepoBuilder20210927\Symfony\Component\HttpKernel\HttpKernelInterface;
 /**
  * Allows filtering of a controller callable.
  *
@@ -23,10 +23,10 @@ use MonorepoBuilder20210923\Symfony\Component\HttpKernel\HttpKernelInterface;
  *
  * @author Bernhard Schussek <bschussek@gmail.com>
  */
-final class ControllerEvent extends \MonorepoBuilder20210923\Symfony\Component\HttpKernel\Event\KernelEvent
+final class ControllerEvent extends \MonorepoBuilder20210927\Symfony\Component\HttpKernel\Event\KernelEvent
 {
     private $controller;
-    public function __construct(\MonorepoBuilder20210923\Symfony\Component\HttpKernel\HttpKernelInterface $kernel, callable $controller, \MonorepoBuilder20210923\Symfony\Component\HttpFoundation\Request $request, ?int $requestType)
+    public function __construct(\MonorepoBuilder20210927\Symfony\Component\HttpKernel\HttpKernelInterface $kernel, callable $controller, \MonorepoBuilder20210927\Symfony\Component\HttpFoundation\Request $request, ?int $requestType)
     {
         parent::__construct($kernel, $request, $requestType);
         $this->setController($controller);

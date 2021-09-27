@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210923\Symfony\Component\HttpKernel\Profiler;
+namespace MonorepoBuilder20210927\Symfony\Component\HttpKernel\Profiler;
 
-use MonorepoBuilder20210923\Symfony\Component\HttpKernel\DataCollector\DataCollectorInterface;
+use MonorepoBuilder20210927\Symfony\Component\HttpKernel\DataCollector\DataCollectorInterface;
 /**
  * Profile.
  *
@@ -189,10 +189,9 @@ class Profile
         $child->setParent($this);
     }
     /**
-     * @return $this|null
      * @param string $token
      */
-    public function getChildByToken($token)
+    public function getChildByToken($token) : ?self
     {
         foreach ($this->children as $child) {
             if ($token === $child->getToken()) {

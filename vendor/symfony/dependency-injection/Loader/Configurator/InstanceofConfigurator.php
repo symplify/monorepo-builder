@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210923\Symfony\Component\DependencyInjection\Loader\Configurator;
+namespace MonorepoBuilder20210927\Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use MonorepoBuilder20210923\Symfony\Component\DependencyInjection\Definition;
+use MonorepoBuilder20210927\Symfony\Component\DependencyInjection\Definition;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class InstanceofConfigurator extends \MonorepoBuilder20210923\Symfony\Component\DependencyInjection\Loader\Configurator\AbstractServiceConfigurator
+class InstanceofConfigurator extends \MonorepoBuilder20210927\Symfony\Component\DependencyInjection\Loader\Configurator\AbstractServiceConfigurator
 {
     use Traits\AutowireTrait;
     use Traits\BindTrait;
@@ -27,17 +27,16 @@ class InstanceofConfigurator extends \MonorepoBuilder20210923\Symfony\Component\
     use Traits\TagTrait;
     public const FACTORY = 'instanceof';
     private $path;
-    public function __construct(\MonorepoBuilder20210923\Symfony\Component\DependencyInjection\Loader\Configurator\ServicesConfigurator $parent, \MonorepoBuilder20210923\Symfony\Component\DependencyInjection\Definition $definition, string $id, string $path = null)
+    public function __construct(\MonorepoBuilder20210927\Symfony\Component\DependencyInjection\Loader\Configurator\ServicesConfigurator $parent, \MonorepoBuilder20210927\Symfony\Component\DependencyInjection\Definition $definition, string $id, string $path = null)
     {
         parent::__construct($parent, $definition, $id, []);
         $this->path = $path;
     }
     /**
      * Defines an instanceof-conditional to be applied to following service definitions.
-     * @return $this
      * @param string $fqcn
      */
-    public final function instanceof($fqcn)
+    public final function instanceof($fqcn) : self
     {
         return $this->parent->instanceof($fqcn);
     }

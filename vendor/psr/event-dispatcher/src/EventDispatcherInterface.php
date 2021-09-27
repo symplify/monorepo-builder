@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20210923\Psr\EventDispatcher;
+namespace MonorepoBuilder20210927\Psr\EventDispatcher;
 
 /**
  * Defines a dispatcher for events.

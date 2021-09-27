@@ -8,17 +8,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210923\Symfony\Component\DependencyInjection\Loader\Configurator;
+namespace MonorepoBuilder20210927\Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use MonorepoBuilder20210923\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder20210927\Symfony\Component\DependencyInjection\ContainerBuilder;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class ParametersConfigurator extends \MonorepoBuilder20210923\Symfony\Component\DependencyInjection\Loader\Configurator\AbstractConfigurator
+class ParametersConfigurator extends \MonorepoBuilder20210927\Symfony\Component\DependencyInjection\Loader\Configurator\AbstractConfigurator
 {
     public const FACTORY = 'parameters';
     private $container;
-    public function __construct(\MonorepoBuilder20210923\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    public function __construct(\MonorepoBuilder20210927\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
         $this->container = $container;
     }
@@ -28,7 +28,7 @@ class ParametersConfigurator extends \MonorepoBuilder20210923\Symfony\Component\
      * @return $this
      * @param string $name
      */
-    public final function set($name, $value)
+    public final function set($name, $value) : self
     {
         $this->container->setParameter($name, static::processValue($value, \true));
         return $this;
@@ -38,7 +38,7 @@ class ParametersConfigurator extends \MonorepoBuilder20210923\Symfony\Component\
      *
      * @return $this
      */
-    public final function __invoke(string $name, $value)
+    public final function __invoke(string $name, $value) : self
     {
         return $this->set($name, $value);
     }

@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210923\Symfony\Component\DependencyInjection\Loader\Configurator\Traits;
+namespace MonorepoBuilder20210927\Symfony\Component\DependencyInjection\Loader\Configurator\Traits;
 
-use MonorepoBuilder20210923\Symfony\Component\DependencyInjection\ChildDefinition;
-use MonorepoBuilder20210923\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use MonorepoBuilder20210927\Symfony\Component\DependencyInjection\ChildDefinition;
+use MonorepoBuilder20210927\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
 trait ParentTrait
 {
     /**
@@ -22,12 +22,12 @@ trait ParentTrait
      * @throws InvalidArgumentException when parent cannot be set
      * @param string $parent
      */
-    public final function parent($parent)
+    public final function parent($parent) : self
     {
         if (!$this->allowParent) {
-            throw new \MonorepoBuilder20210923\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('A parent cannot be defined when either "_instanceof" or "_defaults" are also defined for service prototype "%s".', $this->id));
+            throw new \MonorepoBuilder20210927\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('A parent cannot be defined when either "_instanceof" or "_defaults" are also defined for service prototype "%s".', $this->id));
         }
-        if ($this->definition instanceof \MonorepoBuilder20210923\Symfony\Component\DependencyInjection\ChildDefinition) {
+        if ($this->definition instanceof \MonorepoBuilder20210927\Symfony\Component\DependencyInjection\ChildDefinition) {
             $this->definition->setParent($parent);
         } else {
             // cast Definition to ChildDefinition

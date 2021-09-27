@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210923\Symfony\Component\HttpKernel\Exception;
+namespace MonorepoBuilder20210927\Symfony\Component\HttpKernel\Exception;
 
 /**
  * @author Steve Hutchins <hutchinsteve@gmail.com>
  */
-class UnprocessableEntityHttpException extends \MonorepoBuilder20210923\Symfony\Component\HttpKernel\Exception\HttpException
+class UnprocessableEntityHttpException extends \MonorepoBuilder20210927\Symfony\Component\HttpKernel\Exception\HttpException
 {
     /**
      * @param string|null     $message  The internal exception message

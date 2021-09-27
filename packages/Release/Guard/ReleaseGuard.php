@@ -11,7 +11,7 @@ use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\StageAwareInterface;
 use Symplify\MonorepoBuilder\Release\Exception\ConfigurationException;
 use Symplify\MonorepoBuilder\Release\ValueObject\Stage;
 use Symplify\MonorepoBuilder\ValueObject\Option;
-use MonorepoBuilder20210923\Symplify\PackageBuilder\Parameter\ParameterProvider;
+use MonorepoBuilder20210927\Symplify\PackageBuilder\Parameter\ParameterProvider;
 final class ReleaseGuard
 {
     /**
@@ -31,13 +31,13 @@ final class ReleaseGuard
      */
     private $mostRecentTagResolver;
     /**
-     * @var mixed[]
+     * @var \Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface[]
      */
     private $releaseWorkers;
     /**
      * @param ReleaseWorkerInterface[] $releaseWorkers
      */
-    public function __construct(\MonorepoBuilder20210923\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider, \Symplify\MonorepoBuilder\Git\MostRecentTagResolver $mostRecentTagResolver, array $releaseWorkers)
+    public function __construct(\MonorepoBuilder20210927\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider, \Symplify\MonorepoBuilder\Git\MostRecentTagResolver $mostRecentTagResolver, array $releaseWorkers)
     {
         $this->mostRecentTagResolver = $mostRecentTagResolver;
         $this->releaseWorkers = $releaseWorkers;
