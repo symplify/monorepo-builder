@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210927\Symfony\Component\VarDumper\Test;
+namespace MonorepoBuilder20210928\Symfony\Component\VarDumper\Test;
 
-use MonorepoBuilder20210927\Symfony\Component\VarDumper\Cloner\VarCloner;
-use MonorepoBuilder20210927\Symfony\Component\VarDumper\Dumper\CliDumper;
+use MonorepoBuilder20210928\Symfony\Component\VarDumper\Cloner\VarCloner;
+use MonorepoBuilder20210928\Symfony\Component\VarDumper\Dumper\CliDumper;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
@@ -60,14 +60,14 @@ trait VarDumperTestTrait
     protected function getDump($data, $key = null, $filter = 0) : ?string
     {
         if (null === ($flags = $this->varDumperConfig['flags'])) {
-            $flags = \getenv('DUMP_LIGHT_ARRAY') ? \MonorepoBuilder20210927\Symfony\Component\VarDumper\Dumper\CliDumper::DUMP_LIGHT_ARRAY : 0;
-            $flags |= \getenv('DUMP_STRING_LENGTH') ? \MonorepoBuilder20210927\Symfony\Component\VarDumper\Dumper\CliDumper::DUMP_STRING_LENGTH : 0;
-            $flags |= \getenv('DUMP_COMMA_SEPARATOR') ? \MonorepoBuilder20210927\Symfony\Component\VarDumper\Dumper\CliDumper::DUMP_COMMA_SEPARATOR : 0;
+            $flags = \getenv('DUMP_LIGHT_ARRAY') ? \MonorepoBuilder20210928\Symfony\Component\VarDumper\Dumper\CliDumper::DUMP_LIGHT_ARRAY : 0;
+            $flags |= \getenv('DUMP_STRING_LENGTH') ? \MonorepoBuilder20210928\Symfony\Component\VarDumper\Dumper\CliDumper::DUMP_STRING_LENGTH : 0;
+            $flags |= \getenv('DUMP_COMMA_SEPARATOR') ? \MonorepoBuilder20210928\Symfony\Component\VarDumper\Dumper\CliDumper::DUMP_COMMA_SEPARATOR : 0;
         }
-        $cloner = new \MonorepoBuilder20210927\Symfony\Component\VarDumper\Cloner\VarCloner();
+        $cloner = new \MonorepoBuilder20210928\Symfony\Component\VarDumper\Cloner\VarCloner();
         $cloner->addCasters($this->varDumperConfig['casters']);
         $cloner->setMaxItems(-1);
-        $dumper = new \MonorepoBuilder20210927\Symfony\Component\VarDumper\Dumper\CliDumper(null, null, $flags);
+        $dumper = new \MonorepoBuilder20210928\Symfony\Component\VarDumper\Dumper\CliDumper(null, null, $flags);
         $dumper->setColors(\false);
         $data = $cloner->cloneVar($data, $filter)->withRefHandles(\false);
         if (null !== $key && null === ($data = $data->seek($key))) {

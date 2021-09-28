@@ -8,21 +8,21 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210927\Symfony\Component\VarDumper\Dumper;
+namespace MonorepoBuilder20210928\Symfony\Component\VarDumper\Dumper;
 
-use MonorepoBuilder20210927\Symfony\Component\VarDumper\Cloner\Data;
-use MonorepoBuilder20210927\Symfony\Component\VarDumper\Dumper\ContextProvider\ContextProviderInterface;
+use MonorepoBuilder20210928\Symfony\Component\VarDumper\Cloner\Data;
+use MonorepoBuilder20210928\Symfony\Component\VarDumper\Dumper\ContextProvider\ContextProviderInterface;
 /**
  * @author Kévin Thérage <therage.kevin@gmail.com>
  */
-class ContextualizedDumper implements \MonorepoBuilder20210927\Symfony\Component\VarDumper\Dumper\DataDumperInterface
+class ContextualizedDumper implements \MonorepoBuilder20210928\Symfony\Component\VarDumper\Dumper\DataDumperInterface
 {
     private $wrappedDumper;
     private $contextProviders;
     /**
      * @param ContextProviderInterface[] $contextProviders
      */
-    public function __construct(\MonorepoBuilder20210927\Symfony\Component\VarDumper\Dumper\DataDumperInterface $wrappedDumper, array $contextProviders)
+    public function __construct(\MonorepoBuilder20210928\Symfony\Component\VarDumper\Dumper\DataDumperInterface $wrappedDumper, array $contextProviders)
     {
         $this->wrappedDumper = $wrappedDumper;
         $this->contextProviders = $contextProviders;

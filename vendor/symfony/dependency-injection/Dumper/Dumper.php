@@ -8,18 +8,18 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210927\Symfony\Component\DependencyInjection\Dumper;
+namespace MonorepoBuilder20210928\Symfony\Component\DependencyInjection\Dumper;
 
-use MonorepoBuilder20210927\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder20210928\Symfony\Component\DependencyInjection\ContainerBuilder;
 /**
  * Dumper is the abstract class for all built-in dumpers.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-abstract class Dumper implements \MonorepoBuilder20210927\Symfony\Component\DependencyInjection\Dumper\DumperInterface
+abstract class Dumper implements \MonorepoBuilder20210928\Symfony\Component\DependencyInjection\Dumper\DumperInterface
 {
     protected $container;
-    public function __construct(\MonorepoBuilder20210927\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    public function __construct(\MonorepoBuilder20210928\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
         $this->container = $container;
     }

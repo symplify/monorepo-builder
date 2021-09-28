@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20210927\Symplify\ComposerJsonManipulator;
+namespace MonorepoBuilder20210928\Symplify\ComposerJsonManipulator;
 
-use MonorepoBuilder20210927\Nette\Utils\Json;
-use MonorepoBuilder20210927\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
-use MonorepoBuilder20210927\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
-use MonorepoBuilder20210927\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
-use MonorepoBuilder20210927\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder20210928\Nette\Utils\Json;
+use MonorepoBuilder20210928\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
+use MonorepoBuilder20210928\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
+use MonorepoBuilder20210928\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
+use MonorepoBuilder20210928\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\ComposerJsonManipulator\Tests\ComposerJsonFactory\ComposerJsonFactoryTest
  */
@@ -17,108 +17,108 @@ final class ComposerJsonFactory
      * @var \Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager
      */
     private $jsonFileManager;
-    public function __construct(\MonorepoBuilder20210927\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager $jsonFileManager)
+    public function __construct(\MonorepoBuilder20210928\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager $jsonFileManager)
     {
         $this->jsonFileManager = $jsonFileManager;
     }
-    public function createFromString(string $jsonString) : \MonorepoBuilder20210927\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson
+    public function createFromString(string $jsonString) : \MonorepoBuilder20210928\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson
     {
-        $jsonArray = \MonorepoBuilder20210927\Nette\Utils\Json::decode($jsonString, \MonorepoBuilder20210927\Nette\Utils\Json::FORCE_ARRAY);
+        $jsonArray = \MonorepoBuilder20210928\Nette\Utils\Json::decode($jsonString, \MonorepoBuilder20210928\Nette\Utils\Json::FORCE_ARRAY);
         return $this->createFromArray($jsonArray);
     }
-    public function createFromFileInfo(\MonorepoBuilder20210927\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : \MonorepoBuilder20210927\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson
+    public function createFromFileInfo(\MonorepoBuilder20210928\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : \MonorepoBuilder20210928\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson
     {
         $jsonArray = $this->jsonFileManager->loadFromFilePath($smartFileInfo->getRealPath());
         $composerJson = $this->createFromArray($jsonArray);
         $composerJson->setOriginalFileInfo($smartFileInfo);
         return $composerJson;
     }
-    public function createFromFilePath(string $filePath) : \MonorepoBuilder20210927\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson
+    public function createFromFilePath(string $filePath) : \MonorepoBuilder20210928\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson
     {
         $jsonArray = $this->jsonFileManager->loadFromFilePath($filePath);
         $composerJson = $this->createFromArray($jsonArray);
-        $fileInfo = new \MonorepoBuilder20210927\Symplify\SmartFileSystem\SmartFileInfo($filePath);
+        $fileInfo = new \MonorepoBuilder20210928\Symplify\SmartFileSystem\SmartFileInfo($filePath);
         $composerJson->setOriginalFileInfo($fileInfo);
         return $composerJson;
     }
-    public function createEmpty() : \MonorepoBuilder20210927\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson
+    public function createEmpty() : \MonorepoBuilder20210928\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson
     {
-        return new \MonorepoBuilder20210927\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson();
+        return new \MonorepoBuilder20210928\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson();
     }
     /**
      * @param mixed[] $jsonArray
      */
-    public function createFromArray(array $jsonArray) : \MonorepoBuilder20210927\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson
+    public function createFromArray(array $jsonArray) : \MonorepoBuilder20210928\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson
     {
-        $composerJson = new \MonorepoBuilder20210927\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson();
-        if (isset($jsonArray[\MonorepoBuilder20210927\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::CONFIG])) {
-            $composerJson->setConfig($jsonArray[\MonorepoBuilder20210927\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::CONFIG]);
+        $composerJson = new \MonorepoBuilder20210928\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson();
+        if (isset($jsonArray[\MonorepoBuilder20210928\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::CONFIG])) {
+            $composerJson->setConfig($jsonArray[\MonorepoBuilder20210928\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::CONFIG]);
         }
-        if (isset($jsonArray[\MonorepoBuilder20210927\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::NAME])) {
-            $composerJson->setName($jsonArray[\MonorepoBuilder20210927\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::NAME]);
+        if (isset($jsonArray[\MonorepoBuilder20210928\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::NAME])) {
+            $composerJson->setName($jsonArray[\MonorepoBuilder20210928\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::NAME]);
         }
-        if (isset($jsonArray[\MonorepoBuilder20210927\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::TYPE])) {
-            $composerJson->setType($jsonArray[\MonorepoBuilder20210927\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::TYPE]);
+        if (isset($jsonArray[\MonorepoBuilder20210928\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::TYPE])) {
+            $composerJson->setType($jsonArray[\MonorepoBuilder20210928\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::TYPE]);
         }
-        if (isset($jsonArray[\MonorepoBuilder20210927\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::AUTHORS])) {
-            $composerJson->setAuthors($jsonArray[\MonorepoBuilder20210927\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::AUTHORS]);
+        if (isset($jsonArray[\MonorepoBuilder20210928\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::AUTHORS])) {
+            $composerJson->setAuthors($jsonArray[\MonorepoBuilder20210928\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::AUTHORS]);
         }
-        if (isset($jsonArray[\MonorepoBuilder20210927\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::DESCRIPTION])) {
-            $composerJson->setDescription($jsonArray[\MonorepoBuilder20210927\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::DESCRIPTION]);
+        if (isset($jsonArray[\MonorepoBuilder20210928\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::DESCRIPTION])) {
+            $composerJson->setDescription($jsonArray[\MonorepoBuilder20210928\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::DESCRIPTION]);
         }
-        if (isset($jsonArray[\MonorepoBuilder20210927\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::KEYWORDS])) {
-            $composerJson->setKeywords($jsonArray[\MonorepoBuilder20210927\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::KEYWORDS]);
+        if (isset($jsonArray[\MonorepoBuilder20210928\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::KEYWORDS])) {
+            $composerJson->setKeywords($jsonArray[\MonorepoBuilder20210928\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::KEYWORDS]);
         }
-        if (isset($jsonArray[\MonorepoBuilder20210927\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::HOMEPAGE])) {
-            $composerJson->setHomepage($jsonArray[\MonorepoBuilder20210927\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::HOMEPAGE]);
+        if (isset($jsonArray[\MonorepoBuilder20210928\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::HOMEPAGE])) {
+            $composerJson->setHomepage($jsonArray[\MonorepoBuilder20210928\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::HOMEPAGE]);
         }
-        if (isset($jsonArray[\MonorepoBuilder20210927\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::LICENSE])) {
-            $composerJson->setLicense($jsonArray[\MonorepoBuilder20210927\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::LICENSE]);
+        if (isset($jsonArray[\MonorepoBuilder20210928\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::LICENSE])) {
+            $composerJson->setLicense($jsonArray[\MonorepoBuilder20210928\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::LICENSE]);
         }
-        if (isset($jsonArray[\MonorepoBuilder20210927\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::BIN])) {
-            $composerJson->setBin($jsonArray[\MonorepoBuilder20210927\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::BIN]);
+        if (isset($jsonArray[\MonorepoBuilder20210928\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::BIN])) {
+            $composerJson->setBin($jsonArray[\MonorepoBuilder20210928\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::BIN]);
         }
-        if (isset($jsonArray[\MonorepoBuilder20210927\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE])) {
-            $composerJson->setRequire($jsonArray[\MonorepoBuilder20210927\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE]);
+        if (isset($jsonArray[\MonorepoBuilder20210928\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE])) {
+            $composerJson->setRequire($jsonArray[\MonorepoBuilder20210928\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE]);
         }
-        if (isset($jsonArray[\MonorepoBuilder20210927\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE_DEV])) {
-            $composerJson->setRequireDev($jsonArray[\MonorepoBuilder20210927\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE_DEV]);
+        if (isset($jsonArray[\MonorepoBuilder20210928\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE_DEV])) {
+            $composerJson->setRequireDev($jsonArray[\MonorepoBuilder20210928\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE_DEV]);
         }
-        if (isset($jsonArray[\MonorepoBuilder20210927\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::AUTOLOAD])) {
-            $composerJson->setAutoload($jsonArray[\MonorepoBuilder20210927\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::AUTOLOAD]);
+        if (isset($jsonArray[\MonorepoBuilder20210928\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::AUTOLOAD])) {
+            $composerJson->setAutoload($jsonArray[\MonorepoBuilder20210928\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::AUTOLOAD]);
         }
-        if (isset($jsonArray[\MonorepoBuilder20210927\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::AUTOLOAD_DEV])) {
-            $composerJson->setAutoloadDev($jsonArray[\MonorepoBuilder20210927\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::AUTOLOAD_DEV]);
+        if (isset($jsonArray[\MonorepoBuilder20210928\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::AUTOLOAD_DEV])) {
+            $composerJson->setAutoloadDev($jsonArray[\MonorepoBuilder20210928\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::AUTOLOAD_DEV]);
         }
-        if (isset($jsonArray[\MonorepoBuilder20210927\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REPLACE])) {
-            $composerJson->setReplace($jsonArray[\MonorepoBuilder20210927\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REPLACE]);
+        if (isset($jsonArray[\MonorepoBuilder20210928\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REPLACE])) {
+            $composerJson->setReplace($jsonArray[\MonorepoBuilder20210928\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REPLACE]);
         }
-        if (isset($jsonArray[\MonorepoBuilder20210927\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::EXTRA])) {
-            $composerJson->setExtra($jsonArray[\MonorepoBuilder20210927\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::EXTRA]);
+        if (isset($jsonArray[\MonorepoBuilder20210928\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::EXTRA])) {
+            $composerJson->setExtra($jsonArray[\MonorepoBuilder20210928\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::EXTRA]);
         }
-        if (isset($jsonArray[\MonorepoBuilder20210927\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::SCRIPTS])) {
-            $composerJson->setScripts($jsonArray[\MonorepoBuilder20210927\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::SCRIPTS]);
+        if (isset($jsonArray[\MonorepoBuilder20210928\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::SCRIPTS])) {
+            $composerJson->setScripts($jsonArray[\MonorepoBuilder20210928\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::SCRIPTS]);
         }
-        if (isset($jsonArray[\MonorepoBuilder20210927\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::SCRIPTS_DESCRIPTIONS])) {
-            $composerJson->setScriptsDescriptions($jsonArray[\MonorepoBuilder20210927\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::SCRIPTS_DESCRIPTIONS]);
+        if (isset($jsonArray[\MonorepoBuilder20210928\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::SCRIPTS_DESCRIPTIONS])) {
+            $composerJson->setScriptsDescriptions($jsonArray[\MonorepoBuilder20210928\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::SCRIPTS_DESCRIPTIONS]);
         }
-        if (isset($jsonArray[\MonorepoBuilder20210927\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::SUGGEST])) {
-            $composerJson->setSuggest($jsonArray[\MonorepoBuilder20210927\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::SUGGEST]);
+        if (isset($jsonArray[\MonorepoBuilder20210928\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::SUGGEST])) {
+            $composerJson->setSuggest($jsonArray[\MonorepoBuilder20210928\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::SUGGEST]);
         }
-        if (isset($jsonArray[\MonorepoBuilder20210927\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::MINIMUM_STABILITY])) {
-            $composerJson->setMinimumStability($jsonArray[\MonorepoBuilder20210927\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::MINIMUM_STABILITY]);
+        if (isset($jsonArray[\MonorepoBuilder20210928\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::MINIMUM_STABILITY])) {
+            $composerJson->setMinimumStability($jsonArray[\MonorepoBuilder20210928\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::MINIMUM_STABILITY]);
         }
-        if (isset($jsonArray[\MonorepoBuilder20210927\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::PREFER_STABLE])) {
-            $composerJson->setPreferStable($jsonArray[\MonorepoBuilder20210927\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::PREFER_STABLE]);
+        if (isset($jsonArray[\MonorepoBuilder20210928\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::PREFER_STABLE])) {
+            $composerJson->setPreferStable($jsonArray[\MonorepoBuilder20210928\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::PREFER_STABLE]);
         }
-        if (isset($jsonArray[\MonorepoBuilder20210927\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::CONFLICT])) {
-            $composerJson->setConflicts($jsonArray[\MonorepoBuilder20210927\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::CONFLICT]);
+        if (isset($jsonArray[\MonorepoBuilder20210928\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::CONFLICT])) {
+            $composerJson->setConflicts($jsonArray[\MonorepoBuilder20210928\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::CONFLICT]);
         }
-        if (isset($jsonArray[\MonorepoBuilder20210927\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REPOSITORIES])) {
-            $composerJson->setRepositories($jsonArray[\MonorepoBuilder20210927\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REPOSITORIES]);
+        if (isset($jsonArray[\MonorepoBuilder20210928\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REPOSITORIES])) {
+            $composerJson->setRepositories($jsonArray[\MonorepoBuilder20210928\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REPOSITORIES]);
         }
-        if (isset($jsonArray[\MonorepoBuilder20210927\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::VERSION])) {
-            $composerJson->setVersion($jsonArray[\MonorepoBuilder20210927\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::VERSION]);
+        if (isset($jsonArray[\MonorepoBuilder20210928\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::VERSION])) {
+            $composerJson->setVersion($jsonArray[\MonorepoBuilder20210928\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::VERSION]);
         }
         $orderedKeys = \array_keys($jsonArray);
         $composerJson->setOrderedKeys($orderedKeys);

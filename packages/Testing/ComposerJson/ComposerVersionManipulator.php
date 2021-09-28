@@ -3,9 +3,9 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Testing\ComposerJson;
 
-use MonorepoBuilder20210927\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
+use MonorepoBuilder20210928\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
 use Symplify\MonorepoBuilder\ValueObject\Option;
-use MonorepoBuilder20210927\Symplify\PackageBuilder\Parameter\ParameterProvider;
+use MonorepoBuilder20210928\Symplify\PackageBuilder\Parameter\ParameterProvider;
 final class ComposerVersionManipulator
 {
     /**
@@ -16,7 +16,7 @@ final class ComposerVersionManipulator
      * @var string
      */
     private $branchAliasTarget;
-    public function __construct(\MonorepoBuilder20210927\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider)
+    public function __construct(\MonorepoBuilder20210928\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider)
     {
         $this->branchAliasTarget = self::COMPOSER_BRANCH_PREFIX . $parameterProvider->provideStringParameter(\Symplify\MonorepoBuilder\ValueObject\Option::DEFAULT_BRANCH_NAME);
     }
@@ -27,7 +27,7 @@ final class ComposerVersionManipulator
      */
     public function decorateAsteriskVersionForUsedPackages(array $packageComposerJson, array $usedPackageNames) : array
     {
-        foreach ([\MonorepoBuilder20210927\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE, \MonorepoBuilder20210927\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE_DEV] as $section) {
+        foreach ([\MonorepoBuilder20210928\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE, \MonorepoBuilder20210928\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE_DEV] as $section) {
             foreach ($usedPackageNames as $usedPackageName) {
                 if (!isset($packageComposerJson[$section][$usedPackageName])) {
                     continue;

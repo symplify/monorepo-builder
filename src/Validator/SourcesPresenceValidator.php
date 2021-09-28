@@ -6,7 +6,7 @@ namespace Symplify\MonorepoBuilder\Validator;
 use Symplify\MonorepoBuilder\Exception\Validator\InvalidComposerJsonSetupException;
 use Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider;
 use Symplify\MonorepoBuilder\ValueObject\Option;
-use MonorepoBuilder20210927\Symplify\PackageBuilder\Parameter\ParameterProvider;
+use MonorepoBuilder20210928\Symplify\PackageBuilder\Parameter\ParameterProvider;
 final class SourcesPresenceValidator
 {
     /**
@@ -17,7 +17,7 @@ final class SourcesPresenceValidator
      * @var \Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider
      */
     private $composerJsonProvider;
-    public function __construct(\Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider $composerJsonProvider, \MonorepoBuilder20210927\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider)
+    public function __construct(\Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider $composerJsonProvider, \MonorepoBuilder20210928\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider)
     {
         $this->composerJsonProvider = $composerJsonProvider;
         $this->packageDirectories = $parameterProvider->provideArrayParameter(\Symplify\MonorepoBuilder\ValueObject\Option::PACKAGE_DIRECTORIES);

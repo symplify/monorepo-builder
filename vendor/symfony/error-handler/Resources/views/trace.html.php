@@ -1,5 +1,5 @@
 <div class="trace-line-header break-long-words <?php 
-namespace MonorepoBuilder20210927;
+namespace MonorepoBuilder20210928;
 
 echo $trace['file'] ? 'sf-toggle' : '';
 ?>" data-toggle-selector="#trace-html-<?php 
