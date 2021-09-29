@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20210928\Symplify\ConsoleColorDiff\Console\Formatter;
+namespace MonorepoBuilder20210929\Symplify\ConsoleColorDiff\Console\Formatter;
 
-use MonorepoBuilder20210928\Nette\Utils\Strings;
-use MonorepoBuilder20210928\Symfony\Component\Console\Formatter\OutputFormatter;
+use MonorepoBuilder20210929\Nette\Utils\Strings;
+use MonorepoBuilder20210929\Symfony\Component\Console\Formatter\OutputFormatter;
 /**
- * Inspired by @see https://github.com/FriendsOfPHP/PHP-CS-Fixer/blob/master/src/Differ/DiffConsoleFormatter.php
- * to be used as standalone class, without need to require whole package by Dariusz Rumiński <dariusz.ruminski@gmail.com>
+ * Inspired by @see https://github.com/FriendsOfPHP/PHP-CS-Fixer/blob/master/src/Differ/DiffConsoleFormatter.php to be
+ * used as standalone class, without need to require whole package by Dariusz Rumiński <dariusz.ruminski@gmail.com>
  *
  * @see \Symplify\ConsoleColorDiff\Tests\Console\Formatter\ColorConsoleDiffFormatterTest
  */
@@ -47,8 +47,8 @@ final class ColorConsoleDiffFormatter
     }
     private function formatWithTemplate(string $diff, string $template) : string
     {
-        $escapedDiff = \MonorepoBuilder20210928\Symfony\Component\Console\Formatter\OutputFormatter::escape(\rtrim($diff));
-        $escapedDiffLines = \MonorepoBuilder20210928\Nette\Utils\Strings::split($escapedDiff, self::NEWLINES_REGEX);
+        $escapedDiff = \MonorepoBuilder20210929\Symfony\Component\Console\Formatter\OutputFormatter::escape(\rtrim($diff));
+        $escapedDiffLines = \MonorepoBuilder20210929\Nette\Utils\Strings::split($escapedDiff, self::NEWLINES_REGEX);
         // remove description of added + remove; obvious on diffs
         foreach ($escapedDiffLines as $key => $escapedDiffLine) {
             if ($escapedDiffLine === '--- Original') {
@@ -71,14 +71,14 @@ final class ColorConsoleDiffFormatter
     }
     private function makePlusLinesGreen(string $string) : string
     {
-        return \MonorepoBuilder20210928\Nette\Utils\Strings::replace($string, self::PLUS_START_REGEX, '<fg=green>$1</fg=green>');
+        return \MonorepoBuilder20210929\Nette\Utils\Strings::replace($string, self::PLUS_START_REGEX, '<fg=green>$1</fg=green>');
     }
     private function makeMinusLinesRed(string $string) : string
     {
-        return \MonorepoBuilder20210928\Nette\Utils\Strings::replace($string, self::MINUT_START_REGEX, '<fg=red>$1</fg=red>');
+        return \MonorepoBuilder20210929\Nette\Utils\Strings::replace($string, self::MINUT_START_REGEX, '<fg=red>$1</fg=red>');
     }
     private function makeAtNoteCyan(string $string) : string
     {
-        return \MonorepoBuilder20210928\Nette\Utils\Strings::replace($string, self::AT_START_REGEX, '<fg=cyan>$1</fg=cyan>');
+        return \MonorepoBuilder20210929\Nette\Utils\Strings::replace($string, self::AT_START_REGEX, '<fg=cyan>$1</fg=cyan>');
     }
 }

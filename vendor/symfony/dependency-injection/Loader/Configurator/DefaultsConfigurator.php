@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210928\Symfony\Component\DependencyInjection\Loader\Configurator;
+namespace MonorepoBuilder20210929\Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use MonorepoBuilder20210928\Symfony\Component\DependencyInjection\Definition;
-use MonorepoBuilder20210928\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use MonorepoBuilder20210929\Symfony\Component\DependencyInjection\Definition;
+use MonorepoBuilder20210929\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class DefaultsConfigurator extends \MonorepoBuilder20210928\Symfony\Component\DependencyInjection\Loader\Configurator\AbstractServiceConfigurator
+class DefaultsConfigurator extends \MonorepoBuilder20210929\Symfony\Component\DependencyInjection\Loader\Configurator\AbstractServiceConfigurator
 {
     use Traits\AutoconfigureTrait;
     use Traits\AutowireTrait;
@@ -23,7 +23,7 @@ class DefaultsConfigurator extends \MonorepoBuilder20210928\Symfony\Component\De
     use Traits\PublicTrait;
     public const FACTORY = 'defaults';
     private $path;
-    public function __construct(\MonorepoBuilder20210928\Symfony\Component\DependencyInjection\Loader\Configurator\ServicesConfigurator $parent, \MonorepoBuilder20210928\Symfony\Component\DependencyInjection\Definition $definition, string $path = null)
+    public function __construct(\MonorepoBuilder20210929\Symfony\Component\DependencyInjection\Loader\Configurator\ServicesConfigurator $parent, \MonorepoBuilder20210929\Symfony\Component\DependencyInjection\Definition $definition, string $path = null)
     {
         parent::__construct($parent, $definition, null, []);
         $this->path = $path;
@@ -40,11 +40,11 @@ class DefaultsConfigurator extends \MonorepoBuilder20210928\Symfony\Component\De
     public final function tag($name, $attributes = []) : self
     {
         if ('' === $name) {
-            throw new \MonorepoBuilder20210928\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException('The tag name in "_defaults" must be a non-empty string.');
+            throw new \MonorepoBuilder20210929\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException('The tag name in "_defaults" must be a non-empty string.');
         }
         foreach ($attributes as $attribute => $value) {
             if (null !== $value && !\is_scalar($value)) {
-                throw new \MonorepoBuilder20210928\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Tag "%s", attribute "%s" in "_defaults" must be of a scalar-type.', $name, $attribute));
+                throw new \MonorepoBuilder20210929\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Tag "%s", attribute "%s" in "_defaults" must be of a scalar-type.', $name, $attribute));
             }
         }
         $this->definition->addTag($name, $attributes);
@@ -54,7 +54,7 @@ class DefaultsConfigurator extends \MonorepoBuilder20210928\Symfony\Component\De
      * Defines an instanceof-conditional to be applied to following service definitions.
      * @param string $fqcn
      */
-    public final function instanceof($fqcn) : \MonorepoBuilder20210928\Symfony\Component\DependencyInjection\Loader\Configurator\InstanceofConfigurator
+    public final function instanceof($fqcn) : \MonorepoBuilder20210929\Symfony\Component\DependencyInjection\Loader\Configurator\InstanceofConfigurator
     {
         return $this->parent->instanceof($fqcn);
     }
