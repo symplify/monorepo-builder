@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20210929\Symplify\SymplifyKernel\DependencyInjection\Extension;
+namespace MonorepoBuilder20210930\Symplify\SymplifyKernel\DependencyInjection\Extension;
 
-use MonorepoBuilder20210929\Symfony\Component\Config\FileLocator;
-use MonorepoBuilder20210929\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder20210929\Symfony\Component\DependencyInjection\Extension\Extension;
-use MonorepoBuilder20210929\Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
-final class SymplifyKernelExtension extends \MonorepoBuilder20210929\Symfony\Component\DependencyInjection\Extension\Extension
+use MonorepoBuilder20210930\Symfony\Component\Config\FileLocator;
+use MonorepoBuilder20210930\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder20210930\Symfony\Component\DependencyInjection\Extension\Extension;
+use MonorepoBuilder20210930\Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
+final class SymplifyKernelExtension extends \MonorepoBuilder20210930\Symfony\Component\DependencyInjection\Extension\Extension
 {
     /**
      * @param string[] $configs
@@ -15,7 +15,7 @@ final class SymplifyKernelExtension extends \MonorepoBuilder20210929\Symfony\Com
      */
     public function load($configs, $containerBuilder) : void
     {
-        $phpFileLoader = new \MonorepoBuilder20210929\Symfony\Component\DependencyInjection\Loader\PhpFileLoader($containerBuilder, new \MonorepoBuilder20210929\Symfony\Component\Config\FileLocator(__DIR__ . '/../../../config'));
+        $phpFileLoader = new \MonorepoBuilder20210930\Symfony\Component\DependencyInjection\Loader\PhpFileLoader($containerBuilder, new \MonorepoBuilder20210930\Symfony\Component\Config\FileLocator(__DIR__ . '/../../../config'));
         $phpFileLoader->load('common-config.php');
     }
 }

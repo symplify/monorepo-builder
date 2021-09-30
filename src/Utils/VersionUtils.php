@@ -5,7 +5,7 @@ namespace Symplify\MonorepoBuilder\Utils;
 
 use PharIo\Version\Version;
 use Symplify\MonorepoBuilder\ValueObject\Option;
-use MonorepoBuilder20210929\Symplify\PackageBuilder\Parameter\ParameterProvider;
+use MonorepoBuilder20210930\Symplify\PackageBuilder\Parameter\ParameterProvider;
 /**
  * @see \Symplify\MonorepoBuilder\Tests\Utils\VersionUtilsTest
  */
@@ -15,7 +15,7 @@ final class VersionUtils
      * @var string
      */
     private $packageAliasFormat;
-    public function __construct(\MonorepoBuilder20210929\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider)
+    public function __construct(\MonorepoBuilder20210930\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider)
     {
         $this->packageAliasFormat = $parameterProvider->provideStringParameter(\Symplify\MonorepoBuilder\ValueObject\Option::PACKAGE_ALIAS_FORMAT);
     }

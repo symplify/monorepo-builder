@@ -8,7 +8,7 @@ use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterfa
 use Symplify\MonorepoBuilder\Release\Process\ProcessRunner;
 use Symplify\MonorepoBuilder\Utils\VersionUtils;
 use Symplify\MonorepoBuilder\ValueObject\Option;
-use MonorepoBuilder20210929\Symplify\PackageBuilder\Parameter\ParameterProvider;
+use MonorepoBuilder20210930\Symplify\PackageBuilder\Parameter\ParameterProvider;
 final class PushNextDevReleaseWorker implements \Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface
 {
     /**
@@ -23,7 +23,7 @@ final class PushNextDevReleaseWorker implements \Symplify\MonorepoBuilder\Releas
      * @var \Symplify\MonorepoBuilder\Utils\VersionUtils
      */
     private $versionUtils;
-    public function __construct(\Symplify\MonorepoBuilder\Release\Process\ProcessRunner $processRunner, \Symplify\MonorepoBuilder\Utils\VersionUtils $versionUtils, \MonorepoBuilder20210929\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider)
+    public function __construct(\Symplify\MonorepoBuilder\Release\Process\ProcessRunner $processRunner, \Symplify\MonorepoBuilder\Utils\VersionUtils $versionUtils, \MonorepoBuilder20210930\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider)
     {
         $this->processRunner = $processRunner;
         $this->versionUtils = $versionUtils;

@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210929\Symfony\Component\HttpFoundation\Session\Storage\Handler;
+namespace MonorepoBuilder20210930\Symfony\Component\HttpFoundation\Session\Storage\Handler;
 
 /**
  * Migrating session handler for migrating from one handler to another. It reads
@@ -26,10 +26,10 @@ class MigratingSessionHandler implements \SessionHandlerInterface, \SessionUpdat
     public function __construct(\SessionHandlerInterface $currentHandler, \SessionHandlerInterface $writeOnlyHandler)
     {
         if (!$currentHandler instanceof \SessionUpdateTimestampHandlerInterface) {
-            $currentHandler = new \MonorepoBuilder20210929\Symfony\Component\HttpFoundation\Session\Storage\Handler\StrictSessionHandler($currentHandler);
+            $currentHandler = new \MonorepoBuilder20210930\Symfony\Component\HttpFoundation\Session\Storage\Handler\StrictSessionHandler($currentHandler);
         }
         if (!$writeOnlyHandler instanceof \SessionUpdateTimestampHandlerInterface) {
-            $writeOnlyHandler = new \MonorepoBuilder20210929\Symfony\Component\HttpFoundation\Session\Storage\Handler\StrictSessionHandler($writeOnlyHandler);
+            $writeOnlyHandler = new \MonorepoBuilder20210930\Symfony\Component\HttpFoundation\Session\Storage\Handler\StrictSessionHandler($writeOnlyHandler);
         }
         $this->currentHandler = $currentHandler;
         $this->writeOnlyHandler = $writeOnlyHandler;

@@ -8,24 +8,24 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20210929\Symfony\Component\DependencyInjection\Compiler;
+namespace MonorepoBuilder20210930\Symfony\Component\DependencyInjection\Compiler;
 
-use MonorepoBuilder20210929\Symfony\Component\DependencyInjection\Argument\ArgumentInterface;
-use MonorepoBuilder20210929\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
-use MonorepoBuilder20210929\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder20210929\Symfony\Component\DependencyInjection\ContainerInterface;
-use MonorepoBuilder20210929\Symfony\Component\DependencyInjection\Definition;
-use MonorepoBuilder20210929\Symfony\Component\DependencyInjection\Exception\RuntimeException;
-use MonorepoBuilder20210929\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
-use MonorepoBuilder20210929\Symfony\Component\DependencyInjection\Reference;
-use MonorepoBuilder20210929\Symfony\Component\DependencyInjection\TypedReference;
+use MonorepoBuilder20210930\Symfony\Component\DependencyInjection\Argument\ArgumentInterface;
+use MonorepoBuilder20210930\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
+use MonorepoBuilder20210930\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder20210930\Symfony\Component\DependencyInjection\ContainerInterface;
+use MonorepoBuilder20210930\Symfony\Component\DependencyInjection\Definition;
+use MonorepoBuilder20210930\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use MonorepoBuilder20210930\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
+use MonorepoBuilder20210930\Symfony\Component\DependencyInjection\Reference;
+use MonorepoBuilder20210930\Symfony\Component\DependencyInjection\TypedReference;
 /**
  * Emulates the invalid behavior if the reference is not found within the
  * container.
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class ResolveInvalidReferencesPass implements \MonorepoBuilder20210929\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
+class ResolveInvalidReferencesPass implements \MonorepoBuilder20210930\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
 {
     private $container;
     private $signalingException;
@@ -37,7 +37,7 @@ class ResolveInvalidReferencesPass implements \MonorepoBuilder20210929\Symfony\C
     public function process($container)
     {
         $this->container = $container;
-        $this->signalingException = new \MonorepoBuilder20210929\Symfony\Component\DependencyInjection\Exception\RuntimeException('Invalid reference.');
+        $this->signalingException = new \MonorepoBuilder20210930\Symfony\Component\DependencyInjection\Exception\RuntimeException('Invalid reference.');
         try {
             foreach ($container->getDefinitions() as $this->currentId => $definition) {
                 $this->processValue($definition);
@@ -55,11 +55,11 @@ class ResolveInvalidReferencesPass implements \MonorepoBuilder20210929\Symfony\C
      */
     private function processValue($value, int $rootLevel = 0, int $level = 0)
     {
-        if ($value instanceof \MonorepoBuilder20210929\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument) {
+        if ($value instanceof \MonorepoBuilder20210930\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument) {
             $value->setValues($this->processValue($value->getValues(), 1, 1));
-        } elseif ($value instanceof \MonorepoBuilder20210929\Symfony\Component\DependencyInjection\Argument\ArgumentInterface) {
+        } elseif ($value instanceof \MonorepoBuilder20210930\Symfony\Component\DependencyInjection\Argument\ArgumentInterface) {
             $value->setValues($this->processValue($value->getValues(), $rootLevel, 1 + $level));
-        } elseif ($value instanceof \MonorepoBuilder20210929\Symfony\Component\DependencyInjection\Definition) {
+        } elseif ($value instanceof \MonorepoBuilder20210930\Symfony\Component\DependencyInjection\Definition) {
             if ($value->isSynthetic() || $value->isAbstract()) {
                 return $value;
             }
@@ -76,7 +76,7 @@ class ResolveInvalidReferencesPass implements \MonorepoBuilder20210929\Symfony\C
                     if ($v !== ($processedValue = $this->processValue($v, $rootLevel, 1 + $level))) {
                         $value[$k] = $processedValue;
                     }
-                } catch (\MonorepoBuilder20210929\Symfony\Component\DependencyInjection\Exception\RuntimeException $e) {
+                } catch (\MonorepoBuilder20210930\Symfony\Component\DependencyInjection\Exception\RuntimeException $e) {
                     if ($rootLevel < $level || $rootLevel && !$level) {
                         unset($value[$k]);
                     } elseif ($rootLevel) {
@@ -90,26 +90,26 @@ class ResolveInvalidReferencesPass implements \MonorepoBuilder20210929\Symfony\C
             if (\false !== $i) {
                 $value = \array_values($value);
             }
-        } elseif ($value instanceof \MonorepoBuilder20210929\Symfony\Component\DependencyInjection\Reference) {
+        } elseif ($value instanceof \MonorepoBuilder20210930\Symfony\Component\DependencyInjection\Reference) {
             if ($this->container->has($id = (string) $value)) {
                 return $value;
             }
             $currentDefinition = $this->container->getDefinition($this->currentId);
             // resolve decorated service behavior depending on decorator service
-            if ($currentDefinition->innerServiceId === $id && \MonorepoBuilder20210929\Symfony\Component\DependencyInjection\ContainerInterface::NULL_ON_INVALID_REFERENCE === $currentDefinition->decorationOnInvalid) {
+            if ($currentDefinition->innerServiceId === $id && \MonorepoBuilder20210930\Symfony\Component\DependencyInjection\ContainerInterface::NULL_ON_INVALID_REFERENCE === $currentDefinition->decorationOnInvalid) {
                 return null;
             }
             $invalidBehavior = $value->getInvalidBehavior();
-            if (\MonorepoBuilder20210929\Symfony\Component\DependencyInjection\ContainerInterface::RUNTIME_EXCEPTION_ON_INVALID_REFERENCE === $invalidBehavior && $value instanceof \MonorepoBuilder20210929\Symfony\Component\DependencyInjection\TypedReference && !$this->container->has($id)) {
-                $e = new \MonorepoBuilder20210929\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException($id, $this->currentId);
+            if (\MonorepoBuilder20210930\Symfony\Component\DependencyInjection\ContainerInterface::RUNTIME_EXCEPTION_ON_INVALID_REFERENCE === $invalidBehavior && $value instanceof \MonorepoBuilder20210930\Symfony\Component\DependencyInjection\TypedReference && !$this->container->has($id)) {
+                $e = new \MonorepoBuilder20210930\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException($id, $this->currentId);
                 // since the error message varies by $id and $this->currentId, so should the id of the dummy errored definition
                 $this->container->register($id = \sprintf('.errored.%s.%s', $this->currentId, $id), $value->getType())->addError($e->getMessage());
-                return new \MonorepoBuilder20210929\Symfony\Component\DependencyInjection\TypedReference($id, $value->getType(), $value->getInvalidBehavior());
+                return new \MonorepoBuilder20210930\Symfony\Component\DependencyInjection\TypedReference($id, $value->getType(), $value->getInvalidBehavior());
             }
             // resolve invalid behavior
-            if (\MonorepoBuilder20210929\Symfony\Component\DependencyInjection\ContainerInterface::NULL_ON_INVALID_REFERENCE === $invalidBehavior) {
+            if (\MonorepoBuilder20210930\Symfony\Component\DependencyInjection\ContainerInterface::NULL_ON_INVALID_REFERENCE === $invalidBehavior) {
                 $value = null;
-            } elseif (\MonorepoBuilder20210929\Symfony\Component\DependencyInjection\ContainerInterface::IGNORE_ON_INVALID_REFERENCE === $invalidBehavior) {
+            } elseif (\MonorepoBuilder20210930\Symfony\Component\DependencyInjection\ContainerInterface::IGNORE_ON_INVALID_REFERENCE === $invalidBehavior) {
                 if (0 < $level || $rootLevel) {
                     throw $this->signalingException;
                 }
