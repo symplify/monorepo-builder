@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Merge\Contract;
 
-use MonorepoBuilder20211001\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
+use MonorepoBuilder20211002\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
 interface ComposerJsonDecoratorInterface
 {
     /**

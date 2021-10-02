@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="<?php 
-namespace MonorepoBuilder20211001;
+namespace MonorepoBuilder20211002;
 
 echo $this->charset;
 ?>" />
