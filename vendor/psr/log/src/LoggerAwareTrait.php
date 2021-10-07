@@ -1,6 +1,6 @@
 <?php
 
-namespace MonorepoBuilder20211002\Psr\Log;
+namespace MonorepoBuilder20211007\Psr\Log;
 
 /**
  * Basic Implementation of LoggerAwareInterface.
@@ -16,7 +16,7 @@ trait LoggerAwareTrait
     /**
      * Sets a logger.
      *
-     * @param \Psr\Log\LoggerInterface $logger
+     * @param LoggerInterface $logger
      */
     public function setLogger($logger)
     {

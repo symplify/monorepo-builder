@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211002\Symfony\Component\DependencyInjection\Loader;
+namespace MonorepoBuilder20211007\Symfony\Component\DependencyInjection\Loader;
 
 /**
  * DirectoryLoader is a recursive loader to go through directories.
  *
  * @author Sebastien Lavoie <seb@wemakecustom.com>
  */
-class DirectoryLoader extends \MonorepoBuilder20211002\Symfony\Component\DependencyInjection\Loader\FileLoader
+class DirectoryLoader extends \MonorepoBuilder20211007\Symfony\Component\DependencyInjection\Loader\FileLoader
 {
     /**
      * {@inheritdoc}

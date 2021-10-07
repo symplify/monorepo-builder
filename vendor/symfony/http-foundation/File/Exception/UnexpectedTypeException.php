@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211002\Symfony\Component\HttpFoundation\File\Exception;
+namespace MonorepoBuilder20211007\Symfony\Component\HttpFoundation\File\Exception;
 
-class UnexpectedTypeException extends \MonorepoBuilder20211002\Symfony\Component\HttpFoundation\File\Exception\FileException
+class UnexpectedTypeException extends \MonorepoBuilder20211007\Symfony\Component\HttpFoundation\File\Exception\FileException
 {
     public function __construct($value, string $expectedType)
     {
