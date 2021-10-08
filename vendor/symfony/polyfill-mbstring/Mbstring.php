@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211007\Symfony\Polyfill\Mbstring;
+namespace MonorepoBuilder20211008\Symfony\Polyfill\Mbstring;
 
 /**
  * Partial mbstring implementation in PHP, iconv based, UTF-8 centric.

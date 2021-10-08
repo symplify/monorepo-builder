@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211007\Symfony\Component\HttpKernel\EventListener;
+namespace MonorepoBuilder20211008\Symfony\Component\HttpKernel\EventListener;
 
-use MonorepoBuilder20211007\Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use MonorepoBuilder20211007\Symfony\Component\HttpKernel\Event\RequestEvent;
-use MonorepoBuilder20211007\Symfony\Component\HttpKernel\KernelEvents;
+use MonorepoBuilder20211008\Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use MonorepoBuilder20211008\Symfony\Component\HttpKernel\Event\RequestEvent;
+use MonorepoBuilder20211008\Symfony\Component\HttpKernel\KernelEvents;
 /**
  * Validates Requests.
  *
@@ -20,7 +20,7 @@ use MonorepoBuilder20211007\Symfony\Component\HttpKernel\KernelEvents;
  *
  * @final
  */
-class ValidateRequestListener implements \MonorepoBuilder20211007\Symfony\Component\EventDispatcher\EventSubscriberInterface
+class ValidateRequestListener implements \MonorepoBuilder20211008\Symfony\Component\EventDispatcher\EventSubscriberInterface
 {
     /**
      * Performs the validation.
@@ -42,6 +42,6 @@ class ValidateRequestListener implements \MonorepoBuilder20211007\Symfony\Compon
      */
     public static function getSubscribedEvents() : array
     {
-        return [\MonorepoBuilder20211007\Symfony\Component\HttpKernel\KernelEvents::REQUEST => [['onKernelRequest', 256]]];
+        return [\MonorepoBuilder20211008\Symfony\Component\HttpKernel\KernelEvents::REQUEST => [['onKernelRequest', 256]]];
     }
 }

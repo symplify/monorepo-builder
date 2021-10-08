@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211007\Symfony\Component\HttpFoundation\Session;
+namespace MonorepoBuilder20211008\Symfony\Component\HttpFoundation\Session;
 
-use MonorepoBuilder20211007\Symfony\Component\HttpFoundation\Session\Storage\MetadataBag;
+use MonorepoBuilder20211008\Symfony\Component\HttpFoundation\Session\Storage\MetadataBag;
 /**
  * Interface for the session.
  *
