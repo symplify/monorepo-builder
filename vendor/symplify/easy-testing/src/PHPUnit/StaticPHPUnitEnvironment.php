@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20211008\Symplify\EasyTesting\PHPUnit;
+namespace MonorepoBuilder20211009\Symplify\EasyTesting\PHPUnit;
 
 final class StaticPHPUnitEnvironment
 {

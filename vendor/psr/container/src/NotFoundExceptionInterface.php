@@ -1,10 +1,10 @@
 <?php
 
-namespace MonorepoBuilder20211008\Psr\Container;
+namespace MonorepoBuilder20211009\Psr\Container;
 
 /**
  * No entry was found in the container.
  */
-interface NotFoundExceptionInterface extends \MonorepoBuilder20211008\Psr\Container\ContainerExceptionInterface
+interface NotFoundExceptionInterface extends \MonorepoBuilder20211009\Psr\Container\ContainerExceptionInterface
 {
 }
