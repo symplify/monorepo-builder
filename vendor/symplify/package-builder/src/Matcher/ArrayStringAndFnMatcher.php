@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20211009\Symplify\PackageBuilder\Matcher;
+namespace MonorepoBuilder20211010\Symplify\PackageBuilder\Matcher;
 
 final class ArrayStringAndFnMatcher
 {

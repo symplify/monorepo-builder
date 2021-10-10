@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211009\Symfony\Component\HttpKernel\HttpCache;
+namespace MonorepoBuilder20211010\Symfony\Component\HttpKernel\HttpCache;
 
-use MonorepoBuilder20211009\Symfony\Component\HttpFoundation\Request;
-use MonorepoBuilder20211009\Symfony\Component\HttpFoundation\Response;
+use MonorepoBuilder20211010\Symfony\Component\HttpFoundation\Request;
+use MonorepoBuilder20211010\Symfony\Component\HttpFoundation\Response;
 /**
  * Esi implements the ESI capabilities to Request and Response instances.
  *
@@ -23,7 +23,7 @@ use MonorepoBuilder20211009\Symfony\Component\HttpFoundation\Response;
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class Esi extends \MonorepoBuilder20211009\Symfony\Component\HttpKernel\HttpCache\AbstractSurrogate
+class Esi extends \MonorepoBuilder20211010\Symfony\Component\HttpKernel\HttpCache\AbstractSurrogate
 {
     public function getName()
     {

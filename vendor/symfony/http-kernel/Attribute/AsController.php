@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211009\Symfony\Component\HttpKernel\Attribute;
+namespace MonorepoBuilder20211010\Symfony\Component\HttpKernel\Attribute;
 
 /**
  * Service tag to autoconfigure controllers.
