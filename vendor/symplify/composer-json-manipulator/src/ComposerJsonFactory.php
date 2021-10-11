@@ -9,6 +9,7 @@ use MonorepoBuilder20211011\Symplify\ComposerJsonManipulator\ValueObject\Compose
 use MonorepoBuilder20211011\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
 use MonorepoBuilder20211011\Symplify\SmartFileSystem\SmartFileInfo;
 /**
+ * @api
  * @see \Symplify\ComposerJsonManipulator\Tests\ComposerJsonFactory\ComposerJsonFactoryTest
  */
 final class ComposerJsonFactory

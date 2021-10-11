@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInite8f640420eb5ad7a8029588a6b1f4bfc
+class ComposerStaticInit5f1694b4b010575ed630150d33a7a6d3
 {
     public static $files = array (
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
@@ -1058,7 +1058,6 @@ class ComposerStaticInite8f640420eb5ad7a8029588a6b1f4bfc
         'MonorepoBuilder20211011\\Symplify\\ComposerJsonManipulator\\Sorter\\ComposerPackageSorter' => __DIR__ . '/..' . '/symplify/composer-json-manipulator/src/Sorter/ComposerPackageSorter.php',
         'MonorepoBuilder20211011\\Symplify\\ComposerJsonManipulator\\ValueObject\\ComposerJson' => __DIR__ . '/..' . '/symplify/composer-json-manipulator/src/ValueObject/ComposerJson.php',
         'MonorepoBuilder20211011\\Symplify\\ComposerJsonManipulator\\ValueObject\\ComposerJsonSection' => __DIR__ . '/..' . '/symplify/composer-json-manipulator/src/ValueObject/ComposerJsonSection.php',
-        'MonorepoBuilder20211011\\Symplify\\ComposerJsonManipulator\\ValueObject\\ComposerValues' => __DIR__ . '/..' . '/symplify/composer-json-manipulator/src/ValueObject/ComposerValues.php',
         'MonorepoBuilder20211011\\Symplify\\ComposerJsonManipulator\\ValueObject\\Option' => __DIR__ . '/..' . '/symplify/composer-json-manipulator/src/ValueObject/Option.php',
         'MonorepoBuilder20211011\\Symplify\\ConsoleColorDiff\\Bundle\\ConsoleColorDiffBundle' => __DIR__ . '/..' . '/symplify/console-color-diff/src/Bundle/ConsoleColorDiffBundle.php',
         'MonorepoBuilder20211011\\Symplify\\ConsoleColorDiff\\Console\\Formatter\\ColorConsoleDiffFormatter' => __DIR__ . '/..' . '/symplify/console-color-diff/src/Console/Formatter/ColorConsoleDiffFormatter.php',
@@ -1164,7 +1163,6 @@ class ComposerStaticInite8f640420eb5ad7a8029588a6b1f4bfc
         'Symplify\\MonorepoBuilder\\Console\\MonorepoBuilderConsoleApplication' => __DIR__ . '/../..' . '/src/Console/MonorepoBuilderConsoleApplication.php',
         'Symplify\\MonorepoBuilder\\DependencyUpdater' => __DIR__ . '/../..' . '/src/DependencyUpdater.php',
         'Symplify\\MonorepoBuilder\\DevMasterAliasUpdater' => __DIR__ . '/../..' . '/src/DevMasterAliasUpdater.php',
-        'Symplify\\MonorepoBuilder\\Exception\\AmbiguousVersionException' => __DIR__ . '/../..' . '/src/Exception/AmbiguousVersionException.php',
         'Symplify\\MonorepoBuilder\\Exception\\Git\\InvalidGitVersionException' => __DIR__ . '/../..' . '/src/Exception/Git/InvalidGitVersionException.php',
         'Symplify\\MonorepoBuilder\\Exception\\Validator\\InvalidComposerJsonSetupException' => __DIR__ . '/../..' . '/src/Exception/Validator/InvalidComposerJsonSetupException.php',
         'Symplify\\MonorepoBuilder\\FileSystem\\ComposerJsonProvider' => __DIR__ . '/../..' . '/src/FileSystem/ComposerJsonProvider.php',
@@ -1251,9 +1249,9 @@ class ComposerStaticInite8f640420eb5ad7a8029588a6b1f4bfc
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInite8f640420eb5ad7a8029588a6b1f4bfc::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInite8f640420eb5ad7a8029588a6b1f4bfc::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInite8f640420eb5ad7a8029588a6b1f4bfc::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit5f1694b4b010575ed630150d33a7a6d3::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit5f1694b4b010575ed630150d33a7a6d3::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit5f1694b4b010575ed630150d33a7a6d3::$classMap;
 
         }, null, ClassLoader::class);
     }
