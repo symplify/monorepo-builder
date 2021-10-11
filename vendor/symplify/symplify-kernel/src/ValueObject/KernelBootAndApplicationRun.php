@@ -85,9 +85,10 @@ final class KernelBootAndApplicationRun
      */
     private function validateKernelClass(string $kernelClass) : void
     {
-        if (!\is_a($kernelClass, \MonorepoBuilder20211011\Symfony\Component\HttpKernel\KernelInterface::class, \true)) {
-            $message = \sprintf('Class "%s" must by type of "%s"', $kernelClass, \MonorepoBuilder20211011\Symfony\Component\HttpKernel\KernelInterface::class);
-            throw new \MonorepoBuilder20211011\Symplify\SymplifyKernel\Exception\BootException($message);
+        if (\is_a($kernelClass, \MonorepoBuilder20211011\Symfony\Component\HttpKernel\KernelInterface::class, \true)) {
+            return;
         }
+        $errorMessage = \sprintf('Class "%s" must by type of "%s"', $kernelClass, \MonorepoBuilder20211011\Symfony\Component\HttpKernel\KernelInterface::class);
+        throw new \MonorepoBuilder20211011\Symplify\SymplifyKernel\Exception\BootException($errorMessage);
     }
 }
