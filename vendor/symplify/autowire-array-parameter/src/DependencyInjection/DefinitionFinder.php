@@ -1,14 +1,15 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20211011\Symplify\PackageBuilder\DependencyInjection;
+namespace MonorepoBuilder20211011\Symplify\AutowireArrayParameter\DependencyInjection;
 
 use MonorepoBuilder20211011\Symfony\Component\DependencyInjection\ContainerBuilder;
 use MonorepoBuilder20211011\Symfony\Component\DependencyInjection\Definition;
-use MonorepoBuilder20211011\Symplify\PackageBuilder\Exception\DependencyInjection\DefinitionForTypeNotFoundException;
+use MonorepoBuilder20211011\Symplify\AutowireArrayParameter\Exception\DependencyInjection\DefinitionForTypeNotFoundException;
 use Throwable;
 /**
- * @see \Symplify\PackageBuilder\Tests\DependencyInjection\DefinitionFinderTest
+ * @api
+ * @see \Symplify\AutowireArrayParameter\Tests\DependencyInjection\DefinitionFinderTest
  */
 final class DefinitionFinder
 {
@@ -36,7 +37,7 @@ final class DefinitionFinder
         if ($definition !== null) {
             return $definition;
         }
-        throw new \MonorepoBuilder20211011\Symplify\PackageBuilder\Exception\DependencyInjection\DefinitionForTypeNotFoundException(\sprintf('Definition for type "%s" was not found.', $type));
+        throw new \MonorepoBuilder20211011\Symplify\AutowireArrayParameter\Exception\DependencyInjection\DefinitionForTypeNotFoundException(\sprintf('Definition for type "%s" was not found.', $type));
     }
     private function getByTypeIfExists(\MonorepoBuilder20211011\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder, string $type) : ?\MonorepoBuilder20211011\Symfony\Component\DependencyInjection\Definition
     {

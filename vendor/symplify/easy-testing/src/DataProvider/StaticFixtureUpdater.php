@@ -5,6 +5,9 @@ namespace MonorepoBuilder20211011\Symplify\EasyTesting\DataProvider;
 
 use MonorepoBuilder20211011\Symplify\SmartFileSystem\SmartFileInfo;
 use MonorepoBuilder20211011\Symplify\SmartFileSystem\SmartFileSystem;
+/**
+ * @api
+ */
 final class StaticFixtureUpdater
 {
     /**

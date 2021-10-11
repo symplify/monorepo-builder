@@ -5,6 +5,9 @@ namespace MonorepoBuilder20211011\Symplify\ConsoleColorDiff\Console\Output;
 
 use MonorepoBuilder20211011\SebastianBergmann\Diff\Differ;
 use MonorepoBuilder20211011\Symplify\ConsoleColorDiff\Console\Formatter\ColorConsoleDiffFormatter;
+/**
+ * @api
+ */
 final class ConsoleDiffer
 {
     /**

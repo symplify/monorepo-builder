@@ -7,6 +7,7 @@ use MonorepoBuilder20211011\Symfony\Component\DependencyInjection\Container;
 use MonorepoBuilder20211011\Symfony\Component\DependencyInjection\ContainerInterface;
 use MonorepoBuilder20211011\Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException;
 /**
+ * @api
  * @see \Symplify\PackageBuilder\Tests\Parameter\ParameterProviderTest
  */
 final class ParameterProvider

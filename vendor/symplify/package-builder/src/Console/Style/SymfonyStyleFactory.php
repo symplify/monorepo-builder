@@ -10,6 +10,9 @@ use MonorepoBuilder20211011\Symfony\Component\Console\Output\OutputInterface;
 use MonorepoBuilder20211011\Symfony\Component\Console\Style\SymfonyStyle;
 use MonorepoBuilder20211011\Symplify\EasyTesting\PHPUnit\StaticPHPUnitEnvironment;
 use MonorepoBuilder20211011\Symplify\PackageBuilder\Reflection\PrivatesCaller;
+/**
+ * @api
+ */
 final class SymfonyStyleFactory
 {
     /**

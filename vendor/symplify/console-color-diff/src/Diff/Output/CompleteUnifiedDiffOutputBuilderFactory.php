@@ -6,6 +6,7 @@ namespace MonorepoBuilder20211011\Symplify\ConsoleColorDiff\Diff\Output;
 use MonorepoBuilder20211011\SebastianBergmann\Diff\Output\UnifiedDiffOutputBuilder;
 use MonorepoBuilder20211011\Symplify\PackageBuilder\Reflection\PrivatesAccessor;
 /**
+ * @api
  * Creates @see UnifiedDiffOutputBuilder with "$contextLines = 1000;"
  */
 final class CompleteUnifiedDiffOutputBuilderFactory

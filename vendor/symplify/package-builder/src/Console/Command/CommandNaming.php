@@ -6,6 +6,7 @@ namespace MonorepoBuilder20211011\Symplify\PackageBuilder\Console\Command;
 use MonorepoBuilder20211011\Nette\Utils\Strings;
 use MonorepoBuilder20211011\Symfony\Component\Console\Command\Command;
 /**
+ * @api
  * @see \Symplify\PackageBuilder\Tests\Console\Command\CommandNamingTest
  */
 final class CommandNaming

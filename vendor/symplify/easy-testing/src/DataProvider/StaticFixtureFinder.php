@@ -11,6 +11,7 @@ use MonorepoBuilder20211011\Symplify\SmartFileSystem\Exception\FileNotFoundExcep
 use MonorepoBuilder20211011\Symplify\SmartFileSystem\SmartFileInfo;
 use MonorepoBuilder20211011\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
 /**
+ * @api
  * @see \Symplify\EasyTesting\Tests\DataProvider\StaticFixtureFinder\StaticFixtureFinderTest
  */
 final class StaticFixtureFinder

@@ -4,6 +4,9 @@ declare (strict_types=1);
 namespace MonorepoBuilder20211011\Symplify\PackageBuilder\Console\Input;
 
 use MonorepoBuilder20211011\Symfony\Component\Console\Input\ArgvInput;
+/**
+ * @api
+ */
 final class StaticInputDetector
 {
     public static function isDebug() : bool

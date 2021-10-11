@@ -6,6 +6,7 @@ namespace MonorepoBuilder20211011\Symplify\PackageBuilder\Reflection;
 use ReflectionProperty;
 use MonorepoBuilder20211011\Symplify\PHPStanRules\Exception\ShouldNotHappenException;
 /**
+ * @api
  * @see \Symplify\PackageBuilder\Tests\Reflection\PrivatesAccessorTest
  */
 final class PrivatesAccessor

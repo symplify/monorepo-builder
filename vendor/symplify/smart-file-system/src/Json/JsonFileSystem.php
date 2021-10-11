@@ -8,6 +8,7 @@ use MonorepoBuilder20211011\Nette\Utils\Json;
 use MonorepoBuilder20211011\Symplify\SmartFileSystem\FileSystemGuard;
 use MonorepoBuilder20211011\Symplify\SmartFileSystem\SmartFileSystem;
 /**
+ * @api
  * @see \Symplify\SmartFileSystem\Tests\Json\JsonFileSystem\JsonFileSystemTest
  */
 final class JsonFileSystem

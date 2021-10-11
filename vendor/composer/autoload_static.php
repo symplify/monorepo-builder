@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInite521cc735d0696070688feae518fe515
+class ComposerStaticInit0f7134dc5d176d56d954a13ea165ce36
 {
     public static $files = array (
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
@@ -1045,7 +1045,9 @@ class ComposerStaticInite521cc735d0696070688feae518fe515
         'MonorepoBuilder20211011\\Symfony\\Polyfill\\Php80\\Php80' => __DIR__ . '/..' . '/symfony/polyfill-php80/Php80.php',
         'MonorepoBuilder20211011\\Symfony\\Polyfill\\Php81\\Php81' => __DIR__ . '/..' . '/symfony/polyfill-php81/Php81.php',
         'MonorepoBuilder20211011\\Symplify\\AutowireArrayParameter\\DependencyInjection\\CompilerPass\\AutowireArrayParameterCompilerPass' => __DIR__ . '/..' . '/symplify/autowire-array-parameter/src/DependencyInjection/CompilerPass/AutowireArrayParameterCompilerPass.php',
+        'MonorepoBuilder20211011\\Symplify\\AutowireArrayParameter\\DependencyInjection\\DefinitionFinder' => __DIR__ . '/..' . '/symplify/autowire-array-parameter/src/DependencyInjection/DefinitionFinder.php',
         'MonorepoBuilder20211011\\Symplify\\AutowireArrayParameter\\DocBlock\\ParamTypeDocBlockResolver' => __DIR__ . '/..' . '/symplify/autowire-array-parameter/src/DocBlock/ParamTypeDocBlockResolver.php',
+        'MonorepoBuilder20211011\\Symplify\\AutowireArrayParameter\\Exception\\DependencyInjection\\DefinitionForTypeNotFoundException' => __DIR__ . '/..' . '/symplify/autowire-array-parameter/src/Exception/DependencyInjection/DefinitionForTypeNotFoundException.php',
         'MonorepoBuilder20211011\\Symplify\\AutowireArrayParameter\\Skipper\\ParameterSkipper' => __DIR__ . '/..' . '/symplify/autowire-array-parameter/src/Skipper/ParameterSkipper.php',
         'MonorepoBuilder20211011\\Symplify\\AutowireArrayParameter\\TypeResolver\\ParameterTypeResolver' => __DIR__ . '/..' . '/symplify/autowire-array-parameter/src/TypeResolver/ParameterTypeResolver.php',
         'MonorepoBuilder20211011\\Symplify\\ComposerJsonManipulator\\Bundle\\ComposerJsonManipulatorBundle' => __DIR__ . '/..' . '/symplify/composer-json-manipulator/src/Bundle/ComposerJsonManipulatorBundle.php',
@@ -1090,18 +1092,11 @@ class ComposerStaticInite521cc735d0696070688feae518fe515
         'MonorepoBuilder20211011\\Symplify\\PackageBuilder\\Console\\Command\\AbstractSymplifyCommand' => __DIR__ . '/..' . '/symplify/package-builder/src/Console/Command/AbstractSymplifyCommand.php',
         'MonorepoBuilder20211011\\Symplify\\PackageBuilder\\Console\\Command\\CommandNaming' => __DIR__ . '/..' . '/symplify/package-builder/src/Console/Command/CommandNaming.php',
         'MonorepoBuilder20211011\\Symplify\\PackageBuilder\\Console\\Input\\StaticInputDetector' => __DIR__ . '/..' . '/symplify/package-builder/src/Console/Input/StaticInputDetector.php',
-        'MonorepoBuilder20211011\\Symplify\\PackageBuilder\\Console\\ShellCode' => __DIR__ . '/..' . '/symplify/package-builder/src/Console/ShellCode.php',
         'MonorepoBuilder20211011\\Symplify\\PackageBuilder\\Console\\Style\\SymfonyStyleFactory' => __DIR__ . '/..' . '/symplify/package-builder/src/Console/Style/SymfonyStyleFactory.php',
         'MonorepoBuilder20211011\\Symplify\\PackageBuilder\\Contract\\HttpKernel\\ExtraConfigAwareKernelInterface' => __DIR__ . '/..' . '/symplify/package-builder/src/Contract/HttpKernel/ExtraConfigAwareKernelInterface.php',
         'MonorepoBuilder20211011\\Symplify\\PackageBuilder\\DependencyInjection\\CompilerPass\\AutowireInterfacesCompilerPass' => __DIR__ . '/..' . '/symplify/package-builder/src/DependencyInjection/CompilerPass/AutowireInterfacesCompilerPass.php',
-        'MonorepoBuilder20211011\\Symplify\\PackageBuilder\\DependencyInjection\\DefinitionFinder' => __DIR__ . '/..' . '/symplify/package-builder/src/DependencyInjection/DefinitionFinder.php',
         'MonorepoBuilder20211011\\Symplify\\PackageBuilder\\DependencyInjection\\FileLoader\\ParameterMergingPhpFileLoader' => __DIR__ . '/..' . '/symplify/package-builder/src/DependencyInjection/FileLoader/ParameterMergingPhpFileLoader.php',
-        'MonorepoBuilder20211011\\Symplify\\PackageBuilder\\Exception\\Configuration\\LevelNotFoundException' => __DIR__ . '/..' . '/symplify/package-builder/src/Exception/Configuration/LevelNotFoundException.php',
-        'MonorepoBuilder20211011\\Symplify\\PackageBuilder\\Exception\\DependencyInjection\\DefinitionForTypeNotFoundException' => __DIR__ . '/..' . '/symplify/package-builder/src/Exception/DependencyInjection/DefinitionForTypeNotFoundException.php',
-        'MonorepoBuilder20211011\\Symplify\\PackageBuilder\\Exception\\FilePathNotAbsoluteException' => __DIR__ . '/..' . '/symplify/package-builder/src/Exception/FilePathNotAbsoluteException.php',
         'MonorepoBuilder20211011\\Symplify\\PackageBuilder\\Exception\\HttpKernel\\MissingInterfaceException' => __DIR__ . '/..' . '/symplify/package-builder/src/Exception/HttpKernel/MissingInterfaceException.php',
-        'MonorepoBuilder20211011\\Symplify\\PackageBuilder\\Exception\\NotImplementedYetException' => __DIR__ . '/..' . '/symplify/package-builder/src/Exception/NotImplementedYetException.php',
-        'MonorepoBuilder20211011\\Symplify\\PackageBuilder\\Exception\\Yaml\\InvalidParametersValueException' => __DIR__ . '/..' . '/symplify/package-builder/src/Exception/Yaml/InvalidParametersValueException.php',
         'MonorepoBuilder20211011\\Symplify\\PackageBuilder\\Matcher\\ArrayStringAndFnMatcher' => __DIR__ . '/..' . '/symplify/package-builder/src/Matcher/ArrayStringAndFnMatcher.php',
         'MonorepoBuilder20211011\\Symplify\\PackageBuilder\\Neon\\NeonPrinter' => __DIR__ . '/..' . '/symplify/package-builder/src/Neon/NeonPrinter.php',
         'MonorepoBuilder20211011\\Symplify\\PackageBuilder\\Parameter\\ParameterProvider' => __DIR__ . '/..' . '/symplify/package-builder/src/Parameter/ParameterProvider.php',
@@ -1249,9 +1244,9 @@ class ComposerStaticInite521cc735d0696070688feae518fe515
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInite521cc735d0696070688feae518fe515::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInite521cc735d0696070688feae518fe515::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInite521cc735d0696070688feae518fe515::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit0f7134dc5d176d56d954a13ea165ce36::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit0f7134dc5d176d56d954a13ea165ce36::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit0f7134dc5d176d56d954a13ea165ce36::$classMap;
 
         }, null, ClassLoader::class);
     }

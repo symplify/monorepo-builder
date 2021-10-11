@@ -8,6 +8,9 @@ use MonorepoBuilder20211011\Symplify\EasyTesting\ValueObject\FixtureSplit\TrioCo
 use MonorepoBuilder20211011\Symplify\EasyTesting\ValueObject\SplitLine;
 use MonorepoBuilder20211011\Symplify\SmartFileSystem\SmartFileInfo;
 use MonorepoBuilder20211011\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
+/**
+ * @api
+ */
 final class TrioFixtureSplitter
 {
     public function splitFileInfo(\MonorepoBuilder20211011\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : \MonorepoBuilder20211011\Symplify\EasyTesting\ValueObject\FixtureSplit\TrioContent

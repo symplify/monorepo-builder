@@ -12,6 +12,9 @@ use MonorepoBuilder20211011\Symplify\PackageBuilder\Contract\HttpKernel\ExtraCon
 use MonorepoBuilder20211011\Symplify\SmartFileSystem\SmartFileInfo;
 use MonorepoBuilder20211011\Symplify\SymplifyKernel\Exception\BootException;
 use Throwable;
+/**
+ * @api
+ */
 final class KernelBootAndApplicationRun
 {
     /**

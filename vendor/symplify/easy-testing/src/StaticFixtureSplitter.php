@@ -10,6 +10,9 @@ use MonorepoBuilder20211011\Symplify\EasyTesting\ValueObject\InputFileInfoAndExp
 use MonorepoBuilder20211011\Symplify\EasyTesting\ValueObject\SplitLine;
 use MonorepoBuilder20211011\Symplify\SmartFileSystem\SmartFileInfo;
 use MonorepoBuilder20211011\Symplify\SmartFileSystem\SmartFileSystem;
+/**
+ * @api
+ */
 final class StaticFixtureSplitter
 {
     /**

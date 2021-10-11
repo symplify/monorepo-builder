@@ -6,6 +6,9 @@ namespace MonorepoBuilder20211011\Symplify\PackageBuilder\Neon;
 use MonorepoBuilder20211011\Nette\Neon\Encoder;
 use MonorepoBuilder20211011\Nette\Neon\Neon;
 use MonorepoBuilder20211011\Nette\Utils\Strings;
+/**
+ * @api
+ */
 final class NeonPrinter
 {
     /**
