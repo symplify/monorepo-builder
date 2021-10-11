@@ -8,31 +8,31 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211010\Symfony\Component\HttpKernel\Controller;
+namespace MonorepoBuilder20211011\Symfony\Component\HttpKernel\Controller;
 
-use MonorepoBuilder20211010\Symfony\Component\HttpFoundation\Request;
-use MonorepoBuilder20211010\Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver;
-use MonorepoBuilder20211010\Symfony\Component\HttpKernel\Controller\ArgumentResolver\RequestAttributeValueResolver;
-use MonorepoBuilder20211010\Symfony\Component\HttpKernel\Controller\ArgumentResolver\RequestValueResolver;
-use MonorepoBuilder20211010\Symfony\Component\HttpKernel\Controller\ArgumentResolver\SessionValueResolver;
-use MonorepoBuilder20211010\Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver;
-use MonorepoBuilder20211010\Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadataFactory;
-use MonorepoBuilder20211010\Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadataFactoryInterface;
+use MonorepoBuilder20211011\Symfony\Component\HttpFoundation\Request;
+use MonorepoBuilder20211011\Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver;
+use MonorepoBuilder20211011\Symfony\Component\HttpKernel\Controller\ArgumentResolver\RequestAttributeValueResolver;
+use MonorepoBuilder20211011\Symfony\Component\HttpKernel\Controller\ArgumentResolver\RequestValueResolver;
+use MonorepoBuilder20211011\Symfony\Component\HttpKernel\Controller\ArgumentResolver\SessionValueResolver;
+use MonorepoBuilder20211011\Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver;
+use MonorepoBuilder20211011\Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadataFactory;
+use MonorepoBuilder20211011\Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadataFactoryInterface;
 /**
  * Responsible for resolving the arguments passed to an action.
  *
  * @author Iltar van der Berg <kjarli@gmail.com>
  */
-final class ArgumentResolver implements \MonorepoBuilder20211010\Symfony\Component\HttpKernel\Controller\ArgumentResolverInterface
+final class ArgumentResolver implements \MonorepoBuilder20211011\Symfony\Component\HttpKernel\Controller\ArgumentResolverInterface
 {
     private $argumentMetadataFactory;
     /**
      * @var iterable|ArgumentValueResolverInterface[]
      */
     private $argumentValueResolvers;
-    public function __construct(\MonorepoBuilder20211010\Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadataFactoryInterface $argumentMetadataFactory = null, iterable $argumentValueResolvers = [])
+    public function __construct(\MonorepoBuilder20211011\Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadataFactoryInterface $argumentMetadataFactory = null, iterable $argumentValueResolvers = [])
     {
-        $this->argumentMetadataFactory = $argumentMetadataFactory ?? new \MonorepoBuilder20211010\Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadataFactory();
+        $this->argumentMetadataFactory = $argumentMetadataFactory ?? new \MonorepoBuilder20211011\Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadataFactory();
         $this->argumentValueResolvers = $argumentValueResolvers ?: self::getDefaultArgumentValueResolvers();
     }
     /**
@@ -72,6 +72,6 @@ final class ArgumentResolver implements \MonorepoBuilder20211010\Symfony\Compone
     }
     public static function getDefaultArgumentValueResolvers() : iterable
     {
-        return [new \MonorepoBuilder20211010\Symfony\Component\HttpKernel\Controller\ArgumentResolver\RequestAttributeValueResolver(), new \MonorepoBuilder20211010\Symfony\Component\HttpKernel\Controller\ArgumentResolver\RequestValueResolver(), new \MonorepoBuilder20211010\Symfony\Component\HttpKernel\Controller\ArgumentResolver\SessionValueResolver(), new \MonorepoBuilder20211010\Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver(), new \MonorepoBuilder20211010\Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver()];
+        return [new \MonorepoBuilder20211011\Symfony\Component\HttpKernel\Controller\ArgumentResolver\RequestAttributeValueResolver(), new \MonorepoBuilder20211011\Symfony\Component\HttpKernel\Controller\ArgumentResolver\RequestValueResolver(), new \MonorepoBuilder20211011\Symfony\Component\HttpKernel\Controller\ArgumentResolver\SessionValueResolver(), new \MonorepoBuilder20211011\Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver(), new \MonorepoBuilder20211011\Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver()];
     }
 }
