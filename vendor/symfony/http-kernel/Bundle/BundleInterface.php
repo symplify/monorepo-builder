@@ -8,17 +8,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211011\Symfony\Component\HttpKernel\Bundle;
+namespace MonorepoBuilder20211012\Symfony\Component\HttpKernel\Bundle;
 
-use MonorepoBuilder20211011\Symfony\Component\DependencyInjection\ContainerAwareInterface;
-use MonorepoBuilder20211011\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder20211011\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
+use MonorepoBuilder20211012\Symfony\Component\DependencyInjection\ContainerAwareInterface;
+use MonorepoBuilder20211012\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder20211012\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 /**
  * BundleInterface.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-interface BundleInterface extends \MonorepoBuilder20211011\Symfony\Component\DependencyInjection\ContainerAwareInterface
+interface BundleInterface extends \MonorepoBuilder20211012\Symfony\Component\DependencyInjection\ContainerAwareInterface
 {
     /**
      * Boots the Bundle.

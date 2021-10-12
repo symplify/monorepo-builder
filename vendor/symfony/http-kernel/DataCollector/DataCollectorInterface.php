@@ -8,17 +8,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211011\Symfony\Component\HttpKernel\DataCollector;
+namespace MonorepoBuilder20211012\Symfony\Component\HttpKernel\DataCollector;
 
-use MonorepoBuilder20211011\Symfony\Component\HttpFoundation\Request;
-use MonorepoBuilder20211011\Symfony\Component\HttpFoundation\Response;
-use MonorepoBuilder20211011\Symfony\Contracts\Service\ResetInterface;
+use MonorepoBuilder20211012\Symfony\Component\HttpFoundation\Request;
+use MonorepoBuilder20211012\Symfony\Component\HttpFoundation\Response;
+use MonorepoBuilder20211012\Symfony\Contracts\Service\ResetInterface;
 /**
  * DataCollectorInterface.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-interface DataCollectorInterface extends \MonorepoBuilder20211011\Symfony\Contracts\Service\ResetInterface
+interface DataCollectorInterface extends \MonorepoBuilder20211012\Symfony\Contracts\Service\ResetInterface
 {
     /**
      * Collects data for the given Request and Response.

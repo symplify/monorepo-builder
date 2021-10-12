@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211011\Symfony\Component\HttpFoundation\File\Exception;
+namespace MonorepoBuilder20211012\Symfony\Component\HttpFoundation\File\Exception;
 
 /**
  * Thrown when a file was not found.
  *
  * @author Bernhard Schussek <bschussek@gmail.com>
  */
-class FileNotFoundException extends \MonorepoBuilder20211011\Symfony\Component\HttpFoundation\File\Exception\FileException
+class FileNotFoundException extends \MonorepoBuilder20211012\Symfony\Component\HttpFoundation\File\Exception\FileException
 {
     public function __construct(string $path)
     {
