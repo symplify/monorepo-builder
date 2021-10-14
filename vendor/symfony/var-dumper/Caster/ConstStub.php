@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211012\Symfony\Component\VarDumper\Caster;
+namespace MonorepoBuilder20211014\Symfony\Component\VarDumper\Caster;
 
-use MonorepoBuilder20211012\Symfony\Component\VarDumper\Cloner\Stub;
+use MonorepoBuilder20211014\Symfony\Component\VarDumper\Cloner\Stub;
 /**
  * Represents a PHP constant and its value.
  *
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class ConstStub extends \MonorepoBuilder20211012\Symfony\Component\VarDumper\Cloner\Stub
+class ConstStub extends \MonorepoBuilder20211014\Symfony\Component\VarDumper\Cloner\Stub
 {
     public function __construct(string $name, $value = null)
     {

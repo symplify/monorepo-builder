@@ -1,16 +1,16 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20211012\Symplify\ConsolePackageBuilder\DependencyInjection\CompilerPass;
+namespace MonorepoBuilder20211014\Symplify\ConsolePackageBuilder\DependencyInjection\CompilerPass;
 
-use MonorepoBuilder20211012\Symfony\Component\Console\Command\Command;
-use MonorepoBuilder20211012\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
-use MonorepoBuilder20211012\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder20211012\Symplify\PackageBuilder\Console\Command\CommandNaming;
+use MonorepoBuilder20211014\Symfony\Component\Console\Command\Command;
+use MonorepoBuilder20211014\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
+use MonorepoBuilder20211014\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder20211014\Symplify\PackageBuilder\Console\Command\CommandNaming;
 /**
  * @see \Symplify\ConsolePackageBuilder\Tests\DependencyInjection\CompilerPass\NamelessConsoleCommandCompilerPassTest
  */
-final class NamelessConsoleCommandCompilerPass implements \MonorepoBuilder20211012\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
+final class NamelessConsoleCommandCompilerPass implements \MonorepoBuilder20211014\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
 {
     /**
      * @param \Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder
@@ -22,10 +22,10 @@ final class NamelessConsoleCommandCompilerPass implements \MonorepoBuilder202110
             if ($definitionClass === null) {
                 continue;
             }
-            if (!\is_a($definitionClass, \MonorepoBuilder20211012\Symfony\Component\Console\Command\Command::class, \true)) {
+            if (!\is_a($definitionClass, \MonorepoBuilder20211014\Symfony\Component\Console\Command\Command::class, \true)) {
                 continue;
             }
-            $commandName = \MonorepoBuilder20211012\Symplify\PackageBuilder\Console\Command\CommandNaming::classToName($definitionClass);
+            $commandName = \MonorepoBuilder20211014\Symplify\PackageBuilder\Console\Command\CommandNaming::classToName($definitionClass);
             $definition->addMethodCall('setName', [$commandName]);
         }
     }
