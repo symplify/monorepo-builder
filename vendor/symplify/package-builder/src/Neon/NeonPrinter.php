@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20211014\Symplify\PackageBuilder\Neon;
+namespace MonorepoBuilder20211020\Symplify\PackageBuilder\Neon;
 
-use MonorepoBuilder20211014\Nette\Neon\Encoder;
-use MonorepoBuilder20211014\Nette\Neon\Neon;
-use MonorepoBuilder20211014\Nette\Utils\Strings;
+use MonorepoBuilder20211020\Nette\Neon\Encoder;
+use MonorepoBuilder20211020\Nette\Neon\Neon;
+use MonorepoBuilder20211020\Nette\Utils\Strings;
 /**
  * @api
  */
@@ -26,7 +26,7 @@ final class NeonPrinter
      */
     public function printNeon(array $phpStanNeon) : string
     {
-        $neonContent = \MonorepoBuilder20211014\Nette\Neon\Neon::encode($phpStanNeon, \MonorepoBuilder20211014\Nette\Neon\Encoder::BLOCK);
+        $neonContent = \MonorepoBuilder20211020\Nette\Neon\Neon::encode($phpStanNeon, \MonorepoBuilder20211020\Nette\Neon\Encoder::BLOCK);
         // tabs to spaces for consistency
         $neonContent = $this->replaceTabsWithSpaces($neonContent);
         // inline single tags, dummy
@@ -36,14 +36,14 @@ final class NeonPrinter
     }
     private function replaceTabsWithSpaces(string $neonContent) : string
     {
-        return \MonorepoBuilder20211014\Nette\Utils\Strings::replace($neonContent, '#\\t#', '    ');
+        return \MonorepoBuilder20211020\Nette\Utils\Strings::replace($neonContent, '#\\t#', '    ');
     }
     private function inlineSingleTags(string $neonContent) : string
     {
-        return \MonorepoBuilder20211014\Nette\Utils\Strings::replace($neonContent, self::TAGS_REGEX, 'tags: [$1]');
+        return \MonorepoBuilder20211020\Nette\Utils\Strings::replace($neonContent, self::TAGS_REGEX, 'tags: [$1]');
     }
     private function fixDoubleSpaceInArguments(string $neonContent) : string
     {
-        return \MonorepoBuilder20211014\Nette\Utils\Strings::replace($neonContent, self::ARGUMENTS_DOUBLE_SPACE_REGEX, '$1');
+        return \MonorepoBuilder20211020\Nette\Utils\Strings::replace($neonContent, self::ARGUMENTS_DOUBLE_SPACE_REGEX, '$1');
     }
 }

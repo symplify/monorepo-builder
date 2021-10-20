@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211014\Symfony\Component\HttpKernel;
+namespace MonorepoBuilder20211020\Symfony\Component\HttpKernel;
 
-use MonorepoBuilder20211014\Symfony\Component\Config\Loader\LoaderInterface;
-use MonorepoBuilder20211014\Symfony\Component\DependencyInjection\ContainerInterface;
-use MonorepoBuilder20211014\Symfony\Component\HttpKernel\Bundle\BundleInterface;
+use MonorepoBuilder20211020\Symfony\Component\Config\Loader\LoaderInterface;
+use MonorepoBuilder20211020\Symfony\Component\DependencyInjection\ContainerInterface;
+use MonorepoBuilder20211020\Symfony\Component\HttpKernel\Bundle\BundleInterface;
 /**
  * The Kernel is the heart of the Symfony system.
  *
@@ -24,7 +24,7 @@ use MonorepoBuilder20211014\Symfony\Component\HttpKernel\Bundle\BundleInterface;
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-interface KernelInterface extends \MonorepoBuilder20211014\Symfony\Component\HttpKernel\HttpKernelInterface
+interface KernelInterface extends \MonorepoBuilder20211020\Symfony\Component\HttpKernel\HttpKernelInterface
 {
     /**
      * Returns an array of bundles to register.

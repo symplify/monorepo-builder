@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211014\Symfony\Component\HttpKernel\Controller;
+namespace MonorepoBuilder20211020\Symfony\Component\HttpKernel\Controller;
 
-use MonorepoBuilder20211014\Psr\Log\LoggerInterface;
-use MonorepoBuilder20211014\Symfony\Component\HttpFoundation\Request;
+use MonorepoBuilder20211020\Psr\Log\LoggerInterface;
+use MonorepoBuilder20211020\Symfony\Component\HttpFoundation\Request;
 /**
  * This implementation uses the '_controller' request attribute to determine
  * the controller to execute.
@@ -19,10 +19,10 @@ use MonorepoBuilder20211014\Symfony\Component\HttpFoundation\Request;
  * @author Fabien Potencier <fabien@symfony.com>
  * @author Tobias Schultze <http://tobion.de>
  */
-class ControllerResolver implements \MonorepoBuilder20211014\Symfony\Component\HttpKernel\Controller\ControllerResolverInterface
+class ControllerResolver implements \MonorepoBuilder20211020\Symfony\Component\HttpKernel\Controller\ControllerResolverInterface
 {
     private $logger;
-    public function __construct(\MonorepoBuilder20211014\Psr\Log\LoggerInterface $logger = null)
+    public function __construct(\MonorepoBuilder20211020\Psr\Log\LoggerInterface $logger = null)
     {
         $this->logger = $logger;
     }

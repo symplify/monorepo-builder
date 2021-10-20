@@ -1,6 +1,6 @@
 <?php
 
-namespace MonorepoBuilder20211014\Psr\Log;
+namespace MonorepoBuilder20211020\Psr\Log;
 
 /**
  * Describes a logger instance.

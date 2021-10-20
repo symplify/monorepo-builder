@@ -16,12 +16,12 @@
     },
     "autoload": {
         "psr-4": {
-            "MonorepoBuilder20211014\\Symplify\\ConsoleColorDiff\\": "src"
+            "MonorepoBuilder20211020\\Symplify\\ConsoleColorDiff\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "MonorepoBuilder20211014\\Symplify\\ConsoleColorDiff\\Tests\\": "tests"
+            "MonorepoBuilder20211020\\Symplify\\ConsoleColorDiff\\Tests\\": "tests"
         }
     },
     "extra": {
