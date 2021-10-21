@@ -8,22 +8,22 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211020\Symfony\Component\HttpKernel\Controller\ArgumentResolver;
+namespace MonorepoBuilder20211021\Symfony\Component\HttpKernel\Controller\ArgumentResolver;
 
-use MonorepoBuilder20211020\Symfony\Component\HttpFoundation\Request;
-use MonorepoBuilder20211020\Symfony\Component\HttpKernel\Controller\ArgumentValueResolverInterface;
-use MonorepoBuilder20211020\Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata;
-use MonorepoBuilder20211020\Symfony\Component\Stopwatch\Stopwatch;
+use MonorepoBuilder20211021\Symfony\Component\HttpFoundation\Request;
+use MonorepoBuilder20211021\Symfony\Component\HttpKernel\Controller\ArgumentValueResolverInterface;
+use MonorepoBuilder20211021\Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata;
+use MonorepoBuilder20211021\Symfony\Component\Stopwatch\Stopwatch;
 /**
  * Provides timing information via the stopwatch.
  *
  * @author Iltar van der Berg <kjarli@gmail.com>
  */
-final class TraceableValueResolver implements \MonorepoBuilder20211020\Symfony\Component\HttpKernel\Controller\ArgumentValueResolverInterface
+final class TraceableValueResolver implements \MonorepoBuilder20211021\Symfony\Component\HttpKernel\Controller\ArgumentValueResolverInterface
 {
     private $inner;
     private $stopwatch;
-    public function __construct(\MonorepoBuilder20211020\Symfony\Component\HttpKernel\Controller\ArgumentValueResolverInterface $inner, \MonorepoBuilder20211020\Symfony\Component\Stopwatch\Stopwatch $stopwatch)
+    public function __construct(\MonorepoBuilder20211021\Symfony\Component\HttpKernel\Controller\ArgumentValueResolverInterface $inner, \MonorepoBuilder20211021\Symfony\Component\Stopwatch\Stopwatch $stopwatch)
     {
         $this->inner = $inner;
         $this->stopwatch = $stopwatch;

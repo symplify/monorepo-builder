@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20211020\Symplify\AutowireArrayParameter\DependencyInjection;
+namespace MonorepoBuilder20211021\Symplify\AutowireArrayParameter\DependencyInjection;
 
-use MonorepoBuilder20211020\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder20211020\Symfony\Component\DependencyInjection\Definition;
-use MonorepoBuilder20211020\Symplify\AutowireArrayParameter\Exception\DependencyInjection\DefinitionForTypeNotFoundException;
+use MonorepoBuilder20211021\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder20211021\Symfony\Component\DependencyInjection\Definition;
+use MonorepoBuilder20211021\Symplify\AutowireArrayParameter\Exception\DependencyInjection\DefinitionForTypeNotFoundException;
 use Throwable;
 /**
  * @api
@@ -16,7 +16,7 @@ final class DefinitionFinder
     /**
      * @return Definition[]
      */
-    public function findAllByType(\MonorepoBuilder20211020\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder, string $type) : array
+    public function findAllByType(\MonorepoBuilder20211021\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder, string $type) : array
     {
         $definitions = [];
         $containerBuilderDefinitions = $containerBuilder->getDefinitions();
@@ -31,15 +31,15 @@ final class DefinitionFinder
         }
         return $definitions;
     }
-    public function getByType(\MonorepoBuilder20211020\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder, string $type) : \MonorepoBuilder20211020\Symfony\Component\DependencyInjection\Definition
+    public function getByType(\MonorepoBuilder20211021\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder, string $type) : \MonorepoBuilder20211021\Symfony\Component\DependencyInjection\Definition
     {
         $definition = $this->getByTypeIfExists($containerBuilder, $type);
         if ($definition !== null) {
             return $definition;
         }
-        throw new \MonorepoBuilder20211020\Symplify\AutowireArrayParameter\Exception\DependencyInjection\DefinitionForTypeNotFoundException(\sprintf('Definition for type "%s" was not found.', $type));
+        throw new \MonorepoBuilder20211021\Symplify\AutowireArrayParameter\Exception\DependencyInjection\DefinitionForTypeNotFoundException(\sprintf('Definition for type "%s" was not found.', $type));
     }
-    private function getByTypeIfExists(\MonorepoBuilder20211020\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder, string $type) : ?\MonorepoBuilder20211020\Symfony\Component\DependencyInjection\Definition
+    private function getByTypeIfExists(\MonorepoBuilder20211021\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder, string $type) : ?\MonorepoBuilder20211021\Symfony\Component\DependencyInjection\Definition
     {
         $containerBuilderDefinitions = $containerBuilder->getDefinitions();
         foreach ($containerBuilderDefinitions as $name => $definition) {

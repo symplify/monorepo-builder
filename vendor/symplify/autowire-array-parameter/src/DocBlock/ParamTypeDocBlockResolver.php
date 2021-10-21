@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20211020\Symplify\AutowireArrayParameter\DocBlock;
+namespace MonorepoBuilder20211021\Symplify\AutowireArrayParameter\DocBlock;
 
-use MonorepoBuilder20211020\Nette\Utils\Strings;
+use MonorepoBuilder20211021\Nette\Utils\Strings;
 /**
  * @see \Symplify\AutowireArrayParameter\Tests\DocBlock\ParamTypeDocBlockResolverTest
  */
@@ -38,7 +38,7 @@ final class ParamTypeDocBlockResolver
     {
         foreach (self::ARRAY_REGEXES as $arrayRegexWithPlaceholder) {
             $arrayRegex = \str_replace(self::NAME_PLACEHOLDER, $parameterName, $arrayRegexWithPlaceholder);
-            $result = \MonorepoBuilder20211020\Nette\Utils\Strings::match($docBlock, $arrayRegex);
+            $result = \MonorepoBuilder20211021\Nette\Utils\Strings::match($docBlock, $arrayRegex);
             if (isset($result[self::TYPE_PART])) {
                 return $result[self::TYPE_PART];
             }

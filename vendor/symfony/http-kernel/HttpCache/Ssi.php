@@ -8,16 +8,16 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211020\Symfony\Component\HttpKernel\HttpCache;
+namespace MonorepoBuilder20211021\Symfony\Component\HttpKernel\HttpCache;
 
-use MonorepoBuilder20211020\Symfony\Component\HttpFoundation\Request;
-use MonorepoBuilder20211020\Symfony\Component\HttpFoundation\Response;
+use MonorepoBuilder20211021\Symfony\Component\HttpFoundation\Request;
+use MonorepoBuilder20211021\Symfony\Component\HttpFoundation\Response;
 /**
  * Ssi implements the SSI capabilities to Request and Response instances.
  *
  * @author Sebastian Krebs <krebs.seb@gmail.com>
  */
-class Ssi extends \MonorepoBuilder20211020\Symfony\Component\HttpKernel\HttpCache\AbstractSurrogate
+class Ssi extends \MonorepoBuilder20211021\Symfony\Component\HttpKernel\HttpCache\AbstractSurrogate
 {
     /**
      * {@inheritdoc}

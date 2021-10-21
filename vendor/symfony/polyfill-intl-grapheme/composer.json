@@ -27,7 +27,7 @@
     },
     "autoload": {
         "psr-4": {
-            "MonorepoBuilder20211020\\Symfony\\Polyfill\\Intl\\Grapheme\\": ""
+            "MonorepoBuilder20211021\\Symfony\\Polyfill\\Intl\\Grapheme\\": ""
         },
         "files": [
             "bootstrap.php"
