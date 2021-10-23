@@ -8,26 +8,26 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211021\Symfony\Component\VarDumper\Dumper\ContextProvider;
+namespace MonorepoBuilder20211023\Symfony\Component\VarDumper\Dumper\ContextProvider;
 
-use MonorepoBuilder20211021\Symfony\Component\HttpFoundation\RequestStack;
-use MonorepoBuilder20211021\Symfony\Component\VarDumper\Caster\ReflectionCaster;
-use MonorepoBuilder20211021\Symfony\Component\VarDumper\Cloner\VarCloner;
+use MonorepoBuilder20211023\Symfony\Component\HttpFoundation\RequestStack;
+use MonorepoBuilder20211023\Symfony\Component\VarDumper\Caster\ReflectionCaster;
+use MonorepoBuilder20211023\Symfony\Component\VarDumper\Cloner\VarCloner;
 /**
  * Tries to provide context from a request.
  *
  * @author Maxime Steinhausser <maxime.steinhausser@gmail.com>
  */
-final class RequestContextProvider implements \MonorepoBuilder20211021\Symfony\Component\VarDumper\Dumper\ContextProvider\ContextProviderInterface
+final class RequestContextProvider implements \MonorepoBuilder20211023\Symfony\Component\VarDumper\Dumper\ContextProvider\ContextProviderInterface
 {
     private $requestStack;
     private $cloner;
-    public function __construct(\MonorepoBuilder20211021\Symfony\Component\HttpFoundation\RequestStack $requestStack)
+    public function __construct(\MonorepoBuilder20211023\Symfony\Component\HttpFoundation\RequestStack $requestStack)
     {
         $this->requestStack = $requestStack;
-        $this->cloner = new \MonorepoBuilder20211021\Symfony\Component\VarDumper\Cloner\VarCloner();
+        $this->cloner = new \MonorepoBuilder20211023\Symfony\Component\VarDumper\Cloner\VarCloner();
         $this->cloner->setMaxItems(0);
-        $this->cloner->addCasters(\MonorepoBuilder20211021\Symfony\Component\VarDumper\Caster\ReflectionCaster::UNSET_CLOSURE_FILE_INFO);
+        $this->cloner->addCasters(\MonorepoBuilder20211023\Symfony\Component\VarDumper\Caster\ReflectionCaster::UNSET_CLOSURE_FILE_INFO);
     }
     public function getContext() : ?array
     {

@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211021\Symfony\Component\HttpFoundation\Session\Flash;
+namespace MonorepoBuilder20211023\Symfony\Component\HttpFoundation\Session\Flash;
 
-use MonorepoBuilder20211021\Symfony\Component\HttpFoundation\Session\SessionBagInterface;
+use MonorepoBuilder20211023\Symfony\Component\HttpFoundation\Session\SessionBagInterface;
 /**
  * FlashBagInterface.
  *
  * @author Drak <drak@zikula.org>
  */
-interface FlashBagInterface extends \MonorepoBuilder20211021\Symfony\Component\HttpFoundation\Session\SessionBagInterface
+interface FlashBagInterface extends \MonorepoBuilder20211023\Symfony\Component\HttpFoundation\Session\SessionBagInterface
 {
     /**
      * Adds a flash message for the given type.
