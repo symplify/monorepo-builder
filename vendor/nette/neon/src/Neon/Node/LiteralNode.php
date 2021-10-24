@@ -5,11 +5,11 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace MonorepoBuilder20211023\Nette\Neon\Node;
+namespace MonorepoBuilder20211024\Nette\Neon\Node;
 
-use MonorepoBuilder20211023\Nette\Neon\Node;
+use MonorepoBuilder20211024\Nette\Neon\Node;
 /** @internal */
-final class LiteralNode extends \MonorepoBuilder20211023\Nette\Neon\Node
+final class LiteralNode extends \MonorepoBuilder20211024\Nette\Neon\Node
 {
     /** @var mixed */
     public $value;

@@ -9,7 +9,7 @@ declare (strict_types=1);
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211023\SebastianBergmann\Diff;
+namespace MonorepoBuilder20211024\SebastianBergmann\Diff;
 
 final class Line
 {

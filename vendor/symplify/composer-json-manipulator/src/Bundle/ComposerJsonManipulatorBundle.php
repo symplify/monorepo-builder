@@ -1,14 +1,14 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20211023\Symplify\ComposerJsonManipulator\Bundle;
+namespace MonorepoBuilder20211024\Symplify\ComposerJsonManipulator\Bundle;
 
-use MonorepoBuilder20211023\Symfony\Component\HttpKernel\Bundle\Bundle;
-use MonorepoBuilder20211023\Symplify\ComposerJsonManipulator\DependencyInjection\Extension\ComposerJsonManipulatorExtension;
-final class ComposerJsonManipulatorBundle extends \MonorepoBuilder20211023\Symfony\Component\HttpKernel\Bundle\Bundle
+use MonorepoBuilder20211024\Symfony\Component\HttpKernel\Bundle\Bundle;
+use MonorepoBuilder20211024\Symplify\ComposerJsonManipulator\DependencyInjection\Extension\ComposerJsonManipulatorExtension;
+final class ComposerJsonManipulatorBundle extends \MonorepoBuilder20211024\Symfony\Component\HttpKernel\Bundle\Bundle
 {
-    protected function createContainerExtension() : ?\MonorepoBuilder20211023\Symfony\Component\DependencyInjection\Extension\ExtensionInterface
+    protected function createContainerExtension() : ?\MonorepoBuilder20211024\Symfony\Component\DependencyInjection\Extension\ExtensionInterface
     {
-        return new \MonorepoBuilder20211023\Symplify\ComposerJsonManipulator\DependencyInjection\Extension\ComposerJsonManipulatorExtension();
+        return new \MonorepoBuilder20211024\Symplify\ComposerJsonManipulator\DependencyInjection\Extension\ComposerJsonManipulatorExtension();
     }
 }

@@ -8,16 +8,16 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211023\Symfony\Component\HttpKernel\EventListener;
+namespace MonorepoBuilder20211024\Symfony\Component\HttpKernel\EventListener;
 
-use MonorepoBuilder20211023\Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use MonorepoBuilder20211023\Symfony\Component\HttpFoundation\Request;
-use MonorepoBuilder20211023\Symfony\Component\HttpFoundation\RequestStack;
-use MonorepoBuilder20211023\Symfony\Component\HttpKernel\Event\FinishRequestEvent;
-use MonorepoBuilder20211023\Symfony\Component\HttpKernel\Event\KernelEvent;
-use MonorepoBuilder20211023\Symfony\Component\HttpKernel\Event\RequestEvent;
-use MonorepoBuilder20211023\Symfony\Component\HttpKernel\KernelEvents;
-use MonorepoBuilder20211023\Symfony\Component\Routing\RequestContextAwareInterface;
+use MonorepoBuilder20211024\Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use MonorepoBuilder20211024\Symfony\Component\HttpFoundation\Request;
+use MonorepoBuilder20211024\Symfony\Component\HttpFoundation\RequestStack;
+use MonorepoBuilder20211024\Symfony\Component\HttpKernel\Event\FinishRequestEvent;
+use MonorepoBuilder20211024\Symfony\Component\HttpKernel\Event\KernelEvent;
+use MonorepoBuilder20211024\Symfony\Component\HttpKernel\Event\RequestEvent;
+use MonorepoBuilder20211024\Symfony\Component\HttpKernel\KernelEvents;
+use MonorepoBuilder20211024\Symfony\Component\Routing\RequestContextAwareInterface;
 /**
  * Initializes the locale based on the current request.
  *
@@ -25,12 +25,12 @@ use MonorepoBuilder20211023\Symfony\Component\Routing\RequestContextAwareInterfa
  *
  * @final
  */
-class LocaleListener implements \MonorepoBuilder20211023\Symfony\Component\EventDispatcher\EventSubscriberInterface
+class LocaleListener implements \MonorepoBuilder20211024\Symfony\Component\EventDispatcher\EventSubscriberInterface
 {
     private $router;
     private $defaultLocale;
     private $requestStack;
-    public function __construct(\MonorepoBuilder20211023\Symfony\Component\HttpFoundation\RequestStack $requestStack, string $defaultLocale = 'en', \MonorepoBuilder20211023\Symfony\Component\Routing\RequestContextAwareInterface $router = null)
+    public function __construct(\MonorepoBuilder20211024\Symfony\Component\HttpFoundation\RequestStack $requestStack, string $defaultLocale = 'en', \MonorepoBuilder20211024\Symfony\Component\Routing\RequestContextAwareInterface $router = null)
     {
         $this->defaultLocale = $defaultLocale;
         $this->requestStack = $requestStack;
@@ -61,13 +61,13 @@ class LocaleListener implements \MonorepoBuilder20211023\Symfony\Component\Event
             $this->setRouterContext($parentRequest);
         }
     }
-    private function setLocale(\MonorepoBuilder20211023\Symfony\Component\HttpFoundation\Request $request)
+    private function setLocale(\MonorepoBuilder20211024\Symfony\Component\HttpFoundation\Request $request)
     {
         if ($locale = $request->attributes->get('_locale')) {
             $request->setLocale($locale);
         }
     }
-    private function setRouterContext(\MonorepoBuilder20211023\Symfony\Component\HttpFoundation\Request $request)
+    private function setRouterContext(\MonorepoBuilder20211024\Symfony\Component\HttpFoundation\Request $request)
     {
         if (null !== $this->router) {
             $this->router->getContext()->setParameter('_locale', $request->getLocale());
@@ -75,10 +75,10 @@ class LocaleListener implements \MonorepoBuilder20211023\Symfony\Component\Event
     }
     public static function getSubscribedEvents() : array
     {
-        return [\MonorepoBuilder20211023\Symfony\Component\HttpKernel\KernelEvents::REQUEST => [
+        return [\MonorepoBuilder20211024\Symfony\Component\HttpKernel\KernelEvents::REQUEST => [
             ['setDefaultLocale', 100],
             // must be registered after the Router to have access to the _locale
             ['onKernelRequest', 16],
-        ], \MonorepoBuilder20211023\Symfony\Component\HttpKernel\KernelEvents::FINISH_REQUEST => [['onKernelFinishRequest', 0]]];
+        ], \MonorepoBuilder20211024\Symfony\Component\HttpKernel\KernelEvents::FINISH_REQUEST => [['onKernelFinishRequest', 0]]];
     }
 }

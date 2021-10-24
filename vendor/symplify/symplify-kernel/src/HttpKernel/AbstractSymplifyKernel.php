@@ -1,16 +1,16 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20211023\Symplify\SymplifyKernel\HttpKernel;
+namespace MonorepoBuilder20211024\Symplify\SymplifyKernel\HttpKernel;
 
-use MonorepoBuilder20211023\Symfony\Component\Config\Loader\LoaderInterface;
-use MonorepoBuilder20211023\Symfony\Component\HttpKernel\Bundle\BundleInterface;
-use MonorepoBuilder20211023\Symfony\Component\HttpKernel\Kernel;
-use MonorepoBuilder20211023\Symplify\PackageBuilder\Contract\HttpKernel\ExtraConfigAwareKernelInterface;
-use MonorepoBuilder20211023\Symplify\SmartFileSystem\SmartFileInfo;
-use MonorepoBuilder20211023\Symplify\SymplifyKernel\Bundle\SymplifyKernelBundle;
-use MonorepoBuilder20211023\Symplify\SymplifyKernel\Strings\KernelUniqueHasher;
-abstract class AbstractSymplifyKernel extends \MonorepoBuilder20211023\Symfony\Component\HttpKernel\Kernel implements \MonorepoBuilder20211023\Symplify\PackageBuilder\Contract\HttpKernel\ExtraConfigAwareKernelInterface
+use MonorepoBuilder20211024\Symfony\Component\Config\Loader\LoaderInterface;
+use MonorepoBuilder20211024\Symfony\Component\HttpKernel\Bundle\BundleInterface;
+use MonorepoBuilder20211024\Symfony\Component\HttpKernel\Kernel;
+use MonorepoBuilder20211024\Symplify\PackageBuilder\Contract\HttpKernel\ExtraConfigAwareKernelInterface;
+use MonorepoBuilder20211024\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder20211024\Symplify\SymplifyKernel\Bundle\SymplifyKernelBundle;
+use MonorepoBuilder20211024\Symplify\SymplifyKernel\Strings\KernelUniqueHasher;
+abstract class AbstractSymplifyKernel extends \MonorepoBuilder20211024\Symfony\Component\HttpKernel\Kernel implements \MonorepoBuilder20211024\Symplify\PackageBuilder\Contract\HttpKernel\ExtraConfigAwareKernelInterface
 {
     /**
      * @var string[]
@@ -29,7 +29,7 @@ abstract class AbstractSymplifyKernel extends \MonorepoBuilder20211023\Symfony\C
      */
     public function registerBundles() : iterable
     {
-        return [new \MonorepoBuilder20211023\Symplify\SymplifyKernel\Bundle\SymplifyKernelBundle()];
+        return [new \MonorepoBuilder20211024\Symplify\SymplifyKernel\Bundle\SymplifyKernelBundle()];
     }
     /**
      * @param string[]|SmartFileInfo[] $configs
@@ -37,7 +37,7 @@ abstract class AbstractSymplifyKernel extends \MonorepoBuilder20211023\Symfony\C
     public function setConfigs($configs) : void
     {
         foreach ($configs as $config) {
-            if ($config instanceof \MonorepoBuilder20211023\Symplify\SmartFileSystem\SmartFileInfo) {
+            if ($config instanceof \MonorepoBuilder20211024\Symplify\SmartFileSystem\SmartFileInfo) {
                 $config = $config->getRealPath();
             }
             $this->configs[] = $config;
@@ -54,7 +54,7 @@ abstract class AbstractSymplifyKernel extends \MonorepoBuilder20211023\Symfony\C
     }
     private function getUniqueKernelHash() : string
     {
-        $kernelUniqueHasher = new \MonorepoBuilder20211023\Symplify\SymplifyKernel\Strings\KernelUniqueHasher();
+        $kernelUniqueHasher = new \MonorepoBuilder20211024\Symplify\SymplifyKernel\Strings\KernelUniqueHasher();
         return $kernelUniqueHasher->hashKernelClass(static::class);
     }
 }
