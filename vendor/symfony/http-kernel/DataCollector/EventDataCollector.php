@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211024\Symfony\Component\HttpKernel\DataCollector;
+namespace MonorepoBuilder20211025\Symfony\Component\HttpKernel\DataCollector;
 
-use MonorepoBuilder20211024\Symfony\Component\EventDispatcher\Debug\TraceableEventDispatcher;
-use MonorepoBuilder20211024\Symfony\Component\HttpFoundation\Request;
-use MonorepoBuilder20211024\Symfony\Component\HttpFoundation\RequestStack;
-use MonorepoBuilder20211024\Symfony\Component\HttpFoundation\Response;
-use MonorepoBuilder20211024\Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
-use MonorepoBuilder20211024\Symfony\Contracts\Service\ResetInterface;
+use MonorepoBuilder20211025\Symfony\Component\EventDispatcher\Debug\TraceableEventDispatcher;
+use MonorepoBuilder20211025\Symfony\Component\HttpFoundation\Request;
+use MonorepoBuilder20211025\Symfony\Component\HttpFoundation\RequestStack;
+use MonorepoBuilder20211025\Symfony\Component\HttpFoundation\Response;
+use MonorepoBuilder20211025\Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
+use MonorepoBuilder20211025\Symfony\Contracts\Service\ResetInterface;
 /**
  * EventDataCollector.
  *
@@ -23,12 +23,12 @@ use MonorepoBuilder20211024\Symfony\Contracts\Service\ResetInterface;
  *
  * @final
  */
-class EventDataCollector extends \MonorepoBuilder20211024\Symfony\Component\HttpKernel\DataCollector\DataCollector implements \MonorepoBuilder20211024\Symfony\Component\HttpKernel\DataCollector\LateDataCollectorInterface
+class EventDataCollector extends \MonorepoBuilder20211025\Symfony\Component\HttpKernel\DataCollector\DataCollector implements \MonorepoBuilder20211025\Symfony\Component\HttpKernel\DataCollector\LateDataCollectorInterface
 {
     protected $dispatcher;
     private $requestStack;
     private $currentRequest;
-    public function __construct(\MonorepoBuilder20211024\Symfony\Contracts\EventDispatcher\EventDispatcherInterface $dispatcher = null, \MonorepoBuilder20211024\Symfony\Component\HttpFoundation\RequestStack $requestStack = null)
+    public function __construct(\MonorepoBuilder20211025\Symfony\Contracts\EventDispatcher\EventDispatcherInterface $dispatcher = null, \MonorepoBuilder20211025\Symfony\Component\HttpFoundation\RequestStack $requestStack = null)
     {
         $this->dispatcher = $dispatcher;
         $this->requestStack = $requestStack;
@@ -47,13 +47,13 @@ class EventDataCollector extends \MonorepoBuilder20211024\Symfony\Component\Http
     public function reset()
     {
         $this->data = [];
-        if ($this->dispatcher instanceof \MonorepoBuilder20211024\Symfony\Contracts\Service\ResetInterface) {
+        if ($this->dispatcher instanceof \MonorepoBuilder20211025\Symfony\Contracts\Service\ResetInterface) {
             $this->dispatcher->reset();
         }
     }
     public function lateCollect()
     {
-        if ($this->dispatcher instanceof \MonorepoBuilder20211024\Symfony\Component\EventDispatcher\Debug\TraceableEventDispatcher) {
+        if ($this->dispatcher instanceof \MonorepoBuilder20211025\Symfony\Component\EventDispatcher\Debug\TraceableEventDispatcher) {
             $this->setCalledListeners($this->dispatcher->getCalledListeners($this->currentRequest));
             $this->setNotCalledListeners($this->dispatcher->getNotCalledListeners($this->currentRequest));
             $this->setOrphanedEvents($this->dispatcher->getOrphanedEvents($this->currentRequest));

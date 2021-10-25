@@ -8,17 +8,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211024\Symfony\Component\DependencyInjection\Compiler;
+namespace MonorepoBuilder20211025\Symfony\Component\DependencyInjection\Compiler;
 
-use MonorepoBuilder20211024\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder20211024\Symfony\Component\DependencyInjection\Reference;
+use MonorepoBuilder20211025\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder20211025\Symfony\Component\DependencyInjection\Reference;
 /**
  * Removes unused service definitions from the container.
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class RemoveUnusedDefinitionsPass extends \MonorepoBuilder20211024\Symfony\Component\DependencyInjection\Compiler\AbstractRecursivePass
+class RemoveUnusedDefinitionsPass extends \MonorepoBuilder20211025\Symfony\Component\DependencyInjection\Compiler\AbstractRecursivePass
 {
     private $connectedIds = [];
     /**
@@ -71,10 +71,10 @@ class RemoveUnusedDefinitionsPass extends \MonorepoBuilder20211024\Symfony\Compo
      */
     protected function processValue($value, $isRoot = \false)
     {
-        if (!$value instanceof \MonorepoBuilder20211024\Symfony\Component\DependencyInjection\Reference) {
+        if (!$value instanceof \MonorepoBuilder20211025\Symfony\Component\DependencyInjection\Reference) {
             return parent::processValue($value, $isRoot);
         }
-        if (\MonorepoBuilder20211024\Symfony\Component\DependencyInjection\ContainerBuilder::IGNORE_ON_UNINITIALIZED_REFERENCE !== $value->getInvalidBehavior()) {
+        if (\MonorepoBuilder20211025\Symfony\Component\DependencyInjection\ContainerBuilder::IGNORE_ON_UNINITIALIZED_REFERENCE !== $value->getInvalidBehavior()) {
             $this->connectedIds[] = (string) $value;
         }
         return $value;
