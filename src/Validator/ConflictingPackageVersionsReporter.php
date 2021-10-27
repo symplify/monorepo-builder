@@ -16,7 +16,7 @@ final class ConflictingPackageVersionsReporter
         $this->symfonyStyle = $symfonyStyle;
     }
     /**
-     * @param mixed[] $conflictingPackages
+     * @param array<string, array<string, string>> $conflictingPackages
      */
     public function report(array $conflictingPackages) : void
     {
@@ -29,9 +29,10 @@ final class ConflictingPackageVersionsReporter
         $this->symfonyStyle->error('Found conflicting package versions, fix them first.');
     }
     /**
+     * @param array<string, string> $filesToVersions
      * @return array<int, mixed[]>
      */
-    private function createTableRows($filesToVersions) : array
+    private function createTableRows(array $filesToVersions) : array
     {
         $tableRows = [];
         foreach ($filesToVersions as $file => $version) {
