@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211025\Symfony\Component\DependencyInjection\Extension;
+namespace MonorepoBuilder20211027\Symfony\Component\DependencyInjection\Extension;
 
-use MonorepoBuilder20211025\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder20211027\Symfony\Component\DependencyInjection\ContainerBuilder;
 /**
  * ExtensionInterface is the interface implemented by container extension classes.
  *

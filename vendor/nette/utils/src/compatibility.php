@@ -5,24 +5,24 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace MonorepoBuilder20211025\Nette\Utils;
+namespace MonorepoBuilder20211027\Nette\Utils;
 
-use MonorepoBuilder20211025\Nette;
+use MonorepoBuilder20211027\Nette;
 if (\false) {
     /** @deprecated use Nette\HtmlStringable */
-    interface IHtmlString extends \MonorepoBuilder20211025\Nette\HtmlStringable
+    interface IHtmlString extends \MonorepoBuilder20211027\Nette\HtmlStringable
     {
     }
-} elseif (!\interface_exists(\MonorepoBuilder20211025\Nette\Utils\IHtmlString::class)) {
-    \class_alias(\MonorepoBuilder20211025\Nette\HtmlStringable::class, \MonorepoBuilder20211025\Nette\Utils\IHtmlString::class);
+} elseif (!\interface_exists(\MonorepoBuilder20211027\Nette\Utils\IHtmlString::class)) {
+    \class_alias(\MonorepoBuilder20211027\Nette\HtmlStringable::class, \MonorepoBuilder20211027\Nette\Utils\IHtmlString::class);
 }
-namespace MonorepoBuilder20211025\Nette\Localization;
+namespace MonorepoBuilder20211027\Nette\Localization;
 
 if (\false) {
     /** @deprecated use Nette\Localization\Translator */
-    interface ITranslator extends \MonorepoBuilder20211025\Nette\Localization\Translator
+    interface ITranslator extends \MonorepoBuilder20211027\Nette\Localization\Translator
     {
     }
-} elseif (!\interface_exists(\MonorepoBuilder20211025\Nette\Localization\ITranslator::class)) {
-    \class_alias(\MonorepoBuilder20211025\Nette\Localization\Translator::class, \MonorepoBuilder20211025\Nette\Localization\ITranslator::class);
+} elseif (!\interface_exists(\MonorepoBuilder20211027\Nette\Localization\ITranslator::class)) {
+    \class_alias(\MonorepoBuilder20211027\Nette\Localization\Translator::class, \MonorepoBuilder20211027\Nette\Localization\ITranslator::class);
 }

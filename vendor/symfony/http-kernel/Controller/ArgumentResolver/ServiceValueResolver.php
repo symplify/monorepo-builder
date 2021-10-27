@@ -8,22 +8,22 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211025\Symfony\Component\HttpKernel\Controller\ArgumentResolver;
+namespace MonorepoBuilder20211027\Symfony\Component\HttpKernel\Controller\ArgumentResolver;
 
-use MonorepoBuilder20211025\Psr\Container\ContainerInterface;
-use MonorepoBuilder20211025\Symfony\Component\DependencyInjection\Exception\RuntimeException;
-use MonorepoBuilder20211025\Symfony\Component\HttpFoundation\Request;
-use MonorepoBuilder20211025\Symfony\Component\HttpKernel\Controller\ArgumentValueResolverInterface;
-use MonorepoBuilder20211025\Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata;
+use MonorepoBuilder20211027\Psr\Container\ContainerInterface;
+use MonorepoBuilder20211027\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use MonorepoBuilder20211027\Symfony\Component\HttpFoundation\Request;
+use MonorepoBuilder20211027\Symfony\Component\HttpKernel\Controller\ArgumentValueResolverInterface;
+use MonorepoBuilder20211027\Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata;
 /**
  * Yields a service keyed by _controller and argument name.
  *
  * @author Nicolas Grekas <p@tchwork.com>
  */
-final class ServiceValueResolver implements \MonorepoBuilder20211025\Symfony\Component\HttpKernel\Controller\ArgumentValueResolverInterface
+final class ServiceValueResolver implements \MonorepoBuilder20211027\Symfony\Component\HttpKernel\Controller\ArgumentValueResolverInterface
 {
     private $container;
-    public function __construct(\MonorepoBuilder20211025\Psr\Container\ContainerInterface $container)
+    public function __construct(\MonorepoBuilder20211027\Psr\Container\ContainerInterface $container)
     {
         $this->container = $container;
     }
@@ -67,7 +67,7 @@ final class ServiceValueResolver implements \MonorepoBuilder20211025\Symfony\Com
         }
         try {
             (yield $this->container->get($controller)->get($argument->getName()));
-        } catch (\MonorepoBuilder20211025\Symfony\Component\DependencyInjection\Exception\RuntimeException $e) {
+        } catch (\MonorepoBuilder20211027\Symfony\Component\DependencyInjection\Exception\RuntimeException $e) {
             $what = \sprintf('argument $%s of "%s()"', $argument->getName(), $controller);
             $message = \preg_replace('/service "\\.service_locator\\.[^"]++"/', $what, $e->getMessage());
             if ($e->getMessage() === $message) {
