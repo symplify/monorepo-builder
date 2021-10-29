@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211027\Symfony\Component\HttpFoundation\Test\Constraint;
+namespace MonorepoBuilder20211029\Symfony\Component\HttpFoundation\Test\Constraint;
 
-use MonorepoBuilder20211027\PHPUnit\Framework\Constraint\Constraint;
-use MonorepoBuilder20211027\Symfony\Component\HttpFoundation\Response;
-final class ResponseStatusCodeSame extends \MonorepoBuilder20211027\PHPUnit\Framework\Constraint\Constraint
+use MonorepoBuilder20211029\PHPUnit\Framework\Constraint\Constraint;
+use MonorepoBuilder20211029\Symfony\Component\HttpFoundation\Response;
+final class ResponseStatusCodeSame extends \MonorepoBuilder20211029\PHPUnit\Framework\Constraint\Constraint
 {
     private $statusCode;
     public function __construct(int $statusCode)

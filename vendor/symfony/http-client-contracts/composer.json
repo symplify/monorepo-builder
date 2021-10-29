@@ -30,7 +30,7 @@
     },
     "autoload": {
         "psr-4": {
-            "MonorepoBuilder20211027\\Symfony\\Contracts\\HttpClient\\": ""
+            "MonorepoBuilder20211029\\Symfony\\Contracts\\HttpClient\\": ""
         }
     },
     "minimum-stability": "dev",

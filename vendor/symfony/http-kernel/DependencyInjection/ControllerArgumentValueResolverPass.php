@@ -8,21 +8,21 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211027\Symfony\Component\HttpKernel\DependencyInjection;
+namespace MonorepoBuilder20211029\Symfony\Component\HttpKernel\DependencyInjection;
 
-use MonorepoBuilder20211027\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
-use MonorepoBuilder20211027\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
-use MonorepoBuilder20211027\Symfony\Component\DependencyInjection\Compiler\PriorityTaggedServiceTrait;
-use MonorepoBuilder20211027\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder20211027\Symfony\Component\DependencyInjection\Reference;
-use MonorepoBuilder20211027\Symfony\Component\HttpKernel\Controller\ArgumentResolver\TraceableValueResolver;
-use MonorepoBuilder20211027\Symfony\Component\Stopwatch\Stopwatch;
+use MonorepoBuilder20211029\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
+use MonorepoBuilder20211029\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
+use MonorepoBuilder20211029\Symfony\Component\DependencyInjection\Compiler\PriorityTaggedServiceTrait;
+use MonorepoBuilder20211029\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder20211029\Symfony\Component\DependencyInjection\Reference;
+use MonorepoBuilder20211029\Symfony\Component\HttpKernel\Controller\ArgumentResolver\TraceableValueResolver;
+use MonorepoBuilder20211029\Symfony\Component\Stopwatch\Stopwatch;
 /**
  * Gathers and configures the argument value resolvers.
  *
  * @author Iltar van der Berg <kjarli@gmail.com>
  */
-class ControllerArgumentValueResolverPass implements \MonorepoBuilder20211027\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
+class ControllerArgumentValueResolverPass implements \MonorepoBuilder20211029\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
 {
     use PriorityTaggedServiceTrait;
     private $argumentResolverService;
@@ -46,12 +46,12 @@ class ControllerArgumentValueResolverPass implements \MonorepoBuilder20211027\Sy
             return;
         }
         $resolvers = $this->findAndSortTaggedServices($this->argumentValueResolverTag, $container);
-        if ($container->getParameter('kernel.debug') && \class_exists(\MonorepoBuilder20211027\Symfony\Component\Stopwatch\Stopwatch::class) && $container->has($this->traceableResolverStopwatch)) {
+        if ($container->getParameter('kernel.debug') && \class_exists(\MonorepoBuilder20211029\Symfony\Component\Stopwatch\Stopwatch::class) && $container->has($this->traceableResolverStopwatch)) {
             foreach ($resolvers as $resolverReference) {
                 $id = (string) $resolverReference;
-                $container->register("debug.{$id}", \MonorepoBuilder20211027\Symfony\Component\HttpKernel\Controller\ArgumentResolver\TraceableValueResolver::class)->setDecoratedService($id)->setArguments([new \MonorepoBuilder20211027\Symfony\Component\DependencyInjection\Reference("debug.{$id}.inner"), new \MonorepoBuilder20211027\Symfony\Component\DependencyInjection\Reference($this->traceableResolverStopwatch)]);
+                $container->register("debug.{$id}", \MonorepoBuilder20211029\Symfony\Component\HttpKernel\Controller\ArgumentResolver\TraceableValueResolver::class)->setDecoratedService($id)->setArguments([new \MonorepoBuilder20211029\Symfony\Component\DependencyInjection\Reference("debug.{$id}.inner"), new \MonorepoBuilder20211029\Symfony\Component\DependencyInjection\Reference($this->traceableResolverStopwatch)]);
             }
         }
-        $container->getDefinition($this->argumentResolverService)->replaceArgument(1, new \MonorepoBuilder20211027\Symfony\Component\DependencyInjection\Argument\IteratorArgument($resolvers));
+        $container->getDefinition($this->argumentResolverService)->replaceArgument(1, new \MonorepoBuilder20211029\Symfony\Component\DependencyInjection\Argument\IteratorArgument($resolvers));
     }
 }

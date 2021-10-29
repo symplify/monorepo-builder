@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20211027\Symplify\EasyTesting\ValueObject;
+namespace MonorepoBuilder20211029\Symplify\EasyTesting\ValueObject;
 
 final class InputAndExpected
 {
