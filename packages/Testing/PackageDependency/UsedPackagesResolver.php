@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Testing\PackageDependency;
 
-use MonorepoBuilder20211029\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
+use MonorepoBuilder20211030\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
 use Symplify\MonorepoBuilder\Package\PackageNamesProvider;
 final class UsedPackagesResolver
 {
@@ -22,12 +22,12 @@ final class UsedPackagesResolver
     public function resolveForPackage(array $packageComposerJson) : array
     {
         $usedPackageNames = [];
-        foreach ([\MonorepoBuilder20211029\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE, \MonorepoBuilder20211029\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE_DEV] as $section) {
+        foreach ([\MonorepoBuilder20211030\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE, \MonorepoBuilder20211030\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE_DEV] as $section) {
             if (!isset($packageComposerJson[$section])) {
                 continue;
             }
-            $sectionKeys = \array_keys($packageComposerJson[$section]);
-            foreach ($sectionKeys as $packageName) {
+            $packageNames = \array_keys($packageComposerJson[$section]);
+            foreach ($packageNames as $packageName) {
                 if (!\in_array($packageName, $this->packageNamesProvider->provide(), \true)) {
                     continue;
                 }

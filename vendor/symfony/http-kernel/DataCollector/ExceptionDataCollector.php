@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211029\Symfony\Component\HttpKernel\DataCollector;
+namespace MonorepoBuilder20211030\Symfony\Component\HttpKernel\DataCollector;
 
-use MonorepoBuilder20211029\Symfony\Component\ErrorHandler\Exception\FlattenException;
-use MonorepoBuilder20211029\Symfony\Component\HttpFoundation\Request;
-use MonorepoBuilder20211029\Symfony\Component\HttpFoundation\Response;
+use MonorepoBuilder20211030\Symfony\Component\ErrorHandler\Exception\FlattenException;
+use MonorepoBuilder20211030\Symfony\Component\HttpFoundation\Request;
+use MonorepoBuilder20211030\Symfony\Component\HttpFoundation\Response;
 /**
  * ExceptionDataCollector.
  *
@@ -20,7 +20,7 @@ use MonorepoBuilder20211029\Symfony\Component\HttpFoundation\Response;
  *
  * @final
  */
-class ExceptionDataCollector extends \MonorepoBuilder20211029\Symfony\Component\HttpKernel\DataCollector\DataCollector
+class ExceptionDataCollector extends \MonorepoBuilder20211030\Symfony\Component\HttpKernel\DataCollector\DataCollector
 {
     /**
      * {@inheritdoc}
@@ -31,7 +31,7 @@ class ExceptionDataCollector extends \MonorepoBuilder20211029\Symfony\Component\
     public function collect($request, $response, $exception = null)
     {
         if (null !== $exception) {
-            $this->data = ['exception' => \MonorepoBuilder20211029\Symfony\Component\ErrorHandler\Exception\FlattenException::createFromThrowable($exception)];
+            $this->data = ['exception' => \MonorepoBuilder20211030\Symfony\Component\ErrorHandler\Exception\FlattenException::createFromThrowable($exception)];
         }
     }
     /**

@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20211029\Symplify\PackageBuilder\DependencyInjection\CompilerPass;
+namespace MonorepoBuilder20211030\Symplify\PackageBuilder\DependencyInjection\CompilerPass;
 
-use MonorepoBuilder20211029\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
-use MonorepoBuilder20211029\Symfony\Component\DependencyInjection\ContainerBuilder;
-final class AutowireInterfacesCompilerPass implements \MonorepoBuilder20211029\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
+use MonorepoBuilder20211030\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
+use MonorepoBuilder20211030\Symfony\Component\DependencyInjection\ContainerBuilder;
+final class AutowireInterfacesCompilerPass implements \MonorepoBuilder20211030\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
 {
     /**
      * @var string[]
@@ -23,8 +23,8 @@ final class AutowireInterfacesCompilerPass implements \MonorepoBuilder20211029\S
      */
     public function process($containerBuilder) : void
     {
-        $containerBuilderDefinitions = $containerBuilder->getDefinitions();
-        foreach ($containerBuilderDefinitions as $definition) {
+        $definitions = $containerBuilder->getDefinitions();
+        foreach ($definitions as $definition) {
             foreach ($this->typesToAutowire as $typeToAutowire) {
                 if (!\is_a((string) $definition->getClass(), $typeToAutowire, \true)) {
                     continue;

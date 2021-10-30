@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Merge\ComposerJsonDecorator;
 
-use MonorepoBuilder20211029\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
+use MonorepoBuilder20211030\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
 use Symplify\MonorepoBuilder\Merge\Configuration\MergedPackagesCollector;
 use Symplify\MonorepoBuilder\Merge\Contract\ComposerJsonDecoratorInterface;
 /**
@@ -38,8 +38,8 @@ final class RootRemoveComposerJsonDecorator implements \Symplify\MonorepoBuilder
      */
     private function filterOutMergedPackages(array $require) : array
     {
-        $requireKeys = \array_keys($require);
-        foreach ($requireKeys as $packageName) {
+        $packageNames = \array_keys($require);
+        foreach ($packageNames as $packageName) {
             if (!\in_array($packageName, $this->mergedPackagesCollector->getPackages(), \true)) {
                 continue;
             }

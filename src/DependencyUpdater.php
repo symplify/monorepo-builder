@@ -3,16 +3,16 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder;
 
-use MonorepoBuilder20211029\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
-use MonorepoBuilder20211029\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
-use MonorepoBuilder20211029\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder20211030\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
+use MonorepoBuilder20211030\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
+use MonorepoBuilder20211030\Symplify\SmartFileSystem\SmartFileInfo;
 final class DependencyUpdater
 {
     /**
      * @var \Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager
      */
     private $jsonFileManager;
-    public function __construct(\MonorepoBuilder20211029\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager $jsonFileManager)
+    public function __construct(\MonorepoBuilder20211030\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager $jsonFileManager)
     {
         $this->jsonFileManager = $jsonFileManager;
     }
@@ -22,11 +22,11 @@ final class DependencyUpdater
      */
     public function updateFileInfosWithPackagesAndVersion(array $smartFileInfos, array $packageNames, string $version) : void
     {
-        foreach ($smartFileInfos as $packageComposerFileInfo) {
-            $json = $this->jsonFileManager->loadFromFileInfo($packageComposerFileInfo);
-            $json = $this->processSectionWithPackages($json, $packageNames, $version, \MonorepoBuilder20211029\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE);
-            $json = $this->processSectionWithPackages($json, $packageNames, $version, \MonorepoBuilder20211029\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE_DEV);
-            $this->jsonFileManager->printJsonToFileInfo($json, $packageComposerFileInfo);
+        foreach ($smartFileInfos as $smartFileInfo) {
+            $json = $this->jsonFileManager->loadFromFileInfo($smartFileInfo);
+            $json = $this->processSectionWithPackages($json, $packageNames, $version, \MonorepoBuilder20211030\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE);
+            $json = $this->processSectionWithPackages($json, $packageNames, $version, \MonorepoBuilder20211030\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE_DEV);
+            $this->jsonFileManager->printJsonToFileInfo($json, $smartFileInfo);
         }
     }
     /**
@@ -34,26 +34,26 @@ final class DependencyUpdater
      */
     public function updateFileInfosWithVendorAndVersion(array $smartFileInfos, string $vendor, string $version) : void
     {
-        foreach ($smartFileInfos as $packageComposerFileInfo) {
-            $json = $this->jsonFileManager->loadFromFileInfo($packageComposerFileInfo);
-            $json = $this->processSection($json, $vendor, $version, \MonorepoBuilder20211029\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE);
-            $json = $this->processSection($json, $vendor, $version, \MonorepoBuilder20211029\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE_DEV);
-            $this->jsonFileManager->printJsonToFileInfo($json, $packageComposerFileInfo);
+        foreach ($smartFileInfos as $smartFileInfo) {
+            $json = $this->jsonFileManager->loadFromFileInfo($smartFileInfo);
+            $json = $this->processSection($json, $vendor, $version, \MonorepoBuilder20211030\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE);
+            $json = $this->processSection($json, $vendor, $version, \MonorepoBuilder20211030\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE_DEV);
+            $this->jsonFileManager->printJsonToFileInfo($json, $smartFileInfo);
         }
     }
     /**
      * @param mixed[] $json
-     * @param string[] $packageNames
+     * @param string[] $parentPackageNames
      * @return mixed[]
      */
-    private function processSectionWithPackages(array $json, array $packageNames, string $targetVersion, string $section) : array
+    private function processSectionWithPackages(array $json, array $parentPackageNames, string $targetVersion, string $section) : array
     {
         if (!isset($json[$section])) {
             return $json;
         }
-        $sectionKeys = \array_keys($json[$section]);
-        foreach ($sectionKeys as $packageName) {
-            if (!\in_array($packageName, $packageNames, \true)) {
+        $packageNames = \array_keys($json[$section]);
+        foreach ($packageNames as $packageName) {
+            if (!\in_array($packageName, $parentPackageNames, \true)) {
                 continue;
             }
             $json[$section][$packageName] = $targetVersion;

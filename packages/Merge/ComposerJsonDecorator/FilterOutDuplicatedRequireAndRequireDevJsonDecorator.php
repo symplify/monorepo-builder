@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Merge\ComposerJsonDecorator;
 
-use MonorepoBuilder20211029\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
+use MonorepoBuilder20211030\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
 use Symplify\MonorepoBuilder\Merge\Contract\ComposerJsonDecoratorInterface;
 final class FilterOutDuplicatedRequireAndRequireDevJsonDecorator implements \Symplify\MonorepoBuilder\Merge\Contract\ComposerJsonDecoratorInterface
 {
@@ -20,8 +20,8 @@ final class FilterOutDuplicatedRequireAndRequireDevJsonDecorator implements \Sym
         }
         $duplicatedPackages = $composerJson->getDuplicatedRequirePackages();
         $currentRequireDev = $composerJson->getRequireDev();
-        $currentRequireDevKeys = \array_keys($currentRequireDev);
-        foreach ($currentRequireDevKeys as $package) {
+        $packages = \array_keys($currentRequireDev);
+        foreach ($packages as $package) {
             if (\in_array($package, $duplicatedPackages, \true)) {
                 unset($currentRequireDev[$package]);
             }

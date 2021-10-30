@@ -3,9 +3,9 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Package;
 
-use MonorepoBuilder20211029\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
+use MonorepoBuilder20211030\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
 use Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider;
-use MonorepoBuilder20211029\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder20211030\Symplify\SmartFileSystem\SmartFileInfo;
 final class PackageNamesProvider
 {
     /**
@@ -20,7 +20,7 @@ final class PackageNamesProvider
      * @var \Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager
      */
     private $jsonFileManager;
-    public function __construct(\Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider $composerJsonProvider, \MonorepoBuilder20211029\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager $jsonFileManager)
+    public function __construct(\Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider $composerJsonProvider, \MonorepoBuilder20211030\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager $jsonFileManager)
     {
         $this->composerJsonProvider = $composerJsonProvider;
         $this->jsonFileManager = $jsonFileManager;
@@ -34,15 +34,15 @@ final class PackageNamesProvider
             return $this->names;
         }
         $packagesFileInfos = $this->composerJsonProvider->getPackagesComposerFileInfos();
-        foreach ($packagesFileInfos as $packagesFileInfo) {
-            $name = $this->extractNameFromFileInfo($packagesFileInfo);
+        foreach ($packagesFileInfos as $packageFileInfo) {
+            $name = $this->extractNameFromFileInfo($packageFileInfo);
             if ($name !== null) {
                 $this->names[] = $name;
             }
         }
         return $this->names;
     }
-    private function extractNameFromFileInfo(\MonorepoBuilder20211029\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : ?string
+    private function extractNameFromFileInfo(\MonorepoBuilder20211030\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : ?string
     {
         $json = $this->jsonFileManager->loadFromFileInfo($smartFileInfo);
         return $json['name'] ?? null;
