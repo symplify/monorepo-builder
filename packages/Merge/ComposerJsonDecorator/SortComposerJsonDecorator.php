@@ -32,7 +32,7 @@ final class SortComposerJsonDecorator implements \Symplify\MonorepoBuilder\Merge
         $composerJson->setOrderedKeys($orderedKeys);
     }
     /**
-     * @return int|string|bool
+     * @return bool|int|string
      */
     private function findKeyPosition(string $key)
     {
