@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211030\Symfony\Component\HttpKernel\Controller;
+namespace MonorepoBuilder20211031\Symfony\Component\HttpKernel\Controller;
 
-use MonorepoBuilder20211030\Symfony\Component\HttpFoundation\Request;
+use MonorepoBuilder20211031\Symfony\Component\HttpFoundation\Request;
 /**
  * A ControllerResolverInterface implementation knows how to determine the
  * controller to execute based on a Request object.

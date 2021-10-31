@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211030\Symfony\Component\HttpKernel\Event;
+namespace MonorepoBuilder20211031\Symfony\Component\HttpKernel\Event;
 
-use MonorepoBuilder20211030\Symfony\Component\HttpFoundation\Request;
-use MonorepoBuilder20211030\Symfony\Component\HttpFoundation\Response;
-use MonorepoBuilder20211030\Symfony\Component\HttpKernel\HttpKernelInterface;
+use MonorepoBuilder20211031\Symfony\Component\HttpFoundation\Request;
+use MonorepoBuilder20211031\Symfony\Component\HttpFoundation\Response;
+use MonorepoBuilder20211031\Symfony\Component\HttpKernel\HttpKernelInterface;
 /**
  * Allows to filter a Response object.
  *
@@ -22,15 +22,15 @@ use MonorepoBuilder20211030\Symfony\Component\HttpKernel\HttpKernelInterface;
  *
  * @author Bernhard Schussek <bschussek@gmail.com>
  */
-final class ResponseEvent extends \MonorepoBuilder20211030\Symfony\Component\HttpKernel\Event\KernelEvent
+final class ResponseEvent extends \MonorepoBuilder20211031\Symfony\Component\HttpKernel\Event\KernelEvent
 {
     private $response;
-    public function __construct(\MonorepoBuilder20211030\Symfony\Component\HttpKernel\HttpKernelInterface $kernel, \MonorepoBuilder20211030\Symfony\Component\HttpFoundation\Request $request, int $requestType, \MonorepoBuilder20211030\Symfony\Component\HttpFoundation\Response $response)
+    public function __construct(\MonorepoBuilder20211031\Symfony\Component\HttpKernel\HttpKernelInterface $kernel, \MonorepoBuilder20211031\Symfony\Component\HttpFoundation\Request $request, int $requestType, \MonorepoBuilder20211031\Symfony\Component\HttpFoundation\Response $response)
     {
         parent::__construct($kernel, $request, $requestType);
         $this->setResponse($response);
     }
-    public function getResponse() : \MonorepoBuilder20211030\Symfony\Component\HttpFoundation\Response
+    public function getResponse() : \MonorepoBuilder20211031\Symfony\Component\HttpFoundation\Response
     {
         return $this->response;
     }

@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20211030;
+namespace MonorepoBuilder20211031;
 
-use MonorepoBuilder20211030\Symplify\EasyTesting\HttpKernel\EasyTestingKernel;
-use MonorepoBuilder20211030\Symplify\SymplifyKernel\ValueObject\KernelBootAndApplicationRun;
+use MonorepoBuilder20211031\Symplify\EasyTesting\HttpKernel\EasyTestingKernel;
+use MonorepoBuilder20211031\Symplify\SymplifyKernel\ValueObject\KernelBootAndApplicationRun;
 $possibleAutoloadPaths = [
     // dependency
     __DIR__ . '/../../../autoload.php',
@@ -19,5 +19,5 @@ foreach ($possibleAutoloadPaths as $possibleAutoloadPath) {
         break;
     }
 }
-$kernelBootAndApplicationRun = new \MonorepoBuilder20211030\Symplify\SymplifyKernel\ValueObject\KernelBootAndApplicationRun(\MonorepoBuilder20211030\Symplify\EasyTesting\HttpKernel\EasyTestingKernel::class);
+$kernelBootAndApplicationRun = new \MonorepoBuilder20211031\Symplify\SymplifyKernel\ValueObject\KernelBootAndApplicationRun(\MonorepoBuilder20211031\Symplify\EasyTesting\HttpKernel\EasyTestingKernel::class);
 $kernelBootAndApplicationRun->run();

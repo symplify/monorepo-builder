@@ -1,24 +1,24 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20211030\Symplify\AutowireArrayParameter\DependencyInjection\CompilerPass;
+namespace MonorepoBuilder20211031\Symplify\AutowireArrayParameter\DependencyInjection\CompilerPass;
 
-use MonorepoBuilder20211030\Nette\Utils\Strings;
+use MonorepoBuilder20211031\Nette\Utils\Strings;
 use ReflectionClass;
 use ReflectionMethod;
-use MonorepoBuilder20211030\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
-use MonorepoBuilder20211030\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder20211030\Symfony\Component\DependencyInjection\Definition;
-use MonorepoBuilder20211030\Symfony\Component\DependencyInjection\Reference;
-use MonorepoBuilder20211030\Symplify\AutowireArrayParameter\DependencyInjection\DefinitionFinder;
-use MonorepoBuilder20211030\Symplify\AutowireArrayParameter\DocBlock\ParamTypeDocBlockResolver;
-use MonorepoBuilder20211030\Symplify\AutowireArrayParameter\Skipper\ParameterSkipper;
-use MonorepoBuilder20211030\Symplify\AutowireArrayParameter\TypeResolver\ParameterTypeResolver;
+use MonorepoBuilder20211031\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
+use MonorepoBuilder20211031\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder20211031\Symfony\Component\DependencyInjection\Definition;
+use MonorepoBuilder20211031\Symfony\Component\DependencyInjection\Reference;
+use MonorepoBuilder20211031\Symplify\AutowireArrayParameter\DependencyInjection\DefinitionFinder;
+use MonorepoBuilder20211031\Symplify\AutowireArrayParameter\DocBlock\ParamTypeDocBlockResolver;
+use MonorepoBuilder20211031\Symplify\AutowireArrayParameter\Skipper\ParameterSkipper;
+use MonorepoBuilder20211031\Symplify\AutowireArrayParameter\TypeResolver\ParameterTypeResolver;
 /**
  * @inspiration https://github.com/nette/di/pull/178
  * @see \Symplify\AutowireArrayParameter\Tests\DependencyInjection\CompilerPass\AutowireArrayParameterCompilerPassTest
  */
-final class AutowireArrayParameterCompilerPass implements \MonorepoBuilder20211030\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
+final class AutowireArrayParameterCompilerPass implements \MonorepoBuilder20211031\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
 {
     /**
      * These namespaces are already configured by their bundles/extensions.
@@ -32,7 +32,7 @@ final class AutowireArrayParameterCompilerPass implements \MonorepoBuilder202110
      * @var string[]
      * @noRector
      */
-    private $excludedFatalClasses = ['MonorepoBuilder20211030\\Symfony\\Component\\Form\\FormExtensionInterface', 'MonorepoBuilder20211030\\Symfony\\Component\\Asset\\PackageInterface', 'MonorepoBuilder20211030\\Symfony\\Component\\Config\\Loader\\LoaderInterface', 'MonorepoBuilder20211030\\Symfony\\Component\\VarDumper\\Dumper\\ContextProvider\\ContextProviderInterface', 'MonorepoBuilder20211030\\EasyCorp\\Bundle\\EasyAdminBundle\\Form\\Type\\Configurator\\TypeConfiguratorInterface', 'MonorepoBuilder20211030\\Sonata\\CoreBundle\\Model\\Adapter\\AdapterInterface', 'MonorepoBuilder20211030\\Sonata\\Doctrine\\Adapter\\AdapterChain', 'MonorepoBuilder20211030\\Sonata\\Twig\\Extension\\TemplateExtension', 'MonorepoBuilder20211030\\Symfony\\Component\\HttpKernel\\KernelInterface'];
+    private $excludedFatalClasses = ['MonorepoBuilder20211031\\Symfony\\Component\\Form\\FormExtensionInterface', 'MonorepoBuilder20211031\\Symfony\\Component\\Asset\\PackageInterface', 'MonorepoBuilder20211031\\Symfony\\Component\\Config\\Loader\\LoaderInterface', 'MonorepoBuilder20211031\\Symfony\\Component\\VarDumper\\Dumper\\ContextProvider\\ContextProviderInterface', 'MonorepoBuilder20211031\\EasyCorp\\Bundle\\EasyAdminBundle\\Form\\Type\\Configurator\\TypeConfiguratorInterface', 'MonorepoBuilder20211031\\Sonata\\CoreBundle\\Model\\Adapter\\AdapterInterface', 'MonorepoBuilder20211031\\Sonata\\Doctrine\\Adapter\\AdapterChain', 'MonorepoBuilder20211031\\Sonata\\Twig\\Extension\\TemplateExtension', 'MonorepoBuilder20211031\\Symfony\\Component\\HttpKernel\\KernelInterface'];
     /**
      * @var \Symplify\AutowireArrayParameter\DependencyInjection\DefinitionFinder
      */
@@ -50,10 +50,10 @@ final class AutowireArrayParameterCompilerPass implements \MonorepoBuilder202110
      */
     public function __construct(array $excludedFatalClasses = [])
     {
-        $this->definitionFinder = new \MonorepoBuilder20211030\Symplify\AutowireArrayParameter\DependencyInjection\DefinitionFinder();
-        $paramTypeDocBlockResolver = new \MonorepoBuilder20211030\Symplify\AutowireArrayParameter\DocBlock\ParamTypeDocBlockResolver();
-        $this->parameterTypeResolver = new \MonorepoBuilder20211030\Symplify\AutowireArrayParameter\TypeResolver\ParameterTypeResolver($paramTypeDocBlockResolver);
-        $this->parameterSkipper = new \MonorepoBuilder20211030\Symplify\AutowireArrayParameter\Skipper\ParameterSkipper($this->parameterTypeResolver, $excludedFatalClasses);
+        $this->definitionFinder = new \MonorepoBuilder20211031\Symplify\AutowireArrayParameter\DependencyInjection\DefinitionFinder();
+        $paramTypeDocBlockResolver = new \MonorepoBuilder20211031\Symplify\AutowireArrayParameter\DocBlock\ParamTypeDocBlockResolver();
+        $this->parameterTypeResolver = new \MonorepoBuilder20211031\Symplify\AutowireArrayParameter\TypeResolver\ParameterTypeResolver($paramTypeDocBlockResolver);
+        $this->parameterSkipper = new \MonorepoBuilder20211031\Symplify\AutowireArrayParameter\Skipper\ParameterSkipper($this->parameterTypeResolver, $excludedFatalClasses);
     }
     /**
      * @param \Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder
@@ -72,7 +72,7 @@ final class AutowireArrayParameterCompilerPass implements \MonorepoBuilder202110
             $this->processParameters($containerBuilder, $constructorReflectionMethod, $definition);
         }
     }
-    private function shouldSkipDefinition(\MonorepoBuilder20211030\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder, \MonorepoBuilder20211030\Symfony\Component\DependencyInjection\Definition $definition) : bool
+    private function shouldSkipDefinition(\MonorepoBuilder20211031\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder, \MonorepoBuilder20211031\Symfony\Component\DependencyInjection\Definition $definition) : bool
     {
         if ($definition->isAbstract()) {
             return \true;
@@ -85,7 +85,7 @@ final class AutowireArrayParameterCompilerPass implements \MonorepoBuilder202110
         $resolvedClassName = $parameterBag->resolveValue($definition->getClass());
         // skip 3rd party classes, they're autowired by own config
         $excludedNamespacePattern = '#^(' . \implode('|', self::EXCLUDED_NAMESPACES) . ')\\\\#';
-        if (\MonorepoBuilder20211030\Nette\Utils\Strings::match($resolvedClassName, $excludedNamespacePattern)) {
+        if (\MonorepoBuilder20211031\Nette\Utils\Strings::match($resolvedClassName, $excludedNamespacePattern)) {
             return \true;
         }
         if (\in_array($resolvedClassName, $this->excludedFatalClasses, \true)) {
@@ -108,7 +108,7 @@ final class AutowireArrayParameterCompilerPass implements \MonorepoBuilder202110
         $constructorReflectionMethod = $reflectionClass->getConstructor();
         return !$constructorReflectionMethod->getParameters();
     }
-    private function processParameters(\MonorepoBuilder20211030\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder, \ReflectionMethod $reflectionMethod, \MonorepoBuilder20211030\Symfony\Component\DependencyInjection\Definition $definition) : void
+    private function processParameters(\MonorepoBuilder20211031\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder, \ReflectionMethod $reflectionMethod, \MonorepoBuilder20211031\Symfony\Component\DependencyInjection\Definition $definition) : void
     {
         $reflectionParameters = $reflectionMethod->getParameters();
         foreach ($reflectionParameters as $reflectionParameter) {
@@ -149,7 +149,7 @@ final class AutowireArrayParameterCompilerPass implements \MonorepoBuilder202110
         $references = [];
         $definitionOfTypeNames = \array_keys($definitions);
         foreach ($definitionOfTypeNames as $definitionOfTypeName) {
-            $references[] = new \MonorepoBuilder20211030\Symfony\Component\DependencyInjection\Reference($definitionOfTypeName);
+            $references[] = new \MonorepoBuilder20211031\Symfony\Component\DependencyInjection\Reference($definitionOfTypeName);
         }
         return $references;
     }
