@@ -40,7 +40,7 @@ function resolveConfigFile(\MonorepoBuilder20211031\Symfony\Component\Console\In
     if ($argvInput->hasParameterOption(['-c', '--config'])) {
         $configOption = $argvInput->getParameterOption(['-c', '--config']);
         if (\is_string($configOption) && \file_exists($configOption)) {
-            return $configOption;
+            return \realpath($configOption);
         }
     }
     $defaultConfigFilePath = \getcwd() . '/' . \Symplify\MonorepoBuilder\ValueObject\File::CONFIG;
