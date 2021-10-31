@@ -6,8 +6,8 @@ $loader = require_once __DIR__.'/autoload.php';
 
 // Aliases for the whitelisted classes. For more information see:
 // https://github.com/humbug/php-scoper/blob/master/README.md#class-whitelisting
-if (!class_exists('ComposerAutoloaderInitf88971214fe4b27029af0e744e74fe2b', false) && !interface_exists('ComposerAutoloaderInitf88971214fe4b27029af0e744e74fe2b', false) && !trait_exists('ComposerAutoloaderInitf88971214fe4b27029af0e744e74fe2b', false)) {
-    spl_autoload_call('MonorepoBuilder20211031\ComposerAutoloaderInitf88971214fe4b27029af0e744e74fe2b');
+if (!class_exists('ComposerAutoloaderInit8c98d85b78108fb2827f5c244f7e4b37', false) && !interface_exists('ComposerAutoloaderInit8c98d85b78108fb2827f5c244f7e4b37', false) && !trait_exists('ComposerAutoloaderInit8c98d85b78108fb2827f5c244f7e4b37', false)) {
+    spl_autoload_call('MonorepoBuilder20211031\ComposerAutoloaderInit8c98d85b78108fb2827f5c244f7e4b37');
 }
 if (!class_exists('Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator', false) && !interface_exists('Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator', false) && !trait_exists('Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator', false)) {
     spl_autoload_call('MonorepoBuilder20211031\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator');
@@ -39,14 +39,14 @@ if (!class_exists('Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSect
 
 // Functions whitelisting. For more information see:
 // https://github.com/humbug/php-scoper/blob/master/README.md#functions-whitelisting
-if (!function_exists('resolveConfigFileInfo')) {
-    function resolveConfigFileInfo() {
-        return \MonorepoBuilder20211031\resolveConfigFileInfo(...func_get_args());
+if (!function_exists('resolveConfigFile')) {
+    function resolveConfigFile() {
+        return \MonorepoBuilder20211031\resolveConfigFile(...func_get_args());
     }
 }
-if (!function_exists('composerRequiref88971214fe4b27029af0e744e74fe2b')) {
-    function composerRequiref88971214fe4b27029af0e744e74fe2b() {
-        return \MonorepoBuilder20211031\composerRequiref88971214fe4b27029af0e744e74fe2b(...func_get_args());
+if (!function_exists('composerRequire8c98d85b78108fb2827f5c244f7e4b37')) {
+    function composerRequire8c98d85b78108fb2827f5c244f7e4b37() {
+        return \MonorepoBuilder20211031\composerRequire8c98d85b78108fb2827f5c244f7e4b37(...func_get_args());
     }
 }
 if (!function_exists('setproctitle')) {

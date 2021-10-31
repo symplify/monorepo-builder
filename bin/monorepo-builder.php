@@ -7,7 +7,6 @@ namespace MonorepoBuilder20211031;
 use MonorepoBuilder20211031\Symfony\Component\Console\Input\ArgvInput;
 use Symplify\MonorepoBuilder\HttpKernel\MonorepoBuilderKernel;
 use Symplify\MonorepoBuilder\ValueObject\File;
-use MonorepoBuilder20211031\Symplify\SmartFileSystem\SmartFileInfo;
 use MonorepoBuilder20211031\Symplify\SymplifyKernel\ValueObject\KernelBootAndApplicationRun;
 # 1. autoload
 $possibleAutoloadPaths = [
@@ -28,25 +27,25 @@ $scoperAutoloadFilepath = __DIR__ . '/../vendor/scoper-autoload.php';
 if (\file_exists($scoperAutoloadFilepath)) {
     require_once $scoperAutoloadFilepath;
 }
-$configFileInfos = [];
+$configFiles = [];
 $argvInput = new \MonorepoBuilder20211031\Symfony\Component\Console\Input\ArgvInput();
-$configFileInfo = \MonorepoBuilder20211031\resolveConfigFileInfo($argvInput);
-if ($configFileInfo instanceof \MonorepoBuilder20211031\Symplify\SmartFileSystem\SmartFileInfo) {
-    $configFileInfos[] = $configFileInfo;
+$configFile = \MonorepoBuilder20211031\resolveConfigFile($argvInput);
+if (\is_string($configFile)) {
+    $configFiles[] = $configFile;
 }
-$kernelBootAndApplicationRun = new \MonorepoBuilder20211031\Symplify\SymplifyKernel\ValueObject\KernelBootAndApplicationRun(\Symplify\MonorepoBuilder\HttpKernel\MonorepoBuilderKernel::class, $configFileInfos);
+$kernelBootAndApplicationRun = new \MonorepoBuilder20211031\Symplify\SymplifyKernel\ValueObject\KernelBootAndApplicationRun(\Symplify\MonorepoBuilder\HttpKernel\MonorepoBuilderKernel::class, $configFiles);
 $kernelBootAndApplicationRun->run();
-function resolveConfigFileInfo(\MonorepoBuilder20211031\Symfony\Component\Console\Input\ArgvInput $argvInput) : ?\MonorepoBuilder20211031\Symplify\SmartFileSystem\SmartFileInfo
+function resolveConfigFile(\MonorepoBuilder20211031\Symfony\Component\Console\Input\ArgvInput $argvInput) : ?string
 {
     if ($argvInput->hasParameterOption(['-c', '--config'])) {
         $configOption = $argvInput->getParameterOption(['-c', '--config']);
         if (\is_string($configOption) && \file_exists($configOption)) {
-            return new \MonorepoBuilder20211031\Symplify\SmartFileSystem\SmartFileInfo($configOption);
+            return $configOption;
         }
     }
     $defaultConfigFilePath = \getcwd() . '/' . \Symplify\MonorepoBuilder\ValueObject\File::CONFIG;
     if (\file_exists($defaultConfigFilePath)) {
-        return new \MonorepoBuilder20211031\Symplify\SmartFileSystem\SmartFileInfo($defaultConfigFilePath);
+        return $defaultConfigFilePath;
     }
     return null;
 }
