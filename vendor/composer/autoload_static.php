@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit81f28e03179751fbfa150fe5d81aeab2
+class ComposerStaticInitf88971214fe4b27029af0e744e74fe2b
 {
     public static $files = array (
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
@@ -1127,6 +1127,7 @@ class ComposerStaticInit81f28e03179751fbfa150fe5d81aeab2
         'MonorepoBuilder20211031\\Symplify\\SmartFileSystem\\SmartFileInfo' => __DIR__ . '/..' . '/symplify/smart-file-system/src/SmartFileInfo.php',
         'MonorepoBuilder20211031\\Symplify\\SmartFileSystem\\SmartFileSystem' => __DIR__ . '/..' . '/symplify/smart-file-system/src/SmartFileSystem.php',
         'MonorepoBuilder20211031\\Symplify\\SymplifyKernel\\Bundle\\SymplifyKernelBundle' => __DIR__ . '/..' . '/symplify/symplify-kernel/src/Bundle/SymplifyKernelBundle.php',
+        'MonorepoBuilder20211031\\Symplify\\SymplifyKernel\\Contract\\LightKernelInterface' => __DIR__ . '/..' . '/symplify/symplify-kernel/src/Contract/LightKernelInterface.php',
         'MonorepoBuilder20211031\\Symplify\\SymplifyKernel\\DependencyInjection\\Extension\\SymplifyKernelExtension' => __DIR__ . '/..' . '/symplify/symplify-kernel/src/DependencyInjection/Extension/SymplifyKernelExtension.php',
         'MonorepoBuilder20211031\\Symplify\\SymplifyKernel\\Exception\\BootException' => __DIR__ . '/..' . '/symplify/symplify-kernel/src/Exception/BootException.php',
         'MonorepoBuilder20211031\\Symplify\\SymplifyKernel\\Exception\\HttpKernel\\TooGenericKernelClassException' => __DIR__ . '/..' . '/symplify/symplify-kernel/src/Exception/HttpKernel/TooGenericKernelClassException.php',
@@ -1251,9 +1252,9 @@ class ComposerStaticInit81f28e03179751fbfa150fe5d81aeab2
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit81f28e03179751fbfa150fe5d81aeab2::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit81f28e03179751fbfa150fe5d81aeab2::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit81f28e03179751fbfa150fe5d81aeab2::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitf88971214fe4b27029af0e744e74fe2b::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitf88971214fe4b27029af0e744e74fe2b::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitf88971214fe4b27029af0e744e74fe2b::$classMap;
 
         }, null, ClassLoader::class);
     }

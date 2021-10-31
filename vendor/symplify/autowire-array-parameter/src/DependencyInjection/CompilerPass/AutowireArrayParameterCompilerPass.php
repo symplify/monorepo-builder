@@ -14,6 +14,7 @@ use MonorepoBuilder20211031\Symplify\AutowireArrayParameter\DependencyInjection\
 use MonorepoBuilder20211031\Symplify\AutowireArrayParameter\DocBlock\ParamTypeDocBlockResolver;
 use MonorepoBuilder20211031\Symplify\AutowireArrayParameter\Skipper\ParameterSkipper;
 use MonorepoBuilder20211031\Symplify\AutowireArrayParameter\TypeResolver\ParameterTypeResolver;
+use MonorepoBuilder20211031\Symplify\PackageBuilder\ValueObject\MethodName;
 /**
  * @inspiration https://github.com/nette/di/pull/178
  * @see \Symplify\AutowireArrayParameter\Tests\DependencyInjection\CompilerPass\AutowireArrayParameterCompilerPassTest
@@ -101,7 +102,7 @@ final class AutowireArrayParameterCompilerPass implements \MonorepoBuilder202110
         if (!$reflectionClass instanceof \ReflectionClass) {
             return \true;
         }
-        if (!$reflectionClass->hasMethod('__construct')) {
+        if (!$reflectionClass->hasMethod(\MonorepoBuilder20211031\Symplify\PackageBuilder\ValueObject\MethodName::CONSTRUCTOR)) {
             return \true;
         }
         /** @var ReflectionMethod $constructorReflectionMethod */

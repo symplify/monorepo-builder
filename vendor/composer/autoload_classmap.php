@@ -935,6 +935,7 @@ return array(
     'MonorepoBuilder20211031\\Symplify\\SmartFileSystem\\SmartFileInfo' => $vendorDir . '/symplify/smart-file-system/src/SmartFileInfo.php',
     'MonorepoBuilder20211031\\Symplify\\SmartFileSystem\\SmartFileSystem' => $vendorDir . '/symplify/smart-file-system/src/SmartFileSystem.php',
     'MonorepoBuilder20211031\\Symplify\\SymplifyKernel\\Bundle\\SymplifyKernelBundle' => $vendorDir . '/symplify/symplify-kernel/src/Bundle/SymplifyKernelBundle.php',
+    'MonorepoBuilder20211031\\Symplify\\SymplifyKernel\\Contract\\LightKernelInterface' => $vendorDir . '/symplify/symplify-kernel/src/Contract/LightKernelInterface.php',
     'MonorepoBuilder20211031\\Symplify\\SymplifyKernel\\DependencyInjection\\Extension\\SymplifyKernelExtension' => $vendorDir . '/symplify/symplify-kernel/src/DependencyInjection/Extension/SymplifyKernelExtension.php',
     'MonorepoBuilder20211031\\Symplify\\SymplifyKernel\\Exception\\BootException' => $vendorDir . '/symplify/symplify-kernel/src/Exception/BootException.php',
     'MonorepoBuilder20211031\\Symplify\\SymplifyKernel\\Exception\\HttpKernel\\TooGenericKernelClassException' => $vendorDir . '/symplify/symplify-kernel/src/Exception/HttpKernel/TooGenericKernelClassException.php',
