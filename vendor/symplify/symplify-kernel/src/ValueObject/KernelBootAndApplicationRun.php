@@ -8,7 +8,6 @@ use MonorepoBuilder20211101\Symfony\Component\Console\Command\Command;
 use MonorepoBuilder20211101\Symfony\Component\HttpKernel\KernelInterface;
 use MonorepoBuilder20211101\Symplify\PackageBuilder\Console\Input\StaticInputDetector;
 use MonorepoBuilder20211101\Symplify\PackageBuilder\Console\Style\SymfonyStyleFactory;
-use MonorepoBuilder20211101\Symplify\PackageBuilder\Contract\HttpKernel\ExtraConfigAwareKernelInterface;
 use MonorepoBuilder20211101\Symplify\SymplifyKernel\Contract\LightKernelInterface;
 use MonorepoBuilder20211101\Symplify\SymplifyKernel\Exception\BootException;
 use Throwable;
@@ -57,9 +56,7 @@ final class KernelBootAndApplicationRun
             return new $kernelClass();
         }
         $environment = 'prod' . \random_int(1, 100000);
-        $kernel = new $kernelClass($environment, \MonorepoBuilder20211101\Symplify\PackageBuilder\Console\Input\StaticInputDetector::isDebug());
-        $this->setExtraConfigs($kernel, $kernelClass);
-        return $kernel;
+        return new $kernelClass($environment, \MonorepoBuilder20211101\Symplify\PackageBuilder\Console\Input\StaticInputDetector::isDebug());
     }
     private function booKernelAndRunApplication() : void
     {
@@ -67,28 +64,12 @@ final class KernelBootAndApplicationRun
         if ($kernel instanceof \MonorepoBuilder20211101\Symplify\SymplifyKernel\Contract\LightKernelInterface) {
             $container = $kernel->createFromConfigs($this->extraConfigs);
         } else {
-            if ($kernel instanceof \MonorepoBuilder20211101\Symplify\PackageBuilder\Contract\HttpKernel\ExtraConfigAwareKernelInterface && $this->extraConfigs !== []) {
-                $kernel->setConfigs($this->extraConfigs);
-            }
             $kernel->boot();
             $container = $kernel->getContainer();
         }
         /** @var Application $application */
         $application = $container->get(\MonorepoBuilder20211101\Symfony\Component\Console\Application::class);
         exit($application->run());
-    }
-    private function setExtraConfigs(\MonorepoBuilder20211101\Symfony\Component\HttpKernel\KernelInterface $kernel, string $kernelClass) : void
-    {
-        if ($this->extraConfigs === []) {
-            return;
-        }
-        if (\is_a($kernel, \MonorepoBuilder20211101\Symplify\PackageBuilder\Contract\HttpKernel\ExtraConfigAwareKernelInterface::class, \true)) {
-            /** @var ExtraConfigAwareKernelInterface $kernel */
-            $kernel->setConfigs($this->extraConfigs);
-        } else {
-            $message = \sprintf('Extra configs are set, but the "%s" kernel class is missing "%s" interface', $kernelClass, \MonorepoBuilder20211101\Symplify\PackageBuilder\Contract\HttpKernel\ExtraConfigAwareKernelInterface::class);
-            throw new \MonorepoBuilder20211101\Symplify\SymplifyKernel\Exception\BootException($message);
-        }
     }
     /**
      * @param class-string $kernelClass

@@ -17,7 +17,7 @@ return static function (\Symfony\Component\DependencyInjection\Loader\Configurat
     $parameters->set(\MonorepoBuilder20211101\Symplify\ComposerJsonManipulator\ValueObject\Option::INLINE_SECTIONS, ['keywords']);
     $services = $containerConfigurator->services();
     $services->defaults()->public()->autowire()->autoconfigure();
-    $services->load('MonorepoBuilder20211101\Symplify\ComposerJsonManipulator\\', __DIR__ . '/../src')->exclude([__DIR__ . '/../src/Bundle']);
+    $services->load('MonorepoBuilder20211101\Symplify\ComposerJsonManipulator\\', __DIR__ . '/../src');
     $services->set(\MonorepoBuilder20211101\Symplify\SmartFileSystem\SmartFileSystem::class);
     $services->set(\MonorepoBuilder20211101\Symplify\PackageBuilder\Reflection\PrivatesCaller::class);
     $services->set(\MonorepoBuilder20211101\Symplify\PackageBuilder\Parameter\ParameterProvider::class)->args([\MonorepoBuilder20211101\Symfony\Component\DependencyInjection\Loader\Configurator\service(\MonorepoBuilder20211101\Symfony\Component\DependencyInjection\ContainerInterface::class)]);

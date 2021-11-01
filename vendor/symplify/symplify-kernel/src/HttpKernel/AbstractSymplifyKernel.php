@@ -3,58 +3,42 @@
 declare (strict_types=1);
 namespace MonorepoBuilder20211101\Symplify\SymplifyKernel\HttpKernel;
 
-use MonorepoBuilder20211101\Symfony\Component\Config\Loader\LoaderInterface;
-use MonorepoBuilder20211101\Symfony\Component\HttpKernel\Bundle\BundleInterface;
-use MonorepoBuilder20211101\Symfony\Component\HttpKernel\Kernel;
-use MonorepoBuilder20211101\Symplify\PackageBuilder\Contract\HttpKernel\ExtraConfigAwareKernelInterface;
-use MonorepoBuilder20211101\Symplify\SmartFileSystem\SmartFileInfo;
-use MonorepoBuilder20211101\Symplify\SymplifyKernel\Bundle\SymplifyKernelBundle;
-use MonorepoBuilder20211101\Symplify\SymplifyKernel\Strings\KernelUniqueHasher;
-abstract class AbstractSymplifyKernel extends \MonorepoBuilder20211101\Symfony\Component\HttpKernel\Kernel implements \MonorepoBuilder20211101\Symplify\PackageBuilder\Contract\HttpKernel\ExtraConfigAwareKernelInterface
+use MonorepoBuilder20211101\Symfony\Component\DependencyInjection\Container;
+use MonorepoBuilder20211101\Symfony\Component\DependencyInjection\ContainerInterface;
+use MonorepoBuilder20211101\Symplify\AutowireArrayParameter\DependencyInjection\CompilerPass\AutowireArrayParameterCompilerPass;
+use MonorepoBuilder20211101\Symplify\SymfonyContainerBuilder\ContainerBuilderFactory;
+use MonorepoBuilder20211101\Symplify\SymplifyKernel\Contract\LightKernelInterface;
+use MonorepoBuilder20211101\Symplify\SymplifyKernel\DependencyInjection\Extension\SymplifyKernelExtension;
+use MonorepoBuilder20211101\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
+/**
+ * @api
+ */
+abstract class AbstractSymplifyKernel implements \MonorepoBuilder20211101\Symplify\SymplifyKernel\Contract\LightKernelInterface
 {
     /**
-     * @var string[]
+     * @var \Symfony\Component\DependencyInjection\Container|null
      */
-    private $configs = [];
-    public function getCacheDir() : string
-    {
-        return \sys_get_temp_dir() . '/' . $this->getUniqueKernelHash();
-    }
-    public function getLogDir() : string
-    {
-        return \sys_get_temp_dir() . '/' . $this->getUniqueKernelHash() . '_log';
-    }
+    private $container = null;
     /**
-     * @return BundleInterface[]
+     * @param string[] $configFiles
+     * @param mixed[] $extensions
+     * @param mixed[] $compilerPasses
      */
-    public function registerBundles() : iterable
+    public function create($extensions, $compilerPasses, $configFiles) : \MonorepoBuilder20211101\Symfony\Component\DependencyInjection\ContainerInterface
     {
-        return [new \MonorepoBuilder20211101\Symplify\SymplifyKernel\Bundle\SymplifyKernelBundle()];
+        $containerBuilderFactory = new \MonorepoBuilder20211101\Symplify\SymfonyContainerBuilder\ContainerBuilderFactory();
+        $extensions[] = new \MonorepoBuilder20211101\Symplify\SymplifyKernel\DependencyInjection\Extension\SymplifyKernelExtension();
+        $compilerPasses[] = new \MonorepoBuilder20211101\Symplify\AutowireArrayParameter\DependencyInjection\CompilerPass\AutowireArrayParameterCompilerPass();
+        $containerBuilder = $containerBuilderFactory->create($extensions, $compilerPasses, $configFiles);
+        $containerBuilder->compile();
+        $this->container = $containerBuilder;
+        return $containerBuilder;
     }
-    /**
-     * @param string[]|SmartFileInfo[] $configs
-     */
-    public function setConfigs($configs) : void
+    public function getContainer() : \MonorepoBuilder20211101\Psr\Container\ContainerInterface
     {
-        foreach ($configs as $config) {
-            if ($config instanceof \MonorepoBuilder20211101\Symplify\SmartFileSystem\SmartFileInfo) {
-                $config = $config->getRealPath();
-            }
-            $this->configs[] = $config;
+        if (!$this->container instanceof \MonorepoBuilder20211101\Symfony\Component\DependencyInjection\Container) {
+            throw new \MonorepoBuilder20211101\Symplify\SymplifyKernel\Exception\ShouldNotHappenException();
         }
-    }
-    /**
-     * @param \Symfony\Component\Config\Loader\LoaderInterface $loader
-     */
-    public function registerContainerConfiguration($loader) : void
-    {
-        foreach ($this->configs as $config) {
-            $loader->load($config);
-        }
-    }
-    private function getUniqueKernelHash() : string
-    {
-        $kernelUniqueHasher = new \MonorepoBuilder20211101\Symplify\SymplifyKernel\Strings\KernelUniqueHasher();
-        return $kernelUniqueHasher->hashKernelClass(static::class);
+        return $this->container;
     }
 }
