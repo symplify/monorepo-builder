@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Symplify\\MonorepoBuilder\\' => array($baseDir . '/src', $baseDir . '/packages'),
+    'MonorepoBuilder20211101\\Webmozart\\Assert\\' => array($vendorDir . '/webmozart/assert/src'),
     'MonorepoBuilder20211101\\Symplify\\SymplifyKernel\\' => array($vendorDir . '/symplify/symplify-kernel/src'),
     'MonorepoBuilder20211101\\Symplify\\SymfonyContainerBuilder\\' => array($vendorDir . '/symplify/symfony-container-builder/src'),
     'MonorepoBuilder20211101\\Symplify\\SmartFileSystem\\' => array($vendorDir . '/symplify/smart-file-system/src'),

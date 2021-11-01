@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit26d8b31c81528c0b499282f4f90dd084
+class ComposerStaticInitf39416e28559d58144fc4b924f93e6ac
 {
     public static $files = array (
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
@@ -25,6 +25,7 @@ class ComposerStaticInit26d8b31c81528c0b499282f4f90dd084
         ),
         'M' => 
         array (
+            'MonorepoBuilder20211101\\Webmozart\\Assert\\' => 41,
             'MonorepoBuilder20211101\\Symplify\\SymplifyKernel\\' => 48,
             'MonorepoBuilder20211101\\Symplify\\SymfonyContainerBuilder\\' => 57,
             'MonorepoBuilder20211101\\Symplify\\SmartFileSystem\\' => 49,
@@ -57,6 +58,10 @@ class ComposerStaticInit26d8b31c81528c0b499282f4f90dd084
         array (
             0 => __DIR__ . '/../..' . '/src',
             1 => __DIR__ . '/../..' . '/packages',
+        ),
+        'MonorepoBuilder20211101\\Webmozart\\Assert\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/webmozart/assert/src',
         ),
         'MonorepoBuilder20211101\\Symplify\\SymplifyKernel\\' => 
         array (
@@ -736,6 +741,9 @@ class ComposerStaticInit26d8b31c81528c0b499282f4f90dd084
         'MonorepoBuilder20211101\\Symplify\\SymplifyKernel\\HttpKernel\\AbstractSymplifyKernel' => __DIR__ . '/..' . '/symplify/symplify-kernel/src/HttpKernel/AbstractSymplifyKernel.php',
         'MonorepoBuilder20211101\\Symplify\\SymplifyKernel\\ValueObject\\KernelBootAndApplicationRun' => __DIR__ . '/..' . '/symplify/symplify-kernel/src/ValueObject/KernelBootAndApplicationRun.php',
         'MonorepoBuilder20211101\\Symplify\\SymplifyKernel\\ValueObject\\SymplifyKernelConfig' => __DIR__ . '/..' . '/symplify/symplify-kernel/src/ValueObject/SymplifyKernelConfig.php',
+        'MonorepoBuilder20211101\\Webmozart\\Assert\\Assert' => __DIR__ . '/..' . '/webmozart/assert/src/Assert.php',
+        'MonorepoBuilder20211101\\Webmozart\\Assert\\InvalidArgumentException' => __DIR__ . '/..' . '/webmozart/assert/src/InvalidArgumentException.php',
+        'MonorepoBuilder20211101\\Webmozart\\Assert\\Mixin' => __DIR__ . '/..' . '/webmozart/assert/src/Mixin.php',
         'Normalizer' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/Resources/stubs/Normalizer.php',
         'PharIo\\Version\\AbstractVersionConstraint' => __DIR__ . '/..' . '/phar-io/version/src/constraints/AbstractVersionConstraint.php',
         'PharIo\\Version\\AndVersionConstraintGroup' => __DIR__ . '/..' . '/phar-io/version/src/constraints/AndVersionConstraintGroup.php',
@@ -852,9 +860,9 @@ class ComposerStaticInit26d8b31c81528c0b499282f4f90dd084
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit26d8b31c81528c0b499282f4f90dd084::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit26d8b31c81528c0b499282f4f90dd084::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit26d8b31c81528c0b499282f4f90dd084::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitf39416e28559d58144fc4b924f93e6ac::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitf39416e28559d58144fc4b924f93e6ac::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitf39416e28559d58144fc4b924f93e6ac::$classMap;
 
         }, null, ClassLoader::class);
     }
