@@ -1,21 +1,21 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20211101\Symplify\SymfonyContainerBuilder;
+namespace MonorepoBuilder20211101\Symplify\SymplifyKernel;
 
 use MonorepoBuilder20211101\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use MonorepoBuilder20211101\Symfony\Component\DependencyInjection\ContainerBuilder;
 use MonorepoBuilder20211101\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
-use MonorepoBuilder20211101\Symplify\SymfonyContainerBuilder\Contract\Config\LoaderFactoryInterface;
-use MonorepoBuilder20211101\Symplify\SymfonyContainerBuilder\DependencyInjection\LoadExtensionConfigsCompilerPass;
+use MonorepoBuilder20211101\Symplify\SymplifyKernel\Contract\Config\LoaderFactoryInterface;
+use MonorepoBuilder20211101\Symplify\SymplifyKernel\DependencyInjection\LoadExtensionConfigsCompilerPass;
 use MonorepoBuilder20211101\Webmozart\Assert\Assert;
 final class ContainerBuilderFactory
 {
     /**
-     * @var \Symplify\SymfonyContainerBuilder\Contract\Config\LoaderFactoryInterface
+     * @var \Symplify\SymplifyKernel\Contract\Config\LoaderFactoryInterface
      */
     private $loaderFactory;
-    public function __construct(\MonorepoBuilder20211101\Symplify\SymfonyContainerBuilder\Contract\Config\LoaderFactoryInterface $loaderFactory)
+    public function __construct(\MonorepoBuilder20211101\Symplify\SymplifyKernel\Contract\Config\LoaderFactoryInterface $loaderFactory)
     {
         $this->loaderFactory = $loaderFactory;
     }
@@ -35,7 +35,7 @@ final class ContainerBuilderFactory
         // this calls load() method in every extensions
         // ensure these extensions are implicitly loaded
         $compilerPassConfig = $containerBuilder->getCompilerPassConfig();
-        $compilerPassConfig->setMergePass(new \MonorepoBuilder20211101\Symplify\SymfonyContainerBuilder\DependencyInjection\LoadExtensionConfigsCompilerPass());
+        $compilerPassConfig->setMergePass(new \MonorepoBuilder20211101\Symplify\SymplifyKernel\DependencyInjection\LoadExtensionConfigsCompilerPass());
         return $containerBuilder;
     }
     /**

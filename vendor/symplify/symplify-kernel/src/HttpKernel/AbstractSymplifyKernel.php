@@ -6,8 +6,8 @@ namespace MonorepoBuilder20211101\Symplify\SymplifyKernel\HttpKernel;
 use MonorepoBuilder20211101\Symfony\Component\DependencyInjection\Container;
 use MonorepoBuilder20211101\Symfony\Component\DependencyInjection\ContainerInterface;
 use MonorepoBuilder20211101\Symplify\AutowireArrayParameter\DependencyInjection\CompilerPass\AutowireArrayParameterCompilerPass;
-use MonorepoBuilder20211101\Symplify\SymfonyContainerBuilder\Config\Loader\ParameterMergingLoaderFactory;
-use MonorepoBuilder20211101\Symplify\SymfonyContainerBuilder\ContainerBuilderFactory;
+use MonorepoBuilder20211101\Symplify\SymplifyKernel\Config\Loader\ParameterMergingLoaderFactory;
+use MonorepoBuilder20211101\Symplify\SymplifyKernel\ContainerBuilderFactory;
 use MonorepoBuilder20211101\Symplify\SymplifyKernel\Contract\LightKernelInterface;
 use MonorepoBuilder20211101\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
 use MonorepoBuilder20211101\Symplify\SymplifyKernel\ValueObject\SymplifyKernelConfig;
@@ -27,7 +27,7 @@ abstract class AbstractSymplifyKernel implements \MonorepoBuilder20211101\Sympli
      */
     public function create($extensions, $compilerPasses, $configFiles) : \MonorepoBuilder20211101\Symfony\Component\DependencyInjection\ContainerInterface
     {
-        $containerBuilderFactory = new \MonorepoBuilder20211101\Symplify\SymfonyContainerBuilder\ContainerBuilderFactory(new \MonorepoBuilder20211101\Symplify\SymfonyContainerBuilder\Config\Loader\ParameterMergingLoaderFactory());
+        $containerBuilderFactory = new \MonorepoBuilder20211101\Symplify\SymplifyKernel\ContainerBuilderFactory(new \MonorepoBuilder20211101\Symplify\SymplifyKernel\Config\Loader\ParameterMergingLoaderFactory());
         $compilerPasses[] = new \MonorepoBuilder20211101\Symplify\AutowireArrayParameter\DependencyInjection\CompilerPass\AutowireArrayParameterCompilerPass();
         $configFiles[] = \MonorepoBuilder20211101\Symplify\SymplifyKernel\ValueObject\SymplifyKernelConfig::FILE_PATH;
         $containerBuilder = $containerBuilderFactory->create($extensions, $compilerPasses, $configFiles);

@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20211101\Symplify\SymfonyContainerBuilder\Config\Loader;
+namespace MonorepoBuilder20211101\Symplify\SymplifyKernel\Config\Loader;
 
 use MonorepoBuilder20211101\Symfony\Component\Config\FileLocator;
 use MonorepoBuilder20211101\Symfony\Component\Config\Loader\DelegatingLoader;
@@ -9,8 +9,8 @@ use MonorepoBuilder20211101\Symfony\Component\Config\Loader\GlobFileLoader;
 use MonorepoBuilder20211101\Symfony\Component\Config\Loader\LoaderResolver;
 use MonorepoBuilder20211101\Symfony\Component\DependencyInjection\ContainerBuilder;
 use MonorepoBuilder20211101\Symplify\PackageBuilder\DependencyInjection\FileLoader\ParameterMergingPhpFileLoader;
-use MonorepoBuilder20211101\Symplify\SymfonyContainerBuilder\Contract\Config\LoaderFactoryInterface;
-final class ParameterMergingLoaderFactory implements \MonorepoBuilder20211101\Symplify\SymfonyContainerBuilder\Contract\Config\LoaderFactoryInterface
+use MonorepoBuilder20211101\Symplify\SymplifyKernel\Contract\Config\LoaderFactoryInterface;
+final class ParameterMergingLoaderFactory implements \MonorepoBuilder20211101\Symplify\SymplifyKernel\Contract\Config\LoaderFactoryInterface
 {
     /**
      * @param \Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder

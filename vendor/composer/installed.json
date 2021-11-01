@@ -1707,7 +1707,7 @@
             "dist": {
                 "type": "path",
                 "url": "..\/..\/packages\/composer-json-manipulator",
-                "reference": "9b9a8193cc5224fa21faef95a14e681fcd5d7476"
+                "reference": "b83c68cd49d2439739d1dc3e0635c70276ed9161"
             },
             "require": {
                 "nette\/utils": "^3.2",
@@ -1717,7 +1717,7 @@
                 "symfony\/filesystem": "^5.3|^6.0",
                 "symplify\/package-builder": "dev-main",
                 "symplify\/smart-file-system": "dev-main",
-                "symplify\/symfony-container-builder": "dev-main"
+                "symplify\/symplify-kernel": "dev-main"
             },
             "conflict": {
                 "symplify\/amnesia": "<9.4.70",
@@ -1862,7 +1862,7 @@
             "dist": {
                 "type": "path",
                 "url": "..\/..\/packages\/easy-testing",
-                "reference": "ac1807b9e69b9a56ec1a02aed4023107e0d763d2"
+                "reference": "91c0060a0765bf00cf96b6b0cc9b8ab40d8a37da"
             },
             "require": {
                 "nette\/utils": "^3.2",
@@ -1872,7 +1872,6 @@
                 "symfony\/finder": "^5.3|^6.0",
                 "symplify\/package-builder": "dev-main",
                 "symplify\/smart-file-system": "dev-main",
-                "symplify\/symfony-container-builder": "dev-main",
                 "symplify\/symplify-kernel": "dev-main"
             },
             "conflict": {
@@ -1943,7 +1942,7 @@
             "dist": {
                 "type": "path",
                 "url": "..\/..\/packages\/package-builder",
-                "reference": "e7482064f87776f45f134f860a68dfcfe9c760eb"
+                "reference": "ef31102b006d39ba3d8ce5eb5a7b1dcf0a51b85d"
             },
             "require": {
                 "nette\/neon": "^3.2",
@@ -1954,7 +1953,6 @@
                 "symfony\/dependency-injection": "^5.3|^6.0",
                 "symfony\/finder": "^5.3|^6.0",
                 "symplify\/easy-testing": "dev-main",
-                "symplify\/symfony-container-builder": "dev-main",
                 "symplify\/symplify-kernel": "dev-main"
             },
             "conflict": {
@@ -2094,79 +2092,13 @@
             "install-path": "..\/symplify\/smart-file-system"
         },
         {
-            "name": "symplify\/symfony-container-builder",
-            "version": "dev-main",
-            "version_normalized": "dev-main",
-            "dist": {
-                "type": "path",
-                "url": "..\/..\/packages\/symfony-container-builder",
-                "reference": "92b362c53df98ecdc24aa55581238ac670c2bcbb"
-            },
-            "require": {
-                "php": ">=8.0",
-                "symfony\/config": "^5.3|^6.0",
-                "symfony\/dependency-injection": "^5.3|^6.0",
-                "symplify\/package-builder": "dev-main"
-            },
-            "conflict": {
-                "symplify\/amnesia": "<9.4.70",
-                "symplify\/astral": "<9.4.70",
-                "symplify\/autowire-array-parameter": "<9.4.70",
-                "symplify\/coding-standard": "<9.4.70",
-                "symplify\/composer-json-manipulator": "<9.4.70",
-                "symplify\/config-transformer": "<9.4.70",
-                "symplify\/console-color-diff": "<9.4.70",
-                "symplify\/easy-ci": "<9.4.70",
-                "symplify\/easy-coding-standard": "<9.4.70",
-                "symplify\/easy-testing": "<9.4.70",
-                "symplify\/git-wrapper": "<9.4.70",
-                "symplify\/latte-phpstan-compiler": "<9.4.70",
-                "symplify\/markdown-diff": "<9.4.70",
-                "symplify\/monorepo-builder": "<9.4.70",
-                "symplify\/php-config-printer": "<9.4.70",
-                "symplify\/phpstan-extensions": "<9.4.70",
-                "symplify\/phpstan-rules": "<9.4.70",
-                "symplify\/psr4-switcher": "<9.4.70",
-                "symplify\/rule-doc-generator": "<9.4.70",
-                "symplify\/rule-doc-generator-contracts": "<9.4.70",
-                "symplify\/simple-php-doc-parser": "<9.4.70",
-                "symplify\/skipper": "<9.4.70",
-                "symplify\/smart-file-system": "<9.4.70",
-                "symplify\/symfony-static-dumper": "<9.4.70",
-                "symplify\/template-phpstan-compiler": "<9.4.70",
-                "symplify\/twig-phpstan-compiler": "<9.4.70",
-                "symplify\/vendor-patches": "<9.4.70"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-main": "9.5-dev"
-                }
-            },
-            "installation-source": "dist",
-            "autoload": {
-                "psr-4": {
-                    "MonorepoBuilder20211101\\Symplify\\SymfonyContainerBuilder\\": "src"
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "description": "Missing component for only building dependency injection container",
-            "transport-options": {
-                "symlink": false,
-                "relative": true
-            },
-            "install-path": "..\/symplify\/symfony-container-builder"
-        },
-        {
             "name": "symplify\/symplify-kernel",
             "version": "dev-main",
             "version_normalized": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "..\/..\/packages\/symplify-kernel",
-                "reference": "0a60e0cb08f06e4bb32ed14cfbeed7c5804209de"
+                "reference": "e6abce7512869fda414e68bc3dd4bfe368d3bf8a"
             },
             "require": {
                 "php": ">=8.0",
@@ -2176,7 +2108,7 @@
                 "symplify\/composer-json-manipulator": "dev-main",
                 "symplify\/package-builder": "dev-main",
                 "symplify\/smart-file-system": "dev-main",
-                "symplify\/symfony-container-builder": "dev-main",
+                "symplify\/symplify-kernel": "dev-main",
                 "webmozart\/assert": "^1.10"
             },
             "conflict": {

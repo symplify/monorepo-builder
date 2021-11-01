@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20211101\Symplify\SymfonyContainerBuilder\DependencyInjection;
+namespace MonorepoBuilder20211101\Symplify\SymplifyKernel\DependencyInjection;
 
 use MonorepoBuilder20211101\Symfony\Component\DependencyInjection\Compiler\MergeExtensionConfigurationPass;
 use MonorepoBuilder20211101\Symfony\Component\DependencyInjection\ContainerBuilder;
