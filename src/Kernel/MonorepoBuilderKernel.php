@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace Symplify\MonorepoBuilder\HttpKernel;
+namespace Symplify\MonorepoBuilder\Kernel;
 
 use MonorepoBuilder20211101\Psr\Container\ContainerInterface;
 use MonorepoBuilder20211101\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonManipulatorConfig;

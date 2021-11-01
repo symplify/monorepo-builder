@@ -8,8 +8,8 @@ use MonorepoBuilder20211101\Symfony\Component\DependencyInjection\ContainerInter
 use MonorepoBuilder20211101\Symplify\AutowireArrayParameter\DependencyInjection\CompilerPass\AutowireArrayParameterCompilerPass;
 use MonorepoBuilder20211101\Symplify\SymfonyContainerBuilder\ContainerBuilderFactory;
 use MonorepoBuilder20211101\Symplify\SymplifyKernel\Contract\LightKernelInterface;
-use MonorepoBuilder20211101\Symplify\SymplifyKernel\DependencyInjection\Extension\SymplifyKernelExtension;
 use MonorepoBuilder20211101\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
+use MonorepoBuilder20211101\Symplify\SymplifyKernel\ValueObject\SymplifyKernelConfig;
 /**
  * @api
  */
@@ -27,8 +27,8 @@ abstract class AbstractSymplifyKernel implements \MonorepoBuilder20211101\Sympli
     public function create($extensions, $compilerPasses, $configFiles) : \MonorepoBuilder20211101\Symfony\Component\DependencyInjection\ContainerInterface
     {
         $containerBuilderFactory = new \MonorepoBuilder20211101\Symplify\SymfonyContainerBuilder\ContainerBuilderFactory();
-        $extensions[] = new \MonorepoBuilder20211101\Symplify\SymplifyKernel\DependencyInjection\Extension\SymplifyKernelExtension();
         $compilerPasses[] = new \MonorepoBuilder20211101\Symplify\AutowireArrayParameter\DependencyInjection\CompilerPass\AutowireArrayParameterCompilerPass();
+        $configFiles[] = \MonorepoBuilder20211101\Symplify\SymplifyKernel\ValueObject\SymplifyKernelConfig::FILE_PATH;
         $containerBuilder = $containerBuilderFactory->create($extensions, $compilerPasses, $configFiles);
         $containerBuilder->compile();
         $this->container = $containerBuilder;

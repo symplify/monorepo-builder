@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit9af99c2bd8e93f4bff7375cffd75cdb1
+class ComposerStaticInitc297cf1e85e48bf11077b46dbfcf0e3f
 {
     public static $files = array (
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
@@ -682,7 +682,7 @@ class ComposerStaticInit9af99c2bd8e93f4bff7375cffd75cdb1
         'MonorepoBuilder20211101\\Symplify\\EasyTesting\\DataProvider\\StaticFixtureUpdater' => __DIR__ . '/..' . '/symplify/easy-testing/src/DataProvider/StaticFixtureUpdater.php',
         'MonorepoBuilder20211101\\Symplify\\EasyTesting\\Finder\\FixtureFinder' => __DIR__ . '/..' . '/symplify/easy-testing/src/Finder/FixtureFinder.php',
         'MonorepoBuilder20211101\\Symplify\\EasyTesting\\FixtureSplitter\\TrioFixtureSplitter' => __DIR__ . '/..' . '/symplify/easy-testing/src/FixtureSplitter/TrioFixtureSplitter.php',
-        'MonorepoBuilder20211101\\Symplify\\EasyTesting\\HttpKernel\\EasyTestingKernel' => __DIR__ . '/..' . '/symplify/easy-testing/src/HttpKernel/EasyTestingKernel.php',
+        'MonorepoBuilder20211101\\Symplify\\EasyTesting\\Kernel\\EasyTestingKernel' => __DIR__ . '/..' . '/symplify/easy-testing/src/Kernel/EasyTestingKernel.php',
         'MonorepoBuilder20211101\\Symplify\\EasyTesting\\MissplacedSkipPrefixResolver' => __DIR__ . '/..' . '/symplify/easy-testing/src/MissplacedSkipPrefixResolver.php',
         'MonorepoBuilder20211101\\Symplify\\EasyTesting\\PHPUnit\\Behavior\\DirectoryAssertableTrait' => __DIR__ . '/..' . '/symplify/easy-testing/src/PHPUnit/Behavior/DirectoryAssertableTrait.php',
         'MonorepoBuilder20211101\\Symplify\\EasyTesting\\PHPUnit\\StaticPHPUnitEnvironment' => __DIR__ . '/..' . '/symplify/easy-testing/src/PHPUnit/StaticPHPUnitEnvironment.php',
@@ -730,9 +730,7 @@ class ComposerStaticInit9af99c2bd8e93f4bff7375cffd75cdb1
         'MonorepoBuilder20211101\\Symplify\\SymfonyContainerBuilder\\Config\\Loader\\ParameterMergingLoaderFactory' => __DIR__ . '/..' . '/symplify/symfony-container-builder/src/Config/Loader/ParameterMergingLoaderFactory.php',
         'MonorepoBuilder20211101\\Symplify\\SymfonyContainerBuilder\\ContainerBuilderFactory' => __DIR__ . '/..' . '/symplify/symfony-container-builder/src/ContainerBuilderFactory.php',
         'MonorepoBuilder20211101\\Symplify\\SymfonyContainerBuilder\\DependencyInjection\\LoadExtensionConfigsCompilerPass' => __DIR__ . '/..' . '/symplify/symfony-container-builder/src/DependencyInjection/LoadExtensionConfigsCompilerPass.php',
-        'MonorepoBuilder20211101\\Symplify\\SymplifyKernel\\Bundle\\SymplifyKernelBundle' => __DIR__ . '/..' . '/symplify/symplify-kernel/src/Bundle/SymplifyKernelBundle.php',
         'MonorepoBuilder20211101\\Symplify\\SymplifyKernel\\Contract\\LightKernelInterface' => __DIR__ . '/..' . '/symplify/symplify-kernel/src/Contract/LightKernelInterface.php',
-        'MonorepoBuilder20211101\\Symplify\\SymplifyKernel\\DependencyInjection\\Extension\\SymplifyKernelExtension' => __DIR__ . '/..' . '/symplify/symplify-kernel/src/DependencyInjection/Extension/SymplifyKernelExtension.php',
         'MonorepoBuilder20211101\\Symplify\\SymplifyKernel\\Exception\\BootException' => __DIR__ . '/..' . '/symplify/symplify-kernel/src/Exception/BootException.php',
         'MonorepoBuilder20211101\\Symplify\\SymplifyKernel\\Exception\\ShouldNotHappenException' => __DIR__ . '/..' . '/symplify/symplify-kernel/src/Exception/ShouldNotHappenException.php',
         'MonorepoBuilder20211101\\Symplify\\SymplifyKernel\\HttpKernel\\AbstractSymplifyKernel' => __DIR__ . '/..' . '/symplify/symplify-kernel/src/HttpKernel/AbstractSymplifyKernel.php',
@@ -774,9 +772,9 @@ class ComposerStaticInit9af99c2bd8e93f4bff7375cffd75cdb1
         'Symplify\\MonorepoBuilder\\Finder\\PackageComposerFinder' => __DIR__ . '/../..' . '/src/Finder/PackageComposerFinder.php',
         'Symplify\\MonorepoBuilder\\Git\\ExpectedAliasResolver' => __DIR__ . '/../..' . '/src/Git/ExpectedAliasResolver.php',
         'Symplify\\MonorepoBuilder\\Git\\MostRecentTagResolver' => __DIR__ . '/../..' . '/src/Git/MostRecentTagResolver.php',
-        'Symplify\\MonorepoBuilder\\HttpKernel\\MonorepoBuilderKernel' => __DIR__ . '/../..' . '/src/HttpKernel/MonorepoBuilderKernel.php',
         'Symplify\\MonorepoBuilder\\Init\\Command\\InitCommand' => __DIR__ . '/../..' . '/packages/Init/Command/InitCommand.php',
         'Symplify\\MonorepoBuilder\\Json\\PackageJsonProvider' => __DIR__ . '/../..' . '/src/Json/PackageJsonProvider.php',
+        'Symplify\\MonorepoBuilder\\Kernel\\MonorepoBuilderKernel' => __DIR__ . '/../..' . '/src/Kernel/MonorepoBuilderKernel.php',
         'Symplify\\MonorepoBuilder\\Merge\\Application\\MergedAndDecoratedComposerJsonFactory' => __DIR__ . '/../..' . '/packages/Merge/Application/MergedAndDecoratedComposerJsonFactory.php',
         'Symplify\\MonorepoBuilder\\Merge\\Arrays\\ArraySorter' => __DIR__ . '/../..' . '/packages/Merge/Arrays/ArraySorter.php',
         'Symplify\\MonorepoBuilder\\Merge\\Arrays\\SortedParameterMerger' => __DIR__ . '/../..' . '/packages/Merge/Arrays/SortedParameterMerger.php',
@@ -854,9 +852,9 @@ class ComposerStaticInit9af99c2bd8e93f4bff7375cffd75cdb1
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit9af99c2bd8e93f4bff7375cffd75cdb1::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit9af99c2bd8e93f4bff7375cffd75cdb1::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit9af99c2bd8e93f4bff7375cffd75cdb1::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitc297cf1e85e48bf11077b46dbfcf0e3f::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitc297cf1e85e48bf11077b46dbfcf0e3f::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitc297cf1e85e48bf11077b46dbfcf0e3f::$classMap;
 
         }, null, ClassLoader::class);
     }

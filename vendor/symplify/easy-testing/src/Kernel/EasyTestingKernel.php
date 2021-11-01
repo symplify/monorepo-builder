@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20211101\Symplify\EasyTesting\HttpKernel;
+namespace MonorepoBuilder20211101\Symplify\EasyTesting\Kernel;
 
 use MonorepoBuilder20211101\Psr\Container\ContainerInterface;
 use MonorepoBuilder20211101\Symplify\EasyTesting\ValueObject\EasyTestingConfig;

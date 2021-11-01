@@ -5,7 +5,7 @@ declare (strict_types=1);
 namespace MonorepoBuilder20211101;
 
 use MonorepoBuilder20211101\Symfony\Component\Console\Input\ArgvInput;
-use Symplify\MonorepoBuilder\HttpKernel\MonorepoBuilderKernel;
+use Symplify\MonorepoBuilder\Kernel\MonorepoBuilderKernel;
 use Symplify\MonorepoBuilder\ValueObject\File;
 use MonorepoBuilder20211101\Symplify\SymplifyKernel\ValueObject\KernelBootAndApplicationRun;
 # 1. autoload
@@ -33,7 +33,7 @@ $configFile = \MonorepoBuilder20211101\resolveConfigFile($argvInput);
 if (\is_string($configFile)) {
     $configFiles[] = $configFile;
 }
-$kernelBootAndApplicationRun = new \MonorepoBuilder20211101\Symplify\SymplifyKernel\ValueObject\KernelBootAndApplicationRun(\Symplify\MonorepoBuilder\HttpKernel\MonorepoBuilderKernel::class, $configFiles);
+$kernelBootAndApplicationRun = new \MonorepoBuilder20211101\Symplify\SymplifyKernel\ValueObject\KernelBootAndApplicationRun(\Symplify\MonorepoBuilder\Kernel\MonorepoBuilderKernel::class, $configFiles);
 $kernelBootAndApplicationRun->run();
 function resolveConfigFile(\MonorepoBuilder20211101\Symfony\Component\Console\Input\ArgvInput $argvInput) : ?string
 {

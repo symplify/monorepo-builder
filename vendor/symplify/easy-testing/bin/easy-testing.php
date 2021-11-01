@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace MonorepoBuilder20211101;
 
-use MonorepoBuilder20211101\Symplify\EasyTesting\HttpKernel\EasyTestingKernel;
+use MonorepoBuilder20211101\Symplify\EasyTesting\Kernel\EasyTestingKernel;
 use MonorepoBuilder20211101\Symplify\SymplifyKernel\ValueObject\KernelBootAndApplicationRun;
 $possibleAutoloadPaths = [
     // dependency
@@ -19,5 +19,5 @@ foreach ($possibleAutoloadPaths as $possibleAutoloadPath) {
         break;
     }
 }
-$kernelBootAndApplicationRun = new \MonorepoBuilder20211101\Symplify\SymplifyKernel\ValueObject\KernelBootAndApplicationRun(\MonorepoBuilder20211101\Symplify\EasyTesting\HttpKernel\EasyTestingKernel::class);
+$kernelBootAndApplicationRun = new \MonorepoBuilder20211101\Symplify\SymplifyKernel\ValueObject\KernelBootAndApplicationRun(\MonorepoBuilder20211101\Symplify\EasyTesting\Kernel\EasyTestingKernel::class);
 $kernelBootAndApplicationRun->run();
