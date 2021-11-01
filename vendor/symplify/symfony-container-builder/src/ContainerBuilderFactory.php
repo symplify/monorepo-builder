@@ -6,18 +6,18 @@ namespace MonorepoBuilder20211101\Symplify\SymfonyContainerBuilder;
 use MonorepoBuilder20211101\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use MonorepoBuilder20211101\Symfony\Component\DependencyInjection\ContainerBuilder;
 use MonorepoBuilder20211101\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
-use MonorepoBuilder20211101\Symplify\SymfonyContainerBuilder\Config\Loader\ParameterMergingLoaderFactory;
+use MonorepoBuilder20211101\Symplify\SymfonyContainerBuilder\Contract\Config\LoaderFactoryInterface;
 use MonorepoBuilder20211101\Symplify\SymfonyContainerBuilder\DependencyInjection\LoadExtensionConfigsCompilerPass;
 use MonorepoBuilder20211101\Webmozart\Assert\Assert;
 final class ContainerBuilderFactory
 {
     /**
-     * @var \Symplify\SymfonyContainerBuilder\Config\Loader\ParameterMergingLoaderFactory
+     * @var \Symplify\SymfonyContainerBuilder\Contract\Config\LoaderFactoryInterface
      */
-    private $parameterMergingLoaderFactory;
-    public function __construct()
+    private $loaderFactory;
+    public function __construct(\MonorepoBuilder20211101\Symplify\SymfonyContainerBuilder\Contract\Config\LoaderFactoryInterface $loaderFactory)
     {
-        $this->parameterMergingLoaderFactory = new \MonorepoBuilder20211101\Symplify\SymfonyContainerBuilder\Config\Loader\ParameterMergingLoaderFactory();
+        $this->loaderFactory = $loaderFactory;
     }
     /**
      * @param ExtensionInterface[] $extensions
@@ -61,7 +61,7 @@ final class ContainerBuilderFactory
      */
     private function registerConfigFiles(\MonorepoBuilder20211101\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder, array $configFiles) : void
     {
-        $delegatingLoader = $this->parameterMergingLoaderFactory->create($containerBuilder, \getcwd());
+        $delegatingLoader = $this->loaderFactory->create($containerBuilder, \getcwd());
         foreach ($configFiles as $configFile) {
             $delegatingLoader->load($configFile);
         }

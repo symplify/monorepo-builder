@@ -578,6 +578,7 @@ return array(
     'MonorepoBuilder20211101\\Symplify\\SmartFileSystem\\SmartFileSystem' => $vendorDir . '/symplify/smart-file-system/src/SmartFileSystem.php',
     'MonorepoBuilder20211101\\Symplify\\SymfonyContainerBuilder\\Config\\Loader\\ParameterMergingLoaderFactory' => $vendorDir . '/symplify/symfony-container-builder/src/Config/Loader/ParameterMergingLoaderFactory.php',
     'MonorepoBuilder20211101\\Symplify\\SymfonyContainerBuilder\\ContainerBuilderFactory' => $vendorDir . '/symplify/symfony-container-builder/src/ContainerBuilderFactory.php',
+    'MonorepoBuilder20211101\\Symplify\\SymfonyContainerBuilder\\Contract\\Config\\LoaderFactoryInterface' => $vendorDir . '/symplify/symfony-container-builder/src/Contract/Config/LoaderFactoryInterface.php',
     'MonorepoBuilder20211101\\Symplify\\SymfonyContainerBuilder\\DependencyInjection\\LoadExtensionConfigsCompilerPass' => $vendorDir . '/symplify/symfony-container-builder/src/DependencyInjection/LoadExtensionConfigsCompilerPass.php',
     'MonorepoBuilder20211101\\Symplify\\SymplifyKernel\\Contract\\LightKernelInterface' => $vendorDir . '/symplify/symplify-kernel/src/Contract/LightKernelInterface.php',
     'MonorepoBuilder20211101\\Symplify\\SymplifyKernel\\Exception\\BootException' => $vendorDir . '/symplify/symplify-kernel/src/Exception/BootException.php',
