@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211031\Symfony\Component\HttpKernel;
+namespace MonorepoBuilder20211101\Symfony\Component\HttpKernel;
 
-use MonorepoBuilder20211031\Symfony\Component\HttpFoundation\Request;
-use MonorepoBuilder20211031\Symfony\Component\HttpFoundation\Response;
+use MonorepoBuilder20211101\Symfony\Component\HttpFoundation\Request;
+use MonorepoBuilder20211101\Symfony\Component\HttpFoundation\Response;
 /**
  * HttpKernelInterface handles a Request to convert it to a Response.
  *

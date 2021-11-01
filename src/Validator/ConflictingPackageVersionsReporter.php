@@ -3,15 +3,15 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Validator;
 
-use MonorepoBuilder20211031\Symfony\Component\Console\Style\SymfonyStyle;
-use MonorepoBuilder20211031\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder20211101\Symfony\Component\Console\Style\SymfonyStyle;
+use MonorepoBuilder20211101\Symplify\SmartFileSystem\SmartFileInfo;
 final class ConflictingPackageVersionsReporter
 {
     /**
      * @var \Symfony\Component\Console\Style\SymfonyStyle
      */
     private $symfonyStyle;
-    public function __construct(\MonorepoBuilder20211031\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle)
+    public function __construct(\MonorepoBuilder20211101\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle)
     {
         $this->symfonyStyle = $symfonyStyle;
     }
@@ -36,7 +36,7 @@ final class ConflictingPackageVersionsReporter
     {
         $tableRows = [];
         foreach ($filesToVersions as $file => $version) {
-            $fileInfo = new \MonorepoBuilder20211031\Symplify\SmartFileSystem\SmartFileInfo($file);
+            $fileInfo = new \MonorepoBuilder20211101\Symplify\SmartFileSystem\SmartFileInfo($file);
             $tableRows[] = [$fileInfo->getRelativeFilePathFromCwd(), $version];
         }
         return $tableRows;

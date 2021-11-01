@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20211031\Symplify\SymplifyKernel\Strings;
+namespace MonorepoBuilder20211101\Symplify\SymplifyKernel\Strings;
 
-use MonorepoBuilder20211031\Nette\Utils\Strings;
-use MonorepoBuilder20211031\Symplify\SymplifyKernel\Exception\HttpKernel\TooGenericKernelClassException;
-use MonorepoBuilder20211031\Symplify\SymplifyKernel\HttpKernel\AbstractSymplifyKernel;
+use MonorepoBuilder20211101\Nette\Utils\Strings;
+use MonorepoBuilder20211101\Symplify\SymplifyKernel\Exception\HttpKernel\TooGenericKernelClassException;
+use MonorepoBuilder20211101\Symplify\SymplifyKernel\HttpKernel\AbstractSymplifyKernel;
 final class KernelUniqueHasher
 {
     /**
@@ -14,21 +14,21 @@ final class KernelUniqueHasher
     private $stringsConverter;
     public function __construct()
     {
-        $this->stringsConverter = new \MonorepoBuilder20211031\Symplify\SymplifyKernel\Strings\StringsConverter();
+        $this->stringsConverter = new \MonorepoBuilder20211101\Symplify\SymplifyKernel\Strings\StringsConverter();
     }
     public function hashKernelClass(string $kernelClass) : string
     {
         $this->ensureIsNotGenericKernelClass($kernelClass);
-        $shortClassName = (string) \MonorepoBuilder20211031\Nette\Utils\Strings::after($kernelClass, '\\', -1);
+        $shortClassName = (string) \MonorepoBuilder20211101\Nette\Utils\Strings::after($kernelClass, '\\', -1);
         $userSpecificShortClassName = $shortClassName . \get_current_user();
         return $this->stringsConverter->camelCaseToGlue($userSpecificShortClassName, '_');
     }
     private function ensureIsNotGenericKernelClass(string $kernelClass) : void
     {
-        if ($kernelClass !== \MonorepoBuilder20211031\Symplify\SymplifyKernel\HttpKernel\AbstractSymplifyKernel::class) {
+        if ($kernelClass !== \MonorepoBuilder20211101\Symplify\SymplifyKernel\HttpKernel\AbstractSymplifyKernel::class) {
             return;
         }
-        $message = \sprintf('Instead of "%s", provide final Kernel class', \MonorepoBuilder20211031\Symplify\SymplifyKernel\HttpKernel\AbstractSymplifyKernel::class);
-        throw new \MonorepoBuilder20211031\Symplify\SymplifyKernel\Exception\HttpKernel\TooGenericKernelClassException($message);
+        $message = \sprintf('Instead of "%s", provide final Kernel class', \MonorepoBuilder20211101\Symplify\SymplifyKernel\HttpKernel\AbstractSymplifyKernel::class);
+        throw new \MonorepoBuilder20211101\Symplify\SymplifyKernel\Exception\HttpKernel\TooGenericKernelClassException($message);
     }
 }
