@@ -54,6 +54,22 @@ final class ComposerJsonProvider
         }
         return $packageComposerJsons;
     }
+    /**
+     * @return string[]
+     */
+    public function getPackageNames() : array
+    {
+        $packageNames = [];
+        foreach ($this->getPackagesComposerFileInfos() as $packagesComposerFileInfo) {
+            $packageComposerJson = $this->composerJsonFactory->createFromFileInfo($packagesComposerFileInfo);
+            $packageName = $packageComposerJson->getName();
+            if (!\is_string($packageName)) {
+                continue;
+            }
+            $packageNames[] = $packageName;
+        }
+        return $packageNames;
+    }
     public function getPackageFileInfoByName(string $packageName) : \MonorepoBuilder20211102\Symplify\SmartFileSystem\SmartFileInfo
     {
         foreach ($this->getPackagesComposerFileInfos() as $packagesComposerFileInfo) {
