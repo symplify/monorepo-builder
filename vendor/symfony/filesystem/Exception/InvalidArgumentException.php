@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211102\Symfony\Component\Filesystem\Exception;
+namespace MonorepoBuilder20211103\Symfony\Component\Filesystem\Exception;
 
 /**
  * @author Christian Flothmann <christian.flothmann@sensiolabs.de>
  */
-class InvalidArgumentException extends \InvalidArgumentException implements \MonorepoBuilder20211102\Symfony\Component\Filesystem\Exception\ExceptionInterface
+class InvalidArgumentException extends \InvalidArgumentException implements \MonorepoBuilder20211103\Symfony\Component\Filesystem\Exception\ExceptionInterface
 {
 }
