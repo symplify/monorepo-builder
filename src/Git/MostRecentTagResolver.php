@@ -3,8 +3,9 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Git;
 
+use Symplify\MonorepoBuilder\Contract\Git\TagResolverInterface;
 use Symplify\MonorepoBuilder\Release\Process\ProcessRunner;
-final class MostRecentTagResolver
+final class MostRecentTagResolver implements \Symplify\MonorepoBuilder\Contract\Git\TagResolverInterface
 {
     /**
      * @var string[]
@@ -20,8 +21,9 @@ final class MostRecentTagResolver
     }
     /**
      * Returns null, when there are no local tags yet
+     * @param string $gitDirectory
      */
-    public function resolve(string $gitDirectory) : ?string
+    public function resolve($gitDirectory) : ?string
     {
         $tagList = $this->parseTags($this->processRunner->run(self::COMMAND, $gitDirectory));
         /** @var string $theMostRecentTag */

@@ -4,7 +4,7 @@ declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Release\Version;
 
 use PharIo\Version\Version;
-use Symplify\MonorepoBuilder\Git\MostRecentTagResolver;
+use Symplify\MonorepoBuilder\Contract\Git\TagResolverInterface;
 use Symplify\MonorepoBuilder\Release\Guard\ReleaseGuard;
 use Symplify\MonorepoBuilder\Release\ValueObject\SemVersion;
 final class VersionFactory
@@ -14,13 +14,13 @@ final class VersionFactory
      */
     private $releaseGuard;
     /**
-     * @var \Symplify\MonorepoBuilder\Git\MostRecentTagResolver
+     * @var \Symplify\MonorepoBuilder\Contract\Git\TagResolverInterface
      */
-    private $mostRecentTagResolver;
-    public function __construct(\Symplify\MonorepoBuilder\Release\Guard\ReleaseGuard $releaseGuard, \Symplify\MonorepoBuilder\Git\MostRecentTagResolver $mostRecentTagResolver)
+    private $tagResolver;
+    public function __construct(\Symplify\MonorepoBuilder\Release\Guard\ReleaseGuard $releaseGuard, \Symplify\MonorepoBuilder\Contract\Git\TagResolverInterface $tagResolver)
     {
         $this->releaseGuard = $releaseGuard;
-        $this->mostRecentTagResolver = $mostRecentTagResolver;
+        $this->tagResolver = $tagResolver;
     }
     public function createValidVersion(string $versionArgument, string $stage) : \PharIo\Version\Version
     {
@@ -37,7 +37,7 @@ final class VersionFactory
     private function resolveNextVersionByVersionKind(string $versionKind) : \PharIo\Version\Version
     {
         // get current version
-        $mostRecentVersion = $this->mostRecentTagResolver->resolve(\getcwd());
+        $mostRecentVersion = $this->tagResolver->resolve(\getcwd());
         if ($mostRecentVersion === null) {
             // the very first tag
             return new \PharIo\Version\Version('v0.1.0');

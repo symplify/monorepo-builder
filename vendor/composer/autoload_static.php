@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitdabb56dfe1bd825ae99aaddd99923e95
+class ComposerStaticInit6cec7a42d7747f68240a6694cf18a155
 {
     public static $files = array (
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
@@ -768,6 +768,7 @@ class ComposerStaticInitdabb56dfe1bd825ae99aaddd99923e95
         'Symplify\\MonorepoBuilder\\Command\\ValidateCommand' => __DIR__ . '/../..' . '/src/Command/ValidateCommand.php',
         'Symplify\\MonorepoBuilder\\ConflictingUpdater' => __DIR__ . '/../..' . '/src/ConflictingUpdater.php',
         'Symplify\\MonorepoBuilder\\Console\\MonorepoBuilderConsoleApplication' => __DIR__ . '/../..' . '/src/Console/MonorepoBuilderConsoleApplication.php',
+        'Symplify\\MonorepoBuilder\\Contract\\Git\\TagResolverInterface' => __DIR__ . '/../..' . '/src/Contract/Git/TagResolverInterface.php',
         'Symplify\\MonorepoBuilder\\DependencyUpdater' => __DIR__ . '/../..' . '/src/DependencyUpdater.php',
         'Symplify\\MonorepoBuilder\\DevMasterAliasUpdater' => __DIR__ . '/../..' . '/src/DevMasterAliasUpdater.php',
         'Symplify\\MonorepoBuilder\\Exception\\Git\\InvalidGitVersionException' => __DIR__ . '/../..' . '/src/Exception/Git/InvalidGitVersionException.php',
@@ -856,9 +857,9 @@ class ComposerStaticInitdabb56dfe1bd825ae99aaddd99923e95
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitdabb56dfe1bd825ae99aaddd99923e95::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitdabb56dfe1bd825ae99aaddd99923e95::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitdabb56dfe1bd825ae99aaddd99923e95::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit6cec7a42d7747f68240a6694cf18a155::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit6cec7a42d7747f68240a6694cf18a155::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit6cec7a42d7747f68240a6694cf18a155::$classMap;
 
         }, null, ClassLoader::class);
     }

@@ -617,6 +617,7 @@ return array(
     'Symplify\\MonorepoBuilder\\Command\\ValidateCommand' => $baseDir . '/src/Command/ValidateCommand.php',
     'Symplify\\MonorepoBuilder\\ConflictingUpdater' => $baseDir . '/src/ConflictingUpdater.php',
     'Symplify\\MonorepoBuilder\\Console\\MonorepoBuilderConsoleApplication' => $baseDir . '/src/Console/MonorepoBuilderConsoleApplication.php',
+    'Symplify\\MonorepoBuilder\\Contract\\Git\\TagResolverInterface' => $baseDir . '/src/Contract/Git/TagResolverInterface.php',
     'Symplify\\MonorepoBuilder\\DependencyUpdater' => $baseDir . '/src/DependencyUpdater.php',
     'Symplify\\MonorepoBuilder\\DevMasterAliasUpdater' => $baseDir . '/src/DevMasterAliasUpdater.php',
     'Symplify\\MonorepoBuilder\\Exception\\Git\\InvalidGitVersionException' => $baseDir . '/src/Exception/Git/InvalidGitVersionException.php',

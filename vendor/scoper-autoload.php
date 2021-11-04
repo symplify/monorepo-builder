@@ -6,8 +6,8 @@ $loader = require_once __DIR__.'/autoload.php';
 
 // Aliases for the whitelisted classes. For more information see:
 // https://github.com/humbug/php-scoper/blob/master/README.md#class-whitelisting
-if (!class_exists('ComposerAutoloaderInitdabb56dfe1bd825ae99aaddd99923e95', false) && !interface_exists('ComposerAutoloaderInitdabb56dfe1bd825ae99aaddd99923e95', false) && !trait_exists('ComposerAutoloaderInitdabb56dfe1bd825ae99aaddd99923e95', false)) {
-    spl_autoload_call('MonorepoBuilder20211104\ComposerAutoloaderInitdabb56dfe1bd825ae99aaddd99923e95');
+if (!class_exists('ComposerAutoloaderInit6cec7a42d7747f68240a6694cf18a155', false) && !interface_exists('ComposerAutoloaderInit6cec7a42d7747f68240a6694cf18a155', false) && !trait_exists('ComposerAutoloaderInit6cec7a42d7747f68240a6694cf18a155', false)) {
+    spl_autoload_call('MonorepoBuilder20211104\ComposerAutoloaderInit6cec7a42d7747f68240a6694cf18a155');
 }
 if (!class_exists('Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator', false) && !interface_exists('Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator', false) && !trait_exists('Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator', false)) {
     spl_autoload_call('MonorepoBuilder20211104\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator');
@@ -44,9 +44,9 @@ if (!function_exists('resolveConfigFile')) {
         return \MonorepoBuilder20211104\resolveConfigFile(...func_get_args());
     }
 }
-if (!function_exists('composerRequiredabb56dfe1bd825ae99aaddd99923e95')) {
-    function composerRequiredabb56dfe1bd825ae99aaddd99923e95() {
-        return \MonorepoBuilder20211104\composerRequiredabb56dfe1bd825ae99aaddd99923e95(...func_get_args());
+if (!function_exists('composerRequire6cec7a42d7747f68240a6694cf18a155')) {
+    function composerRequire6cec7a42d7747f68240a6694cf18a155() {
+        return \MonorepoBuilder20211104\composerRequire6cec7a42d7747f68240a6694cf18a155(...func_get_args());
     }
 }
 if (!function_exists('setproctitle')) {

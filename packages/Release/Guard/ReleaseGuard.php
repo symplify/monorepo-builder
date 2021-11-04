@@ -5,7 +5,7 @@ namespace Symplify\MonorepoBuilder\Release\Guard;
 
 use PharIo\Version\Version;
 use Symplify\MonorepoBuilder\Exception\Git\InvalidGitVersionException;
-use Symplify\MonorepoBuilder\Git\MostRecentTagResolver;
+use Symplify\MonorepoBuilder\Contract\Git\TagResolverInterface;
 use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface;
 use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\StageAwareInterface;
 use Symplify\MonorepoBuilder\Release\Exception\ConfigurationException;
@@ -27,9 +27,9 @@ final class ReleaseGuard
      */
     private $stagesToAllowExistingTag = [];
     /**
-     * @var \Symplify\MonorepoBuilder\Git\MostRecentTagResolver
+     * @var \Symplify\MonorepoBuilder\Contract\Git\TagResolverInterface
      */
-    private $mostRecentTagResolver;
+    private $tagResolver;
     /**
      * @var \Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface[]
      */
@@ -37,9 +37,9 @@ final class ReleaseGuard
     /**
      * @param ReleaseWorkerInterface[] $releaseWorkers
      */
-    public function __construct(\MonorepoBuilder20211104\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider, \Symplify\MonorepoBuilder\Git\MostRecentTagResolver $mostRecentTagResolver, array $releaseWorkers)
+    public function __construct(\MonorepoBuilder20211104\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider, \Symplify\MonorepoBuilder\Contract\Git\TagResolverInterface $tagResolver, array $releaseWorkers)
     {
-        $this->mostRecentTagResolver = $mostRecentTagResolver;
+        $this->tagResolver = $tagResolver;
         $this->releaseWorkers = $releaseWorkers;
         $this->isStageRequired = $parameterProvider->provideBoolParameter(\Symplify\MonorepoBuilder\ValueObject\Option::IS_STAGE_REQUIRED);
         $this->stagesToAllowExistingTag = $parameterProvider->provideArrayParameter(\Symplify\MonorepoBuilder\ValueObject\Option::STAGES_TO_ALLOW_EXISTING_TAG);
@@ -93,7 +93,7 @@ final class ReleaseGuard
     }
     private function ensureVersionIsNewerThanLastOne(\PharIo\Version\Version $version) : void
     {
-        $mostRecentVersion = $this->mostRecentTagResolver->resolve(\getcwd());
+        $mostRecentVersion = $this->tagResolver->resolve(\getcwd());
         // no tag yet
         if ($mostRecentVersion === null) {
             return;
