@@ -3,10 +3,10 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Propagate;
 
-use MonorepoBuilder20211103\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
+use MonorepoBuilder20211104\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
 final class VersionPropagator
 {
-    public function propagate(\MonorepoBuilder20211103\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $mainComposerJson, \MonorepoBuilder20211103\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $otherComposerJson) : void
+    public function propagate(\MonorepoBuilder20211104\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $mainComposerJson, \MonorepoBuilder20211104\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $otherComposerJson) : void
     {
         $packagesToVersions = \array_merge($mainComposerJson->getRequire(), $mainComposerJson->getRequireDev());
         foreach ($packagesToVersions as $packageName => $packageVersion) {

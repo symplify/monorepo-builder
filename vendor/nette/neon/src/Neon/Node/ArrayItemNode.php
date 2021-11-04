@@ -5,11 +5,11 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace MonorepoBuilder20211103\Nette\Neon\Node;
+namespace MonorepoBuilder20211104\Nette\Neon\Node;
 
-use MonorepoBuilder20211103\Nette\Neon\Node;
+use MonorepoBuilder20211104\Nette\Neon\Node;
 /** @internal */
-final class ArrayItemNode extends \MonorepoBuilder20211103\Nette\Neon\Node
+final class ArrayItemNode extends \MonorepoBuilder20211104\Nette\Neon\Node
 {
     /** @var ?Node */
     public $key;
