@@ -4,14 +4,14 @@ declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Release\Guard;
 
 use PharIo\Version\Version;
-use Symplify\MonorepoBuilder\Exception\Git\InvalidGitVersionException;
 use Symplify\MonorepoBuilder\Contract\Git\TagResolverInterface;
+use Symplify\MonorepoBuilder\Exception\Git\InvalidGitVersionException;
 use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface;
 use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\StageAwareInterface;
 use Symplify\MonorepoBuilder\Release\Exception\ConfigurationException;
 use Symplify\MonorepoBuilder\Release\ValueObject\Stage;
 use Symplify\MonorepoBuilder\ValueObject\Option;
-use MonorepoBuilder20211104\Symplify\PackageBuilder\Parameter\ParameterProvider;
+use MonorepoBuilder20211106\Symplify\PackageBuilder\Parameter\ParameterProvider;
 final class ReleaseGuard
 {
     /**
@@ -37,7 +37,7 @@ final class ReleaseGuard
     /**
      * @param ReleaseWorkerInterface[] $releaseWorkers
      */
-    public function __construct(\MonorepoBuilder20211104\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider, \Symplify\MonorepoBuilder\Contract\Git\TagResolverInterface $tagResolver, array $releaseWorkers)
+    public function __construct(\MonorepoBuilder20211106\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider, \Symplify\MonorepoBuilder\Contract\Git\TagResolverInterface $tagResolver, array $releaseWorkers)
     {
         $this->tagResolver = $tagResolver;
         $this->releaseWorkers = $releaseWorkers;

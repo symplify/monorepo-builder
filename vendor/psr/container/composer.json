@@ -18,11 +18,11 @@
         }
     ],
     "require": {
-        "php": ">=7.2.0"
+        "php": ">=7.4.0"
     },
     "autoload": {
         "psr-4": {
-            "MonorepoBuilder20211104\\Psr\\Container\\": "src\/"
+            "MonorepoBuilder20211106\\Psr\\Container\\": "src\/"
         }
     }
 }
