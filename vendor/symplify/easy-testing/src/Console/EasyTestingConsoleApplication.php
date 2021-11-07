@@ -1,17 +1,17 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20211106\Symplify\EasyTesting\Console;
+namespace MonorepoBuilder20211107\Symplify\EasyTesting\Console;
 
-use MonorepoBuilder20211106\Symfony\Component\Console\Application;
-use MonorepoBuilder20211106\Symfony\Component\Console\Command\Command;
-use MonorepoBuilder20211106\Symplify\PackageBuilder\Console\Command\CommandNaming;
-final class EasyTestingConsoleApplication extends \MonorepoBuilder20211106\Symfony\Component\Console\Application
+use MonorepoBuilder20211107\Symfony\Component\Console\Application;
+use MonorepoBuilder20211107\Symfony\Component\Console\Command\Command;
+use MonorepoBuilder20211107\Symplify\PackageBuilder\Console\Command\CommandNaming;
+final class EasyTestingConsoleApplication extends \MonorepoBuilder20211107\Symfony\Component\Console\Application
 {
     /**
      * @param Command[] $commands
      */
-    public function __construct(\MonorepoBuilder20211106\Symplify\PackageBuilder\Console\Command\CommandNaming $commandNaming, array $commands)
+    public function __construct(\MonorepoBuilder20211107\Symplify\PackageBuilder\Console\Command\CommandNaming $commandNaming, array $commands)
     {
         foreach ($commands as $command) {
             $commandName = $commandNaming->resolveFromCommand($command);

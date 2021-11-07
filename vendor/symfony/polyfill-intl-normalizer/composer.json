@@ -27,7 +27,7 @@
     },
     "autoload": {
         "psr-4": {
-            "MonorepoBuilder20211106\\Symfony\\Polyfill\\Intl\\Normalizer\\": ""
+            "MonorepoBuilder20211107\\Symfony\\Polyfill\\Intl\\Normalizer\\": ""
         },
         "files": [
             "bootstrap.php"
