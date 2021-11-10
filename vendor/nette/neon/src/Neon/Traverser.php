@@ -5,24 +5,24 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace MonorepoBuilder20211107\Nette\Neon;
+namespace MonorepoBuilder20211110\Nette\Neon;
 
 /** @internal */
 final class Traverser
 {
-    /** @var callable(Node): void */
+    /** @var callable(Node): ?Node */
     private $callback;
-    /** @param  callable(Node): void  $callback */
-    public function traverse(\MonorepoBuilder20211107\Nette\Neon\Node $node, callable $callback) : \MonorepoBuilder20211107\Nette\Neon\Node
+    /** @param  callable(Node): ?Node  $callback */
+    public function traverse(\MonorepoBuilder20211110\Nette\Neon\Node $node, callable $callback) : \MonorepoBuilder20211110\Nette\Neon\Node
     {
         $this->callback = $callback;
         return $this->traverseNode($node);
     }
-    private function traverseNode(\MonorepoBuilder20211107\Nette\Neon\Node $node) : \MonorepoBuilder20211107\Nette\Neon\Node
+    private function traverseNode(\MonorepoBuilder20211110\Nette\Neon\Node $node) : \MonorepoBuilder20211110\Nette\Neon\Node
     {
-        ($this->callback)($node);
-        foreach ($node->getSubNodes() as $subnode) {
-            $this->traverseNode($subnode);
+        $node = ($this->callback)($node) ?? $node;
+        foreach ($node->getSubNodes() as &$subnode) {
+            $subnode = $this->traverseNode($subnode);
         }
         return $node;
     }

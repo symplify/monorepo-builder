@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211107\Symfony\Component\DependencyInjection\Exception;
+namespace MonorepoBuilder20211110\Symfony\Component\DependencyInjection\Exception;
 
 /**
  * This exception is thrown when a circular reference in a parameter is detected.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class ParameterCircularReferenceException extends \MonorepoBuilder20211107\Symfony\Component\DependencyInjection\Exception\RuntimeException
+class ParameterCircularReferenceException extends \MonorepoBuilder20211110\Symfony\Component\DependencyInjection\Exception\RuntimeException
 {
     private $parameters;
     public function __construct(array $parameters, \Throwable $previous = null)
