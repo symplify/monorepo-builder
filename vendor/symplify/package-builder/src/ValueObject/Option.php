@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20211110\Symplify\PackageBuilder\ValueObject;
+namespace MonorepoBuilder20211111\Symplify\PackageBuilder\ValueObject;
 
 final class Option
 {

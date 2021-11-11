@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211110\Symfony\Component\Config\Definition\Builder;
+namespace MonorepoBuilder20211111\Symfony\Component\Config\Definition\Builder;
 
-use MonorepoBuilder20211110\Symfony\Component\Config\Definition\FloatNode;
+use MonorepoBuilder20211111\Symfony\Component\Config\Definition\FloatNode;
 /**
  * This class provides a fluent interface for defining a float node.
  *
  * @author Jeanmonod David <david.jeanmonod@gmail.com>
  */
-class FloatNodeDefinition extends \MonorepoBuilder20211110\Symfony\Component\Config\Definition\Builder\NumericNodeDefinition
+class FloatNodeDefinition extends \MonorepoBuilder20211111\Symfony\Component\Config\Definition\Builder\NumericNodeDefinition
 {
     /**
      * Instantiates a Node.
@@ -25,6 +25,6 @@ class FloatNodeDefinition extends \MonorepoBuilder20211110\Symfony\Component\Con
      */
     protected function instantiateNode()
     {
-        return new \MonorepoBuilder20211110\Symfony\Component\Config\Definition\FloatNode($this->name, $this->parent, $this->min, $this->max, $this->pathSeparator);
+        return new \MonorepoBuilder20211111\Symfony\Component\Config\Definition\FloatNode($this->name, $this->parent, $this->min, $this->max, $this->pathSeparator);
     }
 }
