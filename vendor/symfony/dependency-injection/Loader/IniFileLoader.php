@@ -8,16 +8,16 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211113\Symfony\Component\DependencyInjection\Loader;
+namespace MonorepoBuilder20211114\Symfony\Component\DependencyInjection\Loader;
 
-use MonorepoBuilder20211113\Symfony\Component\Config\Util\XmlUtils;
-use MonorepoBuilder20211113\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use MonorepoBuilder20211114\Symfony\Component\Config\Util\XmlUtils;
+use MonorepoBuilder20211114\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
 /**
  * IniFileLoader loads parameters from INI files.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class IniFileLoader extends \MonorepoBuilder20211113\Symfony\Component\DependencyInjection\Loader\FileLoader
+class IniFileLoader extends \MonorepoBuilder20211114\Symfony\Component\DependencyInjection\Loader\FileLoader
 {
     /**
      * {@inheritdoc}
@@ -30,7 +30,7 @@ class IniFileLoader extends \MonorepoBuilder20211113\Symfony\Component\Dependenc
         // first pass to catch parsing errors
         $result = \parse_ini_file($path, \true);
         if (\false === $result || [] === $result) {
-            throw new \MonorepoBuilder20211113\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('The "%s" file is not valid.', $resource));
+            throw new \MonorepoBuilder20211114\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('The "%s" file is not valid.', $resource));
         }
         // real raw parsing
         $result = \parse_ini_file($path, \true, \INI_SCANNER_RAW);
@@ -84,7 +84,7 @@ class IniFileLoader extends \MonorepoBuilder20211113\Symfony\Component\Dependenc
                 // quoted string
                 return \substr($value, 1, -1);
             default:
-                return \MonorepoBuilder20211113\Symfony\Component\Config\Util\XmlUtils::phpize($value);
+                return \MonorepoBuilder20211114\Symfony\Component\Config\Util\XmlUtils::phpize($value);
         }
     }
 }
