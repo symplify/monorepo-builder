@@ -5,7 +5,7 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace MonorepoBuilder20211116\Nette\Iterators;
+namespace MonorepoBuilder20211117\Nette\Iterators;
 
 /**
  * Applies the callback to the elements of the inner iterator.
