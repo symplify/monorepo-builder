@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20211117\Symplify\EasyTesting\ValueObject;
+namespace MonorepoBuilder20211119\Symplify\EasyTesting\ValueObject;
 
 final class SplitLine
 {

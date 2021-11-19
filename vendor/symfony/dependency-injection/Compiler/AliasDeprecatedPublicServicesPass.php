@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211117\Symfony\Component\DependencyInjection\Compiler;
+namespace MonorepoBuilder20211119\Symfony\Component\DependencyInjection\Compiler;
 
-use MonorepoBuilder20211117\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder20211117\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use MonorepoBuilder20211117\Symfony\Component\DependencyInjection\Reference;
-final class AliasDeprecatedPublicServicesPass extends \MonorepoBuilder20211117\Symfony\Component\DependencyInjection\Compiler\AbstractRecursivePass
+use MonorepoBuilder20211119\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder20211119\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use MonorepoBuilder20211119\Symfony\Component\DependencyInjection\Reference;
+final class AliasDeprecatedPublicServicesPass extends \MonorepoBuilder20211119\Symfony\Component\DependencyInjection\Compiler\AbstractRecursivePass
 {
     private $tagName;
     private $aliases = [];
@@ -30,8 +30,8 @@ final class AliasDeprecatedPublicServicesPass extends \MonorepoBuilder20211117\S
      */
     protected function processValue($value, $isRoot = \false)
     {
-        if ($value instanceof \MonorepoBuilder20211117\Symfony\Component\DependencyInjection\Reference && isset($this->aliases[$id = (string) $value])) {
-            return new \MonorepoBuilder20211117\Symfony\Component\DependencyInjection\Reference($this->aliases[$id], $value->getInvalidBehavior());
+        if ($value instanceof \MonorepoBuilder20211119\Symfony\Component\DependencyInjection\Reference && isset($this->aliases[$id = (string) $value])) {
+            return new \MonorepoBuilder20211119\Symfony\Component\DependencyInjection\Reference($this->aliases[$id], $value->getInvalidBehavior());
         }
         return parent::processValue($value, $isRoot);
     }
@@ -43,10 +43,10 @@ final class AliasDeprecatedPublicServicesPass extends \MonorepoBuilder20211117\S
     {
         foreach ($container->findTaggedServiceIds($this->tagName) as $id => $tags) {
             if (null === ($package = $tags[0]['package'] ?? null)) {
-                throw new \MonorepoBuilder20211117\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('The "package" attribute is mandatory for the "%s" tag on the "%s" service.', $this->tagName, $id));
+                throw new \MonorepoBuilder20211119\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('The "package" attribute is mandatory for the "%s" tag on the "%s" service.', $this->tagName, $id));
             }
             if (null === ($version = $tags[0]['version'] ?? null)) {
-                throw new \MonorepoBuilder20211117\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('The "version" attribute is mandatory for the "%s" tag on the "%s" service.', $this->tagName, $id));
+                throw new \MonorepoBuilder20211119\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('The "version" attribute is mandatory for the "%s" tag on the "%s" service.', $this->tagName, $id));
             }
             $definition = $container->getDefinition($id);
             if (!$definition->isPublic() || $definition->isPrivate()) {

@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211117\Symfony\Component\Console\Command;
+namespace MonorepoBuilder20211119\Symfony\Component\Console\Command;
 
 /**
  * Interface for command reacting to signal.

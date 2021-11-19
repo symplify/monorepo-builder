@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211117\Symfony\Component\DependencyInjection\Exception;
+namespace MonorepoBuilder20211119\Symfony\Component\DependencyInjection\Exception;
 
 /**
  * Base OutOfBoundsException for Dependency Injection component.
  */
-class OutOfBoundsException extends \OutOfBoundsException implements \MonorepoBuilder20211117\Symfony\Component\DependencyInjection\Exception\ExceptionInterface
+class OutOfBoundsException extends \OutOfBoundsException implements \MonorepoBuilder20211119\Symfony\Component\DependencyInjection\Exception\ExceptionInterface
 {
 }

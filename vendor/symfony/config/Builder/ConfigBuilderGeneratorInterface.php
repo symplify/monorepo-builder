@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211117\Symfony\Component\Config\Builder;
+namespace MonorepoBuilder20211119\Symfony\Component\Config\Builder;
 
-use MonorepoBuilder20211117\Symfony\Component\Config\Definition\ConfigurationInterface;
+use MonorepoBuilder20211119\Symfony\Component\Config\Definition\ConfigurationInterface;
 /**
  * Generates ConfigBuilders to help create valid config.
  *
