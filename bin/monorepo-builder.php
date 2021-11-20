@@ -2,20 +2,18 @@
 
 // decoupled in own "*.php" file, so ECS, Rector and PHPStan works out of the box here
 declare (strict_types=1);
-namespace MonorepoBuilder20211119;
+namespace MonorepoBuilder20211120;
 
-use MonorepoBuilder20211119\Symfony\Component\Console\Input\ArgvInput;
+use MonorepoBuilder20211120\Symfony\Component\Console\Input\ArgvInput;
 use Symplify\MonorepoBuilder\Kernel\MonorepoBuilderKernel;
 use Symplify\MonorepoBuilder\ValueObject\File;
-use MonorepoBuilder20211119\Symplify\SymplifyKernel\ValueObject\KernelBootAndApplicationRun;
+use MonorepoBuilder20211120\Symplify\SymplifyKernel\ValueObject\KernelBootAndApplicationRun;
 # 1. autoload
 $possibleAutoloadPaths = [
-    // monorepo
-    __DIR__ . '/../../../vendor/autoload.php',
-    // after split package
-    __DIR__ . '/../vendor/autoload.php',
     // dependency
     __DIR__ . '/../../../autoload.php',
+    // monorepo
+    __DIR__ . '/../../../vendor/autoload.php',
 ];
 foreach ($possibleAutoloadPaths as $possibleAutoloadPath) {
     if (\file_exists($possibleAutoloadPath)) {
@@ -28,14 +26,14 @@ if (\file_exists($scoperAutoloadFilepath)) {
     require_once $scoperAutoloadFilepath;
 }
 $configFiles = [];
-$argvInput = new \MonorepoBuilder20211119\Symfony\Component\Console\Input\ArgvInput();
-$configFile = \MonorepoBuilder20211119\resolveConfigFile($argvInput);
+$argvInput = new \MonorepoBuilder20211120\Symfony\Component\Console\Input\ArgvInput();
+$configFile = \MonorepoBuilder20211120\resolveConfigFile($argvInput);
 if (\is_string($configFile)) {
     $configFiles[] = $configFile;
 }
-$kernelBootAndApplicationRun = new \MonorepoBuilder20211119\Symplify\SymplifyKernel\ValueObject\KernelBootAndApplicationRun(\Symplify\MonorepoBuilder\Kernel\MonorepoBuilderKernel::class, $configFiles);
+$kernelBootAndApplicationRun = new \MonorepoBuilder20211120\Symplify\SymplifyKernel\ValueObject\KernelBootAndApplicationRun(\Symplify\MonorepoBuilder\Kernel\MonorepoBuilderKernel::class, $configFiles);
 $kernelBootAndApplicationRun->run();
-function resolveConfigFile(\MonorepoBuilder20211119\Symfony\Component\Console\Input\ArgvInput $argvInput) : ?string
+function resolveConfigFile(\MonorepoBuilder20211120\Symfony\Component\Console\Input\ArgvInput $argvInput) : ?string
 {
     if ($argvInput->hasParameterOption(['-c', '--config'])) {
         $configOption = $argvInput->getParameterOption(['-c', '--config']);
