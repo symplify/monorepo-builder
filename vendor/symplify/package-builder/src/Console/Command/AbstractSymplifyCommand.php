@@ -37,7 +37,7 @@ abstract class AbstractSymplifyCommand extends \MonorepoBuilder20211120\Symfony\
     /**
      * @required
      */
-    public function autowireAbstractSymplifyCommand(\MonorepoBuilder20211120\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \MonorepoBuilder20211120\Symplify\SmartFileSystem\SmartFileSystem $smartFileSystem, \MonorepoBuilder20211120\Symplify\SmartFileSystem\Finder\SmartFinder $smartFinder, \MonorepoBuilder20211120\Symplify\SmartFileSystem\FileSystemGuard $fileSystemGuard) : void
+    public function autowire(\MonorepoBuilder20211120\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \MonorepoBuilder20211120\Symplify\SmartFileSystem\SmartFileSystem $smartFileSystem, \MonorepoBuilder20211120\Symplify\SmartFileSystem\Finder\SmartFinder $smartFinder, \MonorepoBuilder20211120\Symplify\SmartFileSystem\FileSystemGuard $fileSystemGuard) : void
     {
         $this->symfonyStyle = $symfonyStyle;
         $this->smartFileSystem = $smartFileSystem;
