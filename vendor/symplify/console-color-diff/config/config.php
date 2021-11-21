@@ -1,15 +1,15 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20211120;
+namespace MonorepoBuilder20211121;
 
-use MonorepoBuilder20211120\SebastianBergmann\Diff\Differ;
+use MonorepoBuilder20211121\SebastianBergmann\Diff\Differ;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
-use MonorepoBuilder20211120\Symplify\PackageBuilder\Reflection\PrivatesAccessor;
+use MonorepoBuilder20211121\Symplify\PackageBuilder\Reflection\PrivatesAccessor;
 return static function (\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator $containerConfigurator) : void {
     $services = $containerConfigurator->services();
     $services->defaults()->public()->autowire()->autoconfigure();
-    $services->load('MonorepoBuilder20211120\Symplify\ConsoleColorDiff\\', __DIR__ . '/../src');
-    $services->set(\MonorepoBuilder20211120\SebastianBergmann\Diff\Differ::class);
-    $services->set(\MonorepoBuilder20211120\Symplify\PackageBuilder\Reflection\PrivatesAccessor::class);
+    $services->load('MonorepoBuilder20211121\Symplify\ConsoleColorDiff\\', __DIR__ . '/../src');
+    $services->set(\MonorepoBuilder20211121\SebastianBergmann\Diff\Differ::class);
+    $services->set(\MonorepoBuilder20211121\Symplify\PackageBuilder\Reflection\PrivatesAccessor::class);
 };

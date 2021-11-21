@@ -18,12 +18,12 @@
     },
     "autoload": {
         "psr-4": {
-            "MonorepoBuilder20211120\\Symplify\\ComposerJsonManipulator\\": "src"
+            "MonorepoBuilder20211121\\Symplify\\ComposerJsonManipulator\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "MonorepoBuilder20211120\\Symplify\\ComposerJsonManipulator\\Tests\\": "tests"
+            "MonorepoBuilder20211121\\Symplify\\ComposerJsonManipulator\\Tests\\": "tests"
         }
     },
     "extra": {

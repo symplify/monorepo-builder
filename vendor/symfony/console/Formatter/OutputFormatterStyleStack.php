@@ -8,23 +8,23 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211120\Symfony\Component\Console\Formatter;
+namespace MonorepoBuilder20211121\Symfony\Component\Console\Formatter;
 
-use MonorepoBuilder20211120\Symfony\Component\Console\Exception\InvalidArgumentException;
-use MonorepoBuilder20211120\Symfony\Contracts\Service\ResetInterface;
+use MonorepoBuilder20211121\Symfony\Component\Console\Exception\InvalidArgumentException;
+use MonorepoBuilder20211121\Symfony\Contracts\Service\ResetInterface;
 /**
  * @author Jean-François Simon <contact@jfsimon.fr>
  */
-class OutputFormatterStyleStack implements \MonorepoBuilder20211120\Symfony\Contracts\Service\ResetInterface
+class OutputFormatterStyleStack implements \MonorepoBuilder20211121\Symfony\Contracts\Service\ResetInterface
 {
     /**
      * @var OutputFormatterStyleInterface[]
      */
     private $styles;
     private $emptyStyle;
-    public function __construct(\MonorepoBuilder20211120\Symfony\Component\Console\Formatter\OutputFormatterStyleInterface $emptyStyle = null)
+    public function __construct(\MonorepoBuilder20211121\Symfony\Component\Console\Formatter\OutputFormatterStyleInterface $emptyStyle = null)
     {
-        $this->emptyStyle = $emptyStyle ?? new \MonorepoBuilder20211120\Symfony\Component\Console\Formatter\OutputFormatterStyle();
+        $this->emptyStyle = $emptyStyle ?? new \MonorepoBuilder20211121\Symfony\Component\Console\Formatter\OutputFormatterStyle();
         $this->reset();
     }
     /**
@@ -64,7 +64,7 @@ class OutputFormatterStyleStack implements \MonorepoBuilder20211120\Symfony\Cont
                 return $stackedStyle;
             }
         }
-        throw new \MonorepoBuilder20211120\Symfony\Component\Console\Exception\InvalidArgumentException('Incorrectly nested style tag found.');
+        throw new \MonorepoBuilder20211121\Symfony\Component\Console\Exception\InvalidArgumentException('Incorrectly nested style tag found.');
     }
     /**
      * Computes current style with stacks top codes.
