@@ -8,17 +8,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211122\Symfony\Component\Config\Resource;
+namespace MonorepoBuilder20211123\Symfony\Component\Config\Resource;
 
-use MonorepoBuilder20211122\Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use MonorepoBuilder20211122\Symfony\Component\Messenger\Handler\MessageSubscriberInterface;
-use MonorepoBuilder20211122\Symfony\Contracts\Service\ServiceSubscriberInterface;
+use MonorepoBuilder20211123\Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use MonorepoBuilder20211123\Symfony\Component\Messenger\Handler\MessageSubscriberInterface;
+use MonorepoBuilder20211123\Symfony\Contracts\Service\ServiceSubscriberInterface;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  *
  * @final
  */
-class ReflectionClassResource implements \MonorepoBuilder20211122\Symfony\Component\Config\Resource\SelfCheckingResourceInterface
+class ReflectionClassResource implements \MonorepoBuilder20211123\Symfony\Component\Config\Resource\SelfCheckingResourceInterface
 {
     private $files = [];
     private $className;
@@ -110,7 +110,7 @@ class ReflectionClassResource implements \MonorepoBuilder20211122\Symfony\Compon
         if (\PHP_VERSION_ID >= 80000) {
             $attributes = [];
             foreach ($class->getAttributes() as $a) {
-                $attributes[] = [$a->getName(), $a->getArguments()];
+                $attributes[] = [$a->getName(), \PHP_VERSION_ID >= 80100 ? (string) $a : $a->getArguments()];
             }
             (yield \print_r($attributes, \true));
             $attributes = [];
@@ -130,7 +130,7 @@ class ReflectionClassResource implements \MonorepoBuilder20211122\Symfony\Compon
             foreach ($class->getProperties(\ReflectionProperty::IS_PUBLIC | \ReflectionProperty::IS_PROTECTED) as $p) {
                 if (\PHP_VERSION_ID >= 80000) {
                     foreach ($p->getAttributes() as $a) {
-                        $attributes[] = [$a->getName(), $a->getArguments()];
+                        $attributes[] = [$a->getName(), \PHP_VERSION_ID >= 80100 ? (string) $a : $a->getArguments()];
                     }
                     (yield \print_r($attributes, \true));
                     $attributes = [];
@@ -149,7 +149,7 @@ class ReflectionClassResource implements \MonorepoBuilder20211122\Symfony\Compon
         foreach ($class->getMethods(\ReflectionMethod::IS_PUBLIC | \ReflectionMethod::IS_PROTECTED) as $m) {
             if (\PHP_VERSION_ID >= 80000) {
                 foreach ($m->getAttributes() as $a) {
-                    $attributes[] = [$a->getName(), $a->getArguments()];
+                    $attributes[] = [$a->getName(), \PHP_VERSION_ID >= 80100 ? (string) $a : $a->getArguments()];
                 }
                 (yield \print_r($attributes, \true));
                 $attributes = [];
@@ -159,13 +159,17 @@ class ReflectionClassResource implements \MonorepoBuilder20211122\Symfony\Compon
             foreach ($m->getParameters() as $p) {
                 if (\PHP_VERSION_ID >= 80000) {
                     foreach ($p->getAttributes() as $a) {
-                        $attributes[] = [$a->getName(), $a->getArguments()];
+                        $attributes[] = [$a->getName(), \PHP_VERSION_ID >= 80100 ? (string) $a : $a->getArguments()];
                     }
                     (yield \print_r($attributes, \true));
                     $attributes = [];
                 }
                 if (!$p->isDefaultValueAvailable()) {
                     $defaults[$p->name] = null;
+                    continue;
+                }
+                if (\PHP_VERSION_ID >= 80100) {
+                    $defaults[$p->name] = (string) $p;
                     continue;
                 }
                 if (!$p->isDefaultValueConstant() || $defined($p->getDefaultValueConstantName())) {
@@ -199,18 +203,18 @@ class ReflectionClassResource implements \MonorepoBuilder20211122\Symfony\Compon
         if ($class->isAbstract() || $class->isInterface() || $class->isTrait()) {
             return;
         }
-        if (\interface_exists(\MonorepoBuilder20211122\Symfony\Component\EventDispatcher\EventSubscriberInterface::class, \false) && $class->isSubclassOf(\MonorepoBuilder20211122\Symfony\Component\EventDispatcher\EventSubscriberInterface::class)) {
-            (yield \MonorepoBuilder20211122\Symfony\Component\EventDispatcher\EventSubscriberInterface::class);
+        if (\interface_exists(\MonorepoBuilder20211123\Symfony\Component\EventDispatcher\EventSubscriberInterface::class, \false) && $class->isSubclassOf(\MonorepoBuilder20211123\Symfony\Component\EventDispatcher\EventSubscriberInterface::class)) {
+            (yield \MonorepoBuilder20211123\Symfony\Component\EventDispatcher\EventSubscriberInterface::class);
             (yield \print_r($class->name::getSubscribedEvents(), \true));
         }
-        if (\interface_exists(\MonorepoBuilder20211122\Symfony\Component\Messenger\Handler\MessageSubscriberInterface::class, \false) && $class->isSubclassOf(\MonorepoBuilder20211122\Symfony\Component\Messenger\Handler\MessageSubscriberInterface::class)) {
-            (yield \MonorepoBuilder20211122\Symfony\Component\Messenger\Handler\MessageSubscriberInterface::class);
+        if (\interface_exists(\MonorepoBuilder20211123\Symfony\Component\Messenger\Handler\MessageSubscriberInterface::class, \false) && $class->isSubclassOf(\MonorepoBuilder20211123\Symfony\Component\Messenger\Handler\MessageSubscriberInterface::class)) {
+            (yield \MonorepoBuilder20211123\Symfony\Component\Messenger\Handler\MessageSubscriberInterface::class);
             foreach ($class->name::getHandledMessages() as $key => $value) {
                 (yield $key . \print_r($value, \true));
             }
         }
-        if (\interface_exists(\MonorepoBuilder20211122\Symfony\Contracts\Service\ServiceSubscriberInterface::class, \false) && $class->isSubclassOf(\MonorepoBuilder20211122\Symfony\Contracts\Service\ServiceSubscriberInterface::class)) {
-            (yield \MonorepoBuilder20211122\Symfony\Contracts\Service\ServiceSubscriberInterface::class);
+        if (\interface_exists(\MonorepoBuilder20211123\Symfony\Contracts\Service\ServiceSubscriberInterface::class, \false) && $class->isSubclassOf(\MonorepoBuilder20211123\Symfony\Contracts\Service\ServiceSubscriberInterface::class)) {
+            (yield \MonorepoBuilder20211123\Symfony\Contracts\Service\ServiceSubscriberInterface::class);
             (yield \print_r($class->name::getSubscribedServices(), \true));
         }
     }

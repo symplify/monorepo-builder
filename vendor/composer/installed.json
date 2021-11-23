@@ -236,7 +236,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder20211122\\Psr\\Container\\": "src\/"
+                    "MonorepoBuilder20211123\\Psr\\Container\\": "src\/"
                 }
             },
             "notification-url": "https:\/\/packagist.org\/downloads\/",
@@ -335,17 +335,17 @@
         },
         {
             "name": "symfony\/config",
-            "version": "v5.3.10",
-            "version_normalized": "5.3.10.0",
+            "version": "v5.3.11",
+            "version_normalized": "5.3.11.0",
             "source": {
                 "type": "git",
                 "url": "https:\/\/github.com\/symfony\/config.git",
-                "reference": "ac23c2f24d5634966d665d836c3933d54347e5d4"
+                "reference": "f080af00c441f1df40cf5c269707fdebe5740557"
             },
             "dist": {
                 "type": "zip",
-                "url": "https:\/\/api.github.com\/repos\/symfony\/config\/zipball\/ac23c2f24d5634966d665d836c3933d54347e5d4",
-                "reference": "ac23c2f24d5634966d665d836c3933d54347e5d4",
+                "url": "https:\/\/api.github.com\/repos\/symfony\/config\/zipball\/f080af00c441f1df40cf5c269707fdebe5740557",
+                "reference": "f080af00c441f1df40cf5c269707fdebe5740557",
                 "shasum": ""
             },
             "require": {
@@ -369,12 +369,12 @@
             "suggest": {
                 "symfony\/yaml": "To use the yaml reference dumper"
             },
-            "time": "2021-10-22T09:06:52+00:00",
+            "time": "2021-10-29T16:05:40+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder20211122\\Symfony\\Component\\Config\\": ""
+                    "MonorepoBuilder20211123\\Symfony\\Component\\Config\\": ""
                 },
                 "exclude-from-classmap": [
                     "\/Tests\/"
@@ -397,7 +397,7 @@
             "description": "Helps you find, load, combine, autofill and validate configuration values of any kind",
             "homepage": "https:\/\/symfony.com",
             "support": {
-                "source": "https:\/\/github.com\/symfony\/config\/tree\/v5.3.10"
+                "source": "https:\/\/github.com\/symfony\/config\/tree\/v5.3.11"
             },
             "funding": [
                 {
@@ -417,17 +417,17 @@
         },
         {
             "name": "symfony\/console",
-            "version": "v5.3.10",
-            "version_normalized": "5.3.10.0",
+            "version": "v5.3.11",
+            "version_normalized": "5.3.11.0",
             "source": {
                 "type": "git",
                 "url": "https:\/\/github.com\/symfony\/console.git",
-                "reference": "d4e409d9fbcfbf71af0e5a940abb7b0b4bad0bd3"
+                "reference": "3e7ab8f5905058984899b05a4648096f558bfeba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https:\/\/api.github.com\/repos\/symfony\/console\/zipball\/d4e409d9fbcfbf71af0e5a940abb7b0b4bad0bd3",
-                "reference": "d4e409d9fbcfbf71af0e5a940abb7b0b4bad0bd3",
+                "url": "https:\/\/api.github.com\/repos\/symfony\/console\/zipball\/3e7ab8f5905058984899b05a4648096f558bfeba",
+                "reference": "3e7ab8f5905058984899b05a4648096f558bfeba",
                 "shasum": ""
             },
             "require": {
@@ -440,7 +440,6 @@
                 "symfony\/string": "^5.1"
             },
             "conflict": {
-                "psr\/log": ">=3",
                 "symfony\/dependency-injection": "<4.4",
                 "symfony\/dotenv": "<5.1",
                 "symfony\/event-dispatcher": "<4.4",
@@ -465,12 +464,12 @@
                 "symfony\/lock": "",
                 "symfony\/process": ""
             },
-            "time": "2021-10-26T09:30:15+00:00",
+            "time": "2021-11-21T19:41:05+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder20211122\\Symfony\\Component\\Console\\": ""
+                    "MonorepoBuilder20211123\\Symfony\\Component\\Console\\": ""
                 },
                 "exclude-from-classmap": [
                     "\/Tests\/"
@@ -499,7 +498,7 @@
                 "terminal"
             ],
             "support": {
-                "source": "https:\/\/github.com\/symfony\/console\/tree\/v5.3.10"
+                "source": "https:\/\/github.com\/symfony\/console\/tree\/v5.3.11"
             },
             "funding": [
                 {
@@ -519,17 +518,17 @@
         },
         {
             "name": "symfony\/dependency-injection",
-            "version": "v5.3.10",
-            "version_normalized": "5.3.10.0",
+            "version": "v5.3.11",
+            "version_normalized": "5.3.11.0",
             "source": {
                 "type": "git",
                 "url": "https:\/\/github.com\/symfony\/dependency-injection.git",
-                "reference": "be833dd336c248ef2bdabf24665351455f52afdb"
+                "reference": "3793617321eb39b2e8e708f6fd61f875ec5f0ed6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https:\/\/api.github.com\/repos\/symfony\/dependency-injection\/zipball\/be833dd336c248ef2bdabf24665351455f52afdb",
-                "reference": "be833dd336c248ef2bdabf24665351455f52afdb",
+                "url": "https:\/\/api.github.com\/repos\/symfony\/dependency-injection\/zipball\/3793617321eb39b2e8e708f6fd61f875ec5f0ed6",
+                "reference": "3793617321eb39b2e8e708f6fd61f875ec5f0ed6",
                 "shasum": ""
             },
             "require": {
@@ -562,12 +561,12 @@
                 "symfony\/proxy-manager-bridge": "Generate service proxies to lazy load them",
                 "symfony\/yaml": ""
             },
-            "time": "2021-10-22T18:11:05+00:00",
+            "time": "2021-11-17T12:16:12+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder20211122\\Symfony\\Component\\DependencyInjection\\": ""
+                    "MonorepoBuilder20211123\\Symfony\\Component\\DependencyInjection\\": ""
                 },
                 "exclude-from-classmap": [
                     "\/Tests\/"
@@ -590,7 +589,7 @@
             "description": "Allows you to standardize and centralize the way objects are constructed in your application",
             "homepage": "https:\/\/symfony.com",
             "support": {
-                "source": "https:\/\/github.com\/symfony\/dependency-injection\/tree\/v5.3.10"
+                "source": "https:\/\/github.com\/symfony\/dependency-injection\/tree\/v5.3.11"
             },
             "funding": [
                 {
@@ -610,27 +609,27 @@
         },
         {
             "name": "symfony\/deprecation-contracts",
-            "version": "v2.4.0",
-            "version_normalized": "2.4.0.0",
+            "version": "v2.5.0",
+            "version_normalized": "2.5.0.0",
             "source": {
                 "type": "git",
                 "url": "https:\/\/github.com\/symfony\/deprecation-contracts.git",
-                "reference": "5f38c8804a9e97d23e0c8d63341088cd8a22d627"
+                "reference": "6f981ee24cf69ee7ce9736146d1c57c2780598a8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https:\/\/api.github.com\/repos\/symfony\/deprecation-contracts\/zipball\/5f38c8804a9e97d23e0c8d63341088cd8a22d627",
-                "reference": "5f38c8804a9e97d23e0c8d63341088cd8a22d627",
+                "url": "https:\/\/api.github.com\/repos\/symfony\/deprecation-contracts\/zipball\/6f981ee24cf69ee7ce9736146d1c57c2780598a8",
+                "reference": "6f981ee24cf69ee7ce9736146d1c57c2780598a8",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1"
             },
-            "time": "2021-03-23T23:28:01+00:00",
+            "time": "2021-07-12T14:48:14+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "2.4-dev"
+                    "dev-main": "2.5-dev"
                 },
                 "thanks": {
                     "name": "symfony\/contracts",
@@ -660,7 +659,7 @@
             "description": "A generic function and convention to trigger deprecation notices",
             "homepage": "https:\/\/symfony.com",
             "support": {
-                "source": "https:\/\/github.com\/symfony\/deprecation-contracts\/tree\/v2.4.0"
+                "source": "https:\/\/github.com\/symfony\/deprecation-contracts\/tree\/v2.5.0"
             },
             "funding": [
                 {
@@ -703,7 +702,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder20211122\\Symfony\\Component\\Filesystem\\": ""
+                    "MonorepoBuilder20211123\\Symfony\\Component\\Filesystem\\": ""
                 },
                 "exclude-from-classmap": [
                     "\/Tests\/"
@@ -768,7 +767,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder20211122\\Symfony\\Component\\Finder\\": ""
+                    "MonorepoBuilder20211123\\Symfony\\Component\\Finder\\": ""
                 },
                 "exclude-from-classmap": [
                     "\/Tests\/"
@@ -844,7 +843,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder20211122\\Symfony\\Polyfill\\Ctype\\": ""
+                    "MonorepoBuilder20211123\\Symfony\\Polyfill\\Ctype\\": ""
                 },
                 "files": [
                     "bootstrap.php"
@@ -926,7 +925,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder20211122\\Symfony\\Polyfill\\Intl\\Grapheme\\": ""
+                    "MonorepoBuilder20211123\\Symfony\\Polyfill\\Intl\\Grapheme\\": ""
                 },
                 "files": [
                     "bootstrap.php"
@@ -1010,7 +1009,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder20211122\\Symfony\\Polyfill\\Intl\\Normalizer\\": ""
+                    "MonorepoBuilder20211123\\Symfony\\Polyfill\\Intl\\Normalizer\\": ""
                 },
                 "files": [
                     "bootstrap.php"
@@ -1097,7 +1096,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder20211122\\Symfony\\Polyfill\\Mbstring\\": ""
+                    "MonorepoBuilder20211123\\Symfony\\Polyfill\\Mbstring\\": ""
                 },
                 "files": [
                     "bootstrap.php"
@@ -1177,7 +1176,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder20211122\\Symfony\\Polyfill\\Php73\\": ""
+                    "MonorepoBuilder20211123\\Symfony\\Polyfill\\Php73\\": ""
                 },
                 "files": [
                     "bootstrap.php"
@@ -1259,7 +1258,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder20211122\\Symfony\\Polyfill\\Php80\\": ""
+                    "MonorepoBuilder20211123\\Symfony\\Polyfill\\Php80\\": ""
                 },
                 "files": [
                     "bootstrap.php"
@@ -1345,7 +1344,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder20211122\\Symfony\\Polyfill\\Php81\\": ""
+                    "MonorepoBuilder20211123\\Symfony\\Polyfill\\Php81\\": ""
                 },
                 "files": [
                     "bootstrap.php"
@@ -1397,29 +1396,29 @@
         },
         {
             "name": "symfony\/process",
-            "version": "v5.3.7",
-            "version_normalized": "5.3.7.0",
+            "version": "v5.3.11",
+            "version_normalized": "5.3.11.0",
             "source": {
                 "type": "git",
                 "url": "https:\/\/github.com\/symfony\/process.git",
-                "reference": "38f26c7d6ed535217ea393e05634cb0b244a1967"
+                "reference": "6c99204de85d04ca17f16c466fc61896960b0636"
             },
             "dist": {
                 "type": "zip",
-                "url": "https:\/\/api.github.com\/repos\/symfony\/process\/zipball\/38f26c7d6ed535217ea393e05634cb0b244a1967",
-                "reference": "38f26c7d6ed535217ea393e05634cb0b244a1967",
+                "url": "https:\/\/api.github.com\/repos\/symfony\/process\/zipball\/6c99204de85d04ca17f16c466fc61896960b0636",
+                "reference": "6c99204de85d04ca17f16c466fc61896960b0636",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2.5",
                 "symfony\/polyfill-php80": "^1.16"
             },
-            "time": "2021-08-04T21:20:46+00:00",
+            "time": "2021-11-17T12:16:12+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder20211122\\Symfony\\Component\\Process\\": ""
+                    "MonorepoBuilder20211123\\Symfony\\Component\\Process\\": ""
                 },
                 "exclude-from-classmap": [
                     "\/Tests\/"
@@ -1442,7 +1441,7 @@
             "description": "Executes commands in sub-processes",
             "homepage": "https:\/\/symfony.com",
             "support": {
-                "source": "https:\/\/github.com\/symfony\/process\/tree\/v5.3.7"
+                "source": "https:\/\/github.com\/symfony\/process\/tree\/v5.3.11"
             },
             "funding": [
                 {
@@ -1462,31 +1461,35 @@
         },
         {
             "name": "symfony\/service-contracts",
-            "version": "v2.4.0",
-            "version_normalized": "2.4.0.0",
+            "version": "v2.5.0",
+            "version_normalized": "2.5.0.0",
             "source": {
                 "type": "git",
                 "url": "https:\/\/github.com\/symfony\/service-contracts.git",
-                "reference": "f040a30e04b57fbcc9c6cbcf4dbaa96bd318b9bb"
+                "reference": "1ab11b933cd6bc5464b08e81e2c5b07dec58b0fc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https:\/\/api.github.com\/repos\/symfony\/service-contracts\/zipball\/f040a30e04b57fbcc9c6cbcf4dbaa96bd318b9bb",
-                "reference": "f040a30e04b57fbcc9c6cbcf4dbaa96bd318b9bb",
+                "url": "https:\/\/api.github.com\/repos\/symfony\/service-contracts\/zipball\/1ab11b933cd6bc5464b08e81e2c5b07dec58b0fc",
+                "reference": "1ab11b933cd6bc5464b08e81e2c5b07dec58b0fc",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2.5",
-                "psr\/container": "^1.1"
+                "psr\/container": "^1.1",
+                "symfony\/deprecation-contracts": "^2.1"
+            },
+            "conflict": {
+                "ext-psr": "<1.1|>=2"
             },
             "suggest": {
                 "symfony\/service-implementation": ""
             },
-            "time": "2021-04-01T10:43:52+00:00",
+            "time": "2021-11-04T16:48:04+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "2.4-dev"
+                    "dev-main": "2.5-dev"
                 },
                 "thanks": {
                     "name": "symfony\/contracts",
@@ -1496,7 +1499,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder20211122\\Symfony\\Contracts\\Service\\": ""
+                    "MonorepoBuilder20211123\\Symfony\\Contracts\\Service\\": ""
                 }
             },
             "notification-url": "https:\/\/packagist.org\/downloads\/",
@@ -1524,7 +1527,7 @@
                 "standards"
             ],
             "support": {
-                "source": "https:\/\/github.com\/symfony\/service-contracts\/tree\/v2.4.0"
+                "source": "https:\/\/github.com\/symfony\/service-contracts\/tree\/v2.5.0"
             },
             "funding": [
                 {
@@ -1576,7 +1579,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder20211122\\Symfony\\Component\\String\\": ""
+                    "MonorepoBuilder20211123\\Symfony\\Component\\String\\": ""
                 },
                 "files": [
                     "Resources\/functions.php"
@@ -1686,12 +1689,12 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder20211122\\Symplify\\AutowireArrayParameter\\": "src"
+                    "MonorepoBuilder20211123\\Symplify\\AutowireArrayParameter\\": "src"
                 }
             },
             "autoload-dev": {
                 "psr-4": {
-                    "MonorepoBuilder20211122\\Symplify\\AutowireArrayParameter\\Tests\\": "tests"
+                    "MonorepoBuilder20211123\\Symplify\\AutowireArrayParameter\\Tests\\": "tests"
                 }
             },
             "license": [
@@ -1765,12 +1768,12 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder20211122\\Symplify\\ComposerJsonManipulator\\": "src"
+                    "MonorepoBuilder20211123\\Symplify\\ComposerJsonManipulator\\": "src"
                 }
             },
             "autoload-dev": {
                 "psr-4": {
-                    "MonorepoBuilder20211122\\Symplify\\ComposerJsonManipulator\\Tests\\": "tests"
+                    "MonorepoBuilder20211123\\Symplify\\ComposerJsonManipulator\\Tests\\": "tests"
                 }
             },
             "license": [
@@ -1843,12 +1846,12 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder20211122\\Symplify\\ConsoleColorDiff\\": "src"
+                    "MonorepoBuilder20211123\\Symplify\\ConsoleColorDiff\\": "src"
                 }
             },
             "autoload-dev": {
                 "psr-4": {
-                    "MonorepoBuilder20211122\\Symplify\\ConsoleColorDiff\\Tests\\": "tests"
+                    "MonorepoBuilder20211123\\Symplify\\ConsoleColorDiff\\Tests\\": "tests"
                 }
             },
             "license": [
@@ -1924,12 +1927,12 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder20211122\\Symplify\\EasyTesting\\": "src"
+                    "MonorepoBuilder20211123\\Symplify\\EasyTesting\\": "src"
                 }
             },
             "autoload-dev": {
                 "psr-4": {
-                    "MonorepoBuilder20211122\\Symplify\\EasyTesting\\Tests\\": "tests"
+                    "MonorepoBuilder20211123\\Symplify\\EasyTesting\\Tests\\": "tests"
                 }
             },
             "license": [
@@ -2004,12 +2007,12 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder20211122\\Symplify\\PackageBuilder\\": "src"
+                    "MonorepoBuilder20211123\\Symplify\\PackageBuilder\\": "src"
                 }
             },
             "autoload-dev": {
                 "psr-4": {
-                    "MonorepoBuilder20211122\\Symplify\\PackageBuilder\\Tests\\": "tests"
+                    "MonorepoBuilder20211123\\Symplify\\PackageBuilder\\Tests\\": "tests"
                 }
             },
             "license": [
@@ -2082,12 +2085,12 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder20211122\\Symplify\\SmartFileSystem\\": "src"
+                    "MonorepoBuilder20211123\\Symplify\\SmartFileSystem\\": "src"
                 }
             },
             "autoload-dev": {
                 "psr-4": {
-                    "MonorepoBuilder20211122\\Symplify\\SmartFileSystem\\Tests\\": "tests"
+                    "MonorepoBuilder20211123\\Symplify\\SmartFileSystem\\Tests\\": "tests"
                 }
             },
             "license": [
@@ -2160,7 +2163,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder20211122\\Symplify\\SymplifyKernel\\": "src"
+                    "MonorepoBuilder20211123\\Symplify\\SymplifyKernel\\": "src"
                 }
             },
             "license": [
@@ -2209,7 +2212,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder20211122\\Webmozart\\Assert\\": "src\/"
+                    "MonorepoBuilder20211123\\Webmozart\\Assert\\": "src\/"
                 }
             },
             "notification-url": "https:\/\/packagist.org\/downloads\/",
