@@ -2,17 +2,17 @@
     "packages": [
         {
             "name": "nette\/neon",
-            "version": "v3.3.1",
-            "version_normalized": "3.3.1.0",
+            "version": "v3.3.0",
+            "version_normalized": "3.3.0.0",
             "source": {
                 "type": "git",
                 "url": "https:\/\/github.com\/nette\/neon.git",
-                "reference": "1f4e5f6a30bf45b6c2c932be7396ea70692ee607"
+                "reference": "33d262a0c4fb6c6371385f6dc8532f4e32c20ebc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https:\/\/api.github.com\/repos\/nette\/neon\/zipball\/1f4e5f6a30bf45b6c2c932be7396ea70692ee607",
-                "reference": "1f4e5f6a30bf45b6c2c932be7396ea70692ee607",
+                "url": "https:\/\/api.github.com\/repos\/nette\/neon\/zipball\/33d262a0c4fb6c6371385f6dc8532f4e32c20ebc",
+                "reference": "33d262a0c4fb6c6371385f6dc8532f4e32c20ebc",
                 "shasum": ""
             },
             "require": {
@@ -22,12 +22,9 @@
             "require-dev": {
                 "nette\/tester": "^2.0",
                 "phpstan\/phpstan": "^0.12",
-                "tracy\/tracy": "^2.8.8"
+                "tracy\/tracy": "^2.3"
             },
-            "time": "2021-11-09T01:00:15+00:00",
-            "bin": [
-                "bin\/neon-lint"
-            ],
+            "time": "2021-10-19T22:11:22+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -67,7 +64,7 @@
             ],
             "support": {
                 "issues": "https:\/\/github.com\/nette\/neon\/issues",
-                "source": "https:\/\/github.com\/nette\/neon\/tree\/v3.3.1"
+                "source": "https:\/\/github.com\/nette\/neon\/tree\/v3.3.0"
             },
             "install-path": "..\/nette\/neon"
         },
@@ -1956,10 +1953,10 @@
             "dist": {
                 "type": "path",
                 "url": "..\/..\/packages\/package-builder",
-                "reference": "ba6bd6674234b61470214236116720c5f84f54bf"
+                "reference": "c9885afda8595e580f1f2567f41a3f0e1f23e921"
             },
             "require": {
-                "nette\/neon": "^3.3.1",
+                "nette\/neon": "3.3.0",
                 "nette\/utils": "^3.2",
                 "php": ">=8.0",
                 "symfony\/config": "^5.3|^6.0",

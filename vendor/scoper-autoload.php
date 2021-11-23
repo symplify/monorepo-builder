@@ -6,8 +6,8 @@ $loader = require_once __DIR__.'/autoload.php';
 
 // Aliases for the whitelisted classes. For more information see:
 // https://github.com/humbug/php-scoper/blob/master/README.md#class-whitelisting
-if (!class_exists('ComposerAutoloaderInit96666e4753f129e1f11e1e6491cf2e56', false) && !interface_exists('ComposerAutoloaderInit96666e4753f129e1f11e1e6491cf2e56', false) && !trait_exists('ComposerAutoloaderInit96666e4753f129e1f11e1e6491cf2e56', false)) {
-    spl_autoload_call('MonorepoBuilder20211123\ComposerAutoloaderInit96666e4753f129e1f11e1e6491cf2e56');
+if (!class_exists('ComposerAutoloaderInit4c4dccdbccffa51d63c6896ed97a17a8', false) && !interface_exists('ComposerAutoloaderInit4c4dccdbccffa51d63c6896ed97a17a8', false) && !trait_exists('ComposerAutoloaderInit4c4dccdbccffa51d63c6896ed97a17a8', false)) {
+    spl_autoload_call('MonorepoBuilder20211123\ComposerAutoloaderInit4c4dccdbccffa51d63c6896ed97a17a8');
 }
 if (!class_exists('Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator', false) && !interface_exists('Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator', false) && !trait_exists('Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator', false)) {
     spl_autoload_call('MonorepoBuilder20211123\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator');
@@ -44,19 +44,9 @@ if (!function_exists('resolveConfigFile')) {
         return \MonorepoBuilder20211123\resolveConfigFile(...func_get_args());
     }
 }
-if (!function_exists('composerRequire96666e4753f129e1f11e1e6491cf2e56')) {
-    function composerRequire96666e4753f129e1f11e1e6491cf2e56() {
-        return \MonorepoBuilder20211123\composerRequire96666e4753f129e1f11e1e6491cf2e56(...func_get_args());
-    }
-}
-if (!function_exists('scanPath')) {
-    function scanPath() {
-        return \MonorepoBuilder20211123\scanPath(...func_get_args());
-    }
-}
-if (!function_exists('lintFile')) {
-    function lintFile() {
-        return \MonorepoBuilder20211123\lintFile(...func_get_args());
+if (!function_exists('composerRequire4c4dccdbccffa51d63c6896ed97a17a8')) {
+    function composerRequire4c4dccdbccffa51d63c6896ed97a17a8() {
+        return \MonorepoBuilder20211123\composerRequire4c4dccdbccffa51d63c6896ed97a17a8(...func_get_args());
     }
 }
 if (!function_exists('setproctitle')) {
