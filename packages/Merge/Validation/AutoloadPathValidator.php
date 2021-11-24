@@ -3,23 +3,23 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Merge\Validation;
 
-use MonorepoBuilder20211123\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
-use MonorepoBuilder20211123\Symplify\SmartFileSystem\FileSystemGuard;
-use MonorepoBuilder20211123\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder20211124\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
+use MonorepoBuilder20211124\Symplify\SmartFileSystem\FileSystemGuard;
+use MonorepoBuilder20211124\Symplify\SmartFileSystem\SmartFileInfo;
 final class AutoloadPathValidator
 {
     /**
      * @var \Symplify\SmartFileSystem\FileSystemGuard
      */
     private $fileSystemGuard;
-    public function __construct(\MonorepoBuilder20211123\Symplify\SmartFileSystem\FileSystemGuard $fileSystemGuard)
+    public function __construct(\MonorepoBuilder20211124\Symplify\SmartFileSystem\FileSystemGuard $fileSystemGuard)
     {
         $this->fileSystemGuard = $fileSystemGuard;
     }
-    public function ensureAutoloadPathExists(\MonorepoBuilder20211123\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJson) : void
+    public function ensureAutoloadPathExists(\MonorepoBuilder20211124\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJson) : void
     {
         $composerJsonFileInfo = $composerJson->getFileInfo();
-        if (!$composerJsonFileInfo instanceof \MonorepoBuilder20211123\Symplify\SmartFileSystem\SmartFileInfo) {
+        if (!$composerJsonFileInfo instanceof \MonorepoBuilder20211124\Symplify\SmartFileSystem\SmartFileInfo) {
             return;
         }
         $autoloadDirectories = $composerJson->getAbsoluteAutoloadDirectories();
