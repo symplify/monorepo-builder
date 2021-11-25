@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20211124\Symplify\ConsoleColorDiff\Console\Output;
+namespace MonorepoBuilder20211125\Symplify\ConsoleColorDiff\Console\Output;
 
-use MonorepoBuilder20211124\SebastianBergmann\Diff\Differ;
-use MonorepoBuilder20211124\Symplify\ConsoleColorDiff\Console\Formatter\ColorConsoleDiffFormatter;
+use MonorepoBuilder20211125\SebastianBergmann\Diff\Differ;
+use MonorepoBuilder20211125\Symplify\ConsoleColorDiff\Console\Formatter\ColorConsoleDiffFormatter;
 /**
  * @api
  */
@@ -18,7 +18,7 @@ final class ConsoleDiffer
      * @var \Symplify\ConsoleColorDiff\Console\Formatter\ColorConsoleDiffFormatter
      */
     private $colorConsoleDiffFormatter;
-    public function __construct(\MonorepoBuilder20211124\SebastianBergmann\Diff\Differ $differ, \MonorepoBuilder20211124\Symplify\ConsoleColorDiff\Console\Formatter\ColorConsoleDiffFormatter $colorConsoleDiffFormatter)
+    public function __construct(\MonorepoBuilder20211125\SebastianBergmann\Diff\Differ $differ, \MonorepoBuilder20211125\Symplify\ConsoleColorDiff\Console\Formatter\ColorConsoleDiffFormatter $colorConsoleDiffFormatter)
     {
         $this->differ = $differ;
         $this->colorConsoleDiffFormatter = $colorConsoleDiffFormatter;

@@ -5,11 +5,11 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace MonorepoBuilder20211124\Nette\Neon\Node;
+namespace MonorepoBuilder20211125\Nette\Neon\Node;
 
-use MonorepoBuilder20211124\Nette\Neon\Node;
+use MonorepoBuilder20211125\Nette\Neon\Node;
 /** @internal */
-final class ArrayItemNode extends \MonorepoBuilder20211124\Nette\Neon\Node
+final class ArrayItemNode extends \MonorepoBuilder20211125\Nette\Neon\Node
 {
     /** @var ?Node */
     public $key;
@@ -47,7 +47,7 @@ final class ArrayItemNode extends \MonorepoBuilder20211124\Nette\Neon\Node
         $res = '';
         foreach ($items as $item) {
             $v = $item->value->toString();
-            $res .= ($item->key ? $item->key->toString() . ':' : '-') . (\strpos($v, "\n") === \false ? ' ' . $v . "\n" : "\n" . \preg_replace('#^(?=.)#m', "\t", $v) . (\substr($v, -2, 1) === "\n" ? '' : "\n"));
+            $res .= ($item->key ? $item->key->toString() . ':' : '-') . ($item->value instanceof \MonorepoBuilder20211125\Nette\Neon\Node\BlockArrayNode && $item->value->items ? "\n" . $v . (\substr($v, -2, 1) === "\n" ? '' : "\n") : ' ' . $v . "\n");
         }
         return $res;
     }
@@ -61,6 +61,6 @@ final class ArrayItemNode extends \MonorepoBuilder20211124\Nette\Neon\Node
     }
     public function getSubNodes() : array
     {
-        return $this->key ? [$this->key, $this->value] : [$this->value];
+        return $this->key ? [&$this->key, &$this->value] : [&$this->value];
     }
 }
