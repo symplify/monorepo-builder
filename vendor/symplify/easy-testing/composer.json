@@ -21,12 +21,12 @@
     },
     "autoload": {
         "psr-4": {
-            "MonorepoBuilder20211125\\Symplify\\EasyTesting\\": "src"
+            "MonorepoBuilder20211126\\Symplify\\EasyTesting\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "MonorepoBuilder20211125\\Symplify\\EasyTesting\\Tests\\": "tests"
+            "MonorepoBuilder20211126\\Symplify\\EasyTesting\\Tests\\": "tests"
         }
     },
     "extra": {

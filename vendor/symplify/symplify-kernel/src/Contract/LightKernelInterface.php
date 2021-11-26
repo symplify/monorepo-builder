@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20211125\Symplify\SymplifyKernel\Contract;
+namespace MonorepoBuilder20211126\Symplify\SymplifyKernel\Contract;
 
-use MonorepoBuilder20211125\Psr\Container\ContainerInterface;
+use MonorepoBuilder20211126\Psr\Container\ContainerInterface;
 /**
  * @api
  */
@@ -12,6 +12,6 @@ interface LightKernelInterface
     /**
      * @param string[] $configFiles
      */
-    public function createFromConfigs($configFiles) : \MonorepoBuilder20211125\Psr\Container\ContainerInterface;
-    public function getContainer() : \MonorepoBuilder20211125\Psr\Container\ContainerInterface;
+    public function createFromConfigs($configFiles) : \MonorepoBuilder20211126\Psr\Container\ContainerInterface;
+    public function getContainer() : \MonorepoBuilder20211126\Psr\Container\ContainerInterface;
 }
