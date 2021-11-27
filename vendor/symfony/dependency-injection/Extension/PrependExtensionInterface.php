@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211126\Symfony\Component\DependencyInjection\Extension;
+namespace MonorepoBuilder20211127\Symfony\Component\DependencyInjection\Extension;
 
-use MonorepoBuilder20211126\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder20211127\Symfony\Component\DependencyInjection\ContainerBuilder;
 interface PrependExtensionInterface
 {
     /**
