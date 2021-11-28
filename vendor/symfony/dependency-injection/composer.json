@@ -47,7 +47,7 @@
     },
     "autoload": {
         "psr-4": {
-            "MonorepoBuilder20211127\\Symfony\\Component\\DependencyInjection\\": ""
+            "MonorepoBuilder20211128\\Symfony\\Component\\DependencyInjection\\": ""
         },
         "exclude-from-classmap": [
             "\/Tests\/"
