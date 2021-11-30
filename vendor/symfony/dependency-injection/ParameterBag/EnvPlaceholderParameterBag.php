@@ -8,22 +8,38 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211128\Symfony\Component\DependencyInjection\ParameterBag;
+namespace MonorepoBuilder20211130\Symfony\Component\DependencyInjection\ParameterBag;
 
-use MonorepoBuilder20211128\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use MonorepoBuilder20211128\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use MonorepoBuilder20211130\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use MonorepoBuilder20211130\Symfony\Component\DependencyInjection\Exception\RuntimeException;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class EnvPlaceholderParameterBag extends \MonorepoBuilder20211128\Symfony\Component\DependencyInjection\ParameterBag\ParameterBag
+class EnvPlaceholderParameterBag extends \MonorepoBuilder20211130\Symfony\Component\DependencyInjection\ParameterBag\ParameterBag
 {
+    /**
+     * @var string
+     */
     private $envPlaceholderUniquePrefix;
+    /**
+     * @var mixed[]
+     */
     private $envPlaceholders = [];
+    /**
+     * @var mixed[]
+     */
     private $unusedEnvPlaceholders = [];
+    /**
+     * @var mixed[]
+     */
     private $providedTypes = [];
+    /**
+     * @var int
+     */
     private static $counter = 0;
     /**
      * {@inheritdoc}
+     * @return mixed[]|bool|float|int|string|null
      * @param string $name
      */
     public function get($name)
@@ -43,10 +59,10 @@ class EnvPlaceholderParameterBag extends \MonorepoBuilder20211128\Symfony\Compon
                 }
             }
             if (!\preg_match('/^(?:[-.\\w]*+:)*+\\w++$/', $env)) {
-                throw new \MonorepoBuilder20211128\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Invalid %s name: only "word" characters are allowed.', $name));
+                throw new \MonorepoBuilder20211130\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Invalid %s name: only "word" characters are allowed.', $name));
             }
             if ($this->has($name) && null !== ($defaultValue = parent::get($name)) && !\is_string($defaultValue)) {
-                throw new \MonorepoBuilder20211128\Symfony\Component\DependencyInjection\Exception\RuntimeException(\sprintf('The default value of an env() parameter must be a string or null, but "%s" given to "%s".', \get_debug_type($defaultValue), $name));
+                throw new \MonorepoBuilder20211130\Symfony\Component\DependencyInjection\Exception\RuntimeException(\sprintf('The default value of an env() parameter must be a string or null, but "%s" given to "%s".', \get_debug_type($defaultValue), $name));
             }
             $uniqueName = \md5($name . '_' . self::$counter++);
             $placeholder = \sprintf('%s_%s_%s', $this->getEnvPlaceholderUniquePrefix(), \strtr($env, ':-.', '___'), $uniqueName);
@@ -60,7 +76,7 @@ class EnvPlaceholderParameterBag extends \MonorepoBuilder20211128\Symfony\Compon
      */
     public function getEnvPlaceholderUniquePrefix() : string
     {
-        if (null === $this->envPlaceholderUniquePrefix) {
+        if (!isset($this->envPlaceholderUniquePrefix)) {
             $reproducibleEntropy = \unserialize(\serialize($this->parameters));
             \array_walk_recursive($reproducibleEntropy, function (&$v) {
                 $v = null;
@@ -74,7 +90,7 @@ class EnvPlaceholderParameterBag extends \MonorepoBuilder20211128\Symfony\Compon
      *
      * @return string[][] A map of env var names to their placeholders
      */
-    public function getEnvPlaceholders()
+    public function getEnvPlaceholders() : array
     {
         return $this->envPlaceholders;
     }
@@ -118,7 +134,7 @@ class EnvPlaceholderParameterBag extends \MonorepoBuilder20211128\Symfony\Compon
      *
      * @return string[][]
      */
-    public function getProvidedTypes()
+    public function getProvidedTypes() : array
     {
         return $this->providedTypes;
     }
@@ -133,7 +149,7 @@ class EnvPlaceholderParameterBag extends \MonorepoBuilder20211128\Symfony\Compon
         parent::resolve();
         foreach ($this->envPlaceholders as $env => $placeholders) {
             if ($this->has($name = "env({$env})") && null !== ($default = $this->parameters[$name]) && !\is_string($default)) {
-                throw new \MonorepoBuilder20211128\Symfony\Component\DependencyInjection\Exception\RuntimeException(\sprintf('The default value of env parameter "%s" must be a string or null, "%s" given.', $env, \get_debug_type($default)));
+                throw new \MonorepoBuilder20211130\Symfony\Component\DependencyInjection\Exception\RuntimeException(\sprintf('The default value of env parameter "%s" must be a string or null, "%s" given.', $env, \get_debug_type($default)));
             }
         }
     }

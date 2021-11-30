@@ -8,32 +8,48 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211128\Symfony\Component\Console\Tester;
+namespace MonorepoBuilder20211130\Symfony\Component\Console\Tester;
 
-use MonorepoBuilder20211128\Symfony\Component\Console\Input\InputInterface;
-use MonorepoBuilder20211128\Symfony\Component\Console\Output\ConsoleOutput;
-use MonorepoBuilder20211128\Symfony\Component\Console\Output\OutputInterface;
-use MonorepoBuilder20211128\Symfony\Component\Console\Output\StreamOutput;
+use MonorepoBuilder20211130\PHPUnit\Framework\Assert;
+use MonorepoBuilder20211130\Symfony\Component\Console\Input\InputInterface;
+use MonorepoBuilder20211130\Symfony\Component\Console\Output\ConsoleOutput;
+use MonorepoBuilder20211130\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder20211130\Symfony\Component\Console\Output\StreamOutput;
+use MonorepoBuilder20211130\Symfony\Component\Console\Tester\Constraint\CommandIsSuccessful;
 /**
  * @author Amrouche Hamza <hamza.simperfit@gmail.com>
  */
 trait TesterTrait
 {
-    /** @var StreamOutput */
+    /**
+     * @var \Symfony\Component\Console\Output\StreamOutput
+     */
     private $output;
+    /**
+     * @var mixed[]
+     */
     private $inputs = [];
+    /**
+     * @var bool
+     */
     private $captureStreamsIndependently = \false;
+    /**
+     * @var \Symfony\Component\Console\Input\InputInterface
+     */
+    private $input;
+    /**
+     * @var int
+     */
+    private $statusCode;
     /**
      * Gets the display returned by the last execution of the command or application.
      *
      * @throws \RuntimeException If it's called before the execute method
-     *
-     * @return string The display
      * @param bool $normalize
      */
-    public function getDisplay($normalize = \false)
+    public function getDisplay($normalize = \false) : string
     {
-        if (null === $this->output) {
+        if (!isset($this->output)) {
             throw new \RuntimeException('Output not initialized, did you execute the command before requesting the display?');
         }
         \rewind($this->output->getStream());
@@ -47,10 +63,8 @@ trait TesterTrait
      * Gets the output written to STDERR by the application.
      *
      * @param bool $normalize Whether to normalize end of lines to \n or not
-     *
-     * @return string
      */
-    public function getErrorOutput($normalize = \false)
+    public function getErrorOutput($normalize = \false) : string
     {
         if (!$this->captureStreamsIndependently) {
             throw new \LogicException('The error output is not available when the tester is run without "capture_stderr_separately" option set.');
@@ -64,19 +78,15 @@ trait TesterTrait
     }
     /**
      * Gets the input instance used by the last execution of the command or application.
-     *
-     * @return InputInterface The current input instance
      */
-    public function getInput()
+    public function getInput() : \MonorepoBuilder20211130\Symfony\Component\Console\Input\InputInterface
     {
         return $this->input;
     }
     /**
      * Gets the output instance used by the last execution of the command or application.
-     *
-     * @return OutputInterface The current output instance
      */
-    public function getOutput()
+    public function getOutput() : \MonorepoBuilder20211130\Symfony\Component\Console\Output\OutputInterface
     {
         return $this->output;
     }
@@ -84,15 +94,17 @@ trait TesterTrait
      * Gets the status code returned by the last execution of the command or application.
      *
      * @throws \RuntimeException If it's called before the execute method
-     *
-     * @return int The status code
      */
-    public function getStatusCode()
+    public function getStatusCode() : int
     {
-        if (null === $this->statusCode) {
-            throw new \RuntimeException('Status code not initialized, did you execute the command before requesting the status code?');
-        }
-        return $this->statusCode;
+        return $this->statusCode ?? throw new \RuntimeException('Status code not initialized, did you execute the command before requesting the status code?');
+    }
+    /**
+     * @param string $message
+     */
+    public function assertCommandIsSuccessful($message = '') : void
+    {
+        \MonorepoBuilder20211130\PHPUnit\Framework\Assert::assertThat($this->statusCode, new \MonorepoBuilder20211130\Symfony\Component\Console\Tester\Constraint\CommandIsSuccessful(), $message);
     }
     /**
      * Sets the user inputs.
@@ -120,7 +132,7 @@ trait TesterTrait
     {
         $this->captureStreamsIndependently = \array_key_exists('capture_stderr_separately', $options) && $options['capture_stderr_separately'];
         if (!$this->captureStreamsIndependently) {
-            $this->output = new \MonorepoBuilder20211128\Symfony\Component\Console\Output\StreamOutput(\fopen('php://memory', 'w', \false));
+            $this->output = new \MonorepoBuilder20211130\Symfony\Component\Console\Output\StreamOutput(\fopen('php://memory', 'w', \false));
             if (isset($options['decorated'])) {
                 $this->output->setDecorated($options['decorated']);
             }
@@ -128,8 +140,8 @@ trait TesterTrait
                 $this->output->setVerbosity($options['verbosity']);
             }
         } else {
-            $this->output = new \MonorepoBuilder20211128\Symfony\Component\Console\Output\ConsoleOutput($options['verbosity'] ?? \MonorepoBuilder20211128\Symfony\Component\Console\Output\ConsoleOutput::VERBOSITY_NORMAL, $options['decorated'] ?? null);
-            $errorOutput = new \MonorepoBuilder20211128\Symfony\Component\Console\Output\StreamOutput(\fopen('php://memory', 'w', \false));
+            $this->output = new \MonorepoBuilder20211130\Symfony\Component\Console\Output\ConsoleOutput($options['verbosity'] ?? \MonorepoBuilder20211130\Symfony\Component\Console\Output\ConsoleOutput::VERBOSITY_NORMAL, $options['decorated'] ?? null);
+            $errorOutput = new \MonorepoBuilder20211130\Symfony\Component\Console\Output\StreamOutput(\fopen('php://memory', 'w', \false));
             $errorOutput->setFormatter($this->output->getFormatter());
             $errorOutput->setVerbosity($this->output->getVerbosity());
             $errorOutput->setDecorated($this->output->isDecorated());

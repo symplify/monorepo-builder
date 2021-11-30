@@ -8,20 +8,28 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211128\Symfony\Component\Finder\Iterator;
+namespace MonorepoBuilder20211130\Symfony\Component\Finder\Iterator;
 
 /**
  * DepthRangeFilterIterator limits the directory depth.
  *
  * @author Fabien Potencier <fabien@symfony.com>
+ *
+ * @template-covariant TKey
+ * @template-covariant TValue
+ *
+ * @extends \FilterIterator<TKey, TValue>
  */
 class DepthRangeFilterIterator extends \FilterIterator
 {
+    /**
+     * @var int
+     */
     private $minDepth = 0;
     /**
-     * @param \RecursiveIteratorIterator $iterator The Iterator to filter
-     * @param int                        $minDepth The min depth
-     * @param int                        $maxDepth The max depth
+     * @param \RecursiveIteratorIterator<\RecursiveIterator<TKey, TValue>> $iterator The Iterator to filter
+     * @param int                                                          $minDepth The min depth
+     * @param int                                                          $maxDepth The max depth
      */
     public function __construct(\RecursiveIteratorIterator $iterator, int $minDepth = 0, int $maxDepth = \PHP_INT_MAX)
     {
@@ -31,11 +39,8 @@ class DepthRangeFilterIterator extends \FilterIterator
     }
     /**
      * Filters the iterator values.
-     *
-     * @return bool true if the value should be kept, false otherwise
      */
-    #[\ReturnTypeWillChange]
-    public function accept()
+    public function accept() : bool
     {
         return $this->getInnerIterator()->getDepth() >= $this->minDepth;
     }

@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211128\Symfony\Component\DependencyInjection\Config;
+namespace MonorepoBuilder20211130\Symfony\Component\DependencyInjection\Config;
 
-use MonorepoBuilder20211128\Symfony\Component\Config\Resource\ResourceInterface;
+use MonorepoBuilder20211130\Symfony\Component\Config\Resource\ResourceInterface;
 /**
  * Tracks container parameters.
  *
@@ -18,8 +18,11 @@ use MonorepoBuilder20211128\Symfony\Component\Config\Resource\ResourceInterface;
  *
  * @final
  */
-class ContainerParametersResource implements \MonorepoBuilder20211128\Symfony\Component\Config\Resource\ResourceInterface
+class ContainerParametersResource implements \MonorepoBuilder20211130\Symfony\Component\Config\Resource\ResourceInterface
 {
+    /**
+     * @var mixed[]
+     */
     private $parameters;
     /**
      * @param array $parameters The container parameters to track
@@ -32,9 +35,6 @@ class ContainerParametersResource implements \MonorepoBuilder20211128\Symfony\Co
     {
         return 'container_parameters_' . \md5(\serialize($this->parameters));
     }
-    /**
-     * @return array Tracked parameters
-     */
     public function getParameters() : array
     {
         return $this->parameters;

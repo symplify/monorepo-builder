@@ -8,15 +8,18 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211128\Symfony\Component\Console\Exception;
+namespace MonorepoBuilder20211130\Symfony\Component\Console\Exception;
 
 /**
  * Represents an incorrect command name typed in the console.
  *
  * @author Jérôme Tamarelle <jerome@tamarelle.net>
  */
-class CommandNotFoundException extends \InvalidArgumentException implements \MonorepoBuilder20211128\Symfony\Component\Console\Exception\ExceptionInterface
+class CommandNotFoundException extends \InvalidArgumentException implements \MonorepoBuilder20211130\Symfony\Component\Console\Exception\ExceptionInterface
 {
+    /**
+     * @var mixed[]
+     */
     private $alternatives;
     /**
      * @param string          $message      Exception message to throw
@@ -30,9 +33,9 @@ class CommandNotFoundException extends \InvalidArgumentException implements \Mon
         $this->alternatives = $alternatives;
     }
     /**
-     * @return string[] A list of similar defined names
+     * @return string[]
      */
-    public function getAlternatives()
+    public function getAlternatives() : array
     {
         return $this->alternatives;
     }

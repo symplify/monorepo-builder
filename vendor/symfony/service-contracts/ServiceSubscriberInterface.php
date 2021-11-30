@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211128\Symfony\Contracts\Service;
+namespace MonorepoBuilder20211130\Symfony\Contracts\Service;
 
 /**
  * A ServiceSubscriber exposes its dependencies via the static {@link getSubscribedServices} method.
@@ -48,5 +48,5 @@ interface ServiceSubscriberInterface
      *
      * @return string[] The required service types, optionally keyed by service names
      */
-    public static function getSubscribedServices();
+    public static function getSubscribedServices() : array;
 }

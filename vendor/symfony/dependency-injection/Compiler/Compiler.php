@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211128\Symfony\Component\DependencyInjection\Compiler;
+namespace MonorepoBuilder20211130\Symfony\Component\DependencyInjection\Compiler;
 
-use MonorepoBuilder20211128\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder20211128\Symfony\Component\DependencyInjection\Exception\EnvParameterException;
+use MonorepoBuilder20211130\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder20211130\Symfony\Component\DependencyInjection\Exception\EnvParameterException;
 /**
  * This class is used to remove circular dependencies between individual passes.
  *
@@ -19,39 +19,37 @@ use MonorepoBuilder20211128\Symfony\Component\DependencyInjection\Exception\EnvP
  */
 class Compiler
 {
+    /**
+     * @var \Symfony\Component\DependencyInjection\Compiler\PassConfig
+     */
     private $passConfig;
+    /**
+     * @var mixed[]
+     */
     private $log = [];
+    /**
+     * @var \Symfony\Component\DependencyInjection\Compiler\ServiceReferenceGraph
+     */
     private $serviceReferenceGraph;
     public function __construct()
     {
-        $this->passConfig = new \MonorepoBuilder20211128\Symfony\Component\DependencyInjection\Compiler\PassConfig();
-        $this->serviceReferenceGraph = new \MonorepoBuilder20211128\Symfony\Component\DependencyInjection\Compiler\ServiceReferenceGraph();
+        $this->passConfig = new \MonorepoBuilder20211130\Symfony\Component\DependencyInjection\Compiler\PassConfig();
+        $this->serviceReferenceGraph = new \MonorepoBuilder20211130\Symfony\Component\DependencyInjection\Compiler\ServiceReferenceGraph();
     }
-    /**
-     * Returns the PassConfig.
-     *
-     * @return PassConfig The PassConfig instance
-     */
-    public function getPassConfig()
+    public function getPassConfig() : \MonorepoBuilder20211130\Symfony\Component\DependencyInjection\Compiler\PassConfig
     {
         return $this->passConfig;
     }
-    /**
-     * Returns the ServiceReferenceGraph.
-     *
-     * @return ServiceReferenceGraph The ServiceReferenceGraph instance
-     */
-    public function getServiceReferenceGraph()
+    public function getServiceReferenceGraph() : \MonorepoBuilder20211130\Symfony\Component\DependencyInjection\Compiler\ServiceReferenceGraph
     {
         return $this->serviceReferenceGraph;
     }
     /**
-     * Adds a pass to the PassConfig.
      * @param \Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface $pass
      * @param string $type
      * @param int $priority
      */
-    public function addPass($pass, $type = \MonorepoBuilder20211128\Symfony\Component\DependencyInjection\Compiler\PassConfig::TYPE_BEFORE_OPTIMIZATION, $priority = 0)
+    public function addPass($pass, $type = \MonorepoBuilder20211130\Symfony\Component\DependencyInjection\Compiler\PassConfig::TYPE_BEFORE_OPTIMIZATION, $priority = 0)
     {
         $this->passConfig->addPass($pass, $type, $priority);
     }
@@ -67,12 +65,7 @@ class Compiler
         }
         $this->log[] = \get_class($pass) . ': ' . $message;
     }
-    /**
-     * Returns the log.
-     *
-     * @return array Log array
-     */
-    public function getLog()
+    public function getLog() : array
     {
         return $this->log;
     }
@@ -98,7 +91,7 @@ class Compiler
                 }
             } while ($prev = $prev->getPrevious());
             if ($usedEnvs) {
-                $e = new \MonorepoBuilder20211128\Symfony\Component\DependencyInjection\Exception\EnvParameterException($usedEnvs, $e);
+                $e = new \MonorepoBuilder20211130\Symfony\Component\DependencyInjection\Exception\EnvParameterException($usedEnvs, $e);
             }
             throw $e;
         } finally {

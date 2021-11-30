@@ -8,17 +8,20 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211128\Symfony\Component\DependencyInjection;
+namespace MonorepoBuilder20211130\Symfony\Component\DependencyInjection;
 
-use MonorepoBuilder20211128\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use MonorepoBuilder20211128\Symfony\Component\DependencyInjection\Exception\OutOfBoundsException;
+use MonorepoBuilder20211130\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use MonorepoBuilder20211130\Symfony\Component\DependencyInjection\Exception\OutOfBoundsException;
 /**
  * This definition extends another definition.
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class ChildDefinition extends \MonorepoBuilder20211128\Symfony\Component\DependencyInjection\Definition
+class ChildDefinition extends \MonorepoBuilder20211130\Symfony\Component\DependencyInjection\Definition
 {
+    /**
+     * @var string
+     */
     private $parent;
     /**
      * @param string $parent The id of Definition instance to decorate
@@ -29,10 +32,8 @@ class ChildDefinition extends \MonorepoBuilder20211128\Symfony\Component\Depende
     }
     /**
      * Returns the Definition to inherit from.
-     *
-     * @return string
      */
-    public function getParent()
+    public function getParent() : string
     {
         return $this->parent;
     }
@@ -53,11 +54,9 @@ class ChildDefinition extends \MonorepoBuilder20211128\Symfony\Component\Depende
      * If replaceArgument() has been used to replace an argument, this method
      * will return the replacement value.
      *
-     * @param int|string $index
-     *
-     * @return mixed The argument value
-     *
      * @throws OutOfBoundsException When the argument does not exist
+     * @param int|string $index
+     * @return mixed
      */
     public function getArgument($index)
     {
@@ -74,12 +73,11 @@ class ChildDefinition extends \MonorepoBuilder20211128\Symfony\Component\Depende
      * certain conventions when you want to overwrite the arguments of the
      * parent definition, otherwise your arguments will only be appended.
      *
-     * @param int|string $index
-     * @param mixed      $value
-     *
      * @return $this
      *
      * @throws InvalidArgumentException when $index isn't an integer
+     * @param int|string $index
+     * @param mixed $value
      */
     public function replaceArgument($index, $value)
     {
@@ -88,7 +86,7 @@ class ChildDefinition extends \MonorepoBuilder20211128\Symfony\Component\Depende
         } elseif (\strncmp($index, '$', \strlen('$')) === 0) {
             $this->arguments[$index] = $value;
         } else {
-            throw new \MonorepoBuilder20211128\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException('The argument must be an existing index or the name of a constructor\'s parameter.');
+            throw new \MonorepoBuilder20211130\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException('The argument must be an existing index or the name of a constructor\'s parameter.');
         }
         return $this;
     }

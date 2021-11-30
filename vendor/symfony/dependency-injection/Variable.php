@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211128\Symfony\Component\DependencyInjection;
+namespace MonorepoBuilder20211130\Symfony\Component\DependencyInjection;
 
 /**
  * Represents a variable.
@@ -25,15 +25,15 @@ namespace MonorepoBuilder20211128\Symfony\Component\DependencyInjection;
  */
 class Variable
 {
+    /**
+     * @var string
+     */
     private $name;
     public function __construct(string $name)
     {
         $this->name = $name;
     }
-    /**
-     * @return string
-     */
-    public function __toString()
+    public function __toString() : string
     {
         return $this->name;
     }

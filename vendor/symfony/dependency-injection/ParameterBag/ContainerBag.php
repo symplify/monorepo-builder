@@ -8,23 +8,26 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211128\Symfony\Component\DependencyInjection\ParameterBag;
+namespace MonorepoBuilder20211130\Symfony\Component\DependencyInjection\ParameterBag;
 
-use MonorepoBuilder20211128\Symfony\Component\DependencyInjection\Container;
+use MonorepoBuilder20211130\Symfony\Component\DependencyInjection\Container;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class ContainerBag extends \MonorepoBuilder20211128\Symfony\Component\DependencyInjection\ParameterBag\FrozenParameterBag implements \MonorepoBuilder20211128\Symfony\Component\DependencyInjection\ParameterBag\ContainerBagInterface
+class ContainerBag extends \MonorepoBuilder20211130\Symfony\Component\DependencyInjection\ParameterBag\FrozenParameterBag implements \MonorepoBuilder20211130\Symfony\Component\DependencyInjection\ParameterBag\ContainerBagInterface
 {
+    /**
+     * @var \Symfony\Component\DependencyInjection\Container
+     */
     private $container;
-    public function __construct(\MonorepoBuilder20211128\Symfony\Component\DependencyInjection\Container $container)
+    public function __construct(\MonorepoBuilder20211130\Symfony\Component\DependencyInjection\Container $container)
     {
         $this->container = $container;
     }
     /**
      * {@inheritdoc}
      */
-    public function all()
+    public function all() : array
     {
         return $this->container->getParameterBag()->all();
     }
@@ -40,11 +43,9 @@ class ContainerBag extends \MonorepoBuilder20211128\Symfony\Component\Dependency
     }
     /**
      * {@inheritdoc}
-     *
-     * @return bool
      * @param string $name
      */
-    public function has($name)
+    public function has($name) : bool
     {
         return $this->container->hasParameter($name);
     }

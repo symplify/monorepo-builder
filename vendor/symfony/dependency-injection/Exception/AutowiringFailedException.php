@@ -8,15 +8,24 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211128\Symfony\Component\DependencyInjection\Exception;
+namespace MonorepoBuilder20211130\Symfony\Component\DependencyInjection\Exception;
 
 /**
  * Thrown when a definition cannot be autowired.
  */
-class AutowiringFailedException extends \MonorepoBuilder20211128\Symfony\Component\DependencyInjection\Exception\RuntimeException
+class AutowiringFailedException extends \MonorepoBuilder20211130\Symfony\Component\DependencyInjection\Exception\RuntimeException
 {
+    /**
+     * @var string
+     */
     private $serviceId;
+    /**
+     * @var \Closure|null
+     */
     private $messageCallback;
+    /**
+     * @param \Closure|string $message
+     */
     public function __construct(string $serviceId, $message = '', int $code = 0, \Throwable $previous = null)
     {
         $this->serviceId = $serviceId;
@@ -31,7 +40,13 @@ class AutowiringFailedException extends \MonorepoBuilder20211128\Symfony\Compone
         parent::__construct('', $code, $previous);
         $this->message = new class($this->message, $this->messageCallback)
         {
+            /**
+             * @var string
+             */
             private $message;
+            /**
+             * @var \Closure|null
+             */
             private $messageCallback;
             public function __construct(&$message, &$messageCallback)
             {

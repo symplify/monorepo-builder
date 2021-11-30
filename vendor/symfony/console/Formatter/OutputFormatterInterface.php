@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211128\Symfony\Component\Console\Formatter;
+namespace MonorepoBuilder20211130\Symfony\Component\Console\Formatter;
 
 /**
  * Formatter interface for console output.
@@ -23,11 +23,9 @@ interface OutputFormatterInterface
      */
     public function setDecorated($decorated);
     /**
-     * Gets the decorated flag.
-     *
-     * @return bool true if the output will decorate messages, false otherwise
+     * Whether the output will decorate messages.
      */
-    public function isDecorated();
+    public function isDecorated() : bool;
     /**
      * Sets a new style.
      * @param string $name
@@ -36,23 +34,19 @@ interface OutputFormatterInterface
     public function setStyle($name, $style);
     /**
      * Checks if output formatter has style with specified name.
-     *
-     * @return bool
      * @param string $name
      */
-    public function hasStyle($name);
+    public function hasStyle($name) : bool;
     /**
      * Gets style options from style with specified name.
-     *
-     * @return OutputFormatterStyleInterface
      *
      * @throws \InvalidArgumentException When style isn't defined
      * @param string $name
      */
-    public function getStyle($name);
+    public function getStyle($name) : \MonorepoBuilder20211130\Symfony\Component\Console\Formatter\OutputFormatterStyleInterface;
     /**
      * Formats a message according to the given styles.
      * @param string|null $message
      */
-    public function format($message);
+    public function format($message) : ?string;
 }

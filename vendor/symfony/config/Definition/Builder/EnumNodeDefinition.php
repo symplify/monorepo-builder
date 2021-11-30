@@ -8,16 +8,19 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211128\Symfony\Component\Config\Definition\Builder;
+namespace MonorepoBuilder20211130\Symfony\Component\Config\Definition\Builder;
 
-use MonorepoBuilder20211128\Symfony\Component\Config\Definition\EnumNode;
+use MonorepoBuilder20211130\Symfony\Component\Config\Definition\EnumNode;
 /**
  * Enum Node Definition.
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class EnumNodeDefinition extends \MonorepoBuilder20211128\Symfony\Component\Config\Definition\Builder\ScalarNodeDefinition
+class EnumNodeDefinition extends \MonorepoBuilder20211130\Symfony\Component\Config\Definition\Builder\ScalarNodeDefinition
 {
+    /**
+     * @var mixed[]
+     */
     private $values;
     /**
      * @return $this
@@ -35,15 +38,13 @@ class EnumNodeDefinition extends \MonorepoBuilder20211128\Symfony\Component\Conf
     /**
      * Instantiate a Node.
      *
-     * @return EnumNode The node
-     *
      * @throws \RuntimeException
      */
-    protected function instantiateNode()
+    protected function instantiateNode() : \MonorepoBuilder20211130\Symfony\Component\Config\Definition\ScalarNode
     {
-        if (null === $this->values) {
+        if (!isset($this->values)) {
             throw new \RuntimeException('You must call ->values() on enum nodes.');
         }
-        return new \MonorepoBuilder20211128\Symfony\Component\Config\Definition\EnumNode($this->name, $this->parent, $this->values, $this->pathSeparator);
+        return new \MonorepoBuilder20211130\Symfony\Component\Config\Definition\EnumNode($this->name, $this->parent, $this->values, $this->pathSeparator);
     }
 }

@@ -8,18 +8,27 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211128\Symfony\Component\DependencyInjection\Exception;
+namespace MonorepoBuilder20211130\Symfony\Component\DependencyInjection\Exception;
 
-use MonorepoBuilder20211128\Psr\Container\NotFoundExceptionInterface;
+use MonorepoBuilder20211130\Psr\Container\NotFoundExceptionInterface;
 /**
  * This exception is thrown when a non-existent service is requested.
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class ServiceNotFoundException extends \MonorepoBuilder20211128\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException implements \MonorepoBuilder20211128\Psr\Container\NotFoundExceptionInterface
+class ServiceNotFoundException extends \MonorepoBuilder20211130\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException implements \MonorepoBuilder20211130\Psr\Container\NotFoundExceptionInterface
 {
+    /**
+     * @var string
+     */
     private $id;
+    /**
+     * @var string|null
+     */
     private $sourceId;
+    /**
+     * @var mixed[]
+     */
     private $alternatives;
     public function __construct(string $id, string $sourceId = null, \Throwable $previous = null, array $alternatives = [], string $msg = null)
     {

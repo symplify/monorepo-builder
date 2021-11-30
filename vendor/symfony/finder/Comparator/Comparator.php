@@ -8,66 +8,48 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211128\Symfony\Component\Finder\Comparator;
+namespace MonorepoBuilder20211130\Symfony\Component\Finder\Comparator;
 
 /**
- * Comparator.
- *
  * @author Fabien Potencier <fabien@symfony.com>
  */
 class Comparator
 {
+    /**
+     * @var string
+     */
     private $target;
-    private $operator = '==';
+    /**
+     * @var string
+     */
+    private $operator;
+    public function __construct(string $target, string $operator = '==')
+    {
+        if (!\in_array($operator, ['>', '<', '>=', '<=', '==', '!='])) {
+            throw new \InvalidArgumentException(\sprintf('Invalid operator "%s".', $operator));
+        }
+        $this->target = $target;
+        $this->operator = $operator;
+    }
     /**
      * Gets the target value.
-     *
-     * @return string The target value
      */
-    public function getTarget()
+    public function getTarget() : string
     {
         return $this->target;
     }
     /**
-     * @param string $target
-     */
-    public function setTarget($target)
-    {
-        $this->target = $target;
-    }
-    /**
      * Gets the comparison operator.
-     *
-     * @return string The operator
      */
-    public function getOperator()
+    public function getOperator() : string
     {
         return $this->operator;
     }
     /**
-     * Sets the comparison operator.
-     *
-     * @throws \InvalidArgumentException
-     * @param string $operator
-     */
-    public function setOperator($operator)
-    {
-        if ('' === $operator) {
-            $operator = '==';
-        }
-        if (!\in_array($operator, ['>', '<', '>=', '<=', '==', '!='])) {
-            throw new \InvalidArgumentException(\sprintf('Invalid operator "%s".', $operator));
-        }
-        $this->operator = $operator;
-    }
-    /**
      * Tests against the target.
-     *
-     * @param mixed $test A test value
-     *
-     * @return bool
+     * @param mixed $test
      */
-    public function test($test)
+    public function test($test) : bool
     {
         switch ($this->operator) {
             case '>':

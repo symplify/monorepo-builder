@@ -8,18 +8,27 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211128\Symfony\Component\DependencyInjection\Argument;
+namespace MonorepoBuilder20211130\Symfony\Component\DependencyInjection\Argument;
 
-use MonorepoBuilder20211128\Symfony\Component\DependencyInjection\ServiceLocator as BaseServiceLocator;
+use MonorepoBuilder20211130\Symfony\Component\DependencyInjection\ServiceLocator as BaseServiceLocator;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  *
  * @internal
  */
-class ServiceLocator extends \MonorepoBuilder20211128\Symfony\Component\DependencyInjection\ServiceLocator
+class ServiceLocator extends \MonorepoBuilder20211130\Symfony\Component\DependencyInjection\ServiceLocator
 {
+    /**
+     * @var \Closure
+     */
     private $factory;
+    /**
+     * @var mixed[]
+     */
     private $serviceMap;
+    /**
+     * @var mixed[]|null
+     */
     private $serviceTypes;
     public function __construct(\Closure $factory, array $serviceMap, array $serviceTypes = null)
     {
@@ -30,7 +39,6 @@ class ServiceLocator extends \MonorepoBuilder20211128\Symfony\Component\Dependen
     }
     /**
      * {@inheritdoc}
-     *
      * @return mixed
      * @param string $id
      */

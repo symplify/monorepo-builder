@@ -8,12 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211128\Symfony\Component\Finder\Iterator;
+namespace MonorepoBuilder20211130\Symfony\Component\Finder\Iterator;
 
 /**
  * SortableIterator applies a sort on a given Iterator.
  *
  * @author Fabien Potencier <fabien@symfony.com>
+ *
+ * @implements \IteratorAggregate<string, \SplFileInfo>
  */
 class SortableIterator implements \IteratorAggregate
 {
@@ -24,10 +26,17 @@ class SortableIterator implements \IteratorAggregate
     public const SORT_BY_CHANGED_TIME = 4;
     public const SORT_BY_MODIFIED_TIME = 5;
     public const SORT_BY_NAME_NATURAL = 6;
+    /**
+     * @var \Traversable
+     */
     private $iterator;
+    /**
+     * @var \Closure|int
+     */
     private $sort;
     /**
-     * @param int|callable $sort The sort type (SORT_BY_NAME, SORT_BY_TYPE, or a PHP callback)
+     * @param \Traversable<string, \SplFileInfo> $iterator
+     * @param int|callable                       $sort     The sort type (SORT_BY_NAME, SORT_BY_TYPE, or a PHP callback)
      *
      * @throws \InvalidArgumentException
      */
@@ -69,16 +78,12 @@ class SortableIterator implements \IteratorAggregate
         } elseif (\is_callable($sort)) {
             $this->sort = $reverseOrder ? static function (\SplFileInfo $a, \SplFileInfo $b) use($sort) {
                 return -$sort($a, $b);
-            } : $sort;
+            } : \Closure::fromCallable($sort);
         } else {
             throw new \InvalidArgumentException('The SortableIterator takes a PHP callable or a valid built-in sort algorithm as an argument.');
         }
     }
-    /**
-     * @return \Traversable
-     */
-    #[\ReturnTypeWillChange]
-    public function getIterator()
+    public function getIterator() : \Traversable
     {
         if (1 === $this->sort) {
             return $this->iterator;

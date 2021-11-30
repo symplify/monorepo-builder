@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211128\Symfony\Component\Config\Builder;
+namespace MonorepoBuilder20211130\Symfony\Component\Config\Builder;
 
 /**
  * Represents a method when building classes.
@@ -19,6 +19,9 @@ namespace MonorepoBuilder20211128\Symfony\Component\Config\Builder;
  */
 class Method
 {
+    /**
+     * @var string
+     */
     private $content;
     public function __construct(string $content)
     {

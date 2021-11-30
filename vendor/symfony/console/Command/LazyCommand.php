@@ -8,19 +8,27 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211128\Symfony\Component\Console\Command;
+namespace MonorepoBuilder20211130\Symfony\Component\Console\Command;
 
-use MonorepoBuilder20211128\Symfony\Component\Console\Application;
-use MonorepoBuilder20211128\Symfony\Component\Console\Helper\HelperSet;
-use MonorepoBuilder20211128\Symfony\Component\Console\Input\InputDefinition;
-use MonorepoBuilder20211128\Symfony\Component\Console\Input\InputInterface;
-use MonorepoBuilder20211128\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder20211130\Symfony\Component\Console\Application;
+use MonorepoBuilder20211130\Symfony\Component\Console\Completion\CompletionInput;
+use MonorepoBuilder20211130\Symfony\Component\Console\Completion\CompletionSuggestions;
+use MonorepoBuilder20211130\Symfony\Component\Console\Helper\HelperSet;
+use MonorepoBuilder20211130\Symfony\Component\Console\Input\InputDefinition;
+use MonorepoBuilder20211130\Symfony\Component\Console\Input\InputInterface;
+use MonorepoBuilder20211130\Symfony\Component\Console\Output\OutputInterface;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-final class LazyCommand extends \MonorepoBuilder20211128\Symfony\Component\Console\Command\Command
+final class LazyCommand extends \MonorepoBuilder20211130\Symfony\Component\Console\Command\Command
 {
+    /**
+     * @var \Closure|\Symfony\Component\Console\Command\Command
+     */
     private $command;
+    /**
+     * @var bool|null
+     */
     private $isEnabled;
     public function __construct(string $name, array $aliases, string $description, bool $isHidden, \Closure $commandFactory, ?bool $isEnabled = \true)
     {
@@ -65,10 +73,18 @@ final class LazyCommand extends \MonorepoBuilder20211128\Symfony\Component\Conso
         return $this->getCommand()->run($input, $output);
     }
     /**
+     * @param \Symfony\Component\Console\Completion\CompletionInput $input
+     * @param \Symfony\Component\Console\Completion\CompletionSuggestions $suggestions
+     */
+    public function complete($input, $suggestions) : void
+    {
+        $this->getCommand()->complete($input, $suggestions);
+    }
+    /**
      * @return $this
      * @param callable $code
      */
-    public function setCode($code) : self
+    public function setCode($code)
     {
         $this->getCommand()->setCode($code);
         return $this;
@@ -82,39 +98,43 @@ final class LazyCommand extends \MonorepoBuilder20211128\Symfony\Component\Conso
         $this->getCommand()->mergeApplicationDefinition($mergeArgs);
     }
     /**
+     * @param mixed[]|\Symfony\Component\Console\Input\InputDefinition $definition
      * @return $this
      */
-    public function setDefinition($definition) : self
+    public function setDefinition($definition)
     {
         $this->getCommand()->setDefinition($definition);
         return $this;
     }
-    public function getDefinition() : \MonorepoBuilder20211128\Symfony\Component\Console\Input\InputDefinition
+    public function getDefinition() : \MonorepoBuilder20211130\Symfony\Component\Console\Input\InputDefinition
     {
         return $this->getCommand()->getDefinition();
     }
-    public function getNativeDefinition() : \MonorepoBuilder20211128\Symfony\Component\Console\Input\InputDefinition
+    public function getNativeDefinition() : \MonorepoBuilder20211130\Symfony\Component\Console\Input\InputDefinition
     {
         return $this->getCommand()->getNativeDefinition();
     }
     /**
+     * @param mixed $default
      * @return $this
      * @param string $name
      * @param int|null $mode
      * @param string $description
      */
-    public function addArgument($name, $mode = null, $description = '', $default = null) : self
+    public function addArgument($name, $mode = null, $description = '', $default = null)
     {
         $this->getCommand()->addArgument($name, $mode, $description, $default);
         return $this;
     }
     /**
+     * @param mixed[]|string $shortcut
+     * @param mixed $default
      * @return $this
      * @param string $name
      * @param int|null $mode
      * @param string $description
      */
-    public function addOption($name, $shortcut = null, $mode = null, $description = '', $default = null) : self
+    public function addOption($name, $shortcut = null, $mode = null, $description = '', $default = null)
     {
         $this->getCommand()->addOption($name, $shortcut, $mode, $description, $default);
         return $this;
@@ -123,7 +143,7 @@ final class LazyCommand extends \MonorepoBuilder20211128\Symfony\Component\Conso
      * @return $this
      * @param string $title
      */
-    public function setProcessTitle($title) : self
+    public function setProcessTitle($title)
     {
         $this->getCommand()->setProcessTitle($title);
         return $this;
@@ -132,7 +152,7 @@ final class LazyCommand extends \MonorepoBuilder20211128\Symfony\Component\Conso
      * @return $this
      * @param string $help
      */
-    public function setHelp($help) : self
+    public function setHelp($help)
     {
         $this->getCommand()->setHelp($help);
         return $this;
@@ -156,7 +176,7 @@ final class LazyCommand extends \MonorepoBuilder20211128\Symfony\Component\Conso
      * @return $this
      * @param string $usage
      */
-    public function addUsage($usage) : self
+    public function addUsage($usage)
     {
         $this->getCommand()->addUsage($usage);
         return $this;

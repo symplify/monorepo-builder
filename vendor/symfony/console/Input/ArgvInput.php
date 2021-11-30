@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211128\Symfony\Component\Console\Input;
+namespace MonorepoBuilder20211130\Symfony\Component\Console\Input;
 
-use MonorepoBuilder20211128\Symfony\Component\Console\Exception\RuntimeException;
+use MonorepoBuilder20211130\Symfony\Component\Console\Exception\RuntimeException;
 /**
  * ArgvInput represents an input coming from the CLI arguments.
  *
@@ -36,11 +36,17 @@ use MonorepoBuilder20211128\Symfony\Component\Console\Exception\RuntimeException
  * @see http://www.gnu.org/software/libc/manual/html_node/Argument-Syntax.html
  * @see http://www.opengroup.org/onlinepubs/009695399/basedefs/xbd_chap12.html#tag_12_02
  */
-class ArgvInput extends \MonorepoBuilder20211128\Symfony\Component\Console\Input\Input
+class ArgvInput extends \MonorepoBuilder20211130\Symfony\Component\Console\Input\Input
 {
+    /**
+     * @var mixed[]
+     */
     private $tokens;
+    /**
+     * @var mixed[]
+     */
     private $parsed;
-    public function __construct(array $argv = null, \MonorepoBuilder20211128\Symfony\Component\Console\Input\InputDefinition $definition = null)
+    public function __construct(array $argv = null, \MonorepoBuilder20211130\Symfony\Component\Console\Input\InputDefinition $definition = null)
     {
         $argv = $argv ?? $_SERVER['argv'] ?? [];
         // strip the application name
@@ -63,18 +69,27 @@ class ArgvInput extends \MonorepoBuilder20211128\Symfony\Component\Console\Input
         $parseOptions = \true;
         $this->parsed = $this->tokens;
         while (null !== ($token = \array_shift($this->parsed))) {
-            if ($parseOptions && '' == $token) {
-                $this->parseArgument($token);
-            } elseif ($parseOptions && '--' == $token) {
-                $parseOptions = \false;
-            } elseif ($parseOptions && \strncmp($token, '--', \strlen('--')) === 0) {
-                $this->parseLongOption($token);
-            } elseif ($parseOptions && '-' === $token[0] && '-' !== $token) {
-                $this->parseShortOption($token);
-            } else {
-                $this->parseArgument($token);
-            }
+            $parseOptions = $this->parseToken($token, $parseOptions);
         }
+    }
+    /**
+     * @param string $token
+     * @param bool $parseOptions
+     */
+    protected function parseToken($token, $parseOptions) : bool
+    {
+        if ($parseOptions && '' == $token) {
+            $this->parseArgument($token);
+        } elseif ($parseOptions && '--' == $token) {
+            return \false;
+        } elseif ($parseOptions && \strncmp($token, '--', \strlen('--')) === 0) {
+            $this->parseLongOption($token);
+        } elseif ($parseOptions && '-' === $token[0] && '-' !== $token) {
+            $this->parseShortOption($token);
+        } else {
+            $this->parseArgument($token);
+        }
+        return $parseOptions;
     }
     /**
      * Parses a short option.
@@ -104,7 +119,7 @@ class ArgvInput extends \MonorepoBuilder20211128\Symfony\Component\Console\Input
         for ($i = 0; $i < $len; ++$i) {
             if (!$this->definition->hasShortcut($name[$i])) {
                 $encoding = \mb_detect_encoding($name, null, \true);
-                throw new \MonorepoBuilder20211128\Symfony\Component\Console\Exception\RuntimeException(\sprintf('The "-%s" option does not exist.', \false === $encoding ? $name[$i] : \mb_substr($name, $i, 1, $encoding)));
+                throw new \MonorepoBuilder20211130\Symfony\Component\Console\Exception\RuntimeException(\sprintf('The "-%s" option does not exist.', \false === $encoding ? $name[$i] : \mb_substr($name, $i, 1, $encoding)));
             }
             $option = $this->definition->getOptionForShortcut($name[$i]);
             if ($option->acceptValue()) {
@@ -166,18 +181,19 @@ class ArgvInput extends \MonorepoBuilder20211128\Symfony\Component\Console\Input
             } else {
                 $message = \sprintf('No arguments expected, got "%s".', $token);
             }
-            throw new \MonorepoBuilder20211128\Symfony\Component\Console\Exception\RuntimeException($message);
+            throw new \MonorepoBuilder20211130\Symfony\Component\Console\Exception\RuntimeException($message);
         }
     }
     /**
      * Adds a short option value.
      *
      * @throws RuntimeException When option given doesn't exist
+     * @param mixed $value
      */
     private function addShortOption(string $shortcut, $value)
     {
         if (!$this->definition->hasShortcut($shortcut)) {
-            throw new \MonorepoBuilder20211128\Symfony\Component\Console\Exception\RuntimeException(\sprintf('The "-%s" option does not exist.', $shortcut));
+            throw new \MonorepoBuilder20211130\Symfony\Component\Console\Exception\RuntimeException(\sprintf('The "-%s" option does not exist.', $shortcut));
         }
         $this->addLongOption($this->definition->getOptionForShortcut($shortcut)->getName(), $value);
     }
@@ -185,23 +201,24 @@ class ArgvInput extends \MonorepoBuilder20211128\Symfony\Component\Console\Input
      * Adds a long option value.
      *
      * @throws RuntimeException When option given doesn't exist
+     * @param mixed $value
      */
     private function addLongOption(string $name, $value)
     {
         if (!$this->definition->hasOption($name)) {
             if (!$this->definition->hasNegation($name)) {
-                throw new \MonorepoBuilder20211128\Symfony\Component\Console\Exception\RuntimeException(\sprintf('The "--%s" option does not exist.', $name));
+                throw new \MonorepoBuilder20211130\Symfony\Component\Console\Exception\RuntimeException(\sprintf('The "--%s" option does not exist.', $name));
             }
             $optionName = $this->definition->negationToName($name);
             if (null !== $value) {
-                throw new \MonorepoBuilder20211128\Symfony\Component\Console\Exception\RuntimeException(\sprintf('The "--%s" option does not accept a value.', $name));
+                throw new \MonorepoBuilder20211130\Symfony\Component\Console\Exception\RuntimeException(\sprintf('The "--%s" option does not accept a value.', $name));
             }
             $this->options[$optionName] = \false;
             return;
         }
         $option = $this->definition->getOption($name);
         if (null !== $value && !$option->acceptValue()) {
-            throw new \MonorepoBuilder20211128\Symfony\Component\Console\Exception\RuntimeException(\sprintf('The "--%s" option does not accept a value.', $name));
+            throw new \MonorepoBuilder20211130\Symfony\Component\Console\Exception\RuntimeException(\sprintf('The "--%s" option does not accept a value.', $name));
         }
         if (\in_array($value, ['', null], \true) && $option->acceptValue() && \count($this->parsed)) {
             // if option accepts an optional or mandatory argument
@@ -215,7 +232,7 @@ class ArgvInput extends \MonorepoBuilder20211128\Symfony\Component\Console\Input
         }
         if (null === $value) {
             if ($option->isValueRequired()) {
-                throw new \MonorepoBuilder20211128\Symfony\Component\Console\Exception\RuntimeException(\sprintf('The "--%s" option requires a value.', $name));
+                throw new \MonorepoBuilder20211130\Symfony\Component\Console\Exception\RuntimeException(\sprintf('The "--%s" option requires a value.', $name));
             }
             if (!$option->isArray() && !$option->isValueOptional()) {
                 $value = \true;
@@ -230,7 +247,7 @@ class ArgvInput extends \MonorepoBuilder20211128\Symfony\Component\Console\Input
     /**
      * {@inheritdoc}
      */
-    public function getFirstArgument()
+    public function getFirstArgument() : ?string
     {
         $isOption = \false;
         foreach ($this->tokens as $i => $token) {
@@ -258,9 +275,10 @@ class ArgvInput extends \MonorepoBuilder20211128\Symfony\Component\Console\Input
     }
     /**
      * {@inheritdoc}
+     * @param mixed[]|string $values
      * @param bool $onlyParams
      */
-    public function hasParameterOption($values, $onlyParams = \false)
+    public function hasParameterOption($values, $onlyParams = \false) : bool
     {
         $values = (array) $values;
         foreach ($this->tokens as $token) {
@@ -281,6 +299,9 @@ class ArgvInput extends \MonorepoBuilder20211128\Symfony\Component\Console\Input
     }
     /**
      * {@inheritdoc}
+     * @param mixed[]|string $values
+     * @param mixed[]|bool|float|int|string|null $default
+     * @return mixed
      * @param bool $onlyParams
      */
     public function getParameterOption($values, $default = \false, $onlyParams = \false)
@@ -309,10 +330,8 @@ class ArgvInput extends \MonorepoBuilder20211128\Symfony\Component\Console\Input
     }
     /**
      * Returns a stringified representation of the args passed to the command.
-     *
-     * @return string
      */
-    public function __toString()
+    public function __toString() : string
     {
         $tokens = \array_map(function ($token) {
             if (\preg_match('{^(-[^=]+=)(.+)}', $token, $match)) {

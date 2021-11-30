@@ -8,19 +8,21 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211128\Symfony\Component\Console\Command;
+namespace MonorepoBuilder20211130\Symfony\Component\Console\Command;
 
-use MonorepoBuilder20211128\Symfony\Component\Console\Application;
-use MonorepoBuilder20211128\Symfony\Component\Console\Attribute\AsCommand;
-use MonorepoBuilder20211128\Symfony\Component\Console\Exception\ExceptionInterface;
-use MonorepoBuilder20211128\Symfony\Component\Console\Exception\InvalidArgumentException;
-use MonorepoBuilder20211128\Symfony\Component\Console\Exception\LogicException;
-use MonorepoBuilder20211128\Symfony\Component\Console\Helper\HelperSet;
-use MonorepoBuilder20211128\Symfony\Component\Console\Input\InputArgument;
-use MonorepoBuilder20211128\Symfony\Component\Console\Input\InputDefinition;
-use MonorepoBuilder20211128\Symfony\Component\Console\Input\InputInterface;
-use MonorepoBuilder20211128\Symfony\Component\Console\Input\InputOption;
-use MonorepoBuilder20211128\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder20211130\Symfony\Component\Console\Application;
+use MonorepoBuilder20211130\Symfony\Component\Console\Attribute\AsCommand;
+use MonorepoBuilder20211130\Symfony\Component\Console\Completion\CompletionInput;
+use MonorepoBuilder20211130\Symfony\Component\Console\Completion\CompletionSuggestions;
+use MonorepoBuilder20211130\Symfony\Component\Console\Exception\ExceptionInterface;
+use MonorepoBuilder20211130\Symfony\Component\Console\Exception\InvalidArgumentException;
+use MonorepoBuilder20211130\Symfony\Component\Console\Exception\LogicException;
+use MonorepoBuilder20211130\Symfony\Component\Console\Helper\HelperSet;
+use MonorepoBuilder20211130\Symfony\Component\Console\Input\InputArgument;
+use MonorepoBuilder20211130\Symfony\Component\Console\Input\InputDefinition;
+use MonorepoBuilder20211130\Symfony\Component\Console\Input\InputInterface;
+use MonorepoBuilder20211130\Symfony\Component\Console\Input\InputOption;
+use MonorepoBuilder20211130\Symfony\Component\Console\Output\OutputInterface;
 /**
  * Base class for all commands.
  *
@@ -40,39 +42,75 @@ class Command
      * @var string|null The default command description
      */
     protected static $defaultDescription;
-    private $application;
-    private $name;
-    private $processTitle;
-    private $aliases = [];
-    private $definition;
-    private $hidden = \false;
-    private $help = '';
-    private $description = '';
-    private $fullDefinition;
-    private $ignoreValidationErrors = \false;
-    private $code;
-    private $synopsis = [];
-    private $usages = [];
-    private $helperSet;
     /**
-     * @return string|null The default command name or null when no default name is set
+     * @var \Symfony\Component\Console\Application|null
      */
-    public static function getDefaultName()
+    private $application;
+    /**
+     * @var string|null
+     */
+    private $name;
+    /**
+     * @var string|null
+     */
+    private $processTitle;
+    /**
+     * @var mixed[]
+     */
+    private $aliases = [];
+    /**
+     * @var \Symfony\Component\Console\Input\InputDefinition
+     */
+    private $definition;
+    /**
+     * @var bool
+     */
+    private $hidden = \false;
+    /**
+     * @var string
+     */
+    private $help = '';
+    /**
+     * @var string
+     */
+    private $description = '';
+    /**
+     * @var \Symfony\Component\Console\Input\InputDefinition|null
+     */
+    private $fullDefinition;
+    /**
+     * @var bool
+     */
+    private $ignoreValidationErrors = \false;
+    /**
+     * @var \Closure|null
+     */
+    private $code;
+    /**
+     * @var mixed[]
+     */
+    private $synopsis = [];
+    /**
+     * @var mixed[]
+     */
+    private $usages = [];
+    /**
+     * @var \Symfony\Component\Console\Helper\HelperSet|null
+     */
+    private $helperSet;
+    public static function getDefaultName() : ?string
     {
         $class = static::class;
-        if (\PHP_VERSION_ID >= 80000 && ($attribute = (new \ReflectionClass($class))->getAttributes(\MonorepoBuilder20211128\Symfony\Component\Console\Attribute\AsCommand::class))) {
+        if ($attribute = (new \ReflectionClass($class))->getAttributes(\MonorepoBuilder20211130\Symfony\Component\Console\Attribute\AsCommand::class)) {
             return $attribute[0]->newInstance()->name;
         }
         $r = new \ReflectionProperty($class, 'defaultName');
         return $class === $r->class ? static::$defaultName : null;
     }
-    /**
-     * @return string|null The default command description or null when no default description is set
-     */
     public static function getDefaultDescription() : ?string
     {
         $class = static::class;
-        if (\PHP_VERSION_ID >= 80000 && ($attribute = (new \ReflectionClass($class))->getAttributes(\MonorepoBuilder20211128\Symfony\Component\Console\Attribute\AsCommand::class))) {
+        if ($attribute = (new \ReflectionClass($class))->getAttributes(\MonorepoBuilder20211130\Symfony\Component\Console\Attribute\AsCommand::class)) {
             return $attribute[0]->newInstance()->description;
         }
         $r = new \ReflectionProperty($class, 'defaultDescription');
@@ -85,7 +123,7 @@ class Command
      */
     public function __construct(string $name = null)
     {
-        $this->definition = new \MonorepoBuilder20211128\Symfony\Component\Console\Input\InputDefinition();
+        $this->definition = new \MonorepoBuilder20211130\Symfony\Component\Console\Input\InputDefinition();
         if (null === $name && null !== ($name = static::getDefaultName())) {
             $aliases = \explode('|', $name);
             if ('' === ($name = \array_shift($aliases))) {
@@ -133,26 +171,22 @@ class Command
     }
     /**
      * Gets the helper set.
-     *
-     * @return HelperSet|null A HelperSet instance
      */
-    public function getHelperSet()
+    public function getHelperSet() : ?\MonorepoBuilder20211130\Symfony\Component\Console\Helper\HelperSet
     {
         return $this->helperSet;
     }
     /**
      * Gets the application instance for this command.
-     *
-     * @return Application|null An Application instance
      */
-    public function getApplication()
+    public function getApplication() : ?\MonorepoBuilder20211130\Symfony\Component\Console\Application
     {
         return $this->application;
     }
     /**
      * Checks whether the command is enabled or not in the current environment.
      *
-     * Override this to check for x or y and return false if the command can not
+     * Override this to check for x or y and return false if the command cannot
      * run properly under the current conditions.
      *
      * @return bool
@@ -185,7 +219,7 @@ class Command
      */
     protected function execute($input, $output)
     {
-        throw new \MonorepoBuilder20211128\Symfony\Component\Console\Exception\LogicException('You must override the execute() method in the concrete command class.');
+        throw new \MonorepoBuilder20211130\Symfony\Component\Console\Exception\LogicException('You must override the execute() method in the concrete command class.');
     }
     /**
      * Interacts with the user.
@@ -230,14 +264,14 @@ class Command
      * @param \Symfony\Component\Console\Input\InputInterface $input
      * @param \Symfony\Component\Console\Output\OutputInterface $output
      */
-    public function run($input, $output)
+    public function run($input, $output) : int
     {
         // add the application arguments and options
         $this->mergeApplicationDefinition();
         // bind the input against the command specific arguments/options
         try {
             $input->bind($this->getDefinition());
-        } catch (\MonorepoBuilder20211128\Symfony\Component\Console\Exception\ExceptionInterface $e) {
+        } catch (\MonorepoBuilder20211130\Symfony\Component\Console\Exception\ExceptionInterface $e) {
             if (!$this->ignoreValidationErrors) {
                 throw $e;
             }
@@ -247,14 +281,14 @@ class Command
             if (\function_exists('cli_set_process_title')) {
                 if (!@\cli_set_process_title($this->processTitle)) {
                     if ('Darwin' === \PHP_OS) {
-                        $output->writeln('<comment>Running "cli_set_process_title" as an unprivileged user is not supported on MacOS.</comment>', \MonorepoBuilder20211128\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_VERY_VERBOSE);
+                        $output->writeln('<comment>Running "cli_set_process_title" as an unprivileged user is not supported on MacOS.</comment>', \MonorepoBuilder20211130\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_VERY_VERBOSE);
                     } else {
                         \cli_set_process_title($this->processTitle);
                     }
                 }
-            } elseif (\function_exists('MonorepoBuilder20211128\\setproctitle')) {
+            } elseif (\function_exists('MonorepoBuilder20211130\\setproctitle')) {
                 setproctitle($this->processTitle);
-            } elseif (\MonorepoBuilder20211128\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_VERY_VERBOSE === $output->getVerbosity()) {
+            } elseif (\MonorepoBuilder20211130\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_VERY_VERBOSE === $output->getVerbosity()) {
                 $output->writeln('<comment>Install the proctitle PECL to be able to change the process title.</comment>');
             }
         }
@@ -277,6 +311,14 @@ class Command
             }
         }
         return \is_numeric($statusCode) ? (int) $statusCode : 0;
+    }
+    /**
+     * Adds suggestions to $suggestions for the current completion input (e.g. option or argument).
+     * @param \Symfony\Component\Console\Completion\CompletionInput $input
+     * @param \Symfony\Component\Console\Completion\CompletionSuggestions $suggestions
+     */
+    public function complete($input, $suggestions) : void
+    {
     }
     /**
      * Sets the code to execute when running this command.
@@ -307,6 +349,8 @@ class Command
                     \restore_error_handler();
                 }
             }
+        } else {
+            $code = \Closure::fromCallable($code);
         }
         $this->code = $code;
         return $this;
@@ -325,7 +369,7 @@ class Command
         if (null === $this->application) {
             return;
         }
-        $this->fullDefinition = new \MonorepoBuilder20211128\Symfony\Component\Console\Input\InputDefinition();
+        $this->fullDefinition = new \MonorepoBuilder20211130\Symfony\Component\Console\Input\InputDefinition();
         $this->fullDefinition->setOptions($this->definition->getOptions());
         $this->fullDefinition->addOptions($this->application->getDefinition()->getOptions());
         if ($mergeArgs) {
@@ -338,13 +382,12 @@ class Command
     /**
      * Sets an array of argument and option instances.
      *
-     * @param array|InputDefinition $definition An array of argument and option instances or a definition instance
-     *
      * @return $this
+     * @param mixed[]|\Symfony\Component\Console\Input\InputDefinition $definition
      */
     public function setDefinition($definition)
     {
-        if ($definition instanceof \MonorepoBuilder20211128\Symfony\Component\Console\Input\InputDefinition) {
+        if ($definition instanceof \MonorepoBuilder20211130\Symfony\Component\Console\Input\InputDefinition) {
             $this->definition = $definition;
         } else {
             $this->definition->setDefinition($definition);
@@ -354,10 +397,8 @@ class Command
     }
     /**
      * Gets the InputDefinition attached to this Command.
-     *
-     * @return InputDefinition An InputDefinition instance
      */
-    public function getDefinition()
+    public function getDefinition() : \MonorepoBuilder20211130\Symfony\Component\Console\Input\InputDefinition
     {
         return $this->fullDefinition ?? $this->getNativeDefinition();
     }
@@ -368,15 +409,10 @@ class Command
      * be changed by merging with the application InputDefinition.
      *
      * This method is not part of public API and should not be used directly.
-     *
-     * @return InputDefinition An InputDefinition instance
      */
-    public function getNativeDefinition()
+    public function getNativeDefinition() : \MonorepoBuilder20211130\Symfony\Component\Console\Input\InputDefinition
     {
-        if (null === $this->definition) {
-            throw new \MonorepoBuilder20211128\Symfony\Component\Console\Exception\LogicException(\sprintf('Command class "%s" is not correctly initialized. You probably forgot to call the parent constructor.', static::class));
-        }
-        return $this->definition;
+        return $this->definition ?? throw new \MonorepoBuilder20211130\Symfony\Component\Console\Exception\LogicException(\sprintf('Command class "%s" is not correctly initialized. You probably forgot to call the parent constructor.', static::class));
     }
     /**
      * Adds an argument.
@@ -392,30 +428,28 @@ class Command
      */
     public function addArgument($name, $mode = null, $description = '', $default = null)
     {
-        $this->definition->addArgument(new \MonorepoBuilder20211128\Symfony\Component\Console\Input\InputArgument($name, $mode, $description, $default));
+        $this->definition->addArgument(new \MonorepoBuilder20211130\Symfony\Component\Console\Input\InputArgument($name, $mode, $description, $default));
         if (null !== $this->fullDefinition) {
-            $this->fullDefinition->addArgument(new \MonorepoBuilder20211128\Symfony\Component\Console\Input\InputArgument($name, $mode, $description, $default));
+            $this->fullDefinition->addArgument(new \MonorepoBuilder20211130\Symfony\Component\Console\Input\InputArgument($name, $mode, $description, $default));
         }
         return $this;
     }
     /**
      * Adds an option.
      *
-     * @param string|array|null $shortcut The shortcuts, can be null, a string of shortcuts delimited by | or an array of shortcuts
-     * @param int|null          $mode     The option mode: One of the InputOption::VALUE_* constants
-     * @param mixed             $default  The default value (must be null for InputOption::VALUE_NONE)
+     * @param $shortcut The shortcuts, can be null, a string of shortcuts delimited by | or an array of shortcuts
+     * @param $mode     The option mode: One of the InputOption::VALUE_* constants
+     * @param $default  The default value (must be null for InputOption::VALUE_NONE)
      *
      * @throws InvalidArgumentException If option mode is invalid or incompatible
      *
      * @return $this
-     * @param string $name
-     * @param string $description
      */
     public function addOption($name, $shortcut = null, $mode = null, $description = '', $default = null)
     {
-        $this->definition->addOption(new \MonorepoBuilder20211128\Symfony\Component\Console\Input\InputOption($name, $shortcut, $mode, $description, $default));
+        $this->definition->addOption(new \MonorepoBuilder20211130\Symfony\Component\Console\Input\InputOption($name, $shortcut, $mode, $description, $default));
         if (null !== $this->fullDefinition) {
-            $this->fullDefinition->addOption(new \MonorepoBuilder20211128\Symfony\Component\Console\Input\InputOption($name, $shortcut, $mode, $description, $default));
+            $this->fullDefinition->addOption(new \MonorepoBuilder20211130\Symfony\Component\Console\Input\InputOption($name, $shortcut, $mode, $description, $default));
         }
         return $this;
     }
@@ -454,22 +488,17 @@ class Command
     }
     /**
      * Returns the command name.
-     *
-     * @return string|null
      */
-    public function getName()
+    public function getName() : ?string
     {
         return $this->name;
     }
     /**
      * @param bool $hidden Whether or not the command should be hidden from the list of commands
-     *                     The default value will be true in Symfony 6.0
      *
      * @return $this
-     *
-     * @final since Symfony 5.1
      */
-    public function setHidden($hidden)
+    public function setHidden($hidden = \true)
     {
         $this->hidden = $hidden;
         return $this;
@@ -477,7 +506,7 @@ class Command
     /**
      * @return bool whether the command should be publicly shown or not
      */
-    public function isHidden()
+    public function isHidden() : bool
     {
         return $this->hidden;
     }
@@ -494,10 +523,8 @@ class Command
     }
     /**
      * Returns the description for the command.
-     *
-     * @return string The description for the command
      */
-    public function getDescription()
+    public function getDescription() : string
     {
         return $this->description;
     }
@@ -514,20 +541,16 @@ class Command
     }
     /**
      * Returns the help for the command.
-     *
-     * @return string The help for the command
      */
-    public function getHelp()
+    public function getHelp() : string
     {
         return $this->help;
     }
     /**
      * Returns the processed help for the command replacing the %command.name% and
      * %command.full_name% patterns with the real values dynamically.
-     *
-     * @return string The processed help for the command
      */
-    public function getProcessedHelp()
+    public function getProcessedHelp() : string
     {
         $name = $this->name;
         $isSingleCommand = $this->application && $this->application->isSingleCommand();
@@ -556,10 +579,8 @@ class Command
     }
     /**
      * Returns the aliases for the command.
-     *
-     * @return array An array of aliases for the command
      */
-    public function getAliases()
+    public function getAliases() : array
     {
         return $this->aliases;
     }
@@ -567,10 +588,8 @@ class Command
      * Returns the synopsis for the command.
      *
      * @param bool $short Whether to show the short version of the synopsis (with options folded) or not
-     *
-     * @return string The synopsis
      */
-    public function getSynopsis($short = \false)
+    public function getSynopsis($short = \false) : string
     {
         $key = $short ? 'short' : 'long';
         if (!isset($this->synopsis[$key])) {
@@ -594,26 +613,23 @@ class Command
     }
     /**
      * Returns alternative usages of the command.
-     *
-     * @return array
      */
-    public function getUsages()
+    public function getUsages() : array
     {
         return $this->usages;
     }
     /**
      * Gets a helper instance by name.
      *
-     * @return mixed The helper value
-     *
      * @throws LogicException           if no HelperSet is defined
      * @throws InvalidArgumentException if the helper is not defined
+     * @return mixed
      * @param string $name
      */
     public function getHelper($name)
     {
         if (null === $this->helperSet) {
-            throw new \MonorepoBuilder20211128\Symfony\Component\Console\Exception\LogicException(\sprintf('Cannot retrieve helper "%s" because there is no HelperSet defined. Did you forget to add your command to the application or to set the application on the command using the setApplication() method? You can also set the HelperSet directly using the setHelperSet() method.', $name));
+            throw new \MonorepoBuilder20211130\Symfony\Component\Console\Exception\LogicException(\sprintf('Cannot retrieve helper "%s" because there is no HelperSet defined. Did you forget to add your command to the application or to set the application on the command using the setApplication() method? You can also set the HelperSet directly using the setHelperSet() method.', $name));
         }
         return $this->helperSet->get($name);
     }
@@ -627,7 +643,7 @@ class Command
     private function validateName(string $name)
     {
         if (!\preg_match('/^[^\\:]++(\\:[^\\:]++)*$/', $name)) {
-            throw new \MonorepoBuilder20211128\Symfony\Component\Console\Exception\InvalidArgumentException(\sprintf('Command name "%s" is invalid.', $name));
+            throw new \MonorepoBuilder20211130\Symfony\Component\Console\Exception\InvalidArgumentException(\sprintf('Command name "%s" is invalid.', $name));
         }
     }
 }

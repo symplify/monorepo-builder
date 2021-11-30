@@ -8,23 +8,21 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211128\Symfony\Component\Config\Definition\Builder;
+namespace MonorepoBuilder20211130\Symfony\Component\Config\Definition\Builder;
 
-use MonorepoBuilder20211128\Symfony\Component\Config\Definition\IntegerNode;
+use MonorepoBuilder20211130\Symfony\Component\Config\Definition\IntegerNode;
 /**
  * This class provides a fluent interface for defining an integer node.
  *
  * @author Jeanmonod David <david.jeanmonod@gmail.com>
  */
-class IntegerNodeDefinition extends \MonorepoBuilder20211128\Symfony\Component\Config\Definition\Builder\NumericNodeDefinition
+class IntegerNodeDefinition extends \MonorepoBuilder20211130\Symfony\Component\Config\Definition\Builder\NumericNodeDefinition
 {
     /**
      * Instantiates a Node.
-     *
-     * @return IntegerNode The node
      */
-    protected function instantiateNode()
+    protected function instantiateNode() : \MonorepoBuilder20211130\Symfony\Component\Config\Definition\ScalarNode
     {
-        return new \MonorepoBuilder20211128\Symfony\Component\Config\Definition\IntegerNode($this->name, $this->parent, $this->min, $this->max, $this->pathSeparator);
+        return new \MonorepoBuilder20211130\Symfony\Component\Config\Definition\IntegerNode($this->name, $this->parent, $this->min, $this->max, $this->pathSeparator);
     }
 }

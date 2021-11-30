@@ -215,28 +215,33 @@
         },
         {
             "name": "psr\/container",
-            "version": "1.1.2",
-            "version_normalized": "1.1.2.0",
+            "version": "2.0.2",
+            "version_normalized": "2.0.2.0",
             "source": {
                 "type": "git",
                 "url": "https:\/\/github.com\/php-fig\/container.git",
-                "reference": "513e0666f7216c7459170d56df27dfcefe1689ea"
+                "reference": "c71ecc56dfe541dbd90c5360474fbc405f8d5963"
             },
             "dist": {
                 "type": "zip",
-                "url": "https:\/\/api.github.com\/repos\/php-fig\/container\/zipball\/513e0666f7216c7459170d56df27dfcefe1689ea",
-                "reference": "513e0666f7216c7459170d56df27dfcefe1689ea",
+                "url": "https:\/\/api.github.com\/repos\/php-fig\/container\/zipball\/c71ecc56dfe541dbd90c5360474fbc405f8d5963",
+                "reference": "c71ecc56dfe541dbd90c5360474fbc405f8d5963",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.4.0"
             },
-            "time": "2021-11-05T16:50:12+00:00",
+            "time": "2021-11-05T16:47:00+00:00",
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder20211128\\Psr\\Container\\": "src\/"
+                    "MonorepoBuilder20211130\\Psr\\Container\\": "src\/"
                 }
             },
             "notification-url": "https:\/\/packagist.org\/downloads\/",
@@ -260,7 +265,7 @@
             ],
             "support": {
                 "issues": "https:\/\/github.com\/php-fig\/container\/issues",
-                "source": "https:\/\/github.com\/php-fig\/container\/tree\/1.1.2"
+                "source": "https:\/\/github.com\/php-fig\/container\/tree\/2.0.2"
             },
             "install-path": "..\/psr\/container"
         },
@@ -335,46 +340,45 @@
         },
         {
             "name": "symfony\/config",
-            "version": "v5.3.11",
-            "version_normalized": "5.3.11.0",
+            "version": "v6.0.0",
+            "version_normalized": "6.0.0.0",
             "source": {
                 "type": "git",
                 "url": "https:\/\/github.com\/symfony\/config.git",
-                "reference": "f080af00c441f1df40cf5c269707fdebe5740557"
+                "reference": "df4871981fd37f953c117b55feac03462be5a2d6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https:\/\/api.github.com\/repos\/symfony\/config\/zipball\/f080af00c441f1df40cf5c269707fdebe5740557",
-                "reference": "f080af00c441f1df40cf5c269707fdebe5740557",
+                "url": "https:\/\/api.github.com\/repos\/symfony\/config\/zipball\/df4871981fd37f953c117b55feac03462be5a2d6",
+                "reference": "df4871981fd37f953c117b55feac03462be5a2d6",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2.5",
-                "symfony\/deprecation-contracts": "^2.1",
-                "symfony\/filesystem": "^4.4|^5.0",
+                "php": ">=8.0.2",
+                "symfony\/deprecation-contracts": "^2.1|^3",
+                "symfony\/filesystem": "^5.4|^6.0",
                 "symfony\/polyfill-ctype": "~1.8",
-                "symfony\/polyfill-php80": "^1.16",
                 "symfony\/polyfill-php81": "^1.22"
             },
             "conflict": {
                 "symfony\/finder": "<4.4"
             },
             "require-dev": {
-                "symfony\/event-dispatcher": "^4.4|^5.0",
-                "symfony\/finder": "^4.4|^5.0",
-                "symfony\/messenger": "^4.4|^5.0",
-                "symfony\/service-contracts": "^1.1|^2",
-                "symfony\/yaml": "^4.4|^5.0"
+                "symfony\/event-dispatcher": "^5.4|^6.0",
+                "symfony\/finder": "^5.4|^6.0",
+                "symfony\/messenger": "^5.4|^6.0",
+                "symfony\/service-contracts": "^1.1|^2|^3",
+                "symfony\/yaml": "^5.4|^6.0"
             },
             "suggest": {
                 "symfony\/yaml": "To use the yaml reference dumper"
             },
-            "time": "2021-10-29T16:05:40+00:00",
+            "time": "2021-11-23T19:05:29+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder20211128\\Symfony\\Component\\Config\\": ""
+                    "MonorepoBuilder20211130\\Symfony\\Component\\Config\\": ""
                 },
                 "exclude-from-classmap": [
                     "\/Tests\/"
@@ -397,7 +401,7 @@
             "description": "Helps you find, load, combine, autofill and validate configuration values of any kind",
             "homepage": "https:\/\/symfony.com",
             "support": {
-                "source": "https:\/\/github.com\/symfony\/config\/tree\/v5.3.11"
+                "source": "https:\/\/github.com\/symfony\/config\/tree\/v6.0.0"
             },
             "funding": [
                 {
@@ -417,46 +421,43 @@
         },
         {
             "name": "symfony\/console",
-            "version": "v5.3.11",
-            "version_normalized": "5.3.11.0",
+            "version": "v6.0.0",
+            "version_normalized": "6.0.0.0",
             "source": {
                 "type": "git",
                 "url": "https:\/\/github.com\/symfony\/console.git",
-                "reference": "3e7ab8f5905058984899b05a4648096f558bfeba"
+                "reference": "675a4e6b05029a02ac43d3daf5aa73f039e876ea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https:\/\/api.github.com\/repos\/symfony\/console\/zipball\/3e7ab8f5905058984899b05a4648096f558bfeba",
-                "reference": "3e7ab8f5905058984899b05a4648096f558bfeba",
+                "url": "https:\/\/api.github.com\/repos\/symfony\/console\/zipball\/675a4e6b05029a02ac43d3daf5aa73f039e876ea",
+                "reference": "675a4e6b05029a02ac43d3daf5aa73f039e876ea",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2.5",
-                "symfony\/deprecation-contracts": "^2.1",
+                "php": ">=8.0.2",
                 "symfony\/polyfill-mbstring": "~1.0",
-                "symfony\/polyfill-php73": "^1.8",
-                "symfony\/polyfill-php80": "^1.16",
-                "symfony\/service-contracts": "^1.1|^2",
-                "symfony\/string": "^5.1"
+                "symfony\/service-contracts": "^1.1|^2|^3",
+                "symfony\/string": "^5.4|^6.0"
             },
             "conflict": {
-                "symfony\/dependency-injection": "<4.4",
-                "symfony\/dotenv": "<5.1",
-                "symfony\/event-dispatcher": "<4.4",
-                "symfony\/lock": "<4.4",
-                "symfony\/process": "<4.4"
+                "symfony\/dependency-injection": "<5.4",
+                "symfony\/dotenv": "<5.4",
+                "symfony\/event-dispatcher": "<5.4",
+                "symfony\/lock": "<5.4",
+                "symfony\/process": "<5.4"
             },
             "provide": {
-                "psr\/log-implementation": "1.0|2.0"
+                "psr\/log-implementation": "1.0|2.0|3.0"
             },
             "require-dev": {
-                "psr\/log": "^1|^2",
-                "symfony\/config": "^4.4|^5.0",
-                "symfony\/dependency-injection": "^4.4|^5.0",
-                "symfony\/event-dispatcher": "^4.4|^5.0",
-                "symfony\/lock": "^4.4|^5.0",
-                "symfony\/process": "^4.4|^5.0",
-                "symfony\/var-dumper": "^4.4|^5.0"
+                "psr\/log": "^1|^2|^3",
+                "symfony\/config": "^5.4|^6.0",
+                "symfony\/dependency-injection": "^5.4|^6.0",
+                "symfony\/event-dispatcher": "^5.4|^6.0",
+                "symfony\/lock": "^5.4|^6.0",
+                "symfony\/process": "^5.4|^6.0",
+                "symfony\/var-dumper": "^5.4|^6.0"
             },
             "suggest": {
                 "psr\/log": "For using the console logger",
@@ -464,12 +465,12 @@
                 "symfony\/lock": "",
                 "symfony\/process": ""
             },
-            "time": "2021-11-21T19:41:05+00:00",
+            "time": "2021-11-29T15:32:57+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder20211128\\Symfony\\Component\\Console\\": ""
+                    "MonorepoBuilder20211130\\Symfony\\Component\\Console\\": ""
                 },
                 "exclude-from-classmap": [
                     "\/Tests\/"
@@ -498,7 +499,7 @@
                 "terminal"
             ],
             "support": {
-                "source": "https:\/\/github.com\/symfony\/console\/tree\/v5.3.11"
+                "source": "https:\/\/github.com\/symfony\/console\/tree\/v6.0.0"
             },
             "funding": [
                 {
@@ -518,41 +519,41 @@
         },
         {
             "name": "symfony\/dependency-injection",
-            "version": "v5.3.11",
-            "version_normalized": "5.3.11.0",
+            "version": "v6.0.0",
+            "version_normalized": "6.0.0.0",
             "source": {
                 "type": "git",
                 "url": "https:\/\/github.com\/symfony\/dependency-injection.git",
-                "reference": "3793617321eb39b2e8e708f6fd61f875ec5f0ed6"
+                "reference": "4dae086ee9bda1e2d0fdbc19a4a30ea49b0e3c7c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https:\/\/api.github.com\/repos\/symfony\/dependency-injection\/zipball\/3793617321eb39b2e8e708f6fd61f875ec5f0ed6",
-                "reference": "3793617321eb39b2e8e708f6fd61f875ec5f0ed6",
+                "url": "https:\/\/api.github.com\/repos\/symfony\/dependency-injection\/zipball\/4dae086ee9bda1e2d0fdbc19a4a30ea49b0e3c7c",
+                "reference": "4dae086ee9bda1e2d0fdbc19a4a30ea49b0e3c7c",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2.5",
-                "psr\/container": "^1.1.1",
-                "symfony\/deprecation-contracts": "^2.1",
-                "symfony\/polyfill-php80": "^1.16",
-                "symfony\/service-contracts": "^1.1.6|^2"
+                "php": ">=8.0.2",
+                "psr\/container": "^1.1|^2.0",
+                "symfony\/deprecation-contracts": "^2.1|^3",
+                "symfony\/polyfill-php81": "^1.22",
+                "symfony\/service-contracts": "^1.1.6|^2.0|^3.0"
             },
             "conflict": {
                 "ext-psr": "<1.1|>=2",
-                "symfony\/config": "<5.3",
-                "symfony\/finder": "<4.4",
-                "symfony\/proxy-manager-bridge": "<4.4",
-                "symfony\/yaml": "<4.4"
+                "symfony\/config": "<5.4",
+                "symfony\/finder": "<5.4",
+                "symfony\/proxy-manager-bridge": "<5.4",
+                "symfony\/yaml": "<5.4"
             },
             "provide": {
-                "psr\/container-implementation": "1.0",
-                "symfony\/service-implementation": "1.0|2.0"
+                "psr\/container-implementation": "1.1|2.0|3.0",
+                "symfony\/service-implementation": "1.1|2.0|3.0"
             },
             "require-dev": {
-                "symfony\/config": "^5.3",
-                "symfony\/expression-language": "^4.4|^5.0",
-                "symfony\/yaml": "^4.4|^5.0"
+                "symfony\/config": "^5.4|^6.0",
+                "symfony\/expression-language": "^5.4|^6.0",
+                "symfony\/yaml": "^5.4|^6.0"
             },
             "suggest": {
                 "symfony\/config": "",
@@ -561,12 +562,12 @@
                 "symfony\/proxy-manager-bridge": "Generate service proxies to lazy load them",
                 "symfony\/yaml": ""
             },
-            "time": "2021-11-17T12:16:12+00:00",
+            "time": "2021-11-29T15:32:57+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder20211128\\Symfony\\Component\\DependencyInjection\\": ""
+                    "MonorepoBuilder20211130\\Symfony\\Component\\DependencyInjection\\": ""
                 },
                 "exclude-from-classmap": [
                     "\/Tests\/"
@@ -589,7 +590,7 @@
             "description": "Allows you to standardize and centralize the way objects are constructed in your application",
             "homepage": "https:\/\/symfony.com",
             "support": {
-                "source": "https:\/\/github.com\/symfony\/dependency-injection\/tree\/v5.3.11"
+                "source": "https:\/\/github.com\/symfony\/dependency-injection\/tree\/v6.0.0"
             },
             "funding": [
                 {
@@ -609,27 +610,27 @@
         },
         {
             "name": "symfony\/deprecation-contracts",
-            "version": "v2.5.0",
-            "version_normalized": "2.5.0.0",
+            "version": "v3.0.0",
+            "version_normalized": "3.0.0.0",
             "source": {
                 "type": "git",
                 "url": "https:\/\/github.com\/symfony\/deprecation-contracts.git",
-                "reference": "6f981ee24cf69ee7ce9736146d1c57c2780598a8"
+                "reference": "c726b64c1ccfe2896cb7df2e1331c357ad1c8ced"
             },
             "dist": {
                 "type": "zip",
-                "url": "https:\/\/api.github.com\/repos\/symfony\/deprecation-contracts\/zipball\/6f981ee24cf69ee7ce9736146d1c57c2780598a8",
-                "reference": "6f981ee24cf69ee7ce9736146d1c57c2780598a8",
+                "url": "https:\/\/api.github.com\/repos\/symfony\/deprecation-contracts\/zipball\/c726b64c1ccfe2896cb7df2e1331c357ad1c8ced",
+                "reference": "c726b64c1ccfe2896cb7df2e1331c357ad1c8ced",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1"
+                "php": ">=8.0.2"
             },
-            "time": "2021-07-12T14:48:14+00:00",
+            "time": "2021-11-01T23:48:49+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "2.5-dev"
+                    "dev-main": "3.0-dev"
                 },
                 "thanks": {
                     "name": "symfony\/contracts",
@@ -659,7 +660,7 @@
             "description": "A generic function and convention to trigger deprecation notices",
             "homepage": "https:\/\/symfony.com",
             "support": {
-                "source": "https:\/\/github.com\/symfony\/deprecation-contracts\/tree\/v2.5.0"
+                "source": "https:\/\/github.com\/symfony\/deprecation-contracts\/tree\/v3.0.0"
             },
             "funding": [
                 {
@@ -679,30 +680,30 @@
         },
         {
             "name": "symfony\/filesystem",
-            "version": "v5.3.4",
-            "version_normalized": "5.3.4.0",
+            "version": "v6.0.0",
+            "version_normalized": "6.0.0.0",
             "source": {
                 "type": "git",
                 "url": "https:\/\/github.com\/symfony\/filesystem.git",
-                "reference": "343f4fe324383ca46792cae728a3b6e2f708fb32"
+                "reference": "52b3c9cce673b014915445a432339f282e002ce6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https:\/\/api.github.com\/repos\/symfony\/filesystem\/zipball\/343f4fe324383ca46792cae728a3b6e2f708fb32",
-                "reference": "343f4fe324383ca46792cae728a3b6e2f708fb32",
+                "url": "https:\/\/api.github.com\/repos\/symfony\/filesystem\/zipball\/52b3c9cce673b014915445a432339f282e002ce6",
+                "reference": "52b3c9cce673b014915445a432339f282e002ce6",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2.5",
+                "php": ">=8.0.2",
                 "symfony\/polyfill-ctype": "~1.8",
-                "symfony\/polyfill-php80": "^1.16"
+                "symfony\/polyfill-mbstring": "~1.8"
             },
-            "time": "2021-07-21T12:40:44+00:00",
+            "time": "2021-10-29T07:35:21+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder20211128\\Symfony\\Component\\Filesystem\\": ""
+                    "MonorepoBuilder20211130\\Symfony\\Component\\Filesystem\\": ""
                 },
                 "exclude-from-classmap": [
                     "\/Tests\/"
@@ -725,7 +726,7 @@
             "description": "Provides basic utilities for the filesystem",
             "homepage": "https:\/\/symfony.com",
             "support": {
-                "source": "https:\/\/github.com\/symfony\/filesystem\/tree\/v5.3.4"
+                "source": "https:\/\/github.com\/symfony\/filesystem\/tree\/v6.0.0"
             },
             "funding": [
                 {
@@ -745,29 +746,28 @@
         },
         {
             "name": "symfony\/finder",
-            "version": "v5.3.7",
-            "version_normalized": "5.3.7.0",
+            "version": "v6.0.0",
+            "version_normalized": "6.0.0.0",
             "source": {
                 "type": "git",
                 "url": "https:\/\/github.com\/symfony\/finder.git",
-                "reference": "a10000ada1e600d109a6c7632e9ac42e8bf2fb93"
+                "reference": "07debda41a4d32d33e59e6ab302af1701e15f173"
             },
             "dist": {
                 "type": "zip",
-                "url": "https:\/\/api.github.com\/repos\/symfony\/finder\/zipball\/a10000ada1e600d109a6c7632e9ac42e8bf2fb93",
-                "reference": "a10000ada1e600d109a6c7632e9ac42e8bf2fb93",
+                "url": "https:\/\/api.github.com\/repos\/symfony\/finder\/zipball\/07debda41a4d32d33e59e6ab302af1701e15f173",
+                "reference": "07debda41a4d32d33e59e6ab302af1701e15f173",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2.5",
-                "symfony\/polyfill-php80": "^1.16"
+                "php": ">=8.0.2"
             },
-            "time": "2021-08-04T21:20:46+00:00",
+            "time": "2021-11-28T15:34:37+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder20211128\\Symfony\\Component\\Finder\\": ""
+                    "MonorepoBuilder20211130\\Symfony\\Component\\Finder\\": ""
                 },
                 "exclude-from-classmap": [
                     "\/Tests\/"
@@ -790,7 +790,7 @@
             "description": "Finds files and directories via an intuitive fluent interface",
             "homepage": "https:\/\/symfony.com",
             "support": {
-                "source": "https:\/\/github.com\/symfony\/finder\/tree\/v5.3.7"
+                "source": "https:\/\/github.com\/symfony\/finder\/tree\/v6.0.0"
             },
             "funding": [
                 {
@@ -843,7 +843,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder20211128\\Symfony\\Polyfill\\Ctype\\": ""
+                    "MonorepoBuilder20211130\\Symfony\\Polyfill\\Ctype\\": ""
                 },
                 "files": [
                     "bootstrap.php"
@@ -925,7 +925,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder20211128\\Symfony\\Polyfill\\Intl\\Grapheme\\": ""
+                    "MonorepoBuilder20211130\\Symfony\\Polyfill\\Intl\\Grapheme\\": ""
                 },
                 "files": [
                     "bootstrap.php"
@@ -1009,7 +1009,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder20211128\\Symfony\\Polyfill\\Intl\\Normalizer\\": ""
+                    "MonorepoBuilder20211130\\Symfony\\Polyfill\\Intl\\Normalizer\\": ""
                 },
                 "files": [
                     "bootstrap.php"
@@ -1096,7 +1096,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder20211128\\Symfony\\Polyfill\\Mbstring\\": ""
+                    "MonorepoBuilder20211130\\Symfony\\Polyfill\\Mbstring\\": ""
                 },
                 "files": [
                     "bootstrap.php"
@@ -1145,174 +1145,6 @@
             "install-path": "..\/symfony\/polyfill-mbstring"
         },
         {
-            "name": "symfony\/polyfill-php73",
-            "version": "v1.23.0",
-            "version_normalized": "1.23.0.0",
-            "source": {
-                "type": "git",
-                "url": "https:\/\/github.com\/symfony\/polyfill-php73.git",
-                "reference": "fba8933c384d6476ab14fb7b8526e5287ca7e010"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https:\/\/api.github.com\/repos\/symfony\/polyfill-php73\/zipball\/fba8933c384d6476ab14fb7b8526e5287ca7e010",
-                "reference": "fba8933c384d6476ab14fb7b8526e5287ca7e010",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1"
-            },
-            "time": "2021-02-19T12:13:01+00:00",
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-main": "1.23-dev"
-                },
-                "thanks": {
-                    "name": "symfony\/polyfill",
-                    "url": "https:\/\/github.com\/symfony\/polyfill"
-                }
-            },
-            "installation-source": "dist",
-            "autoload": {
-                "psr-4": {
-                    "MonorepoBuilder20211128\\Symfony\\Polyfill\\Php73\\": ""
-                },
-                "files": [
-                    "bootstrap.php"
-                ],
-                "classmap": [
-                    "Resources\/stubs"
-                ]
-            },
-            "notification-url": "https:\/\/packagist.org\/downloads\/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Nicolas Grekas",
-                    "email": "p@tchwork.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https:\/\/symfony.com\/contributors"
-                }
-            ],
-            "description": "Symfony polyfill backporting some PHP 7.3+ features to lower PHP versions",
-            "homepage": "https:\/\/symfony.com",
-            "keywords": [
-                "compatibility",
-                "polyfill",
-                "portable",
-                "shim"
-            ],
-            "support": {
-                "source": "https:\/\/github.com\/symfony\/polyfill-php73\/tree\/v1.23.0"
-            },
-            "funding": [
-                {
-                    "url": "https:\/\/symfony.com\/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https:\/\/github.com\/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https:\/\/tidelift.com\/funding\/github\/packagist\/symfony\/symfony",
-                    "type": "tidelift"
-                }
-            ],
-            "install-path": "..\/symfony\/polyfill-php73"
-        },
-        {
-            "name": "symfony\/polyfill-php80",
-            "version": "v1.23.1",
-            "version_normalized": "1.23.1.0",
-            "source": {
-                "type": "git",
-                "url": "https:\/\/github.com\/symfony\/polyfill-php80.git",
-                "reference": "1100343ed1a92e3a38f9ae122fc0eb21602547be"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https:\/\/api.github.com\/repos\/symfony\/polyfill-php80\/zipball\/1100343ed1a92e3a38f9ae122fc0eb21602547be",
-                "reference": "1100343ed1a92e3a38f9ae122fc0eb21602547be",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1"
-            },
-            "time": "2021-07-28T13:41:28+00:00",
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-main": "1.23-dev"
-                },
-                "thanks": {
-                    "name": "symfony\/polyfill",
-                    "url": "https:\/\/github.com\/symfony\/polyfill"
-                }
-            },
-            "installation-source": "dist",
-            "autoload": {
-                "psr-4": {
-                    "MonorepoBuilder20211128\\Symfony\\Polyfill\\Php80\\": ""
-                },
-                "files": [
-                    "bootstrap.php"
-                ],
-                "classmap": [
-                    "Resources\/stubs"
-                ]
-            },
-            "notification-url": "https:\/\/packagist.org\/downloads\/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ion Bazan",
-                    "email": "ion.bazan@gmail.com"
-                },
-                {
-                    "name": "Nicolas Grekas",
-                    "email": "p@tchwork.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https:\/\/symfony.com\/contributors"
-                }
-            ],
-            "description": "Symfony polyfill backporting some PHP 8.0+ features to lower PHP versions",
-            "homepage": "https:\/\/symfony.com",
-            "keywords": [
-                "compatibility",
-                "polyfill",
-                "portable",
-                "shim"
-            ],
-            "support": {
-                "source": "https:\/\/github.com\/symfony\/polyfill-php80\/tree\/v1.23.1"
-            },
-            "funding": [
-                {
-                    "url": "https:\/\/symfony.com\/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https:\/\/github.com\/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https:\/\/tidelift.com\/funding\/github\/packagist\/symfony\/symfony",
-                    "type": "tidelift"
-                }
-            ],
-            "install-path": "..\/symfony\/polyfill-php80"
-        },
-        {
             "name": "symfony\/polyfill-php81",
             "version": "v1.23.0",
             "version_normalized": "1.23.0.0",
@@ -1344,7 +1176,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder20211128\\Symfony\\Polyfill\\Php81\\": ""
+                    "MonorepoBuilder20211130\\Symfony\\Polyfill\\Php81\\": ""
                 },
                 "files": [
                     "bootstrap.php"
@@ -1396,29 +1228,28 @@
         },
         {
             "name": "symfony\/process",
-            "version": "v5.3.12",
-            "version_normalized": "5.3.12.0",
+            "version": "v6.0.0",
+            "version_normalized": "6.0.0.0",
             "source": {
                 "type": "git",
                 "url": "https:\/\/github.com\/symfony\/process.git",
-                "reference": "e498803a6e95ede78e9d5646ad32a2255c033a6a"
+                "reference": "d970c45c2186aa4331d1656950a82df64e232580"
             },
             "dist": {
                 "type": "zip",
-                "url": "https:\/\/api.github.com\/repos\/symfony\/process\/zipball\/e498803a6e95ede78e9d5646ad32a2255c033a6a",
-                "reference": "e498803a6e95ede78e9d5646ad32a2255c033a6a",
+                "url": "https:\/\/api.github.com\/repos\/symfony\/process\/zipball\/d970c45c2186aa4331d1656950a82df64e232580",
+                "reference": "d970c45c2186aa4331d1656950a82df64e232580",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2.5",
-                "symfony\/polyfill-php80": "^1.16"
+                "php": ">=8.0.2"
             },
-            "time": "2021-11-22T22:39:13+00:00",
+            "time": "2021-11-28T15:34:37+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder20211128\\Symfony\\Component\\Process\\": ""
+                    "MonorepoBuilder20211130\\Symfony\\Component\\Process\\": ""
                 },
                 "exclude-from-classmap": [
                     "\/Tests\/"
@@ -1441,7 +1272,7 @@
             "description": "Executes commands in sub-processes",
             "homepage": "https:\/\/symfony.com",
             "support": {
-                "source": "https:\/\/github.com\/symfony\/process\/tree\/v5.3.12"
+                "source": "https:\/\/github.com\/symfony\/process\/tree\/v6.0.0"
             },
             "funding": [
                 {
@@ -1461,23 +1292,22 @@
         },
         {
             "name": "symfony\/service-contracts",
-            "version": "v2.5.0",
-            "version_normalized": "2.5.0.0",
+            "version": "v3.0.0",
+            "version_normalized": "3.0.0.0",
             "source": {
                 "type": "git",
                 "url": "https:\/\/github.com\/symfony\/service-contracts.git",
-                "reference": "1ab11b933cd6bc5464b08e81e2c5b07dec58b0fc"
+                "reference": "36715ebf9fb9db73db0cb24263c79077c6fe8603"
             },
             "dist": {
                 "type": "zip",
-                "url": "https:\/\/api.github.com\/repos\/symfony\/service-contracts\/zipball\/1ab11b933cd6bc5464b08e81e2c5b07dec58b0fc",
-                "reference": "1ab11b933cd6bc5464b08e81e2c5b07dec58b0fc",
+                "url": "https:\/\/api.github.com\/repos\/symfony\/service-contracts\/zipball\/36715ebf9fb9db73db0cb24263c79077c6fe8603",
+                "reference": "36715ebf9fb9db73db0cb24263c79077c6fe8603",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2.5",
-                "psr\/container": "^1.1",
-                "symfony\/deprecation-contracts": "^2.1"
+                "php": ">=8.0.2",
+                "psr\/container": "^2.0"
             },
             "conflict": {
                 "ext-psr": "<1.1|>=2"
@@ -1485,11 +1315,11 @@
             "suggest": {
                 "symfony\/service-implementation": ""
             },
-            "time": "2021-11-04T16:48:04+00:00",
+            "time": "2021-11-04T17:53:12+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "2.5-dev"
+                    "dev-main": "3.0-dev"
                 },
                 "thanks": {
                     "name": "symfony\/contracts",
@@ -1499,7 +1329,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder20211128\\Symfony\\Contracts\\Service\\": ""
+                    "MonorepoBuilder20211130\\Symfony\\Contracts\\Service\\": ""
                 }
             },
             "notification-url": "https:\/\/packagist.org\/downloads\/",
@@ -1527,7 +1357,7 @@
                 "standards"
             ],
             "support": {
-                "source": "https:\/\/github.com\/symfony\/service-contracts\/tree\/v2.5.0"
+                "source": "https:\/\/github.com\/symfony\/service-contracts\/tree\/v3.0.0"
             },
             "funding": [
                 {
@@ -1547,39 +1377,41 @@
         },
         {
             "name": "symfony\/string",
-            "version": "v5.3.10",
-            "version_normalized": "5.3.10.0",
+            "version": "v6.0.0",
+            "version_normalized": "6.0.0.0",
             "source": {
                 "type": "git",
                 "url": "https:\/\/github.com\/symfony\/string.git",
-                "reference": "d70c35bb20bbca71fc4ab7921e3c6bda1a82a60c"
+                "reference": "ba727797426af0f587f4800566300bdc0cda0777"
             },
             "dist": {
                 "type": "zip",
-                "url": "https:\/\/api.github.com\/repos\/symfony\/string\/zipball\/d70c35bb20bbca71fc4ab7921e3c6bda1a82a60c",
-                "reference": "d70c35bb20bbca71fc4ab7921e3c6bda1a82a60c",
+                "url": "https:\/\/api.github.com\/repos\/symfony\/string\/zipball\/ba727797426af0f587f4800566300bdc0cda0777",
+                "reference": "ba727797426af0f587f4800566300bdc0cda0777",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2.5",
+                "php": ">=8.0.2",
                 "symfony\/polyfill-ctype": "~1.8",
                 "symfony\/polyfill-intl-grapheme": "~1.0",
                 "symfony\/polyfill-intl-normalizer": "~1.0",
-                "symfony\/polyfill-mbstring": "~1.0",
-                "symfony\/polyfill-php80": "~1.15"
+                "symfony\/polyfill-mbstring": "~1.0"
+            },
+            "conflict": {
+                "symfony\/translation-contracts": "<2.0"
             },
             "require-dev": {
-                "symfony\/error-handler": "^4.4|^5.0",
-                "symfony\/http-client": "^4.4|^5.0",
-                "symfony\/translation-contracts": "^1.1|^2",
-                "symfony\/var-exporter": "^4.4|^5.0"
+                "symfony\/error-handler": "^5.4|^6.0",
+                "symfony\/http-client": "^5.4|^6.0",
+                "symfony\/translation-contracts": "^2.0|^3.0",
+                "symfony\/var-exporter": "^5.4|^6.0"
             },
-            "time": "2021-10-27T18:21:46+00:00",
+            "time": "2021-10-29T07:35:21+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder20211128\\Symfony\\Component\\String\\": ""
+                    "MonorepoBuilder20211130\\Symfony\\Component\\String\\": ""
                 },
                 "files": [
                     "Resources\/functions.php"
@@ -1613,7 +1445,7 @@
                 "utf8"
             ],
             "support": {
-                "source": "https:\/\/github.com\/symfony\/string\/tree\/v5.3.10"
+                "source": "https:\/\/github.com\/symfony\/string\/tree\/v6.0.0"
             },
             "funding": [
                 {
@@ -1690,12 +1522,12 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder20211128\\Symplify\\AutowireArrayParameter\\": "src"
+                    "MonorepoBuilder20211130\\Symplify\\AutowireArrayParameter\\": "src"
                 }
             },
             "autoload-dev": {
                 "psr-4": {
-                    "MonorepoBuilder20211128\\Symplify\\AutowireArrayParameter\\Tests\\": "tests"
+                    "MonorepoBuilder20211130\\Symplify\\AutowireArrayParameter\\Tests\\": "tests"
                 }
             },
             "license": [
@@ -1770,12 +1602,12 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder20211128\\Symplify\\ComposerJsonManipulator\\": "src"
+                    "MonorepoBuilder20211130\\Symplify\\ComposerJsonManipulator\\": "src"
                 }
             },
             "autoload-dev": {
                 "psr-4": {
-                    "MonorepoBuilder20211128\\Symplify\\ComposerJsonManipulator\\Tests\\": "tests"
+                    "MonorepoBuilder20211130\\Symplify\\ComposerJsonManipulator\\Tests\\": "tests"
                 }
             },
             "license": [
@@ -1849,12 +1681,12 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder20211128\\Symplify\\ConsoleColorDiff\\": "src"
+                    "MonorepoBuilder20211130\\Symplify\\ConsoleColorDiff\\": "src"
                 }
             },
             "autoload-dev": {
                 "psr-4": {
-                    "MonorepoBuilder20211128\\Symplify\\ConsoleColorDiff\\Tests\\": "tests"
+                    "MonorepoBuilder20211130\\Symplify\\ConsoleColorDiff\\Tests\\": "tests"
                 }
             },
             "license": [
@@ -1931,12 +1763,12 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder20211128\\Symplify\\EasyTesting\\": "src"
+                    "MonorepoBuilder20211130\\Symplify\\EasyTesting\\": "src"
                 }
             },
             "autoload-dev": {
                 "psr-4": {
-                    "MonorepoBuilder20211128\\Symplify\\EasyTesting\\Tests\\": "tests"
+                    "MonorepoBuilder20211130\\Symplify\\EasyTesting\\Tests\\": "tests"
                 }
             },
             "license": [
@@ -2012,12 +1844,12 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder20211128\\Symplify\\PackageBuilder\\": "src"
+                    "MonorepoBuilder20211130\\Symplify\\PackageBuilder\\": "src"
                 }
             },
             "autoload-dev": {
                 "psr-4": {
-                    "MonorepoBuilder20211128\\Symplify\\PackageBuilder\\Tests\\": "tests"
+                    "MonorepoBuilder20211130\\Symplify\\PackageBuilder\\Tests\\": "tests"
                 }
             },
             "license": [
@@ -2091,12 +1923,12 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder20211128\\Symplify\\SmartFileSystem\\": "src"
+                    "MonorepoBuilder20211130\\Symplify\\SmartFileSystem\\": "src"
                 }
             },
             "autoload-dev": {
                 "psr-4": {
-                    "MonorepoBuilder20211128\\Symplify\\SmartFileSystem\\Tests\\": "tests"
+                    "MonorepoBuilder20211130\\Symplify\\SmartFileSystem\\Tests\\": "tests"
                 }
             },
             "license": [
@@ -2170,7 +2002,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder20211128\\Symplify\\SymplifyKernel\\": "src"
+                    "MonorepoBuilder20211130\\Symplify\\SymplifyKernel\\": "src"
                 }
             },
             "license": [
@@ -2219,7 +2051,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder20211128\\Webmozart\\Assert\\": "src\/"
+                    "MonorepoBuilder20211130\\Webmozart\\Assert\\": "src\/"
                 }
             },
             "notification-url": "https:\/\/packagist.org\/downloads\/",

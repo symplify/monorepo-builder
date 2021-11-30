@@ -8,20 +8,35 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211128\Symfony\Component\DependencyInjection\Exception;
+namespace MonorepoBuilder20211130\Symfony\Component\DependencyInjection\Exception;
 
-use MonorepoBuilder20211128\Psr\Container\NotFoundExceptionInterface;
+use MonorepoBuilder20211130\Psr\Container\NotFoundExceptionInterface;
 /**
  * This exception is thrown when a non-existent parameter is used.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class ParameterNotFoundException extends \MonorepoBuilder20211128\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException implements \MonorepoBuilder20211128\Psr\Container\NotFoundExceptionInterface
+class ParameterNotFoundException extends \MonorepoBuilder20211130\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException implements \MonorepoBuilder20211130\Psr\Container\NotFoundExceptionInterface
 {
+    /**
+     * @var string
+     */
     private $key;
+    /**
+     * @var string|null
+     */
     private $sourceId;
+    /**
+     * @var string|null
+     */
     private $sourceKey;
+    /**
+     * @var mixed[]
+     */
     private $alternatives;
+    /**
+     * @var string|null
+     */
     private $nonNestedAlternative;
     /**
      * @param string          $key                  The requested parameter key

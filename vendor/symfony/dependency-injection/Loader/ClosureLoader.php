@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211128\Symfony\Component\DependencyInjection\Loader;
+namespace MonorepoBuilder20211130\Symfony\Component\DependencyInjection\Loader;
 
-use MonorepoBuilder20211128\Symfony\Component\Config\Loader\Loader;
-use MonorepoBuilder20211128\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder20211130\Symfony\Component\Config\Loader\Loader;
+use MonorepoBuilder20211130\Symfony\Component\DependencyInjection\ContainerBuilder;
 /**
  * ClosureLoader loads service definitions from a PHP closure.
  *
@@ -19,27 +19,33 @@ use MonorepoBuilder20211128\Symfony\Component\DependencyInjection\ContainerBuild
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class ClosureLoader extends \MonorepoBuilder20211128\Symfony\Component\Config\Loader\Loader
+class ClosureLoader extends \MonorepoBuilder20211130\Symfony\Component\Config\Loader\Loader
 {
+    /**
+     * @var \Symfony\Component\DependencyInjection\ContainerBuilder
+     */
     private $container;
-    public function __construct(\MonorepoBuilder20211128\Symfony\Component\DependencyInjection\ContainerBuilder $container, string $env = null)
+    public function __construct(\MonorepoBuilder20211130\Symfony\Component\DependencyInjection\ContainerBuilder $container, string $env = null)
     {
         $this->container = $container;
         parent::__construct($env);
     }
     /**
      * {@inheritdoc}
+     * @param mixed $resource
+     * @return mixed
      * @param string|null $type
      */
     public function load($resource, $type = null)
     {
-        $resource($this->container, $this->env);
+        return $resource($this->container, $this->env);
     }
     /**
      * {@inheritdoc}
+     * @param mixed $resource
      * @param string|null $type
      */
-    public function supports($resource, $type = null)
+    public function supports($resource, $type = null) : bool
     {
         return $resource instanceof \Closure;
     }

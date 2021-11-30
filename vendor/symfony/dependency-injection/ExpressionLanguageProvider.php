@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211128\Symfony\Component\DependencyInjection;
+namespace MonorepoBuilder20211130\Symfony\Component\DependencyInjection;
 
-use MonorepoBuilder20211128\Symfony\Component\ExpressionLanguage\ExpressionFunction;
-use MonorepoBuilder20211128\Symfony\Component\ExpressionLanguage\ExpressionFunctionProviderInterface;
+use MonorepoBuilder20211130\Symfony\Component\ExpressionLanguage\ExpressionFunction;
+use MonorepoBuilder20211130\Symfony\Component\ExpressionLanguage\ExpressionFunctionProviderInterface;
 /**
  * Define some ExpressionLanguage functions.
  *
@@ -20,20 +20,23 @@ use MonorepoBuilder20211128\Symfony\Component\ExpressionLanguage\ExpressionFunct
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class ExpressionLanguageProvider implements \MonorepoBuilder20211128\Symfony\Component\ExpressionLanguage\ExpressionFunctionProviderInterface
+class ExpressionLanguageProvider implements \MonorepoBuilder20211130\Symfony\Component\ExpressionLanguage\ExpressionFunctionProviderInterface
 {
+    /**
+     * @var \Closure|null
+     */
     private $serviceCompiler;
     public function __construct(callable $serviceCompiler = null)
     {
-        $this->serviceCompiler = $serviceCompiler;
+        $this->serviceCompiler = null !== $serviceCompiler && !$serviceCompiler instanceof \Closure ? \Closure::fromCallable($serviceCompiler) : $serviceCompiler;
     }
-    public function getFunctions()
+    public function getFunctions() : array
     {
-        return [new \MonorepoBuilder20211128\Symfony\Component\ExpressionLanguage\ExpressionFunction('service', $this->serviceCompiler ?: function ($arg) {
+        return [new \MonorepoBuilder20211130\Symfony\Component\ExpressionLanguage\ExpressionFunction('service', $this->serviceCompiler ?? function ($arg) {
             return \sprintf('$this->get(%s)', $arg);
         }, function (array $variables, $value) {
             return $variables['container']->get($value);
-        }), new \MonorepoBuilder20211128\Symfony\Component\ExpressionLanguage\ExpressionFunction('parameter', function ($arg) {
+        }), new \MonorepoBuilder20211130\Symfony\Component\ExpressionLanguage\ExpressionFunction('parameter', function ($arg) {
             return \sprintf('$this->getParameter(%s)', $arg);
         }, function (array $variables, $value) {
             return $variables['container']->getParameter($value);

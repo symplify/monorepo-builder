@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211128\Symfony\Component\DependencyInjection\Loader\Configurator\Traits;
+namespace MonorepoBuilder20211130\Symfony\Component\DependencyInjection\Loader\Configurator\Traits;
 
 trait FileTrait
 {
@@ -18,7 +18,7 @@ trait FileTrait
      * @return $this
      * @param string $file
      */
-    public final function file($file) : self
+    public final function file($file)
     {
         $this->definition->setFile($file);
         return $this;

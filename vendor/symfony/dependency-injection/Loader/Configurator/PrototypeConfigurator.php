@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211128\Symfony\Component\DependencyInjection\Loader\Configurator;
+namespace MonorepoBuilder20211130\Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use MonorepoBuilder20211128\Symfony\Component\DependencyInjection\Definition;
-use MonorepoBuilder20211128\Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
+use MonorepoBuilder20211130\Symfony\Component\DependencyInjection\Definition;
+use MonorepoBuilder20211130\Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class PrototypeConfigurator extends \MonorepoBuilder20211128\Symfony\Component\DependencyInjection\Loader\Configurator\AbstractServiceConfigurator
+class PrototypeConfigurator extends \MonorepoBuilder20211130\Symfony\Component\DependencyInjection\Loader\Configurator\AbstractServiceConfigurator
 {
     use Traits\AbstractTrait;
     use Traits\ArgumentTrait;
@@ -33,13 +33,25 @@ class PrototypeConfigurator extends \MonorepoBuilder20211128\Symfony\Component\D
     use Traits\ShareTrait;
     use Traits\TagTrait;
     public const FACTORY = 'load';
+    /**
+     * @var \Symfony\Component\DependencyInjection\Loader\PhpFileLoader
+     */
     private $loader;
+    /**
+     * @var string
+     */
     private $resource;
+    /**
+     * @var mixed[]|null
+     */
     private $excludes;
+    /**
+     * @var bool
+     */
     private $allowParent;
-    public function __construct(\MonorepoBuilder20211128\Symfony\Component\DependencyInjection\Loader\Configurator\ServicesConfigurator $parent, \MonorepoBuilder20211128\Symfony\Component\DependencyInjection\Loader\PhpFileLoader $loader, \MonorepoBuilder20211128\Symfony\Component\DependencyInjection\Definition $defaults, string $namespace, string $resource, bool $allowParent)
+    public function __construct(\MonorepoBuilder20211130\Symfony\Component\DependencyInjection\Loader\Configurator\ServicesConfigurator $parent, \MonorepoBuilder20211130\Symfony\Component\DependencyInjection\Loader\PhpFileLoader $loader, \MonorepoBuilder20211130\Symfony\Component\DependencyInjection\Definition $defaults, string $namespace, string $resource, bool $allowParent)
     {
-        $definition = new \MonorepoBuilder20211128\Symfony\Component\DependencyInjection\Definition();
+        $definition = new \MonorepoBuilder20211130\Symfony\Component\DependencyInjection\Definition();
         if (!$defaults->isPublic() || !$defaults->isPrivate()) {
             $definition->setPublic($defaults->isPublic());
         }
@@ -56,10 +68,10 @@ class PrototypeConfigurator extends \MonorepoBuilder20211128\Symfony\Component\D
     public function __destruct()
     {
         parent::__destruct();
-        if ($this->loader) {
+        if (isset($this->loader)) {
             $this->loader->registerClasses($this->definition, $this->id, $this->resource, $this->excludes);
         }
-        $this->loader = null;
+        unset($this->loader);
     }
     /**
      * Excludes files from registration using glob patterns.
@@ -68,7 +80,7 @@ class PrototypeConfigurator extends \MonorepoBuilder20211128\Symfony\Component\D
      *
      * @return $this
      */
-    public final function exclude($excludes) : self
+    public final function exclude($excludes)
     {
         $this->excludes = (array) $excludes;
         return $this;

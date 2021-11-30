@@ -8,52 +8,71 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211128\Symfony\Component\Console\Style;
+namespace MonorepoBuilder20211130\Symfony\Component\Console\Style;
 
-use MonorepoBuilder20211128\Symfony\Component\Console\Exception\InvalidArgumentException;
-use MonorepoBuilder20211128\Symfony\Component\Console\Exception\RuntimeException;
-use MonorepoBuilder20211128\Symfony\Component\Console\Formatter\OutputFormatter;
-use MonorepoBuilder20211128\Symfony\Component\Console\Helper\Helper;
-use MonorepoBuilder20211128\Symfony\Component\Console\Helper\ProgressBar;
-use MonorepoBuilder20211128\Symfony\Component\Console\Helper\SymfonyQuestionHelper;
-use MonorepoBuilder20211128\Symfony\Component\Console\Helper\Table;
-use MonorepoBuilder20211128\Symfony\Component\Console\Helper\TableCell;
-use MonorepoBuilder20211128\Symfony\Component\Console\Helper\TableSeparator;
-use MonorepoBuilder20211128\Symfony\Component\Console\Input\InputInterface;
-use MonorepoBuilder20211128\Symfony\Component\Console\Output\OutputInterface;
-use MonorepoBuilder20211128\Symfony\Component\Console\Output\TrimmedBufferOutput;
-use MonorepoBuilder20211128\Symfony\Component\Console\Question\ChoiceQuestion;
-use MonorepoBuilder20211128\Symfony\Component\Console\Question\ConfirmationQuestion;
-use MonorepoBuilder20211128\Symfony\Component\Console\Question\Question;
-use MonorepoBuilder20211128\Symfony\Component\Console\Terminal;
+use MonorepoBuilder20211130\Symfony\Component\Console\Exception\InvalidArgumentException;
+use MonorepoBuilder20211130\Symfony\Component\Console\Exception\RuntimeException;
+use MonorepoBuilder20211130\Symfony\Component\Console\Formatter\OutputFormatter;
+use MonorepoBuilder20211130\Symfony\Component\Console\Helper\Helper;
+use MonorepoBuilder20211130\Symfony\Component\Console\Helper\ProgressBar;
+use MonorepoBuilder20211130\Symfony\Component\Console\Helper\SymfonyQuestionHelper;
+use MonorepoBuilder20211130\Symfony\Component\Console\Helper\Table;
+use MonorepoBuilder20211130\Symfony\Component\Console\Helper\TableCell;
+use MonorepoBuilder20211130\Symfony\Component\Console\Helper\TableSeparator;
+use MonorepoBuilder20211130\Symfony\Component\Console\Input\InputInterface;
+use MonorepoBuilder20211130\Symfony\Component\Console\Output\ConsoleOutputInterface;
+use MonorepoBuilder20211130\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder20211130\Symfony\Component\Console\Output\TrimmedBufferOutput;
+use MonorepoBuilder20211130\Symfony\Component\Console\Question\ChoiceQuestion;
+use MonorepoBuilder20211130\Symfony\Component\Console\Question\ConfirmationQuestion;
+use MonorepoBuilder20211130\Symfony\Component\Console\Question\Question;
+use MonorepoBuilder20211130\Symfony\Component\Console\Terminal;
 /**
  * Output decorator helpers for the Symfony Style Guide.
  *
  * @author Kevin Bond <kevinbond@gmail.com>
  */
-class SymfonyStyle extends \MonorepoBuilder20211128\Symfony\Component\Console\Style\OutputStyle
+class SymfonyStyle extends \MonorepoBuilder20211130\Symfony\Component\Console\Style\OutputStyle
 {
     public const MAX_LINE_LENGTH = 120;
+    /**
+     * @var \Symfony\Component\Console\Input\InputInterface
+     */
     private $input;
+    /**
+     * @var \Symfony\Component\Console\Output\OutputInterface
+     */
+    private $output;
+    /**
+     * @var \Symfony\Component\Console\Helper\SymfonyQuestionHelper
+     */
     private $questionHelper;
+    /**
+     * @var \Symfony\Component\Console\Helper\ProgressBar
+     */
     private $progressBar;
+    /**
+     * @var int
+     */
     private $lineLength;
+    /**
+     * @var \Symfony\Component\Console\Output\TrimmedBufferOutput
+     */
     private $bufferedOutput;
-    public function __construct(\MonorepoBuilder20211128\Symfony\Component\Console\Input\InputInterface $input, \MonorepoBuilder20211128\Symfony\Component\Console\Output\OutputInterface $output)
+    public function __construct(\MonorepoBuilder20211130\Symfony\Component\Console\Input\InputInterface $input, \MonorepoBuilder20211130\Symfony\Component\Console\Output\OutputInterface $output)
     {
         $this->input = $input;
-        $this->bufferedOutput = new \MonorepoBuilder20211128\Symfony\Component\Console\Output\TrimmedBufferOutput(\DIRECTORY_SEPARATOR === '\\' ? 4 : 2, $output->getVerbosity(), \false, clone $output->getFormatter());
+        $this->bufferedOutput = new \MonorepoBuilder20211130\Symfony\Component\Console\Output\TrimmedBufferOutput(\DIRECTORY_SEPARATOR === '\\' ? 4 : 2, $output->getVerbosity(), \false, clone $output->getFormatter());
         // Windows cmd wraps lines as soon as the terminal width is reached, whether there are following chars or not.
-        $width = (new \MonorepoBuilder20211128\Symfony\Component\Console\Terminal())->getWidth() ?: self::MAX_LINE_LENGTH;
+        $width = (new \MonorepoBuilder20211130\Symfony\Component\Console\Terminal())->getWidth() ?: self::MAX_LINE_LENGTH;
         $this->lineLength = \min($width - (int) (\DIRECTORY_SEPARATOR === '\\'), self::MAX_LINE_LENGTH);
-        parent::__construct($output);
+        parent::__construct($this->output = $output);
     }
     /**
      * Formats a message as a block of text.
-     *
-     * @param string|array $messages The message to write in the block
+     * @param mixed[]|string $messages
      */
-    public function block($messages, string $type = null, string $style = null, string $prefix = ' ', bool $padding = \false, bool $escape = \true)
+    public function block($messages, ?string $type = null, string $style = null, string $prefix = ' ', bool $padding = \false, bool $escape = \true)
     {
         $messages = \is_array($messages) ? \array_values($messages) : [$messages];
         $this->autoPrependBlock();
@@ -66,7 +85,7 @@ class SymfonyStyle extends \MonorepoBuilder20211128\Symfony\Component\Console\St
     public function title(string $message)
     {
         $this->autoPrependBlock();
-        $this->writeln([\sprintf('<comment>%s</>', \MonorepoBuilder20211128\Symfony\Component\Console\Formatter\OutputFormatter::escapeTrailingBackslash($message)), \sprintf('<comment>%s</>', \str_repeat('=', \MonorepoBuilder20211128\Symfony\Component\Console\Helper\Helper::width(\MonorepoBuilder20211128\Symfony\Component\Console\Helper\Helper::removeDecoration($this->getFormatter(), $message))))]);
+        $this->writeln([\sprintf('<comment>%s</>', \MonorepoBuilder20211130\Symfony\Component\Console\Formatter\OutputFormatter::escapeTrailingBackslash($message)), \sprintf('<comment>%s</>', \str_repeat('=', \MonorepoBuilder20211130\Symfony\Component\Console\Helper\Helper::width(\MonorepoBuilder20211130\Symfony\Component\Console\Helper\Helper::removeDecoration($this->getFormatter(), $message))))]);
         $this->newLine();
     }
     /**
@@ -75,7 +94,7 @@ class SymfonyStyle extends \MonorepoBuilder20211128\Symfony\Component\Console\St
     public function section(string $message)
     {
         $this->autoPrependBlock();
-        $this->writeln([\sprintf('<comment>%s</>', \MonorepoBuilder20211128\Symfony\Component\Console\Formatter\OutputFormatter::escapeTrailingBackslash($message)), \sprintf('<comment>%s</>', \str_repeat('-', \MonorepoBuilder20211128\Symfony\Component\Console\Helper\Helper::width(\MonorepoBuilder20211128\Symfony\Component\Console\Helper\Helper::removeDecoration($this->getFormatter(), $message))))]);
+        $this->writeln([\sprintf('<comment>%s</>', \MonorepoBuilder20211130\Symfony\Component\Console\Formatter\OutputFormatter::escapeTrailingBackslash($message)), \sprintf('<comment>%s</>', \str_repeat('-', \MonorepoBuilder20211130\Symfony\Component\Console\Helper\Helper::width(\MonorepoBuilder20211130\Symfony\Component\Console\Helper\Helper::removeDecoration($this->getFormatter(), $message))))]);
         $this->newLine();
     }
     /**
@@ -92,6 +111,7 @@ class SymfonyStyle extends \MonorepoBuilder20211128\Symfony\Component\Console\St
     }
     /**
      * {@inheritdoc}
+     * @param mixed[]|string $message
      */
     public function text($message)
     {
@@ -103,8 +123,7 @@ class SymfonyStyle extends \MonorepoBuilder20211128\Symfony\Component\Console\St
     }
     /**
      * Formats a command comment.
-     *
-     * @param string|array $message
+     * @param mixed[]|string $message
      */
     public function comment($message)
     {
@@ -112,6 +131,7 @@ class SymfonyStyle extends \MonorepoBuilder20211128\Symfony\Component\Console\St
     }
     /**
      * {@inheritdoc}
+     * @param mixed[]|string $message
      */
     public function success($message)
     {
@@ -119,6 +139,7 @@ class SymfonyStyle extends \MonorepoBuilder20211128\Symfony\Component\Console\St
     }
     /**
      * {@inheritdoc}
+     * @param mixed[]|string $message
      */
     public function error($message)
     {
@@ -126,6 +147,7 @@ class SymfonyStyle extends \MonorepoBuilder20211128\Symfony\Component\Console\St
     }
     /**
      * {@inheritdoc}
+     * @param mixed[]|string $message
      */
     public function warning($message)
     {
@@ -133,6 +155,7 @@ class SymfonyStyle extends \MonorepoBuilder20211128\Symfony\Component\Console\St
     }
     /**
      * {@inheritdoc}
+     * @param mixed[]|string $message
      */
     public function note($message)
     {
@@ -140,8 +163,7 @@ class SymfonyStyle extends \MonorepoBuilder20211128\Symfony\Component\Console\St
     }
     /**
      * Formats an info message.
-     *
-     * @param string|array $message
+     * @param mixed[]|string $message
      */
     public function info($message)
     {
@@ -149,6 +171,7 @@ class SymfonyStyle extends \MonorepoBuilder20211128\Symfony\Component\Console\St
     }
     /**
      * {@inheritdoc}
+     * @param mixed[]|string $message
      */
     public function caution($message)
     {
@@ -159,13 +182,7 @@ class SymfonyStyle extends \MonorepoBuilder20211128\Symfony\Component\Console\St
      */
     public function table(array $headers, array $rows)
     {
-        $style = clone \MonorepoBuilder20211128\Symfony\Component\Console\Helper\Table::getStyleDefinition('symfony-style-guide');
-        $style->setCellHeaderFormat('<info>%s</info>');
-        $table = new \MonorepoBuilder20211128\Symfony\Component\Console\Helper\Table($this);
-        $table->setHeaders($headers);
-        $table->setRows($rows);
-        $table->setStyle($style);
-        $table->render();
+        $this->createTable()->setHeaders($headers)->setRows($rows)->render();
         $this->newLine();
     }
     /**
@@ -173,14 +190,7 @@ class SymfonyStyle extends \MonorepoBuilder20211128\Symfony\Component\Console\St
      */
     public function horizontalTable(array $headers, array $rows)
     {
-        $style = clone \MonorepoBuilder20211128\Symfony\Component\Console\Helper\Table::getStyleDefinition('symfony-style-guide');
-        $style->setCellHeaderFormat('<info>%s</info>');
-        $table = new \MonorepoBuilder20211128\Symfony\Component\Console\Helper\Table($this);
-        $table->setHeaders($headers);
-        $table->setRows($rows);
-        $table->setStyle($style);
-        $table->setHorizontal(\true);
-        $table->render();
+        $this->createTable()->setHorizontal(\true)->setHeaders($headers)->setRows($rows)->render();
         $this->newLine();
     }
     /**
@@ -190,55 +200,48 @@ class SymfonyStyle extends \MonorepoBuilder20211128\Symfony\Component\Console\St
      * * 'A title'
      * * ['key' => 'value']
      * * new TableSeparator()
-     *
-     * @param string|array|TableSeparator ...$list
+     * @param mixed[]|string|\Symfony\Component\Console\Helper\TableSeparator ...$list
      */
     public function definitionList(...$list)
     {
-        $style = clone \MonorepoBuilder20211128\Symfony\Component\Console\Helper\Table::getStyleDefinition('symfony-style-guide');
-        $style->setCellHeaderFormat('<info>%s</info>');
-        $table = new \MonorepoBuilder20211128\Symfony\Component\Console\Helper\Table($this);
         $headers = [];
         $row = [];
         foreach ($list as $value) {
-            if ($value instanceof \MonorepoBuilder20211128\Symfony\Component\Console\Helper\TableSeparator) {
+            if ($value instanceof \MonorepoBuilder20211130\Symfony\Component\Console\Helper\TableSeparator) {
                 $headers[] = $value;
                 $row[] = $value;
                 continue;
             }
             if (\is_string($value)) {
-                $headers[] = new \MonorepoBuilder20211128\Symfony\Component\Console\Helper\TableCell($value, ['colspan' => 2]);
+                $headers[] = new \MonorepoBuilder20211130\Symfony\Component\Console\Helper\TableCell($value, ['colspan' => 2]);
                 $row[] = null;
                 continue;
             }
             if (!\is_array($value)) {
-                throw new \MonorepoBuilder20211128\Symfony\Component\Console\Exception\InvalidArgumentException('Value should be an array, string, or an instance of TableSeparator.');
+                throw new \MonorepoBuilder20211130\Symfony\Component\Console\Exception\InvalidArgumentException('Value should be an array, string, or an instance of TableSeparator.');
             }
             $headers[] = \key($value);
             $row[] = \current($value);
         }
-        $table->setHeaders($headers);
-        $table->setRows([$row]);
-        $table->setHorizontal();
-        $table->setStyle($style);
-        $table->render();
-        $this->newLine();
+        $this->horizontalTable($headers, [$row]);
     }
     /**
      * {@inheritdoc}
+     * @return mixed
      */
     public function ask(string $question, string $default = null, callable $validator = null)
     {
-        $question = new \MonorepoBuilder20211128\Symfony\Component\Console\Question\Question($question, $default);
+        $question = new \MonorepoBuilder20211130\Symfony\Component\Console\Question\Question($question, $default);
         $question->setValidator($validator);
         return $this->askQuestion($question);
     }
     /**
      * {@inheritdoc}
+     * @return mixed
      */
     public function askHidden(string $question, callable $validator = null)
     {
-        $question = new \MonorepoBuilder20211128\Symfony\Component\Console\Question\Question($question);
+        $question = new \MonorepoBuilder20211130\Symfony\Component\Console\Question\Question($question);
         $question->setHidden(\true);
         $question->setValidator($validator);
         return $this->askQuestion($question);
@@ -246,12 +249,14 @@ class SymfonyStyle extends \MonorepoBuilder20211128\Symfony\Component\Console\St
     /**
      * {@inheritdoc}
      */
-    public function confirm(string $question, bool $default = \true)
+    public function confirm(string $question, bool $default = \true) : bool
     {
-        return $this->askQuestion(new \MonorepoBuilder20211128\Symfony\Component\Console\Question\ConfirmationQuestion($question, $default));
+        return $this->askQuestion(new \MonorepoBuilder20211130\Symfony\Component\Console\Question\ConfirmationQuestion($question, $default));
     }
     /**
      * {@inheritdoc}
+     * @param mixed $default
+     * @return mixed
      */
     public function choice(string $question, array $choices, $default = null)
     {
@@ -259,7 +264,7 @@ class SymfonyStyle extends \MonorepoBuilder20211128\Symfony\Component\Console\St
             $values = \array_flip($choices);
             $default = $values[$default] ?? $default;
         }
-        return $this->askQuestion(new \MonorepoBuilder20211128\Symfony\Component\Console\Question\ChoiceQuestion($question, $choices, $default));
+        return $this->askQuestion(new \MonorepoBuilder20211130\Symfony\Component\Console\Question\ChoiceQuestion($question, $choices, $default));
     }
     /**
      * {@inheritdoc}
@@ -283,12 +288,12 @@ class SymfonyStyle extends \MonorepoBuilder20211128\Symfony\Component\Console\St
     {
         $this->getProgressBar()->finish();
         $this->newLine(2);
-        $this->progressBar = null;
+        unset($this->progressBar);
     }
     /**
      * {@inheritdoc}
      */
-    public function createProgressBar(int $max = 0)
+    public function createProgressBar(int $max = 0) : \MonorepoBuilder20211130\Symfony\Component\Console\Helper\ProgressBar
     {
         $progressBar = parent::createProgressBar($max);
         if ('\\' !== \DIRECTORY_SEPARATOR || 'Hyper' === \getenv('TERM_PROGRAM')) {
@@ -301,16 +306,22 @@ class SymfonyStyle extends \MonorepoBuilder20211128\Symfony\Component\Console\St
         return $progressBar;
     }
     /**
+     * @see ProgressBar::iterate()
+     */
+    public function progressIterate(iterable $iterable, int $max = null) : iterable
+    {
+        yield from $this->createProgressBar()->iterate($iterable, $max);
+        $this->newLine(2);
+    }
+    /**
      * @return mixed
      */
-    public function askQuestion(\MonorepoBuilder20211128\Symfony\Component\Console\Question\Question $question)
+    public function askQuestion(\MonorepoBuilder20211130\Symfony\Component\Console\Question\Question $question)
     {
         if ($this->input->isInteractive()) {
             $this->autoPrependBlock();
         }
-        if (!$this->questionHelper) {
-            $this->questionHelper = new \MonorepoBuilder20211128\Symfony\Component\Console\Helper\SymfonyQuestionHelper();
-        }
+        $this->questionHelper = $this->questionHelper ?? new \MonorepoBuilder20211130\Symfony\Component\Console\Helper\SymfonyQuestionHelper();
         $answer = $this->questionHelper->ask($this->input, $this, $question);
         if ($this->input->isInteractive()) {
             $this->newLine();
@@ -320,6 +331,7 @@ class SymfonyStyle extends \MonorepoBuilder20211128\Symfony\Component\Console\St
     }
     /**
      * {@inheritdoc}
+     * @param mixed[]|string $messages
      */
     public function writeln($messages, int $type = self::OUTPUT_NORMAL)
     {
@@ -333,6 +345,7 @@ class SymfonyStyle extends \MonorepoBuilder20211128\Symfony\Component\Console\St
     }
     /**
      * {@inheritdoc}
+     * @param mixed[]|string $messages
      */
     public function write($messages, bool $newline = \false, int $type = self::OUTPUT_NORMAL)
     {
@@ -354,19 +367,21 @@ class SymfonyStyle extends \MonorepoBuilder20211128\Symfony\Component\Console\St
     }
     /**
      * Returns a new instance which makes use of stderr if available.
-     *
-     * @return self
      */
-    public function getErrorStyle()
+    public function getErrorStyle() : self
     {
         return new self($this->input, $this->getErrorOutput());
     }
-    private function getProgressBar() : \MonorepoBuilder20211128\Symfony\Component\Console\Helper\ProgressBar
+    public function createTable() : \MonorepoBuilder20211130\Symfony\Component\Console\Helper\Table
     {
-        if (!$this->progressBar) {
-            throw new \MonorepoBuilder20211128\Symfony\Component\Console\Exception\RuntimeException('The ProgressBar is not started.');
-        }
-        return $this->progressBar;
+        $output = $this->output instanceof \MonorepoBuilder20211130\Symfony\Component\Console\Output\ConsoleOutputInterface ? $this->output->section() : $this->output;
+        $style = clone \MonorepoBuilder20211130\Symfony\Component\Console\Helper\Table::getStyleDefinition('symfony-style-guide');
+        $style->setCellHeaderFormat('<info>%s</info>');
+        return (new \MonorepoBuilder20211130\Symfony\Component\Console\Helper\Table($output))->setStyle($style);
+    }
+    private function getProgressBar() : \MonorepoBuilder20211130\Symfony\Component\Console\Helper\ProgressBar
+    {
+        return $this->progressBar ?? throw new \MonorepoBuilder20211130\Symfony\Component\Console\Exception\RuntimeException('The ProgressBar is not started.');
     }
     private function autoPrependBlock() : void
     {
@@ -395,7 +410,7 @@ class SymfonyStyle extends \MonorepoBuilder20211128\Symfony\Component\Console\St
     private function createBlock(iterable $messages, string $type = null, string $style = null, string $prefix = ' ', bool $padding = \false, bool $escape = \false) : array
     {
         $indentLength = 0;
-        $prefixLength = \MonorepoBuilder20211128\Symfony\Component\Console\Helper\Helper::width(\MonorepoBuilder20211128\Symfony\Component\Console\Helper\Helper::removeDecoration($this->getFormatter(), $prefix));
+        $prefixLength = \MonorepoBuilder20211130\Symfony\Component\Console\Helper\Helper::width(\MonorepoBuilder20211130\Symfony\Component\Console\Helper\Helper::removeDecoration($this->getFormatter(), $prefix));
         $lines = [];
         if (null !== $type) {
             $type = \sprintf('[%s] ', $type);
@@ -405,9 +420,9 @@ class SymfonyStyle extends \MonorepoBuilder20211128\Symfony\Component\Console\St
         // wrap and add newlines for each element
         foreach ($messages as $key => $message) {
             if ($escape) {
-                $message = \MonorepoBuilder20211128\Symfony\Component\Console\Formatter\OutputFormatter::escape($message);
+                $message = \MonorepoBuilder20211130\Symfony\Component\Console\Formatter\OutputFormatter::escape($message);
             }
-            $decorationLength = \MonorepoBuilder20211128\Symfony\Component\Console\Helper\Helper::width($message) - \MonorepoBuilder20211128\Symfony\Component\Console\Helper\Helper::width(\MonorepoBuilder20211128\Symfony\Component\Console\Helper\Helper::removeDecoration($this->getFormatter(), $message));
+            $decorationLength = \MonorepoBuilder20211130\Symfony\Component\Console\Helper\Helper::width($message) - \MonorepoBuilder20211130\Symfony\Component\Console\Helper\Helper::width(\MonorepoBuilder20211130\Symfony\Component\Console\Helper\Helper::removeDecoration($this->getFormatter(), $message));
             $messageLineLength = \min($this->lineLength - $prefixLength - $indentLength + $decorationLength, $this->lineLength);
             $messageLines = \explode(\PHP_EOL, \wordwrap($message, $messageLineLength, \PHP_EOL, \true));
             foreach ($messageLines as $messageLine) {
@@ -428,7 +443,7 @@ class SymfonyStyle extends \MonorepoBuilder20211128\Symfony\Component\Console\St
                 $line = $firstLineIndex === $i ? $type . $line : $lineIndentation . $line;
             }
             $line = $prefix . $line;
-            $line .= \str_repeat(' ', \max($this->lineLength - \MonorepoBuilder20211128\Symfony\Component\Console\Helper\Helper::width(\MonorepoBuilder20211128\Symfony\Component\Console\Helper\Helper::removeDecoration($this->getFormatter(), $line)), 0));
+            $line .= \str_repeat(' ', \max($this->lineLength - \MonorepoBuilder20211130\Symfony\Component\Console\Helper\Helper::width(\MonorepoBuilder20211130\Symfony\Component\Console\Helper\Helper::removeDecoration($this->getFormatter(), $line)), 0));
             if ($style) {
                 $line = \sprintf('<%s>%s</>', $style, $line);
             }

@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211128\Symfony\Component\Console\Output;
+namespace MonorepoBuilder20211130\Symfony\Component\Console\Output;
 
-use MonorepoBuilder20211128\Symfony\Component\Console\Exception\InvalidArgumentException;
-use MonorepoBuilder20211128\Symfony\Component\Console\Formatter\OutputFormatterInterface;
+use MonorepoBuilder20211130\Symfony\Component\Console\Exception\InvalidArgumentException;
+use MonorepoBuilder20211130\Symfony\Component\Console\Formatter\OutputFormatterInterface;
 /**
  * StreamOutput writes the output to a given stream.
  *
@@ -25,7 +25,7 @@ use MonorepoBuilder20211128\Symfony\Component\Console\Formatter\OutputFormatterI
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class StreamOutput extends \MonorepoBuilder20211128\Symfony\Component\Console\Output\Output
+class StreamOutput extends \MonorepoBuilder20211130\Symfony\Component\Console\Output\Output
 {
     private $stream;
     /**
@@ -36,10 +36,10 @@ class StreamOutput extends \MonorepoBuilder20211128\Symfony\Component\Console\Ou
      *
      * @throws InvalidArgumentException When first argument is not a real stream
      */
-    public function __construct($stream, int $verbosity = self::VERBOSITY_NORMAL, bool $decorated = null, \MonorepoBuilder20211128\Symfony\Component\Console\Formatter\OutputFormatterInterface $formatter = null)
+    public function __construct($stream, int $verbosity = self::VERBOSITY_NORMAL, bool $decorated = null, \MonorepoBuilder20211130\Symfony\Component\Console\Formatter\OutputFormatterInterface $formatter = null)
     {
         if (!\is_resource($stream) || 'stream' !== \get_resource_type($stream)) {
-            throw new \MonorepoBuilder20211128\Symfony\Component\Console\Exception\InvalidArgumentException('The StreamOutput class needs a stream as its first argument.');
+            throw new \MonorepoBuilder20211130\Symfony\Component\Console\Exception\InvalidArgumentException('The StreamOutput class needs a stream as its first argument.');
         }
         $this->stream = $stream;
         if (null === $decorated) {
@@ -50,7 +50,7 @@ class StreamOutput extends \MonorepoBuilder20211128\Symfony\Component\Console\Ou
     /**
      * Gets the stream attached to this StreamOutput instance.
      *
-     * @return resource A stream resource
+     * @return resource
      */
     public function getStream()
     {
@@ -80,7 +80,7 @@ class StreamOutput extends \MonorepoBuilder20211128\Symfony\Component\Console\Ou
      *
      * @return bool true if the stream supports colorization, false otherwise
      */
-    protected function hasColorSupport()
+    protected function hasColorSupport() : bool
     {
         // Follow https://no-color.org/
         if (isset($_SERVER['NO_COLOR']) || \false !== \getenv('NO_COLOR')) {

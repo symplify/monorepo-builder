@@ -8,28 +8,23 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211128\Symfony\Component\DependencyInjection\Compiler;
+namespace MonorepoBuilder20211130\Symfony\Component\DependencyInjection\Compiler;
 
-use MonorepoBuilder20211128\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder20211128\Symfony\Component\DependencyInjection\Definition;
-use MonorepoBuilder20211128\Symfony\Component\DependencyInjection\Reference;
+use MonorepoBuilder20211130\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder20211130\Symfony\Component\DependencyInjection\Definition;
+use MonorepoBuilder20211130\Symfony\Component\DependencyInjection\Reference;
 /**
  * Propagate the "container.no_preload" tag.
  *
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class ResolveNoPreloadPass extends \MonorepoBuilder20211128\Symfony\Component\DependencyInjection\Compiler\AbstractRecursivePass
+class ResolveNoPreloadPass extends \MonorepoBuilder20211130\Symfony\Component\DependencyInjection\Compiler\AbstractRecursivePass
 {
     private const DO_PRELOAD_TAG = '.container.do_preload';
-    private $tagName;
+    /**
+     * @var mixed[]
+     */
     private $resolvedIds = [];
-    public function __construct(string $tagName = 'container.no_preload')
-    {
-        if (0 < \func_num_args()) {
-            trigger_deprecation('symfony/dependency-injection', '5.3', 'Configuring "%s" is deprecated.', __CLASS__);
-        }
-        $this->tagName = $tagName;
-    }
     /**
      * {@inheritdoc}
      * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
@@ -58,17 +53,19 @@ class ResolveNoPreloadPass extends \MonorepoBuilder20211128\Symfony\Component\De
             if ($definition->hasTag(self::DO_PRELOAD_TAG)) {
                 $definition->clearTag(self::DO_PRELOAD_TAG);
             } elseif (!$definition->isDeprecated() && !$definition->hasErrors()) {
-                $definition->addTag($this->tagName);
+                $definition->addTag('container.no_preload');
             }
         }
     }
     /**
      * {@inheritdoc}
+     * @param mixed $value
+     * @return mixed
      * @param bool $isRoot
      */
     protected function processValue($value, $isRoot = \false)
     {
-        if ($value instanceof \MonorepoBuilder20211128\Symfony\Component\DependencyInjection\Reference && \MonorepoBuilder20211128\Symfony\Component\DependencyInjection\ContainerBuilder::IGNORE_ON_UNINITIALIZED_REFERENCE !== $value->getInvalidBehavior() && $this->container->hasDefinition($id = (string) $value)) {
+        if ($value instanceof \MonorepoBuilder20211130\Symfony\Component\DependencyInjection\Reference && \MonorepoBuilder20211130\Symfony\Component\DependencyInjection\ContainerBuilder::IGNORE_ON_UNINITIALIZED_REFERENCE !== $value->getInvalidBehavior() && $this->container->hasDefinition($id = (string) $value)) {
             $definition = $this->container->getDefinition($id);
             if (!isset($this->resolvedIds[$id]) && (!$definition->isPublic() || $definition->isPrivate())) {
                 $this->resolvedIds[$id] = \true;
@@ -76,10 +73,10 @@ class ResolveNoPreloadPass extends \MonorepoBuilder20211128\Symfony\Component\De
             }
             return $value;
         }
-        if (!$value instanceof \MonorepoBuilder20211128\Symfony\Component\DependencyInjection\Definition) {
+        if (!$value instanceof \MonorepoBuilder20211130\Symfony\Component\DependencyInjection\Definition) {
             return parent::processValue($value, $isRoot);
         }
-        if ($value->hasTag($this->tagName) || $value->isDeprecated() || $value->hasErrors()) {
+        if ($value->hasTag('container.no_preload') || $value->isDeprecated() || $value->hasErrors()) {
             return $value;
         }
         if ($isRoot) {

@@ -8,10 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211128\Symfony\Component\Console\SignalRegistry;
+namespace MonorepoBuilder20211130\Symfony\Component\Console\SignalRegistry;
 
 final class SignalRegistry
 {
+    /**
+     * @var mixed[]
+     */
     private $signalHandlers = [];
     public function __construct()
     {
