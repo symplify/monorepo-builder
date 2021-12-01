@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211130\Symfony\Contracts\Service\Attribute;
+namespace MonorepoBuilder20211201\Symfony\Contracts\Service\Attribute;
 
 /**
  * A required dependency.

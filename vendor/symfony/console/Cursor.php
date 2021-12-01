@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211130\Symfony\Component\Console;
+namespace MonorepoBuilder20211201\Symfony\Component\Console;
 
-use MonorepoBuilder20211130\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder20211201\Symfony\Component\Console\Output\OutputInterface;
 /**
  * @author Pierre du Plessis <pdples@gmail.com>
  */
@@ -24,7 +24,7 @@ final class Cursor
     /**
      * @param resource|null $input
      */
-    public function __construct(\MonorepoBuilder20211130\Symfony\Component\Console\Output\OutputInterface $output, $input = null)
+    public function __construct(\MonorepoBuilder20211201\Symfony\Component\Console\Output\OutputInterface $output, $input = null)
     {
         $this->output = $output;
         $this->input = $input ?? (\defined('STDIN') ? \STDIN : \fopen('php://input', 'r+'));
