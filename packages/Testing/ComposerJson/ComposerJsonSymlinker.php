@@ -60,11 +60,11 @@ final class ComposerJsonSymlinker
             $usedPackageFileInfo = $this->composerJsonProvider->getPackageFileInfoByName($packageName);
             $relativeDirectoryFromRootToLocalPackage = $this->packagePathResolver->resolveRelativeDirectoryToRoot($mainComposerJsonFileInfo, $usedPackageFileInfo);
             $relativePathToLocalPackage = $relativePathFromTargetPackageToRoot . $relativeDirectoryFromRootToLocalPackage;
-            $repositoriesContent = [self::TYPE => 'path', self::URL => $relativePathToLocalPackage, self::OPTIONS => ['symlink' => $symlink]];
+            $repositoriesContentJson = [self::TYPE => 'path', self::URL => $relativePathToLocalPackage, self::OPTIONS => ['symlink' => $symlink]];
             if (\array_key_exists(\MonorepoBuilder20211202\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REPOSITORIES, $packageComposerJson)) {
-                $packageComposerJson = $this->addRepositoryEntryToPackageComposerJson($packageComposerJson, $repositoriesContent);
+                $packageComposerJson = $this->addRepositoryEntryToPackageComposerJson($packageComposerJson, $repositoriesContentJson);
             } else {
-                $packageComposerJson[\MonorepoBuilder20211202\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REPOSITORIES][] = $repositoriesContent;
+                $packageComposerJson[\MonorepoBuilder20211202\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REPOSITORIES][] = $repositoriesContentJson;
             }
         }
         return $packageComposerJson;

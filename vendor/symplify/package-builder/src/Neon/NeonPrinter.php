@@ -26,17 +26,11 @@ final class NeonPrinter
      */
     public function printNeon(array $phpStanNeon) : string
     {
-        $neonContent = \MonorepoBuilder20211202\Nette\Neon\Neon::encode($phpStanNeon, \MonorepoBuilder20211202\Nette\Neon\Encoder::BLOCK);
-        // tabs to spaces for consistency
-        $neonContent = $this->replaceTabsWithSpaces($neonContent);
+        $neonContent = \MonorepoBuilder20211202\Nette\Neon\Neon::encode($phpStanNeon, \MonorepoBuilder20211202\Nette\Neon\Encoder::BLOCK, '    ');
         // inline single tags, dummy
         $neonContent = $this->inlineSingleTags($neonContent);
         $neonContent = $this->fixDoubleSpaceInArguments($neonContent);
         return \rtrim($neonContent) . \PHP_EOL;
-    }
-    private function replaceTabsWithSpaces(string $neonContent) : string
-    {
-        return \MonorepoBuilder20211202\Nette\Utils\Strings::replace($neonContent, '#\\t#', '    ');
     }
     private function inlineSingleTags(string $neonContent) : string
     {
