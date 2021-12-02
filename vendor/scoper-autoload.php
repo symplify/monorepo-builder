@@ -6,8 +6,8 @@ $loader = require_once __DIR__.'/autoload.php';
 
 // Aliases for the whitelisted classes. For more information see:
 // https://github.com/humbug/php-scoper/blob/master/README.md#class-whitelisting
-if (!class_exists('ComposerAutoloaderInit3e5279833bdcac846d4f56d245c9a1f4', false) && !interface_exists('ComposerAutoloaderInit3e5279833bdcac846d4f56d245c9a1f4', false) && !trait_exists('ComposerAutoloaderInit3e5279833bdcac846d4f56d245c9a1f4', false)) {
-    spl_autoload_call('MonorepoBuilder20211202\ComposerAutoloaderInit3e5279833bdcac846d4f56d245c9a1f4');
+if (!class_exists('ComposerAutoloaderInitbaa9c09c09088550e4510bb4a13d423d', false) && !interface_exists('ComposerAutoloaderInitbaa9c09c09088550e4510bb4a13d423d', false) && !trait_exists('ComposerAutoloaderInitbaa9c09c09088550e4510bb4a13d423d', false)) {
+    spl_autoload_call('MonorepoBuilder20211202\ComposerAutoloaderInitbaa9c09c09088550e4510bb4a13d423d');
 }
 if (!class_exists('Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator', false) && !interface_exists('Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator', false) && !trait_exists('Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator', false)) {
     spl_autoload_call('MonorepoBuilder20211202\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator');
@@ -29,9 +29,9 @@ if (!function_exists('resolveConfigFile')) {
         return \MonorepoBuilder20211202\resolveConfigFile(...func_get_args());
     }
 }
-if (!function_exists('composerRequire3e5279833bdcac846d4f56d245c9a1f4')) {
-    function composerRequire3e5279833bdcac846d4f56d245c9a1f4() {
-        return \MonorepoBuilder20211202\composerRequire3e5279833bdcac846d4f56d245c9a1f4(...func_get_args());
+if (!function_exists('composerRequirebaa9c09c09088550e4510bb4a13d423d')) {
+    function composerRequirebaa9c09c09088550e4510bb4a13d423d() {
+        return \MonorepoBuilder20211202\composerRequirebaa9c09c09088550e4510bb4a13d423d(...func_get_args());
     }
 }
 if (!function_exists('scanPath')) {
