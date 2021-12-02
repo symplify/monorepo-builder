@@ -104,8 +104,12 @@ final class RemoverComposerJsonDecorator implements \Symplify\MonorepoBuilder\Me
         if ($removingComposerJson->getPreferStable()) {
             $composerJson->removePreferStable();
         }
-        if (\count($removingComposerJson->getRepositories()) === 1 && $removingComposerJson->getRepositories()[0] === \Symplify\MonorepoBuilder\ValueObject\Option::REMOVE_COMPLETELY) {
-            $composerJson->setRepositories([]);
+        if (\count($removingComposerJson->getRepositories()) !== 1) {
+            return;
         }
+        if ($removingComposerJson->getRepositories()[0] !== \Symplify\MonorepoBuilder\ValueObject\Option::REMOVE_COMPLETELY) {
+            return;
+        }
+        $composerJson->setRepositories([]);
     }
 }
