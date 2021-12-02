@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211201\Symfony\Component\Console\Completion\Output;
+namespace MonorepoBuilder20211202\Symfony\Component\Console\Completion\Output;
 
-use MonorepoBuilder20211201\Symfony\Component\Console\Completion\CompletionSuggestions;
-use MonorepoBuilder20211201\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder20211202\Symfony\Component\Console\Completion\CompletionSuggestions;
+use MonorepoBuilder20211202\Symfony\Component\Console\Output\OutputInterface;
 /**
  * Transforms the {@see CompletionSuggestions} object into output readable by the shell completion.
  *

@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211201\Symfony\Component\Console;
+namespace MonorepoBuilder20211202\Symfony\Component\Console;
 
-use MonorepoBuilder20211201\Symfony\Component\Console\Command\Command;
-use MonorepoBuilder20211201\Symfony\Component\Console\Input\InputInterface;
-use MonorepoBuilder20211201\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder20211202\Symfony\Component\Console\Command\Command;
+use MonorepoBuilder20211202\Symfony\Component\Console\Input\InputInterface;
+use MonorepoBuilder20211202\Symfony\Component\Console\Output\OutputInterface;
 /**
  * @author Grégoire Pineau <lyrixx@lyrixx.info>
  */
-class SingleCommandApplication extends \MonorepoBuilder20211201\Symfony\Component\Console\Command\Command
+class SingleCommandApplication extends \MonorepoBuilder20211202\Symfony\Component\Console\Command\Command
 {
     /**
      * @var string
@@ -60,7 +60,7 @@ class SingleCommandApplication extends \MonorepoBuilder20211201\Symfony\Componen
             return parent::run($input, $output);
         }
         // We use the command name as the application name
-        $application = new \MonorepoBuilder20211201\Symfony\Component\Console\Application($this->getName() ?: 'UNKNOWN', $this->version);
+        $application = new \MonorepoBuilder20211202\Symfony\Component\Console\Application($this->getName() ?: 'UNKNOWN', $this->version);
         $application->setAutoExit($this->autoExit);
         // Fix the usage of the command displayed with "--help"
         $this->setName($_SERVER['argv'][0]);
