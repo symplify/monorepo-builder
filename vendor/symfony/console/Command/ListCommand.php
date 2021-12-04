@@ -8,29 +8,29 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211203\Symfony\Component\Console\Command;
+namespace MonorepoBuilder20211204\Symfony\Component\Console\Command;
 
-use MonorepoBuilder20211203\Symfony\Component\Console\Completion\CompletionInput;
-use MonorepoBuilder20211203\Symfony\Component\Console\Completion\CompletionSuggestions;
-use MonorepoBuilder20211203\Symfony\Component\Console\Descriptor\ApplicationDescription;
-use MonorepoBuilder20211203\Symfony\Component\Console\Helper\DescriptorHelper;
-use MonorepoBuilder20211203\Symfony\Component\Console\Input\InputArgument;
-use MonorepoBuilder20211203\Symfony\Component\Console\Input\InputInterface;
-use MonorepoBuilder20211203\Symfony\Component\Console\Input\InputOption;
-use MonorepoBuilder20211203\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder20211204\Symfony\Component\Console\Completion\CompletionInput;
+use MonorepoBuilder20211204\Symfony\Component\Console\Completion\CompletionSuggestions;
+use MonorepoBuilder20211204\Symfony\Component\Console\Descriptor\ApplicationDescription;
+use MonorepoBuilder20211204\Symfony\Component\Console\Helper\DescriptorHelper;
+use MonorepoBuilder20211204\Symfony\Component\Console\Input\InputArgument;
+use MonorepoBuilder20211204\Symfony\Component\Console\Input\InputInterface;
+use MonorepoBuilder20211204\Symfony\Component\Console\Input\InputOption;
+use MonorepoBuilder20211204\Symfony\Component\Console\Output\OutputInterface;
 /**
  * ListCommand displays the list of all available commands for the application.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class ListCommand extends \MonorepoBuilder20211203\Symfony\Component\Console\Command\Command
+class ListCommand extends \MonorepoBuilder20211204\Symfony\Component\Console\Command\Command
 {
     /**
      * {@inheritdoc}
      */
     protected function configure()
     {
-        $this->setName('list')->setDefinition([new \MonorepoBuilder20211203\Symfony\Component\Console\Input\InputArgument('namespace', \MonorepoBuilder20211203\Symfony\Component\Console\Input\InputArgument::OPTIONAL, 'The namespace name'), new \MonorepoBuilder20211203\Symfony\Component\Console\Input\InputOption('raw', null, \MonorepoBuilder20211203\Symfony\Component\Console\Input\InputOption::VALUE_NONE, 'To output raw command list'), new \MonorepoBuilder20211203\Symfony\Component\Console\Input\InputOption('format', null, \MonorepoBuilder20211203\Symfony\Component\Console\Input\InputOption::VALUE_REQUIRED, 'The output format (txt, xml, json, or md)', 'txt'), new \MonorepoBuilder20211203\Symfony\Component\Console\Input\InputOption('short', null, \MonorepoBuilder20211203\Symfony\Component\Console\Input\InputOption::VALUE_NONE, 'To skip describing commands\' arguments')])->setDescription('List commands')->setHelp(<<<'EOF'
+        $this->setName('list')->setDefinition([new \MonorepoBuilder20211204\Symfony\Component\Console\Input\InputArgument('namespace', \MonorepoBuilder20211204\Symfony\Component\Console\Input\InputArgument::OPTIONAL, 'The namespace name'), new \MonorepoBuilder20211204\Symfony\Component\Console\Input\InputOption('raw', null, \MonorepoBuilder20211204\Symfony\Component\Console\Input\InputOption::VALUE_NONE, 'To output raw command list'), new \MonorepoBuilder20211204\Symfony\Component\Console\Input\InputOption('format', null, \MonorepoBuilder20211204\Symfony\Component\Console\Input\InputOption::VALUE_REQUIRED, 'The output format (txt, xml, json, or md)', 'txt'), new \MonorepoBuilder20211204\Symfony\Component\Console\Input\InputOption('short', null, \MonorepoBuilder20211204\Symfony\Component\Console\Input\InputOption::VALUE_NONE, 'To skip describing commands\' arguments')])->setDescription('List commands')->setHelp(<<<'EOF'
 The <info>%command.name%</info> command lists all commands:
 
   <info>%command.full_name%</info>
@@ -56,7 +56,7 @@ EOF
      */
     protected function execute($input, $output) : int
     {
-        $helper = new \MonorepoBuilder20211203\Symfony\Component\Console\Helper\DescriptorHelper();
+        $helper = new \MonorepoBuilder20211204\Symfony\Component\Console\Helper\DescriptorHelper();
         $helper->describe($output, $this->getApplication(), ['format' => $input->getOption('format'), 'raw_text' => $input->getOption('raw'), 'namespace' => $input->getArgument('namespace'), 'short' => $input->getOption('short')]);
         return 0;
     }
@@ -67,12 +67,12 @@ EOF
     public function complete($input, $suggestions) : void
     {
         if ($input->mustSuggestArgumentValuesFor('namespace')) {
-            $descriptor = new \MonorepoBuilder20211203\Symfony\Component\Console\Descriptor\ApplicationDescription($this->getApplication());
+            $descriptor = new \MonorepoBuilder20211204\Symfony\Component\Console\Descriptor\ApplicationDescription($this->getApplication());
             $suggestions->suggestValues(\array_keys($descriptor->getNamespaces()));
             return;
         }
         if ($input->mustSuggestOptionValuesFor('format')) {
-            $helper = new \MonorepoBuilder20211203\Symfony\Component\Console\Helper\DescriptorHelper();
+            $helper = new \MonorepoBuilder20211204\Symfony\Component\Console\Helper\DescriptorHelper();
             $suggestions->suggestValues($helper->getFormats());
         }
     }

@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20211203\Symplify\ComposerJsonManipulator\ValueObject;
+namespace MonorepoBuilder20211204\Symplify\ComposerJsonManipulator\ValueObject;
 
 /**
  * @api
