@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211204\Symfony\Component\Console\Tester\Constraint;
+namespace MonorepoBuilder20211206\Symfony\Component\Console\Tester\Constraint;
 
-use MonorepoBuilder20211204\PHPUnit\Framework\Constraint\Constraint;
-use MonorepoBuilder20211204\Symfony\Component\Console\Command\Command;
-final class CommandIsSuccessful extends \MonorepoBuilder20211204\PHPUnit\Framework\Constraint\Constraint
+use MonorepoBuilder20211206\PHPUnit\Framework\Constraint\Constraint;
+use MonorepoBuilder20211206\Symfony\Component\Console\Command\Command;
+final class CommandIsSuccessful extends \MonorepoBuilder20211206\PHPUnit\Framework\Constraint\Constraint
 {
     /**
      * {@inheritdoc}
@@ -26,7 +26,7 @@ final class CommandIsSuccessful extends \MonorepoBuilder20211204\PHPUnit\Framewo
      */
     protected function matches($other) : bool
     {
-        return \MonorepoBuilder20211204\Symfony\Component\Console\Command\Command::SUCCESS === $other;
+        return \MonorepoBuilder20211206\Symfony\Component\Console\Command\Command::SUCCESS === $other;
     }
     /**
      * {@inheritdoc}
@@ -40,7 +40,7 @@ final class CommandIsSuccessful extends \MonorepoBuilder20211204\PHPUnit\Framewo
      */
     protected function additionalFailureDescription($other) : string
     {
-        $mapping = [\MonorepoBuilder20211204\Symfony\Component\Console\Command\Command::FAILURE => 'Command failed.', \MonorepoBuilder20211204\Symfony\Component\Console\Command\Command::INVALID => 'Command was invalid.'];
+        $mapping = [\MonorepoBuilder20211206\Symfony\Component\Console\Command\Command::FAILURE => 'Command failed.', \MonorepoBuilder20211206\Symfony\Component\Console\Command\Command::INVALID => 'Command was invalid.'];
         return $mapping[$other] ?? \sprintf('Command returned exit status %d.', $other);
     }
 }

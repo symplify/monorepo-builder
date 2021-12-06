@@ -20,7 +20,7 @@
     },
     "autoload": {
         "psr-4": {
-            "MonorepoBuilder20211204\\Symfony\\Component\\Process\\": ""
+            "MonorepoBuilder20211206\\Symfony\\Component\\Process\\": ""
         },
         "exclude-from-classmap": [
             "\/Tests\/"

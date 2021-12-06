@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20211204\Symplify\EasyTesting\ValueObject;
+namespace MonorepoBuilder20211206\Symplify\EasyTesting\ValueObject;
 
-use MonorepoBuilder20211204\Symplify\SmartFileSystem\SmartFileInfo;
-use MonorepoBuilder20211204\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
+use MonorepoBuilder20211206\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder20211206\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
 final class ExpectedAndOutputFileInfoPair
 {
     /**
@@ -15,7 +15,7 @@ final class ExpectedAndOutputFileInfoPair
      * @var \Symplify\SmartFileSystem\SmartFileInfo|null
      */
     private $outputFileInfo;
-    public function __construct(\MonorepoBuilder20211204\Symplify\SmartFileSystem\SmartFileInfo $expectedFileInfo, ?\MonorepoBuilder20211204\Symplify\SmartFileSystem\SmartFileInfo $outputFileInfo)
+    public function __construct(\MonorepoBuilder20211206\Symplify\SmartFileSystem\SmartFileInfo $expectedFileInfo, ?\MonorepoBuilder20211206\Symplify\SmartFileSystem\SmartFileInfo $outputFileInfo)
     {
         $this->expectedFileInfo = $expectedFileInfo;
         $this->outputFileInfo = $outputFileInfo;
@@ -32,8 +32,8 @@ final class ExpectedAndOutputFileInfoPair
      */
     public function getOutputFileContent() : string
     {
-        if (!$this->outputFileInfo instanceof \MonorepoBuilder20211204\Symplify\SmartFileSystem\SmartFileInfo) {
-            throw new \MonorepoBuilder20211204\Symplify\SymplifyKernel\Exception\ShouldNotHappenException();
+        if (!$this->outputFileInfo instanceof \MonorepoBuilder20211206\Symplify\SmartFileSystem\SmartFileInfo) {
+            throw new \MonorepoBuilder20211206\Symplify\SymplifyKernel\Exception\ShouldNotHappenException();
         }
         return $this->outputFileInfo->getContents();
     }

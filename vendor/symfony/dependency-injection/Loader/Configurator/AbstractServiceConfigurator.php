@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211204\Symfony\Component\DependencyInjection\Loader\Configurator;
+namespace MonorepoBuilder20211206\Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use MonorepoBuilder20211204\Symfony\Component\DependencyInjection\Definition;
-use MonorepoBuilder20211204\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
-abstract class AbstractServiceConfigurator extends \MonorepoBuilder20211204\Symfony\Component\DependencyInjection\Loader\Configurator\AbstractConfigurator
+use MonorepoBuilder20211206\Symfony\Component\DependencyInjection\Definition;
+use MonorepoBuilder20211206\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
+abstract class AbstractServiceConfigurator extends \MonorepoBuilder20211206\Symfony\Component\DependencyInjection\Loader\Configurator\AbstractConfigurator
 {
     protected $parent;
     protected $id;
@@ -20,7 +20,7 @@ abstract class AbstractServiceConfigurator extends \MonorepoBuilder20211204\Symf
      * @var mixed[]
      */
     private $defaultTags = [];
-    public function __construct(\MonorepoBuilder20211204\Symfony\Component\DependencyInjection\Loader\Configurator\ServicesConfigurator $parent, \MonorepoBuilder20211204\Symfony\Component\DependencyInjection\Definition $definition, string $id = null, array $defaultTags = [])
+    public function __construct(\MonorepoBuilder20211206\Symfony\Component\DependencyInjection\Loader\Configurator\ServicesConfigurator $parent, \MonorepoBuilder20211206\Symfony\Component\DependencyInjection\Definition $definition, string $id = null, array $defaultTags = [])
     {
         $this->parent = $parent;
         $this->definition = $definition;
@@ -42,7 +42,7 @@ abstract class AbstractServiceConfigurator extends \MonorepoBuilder20211204\Symf
      * @param string|null $id
      * @param string|null $class
      */
-    public final function set($id, $class = null) : \MonorepoBuilder20211204\Symfony\Component\DependencyInjection\Loader\Configurator\ServiceConfigurator
+    public final function set($id, $class = null) : \MonorepoBuilder20211206\Symfony\Component\DependencyInjection\Loader\Configurator\ServiceConfigurator
     {
         $this->__destruct();
         return $this->parent->set($id, $class);
@@ -52,7 +52,7 @@ abstract class AbstractServiceConfigurator extends \MonorepoBuilder20211204\Symf
      * @param string $id
      * @param string $referencedId
      */
-    public final function alias($id, $referencedId) : \MonorepoBuilder20211204\Symfony\Component\DependencyInjection\Loader\Configurator\AliasConfigurator
+    public final function alias($id, $referencedId) : \MonorepoBuilder20211206\Symfony\Component\DependencyInjection\Loader\Configurator\AliasConfigurator
     {
         $this->__destruct();
         return $this->parent->alias($id, $referencedId);
@@ -62,7 +62,7 @@ abstract class AbstractServiceConfigurator extends \MonorepoBuilder20211204\Symf
      * @param string $namespace
      * @param string $resource
      */
-    public final function load($namespace, $resource) : \MonorepoBuilder20211204\Symfony\Component\DependencyInjection\Loader\Configurator\PrototypeConfigurator
+    public final function load($namespace, $resource) : \MonorepoBuilder20211206\Symfony\Component\DependencyInjection\Loader\Configurator\PrototypeConfigurator
     {
         $this->__destruct();
         return $this->parent->load($namespace, $resource);
@@ -73,7 +73,7 @@ abstract class AbstractServiceConfigurator extends \MonorepoBuilder20211204\Symf
      * @throws ServiceNotFoundException if the service definition does not exist
      * @param string $id
      */
-    public final function get($id) : \MonorepoBuilder20211204\Symfony\Component\DependencyInjection\Loader\Configurator\ServiceConfigurator
+    public final function get($id) : \MonorepoBuilder20211206\Symfony\Component\DependencyInjection\Loader\Configurator\ServiceConfigurator
     {
         $this->__destruct();
         return $this->parent->get($id);
@@ -82,7 +82,7 @@ abstract class AbstractServiceConfigurator extends \MonorepoBuilder20211204\Symf
      * Removes an already defined service definition or alias.
      * @param string $id
      */
-    public final function remove($id) : \MonorepoBuilder20211204\Symfony\Component\DependencyInjection\Loader\Configurator\ServicesConfigurator
+    public final function remove($id) : \MonorepoBuilder20211206\Symfony\Component\DependencyInjection\Loader\Configurator\ServicesConfigurator
     {
         $this->__destruct();
         return $this->parent->remove($id);
@@ -93,7 +93,7 @@ abstract class AbstractServiceConfigurator extends \MonorepoBuilder20211204\Symf
      * @param InlineServiceConfigurator[]|ReferenceConfigurator[] $services
      * @param string $id
      */
-    public final function stack($id, $services) : \MonorepoBuilder20211204\Symfony\Component\DependencyInjection\Loader\Configurator\AliasConfigurator
+    public final function stack($id, $services) : \MonorepoBuilder20211206\Symfony\Component\DependencyInjection\Loader\Configurator\AliasConfigurator
     {
         $this->__destruct();
         return $this->parent->stack($id, $services);
@@ -101,7 +101,7 @@ abstract class AbstractServiceConfigurator extends \MonorepoBuilder20211204\Symf
     /**
      * Registers a service.
      */
-    public final function __invoke(string $id, string $class = null) : \MonorepoBuilder20211204\Symfony\Component\DependencyInjection\Loader\Configurator\ServiceConfigurator
+    public final function __invoke(string $id, string $class = null) : \MonorepoBuilder20211206\Symfony\Component\DependencyInjection\Loader\Configurator\ServiceConfigurator
     {
         $this->__destruct();
         return $this->parent->set($id, $class);

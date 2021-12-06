@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211204\Symfony\Component\Console\Tester;
+namespace MonorepoBuilder20211206\Symfony\Component\Console\Tester;
 
-use MonorepoBuilder20211204\Symfony\Component\Console\Application;
-use MonorepoBuilder20211204\Symfony\Component\Console\Input\ArrayInput;
+use MonorepoBuilder20211206\Symfony\Component\Console\Application;
+use MonorepoBuilder20211206\Symfony\Component\Console\Input\ArrayInput;
 /**
  * Eases the testing of console applications.
  *
@@ -29,7 +29,7 @@ class ApplicationTester
      * @var \Symfony\Component\Console\Application
      */
     private $application;
-    public function __construct(\MonorepoBuilder20211204\Symfony\Component\Console\Application $application)
+    public function __construct(\MonorepoBuilder20211206\Symfony\Component\Console\Application $application)
     {
         $this->application = $application;
     }
@@ -49,7 +49,7 @@ class ApplicationTester
      */
     public function run($input, $options = []) : int
     {
-        $this->input = new \MonorepoBuilder20211204\Symfony\Component\Console\Input\ArrayInput($input);
+        $this->input = new \MonorepoBuilder20211206\Symfony\Component\Console\Input\ArrayInput($input);
         if (isset($options['interactive'])) {
             $this->input->setInteractive($options['interactive']);
         }
