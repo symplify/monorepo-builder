@@ -97,7 +97,7 @@ class PhpFileLoader extends \MonorepoBuilder20211206\Symfony\Component\Dependenc
         $configBuilders = [];
         $r = new \ReflectionFunction($callback);
         $attribute = null;
-        foreach ($r->getAttributes(\MonorepoBuilder20211206\Symfony\Component\DependencyInjection\Attribute\When::class) as $attribute) {
+        foreach ([] as $attribute) {
             if ($this->env === $attribute->newInstance()->env) {
                 $attribute = null;
                 break;

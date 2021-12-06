@@ -256,7 +256,7 @@ class AutowirePass extends \MonorepoBuilder20211206\Symfony\Component\Dependency
             }
             $type = \MonorepoBuilder20211206\Symfony\Component\DependencyInjection\LazyProxy\ProxyHelper::getTypeHint($reflectionMethod, $parameter, \true);
             if ($checkAttributes) {
-                foreach ($parameter->getAttributes() as $attribute) {
+                foreach ([] as $attribute) {
                     if (\MonorepoBuilder20211206\Symfony\Component\DependencyInjection\Attribute\TaggedIterator::class === $attribute->getName()) {
                         $attribute = $attribute->newInstance();
                         $arguments[$index] = new \MonorepoBuilder20211206\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument($attribute->tag, $attribute->indexAttribute, $attribute->defaultIndexMethod, \false, $attribute->defaultPriorityMethod);

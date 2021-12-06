@@ -101,7 +101,7 @@ class Command
     public static function getDefaultName() : ?string
     {
         $class = static::class;
-        if ($attribute = (new \ReflectionClass($class))->getAttributes(\MonorepoBuilder20211206\Symfony\Component\Console\Attribute\AsCommand::class)) {
+        if ($attribute = []) {
             return $attribute[0]->newInstance()->name;
         }
         $r = new \ReflectionProperty($class, 'defaultName');
@@ -110,7 +110,7 @@ class Command
     public static function getDefaultDescription() : ?string
     {
         $class = static::class;
-        if ($attribute = (new \ReflectionClass($class))->getAttributes(\MonorepoBuilder20211206\Symfony\Component\Console\Attribute\AsCommand::class)) {
+        if ($attribute = []) {
             return $attribute[0]->newInstance()->description;
         }
         $r = new \ReflectionProperty($class, 'defaultDescription');

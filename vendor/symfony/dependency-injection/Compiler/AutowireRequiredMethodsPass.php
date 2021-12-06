@@ -45,7 +45,7 @@ class AutowireRequiredMethodsPass extends \MonorepoBuilder20211206\Symfony\Compo
                 continue;
             }
             while (\true) {
-                if ($r->getAttributes(\MonorepoBuilder20211206\Symfony\Contracts\Service\Attribute\Required::class)) {
+                if ([]) {
                     if ($this->isWither($r, $r->getDocComment() ?: '')) {
                         $withers[] = [$r->name, [], \true];
                     } else {

@@ -54,7 +54,7 @@ final class AttributeAutoconfigurationPass extends \MonorepoBuilder20211206\Symf
             } catch (\ReflectionException $e) {
                 continue;
             }
-            $targets = $attributeReflector->getAttributes(\Attribute::class)[0] ?? 0;
+            $targets = [][0] ?? 0;
             $targets = $targets ? $targets->getArguments()[0] ?? -1 : 0;
             foreach (['class', 'method', 'property', 'parameter'] as $symbol) {
                 if (['Reflector'] !== $types) {
@@ -83,7 +83,7 @@ final class AttributeAutoconfigurationPass extends \MonorepoBuilder20211206\Symf
         $instanceof = $value->getInstanceofConditionals();
         $conditionals = $instanceof[$classReflector->getName()] ?? new \MonorepoBuilder20211206\Symfony\Component\DependencyInjection\ChildDefinition('');
         if ($this->classAttributeConfigurators) {
-            foreach ($classReflector->getAttributes() as $attribute) {
+            foreach ([] as $attribute) {
                 if ($configurator = $this->classAttributeConfigurators[$attribute->getName()] ?? null) {
                     $configurator($conditionals, $attribute->newInstance(), $classReflector);
                 }
@@ -91,7 +91,7 @@ final class AttributeAutoconfigurationPass extends \MonorepoBuilder20211206\Symf
         }
         if ($this->parameterAttributeConfigurators && ($constructorReflector = $this->getConstructor($value, \false))) {
             foreach ($constructorReflector->getParameters() as $parameterReflector) {
-                foreach ($parameterReflector->getAttributes() as $attribute) {
+                foreach ([] as $attribute) {
                     if ($configurator = $this->parameterAttributeConfigurators[$attribute->getName()] ?? null) {
                         $configurator($conditionals, $attribute->newInstance(), $parameterReflector);
                     }
@@ -104,7 +104,7 @@ final class AttributeAutoconfigurationPass extends \MonorepoBuilder20211206\Symf
                     continue;
                 }
                 if ($this->methodAttributeConfigurators) {
-                    foreach ($methodReflector->getAttributes() as $attribute) {
+                    foreach ([] as $attribute) {
                         if ($configurator = $this->methodAttributeConfigurators[$attribute->getName()] ?? null) {
                             $configurator($conditionals, $attribute->newInstance(), $methodReflector);
                         }
@@ -112,7 +112,7 @@ final class AttributeAutoconfigurationPass extends \MonorepoBuilder20211206\Symf
                 }
                 if ($this->parameterAttributeConfigurators) {
                     foreach ($methodReflector->getParameters() as $parameterReflector) {
-                        foreach ($parameterReflector->getAttributes() as $attribute) {
+                        foreach ([] as $attribute) {
                             if ($configurator = $this->parameterAttributeConfigurators[$attribute->getName()] ?? null) {
                                 $configurator($conditionals, $attribute->newInstance(), $parameterReflector);
                             }
@@ -126,7 +126,7 @@ final class AttributeAutoconfigurationPass extends \MonorepoBuilder20211206\Symf
                 if ($propertyReflector->isStatic()) {
                     continue;
                 }
-                foreach ($propertyReflector->getAttributes() as $attribute) {
+                foreach ([] as $attribute) {
                     if ($configurator = $this->propertyAttributeConfigurators[$attribute->getName()] ?? null) {
                         $configurator($conditionals, $attribute->newInstance(), $propertyReflector);
                     }
