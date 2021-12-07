@@ -112,7 +112,10 @@ class Table
     public static function getStyleDefinition($name) : \MonorepoBuilder20211207\Symfony\Component\Console\Helper\TableStyle
     {
         self::$styles = self::$styles ?? self::initStyles();
-        return self::$styles[$name] ?? throw new \MonorepoBuilder20211207\Symfony\Component\Console\Exception\InvalidArgumentException(\sprintf('Style "%s" is not defined.', $name));
+        if (self::$styles[$name] === null) {
+            throw new \MonorepoBuilder20211207\Symfony\Component\Console\Exception\InvalidArgumentException(\sprintf('Style "%s" is not defined.', $name));
+        }
+        return self::$styles[$name];
     }
     /**
      * Sets table style.
@@ -742,6 +745,9 @@ class Table
         if ($name instanceof \MonorepoBuilder20211207\Symfony\Component\Console\Helper\TableStyle) {
             return $name;
         }
-        return self::$styles[$name] ?? throw new \MonorepoBuilder20211207\Symfony\Component\Console\Exception\InvalidArgumentException(\sprintf('Style "%s" is not defined.', $name));
+        if (self::$styles[$name] === null) {
+            throw new \MonorepoBuilder20211207\Symfony\Component\Console\Exception\InvalidArgumentException(\sprintf('Style "%s" is not defined.', $name));
+        }
+        return self::$styles[$name];
     }
 }
