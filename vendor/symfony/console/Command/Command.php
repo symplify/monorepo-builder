@@ -412,7 +412,7 @@ class Command
      */
     public function getNativeDefinition() : \MonorepoBuilder20211208\Symfony\Component\Console\Input\InputDefinition
     {
-        if ($this->definition === null) {
+        if (!isset($this->definition)) {
             throw new \MonorepoBuilder20211208\Symfony\Component\Console\Exception\LogicException(\sprintf('Command class "%s" is not correctly initialized. You probably forgot to call the parent constructor.', static::class));
         }
         return $this->definition;

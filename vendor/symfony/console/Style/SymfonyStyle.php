@@ -381,7 +381,7 @@ class SymfonyStyle extends \MonorepoBuilder20211208\Symfony\Component\Console\St
     }
     private function getProgressBar() : \MonorepoBuilder20211208\Symfony\Component\Console\Helper\ProgressBar
     {
-        if ($this->progressBar === null) {
+        if (!isset($this->progressBar)) {
             throw new \MonorepoBuilder20211208\Symfony\Component\Console\Exception\RuntimeException('The ProgressBar is not started.');
         }
         return $this->progressBar;

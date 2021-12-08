@@ -97,7 +97,7 @@ trait TesterTrait
      */
     public function getStatusCode() : int
     {
-        if ($this->statusCode === null) {
+        if (!isset($this->statusCode)) {
             throw new \RuntimeException('Status code not initialized, did you execute the command before requesting the status code?');
         }
         return $this->statusCode;
