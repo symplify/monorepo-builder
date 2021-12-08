@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211207\Symfony\Component\DependencyInjection\Compiler;
+namespace MonorepoBuilder20211208\Symfony\Component\DependencyInjection\Compiler;
 
-use MonorepoBuilder20211207\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder20211207\Symfony\Component\DependencyInjection\Exception\EnvParameterException;
+use MonorepoBuilder20211208\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder20211208\Symfony\Component\DependencyInjection\Exception\EnvParameterException;
 /**
  * This class is used to remove circular dependencies between individual passes.
  *
@@ -33,14 +33,14 @@ class Compiler
     private $serviceReferenceGraph;
     public function __construct()
     {
-        $this->passConfig = new \MonorepoBuilder20211207\Symfony\Component\DependencyInjection\Compiler\PassConfig();
-        $this->serviceReferenceGraph = new \MonorepoBuilder20211207\Symfony\Component\DependencyInjection\Compiler\ServiceReferenceGraph();
+        $this->passConfig = new \MonorepoBuilder20211208\Symfony\Component\DependencyInjection\Compiler\PassConfig();
+        $this->serviceReferenceGraph = new \MonorepoBuilder20211208\Symfony\Component\DependencyInjection\Compiler\ServiceReferenceGraph();
     }
-    public function getPassConfig() : \MonorepoBuilder20211207\Symfony\Component\DependencyInjection\Compiler\PassConfig
+    public function getPassConfig() : \MonorepoBuilder20211208\Symfony\Component\DependencyInjection\Compiler\PassConfig
     {
         return $this->passConfig;
     }
-    public function getServiceReferenceGraph() : \MonorepoBuilder20211207\Symfony\Component\DependencyInjection\Compiler\ServiceReferenceGraph
+    public function getServiceReferenceGraph() : \MonorepoBuilder20211208\Symfony\Component\DependencyInjection\Compiler\ServiceReferenceGraph
     {
         return $this->serviceReferenceGraph;
     }
@@ -49,7 +49,7 @@ class Compiler
      * @param string $type
      * @param int $priority
      */
-    public function addPass($pass, $type = \MonorepoBuilder20211207\Symfony\Component\DependencyInjection\Compiler\PassConfig::TYPE_BEFORE_OPTIMIZATION, $priority = 0)
+    public function addPass($pass, $type = \MonorepoBuilder20211208\Symfony\Component\DependencyInjection\Compiler\PassConfig::TYPE_BEFORE_OPTIMIZATION, $priority = 0)
     {
         $this->passConfig->addPass($pass, $type, $priority);
     }
@@ -91,7 +91,7 @@ class Compiler
                 }
             } while ($prev = $prev->getPrevious());
             if ($usedEnvs) {
-                $e = new \MonorepoBuilder20211207\Symfony\Component\DependencyInjection\Exception\EnvParameterException($usedEnvs, $e);
+                $e = new \MonorepoBuilder20211208\Symfony\Component\DependencyInjection\Exception\EnvParameterException($usedEnvs, $e);
             }
             throw $e;
         } finally {

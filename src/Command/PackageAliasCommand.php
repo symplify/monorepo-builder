@@ -3,14 +3,14 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Command;
 
-use MonorepoBuilder20211207\Symfony\Component\Console\Input\InputInterface;
-use MonorepoBuilder20211207\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder20211208\Symfony\Component\Console\Input\InputInterface;
+use MonorepoBuilder20211208\Symfony\Component\Console\Output\OutputInterface;
 use Symplify\MonorepoBuilder\DevMasterAliasUpdater;
 use Symplify\MonorepoBuilder\Finder\PackageComposerFinder;
 use Symplify\MonorepoBuilder\Git\ExpectedAliasResolver;
-use MonorepoBuilder20211207\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
-use MonorepoBuilder20211207\Symplify\PackageBuilder\Console\Command\CommandNaming;
-final class PackageAliasCommand extends \MonorepoBuilder20211207\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand
+use MonorepoBuilder20211208\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
+use MonorepoBuilder20211208\Symplify\PackageBuilder\Console\Command\CommandNaming;
+final class PackageAliasCommand extends \MonorepoBuilder20211208\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand
 {
     /**
      * @var \Symplify\MonorepoBuilder\Finder\PackageComposerFinder
@@ -33,7 +33,7 @@ final class PackageAliasCommand extends \MonorepoBuilder20211207\Symplify\Packag
     }
     protected function configure() : void
     {
-        $this->setName(\MonorepoBuilder20211207\Symplify\PackageBuilder\Console\Command\CommandNaming::classToName(self::class));
+        $this->setName(\MonorepoBuilder20211208\Symplify\PackageBuilder\Console\Command\CommandNaming::classToName(self::class));
         $this->setDescription('Updates branch alias in "composer.json" all found packages');
     }
     /**
