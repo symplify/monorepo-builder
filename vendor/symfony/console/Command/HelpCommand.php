@@ -8,26 +8,23 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211208\Symfony\Component\Console\Command;
+namespace MonorepoBuilder20211209\Symfony\Component\Console\Command;
 
-use MonorepoBuilder20211208\Symfony\Component\Console\Completion\CompletionInput;
-use MonorepoBuilder20211208\Symfony\Component\Console\Completion\CompletionSuggestions;
-use MonorepoBuilder20211208\Symfony\Component\Console\Descriptor\ApplicationDescription;
-use MonorepoBuilder20211208\Symfony\Component\Console\Helper\DescriptorHelper;
-use MonorepoBuilder20211208\Symfony\Component\Console\Input\InputArgument;
-use MonorepoBuilder20211208\Symfony\Component\Console\Input\InputInterface;
-use MonorepoBuilder20211208\Symfony\Component\Console\Input\InputOption;
-use MonorepoBuilder20211208\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder20211209\Symfony\Component\Console\Completion\CompletionInput;
+use MonorepoBuilder20211209\Symfony\Component\Console\Completion\CompletionSuggestions;
+use MonorepoBuilder20211209\Symfony\Component\Console\Descriptor\ApplicationDescription;
+use MonorepoBuilder20211209\Symfony\Component\Console\Helper\DescriptorHelper;
+use MonorepoBuilder20211209\Symfony\Component\Console\Input\InputArgument;
+use MonorepoBuilder20211209\Symfony\Component\Console\Input\InputInterface;
+use MonorepoBuilder20211209\Symfony\Component\Console\Input\InputOption;
+use MonorepoBuilder20211209\Symfony\Component\Console\Output\OutputInterface;
 /**
  * HelpCommand displays the help for a given command.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class HelpCommand extends \MonorepoBuilder20211208\Symfony\Component\Console\Command\Command
+class HelpCommand extends \MonorepoBuilder20211209\Symfony\Component\Console\Command\Command
 {
-    /**
-     * @var \Symfony\Component\Console\Command\Command
-     */
     private $command;
     /**
      * {@inheritdoc}
@@ -35,7 +32,7 @@ class HelpCommand extends \MonorepoBuilder20211208\Symfony\Component\Console\Com
     protected function configure()
     {
         $this->ignoreValidationErrors();
-        $this->setName('help')->setDefinition([new \MonorepoBuilder20211208\Symfony\Component\Console\Input\InputArgument('command_name', \MonorepoBuilder20211208\Symfony\Component\Console\Input\InputArgument::OPTIONAL, 'The command name', 'help'), new \MonorepoBuilder20211208\Symfony\Component\Console\Input\InputOption('format', null, \MonorepoBuilder20211208\Symfony\Component\Console\Input\InputOption::VALUE_REQUIRED, 'The output format (txt, xml, json, or md)', 'txt'), new \MonorepoBuilder20211208\Symfony\Component\Console\Input\InputOption('raw', null, \MonorepoBuilder20211208\Symfony\Component\Console\Input\InputOption::VALUE_NONE, 'To output raw command help')])->setDescription('Display help for a command')->setHelp(<<<'EOF'
+        $this->setName('help')->setDefinition([new \MonorepoBuilder20211209\Symfony\Component\Console\Input\InputArgument('command_name', \MonorepoBuilder20211209\Symfony\Component\Console\Input\InputArgument::OPTIONAL, 'The command name', 'help'), new \MonorepoBuilder20211209\Symfony\Component\Console\Input\InputOption('format', null, \MonorepoBuilder20211209\Symfony\Component\Console\Input\InputOption::VALUE_REQUIRED, 'The output format (txt, xml, json, or md)', 'txt'), new \MonorepoBuilder20211209\Symfony\Component\Console\Input\InputOption('raw', null, \MonorepoBuilder20211209\Symfony\Component\Console\Input\InputOption::VALUE_NONE, 'To output raw command help')])->setDescription('Display help for a command')->setHelp(<<<'EOF'
 The <info>%command.name%</info> command displays help for a given command:
 
   <info>%command.full_name% list</info>
@@ -63,7 +60,7 @@ EOF
     protected function execute($input, $output) : int
     {
         $this->command = $this->command ?? $this->getApplication()->find($input->getArgument('command_name'));
-        $helper = new \MonorepoBuilder20211208\Symfony\Component\Console\Helper\DescriptorHelper();
+        $helper = new \MonorepoBuilder20211209\Symfony\Component\Console\Helper\DescriptorHelper();
         $helper->describe($output, $this->command, ['format' => $input->getOption('format'), 'raw_text' => $input->getOption('raw')]);
         unset($this->command);
         return 0;
@@ -75,12 +72,12 @@ EOF
     public function complete($input, $suggestions) : void
     {
         if ($input->mustSuggestArgumentValuesFor('command_name')) {
-            $descriptor = new \MonorepoBuilder20211208\Symfony\Component\Console\Descriptor\ApplicationDescription($this->getApplication());
+            $descriptor = new \MonorepoBuilder20211209\Symfony\Component\Console\Descriptor\ApplicationDescription($this->getApplication());
             $suggestions->suggestValues(\array_keys($descriptor->getCommands()));
             return;
         }
         if ($input->mustSuggestOptionValuesFor('format')) {
-            $helper = new \MonorepoBuilder20211208\Symfony\Component\Console\Helper\DescriptorHelper();
+            $helper = new \MonorepoBuilder20211209\Symfony\Component\Console\Helper\DescriptorHelper();
             $suggestions->suggestValues($helper->getFormats());
         }
     }

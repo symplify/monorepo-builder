@@ -8,43 +8,34 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211208\Symfony\Component\Console\Helper;
+namespace MonorepoBuilder20211209\Symfony\Component\Console\Helper;
 
-use MonorepoBuilder20211208\Symfony\Component\Console\Output\OutputInterface;
-use MonorepoBuilder20211208\Symfony\Component\VarDumper\Cloner\ClonerInterface;
-use MonorepoBuilder20211208\Symfony\Component\VarDumper\Cloner\VarCloner;
-use MonorepoBuilder20211208\Symfony\Component\VarDumper\Dumper\CliDumper;
+use MonorepoBuilder20211209\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder20211209\Symfony\Component\VarDumper\Cloner\ClonerInterface;
+use MonorepoBuilder20211209\Symfony\Component\VarDumper\Cloner\VarCloner;
+use MonorepoBuilder20211209\Symfony\Component\VarDumper\Dumper\CliDumper;
 /**
  * @author Roland Franssen <franssen.roland@gmail.com>
  */
 final class Dumper
 {
-    /**
-     * @var \Symfony\Component\Console\Output\OutputInterface
-     */
     private $output;
-    /**
-     * @var \Symfony\Component\VarDumper\Dumper\CliDumper|null
-     */
     private $dumper;
-    /**
-     * @var \Symfony\Component\VarDumper\Cloner\ClonerInterface|null
-     */
     private $cloner;
     /**
      * @var \Closure
      */
     private $handler;
-    public function __construct(\MonorepoBuilder20211208\Symfony\Component\Console\Output\OutputInterface $output, \MonorepoBuilder20211208\Symfony\Component\VarDumper\Dumper\CliDumper $dumper = null, \MonorepoBuilder20211208\Symfony\Component\VarDumper\Cloner\ClonerInterface $cloner = null)
+    public function __construct(\MonorepoBuilder20211209\Symfony\Component\Console\Output\OutputInterface $output, \MonorepoBuilder20211209\Symfony\Component\VarDumper\Dumper\CliDumper $dumper = null, \MonorepoBuilder20211209\Symfony\Component\VarDumper\Cloner\ClonerInterface $cloner = null)
     {
         $this->output = $output;
         $this->dumper = $dumper;
         $this->cloner = $cloner;
-        if (\class_exists(\MonorepoBuilder20211208\Symfony\Component\VarDumper\Dumper\CliDumper::class)) {
+        if (\class_exists(\MonorepoBuilder20211209\Symfony\Component\VarDumper\Dumper\CliDumper::class)) {
             $this->handler = function ($var) : string {
-                $dumper = $this->dumper ?? ($this->dumper = new \MonorepoBuilder20211208\Symfony\Component\VarDumper\Dumper\CliDumper(null, null, \MonorepoBuilder20211208\Symfony\Component\VarDumper\Dumper\CliDumper::DUMP_LIGHT_ARRAY | \MonorepoBuilder20211208\Symfony\Component\VarDumper\Dumper\CliDumper::DUMP_COMMA_SEPARATOR));
+                $dumper = $this->dumper ?? ($this->dumper = new \MonorepoBuilder20211209\Symfony\Component\VarDumper\Dumper\CliDumper(null, null, \MonorepoBuilder20211209\Symfony\Component\VarDumper\Dumper\CliDumper::DUMP_LIGHT_ARRAY | \MonorepoBuilder20211209\Symfony\Component\VarDumper\Dumper\CliDumper::DUMP_COMMA_SEPARATOR));
                 $dumper->setColors($this->output->isDecorated());
-                return \rtrim($dumper->dump(($this->cloner ?? ($this->cloner = new \MonorepoBuilder20211208\Symfony\Component\VarDumper\Cloner\VarCloner()))->cloneVar($var)->withRefHandles(\false), \true));
+                return \rtrim($dumper->dump(($this->cloner ?? ($this->cloner = new \MonorepoBuilder20211209\Symfony\Component\VarDumper\Cloner\VarCloner()))->cloneVar($var)->withRefHandles(\false), \true));
             };
         } else {
             $this->handler = function ($var) : string {

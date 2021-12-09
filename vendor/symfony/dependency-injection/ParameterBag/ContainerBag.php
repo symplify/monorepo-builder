@@ -8,19 +8,16 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211208\Symfony\Component\DependencyInjection\ParameterBag;
+namespace MonorepoBuilder20211209\Symfony\Component\DependencyInjection\ParameterBag;
 
-use MonorepoBuilder20211208\Symfony\Component\DependencyInjection\Container;
+use MonorepoBuilder20211209\Symfony\Component\DependencyInjection\Container;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class ContainerBag extends \MonorepoBuilder20211208\Symfony\Component\DependencyInjection\ParameterBag\FrozenParameterBag implements \MonorepoBuilder20211208\Symfony\Component\DependencyInjection\ParameterBag\ContainerBagInterface
+class ContainerBag extends \MonorepoBuilder20211209\Symfony\Component\DependencyInjection\ParameterBag\FrozenParameterBag implements \MonorepoBuilder20211209\Symfony\Component\DependencyInjection\ParameterBag\ContainerBagInterface
 {
-    /**
-     * @var \Symfony\Component\DependencyInjection\Container
-     */
     private $container;
-    public function __construct(\MonorepoBuilder20211208\Symfony\Component\DependencyInjection\Container $container)
+    public function __construct(\MonorepoBuilder20211209\Symfony\Component\DependencyInjection\Container $container)
     {
         $this->container = $container;
     }

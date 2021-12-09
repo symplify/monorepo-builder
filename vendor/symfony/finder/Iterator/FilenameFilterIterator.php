@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211208\Symfony\Component\Finder\Iterator;
+namespace MonorepoBuilder20211209\Symfony\Component\Finder\Iterator;
 
-use MonorepoBuilder20211208\Symfony\Component\Finder\Glob;
+use MonorepoBuilder20211209\Symfony\Component\Finder\Glob;
 /**
  * FilenameFilterIterator filters files by patterns (a regexp, a glob, or a string).
  *
@@ -18,7 +18,7 @@ use MonorepoBuilder20211208\Symfony\Component\Finder\Glob;
  *
  * @extends MultiplePcreFilterIterator<string, \SplFileInfo>
  */
-class FilenameFilterIterator extends \MonorepoBuilder20211208\Symfony\Component\Finder\Iterator\MultiplePcreFilterIterator
+class FilenameFilterIterator extends \MonorepoBuilder20211209\Symfony\Component\Finder\Iterator\MultiplePcreFilterIterator
 {
     /**
      * Filters the iterator values.
@@ -37,6 +37,6 @@ class FilenameFilterIterator extends \MonorepoBuilder20211208\Symfony\Component\
      */
     protected function toRegex($str) : string
     {
-        return $this->isRegex($str) ? $str : \MonorepoBuilder20211208\Symfony\Component\Finder\Glob::toRegex($str);
+        return $this->isRegex($str) ? $str : \MonorepoBuilder20211209\Symfony\Component\Finder\Glob::toRegex($str);
     }
 }

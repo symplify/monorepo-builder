@@ -8,20 +8,20 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211208\Symfony\Component\Config\Definition\Builder;
+namespace MonorepoBuilder20211209\Symfony\Component\Config\Definition\Builder;
 
 /**
  * This class provides a fluent interface for building a node.
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class NodeBuilder implements \MonorepoBuilder20211208\Symfony\Component\Config\Definition\Builder\NodeParentInterface
+class NodeBuilder implements \MonorepoBuilder20211209\Symfony\Component\Config\Definition\Builder\NodeParentInterface
 {
     protected $parent;
     protected $nodeMapping;
     public function __construct()
     {
-        $this->nodeMapping = ['variable' => \MonorepoBuilder20211208\Symfony\Component\Config\Definition\Builder\VariableNodeDefinition::class, 'scalar' => \MonorepoBuilder20211208\Symfony\Component\Config\Definition\Builder\ScalarNodeDefinition::class, 'boolean' => \MonorepoBuilder20211208\Symfony\Component\Config\Definition\Builder\BooleanNodeDefinition::class, 'integer' => \MonorepoBuilder20211208\Symfony\Component\Config\Definition\Builder\IntegerNodeDefinition::class, 'float' => \MonorepoBuilder20211208\Symfony\Component\Config\Definition\Builder\FloatNodeDefinition::class, 'array' => \MonorepoBuilder20211208\Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition::class, 'enum' => \MonorepoBuilder20211208\Symfony\Component\Config\Definition\Builder\EnumNodeDefinition::class];
+        $this->nodeMapping = ['variable' => \MonorepoBuilder20211209\Symfony\Component\Config\Definition\Builder\VariableNodeDefinition::class, 'scalar' => \MonorepoBuilder20211209\Symfony\Component\Config\Definition\Builder\ScalarNodeDefinition::class, 'boolean' => \MonorepoBuilder20211209\Symfony\Component\Config\Definition\Builder\BooleanNodeDefinition::class, 'integer' => \MonorepoBuilder20211209\Symfony\Component\Config\Definition\Builder\IntegerNodeDefinition::class, 'float' => \MonorepoBuilder20211209\Symfony\Component\Config\Definition\Builder\FloatNodeDefinition::class, 'array' => \MonorepoBuilder20211209\Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition::class, 'enum' => \MonorepoBuilder20211209\Symfony\Component\Config\Definition\Builder\EnumNodeDefinition::class];
     }
     /**
      * Set the parent node.
@@ -38,7 +38,7 @@ class NodeBuilder implements \MonorepoBuilder20211208\Symfony\Component\Config\D
      * Creates a child array node.
      * @param string $name
      */
-    public function arrayNode($name) : \MonorepoBuilder20211208\Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition
+    public function arrayNode($name) : \MonorepoBuilder20211209\Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition
     {
         return $this->node($name, 'array');
     }
@@ -46,7 +46,7 @@ class NodeBuilder implements \MonorepoBuilder20211208\Symfony\Component\Config\D
      * Creates a child scalar node.
      * @param string $name
      */
-    public function scalarNode($name) : \MonorepoBuilder20211208\Symfony\Component\Config\Definition\Builder\ScalarNodeDefinition
+    public function scalarNode($name) : \MonorepoBuilder20211209\Symfony\Component\Config\Definition\Builder\ScalarNodeDefinition
     {
         return $this->node($name, 'scalar');
     }
@@ -54,7 +54,7 @@ class NodeBuilder implements \MonorepoBuilder20211208\Symfony\Component\Config\D
      * Creates a child Boolean node.
      * @param string $name
      */
-    public function booleanNode($name) : \MonorepoBuilder20211208\Symfony\Component\Config\Definition\Builder\BooleanNodeDefinition
+    public function booleanNode($name) : \MonorepoBuilder20211209\Symfony\Component\Config\Definition\Builder\BooleanNodeDefinition
     {
         return $this->node($name, 'boolean');
     }
@@ -62,7 +62,7 @@ class NodeBuilder implements \MonorepoBuilder20211208\Symfony\Component\Config\D
      * Creates a child integer node.
      * @param string $name
      */
-    public function integerNode($name) : \MonorepoBuilder20211208\Symfony\Component\Config\Definition\Builder\IntegerNodeDefinition
+    public function integerNode($name) : \MonorepoBuilder20211209\Symfony\Component\Config\Definition\Builder\IntegerNodeDefinition
     {
         return $this->node($name, 'integer');
     }
@@ -70,7 +70,7 @@ class NodeBuilder implements \MonorepoBuilder20211208\Symfony\Component\Config\D
      * Creates a child float node.
      * @param string $name
      */
-    public function floatNode($name) : \MonorepoBuilder20211208\Symfony\Component\Config\Definition\Builder\FloatNodeDefinition
+    public function floatNode($name) : \MonorepoBuilder20211209\Symfony\Component\Config\Definition\Builder\FloatNodeDefinition
     {
         return $this->node($name, 'float');
     }
@@ -78,7 +78,7 @@ class NodeBuilder implements \MonorepoBuilder20211208\Symfony\Component\Config\D
      * Creates a child EnumNode.
      * @param string $name
      */
-    public function enumNode($name) : \MonorepoBuilder20211208\Symfony\Component\Config\Definition\Builder\EnumNodeDefinition
+    public function enumNode($name) : \MonorepoBuilder20211209\Symfony\Component\Config\Definition\Builder\EnumNodeDefinition
     {
         return $this->node($name, 'enum');
     }
@@ -86,7 +86,7 @@ class NodeBuilder implements \MonorepoBuilder20211208\Symfony\Component\Config\D
      * Creates a child variable node.
      * @param string $name
      */
-    public function variableNode($name) : \MonorepoBuilder20211208\Symfony\Component\Config\Definition\Builder\VariableNodeDefinition
+    public function variableNode($name) : \MonorepoBuilder20211209\Symfony\Component\Config\Definition\Builder\VariableNodeDefinition
     {
         return $this->node($name, 'variable');
     }
@@ -107,7 +107,7 @@ class NodeBuilder implements \MonorepoBuilder20211208\Symfony\Component\Config\D
      * @param string|null $name
      * @param string $type
      */
-    public function node($name, $type) : \MonorepoBuilder20211208\Symfony\Component\Config\Definition\Builder\NodeDefinition
+    public function node($name, $type) : \MonorepoBuilder20211209\Symfony\Component\Config\Definition\Builder\NodeDefinition
     {
         $class = $this->getNodeClass($type);
         $node = new $class($name);
@@ -132,7 +132,7 @@ class NodeBuilder implements \MonorepoBuilder20211208\Symfony\Component\Config\D
      */
     public function append($node)
     {
-        if ($node instanceof \MonorepoBuilder20211208\Symfony\Component\Config\Definition\Builder\BuilderAwareInterface) {
+        if ($node instanceof \MonorepoBuilder20211209\Symfony\Component\Config\Definition\Builder\BuilderAwareInterface) {
             $builder = clone $this;
             $builder->setParent(null);
             $node->setBuilder($builder);
