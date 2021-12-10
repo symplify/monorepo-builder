@@ -21,9 +21,8 @@ class DirectoryLoader extends \MonorepoBuilder20211210\Symfony\Component\Depende
      * {@inheritdoc}
      * @param mixed $file
      * @return mixed
-     * @param string|null $type
      */
-    public function load($file, $type = null)
+    public function load($file, string $type = null)
     {
         $file = \rtrim($file, '/');
         $path = $this->locator->locate($file);

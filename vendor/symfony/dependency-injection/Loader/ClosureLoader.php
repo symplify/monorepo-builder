@@ -31,9 +31,8 @@ class ClosureLoader extends \MonorepoBuilder20211210\Symfony\Component\Config\Lo
      * {@inheritdoc}
      * @param mixed $resource
      * @return mixed
-     * @param string|null $type
      */
-    public function load($resource, $type = null)
+    public function load($resource, string $type = null)
     {
         return $resource($this->container, $this->env);
     }

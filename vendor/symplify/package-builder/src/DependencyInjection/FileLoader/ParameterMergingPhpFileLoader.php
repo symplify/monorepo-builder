@@ -31,9 +31,8 @@ final class ParameterMergingPhpFileLoader extends \MonorepoBuilder20211210\Symfo
      * @see https://github.com/symplify/symplify/pull/697
      * @param mixed $resource
      * @return mixed
-     * @param string|null $type
      */
-    public function load($resource, $type = null)
+    public function load($resource, string $type = null)
     {
         // get old parameters
         $parameterBag = $this->container->getParameterBag();
