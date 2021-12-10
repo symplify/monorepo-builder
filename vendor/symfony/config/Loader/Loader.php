@@ -33,9 +33,8 @@ abstract class Loader implements \MonorepoBuilder20211210\Symfony\Component\Conf
     }
     /**
      * {@inheritdoc}
-     * @param \Symfony\Component\Config\Loader\LoaderResolverInterface $resolver
      */
-    public function setResolver($resolver)
+    public function setResolver(\MonorepoBuilder20211210\Symfony\Component\Config\Loader\LoaderResolverInterface $resolver)
     {
         $this->resolver = $resolver;
     }
@@ -55,9 +54,8 @@ abstract class Loader implements \MonorepoBuilder20211210\Symfony\Component\Conf
      *
      * @throws LoaderLoadException If no loader is found
      * @param mixed $resource
-     * @param string|null $type
      */
-    public function resolve($resource, $type = null) : \MonorepoBuilder20211210\Symfony\Component\Config\Loader\LoaderInterface
+    public function resolve($resource, string $type = null) : \MonorepoBuilder20211210\Symfony\Component\Config\Loader\LoaderInterface
     {
         if ($this->supports($resource, $type)) {
             return $this;

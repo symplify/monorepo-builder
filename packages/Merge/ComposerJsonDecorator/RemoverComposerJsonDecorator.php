@@ -21,10 +21,7 @@ final class RemoverComposerJsonDecorator implements \Symplify\MonorepoBuilder\Me
     {
         $this->modifyingComposerJsonProvider = $modifyingComposerJsonProvider;
     }
-    /**
-     * @param \Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJson
-     */
-    public function decorate($composerJson) : void
+    public function decorate(\MonorepoBuilder20211210\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJson) : void
     {
         $removingComposerJson = $this->modifyingComposerJsonProvider->getRemovingComposerJson();
         if (!$removingComposerJson instanceof \MonorepoBuilder20211210\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson) {

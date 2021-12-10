@@ -43,7 +43,7 @@ class FilecontentFilterIterator extends \MonorepoBuilder20211210\Symfony\Compone
      *
      * @param string $str Pattern: string or regexp
      */
-    protected function toRegex($str) : string
+    protected function toRegex(string $str) : string
     {
         return $this->isRegex($str) ? $str : '/' . \preg_quote($str, '/') . '/';
     }

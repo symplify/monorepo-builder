@@ -39,9 +39,8 @@ trait TesterTrait
      * Gets the display returned by the last execution of the command or application.
      *
      * @throws \RuntimeException If it's called before the execute method
-     * @param bool $normalize
      */
-    public function getDisplay($normalize = \false) : string
+    public function getDisplay(bool $normalize = \false) : string
     {
         if (!isset($this->output)) {
             throw new \RuntimeException('Output not initialized, did you execute the command before requesting the display?');
@@ -58,7 +57,7 @@ trait TesterTrait
      *
      * @param bool $normalize Whether to normalize end of lines to \n or not
      */
-    public function getErrorOutput($normalize = \false) : string
+    public function getErrorOutput(bool $normalize = \false) : string
     {
         if (!$this->captureStreamsIndependently) {
             throw new \LogicException('The error output is not available when the tester is run without "capture_stderr_separately" option set.');
@@ -96,10 +95,7 @@ trait TesterTrait
         }
         return $this->statusCode;
     }
-    /**
-     * @param string $message
-     */
-    public function assertCommandIsSuccessful($message = '') : void
+    public function assertCommandIsSuccessful(string $message = '') : void
     {
         \MonorepoBuilder20211210\PHPUnit\Framework\Assert::assertThat($this->statusCode, new \MonorepoBuilder20211210\Symfony\Component\Console\Tester\Constraint\CommandIsSuccessful(), $message);
     }
@@ -111,7 +107,7 @@ trait TesterTrait
      *
      * @return $this
      */
-    public function setInputs($inputs)
+    public function setInputs(array $inputs)
     {
         $this->inputs = $inputs;
         return $this;

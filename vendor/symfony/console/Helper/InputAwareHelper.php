@@ -22,9 +22,8 @@ abstract class InputAwareHelper extends \MonorepoBuilder20211210\Symfony\Compone
     protected $input;
     /**
      * {@inheritdoc}
-     * @param \Symfony\Component\Console\Input\InputInterface $input
      */
-    public function setInput($input)
+    public function setInput(\MonorepoBuilder20211210\Symfony\Component\Console\Input\InputInterface $input)
     {
         $this->input = $input;
     }

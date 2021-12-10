@@ -70,9 +70,8 @@ class PhpFileLoader extends \MonorepoBuilder20211210\Symfony\Component\Dependenc
     /**
      * {@inheritdoc}
      * @param mixed $resource
-     * @param string|null $type
      */
-    public function supports($resource, $type = null) : bool
+    public function supports($resource, string $type = null) : bool
     {
         if (!\is_string($resource)) {
             return \false;

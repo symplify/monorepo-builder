@@ -32,9 +32,8 @@ class ResolveChildDefinitionsPass extends \MonorepoBuilder20211210\Symfony\Compo
     /**
      * @param mixed $value
      * @return mixed
-     * @param bool $isRoot
      */
-    protected function processValue($value, $isRoot = \false)
+    protected function processValue($value, bool $isRoot = \false)
     {
         if (!$value instanceof \MonorepoBuilder20211210\Symfony\Component\DependencyInjection\Definition) {
             return parent::processValue($value, $isRoot);

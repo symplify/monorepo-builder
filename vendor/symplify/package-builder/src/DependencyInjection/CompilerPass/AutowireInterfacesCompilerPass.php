@@ -18,10 +18,7 @@ final class AutowireInterfacesCompilerPass implements \MonorepoBuilder20211210\S
     {
         $this->typesToAutowire = $typesToAutowire;
     }
-    /**
-     * @param \Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder
-     */
-    public function process($containerBuilder) : void
+    public function process(\MonorepoBuilder20211210\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder) : void
     {
         $definitions = $containerBuilder->getDefinitions();
         foreach ($definitions as $definition) {

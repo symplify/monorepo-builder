@@ -6,9 +6,5 @@ namespace Symplify\MonorepoBuilder\Merge\Contract;
 use MonorepoBuilder20211210\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
 interface ComposerKeyMergerInterface
 {
-    /**
-     * @param \Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $mainComposerJson
-     * @param \Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $newComposerJson
-     */
-    public function merge($mainComposerJson, $newComposerJson) : void;
+    public function merge(\MonorepoBuilder20211210\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $mainComposerJson, \MonorepoBuilder20211210\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $newComposerJson) : void;
 }

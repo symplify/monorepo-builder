@@ -13,10 +13,7 @@ namespace PharIo\Version;
 
 class ExactVersionConstraint extends \PharIo\Version\AbstractVersionConstraint
 {
-    /**
-     * @param \PharIo\Version\Version $version
-     */
-    public function complies($version) : bool
+    public function complies(\PharIo\Version\Version $version) : bool
     {
         return $this->asString() === $version->getVersionString();
     }

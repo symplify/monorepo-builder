@@ -13,9 +13,6 @@ namespace PharIo\Version;
 
 interface VersionConstraint
 {
-    /**
-     * @param \PharIo\Version\Version $version
-     */
-    public function complies($version) : bool;
+    public function complies(\PharIo\Version\Version $version) : bool;
     public function asString() : string;
 }

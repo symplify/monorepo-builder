@@ -28,18 +28,12 @@ final class UpdateBranchAliasReleaseWorker implements \Symplify\MonorepoBuilder\
         $this->composerJsonProvider = $composerJsonProvider;
         $this->versionUtils = $versionUtils;
     }
-    /**
-     * @param \PharIo\Version\Version $version
-     */
-    public function work($version) : void
+    public function work(\PharIo\Version\Version $version) : void
     {
         $nextAlias = $this->versionUtils->getNextAliasFormat($version);
         $this->devMasterAliasUpdater->updateFileInfosWithAlias($this->composerJsonProvider->getPackagesComposerFileInfos(), $nextAlias);
     }
-    /**
-     * @param \PharIo\Version\Version $version
-     */
-    public function getDescription($version) : string
+    public function getDescription(\PharIo\Version\Version $version) : string
     {
         $nextAlias = $this->versionUtils->getNextAliasFormat($version);
         return \sprintf('Set branch alias "%s" to all packages', $nextAlias);

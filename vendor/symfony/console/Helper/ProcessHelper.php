@@ -29,11 +29,8 @@ class ProcessHelper extends \MonorepoBuilder20211210\Symfony\Component\Console\H
      * @param array|Process $cmd      An instance of Process or an array of the command and arguments
      * @param callable|null $callback A PHP callback to run whenever there is some
      *                                output available on STDOUT or STDERR
-     * @param \Symfony\Component\Console\Output\OutputInterface $output
-     * @param string|null $error
-     * @param int $verbosity
      */
-    public function run($output, $cmd, $error = null, $callback = null, $verbosity = \MonorepoBuilder20211210\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_VERY_VERBOSE) : \MonorepoBuilder20211210\Symfony\Component\Process\Process
+    public function run(\MonorepoBuilder20211210\Symfony\Component\Console\Output\OutputInterface $output, $cmd, string $error = null, callable $callback = null, int $verbosity = \MonorepoBuilder20211210\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_VERY_VERBOSE) : \MonorepoBuilder20211210\Symfony\Component\Process\Process
     {
         if (!\class_exists(\MonorepoBuilder20211210\Symfony\Component\Process\Process::class)) {
             throw new \LogicException('The ProcessHelper cannot be run as the Process component is not installed. Try running "compose require symfony/process".');
@@ -83,10 +80,8 @@ class ProcessHelper extends \MonorepoBuilder20211210\Symfony\Component\Console\H
      * @throws ProcessFailedException
      *
      * @see run()
-     * @param \Symfony\Component\Console\Output\OutputInterface $output
-     * @param string|null $error
      */
-    public function mustRun($output, $cmd, $error = null, $callback = null) : \MonorepoBuilder20211210\Symfony\Component\Process\Process
+    public function mustRun(\MonorepoBuilder20211210\Symfony\Component\Console\Output\OutputInterface $output, $cmd, string $error = null, callable $callback = null) : \MonorepoBuilder20211210\Symfony\Component\Process\Process
     {
         $process = $this->run($output, $cmd, $error, $callback);
         if (!$process->isSuccessful()) {
@@ -96,11 +91,8 @@ class ProcessHelper extends \MonorepoBuilder20211210\Symfony\Component\Console\H
     }
     /**
      * Wraps a Process callback to add debugging output.
-     * @param \Symfony\Component\Console\Output\OutputInterface $output
-     * @param \Symfony\Component\Process\Process $process
-     * @param callable|null $callback
      */
-    public function wrapCallback($output, $process, $callback = null) : callable
+    public function wrapCallback(\MonorepoBuilder20211210\Symfony\Component\Console\Output\OutputInterface $output, \MonorepoBuilder20211210\Symfony\Component\Process\Process $process, callable $callback = null) : callable
     {
         if ($output instanceof \MonorepoBuilder20211210\Symfony\Component\Console\Output\ConsoleOutputInterface) {
             $output = $output->getErrorOutput();

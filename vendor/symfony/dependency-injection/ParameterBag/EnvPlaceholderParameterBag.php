@@ -40,9 +40,8 @@ class EnvPlaceholderParameterBag extends \MonorepoBuilder20211210\Symfony\Compon
     /**
      * {@inheritdoc}
      * @return mixed[]|bool|float|int|string|null
-     * @param string $name
      */
-    public function get($name)
+    public function get(string $name)
     {
         if (\strncmp($name, 'env(', \strlen('env(')) === 0 && \substr_compare($name, ')', -\strlen(')')) === 0 && 'env()' !== $name) {
             $env = \substr($name, 4, -1);
@@ -104,9 +103,8 @@ class EnvPlaceholderParameterBag extends \MonorepoBuilder20211210\Symfony\Compon
     }
     /**
      * Merges the env placeholders of another EnvPlaceholderParameterBag.
-     * @param $this $bag
      */
-    public function mergeEnvPlaceholders($bag)
+    public function mergeEnvPlaceholders(self $bag)
     {
         if ($newPlaceholders = $bag->getEnvPlaceholders()) {
             $this->envPlaceholders += $newPlaceholders;
@@ -123,9 +121,8 @@ class EnvPlaceholderParameterBag extends \MonorepoBuilder20211210\Symfony\Compon
     }
     /**
      * Maps env prefixes to their corresponding PHP types.
-     * @param mixed[] $providedTypes
      */
-    public function setProvidedTypes($providedTypes)
+    public function setProvidedTypes(array $providedTypes)
     {
         $this->providedTypes = $providedTypes;
     }

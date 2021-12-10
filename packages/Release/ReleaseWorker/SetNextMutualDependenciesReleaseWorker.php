@@ -34,18 +34,12 @@ final class SetNextMutualDependenciesReleaseWorker implements \Symplify\Monorepo
         $this->packageNamesProvider = $packageNamesProvider;
         $this->versionUtils = $versionUtils;
     }
-    /**
-     * @param \PharIo\Version\Version $version
-     */
-    public function work($version) : void
+    public function work(\PharIo\Version\Version $version) : void
     {
         $versionInString = $this->versionUtils->getRequiredNextFormat($version);
         $this->dependencyUpdater->updateFileInfosWithPackagesAndVersion($this->composerJsonProvider->getPackagesComposerFileInfos(), $this->packageNamesProvider->provide(), $versionInString);
     }
-    /**
-     * @param \PharIo\Version\Version $version
-     */
-    public function getDescription($version) : string
+    public function getDescription(\PharIo\Version\Version $version) : string
     {
         $versionInString = $this->versionUtils->getRequiredNextFormat($version);
         return \sprintf('Set packages mutual dependencies to "%s" (alias of dev version)', $versionInString);

@@ -40,9 +40,8 @@ class ServiceLocator extends \MonorepoBuilder20211210\Symfony\Component\Dependen
     /**
      * {@inheritdoc}
      * @return mixed
-     * @param string $id
      */
-    public function get($id)
+    public function get(string $id)
     {
         return isset($this->serviceMap[$id]) ? ($this->factory)(...$this->serviceMap[$id]) : parent::get($id);
     }

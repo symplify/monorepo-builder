@@ -24,9 +24,8 @@ class ResolveInstanceofConditionalsPass implements \MonorepoBuilder20211210\Symf
 {
     /**
      * {@inheritdoc}
-     * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
      */
-    public function process($container)
+    public function process(\MonorepoBuilder20211210\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
         foreach ($container->getAutoconfiguredInstanceof() as $interface => $definition) {
             if ($definition->getArguments()) {

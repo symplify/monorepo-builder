@@ -11,11 +11,7 @@ interface ReleaseWorkerInterface
      * - "Add new tag"
      * - "Dump new items to CHANGELOG.md"
      * - "Run coding standards"
-     * @param \PharIo\Version\Version $version
      */
-    public function getDescription($version) : string;
-    /**
-     * @param \PharIo\Version\Version $version
-     */
-    public function work($version) : void;
+    public function getDescription(\PharIo\Version\Version $version) : string;
+    public function work(\PharIo\Version\Version $version) : void;
 }

@@ -67,9 +67,8 @@ class ApplicationDescription
     }
     /**
      * @throws CommandNotFoundException
-     * @param string $name
      */
-    public function getCommand($name) : \MonorepoBuilder20211210\Symfony\Component\Console\Command\Command
+    public function getCommand(string $name) : \MonorepoBuilder20211210\Symfony\Component\Console\Command\Command
     {
         if (!isset($this->commands[$name]) && !isset($this->aliases[$name])) {
             throw new \MonorepoBuilder20211210\Symfony\Component\Console\Exception\CommandNotFoundException(\sprintf('Command "%s" does not exist.', $name));

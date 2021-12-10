@@ -29,10 +29,7 @@ final class ConsoleTerminateEvent extends \MonorepoBuilder20211210\Symfony\Compo
         parent::__construct($command, $input, $output);
         $this->setExitCode($exitCode);
     }
-    /**
-     * @param int $exitCode
-     */
-    public function setExitCode($exitCode) : void
+    public function setExitCode(int $exitCode) : void
     {
         $this->exitCode = $exitCode;
     }

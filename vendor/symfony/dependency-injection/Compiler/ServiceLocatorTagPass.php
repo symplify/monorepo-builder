@@ -30,9 +30,8 @@ final class ServiceLocatorTagPass extends \MonorepoBuilder20211210\Symfony\Compo
     /**
      * @param mixed $value
      * @return mixed
-     * @param bool $isRoot
      */
-    protected function processValue($value, $isRoot = \false)
+    protected function processValue($value, bool $isRoot = \false)
     {
         if ($value instanceof \MonorepoBuilder20211210\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument) {
             if ($value->getTaggedIteratorArgument()) {
@@ -84,10 +83,8 @@ final class ServiceLocatorTagPass extends \MonorepoBuilder20211210\Symfony\Compo
     }
     /**
      * @param Reference[] $refMap
-     * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
-     * @param string|null $callerId
      */
-    public static function register($container, $refMap, $callerId = null) : \MonorepoBuilder20211210\Symfony\Component\DependencyInjection\Reference
+    public static function register(\MonorepoBuilder20211210\Symfony\Component\DependencyInjection\ContainerBuilder $container, array $refMap, string $callerId = null) : \MonorepoBuilder20211210\Symfony\Component\DependencyInjection\Reference
     {
         foreach ($refMap as $id => $ref) {
             if (!$ref instanceof \MonorepoBuilder20211210\Symfony\Component\DependencyInjection\Reference) {

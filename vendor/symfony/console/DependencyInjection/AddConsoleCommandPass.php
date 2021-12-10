@@ -27,10 +27,7 @@ use MonorepoBuilder20211210\Symfony\Component\DependencyInjection\TypedReference
  */
 class AddConsoleCommandPass implements \MonorepoBuilder20211210\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
 {
-    /**
-     * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
-     */
-    public function process($container)
+    public function process(\MonorepoBuilder20211210\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
         $commandServices = $container->findTaggedServiceIds('console.command', \true);
         $lazyCommandMap = [];

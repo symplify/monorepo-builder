@@ -97,9 +97,8 @@ class AutowirePass extends \MonorepoBuilder20211210\Symfony\Component\Dependency
     }
     /**
      * {@inheritdoc}
-     * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
      */
-    public function process($container)
+    public function process(\MonorepoBuilder20211210\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
         $this->populateCombinedAliases($container);
         try {
@@ -121,9 +120,8 @@ class AutowirePass extends \MonorepoBuilder20211210\Symfony\Component\Dependency
      * {@inheritdoc}
      * @param mixed $value
      * @return mixed
-     * @param bool $isRoot
      */
-    protected function processValue($value, $isRoot = \false)
+    protected function processValue($value, bool $isRoot = \false)
     {
         try {
             return $this->doProcessValue($value, $isRoot);

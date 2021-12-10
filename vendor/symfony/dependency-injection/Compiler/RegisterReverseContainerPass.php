@@ -28,10 +28,7 @@ class RegisterReverseContainerPass implements \MonorepoBuilder20211210\Symfony\C
     {
         $this->beforeRemoving = $beforeRemoving;
     }
-    /**
-     * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
-     */
-    public function process($container)
+    public function process(\MonorepoBuilder20211210\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
         if (!$container->hasDefinition('reverse_container')) {
             return;

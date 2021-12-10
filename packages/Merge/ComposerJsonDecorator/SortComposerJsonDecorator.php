@@ -20,10 +20,7 @@ final class SortComposerJsonDecorator implements \Symplify\MonorepoBuilder\Merge
     {
         $this->sectionOrder = $parameterProvider->provideArrayParameter(\Symplify\MonorepoBuilder\ValueObject\Option::SECTION_ORDER);
     }
-    /**
-     * @param \Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJson
-     */
-    public function decorate($composerJson) : void
+    public function decorate(\MonorepoBuilder20211210\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJson) : void
     {
         $orderedKeys = $composerJson->getOrderedKeys();
         \usort($orderedKeys, function (string $key1, string $key2) : int {

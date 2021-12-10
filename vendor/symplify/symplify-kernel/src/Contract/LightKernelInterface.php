@@ -12,6 +12,6 @@ interface LightKernelInterface
     /**
      * @param string[] $configFiles
      */
-    public function createFromConfigs($configFiles) : \MonorepoBuilder20211210\Psr\Container\ContainerInterface;
+    public function createFromConfigs(array $configFiles) : \MonorepoBuilder20211210\Psr\Container\ContainerInterface;
     public function getContainer() : \MonorepoBuilder20211210\Psr\Container\ContainerInterface;
 }

@@ -33,10 +33,7 @@ class PreReleaseSuffix
     {
         return $this->number;
     }
-    /**
-     * @param \PharIo\Version\PreReleaseSuffix $suffix
-     */
-    public function isGreaterThan($suffix) : bool
+    public function isGreaterThan(\PharIo\Version\PreReleaseSuffix $suffix) : bool
     {
         if ($this->valueScore > $suffix->valueScore) {
             return \true;

@@ -43,11 +43,7 @@ final class BumpInterdependencyCommand extends \MonorepoBuilder20211210\Symplify
         $this->setDescription('Bump dependency of split packages on each other');
         $this->addArgument(self::VERSION_ARGUMENT, \MonorepoBuilder20211210\Symfony\Component\Console\Input\InputArgument::REQUIRED, 'New version of inter-dependencies, e.g. "^4.4.2"');
     }
-    /**
-     * @param \Symfony\Component\Console\Input\InputInterface $input
-     * @param \Symfony\Component\Console\Output\OutputInterface $output
-     */
-    protected function execute($input, $output) : int
+    protected function execute(\MonorepoBuilder20211210\Symfony\Component\Console\Input\InputInterface $input, \MonorepoBuilder20211210\Symfony\Component\Console\Output\OutputInterface $output) : int
     {
         $this->sourcesPresenceValidator->validateRootComposerJsonName();
         /** @var string $version */

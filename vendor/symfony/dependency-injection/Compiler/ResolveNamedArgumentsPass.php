@@ -26,9 +26,8 @@ class ResolveNamedArgumentsPass extends \MonorepoBuilder20211210\Symfony\Compone
      * {@inheritdoc}
      * @param mixed $value
      * @return mixed
-     * @param bool $isRoot
      */
-    protected function processValue($value, $isRoot = \false)
+    protected function processValue($value, bool $isRoot = \false)
     {
         if ($value instanceof \MonorepoBuilder20211210\Symfony\Component\DependencyInjection\Argument\AbstractArgument && $value->getText() . '.' === $value->getTextWithContext()) {
             $value->setContext(\sprintf('A value found in service "%s"', $this->currentId));

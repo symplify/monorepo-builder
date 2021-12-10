@@ -38,9 +38,8 @@ class YamlDumper extends \MonorepoBuilder20211210\Symfony\Component\DependencyIn
     private $dumper;
     /**
      * Dumps the service container as an YAML string.
-     * @param mixed[] $options
      */
-    public function dump($options = []) : string
+    public function dump(array $options = []) : string
     {
         if (!\class_exists(\MonorepoBuilder20211210\Symfony\Component\Yaml\Dumper::class)) {
             throw new \MonorepoBuilder20211210\Symfony\Component\DependencyInjection\Exception\LogicException('Unable to dump the container as the Symfony Yaml Component is not installed.');

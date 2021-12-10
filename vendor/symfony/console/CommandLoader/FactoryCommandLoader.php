@@ -32,17 +32,15 @@ class FactoryCommandLoader implements \MonorepoBuilder20211210\Symfony\Component
     }
     /**
      * {@inheritdoc}
-     * @param string $name
      */
-    public function has($name) : bool
+    public function has(string $name) : bool
     {
         return isset($this->factories[$name]);
     }
     /**
      * {@inheritdoc}
-     * @param string $name
      */
-    public function get($name) : \MonorepoBuilder20211210\Symfony\Component\Console\Command\Command
+    public function get(string $name) : \MonorepoBuilder20211210\Symfony\Component\Console\Command\Command
     {
         if (!isset($this->factories[$name])) {
             throw new \MonorepoBuilder20211210\Symfony\Component\Console\Exception\CommandNotFoundException(\sprintf('Command "%s" does not exist.', $name));

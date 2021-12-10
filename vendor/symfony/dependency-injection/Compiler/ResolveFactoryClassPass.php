@@ -21,9 +21,8 @@ class ResolveFactoryClassPass extends \MonorepoBuilder20211210\Symfony\Component
      * {@inheritdoc}
      * @param mixed $value
      * @return mixed
-     * @param bool $isRoot
      */
-    protected function processValue($value, $isRoot = \false)
+    protected function processValue($value, bool $isRoot = \false)
     {
         if ($value instanceof \MonorepoBuilder20211210\Symfony\Component\DependencyInjection\Definition && \is_array($factory = $value->getFactory()) && null === $factory[0]) {
             if (null === ($class = $value->getClass())) {

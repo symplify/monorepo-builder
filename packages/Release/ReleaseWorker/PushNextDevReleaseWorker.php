@@ -29,19 +29,13 @@ final class PushNextDevReleaseWorker implements \Symplify\MonorepoBuilder\Releas
         $this->versionUtils = $versionUtils;
         $this->branchName = $parameterProvider->provideStringParameter(\Symplify\MonorepoBuilder\ValueObject\Option::DEFAULT_BRANCH_NAME);
     }
-    /**
-     * @param \PharIo\Version\Version $version
-     */
-    public function work($version) : void
+    public function work(\PharIo\Version\Version $version) : void
     {
         $versionInString = $this->getVersionDev($version);
         $gitAddCommitCommand = \sprintf('git add . && git commit --allow-empty -m "open %s" && git push origin "%s"', $versionInString, $this->branchName);
         $this->processRunner->run($gitAddCommitCommand);
     }
-    /**
-     * @param \PharIo\Version\Version $version
-     */
-    public function getDescription($version) : string
+    public function getDescription(\PharIo\Version\Version $version) : string
     {
         $versionInString = $this->getVersionDev($version);
         return \sprintf('Push "%s" open to remote repository', $versionInString);

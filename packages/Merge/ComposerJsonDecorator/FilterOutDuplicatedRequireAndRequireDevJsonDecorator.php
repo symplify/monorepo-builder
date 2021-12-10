@@ -7,10 +7,7 @@ use MonorepoBuilder20211210\Symplify\ComposerJsonManipulator\ValueObject\Compose
 use Symplify\MonorepoBuilder\Merge\Contract\ComposerJsonDecoratorInterface;
 final class FilterOutDuplicatedRequireAndRequireDevJsonDecorator implements \Symplify\MonorepoBuilder\Merge\Contract\ComposerJsonDecoratorInterface
 {
-    /**
-     * @param \Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJson
-     */
-    public function decorate($composerJson) : void
+    public function decorate(\MonorepoBuilder20211210\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJson) : void
     {
         if ($composerJson->getRequire() === []) {
             return;

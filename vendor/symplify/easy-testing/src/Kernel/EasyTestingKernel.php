@@ -11,7 +11,7 @@ final class EasyTestingKernel extends \MonorepoBuilder20211210\Symplify\Symplify
     /**
      * @param string[] $configFiles
      */
-    public function createFromConfigs($configFiles) : \MonorepoBuilder20211210\Psr\Container\ContainerInterface
+    public function createFromConfigs(array $configFiles) : \MonorepoBuilder20211210\Psr\Container\ContainerInterface
     {
         $configFiles[] = \MonorepoBuilder20211210\Symplify\EasyTesting\ValueObject\EasyTestingConfig::FILE_PATH;
         return $this->create([], [], $configFiles);

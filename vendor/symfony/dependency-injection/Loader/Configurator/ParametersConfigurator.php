@@ -25,9 +25,8 @@ class ParametersConfigurator extends \MonorepoBuilder20211210\Symfony\Component\
     /**
      * @return $this
      * @param mixed $value
-     * @param string $name
      */
-    public final function set($name, $value)
+    public final function set(string $name, $value)
     {
         $this->container->setParameter($name, static::processValue($value, \true));
         return $this;

@@ -24,10 +24,7 @@ final class TagVersionReleaseWorker implements \Symplify\MonorepoBuilder\Release
         $this->processRunner = $processRunner;
         $this->branchName = $parameterProvider->provideStringParameter(\Symplify\MonorepoBuilder\ValueObject\Option::DEFAULT_BRANCH_NAME);
     }
-    /**
-     * @param \PharIo\Version\Version $version
-     */
-    public function work($version) : void
+    public function work(\PharIo\Version\Version $version) : void
     {
         try {
             $gitAddCommitCommand = \sprintf('git add . && git commit -m "prepare release" && git push origin "%s"', $this->branchName);
@@ -37,10 +34,7 @@ final class TagVersionReleaseWorker implements \Symplify\MonorepoBuilder\Release
         }
         $this->processRunner->run('git tag ' . $version->getOriginalString());
     }
-    /**
-     * @param \PharIo\Version\Version $version
-     */
-    public function getDescription($version) : string
+    public function getDescription(\PharIo\Version\Version $version) : string
     {
         return \sprintf('Add local tag "%s"', $version->getOriginalString());
     }

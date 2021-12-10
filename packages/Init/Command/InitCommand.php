@@ -20,11 +20,7 @@ final class InitCommand extends \MonorepoBuilder20211210\Symplify\PackageBuilder
         $this->setDescription('Creates empty monorepo directory and composer.json structure.');
         $this->addArgument(self::OUTPUT, \MonorepoBuilder20211210\Symfony\Component\Console\Input\InputArgument::OPTIONAL, 'Directory to generate monorepo into.', \getcwd());
     }
-    /**
-     * @param \Symfony\Component\Console\Input\InputInterface $input
-     * @param \Symfony\Component\Console\Output\OutputInterface $output
-     */
-    protected function execute($input, $output) : int
+    protected function execute(\MonorepoBuilder20211210\Symfony\Component\Console\Input\InputInterface $input, \MonorepoBuilder20211210\Symfony\Component\Console\Output\OutputInterface $output) : int
     {
         /** @var string $output */
         $output = $input->getArgument(self::OUTPUT);

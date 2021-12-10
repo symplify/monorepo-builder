@@ -56,9 +56,8 @@ class DirectoryResource implements \MonorepoBuilder20211210\Symfony\Component\Co
     }
     /**
      * {@inheritdoc}
-     * @param int $timestamp
      */
-    public function isFresh($timestamp) : bool
+    public function isFresh(int $timestamp) : bool
     {
         if (!\is_dir($this->resource)) {
             return \false;

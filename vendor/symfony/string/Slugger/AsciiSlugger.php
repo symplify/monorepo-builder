@@ -46,9 +46,8 @@ class AsciiSlugger implements \MonorepoBuilder20211210\Symfony\Component\String\
     }
     /**
      * {@inheritdoc}
-     * @param string $locale
      */
-    public function setLocale($locale)
+    public function setLocale(string $locale)
     {
         $this->defaultLocale = $locale;
     }
@@ -61,11 +60,8 @@ class AsciiSlugger implements \MonorepoBuilder20211210\Symfony\Component\String\
     }
     /**
      * {@inheritdoc}
-     * @param string $string
-     * @param string $separator
-     * @param string|null $locale
      */
-    public function slug($string, $separator = '-', $locale = null) : \MonorepoBuilder20211210\Symfony\Component\String\AbstractUnicodeString
+    public function slug(string $string, string $separator = '-', string $locale = null) : \MonorepoBuilder20211210\Symfony\Component\String\AbstractUnicodeString
     {
         $locale = $locale ?? $this->defaultLocale;
         $transliterator = [];

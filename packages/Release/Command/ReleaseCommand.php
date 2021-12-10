@@ -58,11 +58,7 @@ final class ReleaseCommand extends \MonorepoBuilder20211210\Symplify\PackageBuil
         $this->addOption(\Symplify\MonorepoBuilder\ValueObject\Option::DRY_RUN, null, \MonorepoBuilder20211210\Symfony\Component\Console\Input\InputOption::VALUE_NONE, 'Do not perform operations, just their preview');
         $this->addOption(\Symplify\MonorepoBuilder\ValueObject\Option::STAGE, null, \MonorepoBuilder20211210\Symfony\Component\Console\Input\InputOption::VALUE_REQUIRED, 'Name of stage to perform', \Symplify\MonorepoBuilder\Release\ValueObject\Stage::MAIN);
     }
-    /**
-     * @param \Symfony\Component\Console\Input\InputInterface $input
-     * @param \Symfony\Component\Console\Output\OutputInterface $output
-     */
-    protected function execute($input, $output) : int
+    protected function execute(\MonorepoBuilder20211210\Symfony\Component\Console\Input\InputInterface $input, \MonorepoBuilder20211210\Symfony\Component\Console\Output\OutputInterface $output) : int
     {
         $this->sourcesPresenceValidator->validateRootComposerJsonName();
         // validation phase

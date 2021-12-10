@@ -19,7 +19,6 @@ interface PrototypeNodeInterface extends \MonorepoBuilder20211210\Symfony\Compon
 {
     /**
      * Sets the name of the node.
-     * @param string $name
      */
-    public function setName($name);
+    public function setName(string $name);
 }

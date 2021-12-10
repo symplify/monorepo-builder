@@ -43,19 +43,11 @@ final class CompleteCommand extends \MonorepoBuilder20211210\Symfony\Component\C
     {
         $this->addOption('shell', 's', \MonorepoBuilder20211210\Symfony\Component\Console\Input\InputOption::VALUE_REQUIRED, 'The shell type ("' . \implode('", "', \array_keys($this->completionOutputs)) . '")')->addOption('input', 'i', \MonorepoBuilder20211210\Symfony\Component\Console\Input\InputOption::VALUE_REQUIRED | \MonorepoBuilder20211210\Symfony\Component\Console\Input\InputOption::VALUE_IS_ARRAY, 'An array of input tokens (e.g. COMP_WORDS or argv)')->addOption('current', 'c', \MonorepoBuilder20211210\Symfony\Component\Console\Input\InputOption::VALUE_REQUIRED, 'The index of the "input" array that the cursor is in (e.g. COMP_CWORD)')->addOption('symfony', 'S', \MonorepoBuilder20211210\Symfony\Component\Console\Input\InputOption::VALUE_REQUIRED, 'The version of the completion script');
     }
-    /**
-     * @param \Symfony\Component\Console\Input\InputInterface $input
-     * @param \Symfony\Component\Console\Output\OutputInterface $output
-     */
-    protected function initialize($input, $output)
+    protected function initialize(\MonorepoBuilder20211210\Symfony\Component\Console\Input\InputInterface $input, \MonorepoBuilder20211210\Symfony\Component\Console\Output\OutputInterface $output)
     {
         $this->isDebug = \filter_var(\getenv('SYMFONY_COMPLETION_DEBUG'), \FILTER_VALIDATE_BOOLEAN);
     }
-    /**
-     * @param \Symfony\Component\Console\Input\InputInterface $input
-     * @param \Symfony\Component\Console\Output\OutputInterface $output
-     */
-    protected function execute($input, $output) : int
+    protected function execute(\MonorepoBuilder20211210\Symfony\Component\Console\Input\InputInterface $input, \MonorepoBuilder20211210\Symfony\Component\Console\Output\OutputInterface $output) : int
     {
         try {
             // uncomment when a bugfix or BC break has been introduced in the shell completion scripts

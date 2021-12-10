@@ -29,11 +29,7 @@ final class PackagesJsonCommand extends \MonorepoBuilder20211210\Symplify\Packag
         $this->addOption(\Symplify\MonorepoBuilder\ValueObject\Option::TESTS, null, \MonorepoBuilder20211210\Symfony\Component\Console\Input\InputOption::VALUE_NONE, 'Only with /tests directory');
         $this->addOption(\Symplify\MonorepoBuilder\ValueObject\Option::EXCLUDE_PACKAGE, null, \MonorepoBuilder20211210\Symfony\Component\Console\Input\InputOption::VALUE_IS_ARRAY | \MonorepoBuilder20211210\Symfony\Component\Console\Input\InputOption::VALUE_REQUIRED, 'Exclude one or more package from the list, useful e.g. when scoping one package instead of bare split');
     }
-    /**
-     * @param \Symfony\Component\Console\Input\InputInterface $input
-     * @param \Symfony\Component\Console\Output\OutputInterface $output
-     */
-    protected function execute($input, $output) : int
+    protected function execute(\MonorepoBuilder20211210\Symfony\Component\Console\Input\InputInterface $input, \MonorepoBuilder20211210\Symfony\Component\Console\Output\OutputInterface $output) : int
     {
         $onlyTests = (bool) $input->getOption(\Symplify\MonorepoBuilder\ValueObject\Option::TESTS);
         if ($onlyTests) {

@@ -14,7 +14,7 @@ final class MonorepoBuilderKernel extends \MonorepoBuilder20211210\Symplify\Symp
     /**
      * @param string[] $configFiles
      */
-    public function createFromConfigs($configFiles) : \MonorepoBuilder20211210\Psr\Container\ContainerInterface
+    public function createFromConfigs(array $configFiles) : \MonorepoBuilder20211210\Psr\Container\ContainerInterface
     {
         $configFiles[] = __DIR__ . '/../../config/config.php';
         $configFiles[] = \MonorepoBuilder20211210\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonManipulatorConfig::FILE_PATH;

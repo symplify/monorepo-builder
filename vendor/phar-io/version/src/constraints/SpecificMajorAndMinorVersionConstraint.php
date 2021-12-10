@@ -23,10 +23,7 @@ class SpecificMajorAndMinorVersionConstraint extends \PharIo\Version\AbstractVer
         $this->major = $major;
         $this->minor = $minor;
     }
-    /**
-     * @param \PharIo\Version\Version $version
-     */
-    public function complies($version) : bool
+    public function complies(\PharIo\Version\Version $version) : bool
     {
         if ($version->getMajor()->getValue() !== $this->major) {
             return \false;

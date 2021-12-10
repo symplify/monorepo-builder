@@ -22,10 +22,7 @@ final class RootRemoveComposerJsonDecorator implements \Symplify\MonorepoBuilder
     {
         $this->mergedPackagesCollector = $mergedPackagesCollector;
     }
-    /**
-     * @param \Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJson
-     */
-    public function decorate($composerJson) : void
+    public function decorate(\MonorepoBuilder20211210\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJson) : void
     {
         $require = $this->filterOutMergedPackages($composerJson->getRequire());
         $composerJson->setRequire($require);

@@ -22,10 +22,7 @@ use MonorepoBuilder20211210\Symfony\Component\DependencyInjection\Reference;
  */
 class ResolveDecoratorStackPass implements \MonorepoBuilder20211210\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
 {
-    /**
-     * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
-     */
-    public function process($container)
+    public function process(\MonorepoBuilder20211210\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
         $stacks = [];
         foreach ($container->findTaggedServiceIds('container.stack') as $id => $tags) {

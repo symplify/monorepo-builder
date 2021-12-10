@@ -34,10 +34,8 @@ class ConfigCacheFactory implements \MonorepoBuilder20211210\Symfony\Component\C
     }
     /**
      * {@inheritdoc}
-     * @param string $file
-     * @param callable $callback
      */
-    public function cache($file, $callback) : \MonorepoBuilder20211210\Symfony\Component\Config\ConfigCacheInterface
+    public function cache(string $file, callable $callback) : \MonorepoBuilder20211210\Symfony\Component\Config\ConfigCacheInterface
     {
         $cache = new \MonorepoBuilder20211210\Symfony\Component\Config\ConfigCache($file, $this->debug);
         if (!$cache->isFresh()) {

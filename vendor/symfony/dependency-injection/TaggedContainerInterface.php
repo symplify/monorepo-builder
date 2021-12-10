@@ -22,5 +22,5 @@ interface TaggedContainerInterface extends \MonorepoBuilder20211210\Symfony\Comp
      *
      * @param string $name The tag name
      */
-    public function findTaggedServiceIds($name) : array;
+    public function findTaggedServiceIds(string $name) : array;
 }

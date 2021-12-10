@@ -43,9 +43,8 @@ class DirectoryLoader extends \MonorepoBuilder20211210\Symfony\Component\Depende
     /**
      * {@inheritdoc}
      * @param mixed $resource
-     * @param string|null $type
      */
-    public function supports($resource, $type = null) : bool
+    public function supports($resource, string $type = null) : bool
     {
         if ('directory' === $type) {
             return \true;

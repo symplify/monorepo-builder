@@ -114,10 +114,8 @@ class WindowsPipes extends \MonorepoBuilder20211210\Symfony\Component\Process\Pi
     }
     /**
      * {@inheritdoc}
-     * @param bool $blocking
-     * @param bool $close
      */
-    public function readAndWrite($blocking, $close = \false) : array
+    public function readAndWrite(bool $blocking, bool $close = \false) : array
     {
         $this->unblock();
         $w = $this->write();

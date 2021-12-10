@@ -38,9 +38,8 @@ class ResolveParameterPlaceHoldersPass extends \MonorepoBuilder20211210\Symfony\
      * {@inheritdoc}
      *
      * @throws ParameterNotFoundException
-     * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
      */
-    public function process($container)
+    public function process(\MonorepoBuilder20211210\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
         $this->bag = $container->getParameterBag();
         try {
@@ -61,9 +60,8 @@ class ResolveParameterPlaceHoldersPass extends \MonorepoBuilder20211210\Symfony\
     /**
      * @param mixed $value
      * @return mixed
-     * @param bool $isRoot
      */
-    protected function processValue($value, $isRoot = \false)
+    protected function processValue($value, bool $isRoot = \false)
     {
         if (\is_string($value)) {
             try {

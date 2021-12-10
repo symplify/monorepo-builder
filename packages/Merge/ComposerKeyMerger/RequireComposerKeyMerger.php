@@ -22,11 +22,7 @@ final class RequireComposerKeyMerger implements \Symplify\MonorepoBuilder\Merge\
         $this->sortedParameterMerger = $sortedParameterMerger;
         $this->requireRequireDevDuplicateCleaner = $requireRequireDevDuplicateCleaner;
     }
-    /**
-     * @param \Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $mainComposerJson
-     * @param \Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $newComposerJson
-     */
-    public function merge($mainComposerJson, $newComposerJson) : void
+    public function merge(\MonorepoBuilder20211210\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $mainComposerJson, \MonorepoBuilder20211210\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $newComposerJson) : void
     {
         if ($newComposerJson->getRequire() === []) {
             return;

@@ -26,9 +26,8 @@ class CheckReferenceValidityPass extends \MonorepoBuilder20211210\Symfony\Compon
     /**
      * @param mixed $value
      * @return mixed
-     * @param bool $isRoot
      */
-    protected function processValue($value, $isRoot = \false)
+    protected function processValue($value, bool $isRoot = \false)
     {
         if ($isRoot && $value instanceof \MonorepoBuilder20211210\Symfony\Component\DependencyInjection\Definition && ($value->isSynthetic() || $value->isAbstract())) {
             return $value;

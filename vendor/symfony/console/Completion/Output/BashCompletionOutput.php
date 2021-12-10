@@ -17,11 +17,7 @@ use MonorepoBuilder20211210\Symfony\Component\Console\Output\OutputInterface;
  */
 class BashCompletionOutput implements \MonorepoBuilder20211210\Symfony\Component\Console\Completion\Output\CompletionOutputInterface
 {
-    /**
-     * @param \Symfony\Component\Console\Completion\CompletionSuggestions $suggestions
-     * @param \Symfony\Component\Console\Output\OutputInterface $output
-     */
-    public function write($suggestions, $output) : void
+    public function write(\MonorepoBuilder20211210\Symfony\Component\Console\Completion\CompletionSuggestions $suggestions, \MonorepoBuilder20211210\Symfony\Component\Console\Output\OutputInterface $output) : void
     {
         $values = $suggestions->getValueSuggestions();
         foreach ($suggestions->getOptionSuggestions() as $option) {

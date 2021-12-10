@@ -16,10 +16,7 @@ final class ReplaceSectionJsonDecorator implements \Symplify\MonorepoBuilder\Mer
     {
         $this->mergedPackagesCollector = $mergedPackagesCollector;
     }
-    /**
-     * @param \Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJson
-     */
-    public function decorate($composerJson) : void
+    public function decorate(\MonorepoBuilder20211210\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJson) : void
     {
         $mergedPackages = $this->mergedPackagesCollector->getPackages();
         foreach ($mergedPackages as $mergedPackage) {

@@ -15,10 +15,7 @@ use MonorepoBuilder20211210\Psr\Container\ContainerInterface;
 use MonorepoBuilder20211210\Symfony\Contracts\Service\ServiceLocatorTrait;
 abstract class ServiceLocatorTest extends \MonorepoBuilder20211210\PHPUnit\Framework\TestCase
 {
-    /**
-     * @param mixed[] $factories
-     */
-    protected function getServiceLocator($factories) : \MonorepoBuilder20211210\Psr\Container\ContainerInterface
+    protected function getServiceLocator(array $factories) : \MonorepoBuilder20211210\Psr\Container\ContainerInterface
     {
         return new class($factories) implements \MonorepoBuilder20211210\Psr\Container\ContainerInterface
         {

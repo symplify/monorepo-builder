@@ -25,10 +25,7 @@ use MonorepoBuilder20211210\Symfony\Component\DependencyInjection\Reference;
  */
 class DecoratorServicePass extends \MonorepoBuilder20211210\Symfony\Component\DependencyInjection\Compiler\AbstractRecursivePass
 {
-    /**
-     * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
-     */
-    public function process($container)
+    public function process(\MonorepoBuilder20211210\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
         $definitions = new \SplPriorityQueue();
         $order = \PHP_INT_MAX;
@@ -97,9 +94,8 @@ class DecoratorServicePass extends \MonorepoBuilder20211210\Symfony\Component\De
     /**
      * @param mixed $value
      * @return mixed
-     * @param bool $isRoot
      */
-    protected function processValue($value, $isRoot = \false)
+    protected function processValue($value, bool $isRoot = \false)
     {
         if ($value instanceof \MonorepoBuilder20211210\Symfony\Component\DependencyInjection\Reference && '.inner' === (string) $value) {
             return new \MonorepoBuilder20211210\Symfony\Component\DependencyInjection\Reference($this->currentId, $value->getInvalidBehavior());

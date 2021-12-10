@@ -51,20 +51,14 @@ EOF
     }
     /**
      * {@inheritdoc}
-     * @param \Symfony\Component\Console\Input\InputInterface $input
-     * @param \Symfony\Component\Console\Output\OutputInterface $output
      */
-    protected function execute($input, $output) : int
+    protected function execute(\MonorepoBuilder20211210\Symfony\Component\Console\Input\InputInterface $input, \MonorepoBuilder20211210\Symfony\Component\Console\Output\OutputInterface $output) : int
     {
         $helper = new \MonorepoBuilder20211210\Symfony\Component\Console\Helper\DescriptorHelper();
         $helper->describe($output, $this->getApplication(), ['format' => $input->getOption('format'), 'raw_text' => $input->getOption('raw'), 'namespace' => $input->getArgument('namespace'), 'short' => $input->getOption('short')]);
         return 0;
     }
-    /**
-     * @param \Symfony\Component\Console\Completion\CompletionInput $input
-     * @param \Symfony\Component\Console\Completion\CompletionSuggestions $suggestions
-     */
-    public function complete($input, $suggestions) : void
+    public function complete(\MonorepoBuilder20211210\Symfony\Component\Console\Completion\CompletionInput $input, \MonorepoBuilder20211210\Symfony\Component\Console\Completion\CompletionSuggestions $suggestions) : void
     {
         if ($input->mustSuggestArgumentValuesFor('namespace')) {
             $descriptor = new \MonorepoBuilder20211210\Symfony\Component\Console\Descriptor\ApplicationDescription($this->getApplication());

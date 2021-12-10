@@ -32,17 +32,15 @@ class ContainerBag extends \MonorepoBuilder20211210\Symfony\Component\Dependency
      * {@inheritdoc}
      *
      * @return array|bool|string|int|float|null
-     * @param string $name
      */
-    public function get($name)
+    public function get(string $name)
     {
         return $this->container->getParameter($name);
     }
     /**
      * {@inheritdoc}
-     * @param string $name
      */
-    public function has($name) : bool
+    public function has(string $name) : bool
     {
         return $this->container->hasParameter($name);
     }

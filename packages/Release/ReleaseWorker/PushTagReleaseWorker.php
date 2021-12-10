@@ -16,17 +16,11 @@ final class PushTagReleaseWorker implements \Symplify\MonorepoBuilder\Release\Co
     {
         $this->processRunner = $processRunner;
     }
-    /**
-     * @param \PharIo\Version\Version $version
-     */
-    public function work($version) : void
+    public function work(\PharIo\Version\Version $version) : void
     {
         $this->processRunner->run('git push --tags');
     }
-    /**
-     * @param \PharIo\Version\Version $version
-     */
-    public function getDescription($version) : string
+    public function getDescription(\PharIo\Version\Version $version) : string
     {
         return \sprintf('Push "%s" tag to remote repository', $version->getVersionString());
     }

@@ -35,7 +35,7 @@ class FilenameFilterIterator extends \MonorepoBuilder20211210\Symfony\Component\
      *
      * @param string $str Pattern: glob or regexp
      */
-    protected function toRegex($str) : string
+    protected function toRegex(string $str) : string
     {
         return $this->isRegex($str) ? $str : \MonorepoBuilder20211210\Symfony\Component\Finder\Glob::toRegex($str);
     }

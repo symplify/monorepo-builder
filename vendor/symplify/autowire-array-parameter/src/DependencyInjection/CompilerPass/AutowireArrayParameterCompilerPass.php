@@ -56,10 +56,7 @@ final class AutowireArrayParameterCompilerPass implements \MonorepoBuilder202112
         $this->parameterTypeResolver = new \MonorepoBuilder20211210\Symplify\AutowireArrayParameter\TypeResolver\ParameterTypeResolver($paramTypeDocBlockResolver);
         $this->parameterSkipper = new \MonorepoBuilder20211210\Symplify\AutowireArrayParameter\Skipper\ParameterSkipper($this->parameterTypeResolver, $excludedFatalClasses);
     }
-    /**
-     * @param \Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder
-     */
-    public function process($containerBuilder) : void
+    public function process(\MonorepoBuilder20211210\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder) : void
     {
         $definitions = $containerBuilder->getDefinitions();
         foreach ($definitions as $definition) {

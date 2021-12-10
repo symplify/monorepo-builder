@@ -44,10 +44,7 @@ class TreeBuilder implements \MonorepoBuilder20211210\Symfony\Component\Config\D
         }
         return $this->tree = $this->root->getNode(\true);
     }
-    /**
-     * @param string $separator
-     */
-    public function setPathSeparator($separator)
+    public function setPathSeparator(string $separator)
     {
         // unset last built as changing path separator changes all nodes
         $this->tree = null;

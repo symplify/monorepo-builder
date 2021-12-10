@@ -12,11 +12,7 @@ use MonorepoBuilder20211210\Symplify\PackageBuilder\DependencyInjection\FileLoad
 use MonorepoBuilder20211210\Symplify\SymplifyKernel\Contract\Config\LoaderFactoryInterface;
 final class ParameterMergingLoaderFactory implements \MonorepoBuilder20211210\Symplify\SymplifyKernel\Contract\Config\LoaderFactoryInterface
 {
-    /**
-     * @param \Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder
-     * @param string $currentWorkingDirectory
-     */
-    public function create($containerBuilder, $currentWorkingDirectory) : \MonorepoBuilder20211210\Symfony\Component\Config\Loader\LoaderInterface
+    public function create(\MonorepoBuilder20211210\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder, string $currentWorkingDirectory) : \MonorepoBuilder20211210\Symfony\Component\Config\Loader\LoaderInterface
     {
         $fileLocator = new \MonorepoBuilder20211210\Symfony\Component\Config\FileLocator([$currentWorkingDirectory]);
         $loaders = [new \MonorepoBuilder20211210\Symfony\Component\Config\Loader\GlobFileLoader($fileLocator), new \MonorepoBuilder20211210\Symplify\PackageBuilder\DependencyInjection\FileLoader\ParameterMergingPhpFileLoader($containerBuilder, $fileLocator)];

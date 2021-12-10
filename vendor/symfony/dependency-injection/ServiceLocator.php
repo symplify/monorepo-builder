@@ -35,9 +35,8 @@ class ServiceLocator implements \MonorepoBuilder20211210\Symfony\Contracts\Servi
     /**
      * {@inheritdoc}
      * @return mixed
-     * @param string $id
      */
-    public function get($id)
+    public function get(string $id)
     {
         if (!$this->externalId) {
             return $this->doGet($id);
@@ -63,10 +62,8 @@ class ServiceLocator implements \MonorepoBuilder20211210\Symfony\Contracts\Servi
     /**
      * @internal
      * @return $this
-     * @param string $externalId
-     * @param \Symfony\Component\DependencyInjection\Container $container
      */
-    public function withContext($externalId, $container)
+    public function withContext(string $externalId, \MonorepoBuilder20211210\Symfony\Component\DependencyInjection\Container $container)
     {
         $locator = clone $this;
         $locator->externalId = $externalId;

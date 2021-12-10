@@ -20,11 +20,7 @@ final class ExtraComposerKeyMerger implements \Symplify\MonorepoBuilder\Merge\Co
     {
         $this->parametersMerger = $parametersMerger;
     }
-    /**
-     * @param \Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $mainComposerJson
-     * @param \Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $newComposerJson
-     */
-    public function merge($mainComposerJson, $newComposerJson) : void
+    public function merge(\MonorepoBuilder20211210\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $mainComposerJson, \MonorepoBuilder20211210\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $newComposerJson) : void
     {
         if ($newComposerJson->getExtra() === []) {
             return;

@@ -24,10 +24,7 @@ class OrVersionConstraintGroup extends \PharIo\Version\AbstractVersionConstraint
         parent::__construct($originalValue);
         $this->constraints = $constraints;
     }
-    /**
-     * @param \PharIo\Version\Version $version
-     */
-    public function complies($version) : bool
+    public function complies(\PharIo\Version\Version $version) : bool
     {
         foreach ($this->constraints as $constraint) {
             if ($constraint->complies($version)) {

@@ -32,9 +32,8 @@ class CheckDefinitionValidityPass implements \MonorepoBuilder20211210\Symfony\Co
      * Processes the ContainerBuilder to validate the Definition.
      *
      * @throws RuntimeException When the Definition is invalid
-     * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
      */
-    public function process($container)
+    public function process(\MonorepoBuilder20211210\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
         foreach ($container->getDefinitions() as $id => $definition) {
             // synthetic service is public

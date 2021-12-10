@@ -13,10 +13,7 @@ namespace PharIo\Version;
 
 class AnyVersionConstraint implements \PharIo\Version\VersionConstraint
 {
-    /**
-     * @param \PharIo\Version\Version $version
-     */
-    public function complies($version) : bool
+    public function complies(\PharIo\Version\Version $version) : bool
     {
         return \true;
     }

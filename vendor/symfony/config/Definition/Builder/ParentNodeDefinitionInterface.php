@@ -35,9 +35,8 @@ interface ParentNodeDefinitionInterface extends \MonorepoBuilder20211210\Symfony
      *     ;
      *
      * @return $this
-     * @param \Symfony\Component\Config\Definition\Builder\NodeDefinition $node
      */
-    public function append($node);
+    public function append(\MonorepoBuilder20211210\Symfony\Component\Config\Definition\Builder\NodeDefinition $node);
     /**
      * Gets the child node definitions.
      *

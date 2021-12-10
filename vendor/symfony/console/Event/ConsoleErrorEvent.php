@@ -37,17 +37,11 @@ final class ConsoleErrorEvent extends \MonorepoBuilder20211210\Symfony\Component
     {
         return $this->error;
     }
-    /**
-     * @param \Throwable $error
-     */
-    public function setError($error) : void
+    public function setError(\Throwable $error) : void
     {
         $this->error = $error;
     }
-    /**
-     * @param int $exitCode
-     */
-    public function setExitCode($exitCode) : void
+    public function setExitCode(int $exitCode) : void
     {
         $this->exitCode = $exitCode;
         $r = new \ReflectionProperty($this->error, 'code');

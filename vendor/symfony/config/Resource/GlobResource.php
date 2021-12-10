@@ -84,9 +84,8 @@ class GlobResource implements \IteratorAggregate, \MonorepoBuilder20211210\Symfo
     }
     /**
      * {@inheritdoc}
-     * @param int $timestamp
      */
-    public function isFresh($timestamp) : bool
+    public function isFresh(int $timestamp) : bool
     {
         $hash = $this->computeHash();
         $this->hash = $this->hash ?? $hash;

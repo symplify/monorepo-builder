@@ -54,10 +54,7 @@ class ArgvInput extends \MonorepoBuilder20211210\Symfony\Component\Console\Input
         $this->tokens = $argv;
         parent::__construct($definition);
     }
-    /**
-     * @param mixed[] $tokens
-     */
-    protected function setTokens($tokens)
+    protected function setTokens(array $tokens)
     {
         $this->tokens = $tokens;
     }
@@ -72,11 +69,7 @@ class ArgvInput extends \MonorepoBuilder20211210\Symfony\Component\Console\Input
             $parseOptions = $this->parseToken($token, $parseOptions);
         }
     }
-    /**
-     * @param string $token
-     * @param bool $parseOptions
-     */
-    protected function parseToken($token, $parseOptions) : bool
+    protected function parseToken(string $token, bool $parseOptions) : bool
     {
         if ($parseOptions && '' == $token) {
             $this->parseArgument($token);
@@ -276,9 +269,8 @@ class ArgvInput extends \MonorepoBuilder20211210\Symfony\Component\Console\Input
     /**
      * {@inheritdoc}
      * @param mixed[]|string $values
-     * @param bool $onlyParams
      */
-    public function hasParameterOption($values, $onlyParams = \false) : bool
+    public function hasParameterOption($values, bool $onlyParams = \false) : bool
     {
         $values = (array) $values;
         foreach ($this->tokens as $token) {
@@ -302,9 +294,8 @@ class ArgvInput extends \MonorepoBuilder20211210\Symfony\Component\Console\Input
      * @param mixed[]|string $values
      * @param mixed[]|bool|float|int|string|null $default
      * @return mixed
-     * @param bool $onlyParams
      */
-    public function getParameterOption($values, $default = \false, $onlyParams = \false)
+    public function getParameterOption($values, $default = \false, bool $onlyParams = \false)
     {
         $values = (array) $values;
         $tokens = $this->tokens;

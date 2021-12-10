@@ -5,8 +5,5 @@ namespace Symplify\MonorepoBuilder\Contract\Git;
 
 interface TagResolverInterface
 {
-    /**
-     * @param string $gitDirectory
-     */
-    public function resolve($gitDirectory) : ?string;
+    public function resolve(string $gitDirectory) : ?string;
 }

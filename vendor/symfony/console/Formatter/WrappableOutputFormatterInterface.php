@@ -19,8 +19,6 @@ interface WrappableOutputFormatterInterface extends \MonorepoBuilder20211210\Sym
 {
     /**
      * Formats a message according to the given styles, wrapping at `$width` (0 means no wrapping).
-     * @param string|null $message
-     * @param int $width
      */
-    public function formatAndWrap($message, $width);
+    public function formatAndWrap(?string $message, int $width);
 }

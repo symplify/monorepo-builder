@@ -31,9 +31,8 @@ class RegisterServiceSubscribersPass extends \MonorepoBuilder20211210\Symfony\Co
     /**
      * @param mixed $value
      * @return mixed
-     * @param bool $isRoot
      */
-    protected function processValue($value, $isRoot = \false)
+    protected function processValue($value, bool $isRoot = \false)
     {
         if (!$value instanceof \MonorepoBuilder20211210\Symfony\Component\DependencyInjection\Definition || $value->isAbstract() || $value->isSynthetic() || !$value->hasTag('container.service_subscriber')) {
             return parent::processValue($value, $isRoot);

@@ -28,9 +28,8 @@ class ResolveServiceSubscribersPass extends \MonorepoBuilder20211210\Symfony\Com
     /**
      * @param mixed $value
      * @return mixed
-     * @param bool $isRoot
      */
-    protected function processValue($value, $isRoot = \false)
+    protected function processValue($value, bool $isRoot = \false)
     {
         if ($value instanceof \MonorepoBuilder20211210\Symfony\Component\DependencyInjection\Reference && $this->serviceLocator && \in_array((string) $value, [\MonorepoBuilder20211210\Psr\Container\ContainerInterface::class, \MonorepoBuilder20211210\Symfony\Contracts\Service\ServiceProviderInterface::class], \true)) {
             return new \MonorepoBuilder20211210\Symfony\Component\DependencyInjection\Reference($this->serviceLocator);

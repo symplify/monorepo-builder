@@ -26,9 +26,8 @@ class RemoveUnusedDefinitionsPass extends \MonorepoBuilder20211210\Symfony\Compo
     private $connectedIds = [];
     /**
      * Processes the ContainerBuilder to remove unused definitions.
-     * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
      */
-    public function process($container)
+    public function process(\MonorepoBuilder20211210\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
         try {
             $this->enableExpressionProcessing();
@@ -72,9 +71,8 @@ class RemoveUnusedDefinitionsPass extends \MonorepoBuilder20211210\Symfony\Compo
      * {@inheritdoc}
      * @param mixed $value
      * @return mixed
-     * @param bool $isRoot
      */
-    protected function processValue($value, $isRoot = \false)
+    protected function processValue($value, bool $isRoot = \false)
     {
         if (!$value instanceof \MonorepoBuilder20211210\Symfony\Component\DependencyInjection\Reference) {
             return parent::processValue($value, $isRoot);

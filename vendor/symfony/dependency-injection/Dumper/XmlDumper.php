@@ -36,9 +36,8 @@ class XmlDumper extends \MonorepoBuilder20211210\Symfony\Component\DependencyInj
     private $document;
     /**
      * Dumps the service container as an XML string.
-     * @param mixed[] $options
      */
-    public function dump($options = []) : string
+    public function dump(array $options = []) : string
     {
         $this->document = new \DOMDocument('1.0', 'utf-8');
         $this->document->formatOutput = \true;

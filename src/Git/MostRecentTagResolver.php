@@ -21,9 +21,8 @@ final class MostRecentTagResolver implements \Symplify\MonorepoBuilder\Contract\
     }
     /**
      * Returns null, when there are no local tags yet
-     * @param string $gitDirectory
      */
-    public function resolve($gitDirectory) : ?string
+    public function resolve(string $gitDirectory) : ?string
     {
         $tagList = $this->parseTags($this->processRunner->run(self::COMMAND, $gitDirectory));
         /** @var string $theMostRecentTag */

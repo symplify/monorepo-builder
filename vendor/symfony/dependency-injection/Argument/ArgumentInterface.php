@@ -18,8 +18,5 @@ namespace MonorepoBuilder20211210\Symfony\Component\DependencyInjection\Argument
 interface ArgumentInterface
 {
     public function getValues() : array;
-    /**
-     * @param mixed[] $values
-     */
-    public function setValues($values);
+    public function setValues(array $values);
 }

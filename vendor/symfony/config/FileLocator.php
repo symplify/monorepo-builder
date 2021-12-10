@@ -28,11 +28,8 @@ class FileLocator implements \MonorepoBuilder20211210\Symfony\Component\Config\F
     }
     /**
      * {@inheritdoc}
-     * @param string $name
-     * @param string|null $currentPath
-     * @param bool $first
      */
-    public function locate($name, $currentPath = null, $first = \true)
+    public function locate(string $name, string $currentPath = null, bool $first = \true)
     {
         if ('' === $name) {
             throw new \InvalidArgumentException('An empty file name is not valid to be located.');

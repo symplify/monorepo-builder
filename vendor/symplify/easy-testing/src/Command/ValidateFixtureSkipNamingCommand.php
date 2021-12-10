@@ -32,11 +32,7 @@ final class ValidateFixtureSkipNamingCommand extends \MonorepoBuilder20211210\Sy
         $this->addArgument(\MonorepoBuilder20211210\Symplify\EasyTesting\ValueObject\Option::SOURCE, \MonorepoBuilder20211210\Symfony\Component\Console\Input\InputArgument::REQUIRED | \MonorepoBuilder20211210\Symfony\Component\Console\Input\InputArgument::IS_ARRAY, 'Paths to analyse');
         $this->setDescription('Check that skipped fixture files (without `-----` separator) have a "skip" prefix');
     }
-    /**
-     * @param \Symfony\Component\Console\Input\InputInterface $input
-     * @param \Symfony\Component\Console\Output\OutputInterface $output
-     */
-    protected function execute($input, $output) : int
+    protected function execute(\MonorepoBuilder20211210\Symfony\Component\Console\Input\InputInterface $input, \MonorepoBuilder20211210\Symfony\Component\Console\Output\OutputInterface $output) : int
     {
         $source = (array) $input->getArgument(\MonorepoBuilder20211210\Symplify\EasyTesting\ValueObject\Option::SOURCE);
         $fixtureFileInfos = $this->fixtureFinder->find($source);

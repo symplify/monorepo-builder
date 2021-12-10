@@ -48,10 +48,7 @@ class InlineServiceDefinitionsPass extends \MonorepoBuilder20211210\Symfony\Comp
     {
         $this->analyzingPass = $analyzingPass;
     }
-    /**
-     * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
-     */
-    public function process($container)
+    public function process(\MonorepoBuilder20211210\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
         $this->container = $container;
         if ($this->analyzingPass) {
@@ -116,9 +113,8 @@ class InlineServiceDefinitionsPass extends \MonorepoBuilder20211210\Symfony\Comp
      * {@inheritdoc}
      * @param mixed $value
      * @return mixed
-     * @param bool $isRoot
      */
-    protected function processValue($value, $isRoot = \false)
+    protected function processValue($value, bool $isRoot = \false)
     {
         if ($value instanceof \MonorepoBuilder20211210\Symfony\Component\DependencyInjection\Argument\ArgumentInterface) {
             // References found in ArgumentInterface::getValues() are not inlineable

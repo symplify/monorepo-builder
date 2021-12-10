@@ -20,9 +20,8 @@ class AutoAliasServicePass implements \MonorepoBuilder20211210\Symfony\Component
 {
     /**
      * {@inheritdoc}
-     * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
      */
-    public function process($container)
+    public function process(\MonorepoBuilder20211210\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
         foreach ($container->findTaggedServiceIds('auto_alias') as $serviceId => $tags) {
             foreach ($tags as $tag) {

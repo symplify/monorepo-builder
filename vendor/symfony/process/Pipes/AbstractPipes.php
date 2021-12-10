@@ -153,10 +153,8 @@ abstract class AbstractPipes implements \MonorepoBuilder20211210\Symfony\Compone
     }
     /**
      * @internal
-     * @param int $type
-     * @param string $msg
      */
-    public function handleError($type, $msg)
+    public function handleError(int $type, string $msg)
     {
         $this->lastError = $msg;
     }

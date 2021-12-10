@@ -23,10 +23,7 @@ final class AddTagToChangelogReleaseWorker implements \Symplify\MonorepoBuilder\
     {
         $this->smartFileSystem = $smartFileSystem;
     }
-    /**
-     * @param \PharIo\Version\Version $version
-     */
-    public function work($version) : void
+    public function work(\PharIo\Version\Version $version) : void
     {
         $changelogFilePath = \getcwd() . '/CHANGELOG.md';
         if (!\file_exists($changelogFilePath)) {
@@ -37,10 +34,7 @@ final class AddTagToChangelogReleaseWorker implements \Symplify\MonorepoBuilder\
         $changelogFileContent = \MonorepoBuilder20211210\Nette\Utils\Strings::replace($changelogFileContent, self::UNRELEASED_HEADLINE_REGEX, '## ' . $newHeadline);
         $this->smartFileSystem->dumpFile($changelogFilePath, $changelogFileContent);
     }
-    /**
-     * @param \PharIo\Version\Version $version
-     */
-    public function getDescription($version) : string
+    public function getDescription(\PharIo\Version\Version $version) : string
     {
         $newHeadline = $this->createNewHeadline($version);
         return \sprintf('Change "Unreleased" in `CHANGELOG.md` to "%s"', $newHeadline);

@@ -21,9 +21,8 @@ class ExtensionCompilerPass implements \MonorepoBuilder20211210\Symfony\Componen
 {
     /**
      * {@inheritdoc}
-     * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
      */
-    public function process($container)
+    public function process(\MonorepoBuilder20211210\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
         foreach ($container->getExtensions() as $extension) {
             if (!$extension instanceof \MonorepoBuilder20211210\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface) {

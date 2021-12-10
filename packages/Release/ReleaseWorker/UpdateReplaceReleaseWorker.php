@@ -24,10 +24,7 @@ final class UpdateReplaceReleaseWorker implements \Symplify\MonorepoBuilder\Rele
         $this->composerJsonProvider = $composerJsonProvider;
         $this->jsonFileManager = $jsonFileManager;
     }
-    /**
-     * @param \PharIo\Version\Version $version
-     */
-    public function work($version) : void
+    public function work(\PharIo\Version\Version $version) : void
     {
         $rootComposerJson = $this->composerJsonProvider->getRootComposerJson();
         $replace = $rootComposerJson->getReplace();
@@ -49,10 +46,7 @@ final class UpdateReplaceReleaseWorker implements \Symplify\MonorepoBuilder\Rele
         }
         $this->jsonFileManager->printJsonToFileInfo($rootComposerJson->getJsonArray(), $rootFileInfo);
     }
-    /**
-     * @param \PharIo\Version\Version $version
-     */
-    public function getDescription($version) : string
+    public function getDescription(\PharIo\Version\Version $version) : string
     {
         return 'Update "replace" version in "composer.json" to new tag to avoid circular dependencies conflicts';
     }

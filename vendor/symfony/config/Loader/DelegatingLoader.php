@@ -41,9 +41,8 @@ class DelegatingLoader extends \MonorepoBuilder20211210\Symfony\Component\Config
     /**
      * {@inheritdoc}
      * @param mixed $resource
-     * @param string|null $type
      */
-    public function supports($resource, $type = null) : bool
+    public function supports($resource, string $type = null) : bool
     {
         return \false !== $this->resolver->resolve($resource, $type);
     }

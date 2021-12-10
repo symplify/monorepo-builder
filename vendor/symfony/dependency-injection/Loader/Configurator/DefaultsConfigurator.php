@@ -37,10 +37,8 @@ class DefaultsConfigurator extends \MonorepoBuilder20211210\Symfony\Component\De
      * @return $this
      *
      * @throws InvalidArgumentException when an invalid tag name or attribute is provided
-     * @param string $name
-     * @param mixed[] $attributes
      */
-    public final function tag($name, $attributes = [])
+    public final function tag(string $name, array $attributes = [])
     {
         if ('' === $name) {
             throw new \MonorepoBuilder20211210\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException('The tag name in "_defaults" must be a non-empty string.');
@@ -55,9 +53,8 @@ class DefaultsConfigurator extends \MonorepoBuilder20211210\Symfony\Component\De
     }
     /**
      * Defines an instanceof-conditional to be applied to following service definitions.
-     * @param string $fqcn
      */
-    public final function instanceof($fqcn) : \MonorepoBuilder20211210\Symfony\Component\DependencyInjection\Loader\Configurator\InstanceofConfigurator
+    public final function instanceof(string $fqcn) : \MonorepoBuilder20211210\Symfony\Component\DependencyInjection\Loader\Configurator\InstanceofConfigurator
     {
         return $this->parent->instanceof($fqcn);
     }

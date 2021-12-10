@@ -7,11 +7,7 @@ use MonorepoBuilder20211210\Symplify\ComposerJsonManipulator\ValueObject\Compose
 use Symplify\MonorepoBuilder\Merge\Contract\ComposerKeyMergerInterface;
 final class PreferStableKeyMerger implements \Symplify\MonorepoBuilder\Merge\Contract\ComposerKeyMergerInterface
 {
-    /**
-     * @param \Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $mainComposerJson
-     * @param \Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $newComposerJson
-     */
-    public function merge($mainComposerJson, $newComposerJson) : void
+    public function merge(\MonorepoBuilder20211210\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $mainComposerJson, \MonorepoBuilder20211210\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $newComposerJson) : void
     {
         if ($newComposerJson->getPreferStable() === null) {
             return;

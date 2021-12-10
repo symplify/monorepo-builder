@@ -48,9 +48,8 @@ class ArrayInput extends \MonorepoBuilder20211210\Symfony\Component\Console\Inpu
     /**
      * {@inheritdoc}
      * @param mixed[]|string $values
-     * @param bool $onlyParams
      */
-    public function hasParameterOption($values, $onlyParams = \false) : bool
+    public function hasParameterOption($values, bool $onlyParams = \false) : bool
     {
         $values = (array) $values;
         foreach ($this->parameters as $k => $v) {
@@ -71,9 +70,8 @@ class ArrayInput extends \MonorepoBuilder20211210\Symfony\Component\Console\Inpu
      * @param mixed[]|string $values
      * @param mixed[]|bool|float|int|string|null $default
      * @return mixed
-     * @param bool $onlyParams
      */
-    public function getParameterOption($values, $default = \false, $onlyParams = \false)
+    public function getParameterOption($values, $default = \false, bool $onlyParams = \false)
     {
         $values = (array) $values;
         foreach ($this->parameters as $k => $v) {

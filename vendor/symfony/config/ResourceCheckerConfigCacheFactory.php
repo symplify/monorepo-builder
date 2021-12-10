@@ -31,10 +31,8 @@ class ResourceCheckerConfigCacheFactory implements \MonorepoBuilder20211210\Symf
     }
     /**
      * {@inheritdoc}
-     * @param string $file
-     * @param callable $callable
      */
-    public function cache($file, $callable) : \MonorepoBuilder20211210\Symfony\Component\Config\ConfigCacheInterface
+    public function cache(string $file, callable $callable) : \MonorepoBuilder20211210\Symfony\Component\Config\ConfigCacheInterface
     {
         $cache = new \MonorepoBuilder20211210\Symfony\Component\Config\ResourceCheckerConfigCache($file, $this->resourceCheckers);
         if (!$cache->isFresh()) {

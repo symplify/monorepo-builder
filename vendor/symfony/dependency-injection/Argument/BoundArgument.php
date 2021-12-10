@@ -65,9 +65,8 @@ final class BoundArgument implements \MonorepoBuilder20211210\Symfony\Component\
     }
     /**
      * {@inheritdoc}
-     * @param mixed[] $values
      */
-    public function setValues($values)
+    public function setValues(array $values)
     {
         if (5 === \count($values)) {
             [$this->value, $this->identifier, $this->used, $this->type, $this->file] = $values;

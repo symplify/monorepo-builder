@@ -25,10 +25,7 @@ final class AppenderComposerJsonDecorator implements \Symplify\MonorepoBuilder\M
         $this->composerJsonMerger = $composerJsonMerger;
         $this->modifyingComposerJsonProvider = $modifyingComposerJsonProvider;
     }
-    /**
-     * @param \Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJson
-     */
-    public function decorate($composerJson) : void
+    public function decorate(\MonorepoBuilder20211210\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJson) : void
     {
         $appendingComposerJson = $this->modifyingComposerJsonProvider->getAppendingComposerJson();
         if (!$appendingComposerJson instanceof \MonorepoBuilder20211210\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson) {
