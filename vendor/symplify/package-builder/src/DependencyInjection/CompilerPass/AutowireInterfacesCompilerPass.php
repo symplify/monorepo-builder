@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20211209\Symplify\PackageBuilder\DependencyInjection\CompilerPass;
+namespace MonorepoBuilder20211210\Symplify\PackageBuilder\DependencyInjection\CompilerPass;
 
-use MonorepoBuilder20211209\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
-use MonorepoBuilder20211209\Symfony\Component\DependencyInjection\ContainerBuilder;
-final class AutowireInterfacesCompilerPass implements \MonorepoBuilder20211209\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
+use MonorepoBuilder20211210\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
+use MonorepoBuilder20211210\Symfony\Component\DependencyInjection\ContainerBuilder;
+final class AutowireInterfacesCompilerPass implements \MonorepoBuilder20211210\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
 {
     /**
      * @var string[]

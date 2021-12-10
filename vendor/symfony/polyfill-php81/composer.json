@@ -25,7 +25,7 @@
     },
     "autoload": {
         "psr-4": {
-            "MonorepoBuilder20211209\\Symfony\\Polyfill\\Php81\\": ""
+            "MonorepoBuilder20211210\\Symfony\\Polyfill\\Php81\\": ""
         },
         "files": [
             "bootstrap.php"
