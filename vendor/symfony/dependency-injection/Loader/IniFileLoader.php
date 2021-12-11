@@ -8,30 +8,31 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211210\Symfony\Component\DependencyInjection\Loader;
+namespace MonorepoBuilder20211211\Symfony\Component\DependencyInjection\Loader;
 
-use MonorepoBuilder20211210\Symfony\Component\Config\Util\XmlUtils;
-use MonorepoBuilder20211210\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use MonorepoBuilder20211211\Symfony\Component\Config\Util\XmlUtils;
+use MonorepoBuilder20211211\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
 /**
  * IniFileLoader loads parameters from INI files.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class IniFileLoader extends \MonorepoBuilder20211210\Symfony\Component\DependencyInjection\Loader\FileLoader
+class IniFileLoader extends \MonorepoBuilder20211211\Symfony\Component\DependencyInjection\Loader\FileLoader
 {
     /**
      * {@inheritdoc}
      * @param mixed $resource
      * @return mixed
+     * @param string|null $type
      */
-    public function load($resource, string $type = null)
+    public function load($resource, $type = null)
     {
         $path = $this->locator->locate($resource);
         $this->container->fileExists($path);
         // first pass to catch parsing errors
         $result = \parse_ini_file($path, \true);
         if (\false === $result || [] === $result) {
-            throw new \MonorepoBuilder20211210\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('The "%s" file is not valid.', $resource));
+            throw new \MonorepoBuilder20211211\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('The "%s" file is not valid.', $resource));
         }
         // real raw parsing
         $result = \parse_ini_file($path, \true, \INI_SCANNER_RAW);
@@ -85,7 +86,7 @@ class IniFileLoader extends \MonorepoBuilder20211210\Symfony\Component\Dependenc
                 // quoted string
                 return \substr($value, 1, -1);
             default:
-                return \MonorepoBuilder20211210\Symfony\Component\Config\Util\XmlUtils::phpize($value);
+                return \MonorepoBuilder20211211\Symfony\Component\Config\Util\XmlUtils::phpize($value);
         }
     }
 }

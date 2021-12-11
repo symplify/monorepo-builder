@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20211210\Symplify\PackageBuilder\DependencyInjection\FileLoader;
+namespace MonorepoBuilder20211211\Symplify\PackageBuilder\DependencyInjection\FileLoader;
 
-use MonorepoBuilder20211210\Symfony\Component\Config\FileLocatorInterface;
-use MonorepoBuilder20211210\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder20211210\Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
-use MonorepoBuilder20211210\Symplify\PackageBuilder\Yaml\ParametersMerger;
+use MonorepoBuilder20211211\Symfony\Component\Config\FileLocatorInterface;
+use MonorepoBuilder20211211\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder20211211\Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
+use MonorepoBuilder20211211\Symplify\PackageBuilder\Yaml\ParametersMerger;
 /**
  * @api
  *
@@ -14,15 +14,15 @@ use MonorepoBuilder20211210\Symplify\PackageBuilder\Yaml\ParametersMerger;
  * - https://github.com/symfony/symfony/issues/26713
  * - https://github.com/symfony/symfony/pull/21313#issuecomment-372037445
  */
-final class ParameterMergingPhpFileLoader extends \MonorepoBuilder20211210\Symfony\Component\DependencyInjection\Loader\PhpFileLoader
+final class ParameterMergingPhpFileLoader extends \MonorepoBuilder20211211\Symfony\Component\DependencyInjection\Loader\PhpFileLoader
 {
     /**
      * @var \Symplify\PackageBuilder\Yaml\ParametersMerger
      */
     private $parametersMerger;
-    public function __construct(\MonorepoBuilder20211210\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder, \MonorepoBuilder20211210\Symfony\Component\Config\FileLocatorInterface $fileLocator)
+    public function __construct(\MonorepoBuilder20211211\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder, \MonorepoBuilder20211211\Symfony\Component\Config\FileLocatorInterface $fileLocator)
     {
-        $this->parametersMerger = new \MonorepoBuilder20211210\Symplify\PackageBuilder\Yaml\ParametersMerger();
+        $this->parametersMerger = new \MonorepoBuilder20211211\Symplify\PackageBuilder\Yaml\ParametersMerger();
         parent::__construct($containerBuilder, $fileLocator);
     }
     /**
@@ -31,8 +31,9 @@ final class ParameterMergingPhpFileLoader extends \MonorepoBuilder20211210\Symfo
      * @see https://github.com/symplify/symplify/pull/697
      * @param mixed $resource
      * @return mixed
+     * @param string|null $type
      */
-    public function load($resource, string $type = null)
+    public function load($resource, $type = null)
     {
         // get old parameters
         $parameterBag = $this->container->getParameterBag();

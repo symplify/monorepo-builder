@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20211210\Symplify\ConsoleColorDiff\ValueObject;
+namespace MonorepoBuilder20211211\Symplify\ConsoleColorDiff\ValueObject;
 
 /**
  * @api
