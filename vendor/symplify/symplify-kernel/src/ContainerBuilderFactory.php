@@ -1,21 +1,21 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20211211\Symplify\SymplifyKernel;
+namespace MonorepoBuilder20211212\Symplify\SymplifyKernel;
 
-use MonorepoBuilder20211211\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
-use MonorepoBuilder20211211\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder20211211\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
-use MonorepoBuilder20211211\Symplify\SymplifyKernel\Contract\Config\LoaderFactoryInterface;
-use MonorepoBuilder20211211\Symplify\SymplifyKernel\DependencyInjection\LoadExtensionConfigsCompilerPass;
-use MonorepoBuilder20211211\Webmozart\Assert\Assert;
+use MonorepoBuilder20211212\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
+use MonorepoBuilder20211212\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder20211212\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
+use MonorepoBuilder20211212\Symplify\SymplifyKernel\Contract\Config\LoaderFactoryInterface;
+use MonorepoBuilder20211212\Symplify\SymplifyKernel\DependencyInjection\LoadExtensionConfigsCompilerPass;
+use MonorepoBuilder20211212\Webmozart\Assert\Assert;
 final class ContainerBuilderFactory
 {
     /**
      * @var \Symplify\SymplifyKernel\Contract\Config\LoaderFactoryInterface
      */
     private $loaderFactory;
-    public function __construct(\MonorepoBuilder20211211\Symplify\SymplifyKernel\Contract\Config\LoaderFactoryInterface $loaderFactory)
+    public function __construct(\MonorepoBuilder20211212\Symplify\SymplifyKernel\Contract\Config\LoaderFactoryInterface $loaderFactory)
     {
         $this->loaderFactory = $loaderFactory;
     }
@@ -24,24 +24,24 @@ final class ContainerBuilderFactory
      * @param CompilerPassInterface[] $compilerPasses
      * @param string[] $configFiles
      */
-    public function create(array $extensions, array $compilerPasses, array $configFiles) : \MonorepoBuilder20211211\Symfony\Component\DependencyInjection\ContainerBuilder
+    public function create(array $extensions, array $compilerPasses, array $configFiles) : \MonorepoBuilder20211212\Symfony\Component\DependencyInjection\ContainerBuilder
     {
-        \MonorepoBuilder20211211\Webmozart\Assert\Assert::allString($configFiles);
-        \MonorepoBuilder20211211\Webmozart\Assert\Assert::allFile($configFiles);
-        $containerBuilder = new \MonorepoBuilder20211211\Symfony\Component\DependencyInjection\ContainerBuilder();
+        \MonorepoBuilder20211212\Webmozart\Assert\Assert::allString($configFiles);
+        \MonorepoBuilder20211212\Webmozart\Assert\Assert::allFile($configFiles);
+        $containerBuilder = new \MonorepoBuilder20211212\Symfony\Component\DependencyInjection\ContainerBuilder();
         $this->registerExtensions($containerBuilder, $extensions);
         $this->registerConfigFiles($containerBuilder, $configFiles);
         $this->registerCompilerPasses($containerBuilder, $compilerPasses);
         // this calls load() method in every extensions
         // ensure these extensions are implicitly loaded
         $compilerPassConfig = $containerBuilder->getCompilerPassConfig();
-        $compilerPassConfig->setMergePass(new \MonorepoBuilder20211211\Symplify\SymplifyKernel\DependencyInjection\LoadExtensionConfigsCompilerPass());
+        $compilerPassConfig->setMergePass(new \MonorepoBuilder20211212\Symplify\SymplifyKernel\DependencyInjection\LoadExtensionConfigsCompilerPass());
         return $containerBuilder;
     }
     /**
      * @param ExtensionInterface[] $extensions
      */
-    private function registerExtensions(\MonorepoBuilder20211211\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder, array $extensions) : void
+    private function registerExtensions(\MonorepoBuilder20211212\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder, array $extensions) : void
     {
         foreach ($extensions as $extension) {
             $containerBuilder->registerExtension($extension);
@@ -50,7 +50,7 @@ final class ContainerBuilderFactory
     /**
      * @param CompilerPassInterface[] $compilerPasses
      */
-    private function registerCompilerPasses(\MonorepoBuilder20211211\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder, array $compilerPasses) : void
+    private function registerCompilerPasses(\MonorepoBuilder20211212\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder, array $compilerPasses) : void
     {
         foreach ($compilerPasses as $compilerPass) {
             $containerBuilder->addCompilerPass($compilerPass);
@@ -59,7 +59,7 @@ final class ContainerBuilderFactory
     /**
      * @param string[] $configFiles
      */
-    private function registerConfigFiles(\MonorepoBuilder20211211\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder, array $configFiles) : void
+    private function registerConfigFiles(\MonorepoBuilder20211212\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder, array $configFiles) : void
     {
         $delegatingLoader = $this->loaderFactory->create($containerBuilder, \getcwd());
         foreach ($configFiles as $configFile) {

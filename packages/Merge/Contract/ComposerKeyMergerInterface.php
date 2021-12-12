@@ -3,8 +3,8 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Merge\Contract;
 
-use MonorepoBuilder20211211\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
+use MonorepoBuilder20211212\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
 interface ComposerKeyMergerInterface
 {
-    public function merge(\MonorepoBuilder20211211\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $mainComposerJson, \MonorepoBuilder20211211\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $newComposerJson) : void;
+    public function merge(\MonorepoBuilder20211212\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $mainComposerJson, \MonorepoBuilder20211212\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $newComposerJson) : void;
 }

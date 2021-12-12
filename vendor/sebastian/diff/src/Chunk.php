@@ -9,7 +9,7 @@ declare (strict_types=1);
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211211\SebastianBergmann\Diff;
+namespace MonorepoBuilder20211212\SebastianBergmann\Diff;
 
 final class Chunk
 {
@@ -70,8 +70,8 @@ final class Chunk
     public function setLines(array $lines) : void
     {
         foreach ($lines as $line) {
-            if (!$line instanceof \MonorepoBuilder20211211\SebastianBergmann\Diff\Line) {
-                throw new \MonorepoBuilder20211211\SebastianBergmann\Diff\InvalidArgumentException();
+            if (!$line instanceof \MonorepoBuilder20211212\SebastianBergmann\Diff\Line) {
+                throw new \MonorepoBuilder20211212\SebastianBergmann\Diff\InvalidArgumentException();
             }
         }
         $this->lines = $lines;

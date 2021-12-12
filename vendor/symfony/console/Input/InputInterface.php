@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211211\Symfony\Component\Console\Input;
+namespace MonorepoBuilder20211212\Symfony\Component\Console\Input;
 
-use MonorepoBuilder20211211\Symfony\Component\Console\Exception\InvalidArgumentException;
-use MonorepoBuilder20211211\Symfony\Component\Console\Exception\RuntimeException;
+use MonorepoBuilder20211212\Symfony\Component\Console\Exception\InvalidArgumentException;
+use MonorepoBuilder20211212\Symfony\Component\Console\Exception\RuntimeException;
 /**
  * InputInterface is the interface implemented by all input classes.
  *
@@ -55,7 +55,7 @@ interface InputInterface
      *
      * @throws RuntimeException
      */
-    public function bind(\MonorepoBuilder20211211\Symfony\Component\Console\Input\InputDefinition $definition);
+    public function bind(\MonorepoBuilder20211212\Symfony\Component\Console\Input\InputDefinition $definition);
     /**
      * Validates the input.
      *
