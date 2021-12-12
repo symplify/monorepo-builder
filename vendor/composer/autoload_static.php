@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit76b8f31c8455db58311867424a3e3797
+class ComposerStaticInitc156e3d3d4f3b0aa24a69c0a7e92563b
 {
     public static $files = array (
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
@@ -767,6 +767,7 @@ class ComposerStaticInit76b8f31c8455db58311867424a3e3797
         'Symplify\\MonorepoBuilder\\Contract\\Git\\TagResolverInterface' => __DIR__ . '/../..' . '/src/Contract/Git/TagResolverInterface.php',
         'Symplify\\MonorepoBuilder\\DependencyUpdater' => __DIR__ . '/../..' . '/src/DependencyUpdater.php',
         'Symplify\\MonorepoBuilder\\DevMasterAliasUpdater' => __DIR__ . '/../..' . '/src/DevMasterAliasUpdater.php',
+        'Symplify\\MonorepoBuilder\\Exception\\ConfigurationException' => __DIR__ . '/../..' . '/src/Exception/ConfigurationException.php',
         'Symplify\\MonorepoBuilder\\Exception\\Git\\InvalidGitVersionException' => __DIR__ . '/../..' . '/src/Exception/Git/InvalidGitVersionException.php',
         'Symplify\\MonorepoBuilder\\Exception\\Validator\\InvalidComposerJsonSetupException' => __DIR__ . '/../..' . '/src/Exception/Validator/InvalidComposerJsonSetupException.php',
         'Symplify\\MonorepoBuilder\\FileSystem\\ComposerJsonProvider' => __DIR__ . '/../..' . '/src/FileSystem/ComposerJsonProvider.php',
@@ -851,9 +852,9 @@ class ComposerStaticInit76b8f31c8455db58311867424a3e3797
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit76b8f31c8455db58311867424a3e3797::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit76b8f31c8455db58311867424a3e3797::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit76b8f31c8455db58311867424a3e3797::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitc156e3d3d4f3b0aa24a69c0a7e92563b::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitc156e3d3d4f3b0aa24a69c0a7e92563b::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitc156e3d3d4f3b0aa24a69c0a7e92563b::$classMap;
 
         }, null, ClassLoader::class);
     }

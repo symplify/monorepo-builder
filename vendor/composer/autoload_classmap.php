@@ -628,6 +628,7 @@ return array(
     'Symplify\\MonorepoBuilder\\Contract\\Git\\TagResolverInterface' => $baseDir . '/src/Contract/Git/TagResolverInterface.php',
     'Symplify\\MonorepoBuilder\\DependencyUpdater' => $baseDir . '/src/DependencyUpdater.php',
     'Symplify\\MonorepoBuilder\\DevMasterAliasUpdater' => $baseDir . '/src/DevMasterAliasUpdater.php',
+    'Symplify\\MonorepoBuilder\\Exception\\ConfigurationException' => $baseDir . '/src/Exception/ConfigurationException.php',
     'Symplify\\MonorepoBuilder\\Exception\\Git\\InvalidGitVersionException' => $baseDir . '/src/Exception/Git/InvalidGitVersionException.php',
     'Symplify\\MonorepoBuilder\\Exception\\Validator\\InvalidComposerJsonSetupException' => $baseDir . '/src/Exception/Validator/InvalidComposerJsonSetupException.php',
     'Symplify\\MonorepoBuilder\\FileSystem\\ComposerJsonProvider' => $baseDir . '/src/FileSystem/ComposerJsonProvider.php',

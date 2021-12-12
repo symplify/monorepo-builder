@@ -4,6 +4,7 @@ declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Finder;
 
 use MonorepoBuilder20211212\Symfony\Component\Finder\Finder;
+use Symplify\MonorepoBuilder\Exception\ConfigurationException;
 use Symplify\MonorepoBuilder\ValueObject\Option;
 use MonorepoBuilder20211212\Symplify\PackageBuilder\Parameter\ParameterProvider;
 use MonorepoBuilder20211212\Symplify\SmartFileSystem\Finder\FinderSanitizer;
@@ -44,6 +45,10 @@ final class PackageComposerFinder
      */
     public function getPackageComposerFiles() : array
     {
+        if ($this->packageDirectories === []) {
+            $errorMessage = \sprintf('First define package directories in "monorepo-builder.php" config.%sUse $parameters->set(Option::%s, "...");', \PHP_EOL, \Symplify\MonorepoBuilder\ValueObject\Option::PACKAGE_DIRECTORIES);
+            throw new \Symplify\MonorepoBuilder\Exception\ConfigurationException($errorMessage);
+        }
         if ($this->cachedPackageComposerFiles === []) {
             $finder = \MonorepoBuilder20211212\Symfony\Component\Finder\Finder::create()->files()->in($this->packageDirectories)->exclude('compiler')->exclude('templates')->exclude('vendor')->exclude('build')->exclude('node_modules')->name('composer.json');
             if ($this->packageDirectoriesExcludes !== []) {
