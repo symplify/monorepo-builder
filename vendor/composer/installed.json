@@ -1470,7 +1470,7 @@
             "dist": {
                 "type": "path",
                 "url": "..\/..\/packages\/autowire-array-parameter",
-                "reference": "80734d0a363e6aeba697b6a854047c7c3be00e8d"
+                "reference": "704f58b2a29cac5b4fec7517b29ac06bf3832bfd"
             },
             "require": {
                 "nette\/utils": "^3.2",
@@ -1498,7 +1498,6 @@
                 "symplify\/phpstan-extensions": "<10.0.2",
                 "symplify\/phpstan-latte-rules": "<10.0.2",
                 "symplify\/phpstan-rules": "<10.0.2",
-                "symplify\/phpstan-twig-rules": "<10.0.2",
                 "symplify\/rule-doc-generator": "<10.0.2",
                 "symplify\/rule-doc-generator-contracts": "<10.0.2",
                 "symplify\/simple-php-doc-parser": "<10.0.2",
@@ -1508,7 +1507,6 @@
                 "symplify\/symfony-static-dumper": "<10.0.2",
                 "symplify\/symplify-kernel": "<10.0.2",
                 "symplify\/template-phpstan-compiler": "<10.0.2",
-                "symplify\/twig-phpstan-compiler": "<10.0.2",
                 "symplify\/vendor-patches": "<10.0.2"
             },
             "require-dev": {
@@ -1548,7 +1546,7 @@
             "dist": {
                 "type": "path",
                 "url": "..\/..\/packages\/composer-json-manipulator",
-                "reference": "48fa1328ba4df7297af0469d5daab332459c8adb"
+                "reference": "1e2fe64d6037f01df288bc338595a35159be7f9c"
             },
             "require": {
                 "nette\/utils": "^3.2",
@@ -1580,7 +1578,6 @@
                 "symplify\/phpstan-extensions": "<10.0.2",
                 "symplify\/phpstan-latte-rules": "<10.0.2",
                 "symplify\/phpstan-rules": "<10.0.2",
-                "symplify\/phpstan-twig-rules": "<10.0.2",
                 "symplify\/rule-doc-generator": "<10.0.2",
                 "symplify\/rule-doc-generator-contracts": "<10.0.2",
                 "symplify\/simple-php-doc-parser": "<10.0.2",
@@ -1589,7 +1586,6 @@
                 "symplify\/symfony-static-dumper": "<10.0.2",
                 "symplify\/symplify-kernel": "<9.4.70",
                 "symplify\/template-phpstan-compiler": "<10.0.2",
-                "symplify\/twig-phpstan-compiler": "<10.0.2",
                 "symplify\/vendor-patches": "<10.0.2"
             },
             "require-dev": {
@@ -1629,7 +1625,7 @@
             "dist": {
                 "type": "path",
                 "url": "..\/..\/packages\/console-color-diff",
-                "reference": "2b3724375181d7e79304caaf527167595f66108b"
+                "reference": "de14355e35140a976f39a3e9036b86594d3a4ecc"
             },
             "require": {
                 "nette\/utils": "^3.2",
@@ -1659,7 +1655,6 @@
                 "symplify\/phpstan-extensions": "<10.0.2",
                 "symplify\/phpstan-latte-rules": "<10.0.2",
                 "symplify\/phpstan-rules": "<10.0.2",
-                "symplify\/phpstan-twig-rules": "<10.0.2",
                 "symplify\/rule-doc-generator": "<10.0.2",
                 "symplify\/rule-doc-generator-contracts": "<10.0.2",
                 "symplify\/simple-php-doc-parser": "<10.0.2",
@@ -1669,7 +1664,6 @@
                 "symplify\/symfony-static-dumper": "<10.0.2",
                 "symplify\/symplify-kernel": "<10.0.2",
                 "symplify\/template-phpstan-compiler": "<10.0.2",
-                "symplify\/twig-phpstan-compiler": "<10.0.2",
                 "symplify\/vendor-patches": "<10.0.2"
             },
             "require-dev": {
@@ -1709,7 +1703,7 @@
             "dist": {
                 "type": "path",
                 "url": "..\/..\/packages\/easy-testing",
-                "reference": "cdfe39cd32d9aa6b0da85b4bf32b048030cc9aac"
+                "reference": "6a57d8c6280cc07d09b03c29b881bebcfff74a22"
             },
             "require": {
                 "nette\/utils": "^3.2",
@@ -1741,7 +1735,6 @@
                 "symplify\/phpstan-extensions": "<10.0.2",
                 "symplify\/phpstan-latte-rules": "<10.0.2",
                 "symplify\/phpstan-rules": "<10.0.2",
-                "symplify\/phpstan-twig-rules": "<10.0.2",
                 "symplify\/rule-doc-generator": "<10.0.2",
                 "symplify\/rule-doc-generator-contracts": "<10.0.2",
                 "symplify\/simple-php-doc-parser": "<10.0.2",
@@ -1749,7 +1742,6 @@
                 "symplify\/symfony-php-config": "<10.0.2",
                 "symplify\/symfony-static-dumper": "<10.0.2",
                 "symplify\/template-phpstan-compiler": "<10.0.2",
-                "symplify\/twig-phpstan-compiler": "<10.0.2",
                 "symplify\/vendor-patches": "<10.0.2"
             },
             "require-dev": {
@@ -1792,7 +1784,7 @@
             "dist": {
                 "type": "path",
                 "url": "..\/..\/packages\/package-builder",
-                "reference": "99412d54e97dc0632a84b3b040990ece1e81176a"
+                "reference": "de7ad92f5513fcaebb502d7b40750e827b47c13c"
             },
             "require": {
                 "nette\/neon": "^3.3.2",
@@ -1825,7 +1817,6 @@
                 "symplify\/phpstan-extensions": "<10.0.2",
                 "symplify\/phpstan-latte-rules": "<10.0.2",
                 "symplify\/phpstan-rules": "<10.0.2",
-                "symplify\/phpstan-twig-rules": "<10.0.2",
                 "symplify\/rule-doc-generator": "<10.0.2",
                 "symplify\/rule-doc-generator-contracts": "<10.0.2",
                 "symplify\/simple-php-doc-parser": "<10.0.2",
@@ -1834,7 +1825,6 @@
                 "symplify\/symfony-php-config": "<10.0.2",
                 "symplify\/symfony-static-dumper": "<10.0.2",
                 "symplify\/template-phpstan-compiler": "<10.0.2",
-                "symplify\/twig-phpstan-compiler": "<10.0.2",
                 "symplify\/vendor-patches": "<10.0.2"
             },
             "require-dev": {
@@ -1874,7 +1864,7 @@
             "dist": {
                 "type": "path",
                 "url": "..\/..\/packages\/smart-file-system",
-                "reference": "1ca79c2b9f1ab1b63f396ffbbb6e4d4c16235bda"
+                "reference": "be031ef28ee3b347054e76844ca62ed8f698ae4e"
             },
             "require": {
                 "nette\/utils": "^3.2",
@@ -1904,7 +1894,6 @@
                 "symplify\/phpstan-extensions": "<10.0.2",
                 "symplify\/phpstan-latte-rules": "<10.0.2",
                 "symplify\/phpstan-rules": "<10.0.2",
-                "symplify\/phpstan-twig-rules": "<10.0.2",
                 "symplify\/rule-doc-generator": "<10.0.2",
                 "symplify\/rule-doc-generator-contracts": "<10.0.2",
                 "symplify\/simple-php-doc-parser": "<10.0.2",
@@ -1913,7 +1902,6 @@
                 "symplify\/symfony-static-dumper": "<10.0.2",
                 "symplify\/symplify-kernel": "<10.0.2",
                 "symplify\/template-phpstan-compiler": "<10.0.2",
-                "symplify\/twig-phpstan-compiler": "<10.0.2",
                 "symplify\/vendor-patches": "<10.0.2"
             },
             "require-dev": {
@@ -1954,7 +1942,7 @@
             "dist": {
                 "type": "path",
                 "url": "..\/..\/packages\/symplify-kernel",
-                "reference": "66f90965706771e5c1ecf0ab10fb32f93cc148ef"
+                "reference": "d8e2f10576be5981d48d7a85d04e6c2dea631fa3"
             },
             "require": {
                 "php": ">=8.0",
@@ -1986,7 +1974,6 @@
                 "symplify\/phpstan-extensions": "<10.0.2",
                 "symplify\/phpstan-latte-rules": "<10.0.2",
                 "symplify\/phpstan-rules": "<10.0.2",
-                "symplify\/phpstan-twig-rules": "<10.0.2",
                 "symplify\/rule-doc-generator": "<10.0.2",
                 "symplify\/rule-doc-generator-contracts": "<10.0.2",
                 "symplify\/simple-php-doc-parser": "<10.0.2",
@@ -1994,7 +1981,6 @@
                 "symplify\/symfony-php-config": "<10.0.2",
                 "symplify\/symfony-static-dumper": "<10.0.2",
                 "symplify\/template-phpstan-compiler": "<10.0.2",
-                "symplify\/twig-phpstan-compiler": "<10.0.2",
                 "symplify\/vendor-patches": "<10.0.2"
             },
             "require-dev": {
