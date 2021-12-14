@@ -8,23 +8,23 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211212\Symfony\Component\Console\Event;
+namespace MonorepoBuilder20211214\Symfony\Component\Console\Event;
 
-use MonorepoBuilder20211212\Symfony\Component\Console\Command\Command;
-use MonorepoBuilder20211212\Symfony\Component\Console\Input\InputInterface;
-use MonorepoBuilder20211212\Symfony\Component\Console\Output\OutputInterface;
-use MonorepoBuilder20211212\Symfony\Contracts\EventDispatcher\Event;
+use MonorepoBuilder20211214\Symfony\Component\Console\Command\Command;
+use MonorepoBuilder20211214\Symfony\Component\Console\Input\InputInterface;
+use MonorepoBuilder20211214\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder20211214\Symfony\Contracts\EventDispatcher\Event;
 /**
  * Allows to inspect input and output of a command.
  *
  * @author Francesco Levorato <git@flevour.net>
  */
-class ConsoleEvent extends \MonorepoBuilder20211212\Symfony\Contracts\EventDispatcher\Event
+class ConsoleEvent extends \MonorepoBuilder20211214\Symfony\Contracts\EventDispatcher\Event
 {
     protected $command;
     private $input;
     private $output;
-    public function __construct(?\MonorepoBuilder20211212\Symfony\Component\Console\Command\Command $command, \MonorepoBuilder20211212\Symfony\Component\Console\Input\InputInterface $input, \MonorepoBuilder20211212\Symfony\Component\Console\Output\OutputInterface $output)
+    public function __construct(?\MonorepoBuilder20211214\Symfony\Component\Console\Command\Command $command, \MonorepoBuilder20211214\Symfony\Component\Console\Input\InputInterface $input, \MonorepoBuilder20211214\Symfony\Component\Console\Output\OutputInterface $output)
     {
         $this->command = $command;
         $this->input = $input;
@@ -33,21 +33,21 @@ class ConsoleEvent extends \MonorepoBuilder20211212\Symfony\Contracts\EventDispa
     /**
      * Gets the command that is executed.
      */
-    public function getCommand() : ?\MonorepoBuilder20211212\Symfony\Component\Console\Command\Command
+    public function getCommand() : ?\MonorepoBuilder20211214\Symfony\Component\Console\Command\Command
     {
         return $this->command;
     }
     /**
      * Gets the input instance.
      */
-    public function getInput() : \MonorepoBuilder20211212\Symfony\Component\Console\Input\InputInterface
+    public function getInput() : \MonorepoBuilder20211214\Symfony\Component\Console\Input\InputInterface
     {
         return $this->input;
     }
     /**
      * Gets the output instance.
      */
-    public function getOutput() : \MonorepoBuilder20211212\Symfony\Component\Console\Output\OutputInterface
+    public function getOutput() : \MonorepoBuilder20211214\Symfony\Component\Console\Output\OutputInterface
     {
         return $this->output;
     }

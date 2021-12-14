@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20211212\Symplify\PackageBuilder\Composer;
+namespace MonorepoBuilder20211214\Symplify\PackageBuilder\Composer;
 
-use MonorepoBuilder20211212\Composer\Autoload\ClassLoader;
+use MonorepoBuilder20211214\Composer\Autoload\ClassLoader;
 use ReflectionClass;
 /**
  * @api
@@ -25,7 +25,7 @@ final class VendorDirProvider
     }
     private function reflectionFallback() : string
     {
-        $reflectionClass = new \ReflectionClass(\MonorepoBuilder20211212\Composer\Autoload\ClassLoader::class);
+        $reflectionClass = new \ReflectionClass(\MonorepoBuilder20211214\Composer\Autoload\ClassLoader::class);
         return \dirname($reflectionClass->getFileName(), 2);
     }
 }

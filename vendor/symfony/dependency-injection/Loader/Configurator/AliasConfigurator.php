@@ -8,18 +8,18 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211212\Symfony\Component\DependencyInjection\Loader\Configurator;
+namespace MonorepoBuilder20211214\Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use MonorepoBuilder20211212\Symfony\Component\DependencyInjection\Alias;
+use MonorepoBuilder20211214\Symfony\Component\DependencyInjection\Alias;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class AliasConfigurator extends \MonorepoBuilder20211212\Symfony\Component\DependencyInjection\Loader\Configurator\AbstractServiceConfigurator
+class AliasConfigurator extends \MonorepoBuilder20211214\Symfony\Component\DependencyInjection\Loader\Configurator\AbstractServiceConfigurator
 {
     use Traits\DeprecateTrait;
     use Traits\PublicTrait;
     public const FACTORY = 'alias';
-    public function __construct(\MonorepoBuilder20211212\Symfony\Component\DependencyInjection\Loader\Configurator\ServicesConfigurator $parent, \MonorepoBuilder20211212\Symfony\Component\DependencyInjection\Alias $alias)
+    public function __construct(\MonorepoBuilder20211214\Symfony\Component\DependencyInjection\Loader\Configurator\ServicesConfigurator $parent, \MonorepoBuilder20211214\Symfony\Component\DependencyInjection\Alias $alias)
     {
         $this->parent = $parent;
         $this->definition = $alias;
