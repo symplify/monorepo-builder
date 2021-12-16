@@ -12,9 +12,9 @@ use Symplify\MonorepoBuilder\Release\ValueObject\Stage;
 final class ReleaseWorkerProvider
 {
     /**
-     * @var ReleaseWorkerInterface[]
+     * @var \Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface[]
      */
-    private $releaseWorkers = [];
+    private $releaseWorkers;
     /**
      * @param ReleaseWorkerInterface[] $releaseWorkers
      */
