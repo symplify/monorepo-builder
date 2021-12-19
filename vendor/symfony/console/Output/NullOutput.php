@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211216\Symfony\Component\Console\Output;
+namespace MonorepoBuilder20211219\Symfony\Component\Console\Output;
 
-use MonorepoBuilder20211216\Symfony\Component\Console\Formatter\NullOutputFormatter;
-use MonorepoBuilder20211216\Symfony\Component\Console\Formatter\OutputFormatterInterface;
+use MonorepoBuilder20211219\Symfony\Component\Console\Formatter\NullOutputFormatter;
+use MonorepoBuilder20211219\Symfony\Component\Console\Formatter\OutputFormatterInterface;
 /**
  * NullOutput suppresses all output.
  *
@@ -20,23 +20,23 @@ use MonorepoBuilder20211216\Symfony\Component\Console\Formatter\OutputFormatterI
  * @author Fabien Potencier <fabien@symfony.com>
  * @author Tobias Schultze <http://tobion.de>
  */
-class NullOutput implements \MonorepoBuilder20211216\Symfony\Component\Console\Output\OutputInterface
+class NullOutput implements \MonorepoBuilder20211219\Symfony\Component\Console\Output\OutputInterface
 {
     private $formatter;
     /**
      * {@inheritdoc}
      */
-    public function setFormatter(\MonorepoBuilder20211216\Symfony\Component\Console\Formatter\OutputFormatterInterface $formatter)
+    public function setFormatter(\MonorepoBuilder20211219\Symfony\Component\Console\Formatter\OutputFormatterInterface $formatter)
     {
         // do nothing
     }
     /**
      * {@inheritdoc}
      */
-    public function getFormatter() : \MonorepoBuilder20211216\Symfony\Component\Console\Formatter\OutputFormatterInterface
+    public function getFormatter() : \MonorepoBuilder20211219\Symfony\Component\Console\Formatter\OutputFormatterInterface
     {
         // to comply with the interface we must return a OutputFormatterInterface
-        return $this->formatter = $this->formatter ?? new \MonorepoBuilder20211216\Symfony\Component\Console\Formatter\NullOutputFormatter();
+        return $this->formatter = $this->formatter ?? new \MonorepoBuilder20211219\Symfony\Component\Console\Formatter\NullOutputFormatter();
     }
     /**
      * {@inheritdoc}
