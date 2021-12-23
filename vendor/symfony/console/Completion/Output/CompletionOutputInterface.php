@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211219\Symfony\Component\Console\Completion\Output;
+namespace MonorepoBuilder20211223\Symfony\Component\Console\Completion\Output;
 
-use MonorepoBuilder20211219\Symfony\Component\Console\Completion\CompletionSuggestions;
-use MonorepoBuilder20211219\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder20211223\Symfony\Component\Console\Completion\CompletionSuggestions;
+use MonorepoBuilder20211223\Symfony\Component\Console\Output\OutputInterface;
 /**
  * Transforms the {@see CompletionSuggestions} object into output readable by the shell completion.
  *
@@ -19,5 +19,5 @@ use MonorepoBuilder20211219\Symfony\Component\Console\Output\OutputInterface;
  */
 interface CompletionOutputInterface
 {
-    public function write(\MonorepoBuilder20211219\Symfony\Component\Console\Completion\CompletionSuggestions $suggestions, \MonorepoBuilder20211219\Symfony\Component\Console\Output\OutputInterface $output) : void;
+    public function write(\MonorepoBuilder20211223\Symfony\Component\Console\Completion\CompletionSuggestions $suggestions, \MonorepoBuilder20211223\Symfony\Component\Console\Output\OutputInterface $output) : void;
 }

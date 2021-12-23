@@ -6,57 +6,57 @@ $loader = require_once __DIR__.'/autoload.php';
 
 // Aliases for the whitelisted classes. For more information see:
 // https://github.com/humbug/php-scoper/blob/master/README.md#class-whitelisting
-if (!class_exists('ComposerAutoloaderInit60f5010ebe56c8c4021f469a8dc4421f', false) && !interface_exists('ComposerAutoloaderInit60f5010ebe56c8c4021f469a8dc4421f', false) && !trait_exists('ComposerAutoloaderInit60f5010ebe56c8c4021f469a8dc4421f', false)) {
-    spl_autoload_call('MonorepoBuilder20211219\ComposerAutoloaderInit60f5010ebe56c8c4021f469a8dc4421f');
+if (!class_exists('ComposerAutoloaderInit85c55402bffce5a7881026b52d9b8e76', false) && !interface_exists('ComposerAutoloaderInit85c55402bffce5a7881026b52d9b8e76', false) && !trait_exists('ComposerAutoloaderInit85c55402bffce5a7881026b52d9b8e76', false)) {
+    spl_autoload_call('MonorepoBuilder20211223\ComposerAutoloaderInit85c55402bffce5a7881026b52d9b8e76');
 }
 if (!class_exists('Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator', false) && !interface_exists('Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator', false) && !trait_exists('Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator', false)) {
-    spl_autoload_call('MonorepoBuilder20211219\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator');
+    spl_autoload_call('MonorepoBuilder20211223\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator');
 }
 if (!class_exists('Normalizer', false) && !interface_exists('Normalizer', false) && !trait_exists('Normalizer', false)) {
-    spl_autoload_call('MonorepoBuilder20211219\Normalizer');
+    spl_autoload_call('MonorepoBuilder20211223\Normalizer');
 }
 if (!class_exists('ReturnTypeWillChange', false) && !interface_exists('ReturnTypeWillChange', false) && !trait_exists('ReturnTypeWillChange', false)) {
-    spl_autoload_call('MonorepoBuilder20211219\ReturnTypeWillChange');
+    spl_autoload_call('MonorepoBuilder20211223\ReturnTypeWillChange');
 }
 if (!class_exists('Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection', false) && !interface_exists('Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection', false) && !trait_exists('Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection', false)) {
-    spl_autoload_call('MonorepoBuilder20211219\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection');
+    spl_autoload_call('MonorepoBuilder20211223\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection');
 }
 
 // Functions whitelisting. For more information see:
 // https://github.com/humbug/php-scoper/blob/master/README.md#functions-whitelisting
 if (!function_exists('resolveConfigFile')) {
     function resolveConfigFile() {
-        return \MonorepoBuilder20211219\resolveConfigFile(...func_get_args());
+        return \MonorepoBuilder20211223\resolveConfigFile(...func_get_args());
     }
 }
-if (!function_exists('composerRequire60f5010ebe56c8c4021f469a8dc4421f')) {
-    function composerRequire60f5010ebe56c8c4021f469a8dc4421f() {
-        return \MonorepoBuilder20211219\composerRequire60f5010ebe56c8c4021f469a8dc4421f(...func_get_args());
+if (!function_exists('composerRequire85c55402bffce5a7881026b52d9b8e76')) {
+    function composerRequire85c55402bffce5a7881026b52d9b8e76() {
+        return \MonorepoBuilder20211223\composerRequire85c55402bffce5a7881026b52d9b8e76(...func_get_args());
     }
 }
 if (!function_exists('scanPath')) {
     function scanPath() {
-        return \MonorepoBuilder20211219\scanPath(...func_get_args());
+        return \MonorepoBuilder20211223\scanPath(...func_get_args());
     }
 }
 if (!function_exists('lintFile')) {
     function lintFile() {
-        return \MonorepoBuilder20211219\lintFile(...func_get_args());
+        return \MonorepoBuilder20211223\lintFile(...func_get_args());
     }
 }
 if (!function_exists('setproctitle')) {
     function setproctitle() {
-        return \MonorepoBuilder20211219\setproctitle(...func_get_args());
+        return \MonorepoBuilder20211223\setproctitle(...func_get_args());
     }
 }
 if (!function_exists('array_is_list')) {
     function array_is_list() {
-        return \MonorepoBuilder20211219\array_is_list(...func_get_args());
+        return \MonorepoBuilder20211223\array_is_list(...func_get_args());
     }
 }
 if (!function_exists('enum_exists')) {
     function enum_exists() {
-        return \MonorepoBuilder20211219\enum_exists(...func_get_args());
+        return \MonorepoBuilder20211223\enum_exists(...func_get_args());
     }
 }
 
