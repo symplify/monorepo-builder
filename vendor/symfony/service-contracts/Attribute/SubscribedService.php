@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211223\Symfony\Contracts\Service\Attribute;
+namespace MonorepoBuilder20211227\Symfony\Contracts\Service\Attribute;
 
-use MonorepoBuilder20211223\Symfony\Contracts\Service\ServiceSubscriberTrait;
+use MonorepoBuilder20211227\Symfony\Contracts\Service\ServiceSubscriberTrait;
 /**
  * Use with {@see ServiceSubscriberTrait} to mark a method's return type
  * as a subscribed service.
