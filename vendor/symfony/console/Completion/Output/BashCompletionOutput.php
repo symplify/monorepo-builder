@@ -8,16 +8,16 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211227\Symfony\Component\Console\Completion\Output;
+namespace MonorepoBuilder20211230\Symfony\Component\Console\Completion\Output;
 
-use MonorepoBuilder20211227\Symfony\Component\Console\Completion\CompletionSuggestions;
-use MonorepoBuilder20211227\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder20211230\Symfony\Component\Console\Completion\CompletionSuggestions;
+use MonorepoBuilder20211230\Symfony\Component\Console\Output\OutputInterface;
 /**
  * @author Wouter de Jong <wouter@wouterj.nl>
  */
-class BashCompletionOutput implements \MonorepoBuilder20211227\Symfony\Component\Console\Completion\Output\CompletionOutputInterface
+class BashCompletionOutput implements \MonorepoBuilder20211230\Symfony\Component\Console\Completion\Output\CompletionOutputInterface
 {
-    public function write(\MonorepoBuilder20211227\Symfony\Component\Console\Completion\CompletionSuggestions $suggestions, \MonorepoBuilder20211227\Symfony\Component\Console\Output\OutputInterface $output) : void
+    public function write(\MonorepoBuilder20211230\Symfony\Component\Console\Completion\CompletionSuggestions $suggestions, \MonorepoBuilder20211230\Symfony\Component\Console\Output\OutputInterface $output) : void
     {
         $values = $suggestions->getValueSuggestions();
         foreach ($suggestions->getOptionSuggestions() as $option) {

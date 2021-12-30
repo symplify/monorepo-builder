@@ -8,16 +8,16 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211227\Symfony\Component\DependencyInjection\ParameterBag;
+namespace MonorepoBuilder20211230\Symfony\Component\DependencyInjection\ParameterBag;
 
-use MonorepoBuilder20211227\Symfony\Component\DependencyInjection\Container;
+use MonorepoBuilder20211230\Symfony\Component\DependencyInjection\Container;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class ContainerBag extends \MonorepoBuilder20211227\Symfony\Component\DependencyInjection\ParameterBag\FrozenParameterBag implements \MonorepoBuilder20211227\Symfony\Component\DependencyInjection\ParameterBag\ContainerBagInterface
+class ContainerBag extends \MonorepoBuilder20211230\Symfony\Component\DependencyInjection\ParameterBag\FrozenParameterBag implements \MonorepoBuilder20211230\Symfony\Component\DependencyInjection\ParameterBag\ContainerBagInterface
 {
     private $container;
-    public function __construct(\MonorepoBuilder20211227\Symfony\Component\DependencyInjection\Container $container)
+    public function __construct(\MonorepoBuilder20211230\Symfony\Component\DependencyInjection\Container $container)
     {
         $this->container = $container;
     }
@@ -30,8 +30,7 @@ class ContainerBag extends \MonorepoBuilder20211227\Symfony\Component\Dependency
     }
     /**
      * {@inheritdoc}
-     *
-     * @return array|bool|string|int|float|null
+     * @return mixed[]|bool|float|int|string|null
      */
     public function get(string $name)
     {

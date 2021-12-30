@@ -3,8 +3,8 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Merge\Contract;
 
-use MonorepoBuilder20211227\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
+use MonorepoBuilder20211230\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
 interface ComposerJsonDecoratorInterface
 {
-    public function decorate(\MonorepoBuilder20211227\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJson) : void;
+    public function decorate(\MonorepoBuilder20211230\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJson) : void;
 }

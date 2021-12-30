@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211227\Symfony\Component\DependencyInjection\ParameterBag;
+namespace MonorepoBuilder20211230\Symfony\Component\DependencyInjection\ParameterBag;
 
-use MonorepoBuilder20211227\Symfony\Component\DependencyInjection\Exception\LogicException;
-use MonorepoBuilder20211227\Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException;
+use MonorepoBuilder20211230\Symfony\Component\DependencyInjection\Exception\LogicException;
+use MonorepoBuilder20211230\Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException;
 /**
  * ParameterBagInterface is the interface implemented by objects that manage service container parameters.
  *
@@ -38,9 +38,8 @@ interface ParameterBagInterface
     /**
      * Gets a service container parameter.
      *
-     * @return array|bool|string|int|float|null
-     *
      * @throws ParameterNotFoundException if the parameter is not defined
+     * @return mixed[]|bool|float|int|string|null
      */
     public function get(string $name);
     /**
