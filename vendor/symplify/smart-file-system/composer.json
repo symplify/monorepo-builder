@@ -14,12 +14,12 @@
     },
     "autoload": {
         "psr-4": {
-            "MonorepoBuilder20211230\\Symplify\\SmartFileSystem\\": "src"
+            "MonorepoBuilder20211231\\Symplify\\SmartFileSystem\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "MonorepoBuilder20211230\\Symplify\\SmartFileSystem\\Tests\\": "tests"
+            "MonorepoBuilder20211231\\Symplify\\SmartFileSystem\\Tests\\": "tests"
         }
     },
     "extra": {

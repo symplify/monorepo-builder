@@ -8,21 +8,21 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20211230\Symfony\Component\Console\Style;
+namespace MonorepoBuilder20211231\Symfony\Component\Console\Style;
 
-use MonorepoBuilder20211230\Symfony\Component\Console\Formatter\OutputFormatterInterface;
-use MonorepoBuilder20211230\Symfony\Component\Console\Helper\ProgressBar;
-use MonorepoBuilder20211230\Symfony\Component\Console\Output\ConsoleOutputInterface;
-use MonorepoBuilder20211230\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder20211231\Symfony\Component\Console\Formatter\OutputFormatterInterface;
+use MonorepoBuilder20211231\Symfony\Component\Console\Helper\ProgressBar;
+use MonorepoBuilder20211231\Symfony\Component\Console\Output\ConsoleOutputInterface;
+use MonorepoBuilder20211231\Symfony\Component\Console\Output\OutputInterface;
 /**
  * Decorates output to add console style guide helpers.
  *
  * @author Kevin Bond <kevinbond@gmail.com>
  */
-abstract class OutputStyle implements \MonorepoBuilder20211230\Symfony\Component\Console\Output\OutputInterface, \MonorepoBuilder20211230\Symfony\Component\Console\Style\StyleInterface
+abstract class OutputStyle implements \MonorepoBuilder20211231\Symfony\Component\Console\Output\OutputInterface, \MonorepoBuilder20211231\Symfony\Component\Console\Style\StyleInterface
 {
     private $output;
-    public function __construct(\MonorepoBuilder20211230\Symfony\Component\Console\Output\OutputInterface $output)
+    public function __construct(\MonorepoBuilder20211231\Symfony\Component\Console\Output\OutputInterface $output)
     {
         $this->output = $output;
     }
@@ -33,9 +33,9 @@ abstract class OutputStyle implements \MonorepoBuilder20211230\Symfony\Component
     {
         $this->output->write(\str_repeat(\PHP_EOL, $count));
     }
-    public function createProgressBar(int $max = 0) : \MonorepoBuilder20211230\Symfony\Component\Console\Helper\ProgressBar
+    public function createProgressBar(int $max = 0) : \MonorepoBuilder20211231\Symfony\Component\Console\Helper\ProgressBar
     {
-        return new \MonorepoBuilder20211230\Symfony\Component\Console\Helper\ProgressBar($this->output, $max);
+        return new \MonorepoBuilder20211231\Symfony\Component\Console\Helper\ProgressBar($this->output, $max);
     }
     /**
      * {@inheritdoc}
@@ -84,14 +84,14 @@ abstract class OutputStyle implements \MonorepoBuilder20211230\Symfony\Component
     /**
      * {@inheritdoc}
      */
-    public function setFormatter(\MonorepoBuilder20211230\Symfony\Component\Console\Formatter\OutputFormatterInterface $formatter)
+    public function setFormatter(\MonorepoBuilder20211231\Symfony\Component\Console\Formatter\OutputFormatterInterface $formatter)
     {
         $this->output->setFormatter($formatter);
     }
     /**
      * {@inheritdoc}
      */
-    public function getFormatter() : \MonorepoBuilder20211230\Symfony\Component\Console\Formatter\OutputFormatterInterface
+    public function getFormatter() : \MonorepoBuilder20211231\Symfony\Component\Console\Formatter\OutputFormatterInterface
     {
         return $this->output->getFormatter();
     }
@@ -125,7 +125,7 @@ abstract class OutputStyle implements \MonorepoBuilder20211230\Symfony\Component
     }
     protected function getErrorOutput()
     {
-        if (!$this->output instanceof \MonorepoBuilder20211230\Symfony\Component\Console\Output\ConsoleOutputInterface) {
+        if (!$this->output instanceof \MonorepoBuilder20211231\Symfony\Component\Console\Output\ConsoleOutputInterface) {
             return $this->output;
         }
         return $this->output->getErrorOutput();

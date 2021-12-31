@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20211230\Symplify\EasyTesting;
+namespace MonorepoBuilder20211231\Symplify\EasyTesting;
 
-use MonorepoBuilder20211230\Nette\Utils\Strings;
-use MonorepoBuilder20211230\Symplify\EasyTesting\ValueObject\Prefix;
-use MonorepoBuilder20211230\Symplify\EasyTesting\ValueObject\SplitLine;
-use MonorepoBuilder20211230\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder20211231\Nette\Utils\Strings;
+use MonorepoBuilder20211231\Symplify\EasyTesting\ValueObject\Prefix;
+use MonorepoBuilder20211231\Symplify\EasyTesting\ValueObject\SplitLine;
+use MonorepoBuilder20211231\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\EasyTesting\Tests\MissingSkipPrefixResolver\MissingSkipPrefixResolverTest
  */
@@ -22,7 +22,7 @@ final class MissplacedSkipPrefixResolver
         foreach ($fixtureFileInfos as $fixtureFileInfo) {
             $hasNameSkipStart = $this->hasNameSkipStart($fixtureFileInfo);
             $fileContents = $fixtureFileInfo->getContents();
-            $hasSplitLine = (bool) \MonorepoBuilder20211230\Nette\Utils\Strings::match($fileContents, \MonorepoBuilder20211230\Symplify\EasyTesting\ValueObject\SplitLine::SPLIT_LINE_REGEX);
+            $hasSplitLine = (bool) \MonorepoBuilder20211231\Nette\Utils\Strings::match($fileContents, \MonorepoBuilder20211231\Symplify\EasyTesting\ValueObject\SplitLine::SPLIT_LINE_REGEX);
             if ($hasNameSkipStart && $hasSplitLine) {
                 $invalidFileInfos['incorrect_skips'][] = $fixtureFileInfo;
                 continue;
@@ -34,8 +34,8 @@ final class MissplacedSkipPrefixResolver
         }
         return $invalidFileInfos;
     }
-    private function hasNameSkipStart(\MonorepoBuilder20211230\Symplify\SmartFileSystem\SmartFileInfo $fixtureFileInfo) : bool
+    private function hasNameSkipStart(\MonorepoBuilder20211231\Symplify\SmartFileSystem\SmartFileInfo $fixtureFileInfo) : bool
     {
-        return (bool) \MonorepoBuilder20211230\Nette\Utils\Strings::match($fixtureFileInfo->getBasenameWithoutSuffix(), \MonorepoBuilder20211230\Symplify\EasyTesting\ValueObject\Prefix::SKIP_PREFIX_REGEX);
+        return (bool) \MonorepoBuilder20211231\Nette\Utils\Strings::match($fixtureFileInfo->getBasenameWithoutSuffix(), \MonorepoBuilder20211231\Symplify\EasyTesting\ValueObject\Prefix::SKIP_PREFIX_REGEX);
     }
 }

@@ -3,23 +3,23 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Kernel;
 
-use MonorepoBuilder20211230\Psr\Container\ContainerInterface;
-use MonorepoBuilder20211230\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonManipulatorConfig;
-use MonorepoBuilder20211230\Symplify\ConsoleColorDiff\ValueObject\ConsoleColorDiffConfig;
+use MonorepoBuilder20211231\Psr\Container\ContainerInterface;
+use MonorepoBuilder20211231\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonManipulatorConfig;
+use MonorepoBuilder20211231\Symplify\ConsoleColorDiff\ValueObject\ConsoleColorDiffConfig;
 use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface;
-use MonorepoBuilder20211230\Symplify\PackageBuilder\DependencyInjection\CompilerPass\AutowireInterfacesCompilerPass;
-use MonorepoBuilder20211230\Symplify\SymplifyKernel\HttpKernel\AbstractSymplifyKernel;
-final class MonorepoBuilderKernel extends \MonorepoBuilder20211230\Symplify\SymplifyKernel\HttpKernel\AbstractSymplifyKernel
+use MonorepoBuilder20211231\Symplify\PackageBuilder\DependencyInjection\CompilerPass\AutowireInterfacesCompilerPass;
+use MonorepoBuilder20211231\Symplify\SymplifyKernel\HttpKernel\AbstractSymplifyKernel;
+final class MonorepoBuilderKernel extends \MonorepoBuilder20211231\Symplify\SymplifyKernel\HttpKernel\AbstractSymplifyKernel
 {
     /**
      * @param string[] $configFiles
      */
-    public function createFromConfigs(array $configFiles) : \MonorepoBuilder20211230\Psr\Container\ContainerInterface
+    public function createFromConfigs(array $configFiles) : \MonorepoBuilder20211231\Psr\Container\ContainerInterface
     {
         $configFiles[] = __DIR__ . '/../../config/config.php';
-        $configFiles[] = \MonorepoBuilder20211230\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonManipulatorConfig::FILE_PATH;
-        $configFiles[] = \MonorepoBuilder20211230\Symplify\ConsoleColorDiff\ValueObject\ConsoleColorDiffConfig::FILE_PATH;
-        $autowireInterfacesCompilerPass = new \MonorepoBuilder20211230\Symplify\PackageBuilder\DependencyInjection\CompilerPass\AutowireInterfacesCompilerPass([\Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface::class]);
+        $configFiles[] = \MonorepoBuilder20211231\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonManipulatorConfig::FILE_PATH;
+        $configFiles[] = \MonorepoBuilder20211231\Symplify\ConsoleColorDiff\ValueObject\ConsoleColorDiffConfig::FILE_PATH;
+        $autowireInterfacesCompilerPass = new \MonorepoBuilder20211231\Symplify\PackageBuilder\DependencyInjection\CompilerPass\AutowireInterfacesCompilerPass([\Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface::class]);
         $compilerPasses = [$autowireInterfacesCompilerPass];
         return $this->create([], $compilerPasses, $configFiles);
     }
