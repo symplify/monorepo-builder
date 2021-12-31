@@ -12,11 +12,10 @@ use MonorepoBuilder20211231\Symplify\PHPStanRules\Exception\ShouldNotHappenExcep
 final class PrivatesAccessor
 {
     /**
-     * @template T
+     * @template T as object
      *
      * @param class-string<T> $valueClassName
-     *
-     * @return object&mixed
+     * @return object
      * @param object $object
      */
     public function getPrivatePropertyOfClass($object, string $propertyName, string $valueClassName)
