@@ -3,16 +3,16 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder;
 
-use MonorepoBuilder20220102\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
-use MonorepoBuilder20220102\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
-use MonorepoBuilder20220102\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder20220103\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
+use MonorepoBuilder20220103\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
+use MonorepoBuilder20220103\Symplify\SmartFileSystem\SmartFileInfo;
 final class DependencyUpdater
 {
     /**
      * @var \Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager
      */
     private $jsonFileManager;
-    public function __construct(\MonorepoBuilder20220102\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager $jsonFileManager)
+    public function __construct(\MonorepoBuilder20220103\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager $jsonFileManager)
     {
         $this->jsonFileManager = $jsonFileManager;
     }
@@ -24,8 +24,8 @@ final class DependencyUpdater
     {
         foreach ($smartFileInfos as $smartFileInfo) {
             $json = $this->jsonFileManager->loadFromFileInfo($smartFileInfo);
-            $json = $this->processSectionWithPackages($json, $packageNames, $version, \MonorepoBuilder20220102\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE);
-            $json = $this->processSectionWithPackages($json, $packageNames, $version, \MonorepoBuilder20220102\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE_DEV);
+            $json = $this->processSectionWithPackages($json, $packageNames, $version, \MonorepoBuilder20220103\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE);
+            $json = $this->processSectionWithPackages($json, $packageNames, $version, \MonorepoBuilder20220103\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE_DEV);
             $this->jsonFileManager->printJsonToFileInfo($json, $smartFileInfo);
         }
     }
@@ -36,8 +36,8 @@ final class DependencyUpdater
     {
         foreach ($smartFileInfos as $smartFileInfo) {
             $json = $this->jsonFileManager->loadFromFileInfo($smartFileInfo);
-            $json = $this->processSection($json, $vendor, $version, \MonorepoBuilder20220102\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE);
-            $json = $this->processSection($json, $vendor, $version, \MonorepoBuilder20220102\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE_DEV);
+            $json = $this->processSection($json, $vendor, $version, \MonorepoBuilder20220103\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE);
+            $json = $this->processSection($json, $vendor, $version, \MonorepoBuilder20220103\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE_DEV);
             $this->jsonFileManager->printJsonToFileInfo($json, $smartFileInfo);
         }
     }

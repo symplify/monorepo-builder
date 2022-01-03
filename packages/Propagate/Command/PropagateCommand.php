@@ -3,16 +3,16 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Propagate\Command;
 
-use MonorepoBuilder20220102\Symfony\Component\Console\Input\InputInterface;
-use MonorepoBuilder20220102\Symfony\Component\Console\Output\OutputInterface;
-use MonorepoBuilder20220102\Symplify\Astral\Exception\ShouldNotHappenException;
-use MonorepoBuilder20220102\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
+use MonorepoBuilder20220103\Symfony\Component\Console\Input\InputInterface;
+use MonorepoBuilder20220103\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder20220103\Symplify\Astral\Exception\ShouldNotHappenException;
+use MonorepoBuilder20220103\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
 use Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider;
 use Symplify\MonorepoBuilder\Propagate\VersionPropagator;
-use MonorepoBuilder20220102\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
-use MonorepoBuilder20220102\Symplify\PackageBuilder\Console\Command\CommandNaming;
-use MonorepoBuilder20220102\Symplify\SmartFileSystem\SmartFileInfo;
-final class PropagateCommand extends \MonorepoBuilder20220102\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand
+use MonorepoBuilder20220103\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
+use MonorepoBuilder20220103\Symplify\PackageBuilder\Console\Command\CommandNaming;
+use MonorepoBuilder20220103\Symplify\SmartFileSystem\SmartFileInfo;
+final class PropagateCommand extends \MonorepoBuilder20220103\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand
 {
     /**
      * @var \Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider
@@ -26,7 +26,7 @@ final class PropagateCommand extends \MonorepoBuilder20220102\Symplify\PackageBu
      * @var \Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager
      */
     private $jsonFileManager;
-    public function __construct(\Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider $composerJsonProvider, \Symplify\MonorepoBuilder\Propagate\VersionPropagator $versionPropagator, \MonorepoBuilder20220102\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager $jsonFileManager)
+    public function __construct(\Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider $composerJsonProvider, \Symplify\MonorepoBuilder\Propagate\VersionPropagator $versionPropagator, \MonorepoBuilder20220103\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager $jsonFileManager)
     {
         $this->composerJsonProvider = $composerJsonProvider;
         $this->versionPropagator = $versionPropagator;
@@ -35,10 +35,10 @@ final class PropagateCommand extends \MonorepoBuilder20220102\Symplify\PackageBu
     }
     protected function configure() : void
     {
-        $this->setName(\MonorepoBuilder20220102\Symplify\PackageBuilder\Console\Command\CommandNaming::classToName(self::class));
+        $this->setName(\MonorepoBuilder20220103\Symplify\PackageBuilder\Console\Command\CommandNaming::classToName(self::class));
         $this->setDescription('Propagate versions from root "composer.json" to all packages, the opposite of "merge" command');
     }
-    protected function execute(\MonorepoBuilder20220102\Symfony\Component\Console\Input\InputInterface $input, \MonorepoBuilder20220102\Symfony\Component\Console\Output\OutputInterface $output) : int
+    protected function execute(\MonorepoBuilder20220103\Symfony\Component\Console\Input\InputInterface $input, \MonorepoBuilder20220103\Symfony\Component\Console\Output\OutputInterface $output) : int
     {
         $rootComposerJson = $this->composerJsonProvider->getRootComposerJson();
         foreach ($this->composerJsonProvider->getPackageComposerJsons() as $packageComposerJson) {
@@ -48,8 +48,8 @@ final class PropagateCommand extends \MonorepoBuilder20220102\Symplify\PackageBu
                 continue;
             }
             $packageFileInfo = $packageComposerJson->getFileInfo();
-            if (!$packageFileInfo instanceof \MonorepoBuilder20220102\Symplify\SmartFileSystem\SmartFileInfo) {
-                throw new \MonorepoBuilder20220102\Symplify\Astral\Exception\ShouldNotHappenException();
+            if (!$packageFileInfo instanceof \MonorepoBuilder20220103\Symplify\SmartFileSystem\SmartFileInfo) {
+                throw new \MonorepoBuilder20220103\Symplify\Astral\Exception\ShouldNotHappenException();
             }
             $this->jsonFileManager->printComposerJsonToFilePath($packageComposerJson, $packageFileInfo->getRealPath());
             $message = \sprintf('"%s" was updated to inherit root composer.json versions', $packageFileInfo->getRelativeFilePathFromCwd());
