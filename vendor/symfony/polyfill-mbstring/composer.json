@@ -24,9 +24,12 @@
     "require": {
         "php": ">=7.1"
     },
+    "provide": {
+        "ext-mbstring": "*"
+    },
     "autoload": {
         "psr-4": {
-            "MonorepoBuilder20220103\\Symfony\\Polyfill\\Mbstring\\": ""
+            "MonorepoBuilder20220107\\Symfony\\Polyfill\\Mbstring\\": ""
         },
         "files": [
             "bootstrap.php"

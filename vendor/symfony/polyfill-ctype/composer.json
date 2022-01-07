@@ -23,9 +23,12 @@
     "require": {
         "php": ">=7.1"
     },
+    "provide": {
+        "ext-ctype": "*"
+    },
     "autoload": {
         "psr-4": {
-            "MonorepoBuilder20220103\\Symfony\\Polyfill\\Ctype\\": ""
+            "MonorepoBuilder20220107\\Symfony\\Polyfill\\Ctype\\": ""
         },
         "files": [
             "bootstrap.php"
