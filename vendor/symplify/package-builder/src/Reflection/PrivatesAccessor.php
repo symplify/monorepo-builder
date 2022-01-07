@@ -12,7 +12,7 @@ use MonorepoBuilder20220107\Symplify\PHPStanRules\Exception\ShouldNotHappenExcep
 final class PrivatesAccessor
 {
     /**
-     * @template T of object
+     * @template T as object
      *
      * @param class-string<T> $valueClassName
      * @return object
@@ -37,7 +37,7 @@ final class PrivatesAccessor
         return $propertyReflection->getValue($object);
     }
     /**
-     * @template T of object
+     * @template T
      *
      * @param class-string<T> $valueClassName
      * @param mixed $value
