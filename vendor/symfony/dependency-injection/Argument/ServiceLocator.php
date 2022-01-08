@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220107\Symfony\Component\DependencyInjection\Argument;
+namespace MonorepoBuilder20220108\Symfony\Component\DependencyInjection\Argument;
 
-use MonorepoBuilder20220107\Symfony\Component\DependencyInjection\ServiceLocator as BaseServiceLocator;
+use MonorepoBuilder20220108\Symfony\Component\DependencyInjection\ServiceLocator as BaseServiceLocator;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  *
  * @internal
  */
-class ServiceLocator extends \MonorepoBuilder20220107\Symfony\Component\DependencyInjection\ServiceLocator
+class ServiceLocator extends \MonorepoBuilder20220108\Symfony\Component\DependencyInjection\ServiceLocator
 {
     /**
      * @var \Closure

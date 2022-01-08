@@ -1,6 +1,6 @@
 <?php
 
-namespace MonorepoBuilder20220107\Psr\Container;
+namespace MonorepoBuilder20220108\Psr\Container;
 
 use Throwable;
 /**

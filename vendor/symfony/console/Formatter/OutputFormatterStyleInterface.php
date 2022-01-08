@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220107\Symfony\Component\Console\Formatter;
+namespace MonorepoBuilder20220108\Symfony\Component\Console\Formatter;
 
 /**
  * Formatter style interface for defining styles.

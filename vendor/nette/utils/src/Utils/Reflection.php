@@ -5,9 +5,9 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace MonorepoBuilder20220107\Nette\Utils;
+namespace MonorepoBuilder20220108\Nette\Utils;
 
-use MonorepoBuilder20220107\Nette;
+use MonorepoBuilder20220108\Nette;
 /**
  * PHP reflection helpers.
  */
@@ -45,7 +45,7 @@ final class Reflection
      */
     public static function getReturnTypes(\ReflectionFunctionAbstract $func) : array
     {
-        $type = \MonorepoBuilder20220107\Nette\Utils\Type::fromReflection($func);
+        $type = \MonorepoBuilder20220108\Nette\Utils\Type::fromReflection($func);
         return $type ? $type->getNames() : [];
     }
     /**
@@ -62,7 +62,7 @@ final class Reflection
      */
     public static function getParameterTypes(\ReflectionParameter $param) : array
     {
-        $type = \MonorepoBuilder20220107\Nette\Utils\Type::fromReflection($param);
+        $type = \MonorepoBuilder20220108\Nette\Utils\Type::fromReflection($param);
         return $type ? $type->getNames() : [];
     }
     /**
@@ -79,7 +79,7 @@ final class Reflection
      */
     public static function getPropertyTypes(\ReflectionProperty $prop) : array
     {
-        $type = \MonorepoBuilder20220107\Nette\Utils\Type::fromReflection($prop);
+        $type = \MonorepoBuilder20220108\Nette\Utils\Type::fromReflection($prop);
         return $type ? $type->getNames() : [];
     }
     /**
@@ -90,11 +90,11 @@ final class Reflection
         if ($type === null) {
             return null;
         } elseif ($type instanceof \ReflectionNamedType) {
-            return \MonorepoBuilder20220107\Nette\Utils\Type::resolve($type->getName(), $reflection);
-        } elseif ($type instanceof \ReflectionUnionType || $type instanceof \MonorepoBuilder20220107\ReflectionIntersectionType) {
-            throw new \MonorepoBuilder20220107\Nette\InvalidStateException('The ' . self::toString($reflection) . ' is not expected to have a union or intersection type.');
+            return \MonorepoBuilder20220108\Nette\Utils\Type::resolve($type->getName(), $reflection);
+        } elseif ($type instanceof \ReflectionUnionType || $type instanceof \MonorepoBuilder20220108\ReflectionIntersectionType) {
+            throw new \MonorepoBuilder20220108\Nette\InvalidStateException('The ' . self::toString($reflection) . ' is not expected to have a union or intersection type.');
         } else {
-            throw new \MonorepoBuilder20220107\Nette\InvalidStateException('Unexpected type of ' . self::toString($reflection));
+            throw new \MonorepoBuilder20220108\Nette\InvalidStateException('Unexpected type of ' . self::toString($reflection));
         }
     }
     /**
@@ -108,7 +108,7 @@ final class Reflection
             $const = $orig = $param->getDefaultValueConstantName();
             $pair = \explode('::', $const);
             if (isset($pair[1])) {
-                $pair[0] = \MonorepoBuilder20220107\Nette\Utils\Type::resolve($pair[0], $param);
+                $pair[0] = \MonorepoBuilder20220108\Nette\Utils\Type::resolve($pair[0], $param);
                 try {
                     $rcc = new \ReflectionClassConstant($pair[0], $pair[1]);
                 } catch (\ReflectionException $e) {
@@ -182,7 +182,7 @@ final class Reflection
         } elseif ($ref instanceof \ReflectionParameter) {
             return '$' . $ref->name . ' in ' . self::toString($ref->getDeclaringFunction());
         } else {
-            throw new \MonorepoBuilder20220107\Nette\InvalidArgumentException();
+            throw new \MonorepoBuilder20220108\Nette\InvalidArgumentException();
         }
     }
     /**
@@ -194,7 +194,7 @@ final class Reflection
     {
         $lower = \strtolower($name);
         if (empty($name)) {
-            throw new \MonorepoBuilder20220107\Nette\InvalidArgumentException('Class name must not be empty.');
+            throw new \MonorepoBuilder20220108\Nette\InvalidArgumentException('Class name must not be empty.');
         } elseif (isset(self::BUILTIN_TYPES[$lower])) {
             return $lower;
         } elseif ($lower === 'self' || $lower === 'static') {
@@ -220,7 +220,7 @@ final class Reflection
     public static function getUseStatements(\ReflectionClass $class) : array
     {
         if ($class->isAnonymous()) {
-            throw new \MonorepoBuilder20220107\Nette\NotImplementedException('Anonymous classes are not supported.');
+            throw new \MonorepoBuilder20220108\Nette\NotImplementedException('Anonymous classes are not supported.');
         }
         static $cache = [];
         if (!isset($cache[$name = $class->name])) {
