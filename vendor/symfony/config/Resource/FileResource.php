@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220108\Symfony\Component\Config\Resource;
+namespace MonorepoBuilder20220109\Symfony\Component\Config\Resource;
 
 /**
  * FileResource represents a resource stored on the filesystem.
@@ -19,7 +19,7 @@ namespace MonorepoBuilder20220108\Symfony\Component\Config\Resource;
  *
  * @final
  */
-class FileResource implements \MonorepoBuilder20220108\Symfony\Component\Config\Resource\SelfCheckingResourceInterface
+class FileResource implements \MonorepoBuilder20220109\Symfony\Component\Config\Resource\SelfCheckingResourceInterface
 {
     /**
      * @var string
