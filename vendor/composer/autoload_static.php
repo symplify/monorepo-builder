@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit2239ff70266950686e6d5a6d450866e0
+class ComposerStaticInitcb9cad0881bca09e345fc8ab83758ccd
 {
     public static $files = array (
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
@@ -703,6 +703,8 @@ class ComposerStaticInit2239ff70266950686e6d5a6d450866e0
         'MonorepoBuilder20220111\\Symplify\\PackageBuilder\\DependencyInjection\\CompilerPass\\AutowireInterfacesCompilerPass' => __DIR__ . '/..' . '/symplify/package-builder/src/DependencyInjection/CompilerPass/AutowireInterfacesCompilerPass.php',
         'MonorepoBuilder20220111\\Symplify\\PackageBuilder\\DependencyInjection\\FileLoader\\ParameterMergingPhpFileLoader' => __DIR__ . '/..' . '/symplify/package-builder/src/DependencyInjection/FileLoader/ParameterMergingPhpFileLoader.php',
         'MonorepoBuilder20220111\\Symplify\\PackageBuilder\\Exception\\HttpKernel\\MissingInterfaceException' => __DIR__ . '/..' . '/symplify/package-builder/src/Exception/HttpKernel/MissingInterfaceException.php',
+        'MonorepoBuilder20220111\\Symplify\\PackageBuilder\\Exception\\InvalidPrivatePropertyTypeException' => __DIR__ . '/..' . '/symplify/package-builder/src/Exception/InvalidPrivatePropertyTypeException.php',
+        'MonorepoBuilder20220111\\Symplify\\PackageBuilder\\Exception\\MissingPrivatePropertyException' => __DIR__ . '/..' . '/symplify/package-builder/src/Exception/MissingPrivatePropertyException.php',
         'MonorepoBuilder20220111\\Symplify\\PackageBuilder\\Matcher\\ArrayStringAndFnMatcher' => __DIR__ . '/..' . '/symplify/package-builder/src/Matcher/ArrayStringAndFnMatcher.php',
         'MonorepoBuilder20220111\\Symplify\\PackageBuilder\\Neon\\NeonPrinter' => __DIR__ . '/..' . '/symplify/package-builder/src/Neon/NeonPrinter.php',
         'MonorepoBuilder20220111\\Symplify\\PackageBuilder\\Parameter\\ParameterProvider' => __DIR__ . '/..' . '/symplify/package-builder/src/Parameter/ParameterProvider.php',
@@ -852,9 +854,9 @@ class ComposerStaticInit2239ff70266950686e6d5a6d450866e0
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit2239ff70266950686e6d5a6d450866e0::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit2239ff70266950686e6d5a6d450866e0::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit2239ff70266950686e6d5a6d450866e0::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitcb9cad0881bca09e345fc8ab83758ccd::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitcb9cad0881bca09e345fc8ab83758ccd::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitcb9cad0881bca09e345fc8ab83758ccd::$classMap;
 
         }, null, ClassLoader::class);
     }
