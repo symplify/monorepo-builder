@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220109\Symfony\Component\Console\Tester;
+namespace MonorepoBuilder20220111\Symfony\Component\Console\Tester;
 
-use MonorepoBuilder20220109\Symfony\Component\Console\Command\Command;
-use MonorepoBuilder20220109\Symfony\Component\Console\Completion\CompletionInput;
-use MonorepoBuilder20220109\Symfony\Component\Console\Completion\CompletionSuggestions;
+use MonorepoBuilder20220111\Symfony\Component\Console\Command\Command;
+use MonorepoBuilder20220111\Symfony\Component\Console\Completion\CompletionInput;
+use MonorepoBuilder20220111\Symfony\Component\Console\Completion\CompletionSuggestions;
 /**
  * Eases the testing of command completion.
  *
@@ -21,7 +21,7 @@ use MonorepoBuilder20220109\Symfony\Component\Console\Completion\CompletionSugge
 class CommandCompletionTester
 {
     private $command;
-    public function __construct(\MonorepoBuilder20220109\Symfony\Component\Console\Command\Command $command)
+    public function __construct(\MonorepoBuilder20220111\Symfony\Component\Console\Command\Command $command)
     {
         $this->command = $command;
     }
@@ -35,9 +35,9 @@ class CommandCompletionTester
             \array_pop($input);
         }
         \array_unshift($input, $this->command->getName());
-        $completionInput = \MonorepoBuilder20220109\Symfony\Component\Console\Completion\CompletionInput::fromTokens($input, $currentIndex);
+        $completionInput = \MonorepoBuilder20220111\Symfony\Component\Console\Completion\CompletionInput::fromTokens($input, $currentIndex);
         $completionInput->bind($this->command->getDefinition());
-        $suggestions = new \MonorepoBuilder20220109\Symfony\Component\Console\Completion\CompletionSuggestions();
+        $suggestions = new \MonorepoBuilder20220111\Symfony\Component\Console\Completion\CompletionSuggestions();
         $this->command->complete($completionInput, $suggestions);
         $options = [];
         foreach ($suggestions->getOptionSuggestions() as $option) {

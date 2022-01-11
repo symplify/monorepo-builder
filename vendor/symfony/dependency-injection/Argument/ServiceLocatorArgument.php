@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220109\Symfony\Component\DependencyInjection\Argument;
+namespace MonorepoBuilder20220111\Symfony\Component\DependencyInjection\Argument;
 
-use MonorepoBuilder20220109\Symfony\Component\DependencyInjection\Reference;
+use MonorepoBuilder20220111\Symfony\Component\DependencyInjection\Reference;
 /**
  * Represents a closure acting as a service locator.
  *
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class ServiceLocatorArgument implements \MonorepoBuilder20220109\Symfony\Component\DependencyInjection\Argument\ArgumentInterface
+class ServiceLocatorArgument implements \MonorepoBuilder20220111\Symfony\Component\DependencyInjection\Argument\ArgumentInterface
 {
     use ReferenceSetArgumentTrait;
     private $taggedIteratorArgument = null;
@@ -25,14 +25,14 @@ class ServiceLocatorArgument implements \MonorepoBuilder20220109\Symfony\Compone
      */
     public function __construct($values = [])
     {
-        if ($values instanceof \MonorepoBuilder20220109\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument) {
+        if ($values instanceof \MonorepoBuilder20220111\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument) {
             $this->taggedIteratorArgument = $values;
             $this->values = [];
         } else {
             $this->setValues($values);
         }
     }
-    public function getTaggedIteratorArgument() : ?\MonorepoBuilder20220109\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument
+    public function getTaggedIteratorArgument() : ?\MonorepoBuilder20220111\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument
     {
         return $this->taggedIteratorArgument;
     }

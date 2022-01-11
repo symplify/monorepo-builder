@@ -8,8 +8,8 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220109\Symfony\Component\String\Exception;
+namespace MonorepoBuilder20220111\Symfony\Component\String\Exception;
 
-class InvalidArgumentException extends \InvalidArgumentException implements \MonorepoBuilder20220109\Symfony\Component\String\Exception\ExceptionInterface
+class InvalidArgumentException extends \InvalidArgumentException implements \MonorepoBuilder20220111\Symfony\Component\String\Exception\ExceptionInterface
 {
 }
