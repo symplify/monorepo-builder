@@ -3,11 +3,11 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Merge\ComposerKeyMerger;
 
-use MonorepoBuilder20220111\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
+use MonorepoBuilder20220115\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
 use Symplify\MonorepoBuilder\Merge\Contract\ComposerKeyMergerInterface;
 final class MinimalStabilityKeyMerger implements \Symplify\MonorepoBuilder\Merge\Contract\ComposerKeyMergerInterface
 {
-    public function merge(\MonorepoBuilder20220111\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $mainComposerJson, \MonorepoBuilder20220111\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $newComposerJson) : void
+    public function merge(\MonorepoBuilder20220115\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $mainComposerJson, \MonorepoBuilder20220115\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $newComposerJson) : void
     {
         if ($newComposerJson->getMinimumStability() === null) {
             return;

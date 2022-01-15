@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20220111\Symplify\SmartFileSystem\Finder;
+namespace MonorepoBuilder20220115\Symplify\SmartFileSystem\Finder;
 
-use MonorepoBuilder20220111\Nette\Utils\Finder as NetteFinder;
+use MonorepoBuilder20220115\Nette\Utils\Finder as NetteFinder;
 use SplFileInfo;
-use MonorepoBuilder20220111\Symfony\Component\Finder\Finder as SymfonyFinder;
-use MonorepoBuilder20220111\Symfony\Component\Finder\SplFileInfo as SymfonySplFileInfo;
-use MonorepoBuilder20220111\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder20220115\Symfony\Component\Finder\Finder as SymfonyFinder;
+use MonorepoBuilder20220115\Symfony\Component\Finder\SplFileInfo as SymfonySplFileInfo;
+use MonorepoBuilder20220115\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\SmartFileSystem\Tests\Finder\FinderSanitizer\FinderSanitizerTest
  */
@@ -27,7 +27,7 @@ final class FinderSanitizer
             }
             /** @var string $realPath */
             $realPath = $fileInfo->getRealPath();
-            $smartFileInfos[] = new \MonorepoBuilder20220111\Symplify\SmartFileSystem\SmartFileInfo($realPath);
+            $smartFileInfos[] = new \MonorepoBuilder20220115\Symplify\SmartFileSystem\SmartFileInfo($realPath);
         }
         return $smartFileInfos;
     }
