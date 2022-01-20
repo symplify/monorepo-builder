@@ -8,23 +8,23 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220117\Symfony\Component\Console\Event;
+namespace MonorepoBuilder20220120\Symfony\Component\Console\Event;
 
-use MonorepoBuilder20220117\Symfony\Component\Console\Command\Command;
-use MonorepoBuilder20220117\Symfony\Component\Console\Input\InputInterface;
-use MonorepoBuilder20220117\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder20220120\Symfony\Component\Console\Command\Command;
+use MonorepoBuilder20220120\Symfony\Component\Console\Input\InputInterface;
+use MonorepoBuilder20220120\Symfony\Component\Console\Output\OutputInterface;
 /**
  * Allows to manipulate the exit code of a command after its execution.
  *
  * @author Francesco Levorato <git@flevour.net>
  */
-final class ConsoleTerminateEvent extends \MonorepoBuilder20220117\Symfony\Component\Console\Event\ConsoleEvent
+final class ConsoleTerminateEvent extends \MonorepoBuilder20220120\Symfony\Component\Console\Event\ConsoleEvent
 {
     /**
      * @var int
      */
     private $exitCode;
-    public function __construct(\MonorepoBuilder20220117\Symfony\Component\Console\Command\Command $command, \MonorepoBuilder20220117\Symfony\Component\Console\Input\InputInterface $input, \MonorepoBuilder20220117\Symfony\Component\Console\Output\OutputInterface $output, int $exitCode)
+    public function __construct(\MonorepoBuilder20220120\Symfony\Component\Console\Command\Command $command, \MonorepoBuilder20220120\Symfony\Component\Console\Input\InputInterface $input, \MonorepoBuilder20220120\Symfony\Component\Console\Output\OutputInterface $output, int $exitCode)
     {
         parent::__construct($command, $input, $output);
         $this->setExitCode($exitCode);
