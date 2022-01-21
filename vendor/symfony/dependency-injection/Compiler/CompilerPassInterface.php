@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220120\Symfony\Component\DependencyInjection\Compiler;
+namespace MonorepoBuilder20220121\Symfony\Component\DependencyInjection\Compiler;
 
-use MonorepoBuilder20220120\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder20220121\Symfony\Component\DependencyInjection\ContainerBuilder;
 /**
  * Interface that must be implemented by compilation passes.
  *
@@ -21,5 +21,5 @@ interface CompilerPassInterface
     /**
      * You can modify the container here before it is dumped to PHP code.
      */
-    public function process(\MonorepoBuilder20220120\Symfony\Component\DependencyInjection\ContainerBuilder $container);
+    public function process(\MonorepoBuilder20220121\Symfony\Component\DependencyInjection\ContainerBuilder $container);
 }

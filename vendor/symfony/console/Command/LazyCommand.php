@@ -8,19 +8,19 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220120\Symfony\Component\Console\Command;
+namespace MonorepoBuilder20220121\Symfony\Component\Console\Command;
 
-use MonorepoBuilder20220120\Symfony\Component\Console\Application;
-use MonorepoBuilder20220120\Symfony\Component\Console\Completion\CompletionInput;
-use MonorepoBuilder20220120\Symfony\Component\Console\Completion\CompletionSuggestions;
-use MonorepoBuilder20220120\Symfony\Component\Console\Helper\HelperSet;
-use MonorepoBuilder20220120\Symfony\Component\Console\Input\InputDefinition;
-use MonorepoBuilder20220120\Symfony\Component\Console\Input\InputInterface;
-use MonorepoBuilder20220120\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder20220121\Symfony\Component\Console\Application;
+use MonorepoBuilder20220121\Symfony\Component\Console\Completion\CompletionInput;
+use MonorepoBuilder20220121\Symfony\Component\Console\Completion\CompletionSuggestions;
+use MonorepoBuilder20220121\Symfony\Component\Console\Helper\HelperSet;
+use MonorepoBuilder20220121\Symfony\Component\Console\Input\InputDefinition;
+use MonorepoBuilder20220121\Symfony\Component\Console\Input\InputInterface;
+use MonorepoBuilder20220121\Symfony\Component\Console\Output\OutputInterface;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-final class LazyCommand extends \MonorepoBuilder20220120\Symfony\Component\Console\Command\Command
+final class LazyCommand extends \MonorepoBuilder20220121\Symfony\Component\Console\Command\Command
 {
     private $command;
     /**
@@ -37,14 +37,14 @@ final class LazyCommand extends \MonorepoBuilder20220120\Symfony\Component\Conso
     {
         $this->getCommand()->ignoreValidationErrors();
     }
-    public function setApplication(\MonorepoBuilder20220120\Symfony\Component\Console\Application $application = null) : void
+    public function setApplication(\MonorepoBuilder20220121\Symfony\Component\Console\Application $application = null) : void
     {
         if ($this->command instanceof parent) {
             $this->command->setApplication($application);
         }
         parent::setApplication($application);
     }
-    public function setHelperSet(\MonorepoBuilder20220120\Symfony\Component\Console\Helper\HelperSet $helperSet) : void
+    public function setHelperSet(\MonorepoBuilder20220121\Symfony\Component\Console\Helper\HelperSet $helperSet) : void
     {
         if ($this->command instanceof parent) {
             $this->command->setHelperSet($helperSet);
@@ -55,11 +55,11 @@ final class LazyCommand extends \MonorepoBuilder20220120\Symfony\Component\Conso
     {
         return $this->isEnabled ?? $this->getCommand()->isEnabled();
     }
-    public function run(\MonorepoBuilder20220120\Symfony\Component\Console\Input\InputInterface $input, \MonorepoBuilder20220120\Symfony\Component\Console\Output\OutputInterface $output) : int
+    public function run(\MonorepoBuilder20220121\Symfony\Component\Console\Input\InputInterface $input, \MonorepoBuilder20220121\Symfony\Component\Console\Output\OutputInterface $output) : int
     {
         return $this->getCommand()->run($input, $output);
     }
-    public function complete(\MonorepoBuilder20220120\Symfony\Component\Console\Completion\CompletionInput $input, \MonorepoBuilder20220120\Symfony\Component\Console\Completion\CompletionSuggestions $suggestions) : void
+    public function complete(\MonorepoBuilder20220121\Symfony\Component\Console\Completion\CompletionInput $input, \MonorepoBuilder20220121\Symfony\Component\Console\Completion\CompletionSuggestions $suggestions) : void
     {
         $this->getCommand()->complete($input, $suggestions);
     }
@@ -87,11 +87,11 @@ final class LazyCommand extends \MonorepoBuilder20220120\Symfony\Component\Conso
         $this->getCommand()->setDefinition($definition);
         return $this;
     }
-    public function getDefinition() : \MonorepoBuilder20220120\Symfony\Component\Console\Input\InputDefinition
+    public function getDefinition() : \MonorepoBuilder20220121\Symfony\Component\Console\Input\InputDefinition
     {
         return $this->getCommand()->getDefinition();
     }
-    public function getNativeDefinition() : \MonorepoBuilder20220120\Symfony\Component\Console\Input\InputDefinition
+    public function getNativeDefinition() : \MonorepoBuilder20220121\Symfony\Component\Console\Input\InputDefinition
     {
         return $this->getCommand()->getNativeDefinition();
     }

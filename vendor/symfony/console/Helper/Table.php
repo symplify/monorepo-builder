@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220120\Symfony\Component\Console\Helper;
+namespace MonorepoBuilder20220121\Symfony\Component\Console\Helper;
 
-use MonorepoBuilder20220120\Symfony\Component\Console\Exception\InvalidArgumentException;
-use MonorepoBuilder20220120\Symfony\Component\Console\Exception\RuntimeException;
-use MonorepoBuilder20220120\Symfony\Component\Console\Formatter\OutputFormatter;
-use MonorepoBuilder20220120\Symfony\Component\Console\Formatter\WrappableOutputFormatterInterface;
-use MonorepoBuilder20220120\Symfony\Component\Console\Output\ConsoleSectionOutput;
-use MonorepoBuilder20220120\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder20220121\Symfony\Component\Console\Exception\InvalidArgumentException;
+use MonorepoBuilder20220121\Symfony\Component\Console\Exception\RuntimeException;
+use MonorepoBuilder20220121\Symfony\Component\Console\Formatter\OutputFormatter;
+use MonorepoBuilder20220121\Symfony\Component\Console\Formatter\WrappableOutputFormatterInterface;
+use MonorepoBuilder20220121\Symfony\Component\Console\Output\ConsoleSectionOutput;
+use MonorepoBuilder20220121\Symfony\Component\Console\Output\OutputInterface;
 /**
  * Provides helpers to display a table.
  *
@@ -83,7 +83,7 @@ class Table
      * @var mixed[]
      */
     private static $styles;
-    public function __construct(\MonorepoBuilder20220120\Symfony\Component\Console\Output\OutputInterface $output)
+    public function __construct(\MonorepoBuilder20220121\Symfony\Component\Console\Output\OutputInterface $output)
     {
         $this->output = $output;
         self::$styles = self::$styles ?? self::initStyles();
@@ -92,7 +92,7 @@ class Table
     /**
      * Sets a style definition.
      */
-    public static function setStyleDefinition(string $name, \MonorepoBuilder20220120\Symfony\Component\Console\Helper\TableStyle $style)
+    public static function setStyleDefinition(string $name, \MonorepoBuilder20220121\Symfony\Component\Console\Helper\TableStyle $style)
     {
         self::$styles = self::$styles ?? self::initStyles();
         self::$styles[$name] = $style;
@@ -100,11 +100,11 @@ class Table
     /**
      * Gets a style definition by name.
      */
-    public static function getStyleDefinition(string $name) : \MonorepoBuilder20220120\Symfony\Component\Console\Helper\TableStyle
+    public static function getStyleDefinition(string $name) : \MonorepoBuilder20220121\Symfony\Component\Console\Helper\TableStyle
     {
         self::$styles = self::$styles ?? self::initStyles();
         if (!isset(self::$styles[$name])) {
-            throw new \MonorepoBuilder20220120\Symfony\Component\Console\Exception\InvalidArgumentException(\sprintf('Style "%s" is not defined.', $name));
+            throw new \MonorepoBuilder20220121\Symfony\Component\Console\Exception\InvalidArgumentException(\sprintf('Style "%s" is not defined.', $name));
         }
         return self::$styles[$name];
     }
@@ -122,7 +122,7 @@ class Table
     /**
      * Gets the current table style.
      */
-    public function getStyle() : \MonorepoBuilder20220120\Symfony\Component\Console\Helper\TableStyle
+    public function getStyle() : \MonorepoBuilder20220121\Symfony\Component\Console\Helper\TableStyle
     {
         return $this->style;
     }
@@ -143,7 +143,7 @@ class Table
      *
      * If style was not set, it returns the global table style.
      */
-    public function getColumnStyle(int $columnIndex) : \MonorepoBuilder20220120\Symfony\Component\Console\Helper\TableStyle
+    public function getColumnStyle(int $columnIndex) : \MonorepoBuilder20220121\Symfony\Component\Console\Helper\TableStyle
     {
         return $this->columnStyles[$columnIndex] ?? $this->getStyle();
     }
@@ -180,8 +180,8 @@ class Table
      */
     public function setColumnMaxWidth(int $columnIndex, int $width)
     {
-        if (!$this->output->getFormatter() instanceof \MonorepoBuilder20220120\Symfony\Component\Console\Formatter\WrappableOutputFormatterInterface) {
-            throw new \LogicException(\sprintf('Setting a maximum column width is only supported when using a "%s" formatter, got "%s".', \MonorepoBuilder20220120\Symfony\Component\Console\Formatter\WrappableOutputFormatterInterface::class, \get_debug_type($this->output->getFormatter())));
+        if (!$this->output->getFormatter() instanceof \MonorepoBuilder20220121\Symfony\Component\Console\Formatter\WrappableOutputFormatterInterface) {
+            throw new \LogicException(\sprintf('Setting a maximum column width is only supported when using a "%s" formatter, got "%s".', \MonorepoBuilder20220121\Symfony\Component\Console\Formatter\WrappableOutputFormatterInterface::class, \get_debug_type($this->output->getFormatter())));
         }
         $this->columnMaxWidths[$columnIndex] = $width;
         return $this;
@@ -219,7 +219,7 @@ class Table
      */
     public function addRow($row)
     {
-        if ($row instanceof \MonorepoBuilder20220120\Symfony\Component\Console\Helper\TableSeparator) {
+        if ($row instanceof \MonorepoBuilder20220121\Symfony\Component\Console\Helper\TableSeparator) {
             $this->rows[] = $row;
             return $this;
         }
@@ -234,8 +234,8 @@ class Table
      */
     public function appendRow($row)
     {
-        if (!$this->output instanceof \MonorepoBuilder20220120\Symfony\Component\Console\Output\ConsoleSectionOutput) {
-            throw new \MonorepoBuilder20220120\Symfony\Component\Console\Exception\RuntimeException(\sprintf('Output should be an instance of "%s" when calling "%s".', \MonorepoBuilder20220120\Symfony\Component\Console\Output\ConsoleSectionOutput::class, __METHOD__));
+        if (!$this->output instanceof \MonorepoBuilder20220121\Symfony\Component\Console\Output\ConsoleSectionOutput) {
+            throw new \MonorepoBuilder20220121\Symfony\Component\Console\Exception\RuntimeException(\sprintf('Output should be an instance of "%s" when calling "%s".', \MonorepoBuilder20220121\Symfony\Component\Console\Output\ConsoleSectionOutput::class, __METHOD__));
         }
         if ($this->rendered) {
             $this->output->clear($this->calculateRowCount());
@@ -292,18 +292,18 @@ class Table
      */
     public function render()
     {
-        $divider = new \MonorepoBuilder20220120\Symfony\Component\Console\Helper\TableSeparator();
+        $divider = new \MonorepoBuilder20220121\Symfony\Component\Console\Helper\TableSeparator();
         if ($this->horizontal) {
             $rows = [];
             foreach ($this->headers[0] ?? [] as $i => $header) {
                 $rows[$i] = [$header];
                 foreach ($this->rows as $row) {
-                    if ($row instanceof \MonorepoBuilder20220120\Symfony\Component\Console\Helper\TableSeparator) {
+                    if ($row instanceof \MonorepoBuilder20220121\Symfony\Component\Console\Helper\TableSeparator) {
                         continue;
                     }
                     if (isset($row[$i])) {
                         $rows[$i][] = $row[$i];
-                    } elseif ($rows[$i][0] instanceof \MonorepoBuilder20220120\Symfony\Component\Console\Helper\TableCell && $rows[$i][0]->getColspan() >= 2) {
+                    } elseif ($rows[$i][0] instanceof \MonorepoBuilder20220121\Symfony\Component\Console\Helper\TableCell && $rows[$i][0]->getColspan() >= 2) {
                         // Noop, there is a "title"
                     } else {
                         $rows[$i][] = null;
@@ -325,7 +325,7 @@ class Table
                 $isFirstRow = \true;
                 continue;
             }
-            if ($row instanceof \MonorepoBuilder20220120\Symfony\Component\Console\Helper\TableSeparator) {
+            if ($row instanceof \MonorepoBuilder20220121\Symfony\Component\Console\Helper\TableSeparator) {
                 $this->renderRowSeparator();
                 continue;
             }
@@ -379,12 +379,12 @@ class Table
             $markup .= $column === $count - 1 ? $rightChar : $midChar;
         }
         if (null !== $title) {
-            $titleLength = \MonorepoBuilder20220120\Symfony\Component\Console\Helper\Helper::width(\MonorepoBuilder20220120\Symfony\Component\Console\Helper\Helper::removeDecoration($formatter = $this->output->getFormatter(), $formattedTitle = \sprintf($titleFormat, $title)));
-            $markupLength = \MonorepoBuilder20220120\Symfony\Component\Console\Helper\Helper::width($markup);
+            $titleLength = \MonorepoBuilder20220121\Symfony\Component\Console\Helper\Helper::width(\MonorepoBuilder20220121\Symfony\Component\Console\Helper\Helper::removeDecoration($formatter = $this->output->getFormatter(), $formattedTitle = \sprintf($titleFormat, $title)));
+            $markupLength = \MonorepoBuilder20220121\Symfony\Component\Console\Helper\Helper::width($markup);
             if ($titleLength > ($limit = $markupLength - 4)) {
                 $titleLength = $limit;
-                $formatLength = \MonorepoBuilder20220120\Symfony\Component\Console\Helper\Helper::width(\MonorepoBuilder20220120\Symfony\Component\Console\Helper\Helper::removeDecoration($formatter, \sprintf($titleFormat, '')));
-                $formattedTitle = \sprintf($titleFormat, \MonorepoBuilder20220120\Symfony\Component\Console\Helper\Helper::substr($title, 0, $limit - $formatLength - 3) . '...');
+                $formatLength = \MonorepoBuilder20220121\Symfony\Component\Console\Helper\Helper::width(\MonorepoBuilder20220121\Symfony\Component\Console\Helper\Helper::removeDecoration($formatter, \sprintf($titleFormat, '')));
+                $formattedTitle = \sprintf($titleFormat, \MonorepoBuilder20220121\Symfony\Component\Console\Helper\Helper::substr($title, 0, $limit - $formatLength - 3) . '...');
             }
             $titleStart = \intdiv($markupLength - $titleLength, 2);
             if (\false === \mb_detect_encoding($markup, null, \true)) {
@@ -432,7 +432,7 @@ class Table
     {
         $cell = $row[$column] ?? '';
         $width = $this->effectiveColumnWidths[$column];
-        if ($cell instanceof \MonorepoBuilder20220120\Symfony\Component\Console\Helper\TableCell && $cell->getColspan() > 1) {
+        if ($cell instanceof \MonorepoBuilder20220121\Symfony\Component\Console\Helper\TableCell && $cell->getColspan() > 1) {
             // add the width of the following columns(numbers of colspan).
             foreach (\range($column + 1, $column + $cell->getColspan() - 1) as $nextColumn) {
                 $width += $this->getColumnSeparatorWidth() + $this->effectiveColumnWidths[$nextColumn];
@@ -443,13 +443,13 @@ class Table
             $width += \strlen($cell) - \mb_strwidth($cell, $encoding);
         }
         $style = $this->getColumnStyle($column);
-        if ($cell instanceof \MonorepoBuilder20220120\Symfony\Component\Console\Helper\TableSeparator) {
+        if ($cell instanceof \MonorepoBuilder20220121\Symfony\Component\Console\Helper\TableSeparator) {
             return \sprintf($style->getBorderFormat(), \str_repeat($style->getBorderChars()[2], $width));
         }
-        $width += \MonorepoBuilder20220120\Symfony\Component\Console\Helper\Helper::length($cell) - \MonorepoBuilder20220120\Symfony\Component\Console\Helper\Helper::length(\MonorepoBuilder20220120\Symfony\Component\Console\Helper\Helper::removeDecoration($this->output->getFormatter(), $cell));
+        $width += \MonorepoBuilder20220121\Symfony\Component\Console\Helper\Helper::length($cell) - \MonorepoBuilder20220121\Symfony\Component\Console\Helper\Helper::length(\MonorepoBuilder20220121\Symfony\Component\Console\Helper\Helper::removeDecoration($this->output->getFormatter(), $cell));
         $content = \sprintf($style->getCellRowContentFormat(), $cell);
         $padType = $style->getPadType();
-        if ($cell instanceof \MonorepoBuilder20220120\Symfony\Component\Console\Helper\TableCell && $cell->getStyle() instanceof \MonorepoBuilder20220120\Symfony\Component\Console\Helper\TableCellStyle) {
+        if ($cell instanceof \MonorepoBuilder20220121\Symfony\Component\Console\Helper\TableCell && $cell->getStyle() instanceof \MonorepoBuilder20220121\Symfony\Component\Console\Helper\TableCellStyle) {
             $isNotStyledByTag = !\preg_match('/^<(\\w+|(\\w+=[\\w,]+;?)*)>.+<\\/(\\w+|(\\w+=\\w+;?)*)?>$/', $cell);
             if ($isNotStyledByTag) {
                 $cellFormat = $cell->getStyle()->getCellFormat();
@@ -477,14 +477,14 @@ class Table
     {
         $columns = [0];
         foreach ($rows as $row) {
-            if ($row instanceof \MonorepoBuilder20220120\Symfony\Component\Console\Helper\TableSeparator) {
+            if ($row instanceof \MonorepoBuilder20220121\Symfony\Component\Console\Helper\TableSeparator) {
                 continue;
             }
             $columns[] = $this->getNumberOfColumns($row);
         }
         $this->numberOfColumns = \max($columns);
     }
-    private function buildTableRows(array $rows) : \MonorepoBuilder20220120\Symfony\Component\Console\Helper\TableRows
+    private function buildTableRows(array $rows) : \MonorepoBuilder20220121\Symfony\Component\Console\Helper\TableRows
     {
         /** @var WrappableOutputFormatterInterface $formatter */
         $formatter = $this->output->getFormatter();
@@ -493,19 +493,19 @@ class Table
             $rows = $this->fillNextRows($rows, $rowKey);
             // Remove any new line breaks and replace it with a new line
             foreach ($rows[$rowKey] as $column => $cell) {
-                $colspan = $cell instanceof \MonorepoBuilder20220120\Symfony\Component\Console\Helper\TableCell ? $cell->getColspan() : 1;
-                if (isset($this->columnMaxWidths[$column]) && \MonorepoBuilder20220120\Symfony\Component\Console\Helper\Helper::width(\MonorepoBuilder20220120\Symfony\Component\Console\Helper\Helper::removeDecoration($formatter, $cell)) > $this->columnMaxWidths[$column]) {
+                $colspan = $cell instanceof \MonorepoBuilder20220121\Symfony\Component\Console\Helper\TableCell ? $cell->getColspan() : 1;
+                if (isset($this->columnMaxWidths[$column]) && \MonorepoBuilder20220121\Symfony\Component\Console\Helper\Helper::width(\MonorepoBuilder20220121\Symfony\Component\Console\Helper\Helper::removeDecoration($formatter, $cell)) > $this->columnMaxWidths[$column]) {
                     $cell = $formatter->formatAndWrap($cell, $this->columnMaxWidths[$column] * $colspan);
                 }
                 if (!\strstr($cell ?? '', "\n")) {
                     continue;
                 }
-                $escaped = \implode("\n", \array_map([\MonorepoBuilder20220120\Symfony\Component\Console\Formatter\OutputFormatter::class, 'escapeTrailingBackslash'], \explode("\n", $cell)));
-                $cell = $cell instanceof \MonorepoBuilder20220120\Symfony\Component\Console\Helper\TableCell ? new \MonorepoBuilder20220120\Symfony\Component\Console\Helper\TableCell($escaped, ['colspan' => $cell->getColspan()]) : $escaped;
+                $escaped = \implode("\n", \array_map([\MonorepoBuilder20220121\Symfony\Component\Console\Formatter\OutputFormatter::class, 'escapeTrailingBackslash'], \explode("\n", $cell)));
+                $cell = $cell instanceof \MonorepoBuilder20220121\Symfony\Component\Console\Helper\TableCell ? new \MonorepoBuilder20220121\Symfony\Component\Console\Helper\TableCell($escaped, ['colspan' => $cell->getColspan()]) : $escaped;
                 $lines = \explode("\n", \str_replace("\n", "<fg=default;bg=default>\n</>", $cell));
                 foreach ($lines as $lineKey => $line) {
                     if ($colspan > 1) {
-                        $line = new \MonorepoBuilder20220120\Symfony\Component\Console\Helper\TableCell($line, ['colspan' => $colspan]);
+                        $line = new \MonorepoBuilder20220121\Symfony\Component\Console\Helper\TableCell($line, ['colspan' => $colspan]);
                     }
                     if (0 === $lineKey) {
                         $rows[$rowKey][$column] = $line;
@@ -518,12 +518,12 @@ class Table
                 }
             }
         }
-        return new \MonorepoBuilder20220120\Symfony\Component\Console\Helper\TableRows(function () use($rows, $unmergedRows) : \Traversable {
+        return new \MonorepoBuilder20220121\Symfony\Component\Console\Helper\TableRows(function () use($rows, $unmergedRows) : \Traversable {
             foreach ($rows as $rowKey => $row) {
-                (yield $row instanceof \MonorepoBuilder20220120\Symfony\Component\Console\Helper\TableSeparator ? $row : $this->fillCells($row));
+                (yield $row instanceof \MonorepoBuilder20220121\Symfony\Component\Console\Helper\TableSeparator ? $row : $this->fillCells($row));
                 if (isset($unmergedRows[$rowKey])) {
                     foreach ($unmergedRows[$rowKey] as $row) {
-                        (yield $row instanceof \MonorepoBuilder20220120\Symfony\Component\Console\Helper\TableSeparator ? $row : $this->fillCells($row));
+                        (yield $row instanceof \MonorepoBuilder20220121\Symfony\Component\Console\Helper\TableSeparator ? $row : $this->fillCells($row));
                     }
                 }
             }
@@ -531,7 +531,7 @@ class Table
     }
     private function calculateRowCount() : int
     {
-        $numberOfRows = \count(\iterator_to_array($this->buildTableRows(\array_merge($this->headers, [new \MonorepoBuilder20220120\Symfony\Component\Console\Helper\TableSeparator()], $this->rows))));
+        $numberOfRows = \count(\iterator_to_array($this->buildTableRows(\array_merge($this->headers, [new \MonorepoBuilder20220121\Symfony\Component\Console\Helper\TableSeparator()], $this->rows))));
         if ($this->headers) {
             ++$numberOfRows;
             // Add row for header separator
@@ -551,23 +551,23 @@ class Table
     {
         $unmergedRows = [];
         foreach ($rows[$line] as $column => $cell) {
-            if (null !== $cell && !$cell instanceof \MonorepoBuilder20220120\Symfony\Component\Console\Helper\TableCell && !\is_scalar($cell) && !$cell instanceof \Stringable) {
-                throw new \MonorepoBuilder20220120\Symfony\Component\Console\Exception\InvalidArgumentException(\sprintf('A cell must be a TableCell, a scalar or an object implementing "__toString()", "%s" given.', \get_debug_type($cell)));
+            if (null !== $cell && !$cell instanceof \MonorepoBuilder20220121\Symfony\Component\Console\Helper\TableCell && !\is_scalar($cell) && !$cell instanceof \Stringable) {
+                throw new \MonorepoBuilder20220121\Symfony\Component\Console\Exception\InvalidArgumentException(\sprintf('A cell must be a TableCell, a scalar or an object implementing "__toString()", "%s" given.', \get_debug_type($cell)));
             }
-            if ($cell instanceof \MonorepoBuilder20220120\Symfony\Component\Console\Helper\TableCell && $cell->getRowspan() > 1) {
+            if ($cell instanceof \MonorepoBuilder20220121\Symfony\Component\Console\Helper\TableCell && $cell->getRowspan() > 1) {
                 $nbLines = $cell->getRowspan() - 1;
                 $lines = [$cell];
                 if (\strstr($cell, "\n")) {
                     $lines = \explode("\n", \str_replace("\n", "<fg=default;bg=default>\n</>", $cell));
                     $nbLines = \count($lines) > $nbLines ? \substr_count($cell, "\n") : $nbLines;
-                    $rows[$line][$column] = new \MonorepoBuilder20220120\Symfony\Component\Console\Helper\TableCell($lines[0], ['colspan' => $cell->getColspan(), 'style' => $cell->getStyle()]);
+                    $rows[$line][$column] = new \MonorepoBuilder20220121\Symfony\Component\Console\Helper\TableCell($lines[0], ['colspan' => $cell->getColspan(), 'style' => $cell->getStyle()]);
                     unset($lines[0]);
                 }
                 // create a two dimensional array (rowspan x colspan)
                 $unmergedRows = \array_replace_recursive(\array_fill($line + 1, $nbLines, []), $unmergedRows);
                 foreach ($unmergedRows as $unmergedRowKey => $unmergedRow) {
                     $value = $lines[$unmergedRowKey - $line] ?? '';
-                    $unmergedRows[$unmergedRowKey][$column] = new \MonorepoBuilder20220120\Symfony\Component\Console\Helper\TableCell($value, ['colspan' => $cell->getColspan(), 'style' => $cell->getStyle()]);
+                    $unmergedRows[$unmergedRowKey][$column] = new \MonorepoBuilder20220121\Symfony\Component\Console\Helper\TableCell($value, ['colspan' => $cell->getColspan(), 'style' => $cell->getStyle()]);
                     if ($nbLines === $unmergedRowKey - $line) {
                         break;
                     }
@@ -601,7 +601,7 @@ class Table
         $newRow = [];
         foreach ($row as $column => $cell) {
             $newRow[] = $cell;
-            if ($cell instanceof \MonorepoBuilder20220120\Symfony\Component\Console\Helper\TableCell && $cell->getColspan() > 1) {
+            if ($cell instanceof \MonorepoBuilder20220121\Symfony\Component\Console\Helper\TableCell && $cell->getColspan() > 1) {
                 foreach (\range($column + 1, $column + $cell->getColspan() - 1) as $position) {
                     // insert empty value at column position
                     $newRow[] = '';
@@ -615,8 +615,8 @@ class Table
         $row = $rows[$line];
         foreach ($row as $cellKey => $cellValue) {
             $row[$cellKey] = '';
-            if ($cellValue instanceof \MonorepoBuilder20220120\Symfony\Component\Console\Helper\TableCell) {
-                $row[$cellKey] = new \MonorepoBuilder20220120\Symfony\Component\Console\Helper\TableCell('', ['colspan' => $cellValue->getColspan()]);
+            if ($cellValue instanceof \MonorepoBuilder20220121\Symfony\Component\Console\Helper\TableCell) {
+                $row[$cellKey] = new \MonorepoBuilder20220121\Symfony\Component\Console\Helper\TableCell('', ['colspan' => $cellValue->getColspan()]);
             }
         }
         return $row;
@@ -628,7 +628,7 @@ class Table
     {
         $columns = \count($row);
         foreach ($row as $column) {
-            $columns += $column instanceof \MonorepoBuilder20220120\Symfony\Component\Console\Helper\TableCell ? $column->getColspan() - 1 : 0;
+            $columns += $column instanceof \MonorepoBuilder20220121\Symfony\Component\Console\Helper\TableCell ? $column->getColspan() - 1 : 0;
         }
         return $columns;
     }
@@ -639,7 +639,7 @@ class Table
     {
         $columns = \range(0, $this->numberOfColumns - 1);
         foreach ($row as $cellKey => $cell) {
-            if ($cell instanceof \MonorepoBuilder20220120\Symfony\Component\Console\Helper\TableCell && $cell->getColspan() > 1) {
+            if ($cell instanceof \MonorepoBuilder20220121\Symfony\Component\Console\Helper\TableCell && $cell->getColspan() > 1) {
                 // exclude grouped columns.
                 $columns = \array_diff($columns, \range($cellKey + 1, $cellKey + $cell->getColspan() - 1));
             }
@@ -654,13 +654,13 @@ class Table
         for ($column = 0; $column < $this->numberOfColumns; ++$column) {
             $lengths = [];
             foreach ($rows as $row) {
-                if ($row instanceof \MonorepoBuilder20220120\Symfony\Component\Console\Helper\TableSeparator) {
+                if ($row instanceof \MonorepoBuilder20220121\Symfony\Component\Console\Helper\TableSeparator) {
                     continue;
                 }
                 foreach ($row as $i => $cell) {
-                    if ($cell instanceof \MonorepoBuilder20220120\Symfony\Component\Console\Helper\TableCell) {
-                        $textContent = \MonorepoBuilder20220120\Symfony\Component\Console\Helper\Helper::removeDecoration($this->output->getFormatter(), $cell);
-                        $textLength = \MonorepoBuilder20220120\Symfony\Component\Console\Helper\Helper::width($textContent);
+                    if ($cell instanceof \MonorepoBuilder20220121\Symfony\Component\Console\Helper\TableCell) {
+                        $textContent = \MonorepoBuilder20220121\Symfony\Component\Console\Helper\Helper::removeDecoration($this->output->getFormatter(), $cell);
+                        $textLength = \MonorepoBuilder20220121\Symfony\Component\Console\Helper\Helper::width($textContent);
                         if ($textLength > 0) {
                             $contentColumns = \str_split($textContent, \ceil($textLength / $cell->getColspan()));
                             foreach ($contentColumns as $position => $content) {
@@ -671,19 +671,19 @@ class Table
                 }
                 $lengths[] = $this->getCellWidth($row, $column);
             }
-            $this->effectiveColumnWidths[$column] = \max($lengths) + \MonorepoBuilder20220120\Symfony\Component\Console\Helper\Helper::width($this->style->getCellRowContentFormat()) - 2;
+            $this->effectiveColumnWidths[$column] = \max($lengths) + \MonorepoBuilder20220121\Symfony\Component\Console\Helper\Helper::width($this->style->getCellRowContentFormat()) - 2;
         }
     }
     private function getColumnSeparatorWidth() : int
     {
-        return \MonorepoBuilder20220120\Symfony\Component\Console\Helper\Helper::width(\sprintf($this->style->getBorderFormat(), $this->style->getBorderChars()[3]));
+        return \MonorepoBuilder20220121\Symfony\Component\Console\Helper\Helper::width(\sprintf($this->style->getBorderFormat(), $this->style->getBorderChars()[3]));
     }
     private function getCellWidth(array $row, int $column) : int
     {
         $cellWidth = 0;
         if (isset($row[$column])) {
             $cell = $row[$column];
-            $cellWidth = \MonorepoBuilder20220120\Symfony\Component\Console\Helper\Helper::width(\MonorepoBuilder20220120\Symfony\Component\Console\Helper\Helper::removeDecoration($this->output->getFormatter(), $cell));
+            $cellWidth = \MonorepoBuilder20220121\Symfony\Component\Console\Helper\Helper::width(\MonorepoBuilder20220121\Symfony\Component\Console\Helper\Helper::removeDecoration($this->output->getFormatter(), $cell));
         }
         $columnWidth = $this->columnWidths[$column] ?? 0;
         $cellWidth = \max($cellWidth, $columnWidth);
@@ -702,26 +702,26 @@ class Table
      */
     private static function initStyles() : array
     {
-        $borderless = new \MonorepoBuilder20220120\Symfony\Component\Console\Helper\TableStyle();
+        $borderless = new \MonorepoBuilder20220121\Symfony\Component\Console\Helper\TableStyle();
         $borderless->setHorizontalBorderChars('=')->setVerticalBorderChars(' ')->setDefaultCrossingChar(' ');
-        $compact = new \MonorepoBuilder20220120\Symfony\Component\Console\Helper\TableStyle();
+        $compact = new \MonorepoBuilder20220121\Symfony\Component\Console\Helper\TableStyle();
         $compact->setHorizontalBorderChars('')->setVerticalBorderChars(' ')->setDefaultCrossingChar('')->setCellRowContentFormat('%s');
-        $styleGuide = new \MonorepoBuilder20220120\Symfony\Component\Console\Helper\TableStyle();
+        $styleGuide = new \MonorepoBuilder20220121\Symfony\Component\Console\Helper\TableStyle();
         $styleGuide->setHorizontalBorderChars('-')->setVerticalBorderChars(' ')->setDefaultCrossingChar(' ')->setCellHeaderFormat('%s');
-        $box = (new \MonorepoBuilder20220120\Symfony\Component\Console\Helper\TableStyle())->setHorizontalBorderChars('─')->setVerticalBorderChars('│')->setCrossingChars('┼', '┌', '┬', '┐', '┤', '┘', '┴', '└', '├');
-        $boxDouble = (new \MonorepoBuilder20220120\Symfony\Component\Console\Helper\TableStyle())->setHorizontalBorderChars('═', '─')->setVerticalBorderChars('║', '│')->setCrossingChars('┼', '╔', '╤', '╗', '╢', '╝', '╧', '╚', '╟', '╠', '╪', '╣');
-        return ['default' => new \MonorepoBuilder20220120\Symfony\Component\Console\Helper\TableStyle(), 'borderless' => $borderless, 'compact' => $compact, 'symfony-style-guide' => $styleGuide, 'box' => $box, 'box-double' => $boxDouble];
+        $box = (new \MonorepoBuilder20220121\Symfony\Component\Console\Helper\TableStyle())->setHorizontalBorderChars('─')->setVerticalBorderChars('│')->setCrossingChars('┼', '┌', '┬', '┐', '┤', '┘', '┴', '└', '├');
+        $boxDouble = (new \MonorepoBuilder20220121\Symfony\Component\Console\Helper\TableStyle())->setHorizontalBorderChars('═', '─')->setVerticalBorderChars('║', '│')->setCrossingChars('┼', '╔', '╤', '╗', '╢', '╝', '╧', '╚', '╟', '╠', '╪', '╣');
+        return ['default' => new \MonorepoBuilder20220121\Symfony\Component\Console\Helper\TableStyle(), 'borderless' => $borderless, 'compact' => $compact, 'symfony-style-guide' => $styleGuide, 'box' => $box, 'box-double' => $boxDouble];
     }
     /**
      * @param string|\Symfony\Component\Console\Helper\TableStyle $name
      */
-    private function resolveStyle($name) : \MonorepoBuilder20220120\Symfony\Component\Console\Helper\TableStyle
+    private function resolveStyle($name) : \MonorepoBuilder20220121\Symfony\Component\Console\Helper\TableStyle
     {
-        if ($name instanceof \MonorepoBuilder20220120\Symfony\Component\Console\Helper\TableStyle) {
+        if ($name instanceof \MonorepoBuilder20220121\Symfony\Component\Console\Helper\TableStyle) {
             return $name;
         }
         if (!isset(self::$styles[$name])) {
-            throw new \MonorepoBuilder20220120\Symfony\Component\Console\Exception\InvalidArgumentException(\sprintf('Style "%s" is not defined.', $name));
+            throw new \MonorepoBuilder20220121\Symfony\Component\Console\Exception\InvalidArgumentException(\sprintf('Style "%s" is not defined.', $name));
         }
         return self::$styles[$name];
     }

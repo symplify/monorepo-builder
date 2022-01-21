@@ -31,13 +31,13 @@
     },
     "autoload": {
         "psr-4": {
-            "MonorepoBuilder20220120\\Webmozart\\Assert\\": "src\/"
+            "MonorepoBuilder20220121\\Webmozart\\Assert\\": "src\/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "MonorepoBuilder20220120\\Webmozart\\Assert\\Tests\\": "tests\/",
-            "MonorepoBuilder20220120\\Webmozart\\Assert\\Bin\\": "bin\/src"
+            "MonorepoBuilder20220121\\Webmozart\\Assert\\Tests\\": "tests\/",
+            "MonorepoBuilder20220121\\Webmozart\\Assert\\Bin\\": "bin\/src"
         }
     }
 }
