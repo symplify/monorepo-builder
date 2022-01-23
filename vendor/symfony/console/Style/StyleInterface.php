@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220121\Symfony\Component\Console\Style;
+namespace MonorepoBuilder20220123\Symfony\Component\Console\Style;
 
 /**
  * Output style helpers.
