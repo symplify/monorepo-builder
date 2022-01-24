@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20220123\Symplify\EasyTesting\ValueObject\FixtureSplit;
+namespace MonorepoBuilder20220124\Symplify\EasyTesting\ValueObject\FixtureSplit;
 
 final class TrioContent
 {
