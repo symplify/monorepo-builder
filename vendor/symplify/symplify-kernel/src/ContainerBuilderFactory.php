@@ -26,6 +26,8 @@ final class ContainerBuilderFactory
      */
     public function create(array $extensions, array $compilerPasses, array $configFiles) : \MonorepoBuilder20220124\Symfony\Component\DependencyInjection\ContainerBuilder
     {
+        \MonorepoBuilder20220124\Webmozart\Assert\Assert::allIsAOf($extensions, \MonorepoBuilder20220124\Symfony\Component\DependencyInjection\Extension\ExtensionInterface::class);
+        \MonorepoBuilder20220124\Webmozart\Assert\Assert::allIsAOf($compilerPasses, \MonorepoBuilder20220124\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface::class);
         \MonorepoBuilder20220124\Webmozart\Assert\Assert::allString($configFiles);
         \MonorepoBuilder20220124\Webmozart\Assert\Assert::allFile($configFiles);
         $containerBuilder = new \MonorepoBuilder20220124\Symfony\Component\DependencyInjection\ContainerBuilder();

@@ -3,8 +3,10 @@
 declare (strict_types=1);
 namespace MonorepoBuilder20220124\Symplify\SymplifyKernel\HttpKernel;
 
+use MonorepoBuilder20220124\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use MonorepoBuilder20220124\Symfony\Component\DependencyInjection\Container;
 use MonorepoBuilder20220124\Symfony\Component\DependencyInjection\ContainerInterface;
+use MonorepoBuilder20220124\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use MonorepoBuilder20220124\Symplify\AutowireArrayParameter\DependencyInjection\CompilerPass\AutowireArrayParameterCompilerPass;
 use MonorepoBuilder20220124\Symplify\SymplifyKernel\Config\Loader\ParameterMergingLoaderFactory;
 use MonorepoBuilder20220124\Symplify\SymplifyKernel\ContainerBuilderFactory;
@@ -21,6 +23,8 @@ abstract class AbstractSymplifyKernel implements \MonorepoBuilder20220124\Sympli
      */
     private $container = null;
     /**
+     * @param ExtensionInterface[] $extensions
+     * @param CompilerPassInterface[] $compilerPasses
      * @param string[] $configFiles
      */
     public function create(array $extensions, array $compilerPasses, array $configFiles) : \MonorepoBuilder20220124\Symfony\Component\DependencyInjection\ContainerInterface
