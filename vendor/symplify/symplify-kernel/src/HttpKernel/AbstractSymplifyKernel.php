@@ -27,7 +27,7 @@ abstract class AbstractSymplifyKernel implements \MonorepoBuilder20220125\Sympli
      * @param CompilerPassInterface[] $compilerPasses
      * @param ExtensionInterface[] $extensions
      */
-    public function create(array $configFiles, array $compilerPasses, array $extensions) : \MonorepoBuilder20220125\Symfony\Component\DependencyInjection\ContainerInterface
+    public function create(array $configFiles, array $compilerPasses = [], array $extensions = []) : \MonorepoBuilder20220125\Symfony\Component\DependencyInjection\ContainerInterface
     {
         $containerBuilderFactory = new \MonorepoBuilder20220125\Symplify\SymplifyKernel\ContainerBuilderFactory(new \MonorepoBuilder20220125\Symplify\SymplifyKernel\Config\Loader\ParameterMergingLoaderFactory());
         $compilerPasses[] = new \MonorepoBuilder20220125\Symplify\AutowireArrayParameter\DependencyInjection\CompilerPass\AutowireArrayParameterCompilerPass();
