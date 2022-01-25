@@ -21,6 +21,6 @@ final class MonorepoBuilderKernel extends \MonorepoBuilder20220125\Symplify\Symp
         $configFiles[] = \MonorepoBuilder20220125\Symplify\ConsoleColorDiff\ValueObject\ConsoleColorDiffConfig::FILE_PATH;
         $autowireInterfacesCompilerPass = new \MonorepoBuilder20220125\Symplify\PackageBuilder\DependencyInjection\CompilerPass\AutowireInterfacesCompilerPass([\Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface::class]);
         $compilerPasses = [$autowireInterfacesCompilerPass];
-        return $this->create([], $compilerPasses, $configFiles);
+        return $this->create($configFiles, $compilerPasses, []);
     }
 }
