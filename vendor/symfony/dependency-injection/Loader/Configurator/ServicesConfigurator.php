@@ -8,19 +8,19 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220125\Symfony\Component\DependencyInjection\Loader\Configurator;
+namespace MonorepoBuilder20220126\Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use MonorepoBuilder20220125\Symfony\Component\DependencyInjection\Alias;
-use MonorepoBuilder20220125\Symfony\Component\DependencyInjection\ChildDefinition;
-use MonorepoBuilder20220125\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder20220125\Symfony\Component\DependencyInjection\Definition;
-use MonorepoBuilder20220125\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use MonorepoBuilder20220125\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
-use MonorepoBuilder20220125\Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
+use MonorepoBuilder20220126\Symfony\Component\DependencyInjection\Alias;
+use MonorepoBuilder20220126\Symfony\Component\DependencyInjection\ChildDefinition;
+use MonorepoBuilder20220126\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder20220126\Symfony\Component\DependencyInjection\Definition;
+use MonorepoBuilder20220126\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use MonorepoBuilder20220126\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
+use MonorepoBuilder20220126\Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class ServicesConfigurator extends \MonorepoBuilder20220125\Symfony\Component\DependencyInjection\Loader\Configurator\AbstractConfigurator
+class ServicesConfigurator extends \MonorepoBuilder20220126\Symfony\Component\DependencyInjection\Loader\Configurator\AbstractConfigurator
 {
     public const FACTORY = 'services';
     private $defaults;
@@ -42,31 +42,31 @@ class ServicesConfigurator extends \MonorepoBuilder20220125\Symfony\Component\De
      * @var int
      */
     private $anonymousCount;
-    public function __construct(\MonorepoBuilder20220125\Symfony\Component\DependencyInjection\ContainerBuilder $container, \MonorepoBuilder20220125\Symfony\Component\DependencyInjection\Loader\PhpFileLoader $loader, array &$instanceof, string $path = null, int &$anonymousCount = 0)
+    public function __construct(\MonorepoBuilder20220126\Symfony\Component\DependencyInjection\ContainerBuilder $container, \MonorepoBuilder20220126\Symfony\Component\DependencyInjection\Loader\PhpFileLoader $loader, array &$instanceof, string $path = null, int &$anonymousCount = 0)
     {
-        $this->defaults = new \MonorepoBuilder20220125\Symfony\Component\DependencyInjection\Definition();
+        $this->defaults = new \MonorepoBuilder20220126\Symfony\Component\DependencyInjection\Definition();
         $this->container = $container;
         $this->loader = $loader;
         $this->instanceof =& $instanceof;
         $this->path = $path;
-        $this->anonymousHash = \MonorepoBuilder20220125\Symfony\Component\DependencyInjection\ContainerBuilder::hash($path ?: \mt_rand());
+        $this->anonymousHash = \MonorepoBuilder20220126\Symfony\Component\DependencyInjection\ContainerBuilder::hash($path ?: \mt_rand());
         $this->anonymousCount =& $anonymousCount;
         $instanceof = [];
     }
     /**
      * Defines a set of defaults for following service definitions.
      */
-    public final function defaults() : \MonorepoBuilder20220125\Symfony\Component\DependencyInjection\Loader\Configurator\DefaultsConfigurator
+    public final function defaults() : \MonorepoBuilder20220126\Symfony\Component\DependencyInjection\Loader\Configurator\DefaultsConfigurator
     {
-        return new \MonorepoBuilder20220125\Symfony\Component\DependencyInjection\Loader\Configurator\DefaultsConfigurator($this, $this->defaults = new \MonorepoBuilder20220125\Symfony\Component\DependencyInjection\Definition(), $this->path);
+        return new \MonorepoBuilder20220126\Symfony\Component\DependencyInjection\Loader\Configurator\DefaultsConfigurator($this, $this->defaults = new \MonorepoBuilder20220126\Symfony\Component\DependencyInjection\Definition(), $this->path);
     }
     /**
      * Defines an instanceof-conditional to be applied to following service definitions.
      */
-    public final function instanceof(string $fqcn) : \MonorepoBuilder20220125\Symfony\Component\DependencyInjection\Loader\Configurator\InstanceofConfigurator
+    public final function instanceof(string $fqcn) : \MonorepoBuilder20220126\Symfony\Component\DependencyInjection\Loader\Configurator\InstanceofConfigurator
     {
-        $this->instanceof[$fqcn] = $definition = new \MonorepoBuilder20220125\Symfony\Component\DependencyInjection\ChildDefinition('');
-        return new \MonorepoBuilder20220125\Symfony\Component\DependencyInjection\Loader\Configurator\InstanceofConfigurator($this, $definition, $fqcn, $this->path);
+        $this->instanceof[$fqcn] = $definition = new \MonorepoBuilder20220126\Symfony\Component\DependencyInjection\ChildDefinition('');
+        return new \MonorepoBuilder20220126\Symfony\Component\DependencyInjection\Loader\Configurator\InstanceofConfigurator($this, $definition, $fqcn, $this->path);
     }
     /**
      * Registers a service.
@@ -74,10 +74,10 @@ class ServicesConfigurator extends \MonorepoBuilder20220125\Symfony\Component\De
      * @param string|null $id    The service id, or null to create an anonymous service
      * @param string|null $class The class of the service, or null when $id is also the class name
      */
-    public final function set(?string $id, string $class = null) : \MonorepoBuilder20220125\Symfony\Component\DependencyInjection\Loader\Configurator\ServiceConfigurator
+    public final function set(?string $id, string $class = null) : \MonorepoBuilder20220126\Symfony\Component\DependencyInjection\Loader\Configurator\ServiceConfigurator
     {
         $defaults = $this->defaults;
-        $definition = new \MonorepoBuilder20220125\Symfony\Component\DependencyInjection\Definition();
+        $definition = new \MonorepoBuilder20220126\Symfony\Component\DependencyInjection\Definition();
         if (null === $id) {
             if (!$class) {
                 throw new \LogicException('Anonymous services must have a class name.');
@@ -91,7 +91,7 @@ class ServicesConfigurator extends \MonorepoBuilder20220125\Symfony\Component\De
         // deep clone, to avoid multiple process of the same instance in the passes
         $definition->setBindings(\unserialize(\serialize($defaults->getBindings())));
         $definition->setChanges([]);
-        $configurator = new \MonorepoBuilder20220125\Symfony\Component\DependencyInjection\Loader\Configurator\ServiceConfigurator($this->container, $this->instanceof, \true, $this, $definition, $id, $defaults->getTags(), $this->path);
+        $configurator = new \MonorepoBuilder20220126\Symfony\Component\DependencyInjection\Loader\Configurator\ServiceConfigurator($this->container, $this->instanceof, \true, $this, $definition, $id, $defaults->getTags(), $this->path);
         return null !== $class ? $configurator->class($class) : $configurator;
     }
     /**
@@ -108,42 +108,42 @@ class ServicesConfigurator extends \MonorepoBuilder20220125\Symfony\Component\De
     /**
      * Creates an alias.
      */
-    public final function alias(string $id, string $referencedId) : \MonorepoBuilder20220125\Symfony\Component\DependencyInjection\Loader\Configurator\AliasConfigurator
+    public final function alias(string $id, string $referencedId) : \MonorepoBuilder20220126\Symfony\Component\DependencyInjection\Loader\Configurator\AliasConfigurator
     {
         $ref = static::processValue($referencedId, \true);
-        $alias = new \MonorepoBuilder20220125\Symfony\Component\DependencyInjection\Alias((string) $ref);
+        $alias = new \MonorepoBuilder20220126\Symfony\Component\DependencyInjection\Alias((string) $ref);
         if (!$this->defaults->isPublic() || !$this->defaults->isPrivate()) {
             $alias->setPublic($this->defaults->isPublic());
         }
         $this->container->setAlias($id, $alias);
-        return new \MonorepoBuilder20220125\Symfony\Component\DependencyInjection\Loader\Configurator\AliasConfigurator($this, $alias);
+        return new \MonorepoBuilder20220126\Symfony\Component\DependencyInjection\Loader\Configurator\AliasConfigurator($this, $alias);
     }
     /**
      * Registers a PSR-4 namespace using a glob pattern.
      */
-    public final function load(string $namespace, string $resource) : \MonorepoBuilder20220125\Symfony\Component\DependencyInjection\Loader\Configurator\PrototypeConfigurator
+    public final function load(string $namespace, string $resource) : \MonorepoBuilder20220126\Symfony\Component\DependencyInjection\Loader\Configurator\PrototypeConfigurator
     {
-        return new \MonorepoBuilder20220125\Symfony\Component\DependencyInjection\Loader\Configurator\PrototypeConfigurator($this, $this->loader, $this->defaults, $namespace, $resource, \true);
+        return new \MonorepoBuilder20220126\Symfony\Component\DependencyInjection\Loader\Configurator\PrototypeConfigurator($this, $this->loader, $this->defaults, $namespace, $resource, \true);
     }
     /**
      * Gets an already defined service definition.
      *
      * @throws ServiceNotFoundException if the service definition does not exist
      */
-    public final function get(string $id) : \MonorepoBuilder20220125\Symfony\Component\DependencyInjection\Loader\Configurator\ServiceConfigurator
+    public final function get(string $id) : \MonorepoBuilder20220126\Symfony\Component\DependencyInjection\Loader\Configurator\ServiceConfigurator
     {
         $definition = $this->container->getDefinition($id);
-        return new \MonorepoBuilder20220125\Symfony\Component\DependencyInjection\Loader\Configurator\ServiceConfigurator($this->container, $definition->getInstanceofConditionals(), \true, $this, $definition, $id, []);
+        return new \MonorepoBuilder20220126\Symfony\Component\DependencyInjection\Loader\Configurator\ServiceConfigurator($this->container, $definition->getInstanceofConditionals(), \true, $this, $definition, $id, []);
     }
     /**
      * Registers a stack of decorator services.
      *
      * @param InlineServiceConfigurator[]|ReferenceConfigurator[] $services
      */
-    public final function stack(string $id, array $services) : \MonorepoBuilder20220125\Symfony\Component\DependencyInjection\Loader\Configurator\AliasConfigurator
+    public final function stack(string $id, array $services) : \MonorepoBuilder20220126\Symfony\Component\DependencyInjection\Loader\Configurator\AliasConfigurator
     {
         foreach ($services as $i => $service) {
-            if ($service instanceof \MonorepoBuilder20220125\Symfony\Component\DependencyInjection\Loader\Configurator\InlineServiceConfigurator) {
+            if ($service instanceof \MonorepoBuilder20220126\Symfony\Component\DependencyInjection\Loader\Configurator\InlineServiceConfigurator) {
                 $definition = $service->definition->setInstanceofConditionals($this->instanceof);
                 $changes = $definition->getChanges();
                 $definition->setAutowired((isset($changes['autowired']) ? $definition : $this->defaults)->isAutowired());
@@ -151,8 +151,8 @@ class ServicesConfigurator extends \MonorepoBuilder20220125\Symfony\Component\De
                 $definition->setBindings(\array_merge($this->defaults->getBindings(), $definition->getBindings()));
                 $definition->setChanges($changes);
                 $services[$i] = $definition;
-            } elseif (!$service instanceof \MonorepoBuilder20220125\Symfony\Component\DependencyInjection\Loader\Configurator\ReferenceConfigurator) {
-                throw new \MonorepoBuilder20220125\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('"%s()" expects a list of definitions as returned by "%s()" or "%s()", "%s" given at index "%s" for service "%s".', __METHOD__, \MonorepoBuilder20220125\Symfony\Component\DependencyInjection\Loader\Configurator\InlineServiceConfigurator::FACTORY, \MonorepoBuilder20220125\Symfony\Component\DependencyInjection\Loader\Configurator\ReferenceConfigurator::FACTORY, $service instanceof \MonorepoBuilder20220125\Symfony\Component\DependencyInjection\Loader\Configurator\AbstractConfigurator ? $service::FACTORY . '()' : \get_debug_type($service), $i, $id));
+            } elseif (!$service instanceof \MonorepoBuilder20220126\Symfony\Component\DependencyInjection\Loader\Configurator\ReferenceConfigurator) {
+                throw new \MonorepoBuilder20220126\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('"%s()" expects a list of definitions as returned by "%s()" or "%s()", "%s" given at index "%s" for service "%s".', __METHOD__, \MonorepoBuilder20220126\Symfony\Component\DependencyInjection\Loader\Configurator\InlineServiceConfigurator::FACTORY, \MonorepoBuilder20220126\Symfony\Component\DependencyInjection\Loader\Configurator\ReferenceConfigurator::FACTORY, $service instanceof \MonorepoBuilder20220126\Symfony\Component\DependencyInjection\Loader\Configurator\AbstractConfigurator ? $service::FACTORY . '()' : \get_debug_type($service), $i, $id));
             }
         }
         $alias = $this->alias($id, '');
@@ -162,7 +162,7 @@ class ServicesConfigurator extends \MonorepoBuilder20220125\Symfony\Component\De
     /**
      * Registers a service.
      */
-    public final function __invoke(string $id, string $class = null) : \MonorepoBuilder20220125\Symfony\Component\DependencyInjection\Loader\Configurator\ServiceConfigurator
+    public final function __invoke(string $id, string $class = null) : \MonorepoBuilder20220126\Symfony\Component\DependencyInjection\Loader\Configurator\ServiceConfigurator
     {
         return $this->set($id, $class);
     }
