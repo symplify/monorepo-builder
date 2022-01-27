@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20220126\Psr\Container;
+namespace MonorepoBuilder20220127\Psr\Container;
 
 /**
  * Describes the interface of a container that exposes methods to read its entries.

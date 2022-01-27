@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220126\Symfony\Component\DependencyInjection;
+namespace MonorepoBuilder20220127\Symfony\Component\DependencyInjection;
 
-use MonorepoBuilder20220126\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use MonorepoBuilder20220127\Symfony\Component\DependencyInjection\Exception\RuntimeException;
 /**
  * The EnvVarProcessorInterface is implemented by objects that manage environment-like variables.
  *

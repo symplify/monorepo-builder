@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20220126\Symplify\PackageBuilder\Configuration;
+namespace MonorepoBuilder20220127\Symplify\PackageBuilder\Configuration;
 
 /**
  * @api
