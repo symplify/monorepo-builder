@@ -13,6 +13,8 @@ use MonorepoBuilder20220130\Symplify\PackageBuilder\Yaml\ParametersMerger;
  * The need:
  * - https://github.com/symfony/symfony/issues/26713
  * - https://github.com/symfony/symfony/pull/21313#issuecomment-372037445
+ *
+ * @property ContainerBuilder $container
  */
 final class ParameterMergingPhpFileLoader extends \MonorepoBuilder20220130\Symfony\Component\DependencyInjection\Loader\PhpFileLoader
 {
@@ -40,7 +42,8 @@ final class ParameterMergingPhpFileLoader extends \MonorepoBuilder20220130\Symfo
         $oldParameters = $parameterBag->all();
         parent::load($resource);
         foreach ($oldParameters as $key => $oldValue) {
-            $newValue = $this->parametersMerger->merge($oldValue, $this->container->getParameter($key));
+            $currentParameterValue = $this->container->getParameter($key);
+            $newValue = $this->parametersMerger->merge($oldValue, $currentParameterValue);
             $this->container->setParameter($key, $newValue);
         }
         return null;
