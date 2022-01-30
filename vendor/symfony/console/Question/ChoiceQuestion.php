@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220127\Symfony\Component\Console\Question;
+namespace MonorepoBuilder20220130\Symfony\Component\Console\Question;
 
-use MonorepoBuilder20220127\Symfony\Component\Console\Exception\InvalidArgumentException;
+use MonorepoBuilder20220130\Symfony\Component\Console\Exception\InvalidArgumentException;
 /**
  * Represents a choice question.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class ChoiceQuestion extends \MonorepoBuilder20220127\Symfony\Component\Console\Question\Question
+class ChoiceQuestion extends \MonorepoBuilder20220130\Symfony\Component\Console\Question\Question
 {
     /**
      * @var mixed[]
@@ -115,16 +115,16 @@ class ChoiceQuestion extends \MonorepoBuilder20220127\Symfony\Component\Console\
         return function ($selected) use($choices, $errorMessage, $multiselect, $isAssoc) {
             if ($multiselect) {
                 // Check for a separated comma values
-                if (!\preg_match('/^[^,]+(?:,[^,]+)*$/', $selected, $matches)) {
-                    throw new \MonorepoBuilder20220127\Symfony\Component\Console\Exception\InvalidArgumentException(\sprintf($errorMessage, $selected));
+                if (!\preg_match('/^[^,]+(?:,[^,]+)*$/', (string) $selected, $matches)) {
+                    throw new \MonorepoBuilder20220130\Symfony\Component\Console\Exception\InvalidArgumentException(\sprintf($errorMessage, $selected));
                 }
-                $selectedChoices = \explode(',', $selected);
+                $selectedChoices = \explode(',', (string) $selected);
             } else {
                 $selectedChoices = [$selected];
             }
             if ($this->isTrimmable()) {
                 foreach ($selectedChoices as $k => $v) {
-                    $selectedChoices[$k] = \trim($v);
+                    $selectedChoices[$k] = \trim((string) $v);
                 }
             }
             $multiselectChoices = [];
@@ -136,7 +136,7 @@ class ChoiceQuestion extends \MonorepoBuilder20220127\Symfony\Component\Console\
                     }
                 }
                 if (\count($results) > 1) {
-                    throw new \MonorepoBuilder20220127\Symfony\Component\Console\Exception\InvalidArgumentException(\sprintf('The provided answer is ambiguous. Value should be one of "%s".', \implode('" or "', $results)));
+                    throw new \MonorepoBuilder20220130\Symfony\Component\Console\Exception\InvalidArgumentException(\sprintf('The provided answer is ambiguous. Value should be one of "%s".', \implode('" or "', $results)));
                 }
                 $result = \array_search($value, $choices);
                 if (!$isAssoc) {
@@ -149,7 +149,7 @@ class ChoiceQuestion extends \MonorepoBuilder20220127\Symfony\Component\Console\
                     $result = $value;
                 }
                 if (\false === $result) {
-                    throw new \MonorepoBuilder20220127\Symfony\Component\Console\Exception\InvalidArgumentException(\sprintf($errorMessage, $value));
+                    throw new \MonorepoBuilder20220130\Symfony\Component\Console\Exception\InvalidArgumentException(\sprintf($errorMessage, $value));
                 }
                 // For associative choices, consistently return the key as string:
                 $multiselectChoices[] = $isAssoc ? (string) $result : $result;

@@ -28,7 +28,7 @@
     },
     "autoload": {
         "psr-4": {
-            "MonorepoBuilder20220127\\Symfony\\Polyfill\\Ctype\\": ""
+            "MonorepoBuilder20220130\\Symfony\\Polyfill\\Ctype\\": ""
         },
         "files": [
             "bootstrap.php"
