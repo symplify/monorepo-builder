@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20220130;
+namespace MonorepoBuilder20220131;
 
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
-use MonorepoBuilder20220130\Symplify\SmartFileSystem\SmartFileSystem;
+use MonorepoBuilder20220131\Symplify\SmartFileSystem\SmartFileSystem;
 return static function (\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator $containerConfigurator) : void {
     $services = $containerConfigurator->services();
-    $services->set(\MonorepoBuilder20220130\Symplify\SmartFileSystem\SmartFileSystem::class);
+    $services->set(\MonorepoBuilder20220131\Symplify\SmartFileSystem\SmartFileSystem::class);
 };
