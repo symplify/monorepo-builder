@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220131\Symfony\Component\DependencyInjection;
+namespace MonorepoBuilder20220202\Symfony\Component\DependencyInjection;
 
-use MonorepoBuilder20220131\Symfony\Component\ExpressionLanguage\ExpressionFunction;
-use MonorepoBuilder20220131\Symfony\Component\ExpressionLanguage\ExpressionFunctionProviderInterface;
+use MonorepoBuilder20220202\Symfony\Component\ExpressionLanguage\ExpressionFunction;
+use MonorepoBuilder20220202\Symfony\Component\ExpressionLanguage\ExpressionFunctionProviderInterface;
 /**
  * Define some ExpressionLanguage functions.
  *
@@ -20,7 +20,7 @@ use MonorepoBuilder20220131\Symfony\Component\ExpressionLanguage\ExpressionFunct
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class ExpressionLanguageProvider implements \MonorepoBuilder20220131\Symfony\Component\ExpressionLanguage\ExpressionFunctionProviderInterface
+class ExpressionLanguageProvider implements \MonorepoBuilder20220202\Symfony\Component\ExpressionLanguage\ExpressionFunctionProviderInterface
 {
     /**
      * @var \Closure|null
@@ -32,11 +32,11 @@ class ExpressionLanguageProvider implements \MonorepoBuilder20220131\Symfony\Com
     }
     public function getFunctions() : array
     {
-        return [new \MonorepoBuilder20220131\Symfony\Component\ExpressionLanguage\ExpressionFunction('service', $this->serviceCompiler ?? function ($arg) {
+        return [new \MonorepoBuilder20220202\Symfony\Component\ExpressionLanguage\ExpressionFunction('service', $this->serviceCompiler ?? function ($arg) {
             return \sprintf('$this->get(%s)', $arg);
         }, function (array $variables, $value) {
             return $variables['container']->get($value);
-        }), new \MonorepoBuilder20220131\Symfony\Component\ExpressionLanguage\ExpressionFunction('parameter', function ($arg) {
+        }), new \MonorepoBuilder20220202\Symfony\Component\ExpressionLanguage\ExpressionFunction('parameter', function ($arg) {
             return \sprintf('$this->getParameter(%s)', $arg);
         }, function (array $variables, $value) {
             return $variables['container']->getParameter($value);

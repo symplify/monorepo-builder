@@ -5,7 +5,7 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace MonorepoBuilder20220131\Nette;
+namespace MonorepoBuilder20220202\Nette;
 
 interface HtmlStringable
 {
@@ -14,4 +14,4 @@ interface HtmlStringable
      */
     function __toString() : string;
 }
-\interface_exists(\MonorepoBuilder20220131\Nette\Utils\IHtmlString::class);
+\interface_exists(\MonorepoBuilder20220202\Nette\Utils\IHtmlString::class);
