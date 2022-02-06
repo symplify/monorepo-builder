@@ -3,11 +3,11 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Merge\ComposerJsonDecorator;
 
-use MonorepoBuilder20220205\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
+use MonorepoBuilder20220206\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
 use Symplify\MonorepoBuilder\Merge\Contract\ComposerJsonDecoratorInterface;
 final class FilterOutDuplicatedRequireAndRequireDevJsonDecorator implements \Symplify\MonorepoBuilder\Merge\Contract\ComposerJsonDecoratorInterface
 {
-    public function decorate(\MonorepoBuilder20220205\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJson) : void
+    public function decorate(\MonorepoBuilder20220206\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJson) : void
     {
         if ($composerJson->getRequire() === []) {
             return;
