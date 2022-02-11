@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220207\Symfony\Component\DependencyInjection;
+namespace MonorepoBuilder20220211\Symfony\Component\DependencyInjection;
 
-use MonorepoBuilder20220207\Psr\Cache\CacheItemPoolInterface;
-use MonorepoBuilder20220207\Symfony\Component\ExpressionLanguage\ExpressionLanguage as BaseExpressionLanguage;
-if (!\class_exists(\MonorepoBuilder20220207\Symfony\Component\ExpressionLanguage\ExpressionLanguage::class)) {
+use MonorepoBuilder20220211\Psr\Cache\CacheItemPoolInterface;
+use MonorepoBuilder20220211\Symfony\Component\ExpressionLanguage\ExpressionLanguage as BaseExpressionLanguage;
+if (!\class_exists(\MonorepoBuilder20220211\Symfony\Component\ExpressionLanguage\ExpressionLanguage::class)) {
     return;
 }
 /**
@@ -22,15 +22,15 @@ if (!\class_exists(\MonorepoBuilder20220207\Symfony\Component\ExpressionLanguage
  *
  * @see ExpressionLanguageProvider
  */
-class ExpressionLanguage extends \MonorepoBuilder20220207\Symfony\Component\ExpressionLanguage\ExpressionLanguage
+class ExpressionLanguage extends \MonorepoBuilder20220211\Symfony\Component\ExpressionLanguage\ExpressionLanguage
 {
     /**
      * {@inheritdoc}
      */
-    public function __construct(\MonorepoBuilder20220207\Psr\Cache\CacheItemPoolInterface $cache = null, array $providers = [], callable $serviceCompiler = null)
+    public function __construct(\MonorepoBuilder20220211\Psr\Cache\CacheItemPoolInterface $cache = null, array $providers = [], callable $serviceCompiler = null)
     {
         // prepend the default provider to let users override it easily
-        \array_unshift($providers, new \MonorepoBuilder20220207\Symfony\Component\DependencyInjection\ExpressionLanguageProvider($serviceCompiler));
+        \array_unshift($providers, new \MonorepoBuilder20220211\Symfony\Component\DependencyInjection\ExpressionLanguageProvider($serviceCompiler));
         parent::__construct($cache, $providers);
     }
 }

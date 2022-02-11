@@ -18,7 +18,7 @@ class VersionConstraintParser
      */
     public function parse(string $value) : \PharIo\Version\VersionConstraint
     {
-        if (\strpos($value, '||') !== \false) {
+        if (\strpos($value, '|') !== \false) {
             return $this->handleOrGroup($value);
         }
         if (!\preg_match('/^[\\^~*]?v?[\\d.*]+(?:-.*)?$/i', $value)) {
@@ -45,7 +45,7 @@ class VersionConstraintParser
     private function handleOrGroup(string $value) : \PharIo\Version\OrVersionConstraintGroup
     {
         $constraints = [];
-        foreach (\explode('||', $value) as $groupSegment) {
+        foreach (\preg_split('{\\s*\\|\\|?\\s*}', \trim($value)) as $groupSegment) {
             $constraints[] = $this->parse(\trim($groupSegment));
         }
         return new \PharIo\Version\OrVersionConstraintGroup($value, $constraints);
