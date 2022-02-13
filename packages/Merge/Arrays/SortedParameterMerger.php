@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Merge\Arrays;
 
-use MonorepoBuilder20220211\Symplify\PackageBuilder\Yaml\ParametersMerger;
+use MonorepoBuilder20220213\Symplify\PackageBuilder\Yaml\ParametersMerger;
 final class SortedParameterMerger
 {
     /**
@@ -14,7 +14,7 @@ final class SortedParameterMerger
      * @var \Symplify\MonorepoBuilder\Merge\Arrays\ArraySorter
      */
     private $arraySorter;
-    public function __construct(\MonorepoBuilder20220211\Symplify\PackageBuilder\Yaml\ParametersMerger $parametersMerger, \Symplify\MonorepoBuilder\Merge\Arrays\ArraySorter $arraySorter)
+    public function __construct(\MonorepoBuilder20220213\Symplify\PackageBuilder\Yaml\ParametersMerger $parametersMerger, \Symplify\MonorepoBuilder\Merge\Arrays\ArraySorter $arraySorter)
     {
         $this->parametersMerger = $parametersMerger;
         $this->arraySorter = $arraySorter;
