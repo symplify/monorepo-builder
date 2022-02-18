@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20220216\Symplify\SymplifyKernel\Contract\Config;
+namespace MonorepoBuilder20220218\Symplify\SymplifyKernel\Contract\Config;
 
-use MonorepoBuilder20220216\Symfony\Component\Config\Loader\LoaderInterface;
-use MonorepoBuilder20220216\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder20220218\Symfony\Component\Config\Loader\LoaderInterface;
+use MonorepoBuilder20220218\Symfony\Component\DependencyInjection\ContainerBuilder;
 interface LoaderFactoryInterface
 {
-    public function create(\MonorepoBuilder20220216\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder, string $currentWorkingDirectory) : \MonorepoBuilder20220216\Symfony\Component\Config\Loader\LoaderInterface;
+    public function create(\MonorepoBuilder20220218\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder, string $currentWorkingDirectory) : \MonorepoBuilder20220218\Symfony\Component\Config\Loader\LoaderInterface;
 }
