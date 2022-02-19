@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20220219\Symplify\ConsoleColorDiff\Diff\Output;
+namespace MonorepoBuilder20220219\Symplify\PackageBuilder\Diff\Output;
 
 use MonorepoBuilder20220219\SebastianBergmann\Diff\Output\UnifiedDiffOutputBuilder;
 use MonorepoBuilder20220219\Symplify\PackageBuilder\Reflection\PrivatesAccessor;

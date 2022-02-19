@@ -5,9 +5,9 @@ namespace Symplify\MonorepoBuilder\Testing;
 
 use MonorepoBuilder20220219\Symfony\Component\Console\Style\SymfonyStyle;
 use MonorepoBuilder20220219\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
-use MonorepoBuilder20220219\Symplify\ConsoleColorDiff\Console\Output\ConsoleDiffer;
 use Symplify\MonorepoBuilder\Testing\ComposerJson\ComposerVersionManipulator;
 use Symplify\MonorepoBuilder\Testing\PackageDependency\UsedPackagesResolver;
+use MonorepoBuilder20220219\Symplify\PackageBuilder\Console\Output\ConsoleDiffer;
 use MonorepoBuilder20220219\Symplify\SmartFileSystem\SmartFileInfo;
 final class ComposerJsonRequireUpdater
 {
@@ -28,10 +28,10 @@ final class ComposerJsonRequireUpdater
      */
     private $usedPackagesResolver;
     /**
-     * @var \Symplify\ConsoleColorDiff\Console\Output\ConsoleDiffer
+     * @var \Symplify\PackageBuilder\Console\Output\ConsoleDiffer
      */
     private $consoleDiffer;
-    public function __construct(\MonorepoBuilder20220219\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager $jsonFileManager, \MonorepoBuilder20220219\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Symplify\MonorepoBuilder\Testing\ComposerJson\ComposerVersionManipulator $composerVersionManipulator, \Symplify\MonorepoBuilder\Testing\PackageDependency\UsedPackagesResolver $usedPackagesResolver, \MonorepoBuilder20220219\Symplify\ConsoleColorDiff\Console\Output\ConsoleDiffer $consoleDiffer)
+    public function __construct(\MonorepoBuilder20220219\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager $jsonFileManager, \MonorepoBuilder20220219\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Symplify\MonorepoBuilder\Testing\ComposerJson\ComposerVersionManipulator $composerVersionManipulator, \Symplify\MonorepoBuilder\Testing\PackageDependency\UsedPackagesResolver $usedPackagesResolver, \MonorepoBuilder20220219\Symplify\PackageBuilder\Console\Output\ConsoleDiffer $consoleDiffer)
     {
         $this->jsonFileManager = $jsonFileManager;
         $this->symfonyStyle = $symfonyStyle;

@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit5e8bdd759d2e0d9f26578a362b7e8a7a
+class ComposerStaticInit000a597d279d05756e89555b3f28df4e
 {
     public static $files = array (
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
@@ -28,7 +28,6 @@ class ComposerStaticInit5e8bdd759d2e0d9f26578a362b7e8a7a
             'MonorepoBuilder20220219\\Symplify\\SmartFileSystem\\' => 49,
             'MonorepoBuilder20220219\\Symplify\\PackageBuilder\\' => 48,
             'MonorepoBuilder20220219\\Symplify\\EasyTesting\\' => 45,
-            'MonorepoBuilder20220219\\Symplify\\ConsoleColorDiff\\' => 50,
             'MonorepoBuilder20220219\\Symplify\\ComposerJsonManipulator\\' => 57,
             'MonorepoBuilder20220219\\Symplify\\AutowireArrayParameter\\' => 56,
             'MonorepoBuilder20220219\\Symfony\\Polyfill\\Php81\\' => 47,
@@ -73,10 +72,6 @@ class ComposerStaticInit5e8bdd759d2e0d9f26578a362b7e8a7a
         'MonorepoBuilder20220219\\Symplify\\EasyTesting\\' => 
         array (
             0 => __DIR__ . '/..' . '/symplify/easy-testing/src',
-        ),
-        'MonorepoBuilder20220219\\Symplify\\ConsoleColorDiff\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symplify/console-color-diff/src',
         ),
         'MonorepoBuilder20220219\\Symplify\\ComposerJsonManipulator\\' => 
         array (
@@ -212,22 +207,6 @@ class ComposerStaticInit5e8bdd759d2e0d9f26578a362b7e8a7a
         'MonorepoBuilder20220219\\Psr\\Container\\ContainerExceptionInterface' => __DIR__ . '/..' . '/psr/container/src/ContainerExceptionInterface.php',
         'MonorepoBuilder20220219\\Psr\\Container\\ContainerInterface' => __DIR__ . '/..' . '/psr/container/src/ContainerInterface.php',
         'MonorepoBuilder20220219\\Psr\\Container\\NotFoundExceptionInterface' => __DIR__ . '/..' . '/psr/container/src/NotFoundExceptionInterface.php',
-        'MonorepoBuilder20220219\\SebastianBergmann\\Diff\\Chunk' => __DIR__ . '/..' . '/sebastian/diff/src/Chunk.php',
-        'MonorepoBuilder20220219\\SebastianBergmann\\Diff\\ConfigurationException' => __DIR__ . '/..' . '/sebastian/diff/src/Exception/ConfigurationException.php',
-        'MonorepoBuilder20220219\\SebastianBergmann\\Diff\\Diff' => __DIR__ . '/..' . '/sebastian/diff/src/Diff.php',
-        'MonorepoBuilder20220219\\SebastianBergmann\\Diff\\Differ' => __DIR__ . '/..' . '/sebastian/diff/src/Differ.php',
-        'MonorepoBuilder20220219\\SebastianBergmann\\Diff\\Exception' => __DIR__ . '/..' . '/sebastian/diff/src/Exception/Exception.php',
-        'MonorepoBuilder20220219\\SebastianBergmann\\Diff\\InvalidArgumentException' => __DIR__ . '/..' . '/sebastian/diff/src/Exception/InvalidArgumentException.php',
-        'MonorepoBuilder20220219\\SebastianBergmann\\Diff\\Line' => __DIR__ . '/..' . '/sebastian/diff/src/Line.php',
-        'MonorepoBuilder20220219\\SebastianBergmann\\Diff\\LongestCommonSubsequenceCalculator' => __DIR__ . '/..' . '/sebastian/diff/src/LongestCommonSubsequenceCalculator.php',
-        'MonorepoBuilder20220219\\SebastianBergmann\\Diff\\MemoryEfficientLongestCommonSubsequenceCalculator' => __DIR__ . '/..' . '/sebastian/diff/src/MemoryEfficientLongestCommonSubsequenceCalculator.php',
-        'MonorepoBuilder20220219\\SebastianBergmann\\Diff\\Output\\AbstractChunkOutputBuilder' => __DIR__ . '/..' . '/sebastian/diff/src/Output/AbstractChunkOutputBuilder.php',
-        'MonorepoBuilder20220219\\SebastianBergmann\\Diff\\Output\\DiffOnlyOutputBuilder' => __DIR__ . '/..' . '/sebastian/diff/src/Output/DiffOnlyOutputBuilder.php',
-        'MonorepoBuilder20220219\\SebastianBergmann\\Diff\\Output\\DiffOutputBuilderInterface' => __DIR__ . '/..' . '/sebastian/diff/src/Output/DiffOutputBuilderInterface.php',
-        'MonorepoBuilder20220219\\SebastianBergmann\\Diff\\Output\\StrictUnifiedDiffOutputBuilder' => __DIR__ . '/..' . '/sebastian/diff/src/Output/StrictUnifiedDiffOutputBuilder.php',
-        'MonorepoBuilder20220219\\SebastianBergmann\\Diff\\Output\\UnifiedDiffOutputBuilder' => __DIR__ . '/..' . '/sebastian/diff/src/Output/UnifiedDiffOutputBuilder.php',
-        'MonorepoBuilder20220219\\SebastianBergmann\\Diff\\Parser' => __DIR__ . '/..' . '/sebastian/diff/src/Parser.php',
-        'MonorepoBuilder20220219\\SebastianBergmann\\Diff\\TimeEfficientLongestCommonSubsequenceCalculator' => __DIR__ . '/..' . '/sebastian/diff/src/TimeEfficientLongestCommonSubsequenceCalculator.php',
         'MonorepoBuilder20220219\\Symfony\\Component\\Config\\Builder\\ClassBuilder' => __DIR__ . '/..' . '/symfony/config/Builder/ClassBuilder.php',
         'MonorepoBuilder20220219\\Symfony\\Component\\Config\\Builder\\ConfigBuilderGenerator' => __DIR__ . '/..' . '/symfony/config/Builder/ConfigBuilderGenerator.php',
         'MonorepoBuilder20220219\\Symfony\\Component\\Config\\Builder\\ConfigBuilderGeneratorInterface' => __DIR__ . '/..' . '/symfony/config/Builder/ConfigBuilderGeneratorInterface.php',
@@ -671,10 +650,6 @@ class ComposerStaticInit5e8bdd759d2e0d9f26578a362b7e8a7a
         'MonorepoBuilder20220219\\Symplify\\ComposerJsonManipulator\\ValueObject\\ComposerJsonManipulatorConfig' => __DIR__ . '/..' . '/symplify/composer-json-manipulator/src/ValueObject/ComposerJsonManipulatorConfig.php',
         'MonorepoBuilder20220219\\Symplify\\ComposerJsonManipulator\\ValueObject\\ComposerJsonSection' => __DIR__ . '/..' . '/symplify/composer-json-manipulator/src/ValueObject/ComposerJsonSection.php',
         'MonorepoBuilder20220219\\Symplify\\ComposerJsonManipulator\\ValueObject\\Option' => __DIR__ . '/..' . '/symplify/composer-json-manipulator/src/ValueObject/Option.php',
-        'MonorepoBuilder20220219\\Symplify\\ConsoleColorDiff\\Console\\Formatter\\ColorConsoleDiffFormatter' => __DIR__ . '/..' . '/symplify/console-color-diff/src/Console/Formatter/ColorConsoleDiffFormatter.php',
-        'MonorepoBuilder20220219\\Symplify\\ConsoleColorDiff\\Console\\Output\\ConsoleDiffer' => __DIR__ . '/..' . '/symplify/console-color-diff/src/Console/Output/ConsoleDiffer.php',
-        'MonorepoBuilder20220219\\Symplify\\ConsoleColorDiff\\Diff\\Output\\CompleteUnifiedDiffOutputBuilderFactory' => __DIR__ . '/..' . '/symplify/console-color-diff/src/Diff/Output/CompleteUnifiedDiffOutputBuilderFactory.php',
-        'MonorepoBuilder20220219\\Symplify\\ConsoleColorDiff\\ValueObject\\ConsoleColorDiffConfig' => __DIR__ . '/..' . '/symplify/console-color-diff/src/ValueObject/ConsoleColorDiffConfig.php',
         'MonorepoBuilder20220219\\Symplify\\EasyTesting\\Command\\ValidateFixtureSkipNamingCommand' => __DIR__ . '/..' . '/symplify/easy-testing/src/Command/ValidateFixtureSkipNamingCommand.php',
         'MonorepoBuilder20220219\\Symplify\\EasyTesting\\DataProvider\\StaticFixtureFinder' => __DIR__ . '/..' . '/symplify/easy-testing/src/DataProvider/StaticFixtureFinder.php',
         'MonorepoBuilder20220219\\Symplify\\EasyTesting\\DataProvider\\StaticFixtureUpdater' => __DIR__ . '/..' . '/symplify/easy-testing/src/DataProvider/StaticFixtureUpdater.php',
@@ -698,10 +673,13 @@ class ComposerStaticInit5e8bdd759d2e0d9f26578a362b7e8a7a
         'MonorepoBuilder20220219\\Symplify\\PackageBuilder\\Configuration\\StaticEolConfiguration' => __DIR__ . '/..' . '/symplify/package-builder/src/Configuration/StaticEolConfiguration.php',
         'MonorepoBuilder20220219\\Symplify\\PackageBuilder\\Console\\Command\\AbstractSymplifyCommand' => __DIR__ . '/..' . '/symplify/package-builder/src/Console/Command/AbstractSymplifyCommand.php',
         'MonorepoBuilder20220219\\Symplify\\PackageBuilder\\Console\\Command\\CommandNaming' => __DIR__ . '/..' . '/symplify/package-builder/src/Console/Command/CommandNaming.php',
+        'MonorepoBuilder20220219\\Symplify\\PackageBuilder\\Console\\Formatter\\ColorConsoleDiffFormatter' => __DIR__ . '/..' . '/symplify/package-builder/src/Console/Formatter/ColorConsoleDiffFormatter.php',
         'MonorepoBuilder20220219\\Symplify\\PackageBuilder\\Console\\Input\\StaticInputDetector' => __DIR__ . '/..' . '/symplify/package-builder/src/Console/Input/StaticInputDetector.php',
+        'MonorepoBuilder20220219\\Symplify\\PackageBuilder\\Console\\Output\\ConsoleDiffer' => __DIR__ . '/..' . '/symplify/package-builder/src/Console/Output/ConsoleDiffer.php',
         'MonorepoBuilder20220219\\Symplify\\PackageBuilder\\Console\\Style\\SymfonyStyleFactory' => __DIR__ . '/..' . '/symplify/package-builder/src/Console/Style/SymfonyStyleFactory.php',
         'MonorepoBuilder20220219\\Symplify\\PackageBuilder\\DependencyInjection\\CompilerPass\\AutowireInterfacesCompilerPass' => __DIR__ . '/..' . '/symplify/package-builder/src/DependencyInjection/CompilerPass/AutowireInterfacesCompilerPass.php',
         'MonorepoBuilder20220219\\Symplify\\PackageBuilder\\DependencyInjection\\FileLoader\\ParameterMergingPhpFileLoader' => __DIR__ . '/..' . '/symplify/package-builder/src/DependencyInjection/FileLoader/ParameterMergingPhpFileLoader.php',
+        'MonorepoBuilder20220219\\Symplify\\PackageBuilder\\Diff\\Output\\CompleteUnifiedDiffOutputBuilderFactory' => __DIR__ . '/..' . '/symplify/package-builder/src/Diff/Output/CompleteUnifiedDiffOutputBuilderFactory.php',
         'MonorepoBuilder20220219\\Symplify\\PackageBuilder\\Exception\\HttpKernel\\MissingInterfaceException' => __DIR__ . '/..' . '/symplify/package-builder/src/Exception/HttpKernel/MissingInterfaceException.php',
         'MonorepoBuilder20220219\\Symplify\\PackageBuilder\\Exception\\InvalidPrivatePropertyTypeException' => __DIR__ . '/..' . '/symplify/package-builder/src/Exception/InvalidPrivatePropertyTypeException.php',
         'MonorepoBuilder20220219\\Symplify\\PackageBuilder\\Exception\\MissingPrivatePropertyException' => __DIR__ . '/..' . '/symplify/package-builder/src/Exception/MissingPrivatePropertyException.php',
@@ -714,6 +692,7 @@ class ComposerStaticInit5e8bdd759d2e0d9f26578a362b7e8a7a
         'MonorepoBuilder20220219\\Symplify\\PackageBuilder\\Reflection\\PrivatesCaller' => __DIR__ . '/..' . '/symplify/package-builder/src/Reflection/PrivatesCaller.php',
         'MonorepoBuilder20220219\\Symplify\\PackageBuilder\\Strings\\StringFormatConverter' => __DIR__ . '/..' . '/symplify/package-builder/src/Strings/StringFormatConverter.php',
         'MonorepoBuilder20220219\\Symplify\\PackageBuilder\\Testing\\AbstractKernelTestCase' => __DIR__ . '/..' . '/symplify/package-builder/src/Testing/AbstractKernelTestCase.php',
+        'MonorepoBuilder20220219\\Symplify\\PackageBuilder\\ValueObject\\ConsoleColorDiffConfig' => __DIR__ . '/..' . '/symplify/package-builder/src/ValueObject/ConsoleColorDiffConfig.php',
         'MonorepoBuilder20220219\\Symplify\\PackageBuilder\\ValueObject\\MethodName' => __DIR__ . '/..' . '/symplify/package-builder/src/ValueObject/MethodName.php',
         'MonorepoBuilder20220219\\Symplify\\PackageBuilder\\ValueObject\\Option' => __DIR__ . '/..' . '/symplify/package-builder/src/ValueObject/Option.php',
         'MonorepoBuilder20220219\\Symplify\\PackageBuilder\\Yaml\\ParametersMerger' => __DIR__ . '/..' . '/symplify/package-builder/src/Yaml/ParametersMerger.php',
@@ -855,9 +834,9 @@ class ComposerStaticInit5e8bdd759d2e0d9f26578a362b7e8a7a
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit5e8bdd759d2e0d9f26578a362b7e8a7a::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit5e8bdd759d2e0d9f26578a362b7e8a7a::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit5e8bdd759d2e0d9f26578a362b7e8a7a::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit000a597d279d05756e89555b3f28df4e::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit000a597d279d05756e89555b3f28df4e::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit000a597d279d05756e89555b3f28df4e::$classMap;
 
         }, null, ClassLoader::class);
     }

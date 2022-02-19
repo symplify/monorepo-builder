@@ -6,10 +6,10 @@ namespace Symplify\MonorepoBuilder\Testing;
 use MonorepoBuilder20220219\Symfony\Component\Console\Style\SymfonyStyle;
 use MonorepoBuilder20220219\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
 use MonorepoBuilder20220219\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
-use MonorepoBuilder20220219\Symplify\ConsoleColorDiff\Console\Output\ConsoleDiffer;
 use Symplify\MonorepoBuilder\Package\PackageNamesProvider;
 use Symplify\MonorepoBuilder\Testing\ComposerJson\ComposerJsonSymlinker;
 use Symplify\MonorepoBuilder\Testing\PackageDependency\UsedPackagesResolver;
+use MonorepoBuilder20220219\Symplify\PackageBuilder\Console\Output\ConsoleDiffer;
 use MonorepoBuilder20220219\Symplify\SmartFileSystem\SmartFileInfo;
 use MonorepoBuilder20220219\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
 final class ComposerJsonRepositoriesUpdater
@@ -35,10 +35,10 @@ final class ComposerJsonRepositoriesUpdater
      */
     private $usedPackagesResolver;
     /**
-     * @var \Symplify\ConsoleColorDiff\Console\Output\ConsoleDiffer
+     * @var \Symplify\PackageBuilder\Console\Output\ConsoleDiffer
      */
     private $consoleDiffer;
-    public function __construct(\Symplify\MonorepoBuilder\Package\PackageNamesProvider $packageNamesProvider, \MonorepoBuilder20220219\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager $jsonFileManager, \MonorepoBuilder20220219\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Symplify\MonorepoBuilder\Testing\ComposerJson\ComposerJsonSymlinker $composerJsonSymlinker, \Symplify\MonorepoBuilder\Testing\PackageDependency\UsedPackagesResolver $usedPackagesResolver, \MonorepoBuilder20220219\Symplify\ConsoleColorDiff\Console\Output\ConsoleDiffer $consoleDiffer)
+    public function __construct(\Symplify\MonorepoBuilder\Package\PackageNamesProvider $packageNamesProvider, \MonorepoBuilder20220219\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager $jsonFileManager, \MonorepoBuilder20220219\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Symplify\MonorepoBuilder\Testing\ComposerJson\ComposerJsonSymlinker $composerJsonSymlinker, \Symplify\MonorepoBuilder\Testing\PackageDependency\UsedPackagesResolver $usedPackagesResolver, \MonorepoBuilder20220219\Symplify\PackageBuilder\Console\Output\ConsoleDiffer $consoleDiffer)
     {
         $this->packageNamesProvider = $packageNamesProvider;
         $this->jsonFileManager = $jsonFileManager;

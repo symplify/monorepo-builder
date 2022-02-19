@@ -12,7 +12,6 @@ return array(
     'MonorepoBuilder20220219\\Symplify\\SmartFileSystem\\' => array($vendorDir . '/symplify/smart-file-system/src'),
     'MonorepoBuilder20220219\\Symplify\\PackageBuilder\\' => array($vendorDir . '/symplify/package-builder/src'),
     'MonorepoBuilder20220219\\Symplify\\EasyTesting\\' => array($vendorDir . '/symplify/easy-testing/src'),
-    'MonorepoBuilder20220219\\Symplify\\ConsoleColorDiff\\' => array($vendorDir . '/symplify/console-color-diff/src'),
     'MonorepoBuilder20220219\\Symplify\\ComposerJsonManipulator\\' => array($vendorDir . '/symplify/composer-json-manipulator/src'),
     'MonorepoBuilder20220219\\Symplify\\AutowireArrayParameter\\' => array($vendorDir . '/symplify/autowire-array-parameter/src'),
     'MonorepoBuilder20220219\\Symfony\\Polyfill\\Php81\\' => array($vendorDir . '/symfony/polyfill-php81'),
