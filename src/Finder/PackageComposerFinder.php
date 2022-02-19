@@ -3,12 +3,12 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Finder;
 
-use MonorepoBuilder20220218\Symfony\Component\Finder\Finder;
+use MonorepoBuilder20220219\Symfony\Component\Finder\Finder;
 use Symplify\MonorepoBuilder\Exception\ConfigurationException;
 use Symplify\MonorepoBuilder\ValueObject\Option;
-use MonorepoBuilder20220218\Symplify\PackageBuilder\Parameter\ParameterProvider;
-use MonorepoBuilder20220218\Symplify\SmartFileSystem\Finder\FinderSanitizer;
-use MonorepoBuilder20220218\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder20220219\Symplify\PackageBuilder\Parameter\ParameterProvider;
+use MonorepoBuilder20220219\Symplify\SmartFileSystem\Finder\FinderSanitizer;
+use MonorepoBuilder20220219\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\MonorepoBuilder\Tests\Finder\PackageComposerFinder\PackageComposerFinderTest
  */
@@ -30,15 +30,15 @@ final class PackageComposerFinder
      * @var \Symplify\SmartFileSystem\Finder\FinderSanitizer
      */
     private $finderSanitizer;
-    public function __construct(\MonorepoBuilder20220218\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider, \MonorepoBuilder20220218\Symplify\SmartFileSystem\Finder\FinderSanitizer $finderSanitizer)
+    public function __construct(\MonorepoBuilder20220219\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider, \MonorepoBuilder20220219\Symplify\SmartFileSystem\Finder\FinderSanitizer $finderSanitizer)
     {
         $this->finderSanitizer = $finderSanitizer;
         $this->packageDirectories = $parameterProvider->provideArrayParameter(\Symplify\MonorepoBuilder\ValueObject\Option::PACKAGE_DIRECTORIES);
         $this->packageDirectoriesExcludes = $parameterProvider->provideArrayParameter(\Symplify\MonorepoBuilder\ValueObject\Option::PACKAGE_DIRECTORIES_EXCLUDES);
     }
-    public function getRootPackageComposerFile() : \MonorepoBuilder20220218\Symplify\SmartFileSystem\SmartFileInfo
+    public function getRootPackageComposerFile() : \MonorepoBuilder20220219\Symplify\SmartFileSystem\SmartFileInfo
     {
-        return new \MonorepoBuilder20220218\Symplify\SmartFileSystem\SmartFileInfo(\getcwd() . \DIRECTORY_SEPARATOR . 'composer.json');
+        return new \MonorepoBuilder20220219\Symplify\SmartFileSystem\SmartFileInfo(\getcwd() . \DIRECTORY_SEPARATOR . 'composer.json');
     }
     /**
      * @return SmartFileInfo[]
@@ -50,7 +50,7 @@ final class PackageComposerFinder
             throw new \Symplify\MonorepoBuilder\Exception\ConfigurationException($errorMessage);
         }
         if ($this->cachedPackageComposerFiles === []) {
-            $finder = \MonorepoBuilder20220218\Symfony\Component\Finder\Finder::create()->files()->in($this->packageDirectories)->exclude('compiler')->exclude('templates')->exclude('vendor')->exclude('build')->exclude('node_modules')->name('composer.json');
+            $finder = \MonorepoBuilder20220219\Symfony\Component\Finder\Finder::create()->files()->in($this->packageDirectories)->exclude('compiler')->exclude('templates')->exclude('vendor')->exclude('build')->exclude('node_modules')->name('composer.json');
             if ($this->packageDirectoriesExcludes !== []) {
                 $finder->exclude($this->packageDirectoriesExcludes);
             }
