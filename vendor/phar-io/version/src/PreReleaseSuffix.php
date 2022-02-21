@@ -5,7 +5,7 @@ namespace PharIo\Version;
 
 class PreReleaseSuffix
 {
-    private const valueScoreMap = ['dev' => 0, 'a' => 1, 'alpha' => 1, 'b' => 2, 'beta' => 2, 'rc' => 3, 'p' => 4, 'patch' => 4];
+    private const valueScoreMap = ['dev' => 0, 'a' => 1, 'alpha' => 1, 'b' => 2, 'beta' => 2, 'rc' => 3, 'p' => 4, 'pl' => 4, 'patch' => 4];
     /** @var string */
     private $value;
     /** @var int */
@@ -46,14 +46,11 @@ class PreReleaseSuffix
     private function mapValueToScore(string $value) : int
     {
         $value = \strtolower($value);
-        if (\array_key_exists($value, self::valueScoreMap)) {
-            return self::valueScoreMap[$value];
-        }
-        return 0;
+        return self::valueScoreMap[$value];
     }
     private function parseValue(string $value) : void
     {
-        $regex = '/-?((dev|beta|b|rc|alpha|a|patch|p)\\.?(\\d*)).*$/i';
+        $regex = '/-?((dev|beta|b|rc|alpha|a|patch|p|pl)\\.?(\\d*)).*$/i';
         if (\preg_match($regex, $value, $matches) !== 1) {
             throw new \PharIo\Version\InvalidPreReleaseSuffixException(\sprintf('Invalid label %s', $value));
         }

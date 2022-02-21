@@ -23,11 +23,16 @@ class Version
     private $patch;
     /** @var null|PreReleaseSuffix */
     private $preReleaseSuffix;
+    /** @var null|BuildMetaData */
+    private $buildMetadata;
     public function __construct(string $versionString)
     {
         $this->ensureVersionStringIsValid($versionString);
         $this->originalVersionString = $versionString;
     }
+    /**
+     * @throws NoPreReleaseSuffixException
+     */
     public function getPreReleaseSuffix() : \PharIo\Version\PreReleaseSuffix
     {
         if ($this->preReleaseSuffix === null) {
@@ -53,7 +58,16 @@ class Version
     }
     public function equals(\PharIo\Version\Version $other) : bool
     {
-        return $this->getVersionString() === $other->getVersionString();
+        if ($this->getVersionString() !== $other->getVersionString()) {
+            return \false;
+        }
+        if ($this->hasBuildMetaData() !== $other->hasBuildMetaData()) {
+            return \false;
+        }
+        if ($this->hasBuildMetaData() && $other->hasBuildMetaData() && !$this->getBuildMetaData()->equals($other->getBuildMetaData())) {
+            return \false;
+        }
+        return \true;
     }
     public function isGreaterThan(\PharIo\Version\Version $version) : bool
     {
@@ -98,6 +112,20 @@ class Version
     {
         return $this->patch;
     }
+    public function hasBuildMetaData() : bool
+    {
+        return $this->buildMetadata !== null;
+    }
+    /**
+     * @throws NoBuildMetaDataException
+     */
+    public function getBuildMetaData() : \PharIo\Version\BuildMetaData
+    {
+        if (!$this->hasBuildMetaData()) {
+            throw new \PharIo\Version\NoBuildMetaDataException('No build metadata set');
+        }
+        return $this->buildMetadata;
+    }
     /**
      * @param string[] $matches
      *
@@ -108,8 +136,11 @@ class Version
         $this->major = new \PharIo\Version\VersionNumber((int) $matches['Major']);
         $this->minor = new \PharIo\Version\VersionNumber((int) $matches['Minor']);
         $this->patch = isset($matches['Patch']) ? new \PharIo\Version\VersionNumber((int) $matches['Patch']) : new \PharIo\Version\VersionNumber(0);
-        if (isset($matches['PreReleaseSuffix'])) {
+        if (isset($matches['PreReleaseSuffix']) && $matches['PreReleaseSuffix'] !== '') {
             $this->preReleaseSuffix = new \PharIo\Version\PreReleaseSuffix($matches['PreReleaseSuffix']);
+        }
+        if (isset($matches['BuildMetadata'])) {
+            $this->buildMetadata = new \PharIo\Version\BuildMetaData($matches['BuildMetadata']);
         }
     }
     /**
@@ -120,16 +151,20 @@ class Version
     private function ensureVersionStringIsValid($version) : void
     {
         $regex = '/^v?
-            (?<Major>(0|(?:[1-9]\\d*)))
+            (?P<Major>0|[1-9]\\d*)
             \\.
-            (?<Minor>(0|(?:[1-9]\\d*)))
+            (?P<Minor>0|[1-9]\\d*)
             (\\.
-                (?<Patch>(0|(?:[1-9]\\d*)))
+                (?P<Patch>0|[1-9]\\d*)
             )?
             (?:
                 -
-                (?<PreReleaseSuffix>(?:(dev|beta|b|rc|alpha|a|patch|p)\\.?\\d*))
-            )?       
+                (?<PreReleaseSuffix>(?:(dev|beta|b|rc|alpha|a|patch|p|pl)\\.?\\d*))
+            )?
+            (?:
+                \\+
+                (?P<BuildMetadata>[0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-@]+)*)
+            )?
         $/xi';
         if (\preg_match($regex, $version, $matches) !== 1) {
             throw new \PharIo\Version\InvalidVersionException(\sprintf("Version string '%s' does not follow SemVer semantics", $version));
