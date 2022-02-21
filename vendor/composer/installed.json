@@ -161,23 +161,23 @@
         },
         {
             "name": "phar-io\/version",
-            "version": "3.2.0",
-            "version_normalized": "3.2.0.0",
+            "version": "3.2.1",
+            "version_normalized": "3.2.1.0",
             "source": {
                 "type": "git",
                 "url": "https:\/\/github.com\/phar-io\/version.git",
-                "reference": "c494dccd6802fd111a62ea5a474b33c0fd3dc76b"
+                "reference": "4f7fd7836c6f332bb2933569e566a0d6c4cbed74"
             },
             "dist": {
                 "type": "zip",
-                "url": "https:\/\/api.github.com\/repos\/phar-io\/version\/zipball\/c494dccd6802fd111a62ea5a474b33c0fd3dc76b",
-                "reference": "c494dccd6802fd111a62ea5a474b33c0fd3dc76b",
+                "url": "https:\/\/api.github.com\/repos\/phar-io\/version\/zipball\/4f7fd7836c6f332bb2933569e566a0d6c4cbed74",
+                "reference": "4f7fd7836c6f332bb2933569e566a0d6c4cbed74",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.2 || ^8.0"
             },
-            "time": "2022-02-20T23:23:05+00:00",
+            "time": "2022-02-21T01:04:05+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -209,7 +209,7 @@
             "description": "Library for handling version information and constraints",
             "support": {
                 "issues": "https:\/\/github.com\/phar-io\/version\/issues",
-                "source": "https:\/\/github.com\/phar-io\/version\/tree\/3.2.0"
+                "source": "https:\/\/github.com\/phar-io\/version\/tree\/3.2.1"
             },
             "install-path": "..\/phar-io\/version"
         },
@@ -1476,7 +1476,7 @@
             "dist": {
                 "type": "path",
                 "url": "..\/..\/packages\/autowire-array-parameter",
-                "reference": "3980db13567ecc595a8d83cadc08d15e6c2a3a7c"
+                "reference": "5d36498624b71174456ba8f203ec99897dd66079"
             },
             "require": {
                 "nette\/utils": "^3.2",
@@ -1505,7 +1505,6 @@
                 "symplify\/phpstan-rules": "<10.0.25",
                 "symplify\/rule-doc-generator": "<10.0.25",
                 "symplify\/rule-doc-generator-contracts": "<10.0.25",
-                "symplify\/simple-php-doc-parser": "<10.0.25",
                 "symplify\/skipper": "<10.0.25",
                 "symplify\/smart-file-system": "<10.0.25",
                 "symplify\/symfony-static-dumper": "<10.0.25",
@@ -1550,7 +1549,7 @@
             "dist": {
                 "type": "path",
                 "url": "..\/..\/packages\/composer-json-manipulator",
-                "reference": "46073c075f4e9c2e5a34a24998e4c1df06c6a758"
+                "reference": "5c57cae2c50350690229be6df56ffdfba9f11c0c"
             },
             "require": {
                 "nette\/utils": "^3.2",
@@ -1583,7 +1582,6 @@
                 "symplify\/phpstan-rules": "<10.0.25",
                 "symplify\/rule-doc-generator": "<10.0.25",
                 "symplify\/rule-doc-generator-contracts": "<10.0.25",
-                "symplify\/simple-php-doc-parser": "<10.0.25",
                 "symplify\/skipper": "<10.0.25",
                 "symplify\/symfony-static-dumper": "<10.0.25",
                 "symplify\/symplify-kernel": "<9.4.70",
@@ -1627,7 +1625,7 @@
             "dist": {
                 "type": "path",
                 "url": "..\/..\/packages\/easy-testing",
-                "reference": "ee0f4ac4071b3a643884bc58d9f5e6032669380c"
+                "reference": "ea19008915a0fd17f115ba72df1f413b1790b70e"
             },
             "require": {
                 "nette\/utils": "^3.2",
@@ -1660,7 +1658,6 @@
                 "symplify\/phpstan-rules": "<10.0.25",
                 "symplify\/rule-doc-generator": "<10.0.25",
                 "symplify\/rule-doc-generator-contracts": "<10.0.25",
-                "symplify\/simple-php-doc-parser": "<10.0.25",
                 "symplify\/skipper": "<10.0.25",
                 "symplify\/symfony-static-dumper": "<10.0.25",
                 "symplify\/template-phpstan-compiler": "<10.0.25",
@@ -1706,7 +1703,7 @@
             "dist": {
                 "type": "path",
                 "url": "..\/..\/packages\/package-builder",
-                "reference": "3ea824af0d451f3c74b4f58eaa1b5b15940581d1"
+                "reference": "ed58ed2b28b33deccd40fdbf94feaad6d3b417c3"
             },
             "require": {
                 "nette\/neon": "^3.3.2",
@@ -1741,7 +1738,6 @@
                 "symplify\/phpstan-rules": "<10.0.25",
                 "symplify\/rule-doc-generator": "<10.0.25",
                 "symplify\/rule-doc-generator-contracts": "<10.0.25",
-                "symplify\/simple-php-doc-parser": "<10.0.25",
                 "symplify\/skipper": "<10.0.25",
                 "symplify\/smart-file-system": "<10.0.25",
                 "symplify\/symfony-static-dumper": "<10.0.25",
@@ -1785,7 +1781,7 @@
             "dist": {
                 "type": "path",
                 "url": "..\/..\/packages\/smart-file-system",
-                "reference": "31840b87f52aa755c5d42480bcba2ccbdedf4554"
+                "reference": "61ac2a88542b3d582d304718a49b76d4037bd521"
             },
             "require": {
                 "nette\/utils": "^3.2",
@@ -1816,7 +1812,6 @@
                 "symplify\/phpstan-rules": "<10.0.25",
                 "symplify\/rule-doc-generator": "<10.0.25",
                 "symplify\/rule-doc-generator-contracts": "<10.0.25",
-                "symplify\/simple-php-doc-parser": "<10.0.25",
                 "symplify\/skipper": "<10.0.25",
                 "symplify\/symfony-static-dumper": "<10.0.25",
                 "symplify\/symplify-kernel": "<10.0.25",
@@ -1861,7 +1856,7 @@
             "dist": {
                 "type": "path",
                 "url": "..\/..\/packages\/symplify-kernel",
-                "reference": "a3d39397edb9834f7f98142b5e16a890af249a33"
+                "reference": "e6ec250f0af70f6c9ee6d146b1d260b99dbfe642"
             },
             "require": {
                 "php": ">=8.0",
@@ -1893,7 +1888,6 @@
                 "symplify\/phpstan-rules": "<10.0.25",
                 "symplify\/rule-doc-generator": "<10.0.25",
                 "symplify\/rule-doc-generator-contracts": "<10.0.25",
-                "symplify\/simple-php-doc-parser": "<10.0.25",
                 "symplify\/skipper": "<10.0.25",
                 "symplify\/symfony-static-dumper": "<10.0.25",
                 "symplify\/template-phpstan-compiler": "<10.0.25",

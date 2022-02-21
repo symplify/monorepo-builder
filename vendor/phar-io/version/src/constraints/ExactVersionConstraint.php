@@ -15,6 +15,10 @@ class ExactVersionConstraint extends \PharIo\Version\AbstractVersionConstraint
 {
     public function complies(\PharIo\Version\Version $version) : bool
     {
-        return $this->asString() === $version->getVersionString();
+        $other = $version->getVersionString();
+        if ($version->hasBuildMetaData()) {
+            $other .= '+' . $version->getBuildMetaData()->asString();
+        }
+        return $this->asString() === $other;
     }
 }
