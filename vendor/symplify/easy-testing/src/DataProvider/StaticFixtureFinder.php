@@ -1,15 +1,15 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20220221\Symplify\EasyTesting\DataProvider;
+namespace MonorepoBuilder20220223\Symplify\EasyTesting\DataProvider;
 
 use Iterator;
-use MonorepoBuilder20220221\Nette\Utils\Strings;
-use MonorepoBuilder20220221\Symfony\Component\Finder\Finder;
-use MonorepoBuilder20220221\Symfony\Component\Finder\SplFileInfo;
-use MonorepoBuilder20220221\Symplify\SmartFileSystem\Exception\FileNotFoundException;
-use MonorepoBuilder20220221\Symplify\SmartFileSystem\SmartFileInfo;
-use MonorepoBuilder20220221\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
+use MonorepoBuilder20220223\Nette\Utils\Strings;
+use MonorepoBuilder20220223\Symfony\Component\Finder\Finder;
+use MonorepoBuilder20220223\Symfony\Component\Finder\SplFileInfo;
+use MonorepoBuilder20220223\Symplify\SmartFileSystem\Exception\FileNotFoundException;
+use MonorepoBuilder20220223\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder20220223\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
 /**
  * @api
  * @see \Symplify\EasyTesting\Tests\DataProvider\StaticFixtureFinder\StaticFixtureFinderTest
@@ -56,9 +56,9 @@ final class StaticFixtureFinder
     {
         foreach ($fileInfos as $fileInfo) {
             try {
-                $smartFileInfo = new \MonorepoBuilder20220221\Symplify\SmartFileSystem\SmartFileInfo($fileInfo->getRealPath());
+                $smartFileInfo = new \MonorepoBuilder20220223\Symplify\SmartFileSystem\SmartFileInfo($fileInfo->getRealPath());
                 (yield [$smartFileInfo]);
-            } catch (\MonorepoBuilder20220221\Symplify\SmartFileSystem\Exception\FileNotFoundException $exception) {
+            } catch (\MonorepoBuilder20220223\Symplify\SmartFileSystem\Exception\FileNotFoundException $exception) {
             }
         }
     }
@@ -70,9 +70,9 @@ final class StaticFixtureFinder
     {
         foreach ($fileInfos as $fileInfo) {
             try {
-                $smartFileInfo = new \MonorepoBuilder20220221\Symplify\SmartFileSystem\SmartFileInfo($fileInfo->getRealPath());
+                $smartFileInfo = new \MonorepoBuilder20220223\Symplify\SmartFileSystem\SmartFileInfo($fileInfo->getRealPath());
                 (yield $fileInfo->getRelativePathname() => [$smartFileInfo]);
-            } catch (\MonorepoBuilder20220221\Symplify\SmartFileSystem\Exception\FileNotFoundException $exception) {
+            } catch (\MonorepoBuilder20220223\Symplify\SmartFileSystem\Exception\FileNotFoundException $exception) {
             }
         }
     }
@@ -81,7 +81,7 @@ final class StaticFixtureFinder
      */
     private static function findFilesInDirectory(string $directory, string $suffix) : array
     {
-        $finder = \MonorepoBuilder20220221\Symfony\Component\Finder\Finder::create()->in($directory)->files()->name($suffix);
+        $finder = \MonorepoBuilder20220223\Symfony\Component\Finder\Finder::create()->in($directory)->files()->name($suffix);
         $fileInfos = \iterator_to_array($finder);
         return \array_values($fileInfos);
     }
@@ -91,22 +91,22 @@ final class StaticFixtureFinder
     private static function findFilesInDirectoryExclusively(string $directory, string $suffix) : array
     {
         self::ensureNoOtherFileName($directory, $suffix);
-        $finder = \MonorepoBuilder20220221\Symfony\Component\Finder\Finder::create()->in($directory)->files()->name($suffix);
+        $finder = \MonorepoBuilder20220223\Symfony\Component\Finder\Finder::create()->in($directory)->files()->name($suffix);
         $fileInfos = \iterator_to_array($finder->getIterator());
         return \array_values($fileInfos);
     }
     private static function ensureNoOtherFileName(string $directory, string $suffix) : void
     {
-        $finder = \MonorepoBuilder20220221\Symfony\Component\Finder\Finder::create()->in($directory)->files()->notName($suffix);
+        $finder = \MonorepoBuilder20220223\Symfony\Component\Finder\Finder::create()->in($directory)->files()->notName($suffix);
         /** @var SplFileInfo[] $fileInfos */
         $fileInfos = \iterator_to_array($finder->getIterator());
         $relativeFilePaths = [];
         foreach ($fileInfos as $fileInfo) {
-            $relativeFilePaths[] = \MonorepoBuilder20220221\Nette\Utils\Strings::substring($fileInfo->getRealPath(), \strlen(\getcwd()) + 1);
+            $relativeFilePaths[] = \MonorepoBuilder20220223\Nette\Utils\Strings::substring($fileInfo->getRealPath(), \strlen(\getcwd()) + 1);
         }
         if ($relativeFilePaths === []) {
             return;
         }
-        throw new \MonorepoBuilder20220221\Symplify\SymplifyKernel\Exception\ShouldNotHappenException(\sprintf('Files "%s" have invalid suffix, use "%s" suffix instead', \implode('", ', $relativeFilePaths), $suffix));
+        throw new \MonorepoBuilder20220223\Symplify\SymplifyKernel\Exception\ShouldNotHappenException(\sprintf('Files "%s" have invalid suffix, use "%s" suffix instead', \implode('", ', $relativeFilePaths), $suffix));
     }
 }
