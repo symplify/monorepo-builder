@@ -3,12 +3,12 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Testing;
 
-use MonorepoBuilder20220223\Symfony\Component\Console\Style\SymfonyStyle;
-use MonorepoBuilder20220223\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
+use MonorepoBuilder20220224\Symfony\Component\Console\Style\SymfonyStyle;
+use MonorepoBuilder20220224\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
 use Symplify\MonorepoBuilder\Testing\ComposerJson\ComposerVersionManipulator;
 use Symplify\MonorepoBuilder\Testing\PackageDependency\UsedPackagesResolver;
-use MonorepoBuilder20220223\Symplify\PackageBuilder\Console\Output\ConsoleDiffer;
-use MonorepoBuilder20220223\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder20220224\Symplify\PackageBuilder\Console\Output\ConsoleDiffer;
+use MonorepoBuilder20220224\Symplify\SmartFileSystem\SmartFileInfo;
 final class ComposerJsonRequireUpdater
 {
     /**
@@ -31,7 +31,7 @@ final class ComposerJsonRequireUpdater
      * @var \Symplify\PackageBuilder\Console\Output\ConsoleDiffer
      */
     private $consoleDiffer;
-    public function __construct(\MonorepoBuilder20220223\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager $jsonFileManager, \MonorepoBuilder20220223\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Symplify\MonorepoBuilder\Testing\ComposerJson\ComposerVersionManipulator $composerVersionManipulator, \Symplify\MonorepoBuilder\Testing\PackageDependency\UsedPackagesResolver $usedPackagesResolver, \MonorepoBuilder20220223\Symplify\PackageBuilder\Console\Output\ConsoleDiffer $consoleDiffer)
+    public function __construct(\MonorepoBuilder20220224\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager $jsonFileManager, \MonorepoBuilder20220224\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Symplify\MonorepoBuilder\Testing\ComposerJson\ComposerVersionManipulator $composerVersionManipulator, \Symplify\MonorepoBuilder\Testing\PackageDependency\UsedPackagesResolver $usedPackagesResolver, \MonorepoBuilder20220224\Symplify\PackageBuilder\Console\Output\ConsoleDiffer $consoleDiffer)
     {
         $this->jsonFileManager = $jsonFileManager;
         $this->symfonyStyle = $symfonyStyle;
@@ -39,7 +39,7 @@ final class ComposerJsonRequireUpdater
         $this->usedPackagesResolver = $usedPackagesResolver;
         $this->consoleDiffer = $consoleDiffer;
     }
-    public function processPackage(\MonorepoBuilder20220223\Symplify\SmartFileSystem\SmartFileInfo $packageFileInfo) : void
+    public function processPackage(\MonorepoBuilder20220224\Symplify\SmartFileSystem\SmartFileInfo $packageFileInfo) : void
     {
         $packageComposerJson = $this->jsonFileManager->loadFromFileInfo($packageFileInfo);
         $usedPackageNames = $this->usedPackagesResolver->resolveForPackage($packageComposerJson);
