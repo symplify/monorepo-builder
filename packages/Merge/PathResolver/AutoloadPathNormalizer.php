@@ -27,6 +27,7 @@ final class AutoloadPathNormalizer
         $packageComposerJson->setAutoloadDev($autoloadDev);
     }
     /**
+     * @param mixed[] $autoloadArray
      * @return mixed[]
      */
     private function normalizeAutoloadArray(\MonorepoBuilder20220224\Symplify\SmartFileSystem\SmartFileInfo $packageFile, array $autoloadArray) : array
