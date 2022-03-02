@@ -8,19 +8,19 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220227\Symfony\Component\DependencyInjection;
+namespace MonorepoBuilder20220302\Symfony\Component\DependencyInjection;
 
-use MonorepoBuilder20220227\Psr\Container\ContainerInterface as PsrContainerInterface;
-use MonorepoBuilder20220227\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use MonorepoBuilder20220227\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
-use MonorepoBuilder20220227\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
+use MonorepoBuilder20220302\Psr\Container\ContainerInterface as PsrContainerInterface;
+use MonorepoBuilder20220302\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use MonorepoBuilder20220302\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
+use MonorepoBuilder20220302\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
 /**
  * ContainerInterface is the interface implemented by service container classes.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-interface ContainerInterface extends \MonorepoBuilder20220227\Psr\Container\ContainerInterface
+interface ContainerInterface extends \MonorepoBuilder20220302\Psr\Container\ContainerInterface
 {
     public const RUNTIME_EXCEPTION_ON_INVALID_REFERENCE = 0;
     public const EXCEPTION_ON_INVALID_REFERENCE = 1;
@@ -45,14 +45,14 @@ interface ContainerInterface extends \MonorepoBuilder20220227\Psr\Container\Cont
      */
     public function initialized(string $id) : bool;
     /**
-     * @return array|bool|string|int|float|null
+     * @return array|bool|string|int|float|\UnitEnum|null
      *
      * @throws InvalidArgumentException if the parameter is not defined
      */
     public function getParameter(string $name);
     public function hasParameter(string $name) : bool;
     /**
-     * @param mixed[]|bool|float|int|string|null $value
+     * @param mixed[]|bool|float|int|string|\UnitEnum|null $value
      */
     public function setParameter(string $name, $value);
 }

@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220227\Symfony\Component\Console\Completion;
+namespace MonorepoBuilder20220302\Symfony\Component\Console\Completion;
 
 /**
  * Represents a single suggested value.
