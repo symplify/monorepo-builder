@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220302\Symfony\Component\DependencyInjection\Exception;
+namespace MonorepoBuilder20220303\Symfony\Component\DependencyInjection\Exception;
 
 /**
  * Base BadMethodCallException for Dependency Injection component.
  */
-class BadMethodCallException extends \BadMethodCallException implements \MonorepoBuilder20220302\Symfony\Component\DependencyInjection\Exception\ExceptionInterface
+class BadMethodCallException extends \BadMethodCallException implements \MonorepoBuilder20220303\Symfony\Component\DependencyInjection\Exception\ExceptionInterface
 {
 }

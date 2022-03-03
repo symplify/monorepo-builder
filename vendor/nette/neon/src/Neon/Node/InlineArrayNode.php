@@ -5,10 +5,10 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace MonorepoBuilder20220302\Nette\Neon\Node;
+namespace MonorepoBuilder20220303\Nette\Neon\Node;
 
 /** @internal */
-final class InlineArrayNode extends \MonorepoBuilder20220302\Nette\Neon\Node\ArrayNode
+final class InlineArrayNode extends \MonorepoBuilder20220303\Nette\Neon\Node\ArrayNode
 {
     /** @var string */
     public $bracket;
@@ -19,6 +19,6 @@ final class InlineArrayNode extends \MonorepoBuilder20220302\Nette\Neon\Node\Arr
     }
     public function toString() : string
     {
-        return $this->bracket . \MonorepoBuilder20220302\Nette\Neon\Node\ArrayItemNode::itemsToInlineString($this->items) . ['[' => ']', '{' => '}', '(' => ')'][$this->bracket];
+        return $this->bracket . \MonorepoBuilder20220303\Nette\Neon\Node\ArrayItemNode::itemsToInlineString($this->items) . ['[' => ']', '{' => '}', '(' => ')'][$this->bracket];
     }
 }
