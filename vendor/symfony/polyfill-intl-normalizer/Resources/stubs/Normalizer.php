@@ -2,7 +2,7 @@
 
 
 
-class Normalizer extends \MonorepoBuilder20220303\Symfony\Polyfill\Intl\Normalizer\Normalizer
+class Normalizer extends \MonorepoBuilder20220305\Symfony\Polyfill\Intl\Normalizer\Normalizer
 {
     /**
      * @deprecated since ICU 56 and removed in PHP 8

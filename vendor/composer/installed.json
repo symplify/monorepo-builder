@@ -241,7 +241,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder20220303\\Psr\\Container\\": "src\/"
+                    "MonorepoBuilder20220305\\Psr\\Container\\": "src\/"
                 }
             },
             "notification-url": "https:\/\/packagist.org\/downloads\/",
@@ -378,7 +378,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder20220303\\Symfony\\Component\\Config\\": ""
+                    "MonorepoBuilder20220305\\Symfony\\Component\\Config\\": ""
                 },
                 "exclude-from-classmap": [
                     "\/Tests\/"
@@ -470,7 +470,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder20220303\\Symfony\\Component\\Console\\": ""
+                    "MonorepoBuilder20220305\\Symfony\\Component\\Console\\": ""
                 },
                 "exclude-from-classmap": [
                     "\/Tests\/"
@@ -567,7 +567,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder20220303\\Symfony\\Component\\DependencyInjection\\": ""
+                    "MonorepoBuilder20220305\\Symfony\\Component\\DependencyInjection\\": ""
                 },
                 "exclude-from-classmap": [
                     "\/Tests\/"
@@ -703,7 +703,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder20220303\\Symfony\\Component\\Filesystem\\": ""
+                    "MonorepoBuilder20220305\\Symfony\\Component\\Filesystem\\": ""
                 },
                 "exclude-from-classmap": [
                     "\/Tests\/"
@@ -767,7 +767,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder20220303\\Symfony\\Component\\Finder\\": ""
+                    "MonorepoBuilder20220305\\Symfony\\Component\\Finder\\": ""
                 },
                 "exclude-from-classmap": [
                     "\/Tests\/"
@@ -810,8 +810,8 @@
         },
         {
             "name": "symfony\/polyfill-ctype",
-            "version": "v1.24.0",
-            "version_normalized": "1.24.0.0",
+            "version": "v1.25.0",
+            "version_normalized": "1.25.0.0",
             "source": {
                 "type": "git",
                 "url": "https:\/\/github.com\/symfony\/polyfill-ctype.git",
@@ -849,7 +849,7 @@
                     "bootstrap.php"
                 ],
                 "psr-4": {
-                    "MonorepoBuilder20220303\\Symfony\\Polyfill\\Ctype\\": ""
+                    "MonorepoBuilder20220305\\Symfony\\Polyfill\\Ctype\\": ""
                 }
             },
             "notification-url": "https:\/\/packagist.org\/downloads\/",
@@ -875,7 +875,7 @@
                 "portable"
             ],
             "support": {
-                "source": "https:\/\/github.com\/symfony\/polyfill-ctype\/tree\/v1.24.0"
+                "source": "https:\/\/github.com\/symfony\/polyfill-ctype\/tree\/v1.25.0"
             },
             "funding": [
                 {
@@ -895,8 +895,8 @@
         },
         {
             "name": "symfony\/polyfill-intl-grapheme",
-            "version": "v1.24.0",
-            "version_normalized": "1.24.0.0",
+            "version": "v1.25.0",
+            "version_normalized": "1.25.0.0",
             "source": {
                 "type": "git",
                 "url": "https:\/\/github.com\/symfony\/polyfill-intl-grapheme.git",
@@ -931,7 +931,7 @@
                     "bootstrap.php"
                 ],
                 "psr-4": {
-                    "MonorepoBuilder20220303\\Symfony\\Polyfill\\Intl\\Grapheme\\": ""
+                    "MonorepoBuilder20220305\\Symfony\\Polyfill\\Intl\\Grapheme\\": ""
                 }
             },
             "notification-url": "https:\/\/packagist.org\/downloads\/",
@@ -959,7 +959,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https:\/\/github.com\/symfony\/polyfill-intl-grapheme\/tree\/v1.24.0"
+                "source": "https:\/\/github.com\/symfony\/polyfill-intl-grapheme\/tree\/v1.25.0"
             },
             "funding": [
                 {
@@ -979,8 +979,8 @@
         },
         {
             "name": "symfony\/polyfill-intl-normalizer",
-            "version": "v1.24.0",
-            "version_normalized": "1.24.0.0",
+            "version": "v1.25.0",
+            "version_normalized": "1.25.0.0",
             "source": {
                 "type": "git",
                 "url": "https:\/\/github.com\/symfony\/polyfill-intl-normalizer.git",
@@ -1015,7 +1015,7 @@
                     "bootstrap.php"
                 ],
                 "psr-4": {
-                    "MonorepoBuilder20220303\\Symfony\\Polyfill\\Intl\\Normalizer\\": ""
+                    "MonorepoBuilder20220305\\Symfony\\Polyfill\\Intl\\Normalizer\\": ""
                 },
                 "classmap": [
                     "Resources\/stubs"
@@ -1046,7 +1046,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https:\/\/github.com\/symfony\/polyfill-intl-normalizer\/tree\/v1.24.0"
+                "source": "https:\/\/github.com\/symfony\/polyfill-intl-normalizer\/tree\/v1.25.0"
             },
             "funding": [
                 {
@@ -1066,8 +1066,8 @@
         },
         {
             "name": "symfony\/polyfill-mbstring",
-            "version": "v1.24.0",
-            "version_normalized": "1.24.0.0",
+            "version": "v1.25.0",
+            "version_normalized": "1.25.0.0",
             "source": {
                 "type": "git",
                 "url": "https:\/\/github.com\/symfony\/polyfill-mbstring.git",
@@ -1105,7 +1105,7 @@
                     "bootstrap.php"
                 ],
                 "psr-4": {
-                    "MonorepoBuilder20220303\\Symfony\\Polyfill\\Mbstring\\": ""
+                    "MonorepoBuilder20220305\\Symfony\\Polyfill\\Mbstring\\": ""
                 }
             },
             "notification-url": "https:\/\/packagist.org\/downloads\/",
@@ -1132,7 +1132,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https:\/\/github.com\/symfony\/polyfill-mbstring\/tree\/v1.24.0"
+                "source": "https:\/\/github.com\/symfony\/polyfill-mbstring\/tree\/v1.25.0"
             },
             "funding": [
                 {
@@ -1152,8 +1152,8 @@
         },
         {
             "name": "symfony\/polyfill-php81",
-            "version": "v1.24.0",
-            "version_normalized": "1.24.0.0",
+            "version": "v1.25.0",
+            "version_normalized": "1.25.0.0",
             "source": {
                 "type": "git",
                 "url": "https:\/\/github.com\/symfony\/polyfill-php81.git",
@@ -1185,7 +1185,7 @@
                     "bootstrap.php"
                 ],
                 "psr-4": {
-                    "MonorepoBuilder20220303\\Symfony\\Polyfill\\Php81\\": ""
+                    "MonorepoBuilder20220305\\Symfony\\Polyfill\\Php81\\": ""
                 },
                 "classmap": [
                     "Resources\/stubs"
@@ -1214,7 +1214,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https:\/\/github.com\/symfony\/polyfill-php81\/tree\/v1.24.0"
+                "source": "https:\/\/github.com\/symfony\/polyfill-php81\/tree\/v1.25.0"
             },
             "funding": [
                 {
@@ -1255,7 +1255,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder20220303\\Symfony\\Component\\Process\\": ""
+                    "MonorepoBuilder20220305\\Symfony\\Component\\Process\\": ""
                 },
                 "exclude-from-classmap": [
                     "\/Tests\/"
@@ -1335,7 +1335,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder20220303\\Symfony\\Contracts\\Service\\": ""
+                    "MonorepoBuilder20220305\\Symfony\\Contracts\\Service\\": ""
                 }
             },
             "notification-url": "https:\/\/packagist.org\/downloads\/",
@@ -1420,7 +1420,7 @@
                     "Resources\/functions.php"
                 ],
                 "psr-4": {
-                    "MonorepoBuilder20220303\\Symfony\\Component\\String\\": ""
+                    "MonorepoBuilder20220305\\Symfony\\Component\\String\\": ""
                 },
                 "exclude-from-classmap": [
                     "\/Tests\/"
@@ -1523,12 +1523,12 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder20220303\\Symplify\\AutowireArrayParameter\\": "src"
+                    "MonorepoBuilder20220305\\Symplify\\AutowireArrayParameter\\": "src"
                 }
             },
             "autoload-dev": {
                 "psr-4": {
-                    "MonorepoBuilder20220303\\Symplify\\AutowireArrayParameter\\Tests\\": "tests"
+                    "MonorepoBuilder20220305\\Symplify\\AutowireArrayParameter\\Tests\\": "tests"
                 }
             },
             "license": [
@@ -1598,12 +1598,12 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder20220303\\Symplify\\ComposerJsonManipulator\\": "src"
+                    "MonorepoBuilder20220305\\Symplify\\ComposerJsonManipulator\\": "src"
                 }
             },
             "autoload-dev": {
                 "psr-4": {
-                    "MonorepoBuilder20220303\\Symplify\\ComposerJsonManipulator\\Tests\\": "tests"
+                    "MonorepoBuilder20220305\\Symplify\\ComposerJsonManipulator\\Tests\\": "tests"
                 }
             },
             "license": [
@@ -1675,12 +1675,12 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder20220303\\Symplify\\EasyTesting\\": "src"
+                    "MonorepoBuilder20220305\\Symplify\\EasyTesting\\": "src"
                 }
             },
             "autoload-dev": {
                 "psr-4": {
-                    "MonorepoBuilder20220303\\Symplify\\EasyTesting\\Tests\\": "tests"
+                    "MonorepoBuilder20220305\\Symplify\\EasyTesting\\Tests\\": "tests"
                 }
             },
             "license": [
@@ -1752,12 +1752,12 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder20220303\\Symplify\\PackageBuilder\\": "src"
+                    "MonorepoBuilder20220305\\Symplify\\PackageBuilder\\": "src"
                 }
             },
             "autoload-dev": {
                 "psr-4": {
-                    "MonorepoBuilder20220303\\Symplify\\PackageBuilder\\Tests\\": "tests"
+                    "MonorepoBuilder20220305\\Symplify\\PackageBuilder\\Tests\\": "tests"
                 }
             },
             "license": [
@@ -1826,12 +1826,12 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder20220303\\Symplify\\SmartFileSystem\\": "src"
+                    "MonorepoBuilder20220305\\Symplify\\SmartFileSystem\\": "src"
                 }
             },
             "autoload-dev": {
                 "psr-4": {
-                    "MonorepoBuilder20220303\\Symplify\\SmartFileSystem\\Tests\\": "tests"
+                    "MonorepoBuilder20220305\\Symplify\\SmartFileSystem\\Tests\\": "tests"
                 }
             },
             "license": [
@@ -1899,12 +1899,12 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder20220303\\Symplify\\SymplifyKernel\\": "src"
+                    "MonorepoBuilder20220305\\Symplify\\SymplifyKernel\\": "src"
                 }
             },
             "autoload-dev": {
                 "psr-4": {
-                    "MonorepoBuilder20220303\\Symplify\\SymplifyKernel\\Tests\\": "tests"
+                    "MonorepoBuilder20220305\\Symplify\\SymplifyKernel\\Tests\\": "tests"
                 }
             },
             "license": [
@@ -1953,7 +1953,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder20220303\\Webmozart\\Assert\\": "src\/"
+                    "MonorepoBuilder20220305\\Webmozart\\Assert\\": "src\/"
                 }
             },
             "notification-url": "https:\/\/packagist.org\/downloads\/",

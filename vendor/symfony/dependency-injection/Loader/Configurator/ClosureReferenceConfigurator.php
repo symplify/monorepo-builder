@@ -8,8 +8,8 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220303\Symfony\Component\DependencyInjection\Loader\Configurator;
+namespace MonorepoBuilder20220305\Symfony\Component\DependencyInjection\Loader\Configurator;
 
-class ClosureReferenceConfigurator extends \MonorepoBuilder20220303\Symfony\Component\DependencyInjection\Loader\Configurator\ReferenceConfigurator
+class ClosureReferenceConfigurator extends \MonorepoBuilder20220305\Symfony\Component\DependencyInjection\Loader\Configurator\ReferenceConfigurator
 {
 }

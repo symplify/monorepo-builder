@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220303\Symfony\Component\DependencyInjection\Loader\Configurator\Traits;
+namespace MonorepoBuilder20220305\Symfony\Component\DependencyInjection\Loader\Configurator\Traits;
 
-use MonorepoBuilder20220303\Symfony\Component\DependencyInjection\Loader\Configurator\ReferenceConfigurator;
+use MonorepoBuilder20220305\Symfony\Component\DependencyInjection\Loader\Configurator\ReferenceConfigurator;
 trait ConfiguratorTrait
 {
     /**

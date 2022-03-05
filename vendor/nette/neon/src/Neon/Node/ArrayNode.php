@@ -5,17 +5,17 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace MonorepoBuilder20220303\Nette\Neon\Node;
+namespace MonorepoBuilder20220305\Nette\Neon\Node;
 
-use MonorepoBuilder20220303\Nette\Neon\Node;
+use MonorepoBuilder20220305\Nette\Neon\Node;
 /** @internal */
-abstract class ArrayNode extends \MonorepoBuilder20220303\Nette\Neon\Node
+abstract class ArrayNode extends \MonorepoBuilder20220305\Nette\Neon\Node
 {
     /** @var ArrayItemNode[] */
     public $items = [];
     public function toValue() : array
     {
-        return \MonorepoBuilder20220303\Nette\Neon\Node\ArrayItemNode::itemsToArray($this->items);
+        return \MonorepoBuilder20220305\Nette\Neon\Node\ArrayItemNode::itemsToArray($this->items);
     }
     public function getSubNodes() : array
     {

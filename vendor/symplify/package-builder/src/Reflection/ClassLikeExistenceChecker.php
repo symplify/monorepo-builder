@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20220303\Symplify\PackageBuilder\Reflection;
+namespace MonorepoBuilder20220305\Symplify\PackageBuilder\Reflection;
 
 use ReflectionClass;
 /**
