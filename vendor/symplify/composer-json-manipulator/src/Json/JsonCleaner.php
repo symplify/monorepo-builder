@@ -6,8 +6,8 @@ namespace MonorepoBuilder20220305\Symplify\ComposerJsonManipulator\Json;
 final class JsonCleaner
 {
     /**
-     * @param mixed[] $data
-     * @return mixed[]
+     * @param array<int|string, mixed> $data
+     * @return array<int|string, mixed>
      */
     public function removeEmptyKeysFromJsonArray(array $data) : array
     {
