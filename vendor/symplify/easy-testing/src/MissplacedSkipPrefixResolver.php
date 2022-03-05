@@ -4,6 +4,7 @@ declare (strict_types=1);
 namespace MonorepoBuilder20220305\Symplify\EasyTesting;
 
 use MonorepoBuilder20220305\Nette\Utils\Strings;
+use MonorepoBuilder20220305\Symplify\EasyTesting\ValueObject\IncorrectAndMissingSkips;
 use MonorepoBuilder20220305\Symplify\EasyTesting\ValueObject\Prefix;
 use MonorepoBuilder20220305\Symplify\EasyTesting\ValueObject\SplitLine;
 use MonorepoBuilder20220305\Symplify\SmartFileSystem\SmartFileInfo;
@@ -14,25 +15,24 @@ final class MissplacedSkipPrefixResolver
 {
     /**
      * @param SmartFileInfo[] $fixtureFileInfos
-     * @return array<string, SmartFileInfo[]>
      */
-    public function resolve(array $fixtureFileInfos) : array
+    public function resolve(array $fixtureFileInfos) : \MonorepoBuilder20220305\Symplify\EasyTesting\ValueObject\IncorrectAndMissingSkips
     {
-        $invalidFileInfos = ['incorrect_skips' => [], 'missing_skips' => []];
+        $incorrectSkips = [];
+        $missingSkips = [];
         foreach ($fixtureFileInfos as $fixtureFileInfo) {
             $hasNameSkipStart = $this->hasNameSkipStart($fixtureFileInfo);
             $fileContents = $fixtureFileInfo->getContents();
             $hasSplitLine = (bool) \MonorepoBuilder20220305\Nette\Utils\Strings::match($fileContents, \MonorepoBuilder20220305\Symplify\EasyTesting\ValueObject\SplitLine::SPLIT_LINE_REGEX);
             if ($hasNameSkipStart && $hasSplitLine) {
-                $invalidFileInfos['incorrect_skips'][] = $fixtureFileInfo;
+                $incorrectSkips[] = $fixtureFileInfo;
                 continue;
             }
             if (!$hasNameSkipStart && !$hasSplitLine) {
-                $invalidFileInfos['missing_skips'][] = $fixtureFileInfo;
-                continue;
+                $missingSkips[] = $fixtureFileInfo;
             }
         }
-        return $invalidFileInfos;
+        return new \MonorepoBuilder20220305\Symplify\EasyTesting\ValueObject\IncorrectAndMissingSkips($incorrectSkips, $missingSkips);
     }
     private function hasNameSkipStart(\MonorepoBuilder20220305\Symplify\SmartFileSystem\SmartFileInfo $fixtureFileInfo) : bool
     {
