@@ -8,18 +8,18 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220305\Symfony\Component\DependencyInjection\Loader;
+namespace MonorepoBuilder20220306\Symfony\Component\DependencyInjection\Loader;
 
-use MonorepoBuilder20220305\Symfony\Component\Config\Builder\ConfigBuilderGenerator;
-use MonorepoBuilder20220305\Symfony\Component\Config\Builder\ConfigBuilderGeneratorInterface;
-use MonorepoBuilder20220305\Symfony\Component\Config\Builder\ConfigBuilderInterface;
-use MonorepoBuilder20220305\Symfony\Component\Config\FileLocatorInterface;
-use MonorepoBuilder20220305\Symfony\Component\DependencyInjection\Attribute\When;
-use MonorepoBuilder20220305\Symfony\Component\DependencyInjection\Container;
-use MonorepoBuilder20220305\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder20220305\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use MonorepoBuilder20220305\Symfony\Component\DependencyInjection\Extension\ConfigurationExtensionInterface;
-use MonorepoBuilder20220305\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
+use MonorepoBuilder20220306\Symfony\Component\Config\Builder\ConfigBuilderGenerator;
+use MonorepoBuilder20220306\Symfony\Component\Config\Builder\ConfigBuilderGeneratorInterface;
+use MonorepoBuilder20220306\Symfony\Component\Config\Builder\ConfigBuilderInterface;
+use MonorepoBuilder20220306\Symfony\Component\Config\FileLocatorInterface;
+use MonorepoBuilder20220306\Symfony\Component\DependencyInjection\Attribute\When;
+use MonorepoBuilder20220306\Symfony\Component\DependencyInjection\Container;
+use MonorepoBuilder20220306\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder20220306\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use MonorepoBuilder20220306\Symfony\Component\DependencyInjection\Extension\ConfigurationExtensionInterface;
+use MonorepoBuilder20220306\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 /**
  * PhpFileLoader loads service definitions from a PHP file.
@@ -29,11 +29,11 @@ use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigura
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class PhpFileLoader extends \MonorepoBuilder20220305\Symfony\Component\DependencyInjection\Loader\FileLoader
+class PhpFileLoader extends \MonorepoBuilder20220306\Symfony\Component\DependencyInjection\Loader\FileLoader
 {
     protected $autoRegisterAliasesForSinglyImplementedInterfaces = \false;
     private $generator;
-    public function __construct(\MonorepoBuilder20220305\Symfony\Component\DependencyInjection\ContainerBuilder $container, \MonorepoBuilder20220305\Symfony\Component\Config\FileLocatorInterface $locator, string $env = null, \MonorepoBuilder20220305\Symfony\Component\Config\Builder\ConfigBuilderGeneratorInterface $generator = null)
+    public function __construct(\MonorepoBuilder20220306\Symfony\Component\DependencyInjection\ContainerBuilder $container, \MonorepoBuilder20220306\Symfony\Component\Config\FileLocatorInterface $locator, string $env = null, \MonorepoBuilder20220306\Symfony\Component\Config\Builder\ConfigBuilderGeneratorInterface $generator = null)
     {
         parent::__construct($container, $locator, $env);
         $this->generator = $generator;
@@ -55,7 +55,7 @@ class PhpFileLoader extends \MonorepoBuilder20220305\Symfony\Component\Dependenc
         // the closure forbids access to the private scope in the included file
         $load = \Closure::bind(function ($path, $env) use($container, $loader, $resource, $type) {
             return include $path;
-        }, $this, \MonorepoBuilder20220305\Symfony\Component\DependencyInjection\Loader\ProtectedPhpFileLoader::class);
+        }, $this, \MonorepoBuilder20220306\Symfony\Component\DependencyInjection\Loader\ProtectedPhpFileLoader::class);
         try {
             $callback = $load($path, $this->env);
             if (\is_object($callback) && \is_callable($callback)) {
@@ -93,7 +93,7 @@ class PhpFileLoader extends \MonorepoBuilder20220305\Symfony\Component\Dependenc
         $configBuilders = [];
         $r = new \ReflectionFunction($callback);
         $attribute = null;
-        foreach (\method_exists($r, 'getAttributes') ? $r->getAttributes(\MonorepoBuilder20220305\Symfony\Component\DependencyInjection\Attribute\When::class) : [] as $attribute) {
+        foreach (\method_exists($r, 'getAttributes') ? $r->getAttributes(\MonorepoBuilder20220306\Symfony\Component\DependencyInjection\Attribute\When::class) : [] as $attribute) {
             if ($this->env === $attribute->newInstance()->env) {
                 $attribute = null;
                 break;
@@ -105,24 +105,24 @@ class PhpFileLoader extends \MonorepoBuilder20220305\Symfony\Component\Dependenc
         foreach ($r->getParameters() as $parameter) {
             $reflectionType = $parameter->getType();
             if (!$reflectionType instanceof \ReflectionNamedType) {
-                throw new \InvalidArgumentException(\sprintf('Could not resolve argument "$%s" for "%s". You must typehint it (for example with "%s" or "%s").', $parameter->getName(), $path, \Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator::class, \MonorepoBuilder20220305\Symfony\Component\DependencyInjection\ContainerBuilder::class));
+                throw new \InvalidArgumentException(\sprintf('Could not resolve argument "$%s" for "%s". You must typehint it (for example with "%s" or "%s").', $parameter->getName(), $path, \Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator::class, \MonorepoBuilder20220306\Symfony\Component\DependencyInjection\ContainerBuilder::class));
             }
             $type = $reflectionType->getName();
             switch ($type) {
                 case \Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator::class:
                     $arguments[] = $containerConfigurator;
                     break;
-                case \MonorepoBuilder20220305\Symfony\Component\DependencyInjection\ContainerBuilder::class:
+                case \MonorepoBuilder20220306\Symfony\Component\DependencyInjection\ContainerBuilder::class:
                     $arguments[] = $this->container;
                     break;
-                case \MonorepoBuilder20220305\Symfony\Component\DependencyInjection\Loader\FileLoader::class:
+                case \MonorepoBuilder20220306\Symfony\Component\DependencyInjection\Loader\FileLoader::class:
                 case self::class:
                     $arguments[] = $this;
                     break;
                 default:
                     try {
                         $configBuilder = $this->configBuilder($type);
-                    } catch (\MonorepoBuilder20220305\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException|\LogicException $e) {
+                    } catch (\MonorepoBuilder20220306\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException|\LogicException $e) {
                         throw new \InvalidArgumentException(\sprintf('Could not resolve argument "%s" for "%s".', $type . ' $' . $parameter->getName(), $path), 0, $e);
                     }
                     $configBuilders[] = $configBuilder;
@@ -140,36 +140,36 @@ class PhpFileLoader extends \MonorepoBuilder20220305\Symfony\Component\Dependenc
     /**
      * @param string $namespace FQCN string for a class implementing ConfigBuilderInterface
      */
-    private function configBuilder(string $namespace) : \MonorepoBuilder20220305\Symfony\Component\Config\Builder\ConfigBuilderInterface
+    private function configBuilder(string $namespace) : \MonorepoBuilder20220306\Symfony\Component\Config\Builder\ConfigBuilderInterface
     {
-        if (!\class_exists(\MonorepoBuilder20220305\Symfony\Component\Config\Builder\ConfigBuilderGenerator::class)) {
+        if (!\class_exists(\MonorepoBuilder20220306\Symfony\Component\Config\Builder\ConfigBuilderGenerator::class)) {
             throw new \LogicException('You cannot use the config builder as the Config component is not installed. Try running "composer require symfony/config".');
         }
         if (null === $this->generator) {
             throw new \LogicException('You cannot use the ConfigBuilders without providing a class implementing ConfigBuilderGeneratorInterface.');
         }
         // If class exists and implements ConfigBuilderInterface
-        if (\class_exists($namespace) && \is_subclass_of($namespace, \MonorepoBuilder20220305\Symfony\Component\Config\Builder\ConfigBuilderInterface::class)) {
+        if (\class_exists($namespace) && \is_subclass_of($namespace, \MonorepoBuilder20220306\Symfony\Component\Config\Builder\ConfigBuilderInterface::class)) {
             return new $namespace();
         }
         // If it does not start with Symfony\Config\ we dont know how to handle this
         if ('Symfony\\Config\\' !== \substr($namespace, 0, 15)) {
-            throw new \MonorepoBuilder20220305\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Could not find or generate class "%s".', $namespace));
+            throw new \MonorepoBuilder20220306\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Could not find or generate class "%s".', $namespace));
         }
         // Try to get the extension alias
-        $alias = \MonorepoBuilder20220305\Symfony\Component\DependencyInjection\Container::underscore(\substr($namespace, 15, -6));
+        $alias = \MonorepoBuilder20220306\Symfony\Component\DependencyInjection\Container::underscore(\substr($namespace, 15, -6));
         if (\false !== \strpos($alias, '\\')) {
-            throw new \MonorepoBuilder20220305\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException('You can only use "root" ConfigBuilders from "Symfony\\Config\\" namespace. Nested classes like "Symfony\\Config\\Framework\\CacheConfig" cannot be used.');
+            throw new \MonorepoBuilder20220306\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException('You can only use "root" ConfigBuilders from "Symfony\\Config\\" namespace. Nested classes like "Symfony\\Config\\Framework\\CacheConfig" cannot be used.');
         }
         if (!$this->container->hasExtension($alias)) {
-            $extensions = \array_filter(\array_map(function (\MonorepoBuilder20220305\Symfony\Component\DependencyInjection\Extension\ExtensionInterface $ext) {
+            $extensions = \array_filter(\array_map(function (\MonorepoBuilder20220306\Symfony\Component\DependencyInjection\Extension\ExtensionInterface $ext) {
                 return $ext->getAlias();
             }, $this->container->getExtensions()));
-            throw new \MonorepoBuilder20220305\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('There is no extension able to load the configuration for "%s". Looked for namespace "%s", found "%s".', $namespace, $alias, $extensions ? \implode('", "', $extensions) : 'none'));
+            throw new \MonorepoBuilder20220306\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('There is no extension able to load the configuration for "%s". Looked for namespace "%s", found "%s".', $namespace, $alias, $extensions ? \implode('", "', $extensions) : 'none'));
         }
         $extension = $this->container->getExtension($alias);
-        if (!$extension instanceof \MonorepoBuilder20220305\Symfony\Component\DependencyInjection\Extension\ConfigurationExtensionInterface) {
-            throw new \LogicException(\sprintf('You cannot use the config builder for "%s" because the extension does not implement "%s".', $namespace, \MonorepoBuilder20220305\Symfony\Component\DependencyInjection\Extension\ConfigurationExtensionInterface::class));
+        if (!$extension instanceof \MonorepoBuilder20220306\Symfony\Component\DependencyInjection\Extension\ConfigurationExtensionInterface) {
+            throw new \LogicException(\sprintf('You cannot use the config builder for "%s" because the extension does not implement "%s".', $namespace, \MonorepoBuilder20220306\Symfony\Component\DependencyInjection\Extension\ConfigurationExtensionInterface::class));
         }
         $configuration = $extension->getConfiguration([], $this->container);
         $loader = $this->generator->build($configuration);
@@ -179,6 +179,6 @@ class PhpFileLoader extends \MonorepoBuilder20220305\Symfony\Component\Dependenc
 /**
  * @internal
  */
-final class ProtectedPhpFileLoader extends \MonorepoBuilder20220305\Symfony\Component\DependencyInjection\Loader\PhpFileLoader
+final class ProtectedPhpFileLoader extends \MonorepoBuilder20220306\Symfony\Component\DependencyInjection\Loader\PhpFileLoader
 {
 }

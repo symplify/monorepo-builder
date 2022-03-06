@@ -8,16 +8,16 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220305\Symfony\Component\Console\Output;
+namespace MonorepoBuilder20220306\Symfony\Component\Console\Output;
 
-use MonorepoBuilder20220305\Symfony\Component\Console\Formatter\OutputFormatterInterface;
-use MonorepoBuilder20220305\Symfony\Component\Console\Helper\Helper;
-use MonorepoBuilder20220305\Symfony\Component\Console\Terminal;
+use MonorepoBuilder20220306\Symfony\Component\Console\Formatter\OutputFormatterInterface;
+use MonorepoBuilder20220306\Symfony\Component\Console\Helper\Helper;
+use MonorepoBuilder20220306\Symfony\Component\Console\Terminal;
 /**
  * @author Pierre du Plessis <pdples@gmail.com>
  * @author Gabriel Ostrolucký <gabriel.ostrolucky@gmail.com>
  */
-class ConsoleSectionOutput extends \MonorepoBuilder20220305\Symfony\Component\Console\Output\StreamOutput
+class ConsoleSectionOutput extends \MonorepoBuilder20220306\Symfony\Component\Console\Output\StreamOutput
 {
     /**
      * @var mixed[]
@@ -36,12 +36,12 @@ class ConsoleSectionOutput extends \MonorepoBuilder20220305\Symfony\Component\Co
      * @param resource               $stream
      * @param ConsoleSectionOutput[] $sections
      */
-    public function __construct($stream, array &$sections, int $verbosity, bool $decorated, \MonorepoBuilder20220305\Symfony\Component\Console\Formatter\OutputFormatterInterface $formatter)
+    public function __construct($stream, array &$sections, int $verbosity, bool $decorated, \MonorepoBuilder20220306\Symfony\Component\Console\Formatter\OutputFormatterInterface $formatter)
     {
         parent::__construct($stream, $verbosity, $decorated, $formatter);
         \array_unshift($sections, $this);
         $this->sections =& $sections;
-        $this->terminal = new \MonorepoBuilder20220305\Symfony\Component\Console\Terminal();
+        $this->terminal = new \MonorepoBuilder20220306\Symfony\Component\Console\Terminal();
     }
     /**
      * Clears previous output for this section.
@@ -126,6 +126,6 @@ class ConsoleSectionOutput extends \MonorepoBuilder20220305\Symfony\Component\Co
     }
     private function getDisplayLength(string $text) : int
     {
-        return \MonorepoBuilder20220305\Symfony\Component\Console\Helper\Helper::width(\MonorepoBuilder20220305\Symfony\Component\Console\Helper\Helper::removeDecoration($this->getFormatter(), \str_replace("\t", '        ', $text)));
+        return \MonorepoBuilder20220306\Symfony\Component\Console\Helper\Helper::width(\MonorepoBuilder20220306\Symfony\Component\Console\Helper\Helper::removeDecoration($this->getFormatter(), \str_replace("\t", '        ', $text)));
     }
 }
