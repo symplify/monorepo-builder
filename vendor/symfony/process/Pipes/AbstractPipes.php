@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220306\Symfony\Component\Process\Pipes;
+namespace MonorepoBuilder20220307\Symfony\Component\Process\Pipes;
 
-use MonorepoBuilder20220306\Symfony\Component\Process\Exception\InvalidArgumentException;
+use MonorepoBuilder20220307\Symfony\Component\Process\Exception\InvalidArgumentException;
 /**
  * @author Romain Neutron <imprec@gmail.com>
  *
  * @internal
  */
-abstract class AbstractPipes implements \MonorepoBuilder20220306\Symfony\Component\Process\Pipes\PipesInterface
+abstract class AbstractPipes implements \MonorepoBuilder20220307\Symfony\Component\Process\Pipes\PipesInterface
 {
     /**
      * @var mixed[]
@@ -96,7 +96,7 @@ abstract class AbstractPipes implements \MonorepoBuilder20220306\Symfony\Compone
             } elseif (!isset($this->inputBuffer[0])) {
                 if (!\is_string($input)) {
                     if (!\is_scalar($input)) {
-                        throw new \MonorepoBuilder20220306\Symfony\Component\Process\Exception\InvalidArgumentException(\sprintf('"%s" yielded a value of type "%s", but only scalars and stream resources are supported.', \get_debug_type($this->input), \get_debug_type($input)));
+                        throw new \MonorepoBuilder20220307\Symfony\Component\Process\Exception\InvalidArgumentException(\sprintf('"%s" yielded a value of type "%s", but only scalars and stream resources are supported.', \get_debug_type($this->input), \get_debug_type($input)));
                     }
                     $input = (string) $input;
                 }

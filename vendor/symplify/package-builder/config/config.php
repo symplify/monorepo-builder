@@ -1,20 +1,20 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20220306;
+namespace MonorepoBuilder20220307;
 
-use MonorepoBuilder20220306\SebastianBergmann\Diff\Differ;
+use MonorepoBuilder20220307\SebastianBergmann\Diff\Differ;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
-use MonorepoBuilder20220306\Symplify\PackageBuilder\Console\Formatter\ColorConsoleDiffFormatter;
-use MonorepoBuilder20220306\Symplify\PackageBuilder\Console\Output\ConsoleDiffer;
-use MonorepoBuilder20220306\Symplify\PackageBuilder\Diff\Output\CompleteUnifiedDiffOutputBuilderFactory;
-use MonorepoBuilder20220306\Symplify\PackageBuilder\Reflection\PrivatesAccessor;
+use MonorepoBuilder20220307\Symplify\PackageBuilder\Console\Formatter\ColorConsoleDiffFormatter;
+use MonorepoBuilder20220307\Symplify\PackageBuilder\Console\Output\ConsoleDiffer;
+use MonorepoBuilder20220307\Symplify\PackageBuilder\Diff\Output\CompleteUnifiedDiffOutputBuilderFactory;
+use MonorepoBuilder20220307\Symplify\PackageBuilder\Reflection\PrivatesAccessor;
 return static function (\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator $containerConfigurator) : void {
     $services = $containerConfigurator->services();
     $services->defaults()->public()->autowire()->autoconfigure();
-    $services->set(\MonorepoBuilder20220306\Symplify\PackageBuilder\Console\Formatter\ColorConsoleDiffFormatter::class);
-    $services->set(\MonorepoBuilder20220306\Symplify\PackageBuilder\Console\Output\ConsoleDiffer::class);
-    $services->set(\MonorepoBuilder20220306\Symplify\PackageBuilder\Diff\Output\CompleteUnifiedDiffOutputBuilderFactory::class);
-    $services->set(\MonorepoBuilder20220306\SebastianBergmann\Diff\Differ::class);
-    $services->set(\MonorepoBuilder20220306\Symplify\PackageBuilder\Reflection\PrivatesAccessor::class);
+    $services->set(\MonorepoBuilder20220307\Symplify\PackageBuilder\Console\Formatter\ColorConsoleDiffFormatter::class);
+    $services->set(\MonorepoBuilder20220307\Symplify\PackageBuilder\Console\Output\ConsoleDiffer::class);
+    $services->set(\MonorepoBuilder20220307\Symplify\PackageBuilder\Diff\Output\CompleteUnifiedDiffOutputBuilderFactory::class);
+    $services->set(\MonorepoBuilder20220307\SebastianBergmann\Diff\Differ::class);
+    $services->set(\MonorepoBuilder20220307\Symplify\PackageBuilder\Reflection\PrivatesAccessor::class);
 };
