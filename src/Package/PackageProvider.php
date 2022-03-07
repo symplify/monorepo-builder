@@ -43,7 +43,8 @@ final class PackageProvider
     {
         $json = $this->jsonFileManager->loadFromFileInfo($smartFileInfo);
         if (!isset($json['name'])) {
-            throw new \MonorepoBuilder20220307\Symplify\SymplifyKernel\Exception\ShouldNotHappenException();
+            $errorMessage = \sprintf('Package "name" is missing in "composer.json" for "%s"', $smartFileInfo->getRelativeFilePathFromCwd());
+            throw new \MonorepoBuilder20220307\Symplify\SymplifyKernel\Exception\ShouldNotHappenException($errorMessage);
         }
         return (string) $json['name'];
     }
