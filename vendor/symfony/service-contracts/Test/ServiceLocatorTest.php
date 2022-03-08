@@ -8,16 +8,16 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220307\Symfony\Contracts\Service\Test;
+namespace MonorepoBuilder20220308\Symfony\Contracts\Service\Test;
 
-use MonorepoBuilder20220307\PHPUnit\Framework\TestCase;
-use MonorepoBuilder20220307\Psr\Container\ContainerInterface;
-use MonorepoBuilder20220307\Symfony\Contracts\Service\ServiceLocatorTrait;
-abstract class ServiceLocatorTest extends \MonorepoBuilder20220307\PHPUnit\Framework\TestCase
+use MonorepoBuilder20220308\PHPUnit\Framework\TestCase;
+use MonorepoBuilder20220308\Psr\Container\ContainerInterface;
+use MonorepoBuilder20220308\Symfony\Contracts\Service\ServiceLocatorTrait;
+abstract class ServiceLocatorTest extends \MonorepoBuilder20220308\PHPUnit\Framework\TestCase
 {
-    protected function getServiceLocator(array $factories) : \MonorepoBuilder20220307\Psr\Container\ContainerInterface
+    protected function getServiceLocator(array $factories) : \MonorepoBuilder20220308\Psr\Container\ContainerInterface
     {
-        return new class($factories) implements \MonorepoBuilder20220307\Psr\Container\ContainerInterface
+        return new class($factories) implements \MonorepoBuilder20220308\Psr\Container\ContainerInterface
         {
             use ServiceLocatorTrait;
         };
@@ -59,7 +59,7 @@ abstract class ServiceLocatorTest extends \MonorepoBuilder20220307\PHPUnit\Frame
     public function testThrowsOnUndefinedInternalService()
     {
         if (!$this->getExpectedException()) {
-            $this->expectException(\MonorepoBuilder20220307\Psr\Container\NotFoundExceptionInterface::class);
+            $this->expectException(\MonorepoBuilder20220308\Psr\Container\NotFoundExceptionInterface::class);
             $this->expectExceptionMessage('The service "foo" has a dependency on a non-existent service "bar". This locator only knows about the "foo" service.');
         }
         $locator = $this->getServiceLocator(['foo' => function () use(&$locator) {
@@ -69,7 +69,7 @@ abstract class ServiceLocatorTest extends \MonorepoBuilder20220307\PHPUnit\Frame
     }
     public function testThrowsOnCircularReference()
     {
-        $this->expectException(\MonorepoBuilder20220307\Psr\Container\ContainerExceptionInterface::class);
+        $this->expectException(\MonorepoBuilder20220308\Psr\Container\ContainerExceptionInterface::class);
         $this->expectExceptionMessage('Circular reference detected for service "bar", path: "bar -> baz -> bar".');
         $locator = $this->getServiceLocator(['foo' => function () use(&$locator) {
             return $locator->get('bar');
