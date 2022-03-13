@@ -5,36 +5,41 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace MonorepoBuilder20220308\Nette\Neon;
+namespace MonorepoBuilder20220313\Nette\Neon;
 
 /** @internal */
 final class Parser
 {
     /** @var TokenStream */
     private $tokens;
-    public function parse(\MonorepoBuilder20220308\Nette\Neon\TokenStream $tokens) : \MonorepoBuilder20220308\Nette\Neon\Node
+    /** @var int[] */
+    private $posToLine = [];
+    public function parse(\MonorepoBuilder20220313\Nette\Neon\TokenStream $tokens) : \MonorepoBuilder20220313\Nette\Neon\Node
     {
         $this->tokens = $tokens;
-        while ($this->tokens->consume(\MonorepoBuilder20220308\Nette\Neon\Token::NEWLINE)) {
+        $this->initLines();
+        while ($this->tokens->consume(\MonorepoBuilder20220313\Nette\Neon\Token::Newline)) {
         }
         $node = $this->parseBlock($this->tokens->getIndentation());
-        while ($this->tokens->consume(\MonorepoBuilder20220308\Nette\Neon\Token::NEWLINE)) {
+        while ($this->tokens->consume(\MonorepoBuilder20220313\Nette\Neon\Token::Newline)) {
         }
         if ($this->tokens->isNext()) {
             $this->tokens->error();
         }
         return $node;
     }
-    private function parseBlock(string $indent, bool $onlyBullets = \false) : \MonorepoBuilder20220308\Nette\Neon\Node
+    private function parseBlock(string $indent, bool $onlyBullets = \false) : \MonorepoBuilder20220313\Nette\Neon\Node
     {
-        $res = new \MonorepoBuilder20220308\Nette\Neon\Node\BlockArrayNode($indent, $this->tokens->getPos());
+        $res = new \MonorepoBuilder20220313\Nette\Neon\Node\BlockArrayNode($indent);
+        $this->injectPos($res);
         $keyCheck = [];
         loop:
-        $item = new \MonorepoBuilder20220308\Nette\Neon\Node\ArrayItemNode($this->tokens->getPos());
+        $item = new \MonorepoBuilder20220313\Nette\Neon\Node\ArrayItemNode();
+        $this->injectPos($item);
         if ($this->tokens->consume('-')) {
             // continue
         } elseif (!$this->tokens->isNext() || $onlyBullets) {
-            return $res->items ? $res : new \MonorepoBuilder20220308\Nette\Neon\Node\LiteralNode(null, $this->tokens->getPos());
+            return $res->items ? $res : $this->injectPos(new \MonorepoBuilder20220313\Nette\Neon\Node\LiteralNode(null));
         } else {
             $value = $this->parseValue();
             if ($this->tokens->consume(':', '=')) {
@@ -48,9 +53,10 @@ final class Parser
             }
         }
         $res->items[] = $item;
-        $item->value = new \MonorepoBuilder20220308\Nette\Neon\Node\LiteralNode(null, $this->tokens->getPos());
-        if ($this->tokens->consume(\MonorepoBuilder20220308\Nette\Neon\Token::NEWLINE)) {
-            while ($this->tokens->consume(\MonorepoBuilder20220308\Nette\Neon\Token::NEWLINE)) {
+        $item->value = new \MonorepoBuilder20220313\Nette\Neon\Node\LiteralNode(null);
+        $this->injectPos($item->value);
+        if ($this->tokens->consume(\MonorepoBuilder20220313\Nette\Neon\Token::Newline)) {
+            while ($this->tokens->consume(\MonorepoBuilder20220313\Nette\Neon\Token::Newline)) {
             }
             $nextIndent = $this->tokens->getIndentation();
             if (\strncmp($nextIndent, $indent, \min(\strlen($nextIndent), \strlen($indent)))) {
@@ -70,15 +76,16 @@ final class Parser
             // open new block after dash
         } elseif ($this->tokens->isNext()) {
             $item->value = $this->parseValue();
-            if ($this->tokens->isNext() && !$this->tokens->isNext(\MonorepoBuilder20220308\Nette\Neon\Token::NEWLINE)) {
+            if ($this->tokens->isNext() && !$this->tokens->isNext(\MonorepoBuilder20220313\Nette\Neon\Token::Newline)) {
                 $this->tokens->error();
             }
         }
-        if ($item->value instanceof \MonorepoBuilder20220308\Nette\Neon\Node\BlockArrayNode) {
+        if ($item->value instanceof \MonorepoBuilder20220313\Nette\Neon\Node\BlockArrayNode) {
             $item->value->indentation = \substr($item->value->indentation, \strlen($indent));
         }
-        $res->endPos = $item->endPos = $item->value->endPos;
-        while ($this->tokens->consume(\MonorepoBuilder20220308\Nette\Neon\Token::NEWLINE)) {
+        $this->injectPos($res, $res->startTokenPos, $item->value->endTokenPos);
+        $this->injectPos($item, $item->startTokenPos, $item->value->endTokenPos);
+        while ($this->tokens->consume(\MonorepoBuilder20220313\Nette\Neon\Token::Newline)) {
         }
         if (!$this->tokens->isNext()) {
             return $res;
@@ -94,17 +101,19 @@ final class Parser
         }
         goto loop;
     }
-    private function parseValue() : \MonorepoBuilder20220308\Nette\Neon\Node
+    private function parseValue() : \MonorepoBuilder20220313\Nette\Neon\Node
     {
-        if ($token = $this->tokens->consume(\MonorepoBuilder20220308\Nette\Neon\Token::STRING)) {
+        if ($token = $this->tokens->consume(\MonorepoBuilder20220313\Nette\Neon\Token::String)) {
             try {
-                $node = new \MonorepoBuilder20220308\Nette\Neon\Node\StringNode(\MonorepoBuilder20220308\Nette\Neon\Node\StringNode::parse($token->value), $this->tokens->getPos() - 1);
-            } catch (\MonorepoBuilder20220308\Nette\Neon\Exception $e) {
+                $node = new \MonorepoBuilder20220313\Nette\Neon\Node\StringNode(\MonorepoBuilder20220313\Nette\Neon\Node\StringNode::parse($token->value));
+                $this->injectPos($node, $this->tokens->getPos() - 1);
+            } catch (\MonorepoBuilder20220313\Nette\Neon\Exception $e) {
                 $this->tokens->error($e->getMessage(), $this->tokens->getPos() - 1);
             }
-        } elseif ($token = $this->tokens->consume(\MonorepoBuilder20220308\Nette\Neon\Token::LITERAL)) {
+        } elseif ($token = $this->tokens->consume(\MonorepoBuilder20220313\Nette\Neon\Token::Literal)) {
             $pos = $this->tokens->getPos() - 1;
-            $node = new \MonorepoBuilder20220308\Nette\Neon\Node\LiteralNode(\MonorepoBuilder20220308\Nette\Neon\Node\LiteralNode::parse($token->value, $this->tokens->isNext(':', '=')), $pos);
+            $node = new \MonorepoBuilder20220313\Nette\Neon\Node\LiteralNode(\MonorepoBuilder20220313\Nette\Neon\Node\LiteralNode::parse($token->value, $this->tokens->isNext(':', '=')));
+            $this->injectPos($node, $pos);
         } elseif ($this->tokens->isNext('[', '(', '{')) {
             $node = $this->parseBraces();
         } else {
@@ -112,67 +121,89 @@ final class Parser
         }
         return $this->parseEntity($node);
     }
-    private function parseEntity(\MonorepoBuilder20220308\Nette\Neon\Node $node) : \MonorepoBuilder20220308\Nette\Neon\Node
+    private function parseEntity(\MonorepoBuilder20220313\Nette\Neon\Node $node) : \MonorepoBuilder20220313\Nette\Neon\Node
     {
         if (!$this->tokens->isNext('(')) {
             return $node;
         }
         $attributes = $this->parseBraces();
-        $entities[] = new \MonorepoBuilder20220308\Nette\Neon\Node\EntityNode($node, $attributes->items, $node->startPos, $attributes->endPos);
-        while ($token = $this->tokens->consume(\MonorepoBuilder20220308\Nette\Neon\Token::LITERAL)) {
-            $valueNode = new \MonorepoBuilder20220308\Nette\Neon\Node\LiteralNode(\MonorepoBuilder20220308\Nette\Neon\Node\LiteralNode::parse($token->value), $this->tokens->getPos() - 1);
+        $entities[] = $this->injectPos(new \MonorepoBuilder20220313\Nette\Neon\Node\EntityNode($node, $attributes->items), $node->startTokenPos, $attributes->endTokenPos);
+        while ($token = $this->tokens->consume(\MonorepoBuilder20220313\Nette\Neon\Token::Literal)) {
+            $valueNode = new \MonorepoBuilder20220313\Nette\Neon\Node\LiteralNode(\MonorepoBuilder20220313\Nette\Neon\Node\LiteralNode::parse($token->value));
+            $this->injectPos($valueNode, $this->tokens->getPos() - 1);
             if ($this->tokens->isNext('(')) {
                 $attributes = $this->parseBraces();
-                $entities[] = new \MonorepoBuilder20220308\Nette\Neon\Node\EntityNode($valueNode, $attributes->items, $valueNode->startPos, $attributes->endPos);
+                $entities[] = $this->injectPos(new \MonorepoBuilder20220313\Nette\Neon\Node\EntityNode($valueNode, $attributes->items), $valueNode->startTokenPos, $attributes->endTokenPos);
             } else {
-                $entities[] = new \MonorepoBuilder20220308\Nette\Neon\Node\EntityNode($valueNode, [], $valueNode->startPos);
+                $entities[] = $this->injectPos(new \MonorepoBuilder20220313\Nette\Neon\Node\EntityNode($valueNode), $valueNode->startTokenPos);
                 break;
             }
         }
-        return \count($entities) === 1 ? $entities[0] : new \MonorepoBuilder20220308\Nette\Neon\Node\EntityChainNode($entities, $node->startPos, \end($entities)->endPos);
+        return \count($entities) === 1 ? $entities[0] : $this->injectPos(new \MonorepoBuilder20220313\Nette\Neon\Node\EntityChainNode($entities), $node->startTokenPos, \end($entities)->endTokenPos);
     }
-    private function parseBraces() : \MonorepoBuilder20220308\Nette\Neon\Node\InlineArrayNode
+    private function parseBraces() : \MonorepoBuilder20220313\Nette\Neon\Node\InlineArrayNode
     {
         $token = $this->tokens->consume();
         $endBrace = ['[' => ']', '{' => '}', '(' => ')'][$token->value];
-        $res = new \MonorepoBuilder20220308\Nette\Neon\Node\InlineArrayNode($token->value, $this->tokens->getPos() - 1);
+        $res = new \MonorepoBuilder20220313\Nette\Neon\Node\InlineArrayNode($token->value);
+        $this->injectPos($res, $this->tokens->getPos() - 1);
         $keyCheck = [];
         loop:
-        while ($this->tokens->consume(\MonorepoBuilder20220308\Nette\Neon\Token::NEWLINE)) {
+        while ($this->tokens->consume(\MonorepoBuilder20220313\Nette\Neon\Token::Newline)) {
         }
         if ($this->tokens->consume($endBrace)) {
-            $res->endPos = $this->tokens->getPos() - 1;
+            $this->injectPos($res, $res->startTokenPos, $this->tokens->getPos() - 1);
             return $res;
         }
-        $res->items[] = $item = new \MonorepoBuilder20220308\Nette\Neon\Node\ArrayItemNode($this->tokens->getPos());
+        $res->items[] = $item = new \MonorepoBuilder20220313\Nette\Neon\Node\ArrayItemNode();
+        $this->injectPos($item, $this->tokens->getPos());
         $value = $this->parseValue();
         if ($this->tokens->consume(':', '=')) {
             $this->checkArrayKey($value, $keyCheck);
             $item->key = $value;
-            $item->value = $this->tokens->isNext(\MonorepoBuilder20220308\Nette\Neon\Token::NEWLINE, ',', $endBrace) ? new \MonorepoBuilder20220308\Nette\Neon\Node\LiteralNode(null, $this->tokens->getPos()) : $this->parseValue();
+            $item->value = $this->tokens->isNext(\MonorepoBuilder20220313\Nette\Neon\Token::Newline, ',', $endBrace) ? $this->injectPos(new \MonorepoBuilder20220313\Nette\Neon\Node\LiteralNode(null), $this->tokens->getPos()) : $this->parseValue();
         } else {
             $item->value = $value;
         }
-        $item->endPos = $item->value->endPos;
-        if ($this->tokens->consume(',', \MonorepoBuilder20220308\Nette\Neon\Token::NEWLINE)) {
+        $this->injectPos($item, $item->startTokenPos, $item->value->endTokenPos);
+        if ($this->tokens->consume(',', \MonorepoBuilder20220313\Nette\Neon\Token::Newline)) {
             goto loop;
         }
-        while ($this->tokens->consume(\MonorepoBuilder20220308\Nette\Neon\Token::NEWLINE)) {
+        while ($this->tokens->consume(\MonorepoBuilder20220313\Nette\Neon\Token::Newline)) {
         }
         if (!$this->tokens->isNext($endBrace)) {
             $this->tokens->error();
         }
         goto loop;
     }
-    private function checkArrayKey(\MonorepoBuilder20220308\Nette\Neon\Node $key, array &$arr) : void
+    /** @param  true[]  $arr */
+    private function checkArrayKey(\MonorepoBuilder20220313\Nette\Neon\Node $key, array &$arr) : void
     {
-        if (!$key instanceof \MonorepoBuilder20220308\Nette\Neon\Node\StringNode && !$key instanceof \MonorepoBuilder20220308\Nette\Neon\Node\LiteralNode || !\is_scalar($key->value)) {
-            $this->tokens->error('Unacceptable key', $key->startPos);
+        if (!$key instanceof \MonorepoBuilder20220313\Nette\Neon\Node\StringNode && !$key instanceof \MonorepoBuilder20220313\Nette\Neon\Node\LiteralNode || !\is_scalar($key->value)) {
+            $this->tokens->error('Unacceptable key', $key->startTokenPos);
         }
         $k = (string) $key->value;
         if (\array_key_exists($k, $arr)) {
-            $this->tokens->error("Duplicated key '{$k}'", $key->startPos);
+            $this->tokens->error("Duplicated key '{$k}'", $key->startTokenPos);
         }
         $arr[$k] = \true;
+    }
+    private function injectPos(\MonorepoBuilder20220313\Nette\Neon\Node $node, int $start = null, int $end = null) : \MonorepoBuilder20220313\Nette\Neon\Node
+    {
+        $node->startTokenPos = $start ?? $this->tokens->getPos();
+        $node->startLine = $this->posToLine[$node->startTokenPos];
+        $node->endTokenPos = $end ?? $node->startTokenPos;
+        $node->endLine = $this->posToLine[$node->endTokenPos + 1] ?? \end($this->posToLine);
+        return $node;
+    }
+    private function initLines() : void
+    {
+        $this->posToLine = [];
+        $line = 1;
+        foreach ($this->tokens->getTokens() as $token) {
+            $this->posToLine[] = $line;
+            $line += \substr_count($token->value, "\n");
+        }
+        $this->posToLine[] = $line;
     }
 }
