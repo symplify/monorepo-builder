@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220313\Symfony\Component\Console\Helper;
+namespace MonorepoBuilder20220315\Symfony\Component\Console\Helper;
 
 /**
  * Helps outputting debug information when running an external program from a command.
@@ -17,7 +17,7 @@ namespace MonorepoBuilder20220313\Symfony\Component\Console\Helper;
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class DebugFormatterHelper extends \MonorepoBuilder20220313\Symfony\Component\Console\Helper\Helper
+class DebugFormatterHelper extends \MonorepoBuilder20220315\Symfony\Component\Console\Helper\Helper
 {
     private const COLORS = ['black', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white', 'default'];
     /**
