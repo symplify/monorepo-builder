@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20220315\Symplify\PackageBuilder\Parameter;
+namespace MonorepoBuilder20220316\Symplify\PackageBuilder\Parameter;
 
-use MonorepoBuilder20220315\Symfony\Component\DependencyInjection\ContainerInterface;
-use MonorepoBuilder20220315\Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException;
-use MonorepoBuilder20220315\Symfony\Component\HttpFoundation\ParameterBag;
+use MonorepoBuilder20220316\Symfony\Component\DependencyInjection\ContainerInterface;
+use MonorepoBuilder20220316\Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException;
+use MonorepoBuilder20220316\Symfony\Component\HttpFoundation\ParameterBag;
 /**
  * @api
  * @see \Symplify\PackageBuilder\Tests\Parameter\ParameterProviderTest
@@ -16,7 +16,7 @@ final class ParameterProvider
      * @var array<string, mixed>
      */
     private $parameters = [];
-    public function __construct(\MonorepoBuilder20220315\Symfony\Component\DependencyInjection\ContainerInterface $container)
+    public function __construct(\MonorepoBuilder20220316\Symfony\Component\DependencyInjection\ContainerInterface $container)
     {
         /** @var ParameterBag $parameterBag */
         $parameterBag = $container->getParameterBag();
@@ -89,6 +89,6 @@ final class ParameterProvider
         if (\array_key_exists($name, $this->parameters)) {
             return;
         }
-        throw new \MonorepoBuilder20220315\Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException($name);
+        throw new \MonorepoBuilder20220316\Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException($name);
     }
 }

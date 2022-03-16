@@ -8,21 +8,21 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220315\Symfony\Component\Config\Definition\Builder;
+namespace MonorepoBuilder20220316\Symfony\Component\Config\Definition\Builder;
 
-use MonorepoBuilder20220315\Symfony\Component\Config\Definition\BooleanNode;
-use MonorepoBuilder20220315\Symfony\Component\Config\Definition\Exception\InvalidDefinitionException;
+use MonorepoBuilder20220316\Symfony\Component\Config\Definition\BooleanNode;
+use MonorepoBuilder20220316\Symfony\Component\Config\Definition\Exception\InvalidDefinitionException;
 /**
  * This class provides a fluent interface for defining a node.
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class BooleanNodeDefinition extends \MonorepoBuilder20220315\Symfony\Component\Config\Definition\Builder\ScalarNodeDefinition
+class BooleanNodeDefinition extends \MonorepoBuilder20220316\Symfony\Component\Config\Definition\Builder\ScalarNodeDefinition
 {
     /**
      * {@inheritdoc}
      */
-    public function __construct(?string $name, \MonorepoBuilder20220315\Symfony\Component\Config\Definition\Builder\NodeParentInterface $parent = null)
+    public function __construct(?string $name, \MonorepoBuilder20220316\Symfony\Component\Config\Definition\Builder\NodeParentInterface $parent = null)
     {
         parent::__construct($name, $parent);
         $this->nullEquivalent = \true;
@@ -30,9 +30,9 @@ class BooleanNodeDefinition extends \MonorepoBuilder20220315\Symfony\Component\C
     /**
      * Instantiate a Node.
      */
-    protected function instantiateNode() : \MonorepoBuilder20220315\Symfony\Component\Config\Definition\ScalarNode
+    protected function instantiateNode() : \MonorepoBuilder20220316\Symfony\Component\Config\Definition\ScalarNode
     {
-        return new \MonorepoBuilder20220315\Symfony\Component\Config\Definition\BooleanNode($this->name, $this->parent, $this->pathSeparator);
+        return new \MonorepoBuilder20220316\Symfony\Component\Config\Definition\BooleanNode($this->name, $this->parent, $this->pathSeparator);
     }
     /**
      * {@inheritdoc}
@@ -42,6 +42,6 @@ class BooleanNodeDefinition extends \MonorepoBuilder20220315\Symfony\Component\C
      */
     public function cannotBeEmpty()
     {
-        throw new \MonorepoBuilder20220315\Symfony\Component\Config\Definition\Exception\InvalidDefinitionException('->cannotBeEmpty() is not applicable to BooleanNodeDefinition.');
+        throw new \MonorepoBuilder20220316\Symfony\Component\Config\Definition\Exception\InvalidDefinitionException('->cannotBeEmpty() is not applicable to BooleanNodeDefinition.');
     }
 }
