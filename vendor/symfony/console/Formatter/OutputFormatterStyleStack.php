@@ -8,23 +8,23 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220316\Symfony\Component\Console\Formatter;
+namespace MonorepoBuilder20220317\Symfony\Component\Console\Formatter;
 
-use MonorepoBuilder20220316\Symfony\Component\Console\Exception\InvalidArgumentException;
-use MonorepoBuilder20220316\Symfony\Contracts\Service\ResetInterface;
+use MonorepoBuilder20220317\Symfony\Component\Console\Exception\InvalidArgumentException;
+use MonorepoBuilder20220317\Symfony\Contracts\Service\ResetInterface;
 /**
  * @author Jean-François Simon <contact@jfsimon.fr>
  */
-class OutputFormatterStyleStack implements \MonorepoBuilder20220316\Symfony\Contracts\Service\ResetInterface
+class OutputFormatterStyleStack implements \MonorepoBuilder20220317\Symfony\Contracts\Service\ResetInterface
 {
     /**
      * @var OutputFormatterStyleInterface[]
      */
     private $styles = [];
     private $emptyStyle;
-    public function __construct(\MonorepoBuilder20220316\Symfony\Component\Console\Formatter\OutputFormatterStyleInterface $emptyStyle = null)
+    public function __construct(\MonorepoBuilder20220317\Symfony\Component\Console\Formatter\OutputFormatterStyleInterface $emptyStyle = null)
     {
-        $this->emptyStyle = $emptyStyle ?? new \MonorepoBuilder20220316\Symfony\Component\Console\Formatter\OutputFormatterStyle();
+        $this->emptyStyle = $emptyStyle ?? new \MonorepoBuilder20220317\Symfony\Component\Console\Formatter\OutputFormatterStyle();
         $this->reset();
     }
     /**
@@ -37,7 +37,7 @@ class OutputFormatterStyleStack implements \MonorepoBuilder20220316\Symfony\Cont
     /**
      * Pushes a style in the stack.
      */
-    public function push(\MonorepoBuilder20220316\Symfony\Component\Console\Formatter\OutputFormatterStyleInterface $style)
+    public function push(\MonorepoBuilder20220317\Symfony\Component\Console\Formatter\OutputFormatterStyleInterface $style)
     {
         $this->styles[] = $style;
     }
@@ -46,7 +46,7 @@ class OutputFormatterStyleStack implements \MonorepoBuilder20220316\Symfony\Cont
      *
      * @throws InvalidArgumentException When style tags incorrectly nested
      */
-    public function pop(\MonorepoBuilder20220316\Symfony\Component\Console\Formatter\OutputFormatterStyleInterface $style = null) : \MonorepoBuilder20220316\Symfony\Component\Console\Formatter\OutputFormatterStyleInterface
+    public function pop(\MonorepoBuilder20220317\Symfony\Component\Console\Formatter\OutputFormatterStyleInterface $style = null) : \MonorepoBuilder20220317\Symfony\Component\Console\Formatter\OutputFormatterStyleInterface
     {
         if (empty($this->styles)) {
             return $this->emptyStyle;
@@ -60,12 +60,12 @@ class OutputFormatterStyleStack implements \MonorepoBuilder20220316\Symfony\Cont
                 return $stackedStyle;
             }
         }
-        throw new \MonorepoBuilder20220316\Symfony\Component\Console\Exception\InvalidArgumentException('Incorrectly nested style tag found.');
+        throw new \MonorepoBuilder20220317\Symfony\Component\Console\Exception\InvalidArgumentException('Incorrectly nested style tag found.');
     }
     /**
      * Computes current style with stacks top codes.
      */
-    public function getCurrent() : \MonorepoBuilder20220316\Symfony\Component\Console\Formatter\OutputFormatterStyle
+    public function getCurrent() : \MonorepoBuilder20220317\Symfony\Component\Console\Formatter\OutputFormatterStyle
     {
         if (empty($this->styles)) {
             return $this->emptyStyle;
@@ -75,12 +75,12 @@ class OutputFormatterStyleStack implements \MonorepoBuilder20220316\Symfony\Cont
     /**
      * @return $this
      */
-    public function setEmptyStyle(\MonorepoBuilder20220316\Symfony\Component\Console\Formatter\OutputFormatterStyleInterface $emptyStyle)
+    public function setEmptyStyle(\MonorepoBuilder20220317\Symfony\Component\Console\Formatter\OutputFormatterStyleInterface $emptyStyle)
     {
         $this->emptyStyle = $emptyStyle;
         return $this;
     }
-    public function getEmptyStyle() : \MonorepoBuilder20220316\Symfony\Component\Console\Formatter\OutputFormatterStyleInterface
+    public function getEmptyStyle() : \MonorepoBuilder20220317\Symfony\Component\Console\Formatter\OutputFormatterStyleInterface
     {
         return $this->emptyStyle;
     }
