@@ -3,12 +3,12 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Init\Command;
 
-use MonorepoBuilder20220317\Symfony\Component\Console\Input\InputArgument;
-use MonorepoBuilder20220317\Symfony\Component\Console\Input\InputInterface;
-use MonorepoBuilder20220317\Symfony\Component\Console\Output\OutputInterface;
-use MonorepoBuilder20220317\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
-use MonorepoBuilder20220317\Symplify\PackageBuilder\Console\Command\CommandNaming;
-final class InitCommand extends \MonorepoBuilder20220317\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand
+use MonorepoBuilder20220325\Symfony\Component\Console\Input\InputArgument;
+use MonorepoBuilder20220325\Symfony\Component\Console\Input\InputInterface;
+use MonorepoBuilder20220325\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder20220325\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
+use MonorepoBuilder20220325\Symplify\PackageBuilder\Console\Command\CommandNaming;
+final class InitCommand extends \MonorepoBuilder20220325\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand
 {
     /**
      * @var string
@@ -16,11 +16,11 @@ final class InitCommand extends \MonorepoBuilder20220317\Symplify\PackageBuilder
     private const OUTPUT = 'output';
     protected function configure() : void
     {
-        $this->setName(\MonorepoBuilder20220317\Symplify\PackageBuilder\Console\Command\CommandNaming::classToName(self::class));
+        $this->setName(\MonorepoBuilder20220325\Symplify\PackageBuilder\Console\Command\CommandNaming::classToName(self::class));
         $this->setDescription('Creates empty monorepo directory and composer.json structure.');
-        $this->addArgument(self::OUTPUT, \MonorepoBuilder20220317\Symfony\Component\Console\Input\InputArgument::OPTIONAL, 'Directory to generate monorepo into.', \getcwd());
+        $this->addArgument(self::OUTPUT, \MonorepoBuilder20220325\Symfony\Component\Console\Input\InputArgument::OPTIONAL, 'Directory to generate monorepo into.', \getcwd());
     }
-    protected function execute(\MonorepoBuilder20220317\Symfony\Component\Console\Input\InputInterface $input, \MonorepoBuilder20220317\Symfony\Component\Console\Output\OutputInterface $output) : int
+    protected function execute(\MonorepoBuilder20220325\Symfony\Component\Console\Input\InputInterface $input, \MonorepoBuilder20220325\Symfony\Component\Console\Output\OutputInterface $output) : int
     {
         /** @var string $output */
         $output = $input->getArgument(self::OUTPUT);

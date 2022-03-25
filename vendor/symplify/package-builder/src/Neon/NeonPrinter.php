@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20220317\Symplify\PackageBuilder\Neon;
+namespace MonorepoBuilder20220325\Symplify\PackageBuilder\Neon;
 
-use MonorepoBuilder20220317\Nette\Neon\Encoder;
-use MonorepoBuilder20220317\Nette\Neon\Neon;
-use MonorepoBuilder20220317\Nette\Utils\Strings;
+use MonorepoBuilder20220325\Nette\Neon\Encoder;
+use MonorepoBuilder20220325\Nette\Neon\Neon;
+use MonorepoBuilder20220325\Nette\Utils\Strings;
 /**
  * @api
  */
@@ -26,7 +26,7 @@ final class NeonPrinter
      */
     public function printNeon(array $phpStanNeon) : string
     {
-        $neonContent = \MonorepoBuilder20220317\Nette\Neon\Neon::encode($phpStanNeon, \MonorepoBuilder20220317\Nette\Neon\Encoder::BLOCK, '    ');
+        $neonContent = \MonorepoBuilder20220325\Nette\Neon\Neon::encode($phpStanNeon, \MonorepoBuilder20220325\Nette\Neon\Encoder::BLOCK, '    ');
         // inline single tags, dummy
         $neonContent = $this->inlineSingleTags($neonContent);
         $neonContent = $this->fixDoubleSpaceInArguments($neonContent);
@@ -34,10 +34,10 @@ final class NeonPrinter
     }
     private function inlineSingleTags(string $neonContent) : string
     {
-        return \MonorepoBuilder20220317\Nette\Utils\Strings::replace($neonContent, self::TAGS_REGEX, 'tags: [$1]');
+        return \MonorepoBuilder20220325\Nette\Utils\Strings::replace($neonContent, self::TAGS_REGEX, 'tags: [$1]');
     }
     private function fixDoubleSpaceInArguments(string $neonContent) : string
     {
-        return \MonorepoBuilder20220317\Nette\Utils\Strings::replace($neonContent, self::ARGUMENTS_DOUBLE_SPACE_REGEX, '$1');
+        return \MonorepoBuilder20220325\Nette\Utils\Strings::replace($neonContent, self::ARGUMENTS_DOUBLE_SPACE_REGEX, '$1');
     }
 }
