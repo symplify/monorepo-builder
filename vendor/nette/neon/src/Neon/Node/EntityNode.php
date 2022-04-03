@@ -5,29 +5,29 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace MonorepoBuilder20220325\Nette\Neon\Node;
+namespace MonorepoBuilder20220403\Nette\Neon\Node;
 
-use MonorepoBuilder20220325\Nette\Neon\Entity;
-use MonorepoBuilder20220325\Nette\Neon\Node;
+use MonorepoBuilder20220403\Nette\Neon\Entity;
+use MonorepoBuilder20220403\Nette\Neon\Node;
 /** @internal */
-final class EntityNode extends \MonorepoBuilder20220325\Nette\Neon\Node
+final class EntityNode extends \MonorepoBuilder20220403\Nette\Neon\Node
 {
     /** @var Node */
     public $value;
     /** @var ArrayItemNode[] */
     public $attributes;
-    public function __construct(\MonorepoBuilder20220325\Nette\Neon\Node $value, array $attributes = [])
+    public function __construct(\MonorepoBuilder20220403\Nette\Neon\Node $value, array $attributes = [])
     {
         $this->value = $value;
         $this->attributes = $attributes;
     }
-    public function toValue() : \MonorepoBuilder20220325\Nette\Neon\Entity
+    public function toValue() : \MonorepoBuilder20220403\Nette\Neon\Entity
     {
-        return new \MonorepoBuilder20220325\Nette\Neon\Entity($this->value->toValue(), \MonorepoBuilder20220325\Nette\Neon\Node\ArrayItemNode::itemsToArray($this->attributes));
+        return new \MonorepoBuilder20220403\Nette\Neon\Entity($this->value->toValue(), \MonorepoBuilder20220403\Nette\Neon\Node\ArrayItemNode::itemsToArray($this->attributes));
     }
     public function toString() : string
     {
-        return $this->value->toString() . '(' . ($this->attributes ? \MonorepoBuilder20220325\Nette\Neon\Node\ArrayItemNode::itemsToInlineString($this->attributes) : '') . ')';
+        return $this->value->toString() . '(' . ($this->attributes ? \MonorepoBuilder20220403\Nette\Neon\Node\ArrayItemNode::itemsToInlineString($this->attributes) : '') . ')';
     }
     public function &getIterator() : \Generator
     {

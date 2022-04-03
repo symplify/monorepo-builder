@@ -8,17 +8,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220325\Symfony\Component\DependencyInjection\Compiler;
+namespace MonorepoBuilder20220403\Symfony\Component\DependencyInjection\Compiler;
 
-use MonorepoBuilder20220325\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder20220325\Symfony\Component\DependencyInjection\Definition;
-use MonorepoBuilder20220325\Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException;
+use MonorepoBuilder20220403\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder20220403\Symfony\Component\DependencyInjection\Definition;
+use MonorepoBuilder20220403\Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException;
 /**
  * Resolves all parameter placeholders "%somevalue%" to their real values.
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class ResolveParameterPlaceHoldersPass extends \MonorepoBuilder20220325\Symfony\Component\DependencyInjection\Compiler\AbstractRecursivePass
+class ResolveParameterPlaceHoldersPass extends \MonorepoBuilder20220403\Symfony\Component\DependencyInjection\Compiler\AbstractRecursivePass
 {
     private $bag;
     /**
@@ -39,7 +39,7 @@ class ResolveParameterPlaceHoldersPass extends \MonorepoBuilder20220325\Symfony\
      *
      * @throws ParameterNotFoundException
      */
-    public function process(\MonorepoBuilder20220325\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    public function process(\MonorepoBuilder20220403\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
         $this->bag = $container->getParameterBag();
         try {
@@ -50,7 +50,7 @@ class ResolveParameterPlaceHoldersPass extends \MonorepoBuilder20220325\Symfony\
                 $aliases[$this->bag->resolveValue($name)] = $target;
             }
             $container->setAliases($aliases);
-        } catch (\MonorepoBuilder20220325\Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException $e) {
+        } catch (\MonorepoBuilder20220403\Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException $e) {
             $e->setSourceId($this->currentId);
             throw $e;
         }
@@ -66,7 +66,7 @@ class ResolveParameterPlaceHoldersPass extends \MonorepoBuilder20220325\Symfony\
         if (\is_string($value)) {
             try {
                 $v = $this->bag->resolveValue($value);
-            } catch (\MonorepoBuilder20220325\Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException $e) {
+            } catch (\MonorepoBuilder20220403\Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException $e) {
                 if ($this->throwOnResolveException) {
                     throw $e;
                 }
@@ -75,7 +75,7 @@ class ResolveParameterPlaceHoldersPass extends \MonorepoBuilder20220325\Symfony\
             }
             return $this->resolveArrays || !$v || !\is_array($v) ? $v : $value;
         }
-        if ($value instanceof \MonorepoBuilder20220325\Symfony\Component\DependencyInjection\Definition) {
+        if ($value instanceof \MonorepoBuilder20220403\Symfony\Component\DependencyInjection\Definition) {
             $value->setBindings($this->processValue($value->getBindings()));
             $changes = $value->getChanges();
             if (isset($changes['class'])) {

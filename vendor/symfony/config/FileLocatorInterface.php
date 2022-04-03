@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220325\Symfony\Component\Config;
+namespace MonorepoBuilder20220403\Symfony\Component\Config;
 
-use MonorepoBuilder20220325\Symfony\Component\Config\Exception\FileLocatorFileNotFoundException;
+use MonorepoBuilder20220403\Symfony\Component\Config\Exception\FileLocatorFileNotFoundException;
 /**
  * @author Fabien Potencier <fabien@symfony.com>
  */

@@ -40,7 +40,7 @@
     },
     "autoload": {
         "psr-4": {
-            "MonorepoBuilder20220325\\Symfony\\Component\\String\\": ""
+            "MonorepoBuilder20220403\\Symfony\\Component\\String\\": ""
         },
         "files": [
             "Resources\/functions.php"

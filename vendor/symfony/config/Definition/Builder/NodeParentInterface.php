@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220325\Symfony\Component\Config\Definition\Builder;
+namespace MonorepoBuilder20220403\Symfony\Component\Config\Definition\Builder;
 
 /**
  * An interface that must be implemented by all node parents.
