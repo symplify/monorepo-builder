@@ -5,7 +5,7 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace MonorepoBuilder20220414\Nette\Neon;
+namespace MonorepoBuilder20220415\Nette\Neon;
 
 /** @internal */
 final class Token
