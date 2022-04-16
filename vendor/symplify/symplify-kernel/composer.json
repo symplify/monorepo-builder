@@ -17,12 +17,12 @@
     },
     "autoload": {
         "psr-4": {
-            "MonorepoBuilder20220415\\Symplify\\SymplifyKernel\\": "src"
+            "MonorepoBuilder20220416\\Symplify\\SymplifyKernel\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "MonorepoBuilder20220415\\Symplify\\SymplifyKernel\\Tests\\": "tests"
+            "MonorepoBuilder20220416\\Symplify\\SymplifyKernel\\Tests\\": "tests"
         }
     },
     "extra": {

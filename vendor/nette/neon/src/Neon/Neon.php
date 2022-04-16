@@ -5,7 +5,7 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace MonorepoBuilder20220415\Nette\Neon;
+namespace MonorepoBuilder20220416\Nette\Neon;
 
 /**
  * Simple parser & generator for Nette Object Notation.
@@ -13,7 +13,7 @@ namespace MonorepoBuilder20220415\Nette\Neon;
  */
 final class Neon
 {
-    public const BLOCK = \MonorepoBuilder20220415\Nette\Neon\Encoder::BLOCK;
+    public const BLOCK = \MonorepoBuilder20220416\Nette\Neon\Encoder::BLOCK;
     public const Chain = '!!chain';
     public const CHAIN = self::Chain;
     /**
@@ -21,7 +21,7 @@ final class Neon
      */
     public static function encode($value, bool $blockMode = \false, string $indentation = "\t") : string
     {
-        $encoder = new \MonorepoBuilder20220415\Nette\Neon\Encoder();
+        $encoder = new \MonorepoBuilder20220416\Nette\Neon\Encoder();
         $encoder->blockMode = $blockMode;
         $encoder->indentation = $indentation;
         return $encoder->encode($value);
@@ -32,7 +32,7 @@ final class Neon
      */
     public static function decode(string $input)
     {
-        $decoder = new \MonorepoBuilder20220415\Nette\Neon\Decoder();
+        $decoder = new \MonorepoBuilder20220416\Nette\Neon\Decoder();
         return $decoder->decode($input);
     }
     /**
@@ -42,7 +42,7 @@ final class Neon
     public static function decodeFile(string $file)
     {
         if (!\is_file($file)) {
-            throw new \MonorepoBuilder20220415\Nette\Neon\Exception("File '{$file}' does not exist.");
+            throw new \MonorepoBuilder20220416\Nette\Neon\Exception("File '{$file}' does not exist.");
         }
         $input = \file_get_contents($file);
         if (\substr($input, 0, 3) === "﻿") {
