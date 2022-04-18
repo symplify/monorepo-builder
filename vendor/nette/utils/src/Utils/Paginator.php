@@ -5,9 +5,9 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace MonorepoBuilder20220417\Nette\Utils;
+namespace MonorepoBuilder20220418\Nette\Utils;
 
-use MonorepoBuilder20220417\Nette;
+use MonorepoBuilder20220418\Nette;
 /**
  * Paginating math.
  *

@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220417\Symfony\Component\DependencyInjection\Loader\Configurator;
+namespace MonorepoBuilder20220418\Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use MonorepoBuilder20220417\Symfony\Component\DependencyInjection\Definition;
+use MonorepoBuilder20220418\Symfony\Component\DependencyInjection\Definition;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class InlineServiceConfigurator extends \MonorepoBuilder20220417\Symfony\Component\DependencyInjection\Loader\Configurator\AbstractConfigurator
+class InlineServiceConfigurator extends \MonorepoBuilder20220418\Symfony\Component\DependencyInjection\Loader\Configurator\AbstractConfigurator
 {
     use Traits\ArgumentTrait;
     use Traits\AutowireTrait;
@@ -40,7 +40,7 @@ class InlineServiceConfigurator extends \MonorepoBuilder20220417\Symfony\Compone
      * @var string|null
      */
     private $path;
-    public function __construct(\MonorepoBuilder20220417\Symfony\Component\DependencyInjection\Definition $definition)
+    public function __construct(\MonorepoBuilder20220418\Symfony\Component\DependencyInjection\Definition $definition)
     {
         $this->definition = $definition;
     }
