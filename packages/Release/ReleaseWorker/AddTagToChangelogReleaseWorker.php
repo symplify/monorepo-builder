@@ -3,11 +3,11 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Release\ReleaseWorker;
 
-use MonorepoBuilder20220418\Nette\Utils\DateTime;
-use MonorepoBuilder20220418\Nette\Utils\Strings;
+use MonorepoBuilder20220429\Nette\Utils\DateTime;
+use MonorepoBuilder20220429\Nette\Utils\Strings;
 use PharIo\Version\Version;
 use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface;
-use MonorepoBuilder20220418\Symplify\SmartFileSystem\SmartFileSystem;
+use MonorepoBuilder20220429\Symplify\SmartFileSystem\SmartFileSystem;
 final class AddTagToChangelogReleaseWorker implements \Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface
 {
     /**
@@ -19,7 +19,7 @@ final class AddTagToChangelogReleaseWorker implements \Symplify\MonorepoBuilder\
      * @var \Symplify\SmartFileSystem\SmartFileSystem
      */
     private $smartFileSystem;
-    public function __construct(\MonorepoBuilder20220418\Symplify\SmartFileSystem\SmartFileSystem $smartFileSystem)
+    public function __construct(\MonorepoBuilder20220429\Symplify\SmartFileSystem\SmartFileSystem $smartFileSystem)
     {
         $this->smartFileSystem = $smartFileSystem;
     }
@@ -31,7 +31,7 @@ final class AddTagToChangelogReleaseWorker implements \Symplify\MonorepoBuilder\
         }
         $newHeadline = $this->createNewHeadline($version);
         $changelogFileContent = $this->smartFileSystem->readFile($changelogFilePath);
-        $changelogFileContent = \MonorepoBuilder20220418\Nette\Utils\Strings::replace($changelogFileContent, self::UNRELEASED_HEADLINE_REGEX, '## ' . $newHeadline);
+        $changelogFileContent = \MonorepoBuilder20220429\Nette\Utils\Strings::replace($changelogFileContent, self::UNRELEASED_HEADLINE_REGEX, '## ' . $newHeadline);
         $this->smartFileSystem->dumpFile($changelogFilePath, $changelogFileContent);
     }
     public function getDescription(\PharIo\Version\Version $version) : string
@@ -41,7 +41,7 @@ final class AddTagToChangelogReleaseWorker implements \Symplify\MonorepoBuilder\
     }
     private function createNewHeadline(\PharIo\Version\Version $version) : string
     {
-        $dateTime = new \MonorepoBuilder20220418\Nette\Utils\DateTime();
+        $dateTime = new \MonorepoBuilder20220429\Nette\Utils\DateTime();
         return $version->getVersionString() . ' - ' . $dateTime->format('Y-m-d');
     }
 }

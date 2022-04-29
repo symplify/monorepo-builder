@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220418\Symfony\Component\DependencyInjection\Exception;
+namespace MonorepoBuilder20220429\Symfony\Component\DependencyInjection\Exception;
 
 /**
  * Thrown when a definition cannot be autowired.
  */
-class AutowiringFailedException extends \MonorepoBuilder20220418\Symfony\Component\DependencyInjection\Exception\RuntimeException
+class AutowiringFailedException extends \MonorepoBuilder20220429\Symfony\Component\DependencyInjection\Exception\RuntimeException
 {
     /**
      * @var string
@@ -24,7 +24,7 @@ class AutowiringFailedException extends \MonorepoBuilder20220418\Symfony\Compone
      */
     private $messageCallback;
     /**
-     * @param \Closure|string $message
+     * @param string|\Closure $message
      */
     public function __construct(string $serviceId, $message = '', int $code = 0, \Throwable $previous = null)
     {
