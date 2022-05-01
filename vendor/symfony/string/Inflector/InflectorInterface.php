@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220429\Symfony\Component\String\Inflector;
+namespace MonorepoBuilder20220501\Symfony\Component\String\Inflector;
 
 interface InflectorInterface
 {

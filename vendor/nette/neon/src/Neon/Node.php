@@ -5,7 +5,7 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace MonorepoBuilder20220429\Nette\Neon;
+namespace MonorepoBuilder20220501\Nette\Neon;
 
 /**
  * @implements \IteratorAggregate<Node>

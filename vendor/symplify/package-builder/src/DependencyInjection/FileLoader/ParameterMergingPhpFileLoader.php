@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20220429\Symplify\PackageBuilder\DependencyInjection\FileLoader;
+namespace MonorepoBuilder20220501\Symplify\PackageBuilder\DependencyInjection\FileLoader;
 
-use MonorepoBuilder20220429\Symfony\Component\Config\FileLocatorInterface;
-use MonorepoBuilder20220429\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder20220429\Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
-use MonorepoBuilder20220429\Symplify\PackageBuilder\Yaml\ParametersMerger;
+use MonorepoBuilder20220501\Symfony\Component\Config\FileLocatorInterface;
+use MonorepoBuilder20220501\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder20220501\Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
+use MonorepoBuilder20220501\Symplify\PackageBuilder\Yaml\ParametersMerger;
 /**
  * @api
  *
@@ -16,15 +16,15 @@ use MonorepoBuilder20220429\Symplify\PackageBuilder\Yaml\ParametersMerger;
  *
  * @property ContainerBuilder $container
  */
-final class ParameterMergingPhpFileLoader extends \MonorepoBuilder20220429\Symfony\Component\DependencyInjection\Loader\PhpFileLoader
+final class ParameterMergingPhpFileLoader extends \MonorepoBuilder20220501\Symfony\Component\DependencyInjection\Loader\PhpFileLoader
 {
     /**
      * @var \Symplify\PackageBuilder\Yaml\ParametersMerger
      */
     private $parametersMerger;
-    public function __construct(\MonorepoBuilder20220429\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder, \MonorepoBuilder20220429\Symfony\Component\Config\FileLocatorInterface $fileLocator)
+    public function __construct(\MonorepoBuilder20220501\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder, \MonorepoBuilder20220501\Symfony\Component\Config\FileLocatorInterface $fileLocator)
     {
-        $this->parametersMerger = new \MonorepoBuilder20220429\Symplify\PackageBuilder\Yaml\ParametersMerger();
+        $this->parametersMerger = new \MonorepoBuilder20220501\Symplify\PackageBuilder\Yaml\ParametersMerger();
         parent::__construct($containerBuilder, $fileLocator);
     }
     /**
