@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220501\Symfony\Component\Console\Output;
+namespace MonorepoBuilder20220503\Symfony\Component\Console\Output;
 
-use MonorepoBuilder20220501\Symfony\Component\Console\Formatter\OutputFormatter;
-use MonorepoBuilder20220501\Symfony\Component\Console\Formatter\OutputFormatterInterface;
+use MonorepoBuilder20220503\Symfony\Component\Console\Formatter\OutputFormatter;
+use MonorepoBuilder20220503\Symfony\Component\Console\Formatter\OutputFormatterInterface;
 /**
  * Base class for output classes.
  *
@@ -25,7 +25,7 @@ use MonorepoBuilder20220501\Symfony\Component\Console\Formatter\OutputFormatterI
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-abstract class Output implements \MonorepoBuilder20220501\Symfony\Component\Console\Output\OutputInterface
+abstract class Output implements \MonorepoBuilder20220503\Symfony\Component\Console\Output\OutputInterface
 {
     /**
      * @var int
@@ -37,23 +37,23 @@ abstract class Output implements \MonorepoBuilder20220501\Symfony\Component\Cons
      * @param bool                          $decorated Whether to decorate messages
      * @param OutputFormatterInterface|null $formatter Output formatter instance (null to use default OutputFormatter)
      */
-    public function __construct(?int $verbosity = self::VERBOSITY_NORMAL, bool $decorated = \false, \MonorepoBuilder20220501\Symfony\Component\Console\Formatter\OutputFormatterInterface $formatter = null)
+    public function __construct(?int $verbosity = self::VERBOSITY_NORMAL, bool $decorated = \false, \MonorepoBuilder20220503\Symfony\Component\Console\Formatter\OutputFormatterInterface $formatter = null)
     {
         $this->verbosity = $verbosity ?? self::VERBOSITY_NORMAL;
-        $this->formatter = $formatter ?? new \MonorepoBuilder20220501\Symfony\Component\Console\Formatter\OutputFormatter();
+        $this->formatter = $formatter ?? new \MonorepoBuilder20220503\Symfony\Component\Console\Formatter\OutputFormatter();
         $this->formatter->setDecorated($decorated);
     }
     /**
      * {@inheritdoc}
      */
-    public function setFormatter(\MonorepoBuilder20220501\Symfony\Component\Console\Formatter\OutputFormatterInterface $formatter)
+    public function setFormatter(\MonorepoBuilder20220503\Symfony\Component\Console\Formatter\OutputFormatterInterface $formatter)
     {
         $this->formatter = $formatter;
     }
     /**
      * {@inheritdoc}
      */
-    public function getFormatter() : \MonorepoBuilder20220501\Symfony\Component\Console\Formatter\OutputFormatterInterface
+    public function getFormatter() : \MonorepoBuilder20220503\Symfony\Component\Console\Formatter\OutputFormatterInterface
     {
         return $this->formatter;
     }
@@ -139,12 +139,12 @@ abstract class Output implements \MonorepoBuilder20220501\Symfony\Component\Cons
         }
         foreach ($messages as $message) {
             switch ($type) {
-                case \MonorepoBuilder20220501\Symfony\Component\Console\Output\OutputInterface::OUTPUT_NORMAL:
+                case \MonorepoBuilder20220503\Symfony\Component\Console\Output\OutputInterface::OUTPUT_NORMAL:
                     $message = $this->formatter->format($message);
                     break;
-                case \MonorepoBuilder20220501\Symfony\Component\Console\Output\OutputInterface::OUTPUT_RAW:
+                case \MonorepoBuilder20220503\Symfony\Component\Console\Output\OutputInterface::OUTPUT_RAW:
                     break;
-                case \MonorepoBuilder20220501\Symfony\Component\Console\Output\OutputInterface::OUTPUT_PLAIN:
+                case \MonorepoBuilder20220503\Symfony\Component\Console\Output\OutputInterface::OUTPUT_PLAIN:
                     $message = \strip_tags($this->formatter->format($message));
                     break;
             }
