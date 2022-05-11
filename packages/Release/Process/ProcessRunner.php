@@ -3,9 +3,9 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Release\Process;
 
-use MonorepoBuilder20220509\Symfony\Component\Console\Style\SymfonyStyle;
-use MonorepoBuilder20220509\Symfony\Component\Process\Exception\ProcessFailedException;
-use MonorepoBuilder20220509\Symfony\Component\Process\Process;
+use MonorepoBuilder20220511\Symfony\Component\Console\Style\SymfonyStyle;
+use MonorepoBuilder20220511\Symfony\Component\Process\Exception\ProcessFailedException;
+use MonorepoBuilder20220511\Symfony\Component\Process\Process;
 final class ProcessRunner
 {
     /**
@@ -18,7 +18,7 @@ final class ProcessRunner
      * @var \Symfony\Component\Console\Style\SymfonyStyle
      */
     private $symfonyStyle;
-    public function __construct(\MonorepoBuilder20220509\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle)
+    public function __construct(\MonorepoBuilder20220511\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle)
     {
         $this->symfonyStyle = $symfonyStyle;
     }
@@ -48,19 +48,19 @@ final class ProcessRunner
     /**
      * @param string|string[] $commandLine
      */
-    private function createProcess($commandLine, ?string $cwd) : \MonorepoBuilder20220509\Symfony\Component\Process\Process
+    private function createProcess($commandLine, ?string $cwd) : \MonorepoBuilder20220511\Symfony\Component\Process\Process
     {
         // @since Symfony 4.2: https://github.com/symfony/symfony/pull/27821
-        if (\is_string($commandLine) && \method_exists(\MonorepoBuilder20220509\Symfony\Component\Process\Process::class, 'fromShellCommandline')) {
-            return \MonorepoBuilder20220509\Symfony\Component\Process\Process::fromShellCommandline($commandLine, $cwd, null, null, self::TIMEOUT);
+        if (\is_string($commandLine) && \method_exists(\MonorepoBuilder20220511\Symfony\Component\Process\Process::class, 'fromShellCommandline')) {
+            return \MonorepoBuilder20220511\Symfony\Component\Process\Process::fromShellCommandline($commandLine, $cwd, null, null, self::TIMEOUT);
         }
-        return new \MonorepoBuilder20220509\Symfony\Component\Process\Process($commandLine, $cwd, null, null, self::TIMEOUT);
+        return new \MonorepoBuilder20220511\Symfony\Component\Process\Process($commandLine, $cwd, null, null, self::TIMEOUT);
     }
-    private function reportResult(\MonorepoBuilder20220509\Symfony\Component\Process\Process $process) : void
+    private function reportResult(\MonorepoBuilder20220511\Symfony\Component\Process\Process $process) : void
     {
         if ($process->isSuccessful()) {
             return;
         }
-        throw new \MonorepoBuilder20220509\Symfony\Component\Process\Exception\ProcessFailedException($process);
+        throw new \MonorepoBuilder20220511\Symfony\Component\Process\Exception\ProcessFailedException($process);
     }
 }

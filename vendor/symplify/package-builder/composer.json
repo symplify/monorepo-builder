@@ -19,12 +19,12 @@
     },
     "autoload": {
         "psr-4": {
-            "MonorepoBuilder20220509\\Symplify\\PackageBuilder\\": "src"
+            "MonorepoBuilder20220511\\Symplify\\PackageBuilder\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "MonorepoBuilder20220509\\Symplify\\PackageBuilder\\Tests\\": "tests"
+            "MonorepoBuilder20220511\\Symplify\\PackageBuilder\\Tests\\": "tests"
         }
     },
     "extra": {
