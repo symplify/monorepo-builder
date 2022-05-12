@@ -8,11 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+namespace MonorepoBuilder20220512\Symfony\Component\DependencyInjection\Compiler;
 
-namespace Symfony\Component\DependencyInjection\Compiler;
-
-use Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-
+use MonorepoBuilder20220512\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
 /**
  * Compiler Pass Configuration.
  *
@@ -27,7 +25,6 @@ class PassConfig
     public const TYPE_BEFORE_REMOVING = 'beforeRemoving';
     public const TYPE_OPTIMIZE = 'optimization';
     public const TYPE_REMOVE = 'removing';
-
     private $mergePass;
     /**
      * @var mixed[]
@@ -49,168 +46,96 @@ class PassConfig
      * @var mixed[]
      */
     private $removingPasses;
-
     public function __construct()
     {
-        $this->mergePass = new MergeExtensionConfigurationPass();
-
-        $this->beforeOptimizationPasses = [
-            100 => [
-                new ResolveClassPass(),
-                new RegisterAutoconfigureAttributesPass(),
-                new AttributeAutoconfigurationPass(),
-                new ResolveInstanceofConditionalsPass(),
-                new RegisterEnvVarProcessorsPass(),
-            ],
-            -1000 => [new ExtensionCompilerPass()],
-        ];
-
-        $this->optimizationPasses = [[
-            new AutoAliasServicePass(),
-            new ValidateEnvPlaceholdersPass(),
-            new ResolveDecoratorStackPass(),
-            new ResolveChildDefinitionsPass(),
-            new RegisterServiceSubscribersPass(),
-            new ResolveParameterPlaceHoldersPass(false, false),
-            new ResolveFactoryClassPass(),
-            new ResolveNamedArgumentsPass(),
-            new AutowireRequiredMethodsPass(),
-            new AutowireRequiredPropertiesPass(),
-            new ResolveBindingsPass(),
-            new ServiceLocatorTagPass(),
-            new DecoratorServicePass(),
-            new CheckDefinitionValidityPass(),
-            new AutowirePass(false),
-            new ServiceLocatorTagPass(),
-            new ResolveTaggedIteratorArgumentPass(),
-            new ResolveServiceSubscribersPass(),
-            new ResolveReferencesToAliasesPass(),
-            new ResolveInvalidReferencesPass(),
-            new AnalyzeServiceReferencesPass(true),
-            new CheckCircularReferencesPass(),
-            new CheckReferenceValidityPass(),
-            new CheckArgumentsValidityPass(false),
-        ]];
-
-        $this->removingPasses = [[
-            new RemovePrivateAliasesPass(),
-            new ReplaceAliasByActualDefinitionPass(),
-            new RemoveAbstractDefinitionsPass(),
-            new RemoveUnusedDefinitionsPass(),
-            new AnalyzeServiceReferencesPass(),
-            new CheckExceptionOnInvalidReferenceBehaviorPass(),
-            new InlineServiceDefinitionsPass(new AnalyzeServiceReferencesPass()),
-            new AnalyzeServiceReferencesPass(),
-            new DefinitionErrorExceptionPass(),
-        ]];
-
-        $this->afterRemovingPasses = [[
-            new ResolveHotPathPass(),
-            new ResolveNoPreloadPass(),
-            new AliasDeprecatedPublicServicesPass(),
-        ]];
+        $this->mergePass = new \MonorepoBuilder20220512\Symfony\Component\DependencyInjection\Compiler\MergeExtensionConfigurationPass();
+        $this->beforeOptimizationPasses = [100 => [new \MonorepoBuilder20220512\Symfony\Component\DependencyInjection\Compiler\ResolveClassPass(), new \MonorepoBuilder20220512\Symfony\Component\DependencyInjection\Compiler\RegisterAutoconfigureAttributesPass(), new \MonorepoBuilder20220512\Symfony\Component\DependencyInjection\Compiler\AttributeAutoconfigurationPass(), new \MonorepoBuilder20220512\Symfony\Component\DependencyInjection\Compiler\ResolveInstanceofConditionalsPass(), new \MonorepoBuilder20220512\Symfony\Component\DependencyInjection\Compiler\RegisterEnvVarProcessorsPass()], -1000 => [new \MonorepoBuilder20220512\Symfony\Component\DependencyInjection\Compiler\ExtensionCompilerPass()]];
+        $this->optimizationPasses = [[new \MonorepoBuilder20220512\Symfony\Component\DependencyInjection\Compiler\AutoAliasServicePass(), new \MonorepoBuilder20220512\Symfony\Component\DependencyInjection\Compiler\ValidateEnvPlaceholdersPass(), new \MonorepoBuilder20220512\Symfony\Component\DependencyInjection\Compiler\ResolveDecoratorStackPass(), new \MonorepoBuilder20220512\Symfony\Component\DependencyInjection\Compiler\ResolveChildDefinitionsPass(), new \MonorepoBuilder20220512\Symfony\Component\DependencyInjection\Compiler\RegisterServiceSubscribersPass(), new \MonorepoBuilder20220512\Symfony\Component\DependencyInjection\Compiler\ResolveParameterPlaceHoldersPass(\false, \false), new \MonorepoBuilder20220512\Symfony\Component\DependencyInjection\Compiler\ResolveFactoryClassPass(), new \MonorepoBuilder20220512\Symfony\Component\DependencyInjection\Compiler\ResolveNamedArgumentsPass(), new \MonorepoBuilder20220512\Symfony\Component\DependencyInjection\Compiler\AutowireRequiredMethodsPass(), new \MonorepoBuilder20220512\Symfony\Component\DependencyInjection\Compiler\AutowireRequiredPropertiesPass(), new \MonorepoBuilder20220512\Symfony\Component\DependencyInjection\Compiler\ResolveBindingsPass(), new \MonorepoBuilder20220512\Symfony\Component\DependencyInjection\Compiler\ServiceLocatorTagPass(), new \MonorepoBuilder20220512\Symfony\Component\DependencyInjection\Compiler\DecoratorServicePass(), new \MonorepoBuilder20220512\Symfony\Component\DependencyInjection\Compiler\CheckDefinitionValidityPass(), new \MonorepoBuilder20220512\Symfony\Component\DependencyInjection\Compiler\AutowirePass(\false), new \MonorepoBuilder20220512\Symfony\Component\DependencyInjection\Compiler\ServiceLocatorTagPass(), new \MonorepoBuilder20220512\Symfony\Component\DependencyInjection\Compiler\ResolveTaggedIteratorArgumentPass(), new \MonorepoBuilder20220512\Symfony\Component\DependencyInjection\Compiler\ResolveServiceSubscribersPass(), new \MonorepoBuilder20220512\Symfony\Component\DependencyInjection\Compiler\ResolveReferencesToAliasesPass(), new \MonorepoBuilder20220512\Symfony\Component\DependencyInjection\Compiler\ResolveInvalidReferencesPass(), new \MonorepoBuilder20220512\Symfony\Component\DependencyInjection\Compiler\AnalyzeServiceReferencesPass(\true), new \MonorepoBuilder20220512\Symfony\Component\DependencyInjection\Compiler\CheckCircularReferencesPass(), new \MonorepoBuilder20220512\Symfony\Component\DependencyInjection\Compiler\CheckReferenceValidityPass(), new \MonorepoBuilder20220512\Symfony\Component\DependencyInjection\Compiler\CheckArgumentsValidityPass(\false)]];
+        $this->removingPasses = [[new \MonorepoBuilder20220512\Symfony\Component\DependencyInjection\Compiler\RemovePrivateAliasesPass(), new \MonorepoBuilder20220512\Symfony\Component\DependencyInjection\Compiler\ReplaceAliasByActualDefinitionPass(), new \MonorepoBuilder20220512\Symfony\Component\DependencyInjection\Compiler\RemoveAbstractDefinitionsPass(), new \MonorepoBuilder20220512\Symfony\Component\DependencyInjection\Compiler\RemoveUnusedDefinitionsPass(), new \MonorepoBuilder20220512\Symfony\Component\DependencyInjection\Compiler\AnalyzeServiceReferencesPass(), new \MonorepoBuilder20220512\Symfony\Component\DependencyInjection\Compiler\CheckExceptionOnInvalidReferenceBehaviorPass(), new \MonorepoBuilder20220512\Symfony\Component\DependencyInjection\Compiler\InlineServiceDefinitionsPass(new \MonorepoBuilder20220512\Symfony\Component\DependencyInjection\Compiler\AnalyzeServiceReferencesPass()), new \MonorepoBuilder20220512\Symfony\Component\DependencyInjection\Compiler\AnalyzeServiceReferencesPass(), new \MonorepoBuilder20220512\Symfony\Component\DependencyInjection\Compiler\DefinitionErrorExceptionPass()]];
+        $this->afterRemovingPasses = [[new \MonorepoBuilder20220512\Symfony\Component\DependencyInjection\Compiler\ResolveHotPathPass(), new \MonorepoBuilder20220512\Symfony\Component\DependencyInjection\Compiler\ResolveNoPreloadPass(), new \MonorepoBuilder20220512\Symfony\Component\DependencyInjection\Compiler\AliasDeprecatedPublicServicesPass()]];
     }
-
     /**
      * Returns all passes in order to be processed.
      *
      * @return CompilerPassInterface[]
      */
-    public function getPasses(): array
+    public function getPasses() : array
     {
-        return array_merge(
-            [$this->mergePass],
-            $this->getBeforeOptimizationPasses(),
-            $this->getOptimizationPasses(),
-            $this->getBeforeRemovingPasses(),
-            $this->getRemovingPasses(),
-            $this->getAfterRemovingPasses()
-        );
+        return \array_merge([$this->mergePass], $this->getBeforeOptimizationPasses(), $this->getOptimizationPasses(), $this->getBeforeRemovingPasses(), $this->getRemovingPasses(), $this->getAfterRemovingPasses());
     }
-
     /**
      * Adds a pass.
      *
      * @throws InvalidArgumentException when a pass type doesn't exist
      */
-    public function addPass(CompilerPassInterface $pass, string $type = self::TYPE_BEFORE_OPTIMIZATION, int $priority = 0)
+    public function addPass(\MonorepoBuilder20220512\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface $pass, string $type = self::TYPE_BEFORE_OPTIMIZATION, int $priority = 0)
     {
-        $property = $type.'Passes';
-        if (!isset($this->$property)) {
-            throw new InvalidArgumentException(sprintf('Invalid type "%s".', $type));
+        $property = $type . 'Passes';
+        if (!isset($this->{$property})) {
+            throw new \MonorepoBuilder20220512\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Invalid type "%s".', $type));
         }
-
-        $passes = &$this->$property;
-
+        $passes =& $this->{$property};
         if (!isset($passes[$priority])) {
             $passes[$priority] = [];
         }
         $passes[$priority][] = $pass;
     }
-
     /**
      * Gets all passes for the AfterRemoving pass.
      *
      * @return CompilerPassInterface[]
      */
-    public function getAfterRemovingPasses(): array
+    public function getAfterRemovingPasses() : array
     {
         return $this->sortPasses($this->afterRemovingPasses);
     }
-
     /**
      * Gets all passes for the BeforeOptimization pass.
      *
      * @return CompilerPassInterface[]
      */
-    public function getBeforeOptimizationPasses(): array
+    public function getBeforeOptimizationPasses() : array
     {
         return $this->sortPasses($this->beforeOptimizationPasses);
     }
-
     /**
      * Gets all passes for the BeforeRemoving pass.
      *
      * @return CompilerPassInterface[]
      */
-    public function getBeforeRemovingPasses(): array
+    public function getBeforeRemovingPasses() : array
     {
         return $this->sortPasses($this->beforeRemovingPasses);
     }
-
     /**
      * Gets all passes for the Optimization pass.
      *
      * @return CompilerPassInterface[]
      */
-    public function getOptimizationPasses(): array
+    public function getOptimizationPasses() : array
     {
         return $this->sortPasses($this->optimizationPasses);
     }
-
     /**
      * Gets all passes for the Removing pass.
      *
      * @return CompilerPassInterface[]
      */
-    public function getRemovingPasses(): array
+    public function getRemovingPasses() : array
     {
         return $this->sortPasses($this->removingPasses);
     }
-
     /**
      * Gets the Merge pass.
      */
-    public function getMergePass(): CompilerPassInterface
+    public function getMergePass() : \MonorepoBuilder20220512\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
     {
         return $this->mergePass;
     }
-
-    public function setMergePass(CompilerPassInterface $pass)
+    public function setMergePass(\MonorepoBuilder20220512\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface $pass)
     {
         $this->mergePass = $pass;
     }
-
     /**
      * Sets the AfterRemoving passes.
      *
@@ -220,7 +145,6 @@ class PassConfig
     {
         $this->afterRemovingPasses = [$passes];
     }
-
     /**
      * Sets the BeforeOptimization passes.
      *
@@ -230,7 +154,6 @@ class PassConfig
     {
         $this->beforeOptimizationPasses = [$passes];
     }
-
     /**
      * Sets the BeforeRemoving passes.
      *
@@ -240,7 +163,6 @@ class PassConfig
     {
         $this->beforeRemovingPasses = [$passes];
     }
-
     /**
      * Sets the Optimization passes.
      *
@@ -250,7 +172,6 @@ class PassConfig
     {
         $this->optimizationPasses = [$passes];
     }
-
     /**
      * Sets the Removing passes.
      *
@@ -260,7 +181,6 @@ class PassConfig
     {
         $this->removingPasses = [$passes];
     }
-
     /**
      * Sort passes by priority.
      *
@@ -268,15 +188,13 @@ class PassConfig
      *
      * @return CompilerPassInterface[]
      */
-    private function sortPasses(array $passes): array
+    private function sortPasses(array $passes) : array
     {
         if (0 === \count($passes)) {
             return [];
         }
-
-        krsort($passes);
-
+        \krsort($passes);
         // Flatten the array
-        return array_merge(...$passes);
+        return \array_merge(...$passes);
     }
 }

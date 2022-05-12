@@ -8,12 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+namespace MonorepoBuilder20220512\Symfony\Component\Console\Input;
 
-namespace Symfony\Component\Console\Input;
-
-use Symfony\Component\Console\Exception\InvalidArgumentException;
-use Symfony\Component\Console\Exception\LogicException;
-
+use MonorepoBuilder20220512\Symfony\Component\Console\Exception\InvalidArgumentException;
+use MonorepoBuilder20220512\Symfony\Component\Console\Exception\LogicException;
 /**
  * Represents a command line argument.
  *
@@ -24,7 +22,6 @@ class InputArgument
     public const REQUIRED = 1;
     public const OPTIONAL = 2;
     public const IS_ARRAY = 4;
-
     /**
      * @var string
      */
@@ -41,7 +38,6 @@ class InputArgument
      * @var string
      */
     private $description;
-
     /**
      * @param string                           $name        The argument name
      * @param int|null                         $mode        The argument mode: self::REQUIRED or self::OPTIONAL
@@ -55,44 +51,38 @@ class InputArgument
         if (null === $mode) {
             $mode = self::OPTIONAL;
         } elseif ($mode > 7 || $mode < 1) {
-            throw new InvalidArgumentException(sprintf('Argument mode "%s" is not valid.', $mode));
+            throw new \MonorepoBuilder20220512\Symfony\Component\Console\Exception\InvalidArgumentException(\sprintf('Argument mode "%s" is not valid.', $mode));
         }
-
         $this->name = $name;
         $this->mode = $mode;
         $this->description = $description;
-
         $this->setDefault($default);
     }
-
     /**
      * Returns the argument name.
      */
-    public function getName(): string
+    public function getName() : string
     {
         return $this->name;
     }
-
     /**
      * Returns true if the argument is required.
      *
      * @return bool true if parameter mode is self::REQUIRED, false otherwise
      */
-    public function isRequired(): bool
+    public function isRequired() : bool
     {
         return self::REQUIRED === (self::REQUIRED & $this->mode);
     }
-
     /**
      * Returns true if the argument can take multiple values.
      *
      * @return bool true if mode is self::IS_ARRAY, false otherwise
      */
-    public function isArray(): bool
+    public function isArray() : bool
     {
         return self::IS_ARRAY === (self::IS_ARRAY & $this->mode);
     }
-
     /**
      * Sets the default value.
      *
@@ -102,20 +92,17 @@ class InputArgument
     public function setDefault($default = null)
     {
         if (self::REQUIRED === $this->mode && null !== $default) {
-            throw new LogicException('Cannot set a default value except for InputArgument::OPTIONAL mode.');
+            throw new \MonorepoBuilder20220512\Symfony\Component\Console\Exception\LogicException('Cannot set a default value except for InputArgument::OPTIONAL mode.');
         }
-
         if ($this->isArray()) {
             if (null === $default) {
                 $default = [];
             } elseif (!\is_array($default)) {
-                throw new LogicException('A default value for an array argument must be an array.');
+                throw new \MonorepoBuilder20220512\Symfony\Component\Console\Exception\LogicException('A default value for an array argument must be an array.');
             }
         }
-
         $this->default = $default;
     }
-
     /**
      * Returns the default value.
      * @return string|bool|int|float|mixed[]|null
@@ -124,11 +111,10 @@ class InputArgument
     {
         return $this->default;
     }
-
     /**
      * Returns the description text.
      */
-    public function getDescription(): string
+    public function getDescription() : string
     {
         return $this->description;
     }

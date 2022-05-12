@@ -8,8 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
-namespace Symfony\Component\Finder\Iterator;
+namespace MonorepoBuilder20220512\Symfony\Component\Finder\Iterator;
 
 /**
  * FileTypeFilterIterator only keeps files, directories, or both.
@@ -22,12 +21,10 @@ class FileTypeFilterIterator extends \FilterIterator
 {
     public const ONLY_FILES = 1;
     public const ONLY_DIRECTORIES = 2;
-
     /**
      * @var int
      */
     private $mode;
-
     /**
      * @param \Iterator $iterator The Iterator to filter
      * @param int       $mode     The mode (self::ONLY_FILES or self::ONLY_DIRECTORIES)
@@ -35,22 +32,19 @@ class FileTypeFilterIterator extends \FilterIterator
     public function __construct(\Iterator $iterator, int $mode)
     {
         $this->mode = $mode;
-
         parent::__construct($iterator);
     }
-
     /**
      * Filters the iterator values.
      */
-    public function accept(): bool
+    public function accept() : bool
     {
         $fileinfo = $this->current();
         if (self::ONLY_DIRECTORIES === (self::ONLY_DIRECTORIES & $this->mode) && $fileinfo->isFile()) {
-            return false;
+            return \false;
         } elseif (self::ONLY_FILES === (self::ONLY_FILES & $this->mode) && $fileinfo->isDir()) {
-            return false;
+            return \false;
         }
-
-        return true;
+        return \true;
     }
 }
