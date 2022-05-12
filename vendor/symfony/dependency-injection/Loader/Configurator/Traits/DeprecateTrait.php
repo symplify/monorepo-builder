@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220511\Symfony\Component\DependencyInjection\Loader\Configurator\Traits;
+namespace MonorepoBuilder20220512\Symfony\Component\DependencyInjection\Loader\Configurator\Traits;
 
-use MonorepoBuilder20220511\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use MonorepoBuilder20220512\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
 trait DeprecateTrait
 {
     /**

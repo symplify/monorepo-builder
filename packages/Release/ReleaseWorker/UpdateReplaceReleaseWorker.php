@@ -4,11 +4,11 @@ declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Release\ReleaseWorker;
 
 use PharIo\Version\Version;
-use MonorepoBuilder20220511\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
-use MonorepoBuilder20220511\Symplify\EasyCI\Exception\ShouldNotHappenException;
+use MonorepoBuilder20220512\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
+use MonorepoBuilder20220512\Symplify\EasyCI\Exception\ShouldNotHappenException;
 use Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider;
 use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface;
-use MonorepoBuilder20220511\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder20220512\Symplify\SmartFileSystem\SmartFileInfo;
 final class UpdateReplaceReleaseWorker implements \Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface
 {
     /**
@@ -19,7 +19,7 @@ final class UpdateReplaceReleaseWorker implements \Symplify\MonorepoBuilder\Rele
      * @var \Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager
      */
     private $jsonFileManager;
-    public function __construct(\Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider $composerJsonProvider, \MonorepoBuilder20220511\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager $jsonFileManager)
+    public function __construct(\Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider $composerJsonProvider, \MonorepoBuilder20220512\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager $jsonFileManager)
     {
         $this->composerJsonProvider = $composerJsonProvider;
         $this->jsonFileManager = $jsonFileManager;
@@ -41,8 +41,8 @@ final class UpdateReplaceReleaseWorker implements \Symplify\MonorepoBuilder\Rele
         }
         $rootComposerJson->setReplace($newReplace);
         $rootFileInfo = $rootComposerJson->getFileInfo();
-        if (!$rootFileInfo instanceof \MonorepoBuilder20220511\Symplify\SmartFileSystem\SmartFileInfo) {
-            throw new \MonorepoBuilder20220511\Symplify\EasyCI\Exception\ShouldNotHappenException();
+        if (!$rootFileInfo instanceof \MonorepoBuilder20220512\Symplify\SmartFileSystem\SmartFileInfo) {
+            throw new \MonorepoBuilder20220512\Symplify\EasyCI\Exception\ShouldNotHappenException();
         }
         $this->jsonFileManager->printJsonToFileInfo($rootComposerJson->getJsonArray(), $rootFileInfo);
     }
