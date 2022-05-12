@@ -18,8 +18,5 @@ use MonorepoBuilder20220512\Symfony\Component\Console\Output\OutputInterface;
  */
 interface DescriptorInterface
 {
-    /**
-     * @param object $object
-     */
-    public function describe(\MonorepoBuilder20220512\Symfony\Component\Console\Output\OutputInterface $output, $object, array $options = []);
+    public function describe(\MonorepoBuilder20220512\Symfony\Component\Console\Output\OutputInterface $output, object $object, array $options = []);
 }

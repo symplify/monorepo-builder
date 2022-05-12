@@ -21,9 +21,8 @@ class GlobFileLoader extends \MonorepoBuilder20220512\Symfony\Component\Dependen
      * {@inheritdoc}
      * @param mixed $resource
      * @return mixed
-     * @param string|null $type
      */
-    public function load($resource, $type = null)
+    public function load($resource, string $type = null)
     {
         foreach ($this->glob($resource, \false, $globResource) as $path => $info) {
             $this->import($path);

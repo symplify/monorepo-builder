@@ -23,9 +23,8 @@ class RealServiceInstantiator implements \MonorepoBuilder20220512\Symfony\Compon
 {
     /**
      * {@inheritdoc}
-     * @return object
      */
-    public function instantiateProxy(\MonorepoBuilder20220512\Symfony\Component\DependencyInjection\ContainerInterface $container, \MonorepoBuilder20220512\Symfony\Component\DependencyInjection\Definition $definition, string $id, callable $realInstantiator)
+    public function instantiateProxy(\MonorepoBuilder20220512\Symfony\Component\DependencyInjection\ContainerInterface $container, \MonorepoBuilder20220512\Symfony\Component\DependencyInjection\Definition $definition, string $id, callable $realInstantiator) : object
     {
         return $realInstantiator();
     }

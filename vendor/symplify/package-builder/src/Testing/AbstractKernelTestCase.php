@@ -51,9 +51,9 @@ abstract class AbstractKernelTestCase extends \MonorepoBuilder20220512\PHPUnit\F
      *
      * @template T of object
      * @param class-string<T> $type
-     * @return object
+     * @return T
      */
-    protected function getService(string $type)
+    protected function getService(string $type) : object
     {
         if (self::$container === null) {
             throw new \MonorepoBuilder20220512\Symplify\SymplifyKernel\Exception\ShouldNotHappenException('First, create container with booKernel(KernelClass::class)');

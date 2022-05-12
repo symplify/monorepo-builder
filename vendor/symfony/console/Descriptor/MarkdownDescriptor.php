@@ -28,9 +28,8 @@ class MarkdownDescriptor extends \MonorepoBuilder20220512\Symfony\Component\Cons
 {
     /**
      * {@inheritdoc}
-     * @param object $object
      */
-    public function describe(\MonorepoBuilder20220512\Symfony\Component\Console\Output\OutputInterface $output, $object, array $options = [])
+    public function describe(\MonorepoBuilder20220512\Symfony\Component\Console\Output\OutputInterface $output, object $object, array $options = [])
     {
         $decorated = $output->isDecorated();
         $output->setDecorated(\false);
