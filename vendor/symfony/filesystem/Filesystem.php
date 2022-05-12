@@ -8,11 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220512\Symfony\Component\Filesystem;
 
-use MonorepoBuilder20220512\Symfony\Component\Filesystem\Exception\FileNotFoundException;
-use MonorepoBuilder20220512\Symfony\Component\Filesystem\Exception\InvalidArgumentException;
-use MonorepoBuilder20220512\Symfony\Component\Filesystem\Exception\IOException;
+namespace Symfony\Component\Filesystem;
+
+use Symfony\Component\Filesystem\Exception\FileNotFoundException;
+use Symfony\Component\Filesystem\Exception\InvalidArgumentException;
+use Symfony\Component\Filesystem\Exception\IOException;
+
 /**
  * Provides basic utility to manipulate the file system.
  *
@@ -21,6 +23,7 @@ use MonorepoBuilder20220512\Symfony\Component\Filesystem\Exception\IOException;
 class Filesystem
 {
     private static $lastError;
+
     /**
      * Copies a file.
      *
@@ -31,42 +34,51 @@ class Filesystem
      * @throws FileNotFoundException When originFile doesn't exist
      * @throws IOException           When copy fails
      */
-    public function copy(string $originFile, string $targetFile, bool $overwriteNewerFiles = \false)
+    public function copy(string $originFile, string $targetFile, bool $overwriteNewerFiles = false)
     {
-        $originIsLocal = \stream_is_local($originFile) || 0 === \stripos($originFile, 'file://');
-        if ($originIsLocal && !\is_file($originFile)) {
-            throw new \MonorepoBuilder20220512\Symfony\Component\Filesystem\Exception\FileNotFoundException(\sprintf('Failed to copy "%s" because file does not exist.', $originFile), 0, null, $originFile);
+        $originIsLocal = stream_is_local($originFile) || 0 === stripos($originFile, 'file://');
+        if ($originIsLocal && !is_file($originFile)) {
+            throw new FileNotFoundException(sprintf('Failed to copy "%s" because file does not exist.', $originFile), 0, null, $originFile);
         }
+
         $this->mkdir(\dirname($targetFile));
-        $doCopy = \true;
-        if (!$overwriteNewerFiles && null === \parse_url($originFile, \PHP_URL_HOST) && \is_file($targetFile)) {
-            $doCopy = \filemtime($originFile) > \filemtime($targetFile);
+
+        $doCopy = true;
+        if (!$overwriteNewerFiles && null === parse_url($originFile, \PHP_URL_HOST) && is_file($targetFile)) {
+            $doCopy = filemtime($originFile) > filemtime($targetFile);
         }
+
         if ($doCopy) {
             // https://bugs.php.net/64634
-            if (!($source = self::box('fopen', $originFile, 'r'))) {
-                throw new \MonorepoBuilder20220512\Symfony\Component\Filesystem\Exception\IOException(\sprintf('Failed to copy "%s" to "%s" because source file could not be opened for reading: ', $originFile, $targetFile) . self::$lastError, 0, null, $originFile);
+            if (!$source = self::box('fopen', $originFile, 'r')) {
+                throw new IOException(sprintf('Failed to copy "%s" to "%s" because source file could not be opened for reading: ', $originFile, $targetFile).self::$lastError, 0, null, $originFile);
             }
+
             // Stream context created to allow files overwrite when using FTP stream wrapper - disabled by default
-            if (!($target = self::box('fopen', $targetFile, 'w', \false, \stream_context_create(['ftp' => ['overwrite' => \true]])))) {
-                throw new \MonorepoBuilder20220512\Symfony\Component\Filesystem\Exception\IOException(\sprintf('Failed to copy "%s" to "%s" because target file could not be opened for writing: ', $originFile, $targetFile) . self::$lastError, 0, null, $originFile);
+            if (!$target = self::box('fopen', $targetFile, 'w', false, stream_context_create(['ftp' => ['overwrite' => true]]))) {
+                throw new IOException(sprintf('Failed to copy "%s" to "%s" because target file could not be opened for writing: ', $originFile, $targetFile).self::$lastError, 0, null, $originFile);
             }
-            $bytesCopied = \stream_copy_to_stream($source, $target);
-            \fclose($source);
-            \fclose($target);
+
+            $bytesCopied = stream_copy_to_stream($source, $target);
+            fclose($source);
+            fclose($target);
             unset($source, $target);
-            if (!\is_file($targetFile)) {
-                throw new \MonorepoBuilder20220512\Symfony\Component\Filesystem\Exception\IOException(\sprintf('Failed to copy "%s" to "%s".', $originFile, $targetFile), 0, null, $originFile);
+
+            if (!is_file($targetFile)) {
+                throw new IOException(sprintf('Failed to copy "%s" to "%s".', $originFile, $targetFile), 0, null, $originFile);
             }
+
             if ($originIsLocal) {
                 // Like `cp`, preserve executable permission bits
-                self::box('chmod', $targetFile, \fileperms($targetFile) | \fileperms($originFile) & 0111);
-                if ($bytesCopied !== ($bytesOrigin = \filesize($originFile))) {
-                    throw new \MonorepoBuilder20220512\Symfony\Component\Filesystem\Exception\IOException(\sprintf('Failed to copy the whole content of "%s" to "%s" (%g of %g bytes copied).', $originFile, $targetFile, $bytesCopied, $bytesOrigin), 0, null, $originFile);
+                self::box('chmod', $targetFile, fileperms($targetFile) | (fileperms($originFile) & 0111));
+
+                if ($bytesCopied !== $bytesOrigin = filesize($originFile)) {
+                    throw new IOException(sprintf('Failed to copy the whole content of "%s" to "%s" (%g of %g bytes copied).', $originFile, $targetFile, $bytesCopied, $bytesOrigin), 0, null, $originFile);
                 }
             }
         }
     }
+
     /**
      * Creates a directory recursively.
      *
@@ -76,31 +88,37 @@ class Filesystem
     public function mkdir($dirs, int $mode = 0777)
     {
         foreach ($this->toIterable($dirs) as $dir) {
-            if (\is_dir($dir)) {
+            if (is_dir($dir)) {
                 continue;
             }
-            if (!self::box('mkdir', $dir, $mode, \true) && !\is_dir($dir)) {
-                throw new \MonorepoBuilder20220512\Symfony\Component\Filesystem\Exception\IOException(\sprintf('Failed to create "%s": ', $dir) . self::$lastError, 0, null, $dir);
+
+            if (!self::box('mkdir', $dir, $mode, true) && !is_dir($dir)) {
+                throw new IOException(sprintf('Failed to create "%s": ', $dir).self::$lastError, 0, null, $dir);
             }
         }
     }
+
     /**
      * Checks the existence of files or directories.
      * @param string|mixed[] $files
      */
-    public function exists($files) : bool
+    public function exists($files): bool
     {
         $maxPathLength = \PHP_MAXPATHLEN - 2;
+
         foreach ($this->toIterable($files) as $file) {
             if (\strlen($file) > $maxPathLength) {
-                throw new \MonorepoBuilder20220512\Symfony\Component\Filesystem\Exception\IOException(\sprintf('Could not check if file exist because path length exceeds %d characters.', $maxPathLength), 0, null, $file);
+                throw new IOException(sprintf('Could not check if file exist because path length exceeds %d characters.', $maxPathLength), 0, null, $file);
             }
-            if (!\file_exists($file)) {
-                return \false;
+
+            if (!file_exists($file)) {
+                return false;
             }
         }
-        return \true;
+
+        return true;
     }
+
     /**
      * Sets access and modification time of file.
      *
@@ -114,10 +132,11 @@ class Filesystem
     {
         foreach ($this->toIterable($files) as $file) {
             if (!($time ? self::box('touch', $file, $time, $atime) : self::box('touch', $file))) {
-                throw new \MonorepoBuilder20220512\Symfony\Component\Filesystem\Exception\IOException(\sprintf('Failed to touch "%s": ', $file) . self::$lastError, 0, null, $file);
+                throw new IOException(sprintf('Failed to touch "%s": ', $file).self::$lastError, 0, null, $file);
             }
         }
     }
+
     /**
      * Removes files or directories.
      *
@@ -127,51 +146,60 @@ class Filesystem
     public function remove($files)
     {
         if ($files instanceof \Traversable) {
-            $files = \iterator_to_array($files, \false);
+            $files = iterator_to_array($files, false);
         } elseif (!\is_array($files)) {
             $files = [$files];
         }
-        self::doRemove($files, \false);
+
+        self::doRemove($files, false);
     }
-    private static function doRemove(array $files, bool $isRecursive) : void
+
+    private static function doRemove(array $files, bool $isRecursive): void
     {
-        $files = \array_reverse($files);
+        $files = array_reverse($files);
         foreach ($files as $file) {
-            if (\is_link($file)) {
+            if (is_link($file)) {
                 // See https://bugs.php.net/52176
-                if (!(self::box('unlink', $file) || '\\' !== \DIRECTORY_SEPARATOR || self::box('rmdir', $file)) && \file_exists($file)) {
-                    throw new \MonorepoBuilder20220512\Symfony\Component\Filesystem\Exception\IOException(\sprintf('Failed to remove symlink "%s": ', $file) . self::$lastError);
+                if (!(self::box('unlink', $file) || '\\' !== \DIRECTORY_SEPARATOR || self::box('rmdir', $file)) && file_exists($file)) {
+                    throw new IOException(sprintf('Failed to remove symlink "%s": ', $file).self::$lastError);
                 }
-            } elseif (\is_dir($file)) {
+            } elseif (is_dir($file)) {
                 if (!$isRecursive) {
-                    $tmpName = \dirname(\realpath($file)) . '/.' . \strrev(\strtr(\base64_encode(\random_bytes(2)), '/=', '-.'));
-                    if (\file_exists($tmpName)) {
+                    $tmpName = \dirname(realpath($file)).'/.'.strrev(strtr(base64_encode(random_bytes(2)), '/=', '-.'));
+
+                    if (file_exists($tmpName)) {
                         try {
-                            self::doRemove([$tmpName], \true);
-                        } catch (\MonorepoBuilder20220512\Symfony\Component\Filesystem\Exception\IOException $e) {
+                            self::doRemove([$tmpName], true);
+                        } catch (IOException $e) {
                         }
                     }
-                    if (!\file_exists($tmpName) && self::box('rename', $file, $tmpName)) {
+
+                    if (!file_exists($tmpName) && self::box('rename', $file, $tmpName)) {
                         $origFile = $file;
                         $file = $tmpName;
                     } else {
                         $origFile = null;
                     }
                 }
+
                 $files = new \FilesystemIterator($file, \FilesystemIterator::CURRENT_AS_PATHNAME | \FilesystemIterator::SKIP_DOTS);
-                self::doRemove(\iterator_to_array($files, \true), \true);
-                if (!self::box('rmdir', $file) && \file_exists($file) && !$isRecursive) {
+                self::doRemove(iterator_to_array($files, true), true);
+
+                if (!self::box('rmdir', $file) && file_exists($file) && !$isRecursive) {
                     $lastError = self::$lastError;
+
                     if (null !== $origFile && self::box('rename', $file, $origFile)) {
                         $file = $origFile;
                     }
-                    throw new \MonorepoBuilder20220512\Symfony\Component\Filesystem\Exception\IOException(\sprintf('Failed to remove directory "%s": ', $file) . $lastError);
+
+                    throw new IOException(sprintf('Failed to remove directory "%s": ', $file).$lastError);
                 }
-            } elseif (!self::box('unlink', $file) && (\strpos(self::$lastError, 'Permission denied') !== \false || \file_exists($file))) {
-                throw new \MonorepoBuilder20220512\Symfony\Component\Filesystem\Exception\IOException(\sprintf('Failed to remove file "%s": ', $file) . self::$lastError);
+            } elseif (!self::box('unlink', $file) && (strpos(self::$lastError, 'Permission denied') !== false || file_exists($file))) {
+                throw new IOException(sprintf('Failed to remove file "%s": ', $file).self::$lastError);
             }
         }
     }
+
     /**
      * Change mode for an array of files or directories.
      *
@@ -182,17 +210,18 @@ class Filesystem
      * @throws IOException When the change fails
      * @param string|mixed[] $files
      */
-    public function chmod($files, int $mode, int $umask = 00, bool $recursive = \false)
+    public function chmod($files, int $mode, int $umask = 0000, bool $recursive = false)
     {
         foreach ($this->toIterable($files) as $file) {
             if (\is_int($mode) && !self::box('chmod', $file, $mode & ~$umask)) {
-                throw new \MonorepoBuilder20220512\Symfony\Component\Filesystem\Exception\IOException(\sprintf('Failed to chmod file "%s": ', $file) . self::$lastError, 0, null, $file);
+                throw new IOException(sprintf('Failed to chmod file "%s": ', $file).self::$lastError, 0, null, $file);
             }
-            if ($recursive && \is_dir($file) && !\is_link($file)) {
-                $this->chmod(new \FilesystemIterator($file), $mode, $umask, \true);
+            if ($recursive && is_dir($file) && !is_link($file)) {
+                $this->chmod(new \FilesystemIterator($file), $mode, $umask, true);
             }
         }
     }
+
     /**
      * Change the owner of an array of files or directories.
      *
@@ -202,23 +231,24 @@ class Filesystem
      * @throws IOException When the change fails
      * @param string|mixed[] $files
      */
-    public function chown($files, $user, bool $recursive = \false)
+    public function chown($files, $user, bool $recursive = false)
     {
         foreach ($this->toIterable($files) as $file) {
-            if ($recursive && \is_dir($file) && !\is_link($file)) {
-                $this->chown(new \FilesystemIterator($file), $user, \true);
+            if ($recursive && is_dir($file) && !is_link($file)) {
+                $this->chown(new \FilesystemIterator($file), $user, true);
             }
-            if (\is_link($file) && \function_exists('lchown')) {
+            if (is_link($file) && \function_exists('lchown')) {
                 if (!self::box('lchown', $file, $user)) {
-                    throw new \MonorepoBuilder20220512\Symfony\Component\Filesystem\Exception\IOException(\sprintf('Failed to chown file "%s": ', $file) . self::$lastError, 0, null, $file);
+                    throw new IOException(sprintf('Failed to chown file "%s": ', $file).self::$lastError, 0, null, $file);
                 }
             } else {
                 if (!self::box('chown', $file, $user)) {
-                    throw new \MonorepoBuilder20220512\Symfony\Component\Filesystem\Exception\IOException(\sprintf('Failed to chown file "%s": ', $file) . self::$lastError, 0, null, $file);
+                    throw new IOException(sprintf('Failed to chown file "%s": ', $file).self::$lastError, 0, null, $file);
                 }
             }
         }
     }
+
     /**
      * Change the group of an array of files or directories.
      *
@@ -228,84 +258,97 @@ class Filesystem
      * @throws IOException When the change fails
      * @param string|mixed[] $files
      */
-    public function chgrp($files, $group, bool $recursive = \false)
+    public function chgrp($files, $group, bool $recursive = false)
     {
         foreach ($this->toIterable($files) as $file) {
-            if ($recursive && \is_dir($file) && !\is_link($file)) {
-                $this->chgrp(new \FilesystemIterator($file), $group, \true);
+            if ($recursive && is_dir($file) && !is_link($file)) {
+                $this->chgrp(new \FilesystemIterator($file), $group, true);
             }
-            if (\is_link($file) && \function_exists('lchgrp')) {
+            if (is_link($file) && \function_exists('lchgrp')) {
                 if (!self::box('lchgrp', $file, $group)) {
-                    throw new \MonorepoBuilder20220512\Symfony\Component\Filesystem\Exception\IOException(\sprintf('Failed to chgrp file "%s": ', $file) . self::$lastError, 0, null, $file);
+                    throw new IOException(sprintf('Failed to chgrp file "%s": ', $file).self::$lastError, 0, null, $file);
                 }
             } else {
                 if (!self::box('chgrp', $file, $group)) {
-                    throw new \MonorepoBuilder20220512\Symfony\Component\Filesystem\Exception\IOException(\sprintf('Failed to chgrp file "%s": ', $file) . self::$lastError, 0, null, $file);
+                    throw new IOException(sprintf('Failed to chgrp file "%s": ', $file).self::$lastError, 0, null, $file);
                 }
             }
         }
     }
+
     /**
      * Renames a file or a directory.
      *
      * @throws IOException When target file or directory already exists
      * @throws IOException When origin cannot be renamed
      */
-    public function rename(string $origin, string $target, bool $overwrite = \false)
+    public function rename(string $origin, string $target, bool $overwrite = false)
     {
         // we check that target does not exist
         if (!$overwrite && $this->isReadable($target)) {
-            throw new \MonorepoBuilder20220512\Symfony\Component\Filesystem\Exception\IOException(\sprintf('Cannot rename because the target "%s" already exists.', $target), 0, null, $target);
+            throw new IOException(sprintf('Cannot rename because the target "%s" already exists.', $target), 0, null, $target);
         }
+
         if (!self::box('rename', $origin, $target)) {
-            if (\is_dir($origin)) {
+            if (is_dir($origin)) {
                 // See https://bugs.php.net/54097 & https://php.net/rename#113943
                 $this->mirror($origin, $target, null, ['override' => $overwrite, 'delete' => $overwrite]);
                 $this->remove($origin);
+
                 return;
             }
-            throw new \MonorepoBuilder20220512\Symfony\Component\Filesystem\Exception\IOException(\sprintf('Cannot rename "%s" to "%s": ', $origin, $target) . self::$lastError, 0, null, $target);
+            throw new IOException(sprintf('Cannot rename "%s" to "%s": ', $origin, $target).self::$lastError, 0, null, $target);
         }
     }
+
     /**
      * Tells whether a file exists and is readable.
      *
      * @throws IOException When windows path is longer than 258 characters
      */
-    private function isReadable(string $filename) : bool
+    private function isReadable(string $filename): bool
     {
         $maxPathLength = \PHP_MAXPATHLEN - 2;
+
         if (\strlen($filename) > $maxPathLength) {
-            throw new \MonorepoBuilder20220512\Symfony\Component\Filesystem\Exception\IOException(\sprintf('Could not check if file is readable because path length exceeds %d characters.', $maxPathLength), 0, null, $filename);
+            throw new IOException(sprintf('Could not check if file is readable because path length exceeds %d characters.', $maxPathLength), 0, null, $filename);
         }
-        return \is_readable($filename);
+
+        return is_readable($filename);
     }
+
     /**
      * Creates a symbolic link or copy a directory.
      *
      * @throws IOException When symlink fails
      */
-    public function symlink(string $originDir, string $targetDir, bool $copyOnWindows = \false)
+    public function symlink(string $originDir, string $targetDir, bool $copyOnWindows = false)
     {
         if ('\\' === \DIRECTORY_SEPARATOR) {
-            $originDir = \strtr($originDir, '/', '\\');
-            $targetDir = \strtr($targetDir, '/', '\\');
+            $originDir = strtr($originDir, '/', '\\');
+            $targetDir = strtr($targetDir, '/', '\\');
+
             if ($copyOnWindows) {
                 $this->mirror($originDir, $targetDir);
+
                 return;
             }
         }
+
         $this->mkdir(\dirname($targetDir));
-        if (\is_link($targetDir)) {
-            if (\readlink($targetDir) === $originDir) {
+
+        if (is_link($targetDir)) {
+            if (readlink($targetDir) === $originDir) {
                 return;
             }
             $this->remove($targetDir);
         }
+
         if (!self::box('symlink', $originDir, $targetDir)) {
             $this->linkException($originDir, $targetDir, 'symbolic');
         }
     }
+
     /**
      * Creates a hard link, or several hard links to a file.
      *
@@ -317,35 +360,40 @@ class Filesystem
     public function hardlink(string $originFile, $targetFiles)
     {
         if (!$this->exists($originFile)) {
-            throw new \MonorepoBuilder20220512\Symfony\Component\Filesystem\Exception\FileNotFoundException(null, 0, null, $originFile);
+            throw new FileNotFoundException(null, 0, null, $originFile);
         }
-        if (!\is_file($originFile)) {
-            throw new \MonorepoBuilder20220512\Symfony\Component\Filesystem\Exception\FileNotFoundException(\sprintf('Origin file "%s" is not a file.', $originFile));
+
+        if (!is_file($originFile)) {
+            throw new FileNotFoundException(sprintf('Origin file "%s" is not a file.', $originFile));
         }
+
         foreach ($this->toIterable($targetFiles) as $targetFile) {
-            if (\is_file($targetFile)) {
-                if (\fileinode($originFile) === \fileinode($targetFile)) {
+            if (is_file($targetFile)) {
+                if (fileinode($originFile) === fileinode($targetFile)) {
                     continue;
                 }
                 $this->remove($targetFile);
             }
+
             if (!self::box('link', $originFile, $targetFile)) {
                 $this->linkException($originFile, $targetFile, 'hard');
             }
         }
     }
+
     /**
      * @param string $linkType Name of the link type, typically 'symbolic' or 'hard'
      */
     private function linkException(string $origin, string $target, string $linkType)
     {
         if (self::$lastError) {
-            if ('\\' === \DIRECTORY_SEPARATOR && \strpos(self::$lastError, 'error code(1314)') !== \false) {
-                throw new \MonorepoBuilder20220512\Symfony\Component\Filesystem\Exception\IOException(\sprintf('Unable to create "%s" link due to error code 1314: \'A required privilege is not held by the client\'. Do you have the required Administrator-rights?', $linkType), 0, null, $target);
+            if ('\\' === \DIRECTORY_SEPARATOR && strpos(self::$lastError, 'error code(1314)') !== false) {
+                throw new IOException(sprintf('Unable to create "%s" link due to error code 1314: \'A required privilege is not held by the client\'. Do you have the required Administrator-rights?', $linkType), 0, null, $target);
             }
         }
-        throw new \MonorepoBuilder20220512\Symfony\Component\Filesystem\Exception\IOException(\sprintf('Failed to create "%s" link from "%s" to "%s": ', $linkType, $origin, $target) . self::$lastError, 0, null, $target);
+        throw new IOException(sprintf('Failed to create "%s" link from "%s" to "%s": ', $linkType, $origin, $target).self::$lastError, 0, null, $target);
     }
+
     /**
      * Resolves links in paths.
      *
@@ -357,75 +405,97 @@ class Filesystem
      *      - if $path does not exist, returns null
      *      - if $path exists, returns its absolute fully resolved final version
      */
-    public function readlink(string $path, bool $canonicalize = \false) : ?string
+    public function readlink(string $path, bool $canonicalize = false): ?string
     {
-        if (!$canonicalize && !\is_link($path)) {
+        if (!$canonicalize && !is_link($path)) {
             return null;
         }
+
         if ($canonicalize) {
             if (!$this->exists($path)) {
                 return null;
             }
-            return \realpath($path);
+
+            return realpath($path);
         }
-        return \readlink($path);
+
+        return readlink($path);
     }
+
     /**
      * Given an existing path, convert it to a path relative to a given starting path.
      */
-    public function makePathRelative(string $endPath, string $startPath) : string
+    public function makePathRelative(string $endPath, string $startPath): string
     {
         if (!$this->isAbsolutePath($startPath)) {
-            throw new \MonorepoBuilder20220512\Symfony\Component\Filesystem\Exception\InvalidArgumentException(\sprintf('The start path "%s" is not absolute.', $startPath));
+            throw new InvalidArgumentException(sprintf('The start path "%s" is not absolute.', $startPath));
         }
+
         if (!$this->isAbsolutePath($endPath)) {
-            throw new \MonorepoBuilder20220512\Symfony\Component\Filesystem\Exception\InvalidArgumentException(\sprintf('The end path "%s" is not absolute.', $endPath));
+            throw new InvalidArgumentException(sprintf('The end path "%s" is not absolute.', $endPath));
         }
+
         // Normalize separators on Windows
         if ('\\' === \DIRECTORY_SEPARATOR) {
-            $endPath = \str_replace('\\', '/', $endPath);
-            $startPath = \str_replace('\\', '/', $startPath);
+            $endPath = str_replace('\\', '/', $endPath);
+            $startPath = str_replace('\\', '/', $startPath);
         }
+
         $splitDriveLetter = function ($path) {
-            return \strlen($path) > 2 && ':' === $path[1] && '/' === $path[2] && \ctype_alpha($path[0]) ? [\substr($path, 2), \strtoupper($path[0])] : [$path, null];
+            return (\strlen($path) > 2 && ':' === $path[1] && '/' === $path[2] && ctype_alpha($path[0]))
+                ? [substr($path, 2), strtoupper($path[0])]
+                : [$path, null];
         };
+
         $splitPath = function ($path) {
             $result = [];
-            foreach (\explode('/', \trim($path, '/')) as $segment) {
+
+            foreach (explode('/', trim($path, '/')) as $segment) {
                 if ('..' === $segment) {
-                    \array_pop($result);
+                    array_pop($result);
                 } elseif ('.' !== $segment && '' !== $segment) {
                     $result[] = $segment;
                 }
             }
+
             return $result;
         };
+
         [$endPath, $endDriveLetter] = $splitDriveLetter($endPath);
         [$startPath, $startDriveLetter] = $splitDriveLetter($startPath);
+
         $startPathArr = $splitPath($startPath);
         $endPathArr = $splitPath($endPath);
+
         if ($endDriveLetter && $startDriveLetter && $endDriveLetter != $startDriveLetter) {
             // End path is on another drive, so no relative path exists
-            return $endDriveLetter . ':/' . ($endPathArr ? \implode('/', $endPathArr) . '/' : '');
+            return $endDriveLetter.':/'.($endPathArr ? implode('/', $endPathArr).'/' : '');
         }
+
         // Find for which directory the common path stops
         $index = 0;
         while (isset($startPathArr[$index]) && isset($endPathArr[$index]) && $startPathArr[$index] === $endPathArr[$index]) {
             ++$index;
         }
+
         // Determine how deep the start path is relative to the common path (ie, "web/bundles" = 2 levels)
         if (1 === \count($startPathArr) && '' === $startPathArr[0]) {
             $depth = 0;
         } else {
             $depth = \count($startPathArr) - $index;
         }
+
         // Repeated "../" for each level need to reach the common path
-        $traverser = \str_repeat('../', $depth);
-        $endPathRemainder = \implode('/', \array_slice($endPathArr, $index));
+        $traverser = str_repeat('../', $depth);
+
+        $endPathRemainder = implode('/', \array_slice($endPathArr, $index));
+
         // Construct $endPath from traversing to the common path, then to the remaining $endPath
-        $relativePath = $traverser . ('' !== $endPathRemainder ? $endPathRemainder . '/' : '');
+        $relativePath = $traverser.('' !== $endPathRemainder ? $endPathRemainder.'/' : '');
+
         return '' === $relativePath ? './' : $relativePath;
     }
+
     /**
      * Mirrors a directory to another.
      *
@@ -445,12 +515,14 @@ class Filesystem
      */
     public function mirror(string $originDir, string $targetDir, \Traversable $iterator = null, array $options = [])
     {
-        $targetDir = \rtrim($targetDir, '/\\');
-        $originDir = \rtrim($originDir, '/\\');
+        $targetDir = rtrim($targetDir, '/\\');
+        $originDir = rtrim($originDir, '/\\');
         $originDirLen = \strlen($originDir);
+
         if (!$this->exists($originDir)) {
-            throw new \MonorepoBuilder20220512\Symfony\Component\Filesystem\Exception\IOException(\sprintf('The origin directory specified "%s" was not found.', $originDir), 0, null, $originDir);
+            throw new IOException(sprintf('The origin directory specified "%s" was not found.', $originDir), 0, null, $originDir);
         }
+
         // Iterate in destination folder to remove obsolete entries
         if ($this->exists($targetDir) && isset($options['delete']) && $options['delete']) {
             $deleteIterator = $iterator;
@@ -460,43 +532,57 @@ class Filesystem
             }
             $targetDirLen = \strlen($targetDir);
             foreach ($deleteIterator as $file) {
-                $origin = $originDir . \substr($file->getPathname(), $targetDirLen);
+                $origin = $originDir.substr($file->getPathname(), $targetDirLen);
                 if (!$this->exists($origin)) {
                     $this->remove($file);
                 }
             }
         }
-        $copyOnWindows = $options['copy_on_windows'] ?? \false;
+
+        $copyOnWindows = $options['copy_on_windows'] ?? false;
+
         if (null === $iterator) {
             $flags = $copyOnWindows ? \FilesystemIterator::SKIP_DOTS | \FilesystemIterator::FOLLOW_SYMLINKS : \FilesystemIterator::SKIP_DOTS;
             $iterator = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($originDir, $flags), \RecursiveIteratorIterator::SELF_FIRST);
         }
+
         $this->mkdir($targetDir);
         $filesCreatedWhileMirroring = [];
+
         foreach ($iterator as $file) {
             if ($file->getPathname() === $targetDir || $file->getRealPath() === $targetDir || isset($filesCreatedWhileMirroring[$file->getRealPath()])) {
                 continue;
             }
-            $target = $targetDir . \substr($file->getPathname(), $originDirLen);
-            $filesCreatedWhileMirroring[$target] = \true;
-            if (!$copyOnWindows && \is_link($file)) {
+
+            $target = $targetDir.substr($file->getPathname(), $originDirLen);
+            $filesCreatedWhileMirroring[$target] = true;
+
+            if (!$copyOnWindows && is_link($file)) {
                 $this->symlink($file->getLinkTarget(), $target);
-            } elseif (\is_dir($file)) {
+            } elseif (is_dir($file)) {
                 $this->mkdir($target);
-            } elseif (\is_file($file)) {
-                $this->copy($file, $target, $options['override'] ?? \false);
+            } elseif (is_file($file)) {
+                $this->copy($file, $target, $options['override'] ?? false);
             } else {
-                throw new \MonorepoBuilder20220512\Symfony\Component\Filesystem\Exception\IOException(\sprintf('Unable to guess "%s" file type.', $file), 0, null, $file);
+                throw new IOException(sprintf('Unable to guess "%s" file type.', $file), 0, null, $file);
             }
         }
     }
+
     /**
      * Returns whether the file path is an absolute path.
      */
-    public function isAbsolutePath(string $file) : bool
+    public function isAbsolutePath(string $file): bool
     {
-        return '' !== $file && (\strspn($file, '/\\', 0, 1) || \strlen($file) > 3 && \ctype_alpha($file[0]) && ':' === $file[1] && \strspn($file, '/\\', 2, 1) || null !== \parse_url($file, \PHP_URL_SCHEME));
+        return '' !== $file && (strspn($file, '/\\', 0, 1)
+            || (\strlen($file) > 3 && ctype_alpha($file[0])
+                && ':' === $file[1]
+                && strspn($file, '/\\', 2, 1)
+            )
+            || null !== parse_url($file, \PHP_URL_SCHEME)
+        );
     }
+
     /**
      * Creates a temporary file with support for custom stream wrappers.
      *
@@ -506,35 +592,44 @@ class Filesystem
      *
      * @return string The new temporary filename (with path), or throw an exception on failure
      */
-    public function tempnam(string $dir, string $prefix, string $suffix = '') : string
+    public function tempnam(string $dir, string $prefix, string $suffix = ''): string
     {
         [$scheme, $hierarchy] = $this->getSchemeAndHierarchy($dir);
+
         // If no scheme or scheme is "file" or "gs" (Google Cloud) create temp file in local filesystem
         if ((null === $scheme || 'file' === $scheme || 'gs' === $scheme) && '' === $suffix) {
             // If tempnam failed or no scheme return the filename otherwise prepend the scheme
             if ($tmpFile = self::box('tempnam', $hierarchy, $prefix)) {
                 if (null !== $scheme && 'gs' !== $scheme) {
-                    return $scheme . '://' . $tmpFile;
+                    return $scheme.'://'.$tmpFile;
                 }
+
                 return $tmpFile;
             }
-            throw new \MonorepoBuilder20220512\Symfony\Component\Filesystem\Exception\IOException('A temporary file could not be created: ' . self::$lastError);
+
+            throw new IOException('A temporary file could not be created: '.self::$lastError);
         }
+
         // Loop until we create a valid temp file or have reached 10 attempts
         for ($i = 0; $i < 10; ++$i) {
             // Create a unique filename
-            $tmpFile = $dir . '/' . $prefix . \uniqid(\mt_rand(), \true) . $suffix;
+            $tmpFile = $dir.'/'.$prefix.uniqid(mt_rand(), true).$suffix;
+
             // Use fopen instead of file_exists as some streams do not support stat
             // Use mode 'x+' to atomically check existence and create to avoid a TOCTOU vulnerability
-            if (!($handle = self::box('fopen', $tmpFile, 'x+'))) {
+            if (!$handle = self::box('fopen', $tmpFile, 'x+')) {
                 continue;
             }
+
             // Close the file if it was successfully opened
             self::box('fclose', $handle);
+
             return $tmpFile;
         }
-        throw new \MonorepoBuilder20220512\Symfony\Component\Filesystem\Exception\IOException('A temporary file could not be created: ' . self::$lastError);
+
+        throw new IOException('A temporary file could not be created: '.self::$lastError);
     }
+
     /**
      * Atomically dumps content into a file.
      *
@@ -545,27 +640,34 @@ class Filesystem
     public function dumpFile(string $filename, $content)
     {
         if (\is_array($content)) {
-            throw new \TypeError(\sprintf('Argument 2 passed to "%s()" must be string or resource, array given.', __METHOD__));
+            throw new \TypeError(sprintf('Argument 2 passed to "%s()" must be string or resource, array given.', __METHOD__));
         }
+
         $dir = \dirname($filename);
-        if (!\is_dir($dir)) {
+
+        if (!is_dir($dir)) {
             $this->mkdir($dir);
         }
+
         // Will create a temp file with 0600 access rights
         // when the filesystem supports chmod.
-        $tmpFile = $this->tempnam($dir, \basename($filename));
+        $tmpFile = $this->tempnam($dir, basename($filename));
+
         try {
-            if (\false === self::box('file_put_contents', $tmpFile, $content)) {
-                throw new \MonorepoBuilder20220512\Symfony\Component\Filesystem\Exception\IOException(\sprintf('Failed to write file "%s": ', $filename) . self::$lastError, 0, null, $filename);
+            if (false === self::box('file_put_contents', $tmpFile, $content)) {
+                throw new IOException(sprintf('Failed to write file "%s": ', $filename).self::$lastError, 0, null, $filename);
             }
-            self::box('chmod', $tmpFile, \file_exists($filename) ? \fileperms($filename) : 0666 & ~\umask());
-            $this->rename($tmpFile, $filename, \true);
+
+            self::box('chmod', $tmpFile, file_exists($filename) ? fileperms($filename) : 0666 & ~umask());
+
+            $this->rename($tmpFile, $filename, true);
         } finally {
-            if (\file_exists($tmpFile)) {
+            if (file_exists($tmpFile)) {
                 self::box('unlink', $tmpFile);
             }
         }
     }
+
     /**
      * Appends content to an existing file.
      *
@@ -574,35 +676,43 @@ class Filesystem
      *
      * @throws IOException If the file is not writable
      */
-    public function appendToFile(string $filename, $content)
+    public function appendToFile(string $filename, $content/*, bool $lock = false*/)
     {
         if (\is_array($content)) {
-            throw new \TypeError(\sprintf('Argument 2 passed to "%s()" must be string or resource, array given.', __METHOD__));
+            throw new \TypeError(sprintf('Argument 2 passed to "%s()" must be string or resource, array given.', __METHOD__));
         }
+
         $dir = \dirname($filename);
-        if (!\is_dir($dir)) {
+
+        if (!is_dir($dir)) {
             $this->mkdir($dir);
         }
-        $lock = \func_num_args() > 2 && \func_get_arg(2);
-        if (\false === self::box('file_put_contents', $filename, $content, \FILE_APPEND | ($lock ? \LOCK_EX : 0))) {
-            throw new \MonorepoBuilder20220512\Symfony\Component\Filesystem\Exception\IOException(\sprintf('Failed to write file "%s": ', $filename) . self::$lastError, 0, null, $filename);
+
+        $lock = \func_num_args() > 2 && func_get_arg(2);
+
+        if (false === self::box('file_put_contents', $filename, $content, \FILE_APPEND | ($lock ? \LOCK_EX : 0))) {
+            throw new IOException(sprintf('Failed to write file "%s": ', $filename).self::$lastError, 0, null, $filename);
         }
     }
+
     /**
      * @param string|mixed[] $files
      */
-    private function toIterable($files) : iterable
+    private function toIterable($files): iterable
     {
-        return \is_iterable($files) ? $files : [$files];
+        return is_iterable($files) ? $files : [$files];
     }
+
     /**
      * Gets a 2-tuple of scheme (may be null) and hierarchical part of a filename (e.g. file:///tmp -> [file, tmp]).
      */
-    private function getSchemeAndHierarchy(string $filename) : array
+    private function getSchemeAndHierarchy(string $filename): array
     {
-        $components = \explode('://', $filename, 2);
+        $components = explode('://', $filename, 2);
+
         return 2 === \count($components) ? [$components[0], $components[1]] : [null, $components[0]];
     }
+
     /**
      * @param mixed ...$args
      * @return mixed
@@ -610,13 +720,14 @@ class Filesystem
     private static function box(callable $func, ...$args)
     {
         self::$lastError = null;
-        \set_error_handler(__CLASS__ . '::handleError');
+        set_error_handler(__CLASS__.'::handleError');
         try {
             return $func(...$args);
         } finally {
-            \restore_error_handler();
+            restore_error_handler();
         }
     }
+
     /**
      * @internal
      */
