@@ -5,9 +5,9 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace MonorepoBuilder20220512\Nette;
+namespace MonorepoBuilder20220513\Nette;
 
-use MonorepoBuilder20220512\Nette\Utils\ObjectHelpers;
+use MonorepoBuilder20220513\Nette\Utils\ObjectHelpers;
 /**
  * Strict class for better experience.
  * - 'did you mean' hints
@@ -23,7 +23,7 @@ trait SmartObject
     public function __call(string $name, array $args)
     {
         $class = static::class;
-        if (\MonorepoBuilder20220512\Nette\Utils\ObjectHelpers::hasProperty($class, $name) === 'event') {
+        if (\MonorepoBuilder20220513\Nette\Utils\ObjectHelpers::hasProperty($class, $name) === 'event') {
             // calling event handlers
             $handlers = $this->{$name} ?? null;
             if (\is_iterable($handlers)) {
@@ -31,10 +31,10 @@ trait SmartObject
                     $handler(...$args);
                 }
             } elseif ($handlers !== null) {
-                throw new \MonorepoBuilder20220512\Nette\UnexpectedValueException("Property {$class}::\${$name} must be iterable or null, " . \gettype($handlers) . ' given.');
+                throw new \MonorepoBuilder20220513\Nette\UnexpectedValueException("Property {$class}::\${$name} must be iterable or null, " . \gettype($handlers) . ' given.');
             }
         } else {
-            \MonorepoBuilder20220512\Nette\Utils\ObjectHelpers::strictCall($class, $name);
+            \MonorepoBuilder20220513\Nette\Utils\ObjectHelpers::strictCall($class, $name);
         }
     }
     /**
@@ -42,7 +42,7 @@ trait SmartObject
      */
     public static function __callStatic(string $name, array $args)
     {
-        \MonorepoBuilder20220512\Nette\Utils\ObjectHelpers::strictStaticCall(static::class, $name);
+        \MonorepoBuilder20220513\Nette\Utils\ObjectHelpers::strictStaticCall(static::class, $name);
     }
     /**
      * @return mixed
@@ -51,10 +51,10 @@ trait SmartObject
     public function &__get(string $name)
     {
         $class = static::class;
-        if ($prop = \MonorepoBuilder20220512\Nette\Utils\ObjectHelpers::getMagicProperties($class)[$name] ?? null) {
+        if ($prop = \MonorepoBuilder20220513\Nette\Utils\ObjectHelpers::getMagicProperties($class)[$name] ?? null) {
             // property getter
             if (!($prop & 0b1)) {
-                throw new \MonorepoBuilder20220512\Nette\MemberAccessException("Cannot read a write-only property {$class}::\${$name}.");
+                throw new \MonorepoBuilder20220513\Nette\MemberAccessException("Cannot read a write-only property {$class}::\${$name}.");
             }
             $m = ($prop & 0b10 ? 'get' : 'is') . \ucfirst($name);
             if ($prop & 0b10000) {
@@ -71,7 +71,7 @@ trait SmartObject
                 return $val;
             }
         } else {
-            \MonorepoBuilder20220512\Nette\Utils\ObjectHelpers::strictGet($class, $name);
+            \MonorepoBuilder20220513\Nette\Utils\ObjectHelpers::strictGet($class, $name);
         }
     }
     /**
@@ -82,13 +82,13 @@ trait SmartObject
     public function __set(string $name, $value)
     {
         $class = static::class;
-        if (\MonorepoBuilder20220512\Nette\Utils\ObjectHelpers::hasProperty($class, $name)) {
+        if (\MonorepoBuilder20220513\Nette\Utils\ObjectHelpers::hasProperty($class, $name)) {
             // unsetted property
             $this->{$name} = $value;
-        } elseif ($prop = \MonorepoBuilder20220512\Nette\Utils\ObjectHelpers::getMagicProperties($class)[$name] ?? null) {
+        } elseif ($prop = \MonorepoBuilder20220513\Nette\Utils\ObjectHelpers::getMagicProperties($class)[$name] ?? null) {
             // property setter
             if (!($prop & 0b1000)) {
-                throw new \MonorepoBuilder20220512\Nette\MemberAccessException("Cannot write to a read-only property {$class}::\${$name}.");
+                throw new \MonorepoBuilder20220513\Nette\MemberAccessException("Cannot write to a read-only property {$class}::\${$name}.");
             }
             $m = 'set' . \ucfirst($name);
             if ($prop & 0b10000) {
@@ -99,7 +99,7 @@ trait SmartObject
             }
             $this->{$m}($value);
         } else {
-            \MonorepoBuilder20220512\Nette\Utils\ObjectHelpers::strictSet($class, $name);
+            \MonorepoBuilder20220513\Nette\Utils\ObjectHelpers::strictSet($class, $name);
         }
     }
     /**
@@ -109,12 +109,12 @@ trait SmartObject
     public function __unset(string $name)
     {
         $class = static::class;
-        if (!\MonorepoBuilder20220512\Nette\Utils\ObjectHelpers::hasProperty($class, $name)) {
-            throw new \MonorepoBuilder20220512\Nette\MemberAccessException("Cannot unset the property {$class}::\${$name}.");
+        if (!\MonorepoBuilder20220513\Nette\Utils\ObjectHelpers::hasProperty($class, $name)) {
+            throw new \MonorepoBuilder20220513\Nette\MemberAccessException("Cannot unset the property {$class}::\${$name}.");
         }
     }
     public function __isset(string $name) : bool
     {
-        return isset(\MonorepoBuilder20220512\Nette\Utils\ObjectHelpers::getMagicProperties(static::class)[$name]);
+        return isset(\MonorepoBuilder20220513\Nette\Utils\ObjectHelpers::getMagicProperties(static::class)[$name]);
     }
 }

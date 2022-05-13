@@ -2,12 +2,12 @@
 
 // decoupled in own "*.php" file, so ECS, Rector and PHPStan works out of the box here
 declare (strict_types=1);
-namespace MonorepoBuilder20220512;
+namespace MonorepoBuilder20220513;
 
-use MonorepoBuilder20220512\Symfony\Component\Console\Input\ArgvInput;
+use MonorepoBuilder20220513\Symfony\Component\Console\Input\ArgvInput;
 use Symplify\MonorepoBuilder\Kernel\MonorepoBuilderKernel;
 use Symplify\MonorepoBuilder\ValueObject\File;
-use MonorepoBuilder20220512\Symplify\SymplifyKernel\ValueObject\KernelBootAndApplicationRun;
+use MonorepoBuilder20220513\Symplify\SymplifyKernel\ValueObject\KernelBootAndApplicationRun;
 # 1. autoload
 $possibleAutoloadPaths = [
     // dependency
@@ -26,14 +26,14 @@ if (\file_exists($scoperAutoloadFilepath)) {
     require_once $scoperAutoloadFilepath;
 }
 $configFiles = [];
-$argvInput = new \MonorepoBuilder20220512\Symfony\Component\Console\Input\ArgvInput();
-$configFile = \MonorepoBuilder20220512\resolveConfigFile($argvInput);
+$argvInput = new \MonorepoBuilder20220513\Symfony\Component\Console\Input\ArgvInput();
+$configFile = \MonorepoBuilder20220513\resolveConfigFile($argvInput);
 if (\is_string($configFile)) {
     $configFiles[] = $configFile;
 }
-$kernelBootAndApplicationRun = new \MonorepoBuilder20220512\Symplify\SymplifyKernel\ValueObject\KernelBootAndApplicationRun(\Symplify\MonorepoBuilder\Kernel\MonorepoBuilderKernel::class, $configFiles);
+$kernelBootAndApplicationRun = new \MonorepoBuilder20220513\Symplify\SymplifyKernel\ValueObject\KernelBootAndApplicationRun(\Symplify\MonorepoBuilder\Kernel\MonorepoBuilderKernel::class, $configFiles);
 $kernelBootAndApplicationRun->run();
-function resolveConfigFile(\MonorepoBuilder20220512\Symfony\Component\Console\Input\ArgvInput $argvInput) : ?string
+function resolveConfigFile(\MonorepoBuilder20220513\Symfony\Component\Console\Input\ArgvInput $argvInput) : ?string
 {
     if ($argvInput->hasParameterOption(['-c', '--config'])) {
         $configOption = $argvInput->getParameterOption(['-c', '--config']);
