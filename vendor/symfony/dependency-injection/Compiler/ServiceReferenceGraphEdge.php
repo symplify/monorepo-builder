@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220514\Symfony\Component\DependencyInjection\Compiler;
+namespace MonorepoBuilder20220516\Symfony\Component\DependencyInjection\Compiler;
 
 /**
  * Represents an edge in your service graph.
@@ -40,7 +40,7 @@ class ServiceReferenceGraphEdge
     /**
      * @param mixed $value
      */
-    public function __construct(\MonorepoBuilder20220514\Symfony\Component\DependencyInjection\Compiler\ServiceReferenceGraphNode $sourceNode, \MonorepoBuilder20220514\Symfony\Component\DependencyInjection\Compiler\ServiceReferenceGraphNode $destNode, $value = null, bool $lazy = \false, bool $weak = \false, bool $byConstructor = \false)
+    public function __construct(\MonorepoBuilder20220516\Symfony\Component\DependencyInjection\Compiler\ServiceReferenceGraphNode $sourceNode, \MonorepoBuilder20220516\Symfony\Component\DependencyInjection\Compiler\ServiceReferenceGraphNode $destNode, $value = null, bool $lazy = \false, bool $weak = \false, bool $byConstructor = \false)
     {
         $this->sourceNode = $sourceNode;
         $this->destNode = $destNode;
@@ -60,14 +60,14 @@ class ServiceReferenceGraphEdge
     /**
      * Returns the source node.
      */
-    public function getSourceNode() : \MonorepoBuilder20220514\Symfony\Component\DependencyInjection\Compiler\ServiceReferenceGraphNode
+    public function getSourceNode() : \MonorepoBuilder20220516\Symfony\Component\DependencyInjection\Compiler\ServiceReferenceGraphNode
     {
         return $this->sourceNode;
     }
     /**
      * Returns the destination node.
      */
-    public function getDestNode() : \MonorepoBuilder20220514\Symfony\Component\DependencyInjection\Compiler\ServiceReferenceGraphNode
+    public function getDestNode() : \MonorepoBuilder20220516\Symfony\Component\DependencyInjection\Compiler\ServiceReferenceGraphNode
     {
         return $this->destNode;
     }

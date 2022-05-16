@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20220514\Symplify\AutowireArrayParameter\TypeResolver;
+namespace MonorepoBuilder20220516\Symplify\AutowireArrayParameter\TypeResolver;
 
-use MonorepoBuilder20220514\Nette\Utils\Reflection;
+use MonorepoBuilder20220516\Nette\Utils\Reflection;
 use ReflectionMethod;
-use MonorepoBuilder20220514\Symplify\AutowireArrayParameter\DocBlock\ParamTypeDocBlockResolver;
+use MonorepoBuilder20220516\Symplify\AutowireArrayParameter\DocBlock\ParamTypeDocBlockResolver;
 final class ParameterTypeResolver
 {
     /**
@@ -16,7 +16,7 @@ final class ParameterTypeResolver
      * @var \Symplify\AutowireArrayParameter\DocBlock\ParamTypeDocBlockResolver
      */
     private $paramTypeDocBlockResolver;
-    public function __construct(\MonorepoBuilder20220514\Symplify\AutowireArrayParameter\DocBlock\ParamTypeDocBlockResolver $paramTypeDocBlockResolver)
+    public function __construct(\MonorepoBuilder20220516\Symplify\AutowireArrayParameter\DocBlock\ParamTypeDocBlockResolver $paramTypeDocBlockResolver)
     {
         $this->paramTypeDocBlockResolver = $paramTypeDocBlockResolver;
     }
@@ -39,7 +39,7 @@ final class ParameterTypeResolver
         if (\ctype_lower($resolvedType[0])) {
             return null;
         }
-        $resolvedClass = \MonorepoBuilder20220514\Nette\Utils\Reflection::expandClassName($resolvedType, $declaringReflectionClass);
+        $resolvedClass = \MonorepoBuilder20220516\Nette\Utils\Reflection::expandClassName($resolvedType, $declaringReflectionClass);
         $this->resolvedParameterTypesCached[$uniqueKey] = $resolvedClass;
         return $resolvedClass;
     }
