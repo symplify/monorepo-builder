@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220516\Symfony\Component\Finder\Iterator;
+namespace MonorepoBuilder20220517\Symfony\Component\Finder\Iterator;
 
-use MonorepoBuilder20220516\Symfony\Component\Finder\Gitignore;
+use MonorepoBuilder20220517\Symfony\Component\Finder\Gitignore;
 final class VcsIgnoredFilterIterator extends \FilterIterator
 {
     /**
@@ -101,7 +101,7 @@ final class VcsIgnoredFilterIterator extends \FilterIterator
             throw new \RuntimeException("The \"ignoreVCSIgnored\" option cannot be used by the Finder as the \"{$path}\" file is not readable.");
         }
         $gitignoreFileContent = \file_get_contents($path);
-        return $this->gitignoreFilesCache[$path] = [\MonorepoBuilder20220516\Symfony\Component\Finder\Gitignore::toRegex($gitignoreFileContent), \MonorepoBuilder20220516\Symfony\Component\Finder\Gitignore::toRegexMatchingNegatedPatterns($gitignoreFileContent)];
+        return $this->gitignoreFilesCache[$path] = [\MonorepoBuilder20220517\Symfony\Component\Finder\Gitignore::toRegex($gitignoreFileContent), \MonorepoBuilder20220517\Symfony\Component\Finder\Gitignore::toRegexMatchingNegatedPatterns($gitignoreFileContent)];
     }
     private function normalizePath(string $path) : string
     {

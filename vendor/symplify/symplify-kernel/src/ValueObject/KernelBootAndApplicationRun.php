@@ -1,15 +1,15 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20220516\Symplify\SymplifyKernel\ValueObject;
+namespace MonorepoBuilder20220517\Symplify\SymplifyKernel\ValueObject;
 
-use MonorepoBuilder20220516\Symfony\Component\Console\Application;
-use MonorepoBuilder20220516\Symfony\Component\Console\Command\Command;
-use MonorepoBuilder20220516\Symfony\Component\HttpKernel\KernelInterface;
-use MonorepoBuilder20220516\Symplify\PackageBuilder\Console\Input\StaticInputDetector;
-use MonorepoBuilder20220516\Symplify\PackageBuilder\Console\Style\SymfonyStyleFactory;
-use MonorepoBuilder20220516\Symplify\SymplifyKernel\Contract\LightKernelInterface;
-use MonorepoBuilder20220516\Symplify\SymplifyKernel\Exception\BootException;
+use MonorepoBuilder20220517\Symfony\Component\Console\Application;
+use MonorepoBuilder20220517\Symfony\Component\Console\Command\Command;
+use MonorepoBuilder20220517\Symfony\Component\HttpKernel\KernelInterface;
+use MonorepoBuilder20220517\Symplify\PackageBuilder\Console\Input\StaticInputDetector;
+use MonorepoBuilder20220517\Symplify\PackageBuilder\Console\Style\SymfonyStyleFactory;
+use MonorepoBuilder20220517\Symplify\SymplifyKernel\Contract\LightKernelInterface;
+use MonorepoBuilder20220517\Symplify\SymplifyKernel\Exception\BootException;
 use Throwable;
 /**
  * @api
@@ -39,10 +39,10 @@ final class KernelBootAndApplicationRun
         try {
             $this->booKernelAndRunApplication();
         } catch (\Throwable $throwable) {
-            $symfonyStyleFactory = new \MonorepoBuilder20220516\Symplify\PackageBuilder\Console\Style\SymfonyStyleFactory();
+            $symfonyStyleFactory = new \MonorepoBuilder20220517\Symplify\PackageBuilder\Console\Style\SymfonyStyleFactory();
             $symfonyStyle = $symfonyStyleFactory->create();
             $symfonyStyle->error($throwable->getMessage());
-            exit(\MonorepoBuilder20220516\Symfony\Component\Console\Command\Command::FAILURE);
+            exit(\MonorepoBuilder20220517\Symfony\Component\Console\Command\Command::FAILURE);
         }
     }
     /**
@@ -52,23 +52,23 @@ final class KernelBootAndApplicationRun
     {
         // random has is needed, so cache is invalidated and changes from config are loaded
         $kernelClass = $this->kernelClass;
-        if (\is_a($kernelClass, \MonorepoBuilder20220516\Symplify\SymplifyKernel\Contract\LightKernelInterface::class, \true)) {
+        if (\is_a($kernelClass, \MonorepoBuilder20220517\Symplify\SymplifyKernel\Contract\LightKernelInterface::class, \true)) {
             return new $kernelClass();
         }
         $environment = 'prod' . \random_int(1, 100000);
-        return new $kernelClass($environment, \MonorepoBuilder20220516\Symplify\PackageBuilder\Console\Input\StaticInputDetector::isDebug());
+        return new $kernelClass($environment, \MonorepoBuilder20220517\Symplify\PackageBuilder\Console\Input\StaticInputDetector::isDebug());
     }
     private function booKernelAndRunApplication() : void
     {
         $kernel = $this->createKernel();
-        if ($kernel instanceof \MonorepoBuilder20220516\Symplify\SymplifyKernel\Contract\LightKernelInterface) {
+        if ($kernel instanceof \MonorepoBuilder20220517\Symplify\SymplifyKernel\Contract\LightKernelInterface) {
             $container = $kernel->createFromConfigs($this->extraConfigs);
         } else {
             $kernel->boot();
             $container = $kernel->getContainer();
         }
         /** @var Application $application */
-        $application = $container->get(\MonorepoBuilder20220516\Symfony\Component\Console\Application::class);
+        $application = $container->get(\MonorepoBuilder20220517\Symfony\Component\Console\Application::class);
         exit($application->run());
     }
     /**
@@ -76,14 +76,14 @@ final class KernelBootAndApplicationRun
      */
     private function validateKernelClass(string $kernelClass) : void
     {
-        if (\is_a($kernelClass, \MonorepoBuilder20220516\Symfony\Component\HttpKernel\KernelInterface::class, \true)) {
+        if (\is_a($kernelClass, \MonorepoBuilder20220517\Symfony\Component\HttpKernel\KernelInterface::class, \true)) {
             return;
         }
-        if (\is_a($kernelClass, \MonorepoBuilder20220516\Symplify\SymplifyKernel\Contract\LightKernelInterface::class, \true)) {
+        if (\is_a($kernelClass, \MonorepoBuilder20220517\Symplify\SymplifyKernel\Contract\LightKernelInterface::class, \true)) {
             return;
         }
         $currentValueType = \get_debug_type($kernelClass);
-        $errorMessage = \sprintf('Class "%s" must by type of "%s" or "%s". "%s" given', $kernelClass, \MonorepoBuilder20220516\Symfony\Component\HttpKernel\KernelInterface::class, \MonorepoBuilder20220516\Symplify\SymplifyKernel\Contract\LightKernelInterface::class, $currentValueType);
-        throw new \MonorepoBuilder20220516\Symplify\SymplifyKernel\Exception\BootException($errorMessage);
+        $errorMessage = \sprintf('Class "%s" must by type of "%s" or "%s". "%s" given', $kernelClass, \MonorepoBuilder20220517\Symfony\Component\HttpKernel\KernelInterface::class, \MonorepoBuilder20220517\Symplify\SymplifyKernel\Contract\LightKernelInterface::class, $currentValueType);
+        throw new \MonorepoBuilder20220517\Symplify\SymplifyKernel\Exception\BootException($errorMessage);
     }
 }

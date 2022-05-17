@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220516\Symfony\Component\DependencyInjection\LazyProxy\Instantiator;
+namespace MonorepoBuilder20220517\Symfony\Component\DependencyInjection\LazyProxy\Instantiator;
 
-use MonorepoBuilder20220516\Symfony\Component\DependencyInjection\ContainerInterface;
-use MonorepoBuilder20220516\Symfony\Component\DependencyInjection\Definition;
+use MonorepoBuilder20220517\Symfony\Component\DependencyInjection\ContainerInterface;
+use MonorepoBuilder20220517\Symfony\Component\DependencyInjection\Definition;
 /**
  * {@inheritdoc}
  *
@@ -19,12 +19,12 @@ use MonorepoBuilder20220516\Symfony\Component\DependencyInjection\Definition;
  *
  * @author Marco Pivetta <ocramius@gmail.com>
  */
-class RealServiceInstantiator implements \MonorepoBuilder20220516\Symfony\Component\DependencyInjection\LazyProxy\Instantiator\InstantiatorInterface
+class RealServiceInstantiator implements \MonorepoBuilder20220517\Symfony\Component\DependencyInjection\LazyProxy\Instantiator\InstantiatorInterface
 {
     /**
      * {@inheritdoc}
      */
-    public function instantiateProxy(\MonorepoBuilder20220516\Symfony\Component\DependencyInjection\ContainerInterface $container, \MonorepoBuilder20220516\Symfony\Component\DependencyInjection\Definition $definition, string $id, callable $realInstantiator) : object
+    public function instantiateProxy(\MonorepoBuilder20220517\Symfony\Component\DependencyInjection\ContainerInterface $container, \MonorepoBuilder20220517\Symfony\Component\DependencyInjection\Definition $definition, string $id, callable $realInstantiator) : object
     {
         return $realInstantiator();
     }

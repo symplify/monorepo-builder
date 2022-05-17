@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220516\Symfony\Component\Finder\Comparator;
+namespace MonorepoBuilder20220517\Symfony\Component\Finder\Comparator;
 
 /**
  * @author Fabien Potencier <fabien@symfony.com>

@@ -1,25 +1,25 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20220516;
+namespace MonorepoBuilder20220517;
 
-use MonorepoBuilder20220516\Symfony\Component\Console\Style\SymfonyStyle;
+use MonorepoBuilder20220517\Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
-use MonorepoBuilder20220516\Symplify\ComposerJsonManipulator\ValueObject\Option;
-use MonorepoBuilder20220516\Symplify\PackageBuilder\Console\Style\SymfonyStyleFactory;
-use MonorepoBuilder20220516\Symplify\PackageBuilder\Parameter\ParameterProvider;
-use MonorepoBuilder20220516\Symplify\PackageBuilder\Reflection\PrivatesCaller;
-use MonorepoBuilder20220516\Symplify\SmartFileSystem\SmartFileSystem;
-use function MonorepoBuilder20220516\Symfony\Component\DependencyInjection\Loader\Configurator\service;
+use MonorepoBuilder20220517\Symplify\ComposerJsonManipulator\ValueObject\Option;
+use MonorepoBuilder20220517\Symplify\PackageBuilder\Console\Style\SymfonyStyleFactory;
+use MonorepoBuilder20220517\Symplify\PackageBuilder\Parameter\ParameterProvider;
+use MonorepoBuilder20220517\Symplify\PackageBuilder\Reflection\PrivatesCaller;
+use MonorepoBuilder20220517\Symplify\SmartFileSystem\SmartFileSystem;
+use function MonorepoBuilder20220517\Symfony\Component\DependencyInjection\Loader\Configurator\service;
 return static function (\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator $containerConfigurator) : void {
     $parameters = $containerConfigurator->parameters();
-    $parameters->set(\MonorepoBuilder20220516\Symplify\ComposerJsonManipulator\ValueObject\Option::INLINE_SECTIONS, ['keywords']);
+    $parameters->set(\MonorepoBuilder20220517\Symplify\ComposerJsonManipulator\ValueObject\Option::INLINE_SECTIONS, ['keywords']);
     $services = $containerConfigurator->services();
     $services->defaults()->public()->autowire()->autoconfigure();
-    $services->load('MonorepoBuilder20220516\Symplify\ComposerJsonManipulator\\', __DIR__ . '/../src');
-    $services->set(\MonorepoBuilder20220516\Symplify\SmartFileSystem\SmartFileSystem::class);
-    $services->set(\MonorepoBuilder20220516\Symplify\PackageBuilder\Reflection\PrivatesCaller::class);
-    $services->set(\MonorepoBuilder20220516\Symplify\PackageBuilder\Parameter\ParameterProvider::class)->args([\MonorepoBuilder20220516\Symfony\Component\DependencyInjection\Loader\Configurator\service('service_container')]);
-    $services->set(\MonorepoBuilder20220516\Symplify\PackageBuilder\Console\Style\SymfonyStyleFactory::class);
-    $services->set(\MonorepoBuilder20220516\Symfony\Component\Console\Style\SymfonyStyle::class)->factory([\MonorepoBuilder20220516\Symfony\Component\DependencyInjection\Loader\Configurator\service(\MonorepoBuilder20220516\Symplify\PackageBuilder\Console\Style\SymfonyStyleFactory::class), 'create']);
+    $services->load('MonorepoBuilder20220517\Symplify\ComposerJsonManipulator\\', __DIR__ . '/../src');
+    $services->set(\MonorepoBuilder20220517\Symplify\SmartFileSystem\SmartFileSystem::class);
+    $services->set(\MonorepoBuilder20220517\Symplify\PackageBuilder\Reflection\PrivatesCaller::class);
+    $services->set(\MonorepoBuilder20220517\Symplify\PackageBuilder\Parameter\ParameterProvider::class)->args([\MonorepoBuilder20220517\Symfony\Component\DependencyInjection\Loader\Configurator\service('service_container')]);
+    $services->set(\MonorepoBuilder20220517\Symplify\PackageBuilder\Console\Style\SymfonyStyleFactory::class);
+    $services->set(\MonorepoBuilder20220517\Symfony\Component\Console\Style\SymfonyStyle::class)->factory([\MonorepoBuilder20220517\Symfony\Component\DependencyInjection\Loader\Configurator\service(\MonorepoBuilder20220517\Symplify\PackageBuilder\Console\Style\SymfonyStyleFactory::class), 'create']);
 };
