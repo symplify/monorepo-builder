@@ -8,26 +8,26 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220517\Symfony\Component\DependencyInjection\Loader;
+namespace MonorepoBuilder20220520\Symfony\Component\DependencyInjection\Loader;
 
-use MonorepoBuilder20220517\Symfony\Component\Config\Exception\FileLocatorFileNotFoundException;
-use MonorepoBuilder20220517\Symfony\Component\Config\Exception\LoaderLoadException;
-use MonorepoBuilder20220517\Symfony\Component\Config\FileLocatorInterface;
-use MonorepoBuilder20220517\Symfony\Component\Config\Loader\FileLoader as BaseFileLoader;
-use MonorepoBuilder20220517\Symfony\Component\Config\Loader\Loader;
-use MonorepoBuilder20220517\Symfony\Component\Config\Resource\GlobResource;
-use MonorepoBuilder20220517\Symfony\Component\DependencyInjection\Attribute\When;
-use MonorepoBuilder20220517\Symfony\Component\DependencyInjection\ChildDefinition;
-use MonorepoBuilder20220517\Symfony\Component\DependencyInjection\Compiler\RegisterAutoconfigureAttributesPass;
-use MonorepoBuilder20220517\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder20220517\Symfony\Component\DependencyInjection\Definition;
-use MonorepoBuilder20220517\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use MonorepoBuilder20220520\Symfony\Component\Config\Exception\FileLocatorFileNotFoundException;
+use MonorepoBuilder20220520\Symfony\Component\Config\Exception\LoaderLoadException;
+use MonorepoBuilder20220520\Symfony\Component\Config\FileLocatorInterface;
+use MonorepoBuilder20220520\Symfony\Component\Config\Loader\FileLoader as BaseFileLoader;
+use MonorepoBuilder20220520\Symfony\Component\Config\Loader\Loader;
+use MonorepoBuilder20220520\Symfony\Component\Config\Resource\GlobResource;
+use MonorepoBuilder20220520\Symfony\Component\DependencyInjection\Attribute\When;
+use MonorepoBuilder20220520\Symfony\Component\DependencyInjection\ChildDefinition;
+use MonorepoBuilder20220520\Symfony\Component\DependencyInjection\Compiler\RegisterAutoconfigureAttributesPass;
+use MonorepoBuilder20220520\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder20220520\Symfony\Component\DependencyInjection\Definition;
+use MonorepoBuilder20220520\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
 /**
  * FileLoader is the abstract class used by all built-in loaders that are file based.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-abstract class FileLoader extends \MonorepoBuilder20220517\Symfony\Component\Config\Loader\FileLoader
+abstract class FileLoader extends \MonorepoBuilder20220520\Symfony\Component\Config\Loader\FileLoader
 {
     public const ANONYMOUS_ID_REGEXP = '/^\\.\\d+_[^~]*+~[._a-zA-Z\\d]{7}$/';
     protected $container;
@@ -36,7 +36,7 @@ abstract class FileLoader extends \MonorepoBuilder20220517\Symfony\Component\Con
     protected $interfaces = [];
     protected $singlyImplemented = [];
     protected $autoRegisterAliasesForSinglyImplementedInterfaces = \true;
-    public function __construct(\MonorepoBuilder20220517\Symfony\Component\DependencyInjection\ContainerBuilder $container, \MonorepoBuilder20220517\Symfony\Component\Config\FileLocatorInterface $locator, string $env = null)
+    public function __construct(\MonorepoBuilder20220520\Symfony\Component\DependencyInjection\ContainerBuilder $container, \MonorepoBuilder20220520\Symfony\Component\Config\FileLocatorInterface $locator, string $env = null)
     {
         $this->container = $container;
         parent::__construct($locator, $env);
@@ -58,12 +58,12 @@ abstract class FileLoader extends \MonorepoBuilder20220517\Symfony\Component\Con
         }
         try {
             return parent::import(...$args);
-        } catch (\MonorepoBuilder20220517\Symfony\Component\Config\Exception\LoaderLoadException $e) {
-            if (!$ignoreNotFound || !($prev = $e->getPrevious()) instanceof \MonorepoBuilder20220517\Symfony\Component\Config\Exception\FileLocatorFileNotFoundException) {
+        } catch (\MonorepoBuilder20220520\Symfony\Component\Config\Exception\LoaderLoadException $e) {
+            if (!$ignoreNotFound || !($prev = $e->getPrevious()) instanceof \MonorepoBuilder20220520\Symfony\Component\Config\Exception\FileLocatorFileNotFoundException) {
                 throw $e;
             }
             foreach ($prev->getTrace() as $frame) {
-                if ('import' === ($frame['function'] ?? null) && \is_a($frame['class'] ?? '', \MonorepoBuilder20220517\Symfony\Component\Config\Loader\Loader::class, \true)) {
+                if ('import' === ($frame['function'] ?? null) && \is_a($frame['class'] ?? '', \MonorepoBuilder20220520\Symfony\Component\Config\Loader\Loader::class, \true)) {
                     break;
                 }
             }
@@ -81,15 +81,15 @@ abstract class FileLoader extends \MonorepoBuilder20220517\Symfony\Component\Con
      * @param string               $resource  The directory to look for classes, glob-patterns allowed
      * @param string|mixed[] $exclude A globbed path of files to exclude or an array of globbed paths of files to exclude
      */
-    public function registerClasses(\MonorepoBuilder20220517\Symfony\Component\DependencyInjection\Definition $prototype, string $namespace, string $resource, $exclude = null)
+    public function registerClasses(\MonorepoBuilder20220520\Symfony\Component\DependencyInjection\Definition $prototype, string $namespace, string $resource, $exclude = null)
     {
         if (\substr_compare($namespace, '\\', -\strlen('\\')) !== 0) {
-            throw new \MonorepoBuilder20220517\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Namespace prefix must end with a "\\": "%s".', $namespace));
+            throw new \MonorepoBuilder20220520\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Namespace prefix must end with a "\\": "%s".', $namespace));
         }
         if (!\preg_match('/^(?:[a-zA-Z_\\x7f-\\xff][a-zA-Z0-9_\\x7f-\\xff]*+\\\\)++$/', $namespace)) {
-            throw new \MonorepoBuilder20220517\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Namespace is not a valid PSR-4 prefix: "%s".', $namespace));
+            throw new \MonorepoBuilder20220520\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Namespace is not a valid PSR-4 prefix: "%s".', $namespace));
         }
-        $autoconfigureAttributes = new \MonorepoBuilder20220517\Symfony\Component\DependencyInjection\Compiler\RegisterAutoconfigureAttributesPass();
+        $autoconfigureAttributes = new \MonorepoBuilder20220520\Symfony\Component\DependencyInjection\Compiler\RegisterAutoconfigureAttributesPass();
         $autoconfigureAttributes = $autoconfigureAttributes->accept($prototype) ? $autoconfigureAttributes : null;
         $classes = $this->findClasses($namespace, $resource, (array) $exclude, $autoconfigureAttributes);
         // prepare for deep cloning
@@ -98,7 +98,7 @@ abstract class FileLoader extends \MonorepoBuilder20220517\Symfony\Component\Con
             if (null === $errorMessage && $autoconfigureAttributes && $this->env) {
                 $r = $this->container->getReflectionClass($class);
                 $attribute = null;
-                foreach ($r->getAttributes(\MonorepoBuilder20220517\Symfony\Component\DependencyInjection\Attribute\When::class) as $attribute) {
+                foreach ($r->getAttributes(\MonorepoBuilder20220520\Symfony\Component\DependencyInjection\Attribute\When::class) as $attribute) {
                     if ($this->env === $attribute->newInstance()->env) {
                         $attribute = null;
                         break;
@@ -137,19 +137,19 @@ abstract class FileLoader extends \MonorepoBuilder20220517\Symfony\Component\Con
     /**
      * Registers a definition in the container with its instanceof-conditionals.
      */
-    protected function setDefinition(string $id, \MonorepoBuilder20220517\Symfony\Component\DependencyInjection\Definition $definition)
+    protected function setDefinition(string $id, \MonorepoBuilder20220520\Symfony\Component\DependencyInjection\Definition $definition)
     {
         $this->container->removeBindings($id);
         if ($this->isLoadingInstanceof) {
-            if (!$definition instanceof \MonorepoBuilder20220517\Symfony\Component\DependencyInjection\ChildDefinition) {
-                throw new \MonorepoBuilder20220517\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Invalid type definition "%s": ChildDefinition expected, "%s" given.', $id, \get_debug_type($definition)));
+            if (!$definition instanceof \MonorepoBuilder20220520\Symfony\Component\DependencyInjection\ChildDefinition) {
+                throw new \MonorepoBuilder20220520\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Invalid type definition "%s": ChildDefinition expected, "%s" given.', $id, \get_debug_type($definition)));
             }
             $this->instanceof[$id] = $definition;
         } else {
             $this->container->setDefinition($id, $definition->setInstanceofConditionals($this->instanceof));
         }
     }
-    private function findClasses(string $namespace, string $pattern, array $excludePatterns, ?\MonorepoBuilder20220517\Symfony\Component\DependencyInjection\Compiler\RegisterAutoconfigureAttributesPass $autoconfigureAttributes) : array
+    private function findClasses(string $namespace, string $pattern, array $excludePatterns, ?\MonorepoBuilder20220520\Symfony\Component\DependencyInjection\Compiler\RegisterAutoconfigureAttributesPass $autoconfigureAttributes) : array
     {
         $parameterBag = $this->container->getParameterBag();
         $excludePaths = [];
@@ -172,7 +172,7 @@ abstract class FileLoader extends \MonorepoBuilder20220517\Symfony\Component\Con
             if (null === $prefixLen) {
                 $prefixLen = \strlen($resource->getPrefix());
                 if ($excludePrefix && \strncmp($excludePrefix, $resource->getPrefix(), \strlen($resource->getPrefix())) !== 0) {
-                    throw new \MonorepoBuilder20220517\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Invalid "exclude" pattern when importing classes for "%s": make sure your "exclude" pattern (%s) is a subset of the "resource" pattern (%s).', $namespace, $excludePattern, $pattern));
+                    throw new \MonorepoBuilder20220520\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Invalid "exclude" pattern when importing classes for "%s": make sure your "exclude" pattern (%s) is a subset of the "resource" pattern (%s).', $namespace, $excludePattern, $pattern));
                 }
             }
             if (isset($excludePaths[\str_replace('\\', '/', $path)])) {
@@ -193,7 +193,7 @@ abstract class FileLoader extends \MonorepoBuilder20220517\Symfony\Component\Con
             }
             // check to make sure the expected class exists
             if (!$r) {
-                throw new \MonorepoBuilder20220517\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Expected to find class "%s" in file "%s" while importing services from resource "%s", but it was not found! Check the namespace prefix used with the resource.', $class, $path, $pattern));
+                throw new \MonorepoBuilder20220520\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Expected to find class "%s" in file "%s" while importing services from resource "%s", but it was not found! Check the namespace prefix used with the resource.', $class, $path, $pattern));
             }
             if ($r->isInstantiable() || $r->isInterface()) {
                 $classes[$class] = null;
@@ -203,7 +203,7 @@ abstract class FileLoader extends \MonorepoBuilder20220517\Symfony\Component\Con
             }
         }
         // track only for new & removed files
-        if ($resource instanceof \MonorepoBuilder20220517\Symfony\Component\Config\Resource\GlobResource) {
+        if ($resource instanceof \MonorepoBuilder20220520\Symfony\Component\Config\Resource\GlobResource) {
             $this->container->addResource($resource);
         } else {
             foreach ($resource as $path) {
