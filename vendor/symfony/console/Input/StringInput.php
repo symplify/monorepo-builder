@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220520\Symfony\Component\Console\Input;
+namespace MonorepoBuilder20220521\Symfony\Component\Console\Input;
 
-use MonorepoBuilder20220520\Symfony\Component\Console\Exception\InvalidArgumentException;
+use MonorepoBuilder20220521\Symfony\Component\Console\Exception\InvalidArgumentException;
 /**
  * StringInput represents an input provided as a string.
  *
@@ -20,7 +20,7 @@ use MonorepoBuilder20220520\Symfony\Component\Console\Exception\InvalidArgumentE
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class StringInput extends \MonorepoBuilder20220520\Symfony\Component\Console\Input\ArgvInput
+class StringInput extends \MonorepoBuilder20220521\Symfony\Component\Console\Input\ArgvInput
 {
     public const REGEX_STRING = '([^\\s]+?)(?:\\s|(?<!\\\\)"|(?<!\\\\)\'|$)';
     public const REGEX_UNQUOTED_STRING = '([^\\s\\\\]+?)';
@@ -63,7 +63,7 @@ class StringInput extends \MonorepoBuilder20220520\Symfony\Component\Console\Inp
                 $token .= $match[1];
             } else {
                 // should never happen
-                throw new \MonorepoBuilder20220520\Symfony\Component\Console\Exception\InvalidArgumentException(\sprintf('Unable to parse input near "... %s ...".', \substr($input, $cursor, 10)));
+                throw new \MonorepoBuilder20220521\Symfony\Component\Console\Exception\InvalidArgumentException(\sprintf('Unable to parse input near "... %s ...".', \substr($input, $cursor, 10)));
             }
             $cursor += \strlen($match[0]);
         }

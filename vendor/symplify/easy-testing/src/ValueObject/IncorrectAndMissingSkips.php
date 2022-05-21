@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20220520\Symplify\EasyTesting\ValueObject;
+namespace MonorepoBuilder20220521\Symplify\EasyTesting\ValueObject;
 
-use MonorepoBuilder20220520\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder20220521\Symplify\SmartFileSystem\SmartFileInfo;
 final class IncorrectAndMissingSkips
 {
     /**
