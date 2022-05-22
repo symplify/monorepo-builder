@@ -5,7 +5,7 @@
  * https://github.com/nette/coding-standard
  */
 declare (strict_types=1);
-namespace MonorepoBuilder20220521;
+namespace MonorepoBuilder20220522;
 
 return [
     // use function in Arrays.php, Callback.php, Html.php, Strings.php

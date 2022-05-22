@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220521\Symfony\Component\Config\Definition\Builder;
+namespace MonorepoBuilder20220522\Symfony\Component\Config\Definition\Builder;
 
-use MonorepoBuilder20220521\Symfony\Component\Config\Definition\Exception\InvalidDefinitionException;
+use MonorepoBuilder20220522\Symfony\Component\Config\Definition\Exception\InvalidDefinitionException;
 /**
  * Abstract class that contains common code of integer and float node definitions.
  *
  * @author David Jeanmonod <david.jeanmonod@gmail.com>
  */
-abstract class NumericNodeDefinition extends \MonorepoBuilder20220521\Symfony\Component\Config\Definition\Builder\ScalarNodeDefinition
+abstract class NumericNodeDefinition extends \MonorepoBuilder20220522\Symfony\Component\Config\Definition\Builder\ScalarNodeDefinition
 {
     protected $min;
     protected $max;
@@ -60,6 +60,6 @@ abstract class NumericNodeDefinition extends \MonorepoBuilder20220521\Symfony\Co
      */
     public function cannotBeEmpty()
     {
-        throw new \MonorepoBuilder20220521\Symfony\Component\Config\Definition\Exception\InvalidDefinitionException('->cannotBeEmpty() is not applicable to NumericNodeDefinition.');
+        throw new \MonorepoBuilder20220522\Symfony\Component\Config\Definition\Exception\InvalidDefinitionException('->cannotBeEmpty() is not applicable to NumericNodeDefinition.');
     }
 }

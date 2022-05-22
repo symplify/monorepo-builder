@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220521\Symfony\Component\Console\Descriptor;
+namespace MonorepoBuilder20220522\Symfony\Component\Console\Descriptor;
 
-use MonorepoBuilder20220521\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder20220522\Symfony\Component\Console\Output\OutputInterface;
 /**
  * Descriptor interface.
  *
@@ -18,5 +18,5 @@ use MonorepoBuilder20220521\Symfony\Component\Console\Output\OutputInterface;
  */
 interface DescriptorInterface
 {
-    public function describe(\MonorepoBuilder20220521\Symfony\Component\Console\Output\OutputInterface $output, object $object, array $options = []);
+    public function describe(\MonorepoBuilder20220522\Symfony\Component\Console\Output\OutputInterface $output, object $object, array $options = []);
 }

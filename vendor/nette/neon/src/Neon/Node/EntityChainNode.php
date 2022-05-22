@@ -5,12 +5,12 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace MonorepoBuilder20220521\Nette\Neon\Node;
+namespace MonorepoBuilder20220522\Nette\Neon\Node;
 
-use MonorepoBuilder20220521\Nette\Neon;
-use MonorepoBuilder20220521\Nette\Neon\Node;
+use MonorepoBuilder20220522\Nette\Neon;
+use MonorepoBuilder20220522\Nette\Neon\Node;
 /** @internal */
-final class EntityChainNode extends \MonorepoBuilder20220521\Nette\Neon\Node
+final class EntityChainNode extends \MonorepoBuilder20220522\Nette\Neon\Node
 {
     /** @var EntityNode[] */
     public $chain = [];
@@ -18,13 +18,13 @@ final class EntityChainNode extends \MonorepoBuilder20220521\Nette\Neon\Node
     {
         $this->chain = $chain;
     }
-    public function toValue() : \MonorepoBuilder20220521\Nette\Neon\Entity
+    public function toValue() : \MonorepoBuilder20220522\Nette\Neon\Entity
     {
         $entities = [];
         foreach ($this->chain as $item) {
             $entities[] = $item->toValue();
         }
-        return new \MonorepoBuilder20220521\Nette\Neon\Entity(\MonorepoBuilder20220521\Nette\Neon\Neon::Chain, $entities);
+        return new \MonorepoBuilder20220522\Nette\Neon\Entity(\MonorepoBuilder20220522\Nette\Neon\Neon::Chain, $entities);
     }
     public function toString() : string
     {
