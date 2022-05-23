@@ -8,18 +8,18 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220522\Symfony\Component\Config;
+namespace MonorepoBuilder20220523\Symfony\Component\Config;
 
-use MonorepoBuilder20220522\Symfony\Component\Config\Resource\ResourceInterface;
-use MonorepoBuilder20220522\Symfony\Component\Filesystem\Exception\IOException;
-use MonorepoBuilder20220522\Symfony\Component\Filesystem\Filesystem;
+use MonorepoBuilder20220523\Symfony\Component\Config\Resource\ResourceInterface;
+use MonorepoBuilder20220523\Symfony\Component\Filesystem\Exception\IOException;
+use MonorepoBuilder20220523\Symfony\Component\Filesystem\Filesystem;
 /**
  * ResourceCheckerConfigCache uses instances of ResourceCheckerInterface
  * to check whether cached data is still fresh.
  *
  * @author Matthias Pigulla <mp@webfactory.de>
  */
-class ResourceCheckerConfigCache implements \MonorepoBuilder20220522\Symfony\Component\Config\ConfigCacheInterface
+class ResourceCheckerConfigCache implements \MonorepoBuilder20220523\Symfony\Component\Config\ConfigCacheInterface
 {
     /**
      * @var string
@@ -104,18 +104,18 @@ class ResourceCheckerConfigCache implements \MonorepoBuilder20220522\Symfony\Com
     {
         $mode = 0666;
         $umask = \umask();
-        $filesystem = new \MonorepoBuilder20220522\Symfony\Component\Filesystem\Filesystem();
+        $filesystem = new \MonorepoBuilder20220523\Symfony\Component\Filesystem\Filesystem();
         $filesystem->dumpFile($this->file, $content);
         try {
             $filesystem->chmod($this->file, $mode, $umask);
-        } catch (\MonorepoBuilder20220522\Symfony\Component\Filesystem\Exception\IOException $e) {
+        } catch (\MonorepoBuilder20220523\Symfony\Component\Filesystem\Exception\IOException $e) {
             // discard chmod failure (some filesystem may not support it)
         }
         if (null !== $metadata) {
             $filesystem->dumpFile($this->getMetaFile(), \serialize($metadata));
             try {
                 $filesystem->chmod($this->getMetaFile(), $mode, $umask);
-            } catch (\MonorepoBuilder20220522\Symfony\Component\Filesystem\Exception\IOException $e) {
+            } catch (\MonorepoBuilder20220523\Symfony\Component\Filesystem\Exception\IOException $e) {
                 // discard chmod failure (some filesystem may not support it)
             }
         }

@@ -8,21 +8,21 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220522\Symfony\Component\Console\Event;
+namespace MonorepoBuilder20220523\Symfony\Component\Console\Event;
 
-use MonorepoBuilder20220522\Symfony\Component\Console\Command\Command;
-use MonorepoBuilder20220522\Symfony\Component\Console\Input\InputInterface;
-use MonorepoBuilder20220522\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder20220523\Symfony\Component\Console\Command\Command;
+use MonorepoBuilder20220523\Symfony\Component\Console\Input\InputInterface;
+use MonorepoBuilder20220523\Symfony\Component\Console\Output\OutputInterface;
 /**
  * @author marie <marie@users.noreply.github.com>
  */
-final class ConsoleSignalEvent extends \MonorepoBuilder20220522\Symfony\Component\Console\Event\ConsoleEvent
+final class ConsoleSignalEvent extends \MonorepoBuilder20220523\Symfony\Component\Console\Event\ConsoleEvent
 {
     /**
      * @var int
      */
     private $handlingSignal;
-    public function __construct(\MonorepoBuilder20220522\Symfony\Component\Console\Command\Command $command, \MonorepoBuilder20220522\Symfony\Component\Console\Input\InputInterface $input, \MonorepoBuilder20220522\Symfony\Component\Console\Output\OutputInterface $output, int $handlingSignal)
+    public function __construct(\MonorepoBuilder20220523\Symfony\Component\Console\Command\Command $command, \MonorepoBuilder20220523\Symfony\Component\Console\Input\InputInterface $input, \MonorepoBuilder20220523\Symfony\Component\Console\Output\OutputInterface $output, int $handlingSignal)
     {
         parent::__construct($command, $input, $output);
         $this->handlingSignal = $handlingSignal;

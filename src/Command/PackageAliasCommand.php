@@ -3,14 +3,14 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Command;
 
-use MonorepoBuilder20220522\Symfony\Component\Console\Input\InputInterface;
-use MonorepoBuilder20220522\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder20220523\Symfony\Component\Console\Input\InputInterface;
+use MonorepoBuilder20220523\Symfony\Component\Console\Output\OutputInterface;
 use Symplify\MonorepoBuilder\DevMasterAliasUpdater;
 use Symplify\MonorepoBuilder\Finder\PackageComposerFinder;
 use Symplify\MonorepoBuilder\Git\ExpectedAliasResolver;
-use MonorepoBuilder20220522\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
-use MonorepoBuilder20220522\Symplify\PackageBuilder\Console\Command\CommandNaming;
-final class PackageAliasCommand extends \MonorepoBuilder20220522\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand
+use MonorepoBuilder20220523\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
+use MonorepoBuilder20220523\Symplify\PackageBuilder\Console\Command\CommandNaming;
+final class PackageAliasCommand extends \MonorepoBuilder20220523\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand
 {
     /**
      * @var \Symplify\MonorepoBuilder\Finder\PackageComposerFinder
@@ -33,10 +33,10 @@ final class PackageAliasCommand extends \MonorepoBuilder20220522\Symplify\Packag
     }
     protected function configure() : void
     {
-        $this->setName(\MonorepoBuilder20220522\Symplify\PackageBuilder\Console\Command\CommandNaming::classToName(self::class));
+        $this->setName(\MonorepoBuilder20220523\Symplify\PackageBuilder\Console\Command\CommandNaming::classToName(self::class));
         $this->setDescription('Updates branch alias in "composer.json" all found packages');
     }
-    protected function execute(\MonorepoBuilder20220522\Symfony\Component\Console\Input\InputInterface $input, \MonorepoBuilder20220522\Symfony\Component\Console\Output\OutputInterface $output) : int
+    protected function execute(\MonorepoBuilder20220523\Symfony\Component\Console\Input\InputInterface $input, \MonorepoBuilder20220523\Symfony\Component\Console\Output\OutputInterface $output) : int
     {
         $composerPackageFiles = $this->packageComposerFinder->getPackageComposerFiles();
         if ($composerPackageFiles === []) {

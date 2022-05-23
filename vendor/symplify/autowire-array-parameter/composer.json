@@ -13,12 +13,12 @@
     },
     "autoload": {
         "psr-4": {
-            "MonorepoBuilder20220522\\Symplify\\AutowireArrayParameter\\": "src"
+            "MonorepoBuilder20220523\\Symplify\\AutowireArrayParameter\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "MonorepoBuilder20220522\\Symplify\\AutowireArrayParameter\\Tests\\": "tests"
+            "MonorepoBuilder20220523\\Symplify\\AutowireArrayParameter\\Tests\\": "tests"
         }
     },
     "extra": {
