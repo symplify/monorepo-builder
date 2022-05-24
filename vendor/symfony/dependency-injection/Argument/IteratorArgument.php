@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220523\Symfony\Component\DependencyInjection\Argument;
+namespace MonorepoBuilder20220524\Symfony\Component\DependencyInjection\Argument;
 
 /**
  * Represents a collection of values to lazily iterate over.
  *
  * @author Titouan Galopin <galopintitouan@gmail.com>
  */
-class IteratorArgument implements \MonorepoBuilder20220523\Symfony\Component\DependencyInjection\Argument\ArgumentInterface
+class IteratorArgument implements \MonorepoBuilder20220524\Symfony\Component\DependencyInjection\Argument\ArgumentInterface
 {
     use ReferenceSetArgumentTrait;
 }
