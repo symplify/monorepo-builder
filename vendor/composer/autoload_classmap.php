@@ -629,6 +629,7 @@ return array(
     'Symplify\\MonorepoBuilder\\Command\\PackageAliasCommand' => $baseDir . '/src/Command/PackageAliasCommand.php',
     'Symplify\\MonorepoBuilder\\Command\\PackagesJsonCommand' => $baseDir . '/src/Command/PackagesJsonCommand.php',
     'Symplify\\MonorepoBuilder\\Command\\ValidateCommand' => $baseDir . '/src/Command/ValidateCommand.php',
+    'Symplify\\MonorepoBuilder\\Config\\MBConfig' => $baseDir . '/src/Config/MBConfig.php',
     'Symplify\\MonorepoBuilder\\ConflictingUpdater' => $baseDir . '/src/ConflictingUpdater.php',
     'Symplify\\MonorepoBuilder\\Console\\MonorepoBuilderApplication' => $baseDir . '/src/Console/MonorepoBuilderApplication.php',
     'Symplify\\MonorepoBuilder\\Contract\\Git\\TagResolverInterface' => $baseDir . '/src/Contract/Git/TagResolverInterface.php',

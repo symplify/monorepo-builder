@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitc036406e2d7218613a3a2c440ea6ed9c
+class ComposerStaticInit8e6a9f875f982e370fc2044b6955b3ed
 {
     public static $files = array (
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
@@ -763,6 +763,7 @@ class ComposerStaticInitc036406e2d7218613a3a2c440ea6ed9c
         'Symplify\\MonorepoBuilder\\Command\\PackageAliasCommand' => __DIR__ . '/../..' . '/src/Command/PackageAliasCommand.php',
         'Symplify\\MonorepoBuilder\\Command\\PackagesJsonCommand' => __DIR__ . '/../..' . '/src/Command/PackagesJsonCommand.php',
         'Symplify\\MonorepoBuilder\\Command\\ValidateCommand' => __DIR__ . '/../..' . '/src/Command/ValidateCommand.php',
+        'Symplify\\MonorepoBuilder\\Config\\MBConfig' => __DIR__ . '/../..' . '/src/Config/MBConfig.php',
         'Symplify\\MonorepoBuilder\\ConflictingUpdater' => __DIR__ . '/../..' . '/src/ConflictingUpdater.php',
         'Symplify\\MonorepoBuilder\\Console\\MonorepoBuilderApplication' => __DIR__ . '/../..' . '/src/Console/MonorepoBuilderApplication.php',
         'Symplify\\MonorepoBuilder\\Contract\\Git\\TagResolverInterface' => __DIR__ . '/../..' . '/src/Contract/Git/TagResolverInterface.php',
@@ -854,9 +855,9 @@ class ComposerStaticInitc036406e2d7218613a3a2c440ea6ed9c
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitc036406e2d7218613a3a2c440ea6ed9c::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitc036406e2d7218613a3a2c440ea6ed9c::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitc036406e2d7218613a3a2c440ea6ed9c::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit8e6a9f875f982e370fc2044b6955b3ed::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit8e6a9f875f982e370fc2044b6955b3ed::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit8e6a9f875f982e370fc2044b6955b3ed::$classMap;
 
         }, null, ClassLoader::class);
     }
