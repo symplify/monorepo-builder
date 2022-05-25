@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220524\Symfony\Component\DependencyInjection\Argument;
+namespace MonorepoBuilder20220525\Symfony\Component\DependencyInjection\Argument;
 
 /**
  * @internal

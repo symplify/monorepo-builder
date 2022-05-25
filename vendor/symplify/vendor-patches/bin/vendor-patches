@@ -1,0 +1,5 @@
+#!/usr/bin/env php
+<?php 
+namespace MonorepoBuilder20220525;
+
+require __DIR__ . '/vendor-patches.php';
