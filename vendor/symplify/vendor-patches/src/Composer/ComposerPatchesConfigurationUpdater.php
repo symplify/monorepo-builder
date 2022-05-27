@@ -1,14 +1,14 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20220525\Symplify\VendorPatches\Composer;
+namespace MonorepoBuilder20220527\Symplify\VendorPatches\Composer;
 
-use MonorepoBuilder20220525\Symplify\Astral\Exception\ShouldNotHappenException;
-use MonorepoBuilder20220525\Symplify\ComposerJsonManipulator\ComposerJsonFactory;
-use MonorepoBuilder20220525\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
-use MonorepoBuilder20220525\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
-use MonorepoBuilder20220525\Symplify\PackageBuilder\Yaml\ParametersMerger;
-use MonorepoBuilder20220525\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder20220527\Symplify\Astral\Exception\ShouldNotHappenException;
+use MonorepoBuilder20220527\Symplify\ComposerJsonManipulator\ComposerJsonFactory;
+use MonorepoBuilder20220527\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
+use MonorepoBuilder20220527\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
+use MonorepoBuilder20220527\Symplify\PackageBuilder\Yaml\ParametersMerger;
+use MonorepoBuilder20220527\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\VendorPatches\Tests\Composer\ComposerPatchesConfigurationUpdater\ComposerPatchesConfigurationUpdaterTest
  */
@@ -26,7 +26,7 @@ final class ComposerPatchesConfigurationUpdater
      * @var \Symplify\PackageBuilder\Yaml\ParametersMerger
      */
     private $parametersMerger;
-    public function __construct(\MonorepoBuilder20220525\Symplify\ComposerJsonManipulator\ComposerJsonFactory $composerJsonFactory, \MonorepoBuilder20220525\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager $jsonFileManager, \MonorepoBuilder20220525\Symplify\PackageBuilder\Yaml\ParametersMerger $parametersMerger)
+    public function __construct(\MonorepoBuilder20220527\Symplify\ComposerJsonManipulator\ComposerJsonFactory $composerJsonFactory, \MonorepoBuilder20220527\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager $jsonFileManager, \MonorepoBuilder20220527\Symplify\PackageBuilder\Yaml\ParametersMerger $parametersMerger)
     {
         $this->composerJsonFactory = $composerJsonFactory;
         $this->jsonFileManager = $jsonFileManager;
@@ -35,7 +35,7 @@ final class ComposerPatchesConfigurationUpdater
     /**
      * @param mixed[] $composerExtraPatches
      */
-    public function updateComposerJson(string $composerJsonFilePath, array $composerExtraPatches) : \MonorepoBuilder20220525\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson
+    public function updateComposerJson(string $composerJsonFilePath, array $composerExtraPatches) : \MonorepoBuilder20220527\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson
     {
         $extra = ['patches' => $composerExtraPatches];
         $composerJson = $this->composerJsonFactory->createFromFilePath($composerJsonFilePath);
@@ -51,8 +51,8 @@ final class ComposerPatchesConfigurationUpdater
     {
         $composerJson = $this->updateComposerJson($composerJsonFilePath, $composerExtraPatches);
         $fileInfo = $composerJson->getFileInfo();
-        if (!$fileInfo instanceof \MonorepoBuilder20220525\Symplify\SmartFileSystem\SmartFileInfo) {
-            throw new \MonorepoBuilder20220525\Symplify\Astral\Exception\ShouldNotHappenException();
+        if (!$fileInfo instanceof \MonorepoBuilder20220527\Symplify\SmartFileSystem\SmartFileInfo) {
+            throw new \MonorepoBuilder20220527\Symplify\Astral\Exception\ShouldNotHappenException();
         }
         $this->jsonFileManager->printComposerJsonToFilePath($composerJson, $fileInfo->getRealPath());
     }

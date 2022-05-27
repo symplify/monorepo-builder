@@ -23,12 +23,12 @@
     },
     "autoload": {
         "psr-4": {
-            "MonorepoBuilder20220525\\cweagans\\Composer\\": "src"
+            "MonorepoBuilder20220527\\cweagans\\Composer\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "MonorepoBuilder20220525\\cweagans\\Composer\\Tests\\": "tests"
+            "MonorepoBuilder20220527\\cweagans\\Composer\\Tests\\": "tests"
         }
     }
 }

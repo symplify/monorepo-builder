@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20220525\Symplify\EasyTesting\PHPUnit;
+namespace MonorepoBuilder20220527\Symplify\EasyTesting\PHPUnit;
 
 /**
  * @api

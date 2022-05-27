@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220525\Symfony\Component\DependencyInjection\Compiler;
+namespace MonorepoBuilder20220527\Symfony\Component\DependencyInjection\Compiler;
 
-use MonorepoBuilder20220525\Symfony\Component\DependencyInjection\Alias;
-use MonorepoBuilder20220525\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder20220525\Symfony\Component\DependencyInjection\ContainerInterface;
-use MonorepoBuilder20220525\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use MonorepoBuilder20220525\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
-use MonorepoBuilder20220525\Symfony\Component\DependencyInjection\Reference;
+use MonorepoBuilder20220527\Symfony\Component\DependencyInjection\Alias;
+use MonorepoBuilder20220527\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder20220527\Symfony\Component\DependencyInjection\ContainerInterface;
+use MonorepoBuilder20220527\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use MonorepoBuilder20220527\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
+use MonorepoBuilder20220527\Symfony\Component\DependencyInjection\Reference;
 /**
  * Overwrites a service but keeps the overridden one.
  *
@@ -23,9 +23,9 @@ use MonorepoBuilder20220525\Symfony\Component\DependencyInjection\Reference;
  * @author Fabien Potencier <fabien@symfony.com>
  * @author Diego Saint Esteben <diego@saintesteben.me>
  */
-class DecoratorServicePass extends \MonorepoBuilder20220525\Symfony\Component\DependencyInjection\Compiler\AbstractRecursivePass
+class DecoratorServicePass extends \MonorepoBuilder20220527\Symfony\Component\DependencyInjection\Compiler\AbstractRecursivePass
 {
-    public function process(\MonorepoBuilder20220525\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    public function process(\MonorepoBuilder20220527\Symfony\Component\DependencyInjection\ContainerBuilder $container)
     {
         $definitions = new \SplPriorityQueue();
         $order = \PHP_INT_MAX;
@@ -36,10 +36,11 @@ class DecoratorServicePass extends \MonorepoBuilder20220525\Symfony\Component\De
             $definitions->insert([$id, $definition], [$decorated[2], --$order]);
         }
         $decoratingDefinitions = [];
+        $tagsToKeep = $container->hasParameter('container.behavior_describing_tags') ? $container->getParameter('container.behavior_describing_tags') : ['container.do_not_inline', 'container.service_locator', 'container.service_subscriber'];
         foreach ($definitions as [$id, $definition]) {
             $decoratedService = $definition->getDecoratedService();
             [$inner, $renamedId] = $decoratedService;
-            $invalidBehavior = $decoratedService[3] ?? \MonorepoBuilder20220525\Symfony\Component\DependencyInjection\ContainerInterface::EXCEPTION_ON_INVALID_REFERENCE;
+            $invalidBehavior = $decoratedService[3] ?? \MonorepoBuilder20220527\Symfony\Component\DependencyInjection\ContainerInterface::EXCEPTION_ON_INVALID_REFERENCE;
             $definition->setDecoratedService(null);
             if (!$renamedId) {
                 $renamedId = $id . '.inner';
@@ -53,7 +54,7 @@ class DecoratorServicePass extends \MonorepoBuilder20220525\Symfony\Component\De
             if ($container->hasAlias($inner)) {
                 $alias = $container->getAlias($inner);
                 $public = $alias->isPublic();
-                $container->setAlias($renamedId, new \MonorepoBuilder20220525\Symfony\Component\DependencyInjection\Alias((string) $alias, \false));
+                $container->setAlias($renamedId, new \MonorepoBuilder20220527\Symfony\Component\DependencyInjection\Alias((string) $alias, \false));
                 $decoratedDefinition = $container->findDefinition($alias);
             } elseif ($container->hasDefinition($inner)) {
                 $decoratedDefinition = $container->getDefinition($inner);
@@ -61,24 +62,24 @@ class DecoratorServicePass extends \MonorepoBuilder20220525\Symfony\Component\De
                 $decoratedDefinition->setPublic(\false);
                 $container->setDefinition($renamedId, $decoratedDefinition);
                 $decoratingDefinitions[$inner] = $decoratedDefinition;
-            } elseif (\MonorepoBuilder20220525\Symfony\Component\DependencyInjection\ContainerInterface::IGNORE_ON_INVALID_REFERENCE === $invalidBehavior) {
+            } elseif (\MonorepoBuilder20220527\Symfony\Component\DependencyInjection\ContainerInterface::IGNORE_ON_INVALID_REFERENCE === $invalidBehavior) {
                 $container->removeDefinition($id);
                 continue;
-            } elseif (\MonorepoBuilder20220525\Symfony\Component\DependencyInjection\ContainerInterface::NULL_ON_INVALID_REFERENCE === $invalidBehavior) {
+            } elseif (\MonorepoBuilder20220527\Symfony\Component\DependencyInjection\ContainerInterface::NULL_ON_INVALID_REFERENCE === $invalidBehavior) {
                 $public = $definition->isPublic();
                 $decoratedDefinition = null;
             } else {
-                throw new \MonorepoBuilder20220525\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException($inner, $id);
+                throw new \MonorepoBuilder20220527\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException($inner, $id);
             }
             if ($decoratedDefinition && $decoratedDefinition->isSynthetic()) {
-                throw new \MonorepoBuilder20220525\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('A synthetic service cannot be decorated: service "%s" cannot decorate "%s".', $id, $inner));
+                throw new \MonorepoBuilder20220527\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('A synthetic service cannot be decorated: service "%s" cannot decorate "%s".', $id, $inner));
             }
             if (isset($decoratingDefinitions[$inner])) {
                 $decoratingDefinition = $decoratingDefinitions[$inner];
                 $decoratingTags = $decoratingDefinition->getTags();
                 $resetTags = [];
-                // container.service_locator and container.service_subscriber have special logic and they must not be transferred out to decorators
-                foreach (['container.service_locator', 'container.service_subscriber'] as $containerTag) {
+                // Behavior-describing tags must not be transferred out to decorators
+                foreach ($tagsToKeep as $containerTag) {
                     if (isset($decoratingTags[$containerTag])) {
                         $resetTags[$containerTag] = $decoratingTags[$containerTag];
                         unset($decoratingTags[$containerTag]);
@@ -97,8 +98,8 @@ class DecoratorServicePass extends \MonorepoBuilder20220525\Symfony\Component\De
      */
     protected function processValue($value, bool $isRoot = \false)
     {
-        if ($value instanceof \MonorepoBuilder20220525\Symfony\Component\DependencyInjection\Reference && '.inner' === (string) $value) {
-            return new \MonorepoBuilder20220525\Symfony\Component\DependencyInjection\Reference($this->currentId, $value->getInvalidBehavior());
+        if ($value instanceof \MonorepoBuilder20220527\Symfony\Component\DependencyInjection\Reference && '.inner' === (string) $value) {
+            return new \MonorepoBuilder20220527\Symfony\Component\DependencyInjection\Reference($this->currentId, $value->getInvalidBehavior());
         }
         return parent::processValue($value, $isRoot);
     }
