@@ -1,19 +1,19 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20220527\Symplify\VendorPatches\Command;
+namespace MonorepoBuilder20220529\Symplify\VendorPatches\Command;
 
-use MonorepoBuilder20220527\Symfony\Component\Console\Input\InputInterface;
-use MonorepoBuilder20220527\Symfony\Component\Console\Output\OutputInterface;
-use MonorepoBuilder20220527\Symplify\PackageBuilder\Composer\VendorDirProvider;
-use MonorepoBuilder20220527\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
-use MonorepoBuilder20220527\Symplify\PackageBuilder\Console\Command\CommandNaming;
-use MonorepoBuilder20220527\Symplify\VendorPatches\Composer\ComposerPatchesConfigurationUpdater;
-use MonorepoBuilder20220527\Symplify\VendorPatches\Console\GenerateCommandReporter;
-use MonorepoBuilder20220527\Symplify\VendorPatches\Differ\PatchDiffer;
-use MonorepoBuilder20220527\Symplify\VendorPatches\Finder\OldToNewFilesFinder;
-use MonorepoBuilder20220527\Symplify\VendorPatches\PatchFileFactory;
-final class GenerateCommand extends \MonorepoBuilder20220527\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand
+use MonorepoBuilder20220529\Symfony\Component\Console\Input\InputInterface;
+use MonorepoBuilder20220529\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder20220529\Symplify\PackageBuilder\Composer\VendorDirProvider;
+use MonorepoBuilder20220529\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
+use MonorepoBuilder20220529\Symplify\PackageBuilder\Console\Command\CommandNaming;
+use MonorepoBuilder20220529\Symplify\VendorPatches\Composer\ComposerPatchesConfigurationUpdater;
+use MonorepoBuilder20220529\Symplify\VendorPatches\Console\GenerateCommandReporter;
+use MonorepoBuilder20220529\Symplify\VendorPatches\Differ\PatchDiffer;
+use MonorepoBuilder20220529\Symplify\VendorPatches\Finder\OldToNewFilesFinder;
+use MonorepoBuilder20220529\Symplify\VendorPatches\PatchFileFactory;
+final class GenerateCommand extends \MonorepoBuilder20220529\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand
 {
     /**
      * @var \Symplify\VendorPatches\Finder\OldToNewFilesFinder
@@ -39,7 +39,7 @@ final class GenerateCommand extends \MonorepoBuilder20220527\Symplify\PackageBui
      * @var \Symplify\VendorPatches\Console\GenerateCommandReporter
      */
     private $generateCommandReporter;
-    public function __construct(\MonorepoBuilder20220527\Symplify\VendorPatches\Finder\OldToNewFilesFinder $oldToNewFilesFinder, \MonorepoBuilder20220527\Symplify\VendorPatches\Differ\PatchDiffer $patchDiffer, \MonorepoBuilder20220527\Symplify\VendorPatches\Composer\ComposerPatchesConfigurationUpdater $composerPatchesConfigurationUpdater, \MonorepoBuilder20220527\Symplify\PackageBuilder\Composer\VendorDirProvider $vendorDirProvider, \MonorepoBuilder20220527\Symplify\VendorPatches\PatchFileFactory $patchFileFactory, \MonorepoBuilder20220527\Symplify\VendorPatches\Console\GenerateCommandReporter $generateCommandReporter)
+    public function __construct(\MonorepoBuilder20220529\Symplify\VendorPatches\Finder\OldToNewFilesFinder $oldToNewFilesFinder, \MonorepoBuilder20220529\Symplify\VendorPatches\Differ\PatchDiffer $patchDiffer, \MonorepoBuilder20220529\Symplify\VendorPatches\Composer\ComposerPatchesConfigurationUpdater $composerPatchesConfigurationUpdater, \MonorepoBuilder20220529\Symplify\PackageBuilder\Composer\VendorDirProvider $vendorDirProvider, \MonorepoBuilder20220529\Symplify\VendorPatches\PatchFileFactory $patchFileFactory, \MonorepoBuilder20220529\Symplify\VendorPatches\Console\GenerateCommandReporter $generateCommandReporter)
     {
         $this->oldToNewFilesFinder = $oldToNewFilesFinder;
         $this->patchDiffer = $patchDiffer;
@@ -51,10 +51,10 @@ final class GenerateCommand extends \MonorepoBuilder20220527\Symplify\PackageBui
     }
     protected function configure() : void
     {
-        $this->setName(\MonorepoBuilder20220527\Symplify\PackageBuilder\Console\Command\CommandNaming::classToName(self::class));
+        $this->setName(\MonorepoBuilder20220529\Symplify\PackageBuilder\Console\Command\CommandNaming::classToName(self::class));
         $this->setDescription('Generate patches from /vendor directory');
     }
-    protected function execute(\MonorepoBuilder20220527\Symfony\Component\Console\Input\InputInterface $input, \MonorepoBuilder20220527\Symfony\Component\Console\Output\OutputInterface $output) : int
+    protected function execute(\MonorepoBuilder20220529\Symfony\Component\Console\Input\InputInterface $input, \MonorepoBuilder20220529\Symfony\Component\Console\Output\OutputInterface $output) : int
     {
         $vendorDirectory = $this->vendorDirProvider->provide();
         $oldAndNewFileInfos = $this->oldToNewFilesFinder->find($vendorDirectory);

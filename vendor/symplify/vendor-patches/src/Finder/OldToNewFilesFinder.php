@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20220527\Symplify\VendorPatches\Finder;
+namespace MonorepoBuilder20220529\Symplify\VendorPatches\Finder;
 
-use MonorepoBuilder20220527\Symfony\Component\Finder\Finder;
-use MonorepoBuilder20220527\Symplify\SmartFileSystem\Finder\FinderSanitizer;
-use MonorepoBuilder20220527\Symplify\SmartFileSystem\SmartFileInfo;
-use MonorepoBuilder20220527\Symplify\VendorPatches\Composer\PackageNameResolver;
-use MonorepoBuilder20220527\Symplify\VendorPatches\ValueObject\OldAndNewFileInfo;
+use MonorepoBuilder20220529\Symfony\Component\Finder\Finder;
+use MonorepoBuilder20220529\Symplify\SmartFileSystem\Finder\FinderSanitizer;
+use MonorepoBuilder20220529\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder20220529\Symplify\VendorPatches\Composer\PackageNameResolver;
+use MonorepoBuilder20220529\Symplify\VendorPatches\ValueObject\OldAndNewFileInfo;
 final class OldToNewFilesFinder
 {
     /**
@@ -18,7 +18,7 @@ final class OldToNewFilesFinder
      * @var \Symplify\VendorPatches\Composer\PackageNameResolver
      */
     private $packageNameResolver;
-    public function __construct(\MonorepoBuilder20220527\Symplify\SmartFileSystem\Finder\FinderSanitizer $finderSanitizer, \MonorepoBuilder20220527\Symplify\VendorPatches\Composer\PackageNameResolver $packageNameResolver)
+    public function __construct(\MonorepoBuilder20220529\Symplify\SmartFileSystem\Finder\FinderSanitizer $finderSanitizer, \MonorepoBuilder20220529\Symplify\VendorPatches\Composer\PackageNameResolver $packageNameResolver)
     {
         $this->finderSanitizer = $finderSanitizer;
         $this->packageNameResolver = $packageNameResolver;
@@ -40,9 +40,9 @@ final class OldToNewFilesFinder
             if (!\file_exists($newFilePath)) {
                 continue;
             }
-            $newFileInfo = new \MonorepoBuilder20220527\Symplify\SmartFileSystem\SmartFileInfo($newFilePath);
+            $newFileInfo = new \MonorepoBuilder20220529\Symplify\SmartFileSystem\SmartFileInfo($newFilePath);
             $packageName = $this->packageNameResolver->resolveFromFileInfo($newFileInfo);
-            $oldAndNewFileInfos[] = new \MonorepoBuilder20220527\Symplify\VendorPatches\ValueObject\OldAndNewFileInfo($oldFileInfo, $newFileInfo, $packageName);
+            $oldAndNewFileInfos[] = new \MonorepoBuilder20220529\Symplify\VendorPatches\ValueObject\OldAndNewFileInfo($oldFileInfo, $newFileInfo, $packageName);
         }
         return $oldAndNewFileInfos;
     }
@@ -51,7 +51,7 @@ final class OldToNewFilesFinder
      */
     private function findSmartFileInfosInDirectory(string $directory) : array
     {
-        $finder = \MonorepoBuilder20220527\Symfony\Component\Finder\Finder::create()->in($directory)->files()->exclude('composer/')->exclude('ocramius/')->name('*.old');
+        $finder = \MonorepoBuilder20220529\Symfony\Component\Finder\Finder::create()->in($directory)->files()->exclude('composer/')->exclude('ocramius/')->name('*.old');
         return $this->finderSanitizer->sanitize($finder);
     }
 }

@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20220527\Symplify\VendorPatches\ValueObject;
+namespace MonorepoBuilder20220529\Symplify\VendorPatches\ValueObject;
 
-use MonorepoBuilder20220527\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder20220529\Symplify\SmartFileSystem\SmartFileInfo;
 final class OldAndNewFileInfo
 {
     /**
@@ -18,13 +18,13 @@ final class OldAndNewFileInfo
      * @var string
      */
     private $packageName;
-    public function __construct(\MonorepoBuilder20220527\Symplify\SmartFileSystem\SmartFileInfo $oldFileInfo, \MonorepoBuilder20220527\Symplify\SmartFileSystem\SmartFileInfo $newFileInfo, string $packageName)
+    public function __construct(\MonorepoBuilder20220529\Symplify\SmartFileSystem\SmartFileInfo $oldFileInfo, \MonorepoBuilder20220529\Symplify\SmartFileSystem\SmartFileInfo $newFileInfo, string $packageName)
     {
         $this->oldFileInfo = $oldFileInfo;
         $this->newFileInfo = $newFileInfo;
         $this->packageName = $packageName;
     }
-    public function getOldFileInfo() : \MonorepoBuilder20220527\Symplify\SmartFileSystem\SmartFileInfo
+    public function getOldFileInfo() : \MonorepoBuilder20220529\Symplify\SmartFileSystem\SmartFileInfo
     {
         return $this->oldFileInfo;
     }
@@ -36,7 +36,7 @@ final class OldAndNewFileInfo
     {
         return $this->newFileInfo->getRelativeFilePathFromCwd();
     }
-    public function getNewFileInfo() : \MonorepoBuilder20220527\Symplify\SmartFileSystem\SmartFileInfo
+    public function getNewFileInfo() : \MonorepoBuilder20220529\Symplify\SmartFileSystem\SmartFileInfo
     {
         return $this->newFileInfo;
     }

@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20220527\Symplify\VendorPatches\Composer;
+namespace MonorepoBuilder20220529\Symplify\VendorPatches\Composer;
 
-use MonorepoBuilder20220527\Symplify\SmartFileSystem\FileSystemGuard;
-use MonorepoBuilder20220527\Symplify\SmartFileSystem\Json\JsonFileSystem;
-use MonorepoBuilder20220527\Symplify\SmartFileSystem\SmartFileInfo;
-use MonorepoBuilder20220527\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
-use MonorepoBuilder20220527\Symplify\VendorPatches\FileSystem\PathResolver;
+use MonorepoBuilder20220529\Symplify\SmartFileSystem\FileSystemGuard;
+use MonorepoBuilder20220529\Symplify\SmartFileSystem\Json\JsonFileSystem;
+use MonorepoBuilder20220529\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder20220529\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
+use MonorepoBuilder20220529\Symplify\VendorPatches\FileSystem\PathResolver;
 /**
  * @see \Symplify\VendorPatches\Tests\Composer\PackageNameResolverTest
  */
@@ -25,22 +25,22 @@ final class PackageNameResolver
      * @var \Symplify\SmartFileSystem\FileSystemGuard
      */
     private $fileSystemGuard;
-    public function __construct(\MonorepoBuilder20220527\Symplify\SmartFileSystem\Json\JsonFileSystem $jsonFileSystem, \MonorepoBuilder20220527\Symplify\VendorPatches\FileSystem\PathResolver $pathResolver, \MonorepoBuilder20220527\Symplify\SmartFileSystem\FileSystemGuard $fileSystemGuard)
+    public function __construct(\MonorepoBuilder20220529\Symplify\SmartFileSystem\Json\JsonFileSystem $jsonFileSystem, \MonorepoBuilder20220529\Symplify\VendorPatches\FileSystem\PathResolver $pathResolver, \MonorepoBuilder20220529\Symplify\SmartFileSystem\FileSystemGuard $fileSystemGuard)
     {
         $this->jsonFileSystem = $jsonFileSystem;
         $this->pathResolver = $pathResolver;
         $this->fileSystemGuard = $fileSystemGuard;
     }
-    public function resolveFromFileInfo(\MonorepoBuilder20220527\Symplify\SmartFileSystem\SmartFileInfo $vendorFile) : string
+    public function resolveFromFileInfo(\MonorepoBuilder20220529\Symplify\SmartFileSystem\SmartFileInfo $vendorFile) : string
     {
         $packageComposerJsonFilePath = $this->getPackageComposerJsonFilePath($vendorFile);
         $composerJson = $this->jsonFileSystem->loadFilePathToJson($packageComposerJsonFilePath);
         if (!isset($composerJson['name'])) {
-            throw new \MonorepoBuilder20220527\Symplify\SymplifyKernel\Exception\ShouldNotHappenException();
+            throw new \MonorepoBuilder20220529\Symplify\SymplifyKernel\Exception\ShouldNotHappenException();
         }
         return $composerJson['name'];
     }
-    private function getPackageComposerJsonFilePath(\MonorepoBuilder20220527\Symplify\SmartFileSystem\SmartFileInfo $vendorFileInfo) : string
+    private function getPackageComposerJsonFilePath(\MonorepoBuilder20220529\Symplify\SmartFileSystem\SmartFileInfo $vendorFileInfo) : string
     {
         $vendorPackageDirectory = $this->pathResolver->resolveVendorDirectory($vendorFileInfo);
         $packageComposerJsonFilePath = $vendorPackageDirectory . '/composer.json';

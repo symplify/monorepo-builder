@@ -6,7 +6,7 @@ namespace Symplify\MonorepoBuilder\Config;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface;
 use Symplify\MonorepoBuilder\ValueObject\Option;
-use MonorepoBuilder20220527\Webmozart\Assert\Assert;
+use MonorepoBuilder20220529\Webmozart\Assert\Assert;
 final class MBConfig extends \Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator
 {
     /**
@@ -14,8 +14,8 @@ final class MBConfig extends \Symfony\Component\DependencyInjection\Loader\Confi
      */
     public function packageDirectories(array $packageDirectories) : void
     {
-        \MonorepoBuilder20220527\Webmozart\Assert\Assert::allString($packageDirectories);
-        \MonorepoBuilder20220527\Webmozart\Assert\Assert::allFileExists($packageDirectories);
+        \MonorepoBuilder20220529\Webmozart\Assert\Assert::allString($packageDirectories);
+        \MonorepoBuilder20220529\Webmozart\Assert\Assert::allFileExists($packageDirectories);
         $parameters = $this->parameters();
         $parameters->set(\Symplify\MonorepoBuilder\ValueObject\Option::PACKAGE_DIRECTORIES, $packageDirectories);
     }
@@ -24,8 +24,8 @@ final class MBConfig extends \Symfony\Component\DependencyInjection\Loader\Confi
      */
     public function packageDirectoriesExcludes(array $packageDirectories) : void
     {
-        \MonorepoBuilder20220527\Webmozart\Assert\Assert::allString($packageDirectories);
-        \MonorepoBuilder20220527\Webmozart\Assert\Assert::allFileExists($packageDirectories);
+        \MonorepoBuilder20220529\Webmozart\Assert\Assert::allString($packageDirectories);
+        \MonorepoBuilder20220529\Webmozart\Assert\Assert::allFileExists($packageDirectories);
         $parameters = $this->parameters();
         $parameters->set(\Symplify\MonorepoBuilder\ValueObject\Option::PACKAGE_DIRECTORIES_EXCLUDES, $packageDirectories);
     }
@@ -39,7 +39,7 @@ final class MBConfig extends \Symfony\Component\DependencyInjection\Loader\Confi
      */
     public function dataToRemove(array $dataToRemove) : void
     {
-        \MonorepoBuilder20220527\Webmozart\Assert\Assert::allString(\array_keys($dataToRemove));
+        \MonorepoBuilder20220529\Webmozart\Assert\Assert::allString(\array_keys($dataToRemove));
         $parameters = $this->parameters();
         $parameters->set(\Symplify\MonorepoBuilder\ValueObject\Option::DATA_TO_REMOVE, $dataToRemove);
     }
@@ -48,7 +48,7 @@ final class MBConfig extends \Symfony\Component\DependencyInjection\Loader\Confi
      */
     public function dataToAppend(array $dataToAppend) : void
     {
-        \MonorepoBuilder20220527\Webmozart\Assert\Assert::allString(\array_keys($dataToAppend));
+        \MonorepoBuilder20220529\Webmozart\Assert\Assert::allString(\array_keys($dataToAppend));
         $parameters = $this->parameters();
         $parameters->set(\Symplify\MonorepoBuilder\ValueObject\Option::DATA_TO_APPEND, $dataToAppend);
     }
@@ -57,8 +57,8 @@ final class MBConfig extends \Symfony\Component\DependencyInjection\Loader\Confi
      */
     public function workers(array $workerClasses) : void
     {
-        \MonorepoBuilder20220527\Webmozart\Assert\Assert::allString($workerClasses);
-        \MonorepoBuilder20220527\Webmozart\Assert\Assert::allIsAOf($workerClasses, \Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface::class);
+        \MonorepoBuilder20220529\Webmozart\Assert\Assert::allString($workerClasses);
+        \MonorepoBuilder20220529\Webmozart\Assert\Assert::allIsAOf($workerClasses, \Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface::class);
         $services = $this->services();
         foreach ($workerClasses as $workerClass) {
             $services->set($workerClass);
@@ -74,7 +74,7 @@ final class MBConfig extends \Symfony\Component\DependencyInjection\Loader\Confi
      */
     public function composerSectionOrder(array $sectionOrder) : void
     {
-        \MonorepoBuilder20220527\Webmozart\Assert\Assert::allString($sectionOrder);
+        \MonorepoBuilder20220529\Webmozart\Assert\Assert::allString($sectionOrder);
         $parameters = $this->parameters();
         $parameters->set(\Symplify\MonorepoBuilder\ValueObject\Option::SECTION_ORDER, $sectionOrder);
     }
@@ -83,7 +83,7 @@ final class MBConfig extends \Symfony\Component\DependencyInjection\Loader\Confi
      */
     public function composerInlineSections(array $inlineSections) : void
     {
-        \MonorepoBuilder20220527\Webmozart\Assert\Assert::allString($inlineSections);
+        \MonorepoBuilder20220529\Webmozart\Assert\Assert::allString($inlineSections);
         $parameters = $this->parameters();
         $parameters->set(\Symplify\MonorepoBuilder\ValueObject\Option::INLINE_SECTIONS, $inlineSections);
     }

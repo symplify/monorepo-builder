@@ -1,21 +1,21 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20220527\Symplify\VendorPatches\Console;
+namespace MonorepoBuilder20220529\Symplify\VendorPatches\Console;
 
-use MonorepoBuilder20220527\Symfony\Component\Console\Style\SymfonyStyle;
-use MonorepoBuilder20220527\Symplify\VendorPatches\ValueObject\OldAndNewFileInfo;
+use MonorepoBuilder20220529\Symfony\Component\Console\Style\SymfonyStyle;
+use MonorepoBuilder20220529\Symplify\VendorPatches\ValueObject\OldAndNewFileInfo;
 final class GenerateCommandReporter
 {
     /**
      * @var \Symfony\Component\Console\Style\SymfonyStyle
      */
     private $symfonyStyle;
-    public function __construct(\MonorepoBuilder20220527\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle)
+    public function __construct(\MonorepoBuilder20220529\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle)
     {
         $this->symfonyStyle = $symfonyStyle;
     }
-    public function reportIdenticalNewAndOldFile(\MonorepoBuilder20220527\Symplify\VendorPatches\ValueObject\OldAndNewFileInfo $oldAndNewFileInfo) : void
+    public function reportIdenticalNewAndOldFile(\MonorepoBuilder20220529\Symplify\VendorPatches\ValueObject\OldAndNewFileInfo $oldAndNewFileInfo) : void
     {
         $message = \sprintf('Files "%s" and "%s" have the same content. Did you forgot to change it?', $oldAndNewFileInfo->getOldFileRelativePath(), $oldAndNewFileInfo->getNewFileRelativePath());
         $this->symfonyStyle->warning($message);
