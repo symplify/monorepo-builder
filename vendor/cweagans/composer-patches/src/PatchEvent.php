@@ -4,11 +4,11 @@
  * @file
  * Dispatch events when patches are applied.
  */
-namespace MonorepoBuilder20220529\cweagans\Composer;
+namespace MonorepoBuilder20220530\cweagans\Composer;
 
-use MonorepoBuilder20220529\Composer\EventDispatcher\Event;
-use MonorepoBuilder20220529\Composer\Package\PackageInterface;
-class PatchEvent extends \MonorepoBuilder20220529\Composer\EventDispatcher\Event
+use MonorepoBuilder20220530\Composer\EventDispatcher\Event;
+use MonorepoBuilder20220530\Composer\Package\PackageInterface;
+class PatchEvent extends \MonorepoBuilder20220530\Composer\EventDispatcher\Event
 {
     /**
      * @var PackageInterface $package
@@ -30,7 +30,7 @@ class PatchEvent extends \MonorepoBuilder20220529\Composer\EventDispatcher\Event
      * @param string $url
      * @param string $description
      */
-    public function __construct($eventName, \MonorepoBuilder20220529\Composer\Package\PackageInterface $package, $url, $description)
+    public function __construct($eventName, \MonorepoBuilder20220530\Composer\Package\PackageInterface $package, $url, $description)
     {
         parent::__construct($eventName);
         $this->package = $package;

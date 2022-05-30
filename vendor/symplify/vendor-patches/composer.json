@@ -20,12 +20,12 @@
     },
     "autoload": {
         "psr-4": {
-            "MonorepoBuilder20220529\\Symplify\\VendorPatches\\": "src"
+            "MonorepoBuilder20220530\\Symplify\\VendorPatches\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "MonorepoBuilder20220529\\Symplify\\VendorPatches\\Tests\\": "tests"
+            "MonorepoBuilder20220530\\Symplify\\VendorPatches\\Tests\\": "tests"
         }
     },
     "extra": {

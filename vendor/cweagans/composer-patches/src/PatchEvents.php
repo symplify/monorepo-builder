@@ -4,7 +4,7 @@
  * @file
  * Dispatch events when patches are applied.
  */
-namespace MonorepoBuilder20220529\cweagans\Composer;
+namespace MonorepoBuilder20220530\cweagans\Composer;
 
 class PatchEvents
 {
