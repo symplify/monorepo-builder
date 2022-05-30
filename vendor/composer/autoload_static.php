@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitb9733bdccdd1daf7febbd16b9ec61837
+class ComposerStaticInitf99e3d392dbf7e352090142cf3f9e28a
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -23,9 +23,7 @@ class ComposerStaticInitb9733bdccdd1daf7febbd16b9ec61837
         ),
         'M' => 
         array (
-            'MonorepoBuilder20220530\\cweagans\\Composer\\' => 42,
             'MonorepoBuilder20220530\\Webmozart\\Assert\\' => 41,
-            'MonorepoBuilder20220530\\Symplify\\VendorPatches\\' => 47,
             'MonorepoBuilder20220530\\Symplify\\SymplifyKernel\\' => 48,
             'MonorepoBuilder20220530\\Symplify\\SmartFileSystem\\' => 49,
             'MonorepoBuilder20220530\\Symplify\\PackageBuilder\\' => 48,
@@ -55,17 +53,9 @@ class ComposerStaticInitb9733bdccdd1daf7febbd16b9ec61837
             0 => __DIR__ . '/../..' . '/src',
             1 => __DIR__ . '/../..' . '/packages',
         ),
-        'MonorepoBuilder20220530\\cweagans\\Composer\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/cweagans/composer-patches/src',
-        ),
         'MonorepoBuilder20220530\\Webmozart\\Assert\\' => 
         array (
             0 => __DIR__ . '/..' . '/webmozart/assert/src',
-        ),
-        'MonorepoBuilder20220530\\Symplify\\VendorPatches\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symplify/vendor-patches/src',
         ),
         'MonorepoBuilder20220530\\Symplify\\SymplifyKernel\\' => 
         array (
@@ -723,23 +713,9 @@ class ComposerStaticInitb9733bdccdd1daf7febbd16b9ec61837
         'MonorepoBuilder20220530\\Symplify\\SymplifyKernel\\HttpKernel\\AbstractSymplifyKernel' => __DIR__ . '/..' . '/symplify/symplify-kernel/src/HttpKernel/AbstractSymplifyKernel.php',
         'MonorepoBuilder20220530\\Symplify\\SymplifyKernel\\ValueObject\\KernelBootAndApplicationRun' => __DIR__ . '/..' . '/symplify/symplify-kernel/src/ValueObject/KernelBootAndApplicationRun.php',
         'MonorepoBuilder20220530\\Symplify\\SymplifyKernel\\ValueObject\\SymplifyKernelConfig' => __DIR__ . '/..' . '/symplify/symplify-kernel/src/ValueObject/SymplifyKernelConfig.php',
-        'MonorepoBuilder20220530\\Symplify\\VendorPatches\\Command\\GenerateCommand' => __DIR__ . '/..' . '/symplify/vendor-patches/src/Command/GenerateCommand.php',
-        'MonorepoBuilder20220530\\Symplify\\VendorPatches\\Composer\\ComposerPatchesConfigurationUpdater' => __DIR__ . '/..' . '/symplify/vendor-patches/src/Composer/ComposerPatchesConfigurationUpdater.php',
-        'MonorepoBuilder20220530\\Symplify\\VendorPatches\\Composer\\PackageNameResolver' => __DIR__ . '/..' . '/symplify/vendor-patches/src/Composer/PackageNameResolver.php',
-        'MonorepoBuilder20220530\\Symplify\\VendorPatches\\Console\\GenerateCommandReporter' => __DIR__ . '/..' . '/symplify/vendor-patches/src/Console/GenerateCommandReporter.php',
-        'MonorepoBuilder20220530\\Symplify\\VendorPatches\\Console\\VendorPatchesApplication' => __DIR__ . '/..' . '/symplify/vendor-patches/src/Console/VendorPatchesApplication.php',
-        'MonorepoBuilder20220530\\Symplify\\VendorPatches\\Differ\\PatchDiffer' => __DIR__ . '/..' . '/symplify/vendor-patches/src/Differ/PatchDiffer.php',
-        'MonorepoBuilder20220530\\Symplify\\VendorPatches\\FileSystem\\PathResolver' => __DIR__ . '/..' . '/symplify/vendor-patches/src/FileSystem/PathResolver.php',
-        'MonorepoBuilder20220530\\Symplify\\VendorPatches\\Finder\\OldToNewFilesFinder' => __DIR__ . '/..' . '/symplify/vendor-patches/src/Finder/OldToNewFilesFinder.php',
-        'MonorepoBuilder20220530\\Symplify\\VendorPatches\\Kernel\\VendorPatchesKernel' => __DIR__ . '/..' . '/symplify/vendor-patches/src/Kernel/VendorPatchesKernel.php',
-        'MonorepoBuilder20220530\\Symplify\\VendorPatches\\PatchFileFactory' => __DIR__ . '/..' . '/symplify/vendor-patches/src/PatchFileFactory.php',
-        'MonorepoBuilder20220530\\Symplify\\VendorPatches\\ValueObject\\OldAndNewFileInfo' => __DIR__ . '/..' . '/symplify/vendor-patches/src/ValueObject/OldAndNewFileInfo.php',
         'MonorepoBuilder20220530\\Webmozart\\Assert\\Assert' => __DIR__ . '/..' . '/webmozart/assert/src/Assert.php',
         'MonorepoBuilder20220530\\Webmozart\\Assert\\InvalidArgumentException' => __DIR__ . '/..' . '/webmozart/assert/src/InvalidArgumentException.php',
         'MonorepoBuilder20220530\\Webmozart\\Assert\\Mixin' => __DIR__ . '/..' . '/webmozart/assert/src/Mixin.php',
-        'MonorepoBuilder20220530\\cweagans\\Composer\\PatchEvent' => __DIR__ . '/..' . '/cweagans/composer-patches/src/PatchEvent.php',
-        'MonorepoBuilder20220530\\cweagans\\Composer\\PatchEvents' => __DIR__ . '/..' . '/cweagans/composer-patches/src/PatchEvents.php',
-        'MonorepoBuilder20220530\\cweagans\\Composer\\Patches' => __DIR__ . '/..' . '/cweagans/composer-patches/src/Patches.php',
         'Normalizer' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/Resources/stubs/Normalizer.php',
         'PharIo\\Version\\AbstractVersionConstraint' => __DIR__ . '/..' . '/phar-io/version/src/constraints/AbstractVersionConstraint.php',
         'PharIo\\Version\\AndVersionConstraintGroup' => __DIR__ . '/..' . '/phar-io/version/src/constraints/AndVersionConstraintGroup.php',
@@ -859,9 +835,9 @@ class ComposerStaticInitb9733bdccdd1daf7febbd16b9ec61837
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitb9733bdccdd1daf7febbd16b9ec61837::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitb9733bdccdd1daf7febbd16b9ec61837::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitb9733bdccdd1daf7febbd16b9ec61837::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitf99e3d392dbf7e352090142cf3f9e28a::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitf99e3d392dbf7e352090142cf3f9e28a::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitf99e3d392dbf7e352090142cf3f9e28a::$classMap;
 
         }, null, ClassLoader::class);
     }

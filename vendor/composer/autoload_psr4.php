@@ -7,9 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Symplify\\MonorepoBuilder\\' => array($baseDir . '/src', $baseDir . '/packages'),
-    'MonorepoBuilder20220530\\cweagans\\Composer\\' => array($vendorDir . '/cweagans/composer-patches/src'),
     'MonorepoBuilder20220530\\Webmozart\\Assert\\' => array($vendorDir . '/webmozart/assert/src'),
-    'MonorepoBuilder20220530\\Symplify\\VendorPatches\\' => array($vendorDir . '/symplify/vendor-patches/src'),
     'MonorepoBuilder20220530\\Symplify\\SymplifyKernel\\' => array($vendorDir . '/symplify/symplify-kernel/src'),
     'MonorepoBuilder20220530\\Symplify\\SmartFileSystem\\' => array($vendorDir . '/symplify/smart-file-system/src'),
     'MonorepoBuilder20220530\\Symplify\\PackageBuilder\\' => array($vendorDir . '/symplify/package-builder/src'),
