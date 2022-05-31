@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220530\Symfony\Component\Config\Resource;
+namespace MonorepoBuilder20220531\Symfony\Component\Config\Resource;
 
 /**
  * DirectoryResource represents a resources stored in a subdirectory tree.
@@ -17,7 +17,7 @@ namespace MonorepoBuilder20220530\Symfony\Component\Config\Resource;
  *
  * @final
  */
-class DirectoryResource implements \MonorepoBuilder20220530\Symfony\Component\Config\Resource\SelfCheckingResourceInterface
+class DirectoryResource implements \MonorepoBuilder20220531\Symfony\Component\Config\Resource\SelfCheckingResourceInterface
 {
     /**
      * @var string
