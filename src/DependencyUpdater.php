@@ -44,6 +44,7 @@ final class DependencyUpdater
     /**
      * @param mixed[] $json
      * @param string[] $parentPackageNames
+     * @param ComposerJsonSection::* $section
      * @return mixed[]
      */
     private function processSectionWithPackages(array $json, array $parentPackageNames, string $targetVersion, string $section) : array
@@ -62,6 +63,7 @@ final class DependencyUpdater
     }
     /**
      * @param mixed[] $json
+     * @param ComposerJsonSection::* $section
      * @return mixed[]
      */
     private function processSection(array $json, string $vendor, string $targetVersion, string $section) : array
