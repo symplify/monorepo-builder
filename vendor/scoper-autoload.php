@@ -6,44 +6,44 @@ $loader = require_once __DIR__.'/autoload.php';
 
 // Aliases for the whitelisted classes. For more information see:
 // https://github.com/humbug/php-scoper/blob/master/README.md#class-whitelisting
-if (!class_exists('ComposerAutoloaderInit6664c69aa9139e054f335d51ec3f8035', false) && !interface_exists('ComposerAutoloaderInit6664c69aa9139e054f335d51ec3f8035', false) && !trait_exists('ComposerAutoloaderInit6664c69aa9139e054f335d51ec3f8035', false)) {
-    spl_autoload_call('MonorepoBuilder20220531\ComposerAutoloaderInit6664c69aa9139e054f335d51ec3f8035');
+if (!class_exists('ComposerAutoloaderInit11e62f05d0f56826d4803a0122cec404', false) && !interface_exists('ComposerAutoloaderInit11e62f05d0f56826d4803a0122cec404', false) && !trait_exists('ComposerAutoloaderInit11e62f05d0f56826d4803a0122cec404', false)) {
+    spl_autoload_call('MonorepoBuilder20220601\ComposerAutoloaderInit11e62f05d0f56826d4803a0122cec404');
 }
 if (!class_exists('Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator', false) && !interface_exists('Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator', false) && !trait_exists('Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator', false)) {
-    spl_autoload_call('MonorepoBuilder20220531\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator');
+    spl_autoload_call('MonorepoBuilder20220601\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator');
 }
 if (!class_exists('ReturnTypeWillChange', false) && !interface_exists('ReturnTypeWillChange', false) && !trait_exists('ReturnTypeWillChange', false)) {
-    spl_autoload_call('MonorepoBuilder20220531\ReturnTypeWillChange');
+    spl_autoload_call('MonorepoBuilder20220601\ReturnTypeWillChange');
 }
 if (!class_exists('Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection', false) && !interface_exists('Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection', false) && !trait_exists('Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection', false)) {
-    spl_autoload_call('MonorepoBuilder20220531\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection');
+    spl_autoload_call('MonorepoBuilder20220601\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection');
 }
 
 // Functions whitelisting. For more information see:
 // https://github.com/humbug/php-scoper/blob/master/README.md#functions-whitelisting
 if (!function_exists('resolveConfigFile')) {
     function resolveConfigFile() {
-        return \MonorepoBuilder20220531\resolveConfigFile(...func_get_args());
+        return \MonorepoBuilder20220601\resolveConfigFile(...func_get_args());
     }
 }
-if (!function_exists('composerRequire6664c69aa9139e054f335d51ec3f8035')) {
-    function composerRequire6664c69aa9139e054f335d51ec3f8035() {
-        return \MonorepoBuilder20220531\composerRequire6664c69aa9139e054f335d51ec3f8035(...func_get_args());
+if (!function_exists('composerRequire11e62f05d0f56826d4803a0122cec404')) {
+    function composerRequire11e62f05d0f56826d4803a0122cec404() {
+        return \MonorepoBuilder20220601\composerRequire11e62f05d0f56826d4803a0122cec404(...func_get_args());
     }
 }
 if (!function_exists('array_is_list')) {
     function array_is_list() {
-        return \MonorepoBuilder20220531\array_is_list(...func_get_args());
+        return \MonorepoBuilder20220601\array_is_list(...func_get_args());
     }
 }
 if (!function_exists('setproctitle')) {
     function setproctitle() {
-        return \MonorepoBuilder20220531\setproctitle(...func_get_args());
+        return \MonorepoBuilder20220601\setproctitle(...func_get_args());
     }
 }
 if (!function_exists('enum_exists')) {
     function enum_exists() {
-        return \MonorepoBuilder20220531\enum_exists(...func_get_args());
+        return \MonorepoBuilder20220601\enum_exists(...func_get_args());
     }
 }
 
