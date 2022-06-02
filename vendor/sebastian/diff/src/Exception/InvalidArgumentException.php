@@ -9,8 +9,8 @@ declare (strict_types=1);
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220601\SebastianBergmann\Diff;
+namespace MonorepoBuilder20220602\SebastianBergmann\Diff;
 
-class InvalidArgumentException extends \InvalidArgumentException implements \MonorepoBuilder20220601\SebastianBergmann\Diff\Exception
+class InvalidArgumentException extends \InvalidArgumentException implements \MonorepoBuilder20220602\SebastianBergmann\Diff\Exception
 {
 }
