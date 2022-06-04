@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220602\Symfony\Component\DependencyInjection\Exception;
+namespace MonorepoBuilder20220604\Symfony\Component\DependencyInjection\Exception;
 
-use MonorepoBuilder20220602\Psr\Container\ContainerExceptionInterface;
+use MonorepoBuilder20220604\Psr\Container\ContainerExceptionInterface;
 /**
  * Base ExceptionInterface for Dependency Injection component.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  * @author Bulat Shakirzyanov <bulat@theopenskyproject.com>
  */
-interface ExceptionInterface extends \MonorepoBuilder20220602\Psr\Container\ContainerExceptionInterface
+interface ExceptionInterface extends \MonorepoBuilder20220604\Psr\Container\ContainerExceptionInterface
 {
 }

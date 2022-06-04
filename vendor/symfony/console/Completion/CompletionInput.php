@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220602\Symfony\Component\Console\Completion;
+namespace MonorepoBuilder20220604\Symfony\Component\Console\Completion;
 
-use MonorepoBuilder20220602\Symfony\Component\Console\Exception\RuntimeException;
-use MonorepoBuilder20220602\Symfony\Component\Console\Input\ArgvInput;
-use MonorepoBuilder20220602\Symfony\Component\Console\Input\InputDefinition;
-use MonorepoBuilder20220602\Symfony\Component\Console\Input\InputOption;
+use MonorepoBuilder20220604\Symfony\Component\Console\Exception\RuntimeException;
+use MonorepoBuilder20220604\Symfony\Component\Console\Input\ArgvInput;
+use MonorepoBuilder20220604\Symfony\Component\Console\Input\InputDefinition;
+use MonorepoBuilder20220604\Symfony\Component\Console\Input\InputOption;
 /**
  * An input specialized for shell completion.
  *
@@ -22,7 +22,7 @@ use MonorepoBuilder20220602\Symfony\Component\Console\Input\InputOption;
  *
  * @author Wouter de Jong <wouter@wouterj.nl>
  */
-final class CompletionInput extends \MonorepoBuilder20220602\Symfony\Component\Console\Input\ArgvInput
+final class CompletionInput extends \MonorepoBuilder20220604\Symfony\Component\Console\Input\ArgvInput
 {
     public const TYPE_ARGUMENT_VALUE = 'argument_value';
     public const TYPE_OPTION_VALUE = 'option_value';
@@ -59,7 +59,7 @@ final class CompletionInput extends \MonorepoBuilder20220602\Symfony\Component\C
     /**
      * {@inheritdoc}
      */
-    public function bind(\MonorepoBuilder20220602\Symfony\Component\Console\Input\InputDefinition $definition) : void
+    public function bind(\MonorepoBuilder20220604\Symfony\Component\Console\Input\InputDefinition $definition) : void
     {
         parent::bind($definition);
         $relevantToken = $this->getRelevantToken();
@@ -159,12 +159,12 @@ final class CompletionInput extends \MonorepoBuilder20220602\Symfony\Component\C
     {
         try {
             return parent::parseToken($token, $parseOptions);
-        } catch (\MonorepoBuilder20220602\Symfony\Component\Console\Exception\RuntimeException $e) {
+        } catch (\MonorepoBuilder20220604\Symfony\Component\Console\Exception\RuntimeException $e) {
             // suppress errors, completed input is almost never valid
         }
         return $parseOptions;
     }
-    private function getOptionFromToken(string $optionToken) : ?\MonorepoBuilder20220602\Symfony\Component\Console\Input\InputOption
+    private function getOptionFromToken(string $optionToken) : ?\MonorepoBuilder20220604\Symfony\Component\Console\Input\InputOption
     {
         $optionName = \ltrim($optionToken, '-');
         if (!$optionName) {
