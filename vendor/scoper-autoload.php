@@ -6,8 +6,8 @@ $loader = require_once __DIR__.'/autoload.php';
 
 // Aliases for the whitelisted classes. For more information see:
 // https://github.com/humbug/php-scoper/blob/master/README.md#class-whitelisting
-if (!class_exists('ComposerAutoloaderInita7ba83693f4d94109bc35a4aeba2eee5', false) && !interface_exists('ComposerAutoloaderInita7ba83693f4d94109bc35a4aeba2eee5', false) && !trait_exists('ComposerAutoloaderInita7ba83693f4d94109bc35a4aeba2eee5', false)) {
-    spl_autoload_call('MonorepoBuilder20220605\ComposerAutoloaderInita7ba83693f4d94109bc35a4aeba2eee5');
+if (!class_exists('ComposerAutoloaderInitd0714c3959e4c0ca09dcab7394ba0fa8', false) && !interface_exists('ComposerAutoloaderInitd0714c3959e4c0ca09dcab7394ba0fa8', false) && !trait_exists('ComposerAutoloaderInitd0714c3959e4c0ca09dcab7394ba0fa8', false)) {
+    spl_autoload_call('MonorepoBuilder20220605\ComposerAutoloaderInitd0714c3959e4c0ca09dcab7394ba0fa8');
 }
 if (!class_exists('Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator', false) && !interface_exists('Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator', false) && !trait_exists('Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator', false)) {
     spl_autoload_call('MonorepoBuilder20220605\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator');
@@ -26,9 +26,9 @@ if (!function_exists('resolveConfigFile')) {
         return \MonorepoBuilder20220605\resolveConfigFile(...func_get_args());
     }
 }
-if (!function_exists('composerRequirea7ba83693f4d94109bc35a4aeba2eee5')) {
-    function composerRequirea7ba83693f4d94109bc35a4aeba2eee5() {
-        return \MonorepoBuilder20220605\composerRequirea7ba83693f4d94109bc35a4aeba2eee5(...func_get_args());
+if (!function_exists('composerRequired0714c3959e4c0ca09dcab7394ba0fa8')) {
+    function composerRequired0714c3959e4c0ca09dcab7394ba0fa8() {
+        return \MonorepoBuilder20220605\composerRequired0714c3959e4c0ca09dcab7394ba0fa8(...func_get_args());
     }
 }
 if (!function_exists('array_is_list')) {
