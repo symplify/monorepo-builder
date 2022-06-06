@@ -1,19 +1,19 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20220605\Symplify\SymplifyKernel\Tests\ContainerBuilderFactory;
+namespace MonorepoBuilder20220606\Symplify\SymplifyKernel\Tests\ContainerBuilderFactory;
 
-use MonorepoBuilder20220605\PHPUnit\Framework\TestCase;
-use MonorepoBuilder20220605\Symplify\SmartFileSystem\SmartFileSystem;
-use MonorepoBuilder20220605\Symplify\SymplifyKernel\Config\Loader\ParameterMergingLoaderFactory;
-use MonorepoBuilder20220605\Symplify\SymplifyKernel\ContainerBuilderFactory;
-final class ContainerBuilderFactoryTest extends \MonorepoBuilder20220605\PHPUnit\Framework\TestCase
+use MonorepoBuilder20220606\PHPUnit\Framework\TestCase;
+use MonorepoBuilder20220606\Symplify\SmartFileSystem\SmartFileSystem;
+use MonorepoBuilder20220606\Symplify\SymplifyKernel\Config\Loader\ParameterMergingLoaderFactory;
+use MonorepoBuilder20220606\Symplify\SymplifyKernel\ContainerBuilderFactory;
+final class ContainerBuilderFactoryTest extends \MonorepoBuilder20220606\PHPUnit\Framework\TestCase
 {
     public function test() : void
     {
-        $containerBuilderFactory = new \MonorepoBuilder20220605\Symplify\SymplifyKernel\ContainerBuilderFactory(new \MonorepoBuilder20220605\Symplify\SymplifyKernel\Config\Loader\ParameterMergingLoaderFactory());
+        $containerBuilderFactory = new \MonorepoBuilder20220606\Symplify\SymplifyKernel\ContainerBuilderFactory(new \MonorepoBuilder20220606\Symplify\SymplifyKernel\Config\Loader\ParameterMergingLoaderFactory());
         $containerBuilder = $containerBuilderFactory->create([__DIR__ . '/config/some_services.php'], [], []);
-        $hasSmartFileSystemService = $containerBuilder->has(\MonorepoBuilder20220605\Symplify\SmartFileSystem\SmartFileSystem::class);
+        $hasSmartFileSystemService = $containerBuilder->has(\MonorepoBuilder20220606\Symplify\SmartFileSystem\SmartFileSystem::class);
         $this->assertTrue($hasSmartFileSystemService);
     }
 }

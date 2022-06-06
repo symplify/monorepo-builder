@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220605\Webmozart\Assert;
+namespace MonorepoBuilder20220606\Webmozart\Assert;
 
 use ArrayAccess;
 use BadMethodCallException;
@@ -1598,7 +1598,7 @@ class Assert
      */
     protected static function reportInvalidArgument($message)
     {
-        throw new \MonorepoBuilder20220605\Webmozart\Assert\InvalidArgumentException($message);
+        throw new \MonorepoBuilder20220606\Webmozart\Assert\InvalidArgumentException($message);
     }
     private function __construct()
     {

@@ -8,29 +8,29 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220605\Symfony\Component\Console\Command;
+namespace MonorepoBuilder20220606\Symfony\Component\Console\Command;
 
-use MonorepoBuilder20220605\Symfony\Component\Console\Completion\CompletionInput;
-use MonorepoBuilder20220605\Symfony\Component\Console\Completion\CompletionSuggestions;
-use MonorepoBuilder20220605\Symfony\Component\Console\Descriptor\ApplicationDescription;
-use MonorepoBuilder20220605\Symfony\Component\Console\Helper\DescriptorHelper;
-use MonorepoBuilder20220605\Symfony\Component\Console\Input\InputArgument;
-use MonorepoBuilder20220605\Symfony\Component\Console\Input\InputInterface;
-use MonorepoBuilder20220605\Symfony\Component\Console\Input\InputOption;
-use MonorepoBuilder20220605\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder20220606\Symfony\Component\Console\Completion\CompletionInput;
+use MonorepoBuilder20220606\Symfony\Component\Console\Completion\CompletionSuggestions;
+use MonorepoBuilder20220606\Symfony\Component\Console\Descriptor\ApplicationDescription;
+use MonorepoBuilder20220606\Symfony\Component\Console\Helper\DescriptorHelper;
+use MonorepoBuilder20220606\Symfony\Component\Console\Input\InputArgument;
+use MonorepoBuilder20220606\Symfony\Component\Console\Input\InputInterface;
+use MonorepoBuilder20220606\Symfony\Component\Console\Input\InputOption;
+use MonorepoBuilder20220606\Symfony\Component\Console\Output\OutputInterface;
 /**
  * ListCommand displays the list of all available commands for the application.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class ListCommand extends \MonorepoBuilder20220605\Symfony\Component\Console\Command\Command
+class ListCommand extends \MonorepoBuilder20220606\Symfony\Component\Console\Command\Command
 {
     /**
      * {@inheritdoc}
      */
     protected function configure()
     {
-        $this->setName('list')->setDefinition([new \MonorepoBuilder20220605\Symfony\Component\Console\Input\InputArgument('namespace', \MonorepoBuilder20220605\Symfony\Component\Console\Input\InputArgument::OPTIONAL, 'The namespace name'), new \MonorepoBuilder20220605\Symfony\Component\Console\Input\InputOption('raw', null, \MonorepoBuilder20220605\Symfony\Component\Console\Input\InputOption::VALUE_NONE, 'To output raw command list'), new \MonorepoBuilder20220605\Symfony\Component\Console\Input\InputOption('format', null, \MonorepoBuilder20220605\Symfony\Component\Console\Input\InputOption::VALUE_REQUIRED, 'The output format (txt, xml, json, or md)', 'txt'), new \MonorepoBuilder20220605\Symfony\Component\Console\Input\InputOption('short', null, \MonorepoBuilder20220605\Symfony\Component\Console\Input\InputOption::VALUE_NONE, 'To skip describing commands\' arguments')])->setDescription('List commands')->setHelp(<<<'EOF'
+        $this->setName('list')->setDefinition([new \MonorepoBuilder20220606\Symfony\Component\Console\Input\InputArgument('namespace', \MonorepoBuilder20220606\Symfony\Component\Console\Input\InputArgument::OPTIONAL, 'The namespace name'), new \MonorepoBuilder20220606\Symfony\Component\Console\Input\InputOption('raw', null, \MonorepoBuilder20220606\Symfony\Component\Console\Input\InputOption::VALUE_NONE, 'To output raw command list'), new \MonorepoBuilder20220606\Symfony\Component\Console\Input\InputOption('format', null, \MonorepoBuilder20220606\Symfony\Component\Console\Input\InputOption::VALUE_REQUIRED, 'The output format (txt, xml, json, or md)', 'txt'), new \MonorepoBuilder20220606\Symfony\Component\Console\Input\InputOption('short', null, \MonorepoBuilder20220606\Symfony\Component\Console\Input\InputOption::VALUE_NONE, 'To skip describing commands\' arguments')])->setDescription('List commands')->setHelp(<<<'EOF'
 The <info>%command.name%</info> command lists all commands:
 
   <info>%command.full_name%</info>
@@ -52,21 +52,21 @@ EOF
     /**
      * {@inheritdoc}
      */
-    protected function execute(\MonorepoBuilder20220605\Symfony\Component\Console\Input\InputInterface $input, \MonorepoBuilder20220605\Symfony\Component\Console\Output\OutputInterface $output) : int
+    protected function execute(\MonorepoBuilder20220606\Symfony\Component\Console\Input\InputInterface $input, \MonorepoBuilder20220606\Symfony\Component\Console\Output\OutputInterface $output) : int
     {
-        $helper = new \MonorepoBuilder20220605\Symfony\Component\Console\Helper\DescriptorHelper();
+        $helper = new \MonorepoBuilder20220606\Symfony\Component\Console\Helper\DescriptorHelper();
         $helper->describe($output, $this->getApplication(), ['format' => $input->getOption('format'), 'raw_text' => $input->getOption('raw'), 'namespace' => $input->getArgument('namespace'), 'short' => $input->getOption('short')]);
         return 0;
     }
-    public function complete(\MonorepoBuilder20220605\Symfony\Component\Console\Completion\CompletionInput $input, \MonorepoBuilder20220605\Symfony\Component\Console\Completion\CompletionSuggestions $suggestions) : void
+    public function complete(\MonorepoBuilder20220606\Symfony\Component\Console\Completion\CompletionInput $input, \MonorepoBuilder20220606\Symfony\Component\Console\Completion\CompletionSuggestions $suggestions) : void
     {
         if ($input->mustSuggestArgumentValuesFor('namespace')) {
-            $descriptor = new \MonorepoBuilder20220605\Symfony\Component\Console\Descriptor\ApplicationDescription($this->getApplication());
+            $descriptor = new \MonorepoBuilder20220606\Symfony\Component\Console\Descriptor\ApplicationDescription($this->getApplication());
             $suggestions->suggestValues(\array_keys($descriptor->getNamespaces()));
             return;
         }
         if ($input->mustSuggestOptionValuesFor('format')) {
-            $helper = new \MonorepoBuilder20220605\Symfony\Component\Console\Helper\DescriptorHelper();
+            $helper = new \MonorepoBuilder20220606\Symfony\Component\Console\Helper\DescriptorHelper();
             $suggestions->suggestValues($helper->getFormats());
         }
     }
