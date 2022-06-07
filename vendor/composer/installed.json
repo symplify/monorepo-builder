@@ -777,7 +777,7 @@
                     "bootstrap.php"
                 ],
                 "psr-4": {
-                    "MonorepoBuilder20220607\\Symfony\\Polyfill\\Php81\\": ""
+                    "Symfony\\Polyfill\\Php81\\": ""
                 },
                 "classmap": [
                     "Resources\/stubs"

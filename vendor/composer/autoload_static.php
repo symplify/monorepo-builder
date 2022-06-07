@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit38a7a9728c34cfc56a6c5fbe3c2c5abc
+class ComposerStaticInite49254e8e4ca82e6e4386dbce449b23f
 {
     public static $files = array (
         '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
@@ -16,6 +16,7 @@ class ComposerStaticInit38a7a9728c34cfc56a6c5fbe3c2c5abc
         'S' => 
         array (
             'Symplify\\MonorepoBuilder\\' => 25,
+            'Symfony\\Polyfill\\Php81\\' => 23,
         ),
         'M' => 
         array (
@@ -26,7 +27,6 @@ class ComposerStaticInit38a7a9728c34cfc56a6c5fbe3c2c5abc
             'MonorepoBuilder20220607\\Symplify\\EasyTesting\\' => 45,
             'MonorepoBuilder20220607\\Symplify\\ComposerJsonManipulator\\' => 57,
             'MonorepoBuilder20220607\\Symplify\\AutowireArrayParameter\\' => 56,
-            'MonorepoBuilder20220607\\Symfony\\Polyfill\\Php81\\' => 47,
             'MonorepoBuilder20220607\\Symfony\\Contracts\\Service\\' => 50,
             'MonorepoBuilder20220607\\Symfony\\Component\\String\\' => 49,
             'MonorepoBuilder20220607\\Symfony\\Component\\Process\\' => 50,
@@ -44,6 +44,10 @@ class ComposerStaticInit38a7a9728c34cfc56a6c5fbe3c2c5abc
         array (
             0 => __DIR__ . '/../..' . '/src',
             1 => __DIR__ . '/../..' . '/packages',
+        ),
+        'Symfony\\Polyfill\\Php81\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-php81',
         ),
         'MonorepoBuilder20220607\\Webmozart\\Assert\\' => 
         array (
@@ -72,10 +76,6 @@ class ComposerStaticInit38a7a9728c34cfc56a6c5fbe3c2c5abc
         'MonorepoBuilder20220607\\Symplify\\AutowireArrayParameter\\' => 
         array (
             0 => __DIR__ . '/..' . '/symplify/autowire-array-parameter/src',
-        ),
-        'MonorepoBuilder20220607\\Symfony\\Polyfill\\Php81\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/polyfill-php81',
         ),
         'MonorepoBuilder20220607\\Symfony\\Contracts\\Service\\' => 
         array (
@@ -164,7 +164,6 @@ class ComposerStaticInit38a7a9728c34cfc56a6c5fbe3c2c5abc
         'MonorepoBuilder20220607\\Psr\\Container\\ContainerExceptionInterface' => __DIR__ . '/..' . '/psr/container/src/ContainerExceptionInterface.php',
         'MonorepoBuilder20220607\\Psr\\Container\\ContainerInterface' => __DIR__ . '/..' . '/psr/container/src/ContainerInterface.php',
         'MonorepoBuilder20220607\\Psr\\Container\\NotFoundExceptionInterface' => __DIR__ . '/..' . '/psr/container/src/NotFoundExceptionInterface.php',
-        'MonorepoBuilder20220607\\ReturnTypeWillChange' => __DIR__ . '/..' . '/symfony/polyfill-php81/Resources/stubs/ReturnTypeWillChange.php',
         'MonorepoBuilder20220607\\SebastianBergmann\\Diff\\Chunk' => __DIR__ . '/..' . '/sebastian/diff/src/Chunk.php',
         'MonorepoBuilder20220607\\SebastianBergmann\\Diff\\ConfigurationException' => __DIR__ . '/..' . '/sebastian/diff/src/Exception/ConfigurationException.php',
         'MonorepoBuilder20220607\\SebastianBergmann\\Diff\\Diff' => __DIR__ . '/..' . '/sebastian/diff/src/Diff.php',
@@ -603,7 +602,6 @@ class ComposerStaticInit38a7a9728c34cfc56a6c5fbe3c2c5abc
         'MonorepoBuilder20220607\\Symfony\\Contracts\\Service\\ServiceSubscriberInterface' => __DIR__ . '/..' . '/symfony/service-contracts/ServiceSubscriberInterface.php',
         'MonorepoBuilder20220607\\Symfony\\Contracts\\Service\\ServiceSubscriberTrait' => __DIR__ . '/..' . '/symfony/service-contracts/ServiceSubscriberTrait.php',
         'MonorepoBuilder20220607\\Symfony\\Contracts\\Service\\Test\\ServiceLocatorTest' => __DIR__ . '/..' . '/symfony/service-contracts/Test/ServiceLocatorTest.php',
-        'MonorepoBuilder20220607\\Symfony\\Polyfill\\Php81\\Php81' => __DIR__ . '/..' . '/symfony/polyfill-php81/Php81.php',
         'MonorepoBuilder20220607\\Symplify\\AutowireArrayParameter\\DependencyInjection\\CompilerPass\\AutowireArrayParameterCompilerPass' => __DIR__ . '/..' . '/symplify/autowire-array-parameter/src/DependencyInjection/CompilerPass/AutowireArrayParameterCompilerPass.php',
         'MonorepoBuilder20220607\\Symplify\\AutowireArrayParameter\\DependencyInjection\\DefinitionFinder' => __DIR__ . '/..' . '/symplify/autowire-array-parameter/src/DependencyInjection/DefinitionFinder.php',
         'MonorepoBuilder20220607\\Symplify\\AutowireArrayParameter\\DocBlock\\ParamTypeDocBlockResolver' => __DIR__ . '/..' . '/symplify/autowire-array-parameter/src/DocBlock/ParamTypeDocBlockResolver.php',
@@ -709,6 +707,8 @@ class ComposerStaticInit38a7a9728c34cfc56a6c5fbe3c2c5abc
         'PharIo\\Version\\VersionConstraintParser' => __DIR__ . '/..' . '/phar-io/version/src/VersionConstraintParser.php',
         'PharIo\\Version\\VersionConstraintValue' => __DIR__ . '/..' . '/phar-io/version/src/VersionConstraintValue.php',
         'PharIo\\Version\\VersionNumber' => __DIR__ . '/..' . '/phar-io/version/src/VersionNumber.php',
+        'ReturnTypeWillChange' => __DIR__ . '/..' . '/symfony/polyfill-php81/Resources/stubs/ReturnTypeWillChange.php',
+        'Symfony\\Polyfill\\Php81\\Php81' => __DIR__ . '/..' . '/symfony/polyfill-php81/Php81.php',
         'Symplify\\MonorepoBuilder\\Command\\BumpInterdependencyCommand' => __DIR__ . '/../..' . '/src/Command/BumpInterdependencyCommand.php',
         'Symplify\\MonorepoBuilder\\Command\\PackageAliasCommand' => __DIR__ . '/../..' . '/src/Command/PackageAliasCommand.php',
         'Symplify\\MonorepoBuilder\\Command\\PackagesJsonCommand' => __DIR__ . '/../..' . '/src/Command/PackagesJsonCommand.php',
@@ -805,9 +805,9 @@ class ComposerStaticInit38a7a9728c34cfc56a6c5fbe3c2c5abc
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit38a7a9728c34cfc56a6c5fbe3c2c5abc::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit38a7a9728c34cfc56a6c5fbe3c2c5abc::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit38a7a9728c34cfc56a6c5fbe3c2c5abc::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInite49254e8e4ca82e6e4386dbce449b23f::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInite49254e8e4ca82e6e4386dbce449b23f::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInite49254e8e4ca82e6e4386dbce449b23f::$classMap;
 
         }, null, ClassLoader::class);
     }

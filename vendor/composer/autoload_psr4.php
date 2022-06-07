@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Symplify\\MonorepoBuilder\\' => array($baseDir . '/src', $baseDir . '/packages'),
+    'Symfony\\Polyfill\\Php81\\' => array($vendorDir . '/symfony/polyfill-php81'),
     'MonorepoBuilder20220607\\Webmozart\\Assert\\' => array($vendorDir . '/webmozart/assert/src'),
     'MonorepoBuilder20220607\\Symplify\\SymplifyKernel\\' => array($vendorDir . '/symplify/symplify-kernel/src'),
     'MonorepoBuilder20220607\\Symplify\\SmartFileSystem\\' => array($vendorDir . '/symplify/smart-file-system/src'),
@@ -14,7 +15,6 @@ return array(
     'MonorepoBuilder20220607\\Symplify\\EasyTesting\\' => array($vendorDir . '/symplify/easy-testing/src'),
     'MonorepoBuilder20220607\\Symplify\\ComposerJsonManipulator\\' => array($vendorDir . '/symplify/composer-json-manipulator/src'),
     'MonorepoBuilder20220607\\Symplify\\AutowireArrayParameter\\' => array($vendorDir . '/symplify/autowire-array-parameter/src'),
-    'MonorepoBuilder20220607\\Symfony\\Polyfill\\Php81\\' => array($vendorDir . '/symfony/polyfill-php81'),
     'MonorepoBuilder20220607\\Symfony\\Contracts\\Service\\' => array($vendorDir . '/symfony/service-contracts'),
     'MonorepoBuilder20220607\\Symfony\\Component\\String\\' => array($vendorDir . '/symfony/string'),
     'MonorepoBuilder20220607\\Symfony\\Component\\Process\\' => array($vendorDir . '/symfony/process'),
