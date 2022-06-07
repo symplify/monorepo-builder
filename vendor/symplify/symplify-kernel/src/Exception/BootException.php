@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20220606\Symplify\SymplifyKernel\Exception;
+namespace MonorepoBuilder20220607\Symplify\SymplifyKernel\Exception;
 
 use Exception;
 final class BootException extends \Exception

@@ -8,19 +8,19 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220606\Symfony\Component\Config\Definition\Builder;
+namespace MonorepoBuilder20220607\Symfony\Component\Config\Definition\Builder;
 
 /**
  * An interface that must be implemented by nodes which can have children.
  *
  * @author Victor Berchet <victor@suumit.com>
  */
-interface ParentNodeDefinitionInterface extends \MonorepoBuilder20220606\Symfony\Component\Config\Definition\Builder\BuilderAwareInterface
+interface ParentNodeDefinitionInterface extends \MonorepoBuilder20220607\Symfony\Component\Config\Definition\Builder\BuilderAwareInterface
 {
     /**
      * Returns a builder to add children nodes.
      */
-    public function children() : \MonorepoBuilder20220606\Symfony\Component\Config\Definition\Builder\NodeBuilder;
+    public function children() : \MonorepoBuilder20220607\Symfony\Component\Config\Definition\Builder\NodeBuilder;
     /**
      * Appends a node definition.
      *
@@ -36,7 +36,7 @@ interface ParentNodeDefinitionInterface extends \MonorepoBuilder20220606\Symfony
      *
      * @return $this
      */
-    public function append(\MonorepoBuilder20220606\Symfony\Component\Config\Definition\Builder\NodeDefinition $node);
+    public function append(\MonorepoBuilder20220607\Symfony\Component\Config\Definition\Builder\NodeDefinition $node);
     /**
      * Gets the child node definitions.
      *

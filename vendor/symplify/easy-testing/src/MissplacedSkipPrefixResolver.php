@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20220606\Symplify\EasyTesting;
+namespace MonorepoBuilder20220607\Symplify\EasyTesting;
 
-use MonorepoBuilder20220606\Nette\Utils\Strings;
-use MonorepoBuilder20220606\Symplify\EasyTesting\ValueObject\IncorrectAndMissingSkips;
-use MonorepoBuilder20220606\Symplify\EasyTesting\ValueObject\Prefix;
-use MonorepoBuilder20220606\Symplify\EasyTesting\ValueObject\SplitLine;
-use MonorepoBuilder20220606\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder20220607\Nette\Utils\Strings;
+use MonorepoBuilder20220607\Symplify\EasyTesting\ValueObject\IncorrectAndMissingSkips;
+use MonorepoBuilder20220607\Symplify\EasyTesting\ValueObject\Prefix;
+use MonorepoBuilder20220607\Symplify\EasyTesting\ValueObject\SplitLine;
+use MonorepoBuilder20220607\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\EasyTesting\Tests\MissingSkipPrefixResolver\MissingSkipPrefixResolverTest
  */
@@ -16,14 +16,14 @@ final class MissplacedSkipPrefixResolver
     /**
      * @param SmartFileInfo[] $fixtureFileInfos
      */
-    public function resolve(array $fixtureFileInfos) : \MonorepoBuilder20220606\Symplify\EasyTesting\ValueObject\IncorrectAndMissingSkips
+    public function resolve(array $fixtureFileInfos) : \MonorepoBuilder20220607\Symplify\EasyTesting\ValueObject\IncorrectAndMissingSkips
     {
         $incorrectSkips = [];
         $missingSkips = [];
         foreach ($fixtureFileInfos as $fixtureFileInfo) {
             $hasNameSkipStart = $this->hasNameSkipStart($fixtureFileInfo);
             $fileContents = $fixtureFileInfo->getContents();
-            $hasSplitLine = (bool) \MonorepoBuilder20220606\Nette\Utils\Strings::match($fileContents, \MonorepoBuilder20220606\Symplify\EasyTesting\ValueObject\SplitLine::SPLIT_LINE_REGEX);
+            $hasSplitLine = (bool) \MonorepoBuilder20220607\Nette\Utils\Strings::match($fileContents, \MonorepoBuilder20220607\Symplify\EasyTesting\ValueObject\SplitLine::SPLIT_LINE_REGEX);
             if ($hasNameSkipStart && $hasSplitLine) {
                 $incorrectSkips[] = $fixtureFileInfo;
                 continue;
@@ -32,10 +32,10 @@ final class MissplacedSkipPrefixResolver
                 $missingSkips[] = $fixtureFileInfo;
             }
         }
-        return new \MonorepoBuilder20220606\Symplify\EasyTesting\ValueObject\IncorrectAndMissingSkips($incorrectSkips, $missingSkips);
+        return new \MonorepoBuilder20220607\Symplify\EasyTesting\ValueObject\IncorrectAndMissingSkips($incorrectSkips, $missingSkips);
     }
-    private function hasNameSkipStart(\MonorepoBuilder20220606\Symplify\SmartFileSystem\SmartFileInfo $fixtureFileInfo) : bool
+    private function hasNameSkipStart(\MonorepoBuilder20220607\Symplify\SmartFileSystem\SmartFileInfo $fixtureFileInfo) : bool
     {
-        return (bool) \MonorepoBuilder20220606\Nette\Utils\Strings::match($fixtureFileInfo->getBasenameWithoutSuffix(), \MonorepoBuilder20220606\Symplify\EasyTesting\ValueObject\Prefix::SKIP_PREFIX_REGEX);
+        return (bool) \MonorepoBuilder20220607\Nette\Utils\Strings::match($fixtureFileInfo->getBasenameWithoutSuffix(), \MonorepoBuilder20220607\Symplify\EasyTesting\ValueObject\Prefix::SKIP_PREFIX_REGEX);
     }
 }

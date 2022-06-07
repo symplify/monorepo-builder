@@ -8,20 +8,20 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220606\Symfony\Component\DependencyInjection\Loader\Configurator;
+namespace MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use MonorepoBuilder20220606\Symfony\Component\DependencyInjection\ContainerInterface;
+use MonorepoBuilder20220607\Symfony\Component\DependencyInjection\ContainerInterface;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class ReferenceConfigurator extends \MonorepoBuilder20220606\Symfony\Component\DependencyInjection\Loader\Configurator\AbstractConfigurator
+class ReferenceConfigurator extends \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Loader\Configurator\AbstractConfigurator
 {
     /** @internal
      * @var string */
     protected $id;
     /** @internal
      * @var int */
-    protected $invalidBehavior = \MonorepoBuilder20220606\Symfony\Component\DependencyInjection\ContainerInterface::EXCEPTION_ON_INVALID_REFERENCE;
+    protected $invalidBehavior = \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\ContainerInterface::EXCEPTION_ON_INVALID_REFERENCE;
     public function __construct(string $id)
     {
         $this->id = $id;
@@ -31,7 +31,7 @@ class ReferenceConfigurator extends \MonorepoBuilder20220606\Symfony\Component\D
      */
     public final function ignoreOnInvalid()
     {
-        $this->invalidBehavior = \MonorepoBuilder20220606\Symfony\Component\DependencyInjection\ContainerInterface::IGNORE_ON_INVALID_REFERENCE;
+        $this->invalidBehavior = \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\ContainerInterface::IGNORE_ON_INVALID_REFERENCE;
         return $this;
     }
     /**
@@ -39,7 +39,7 @@ class ReferenceConfigurator extends \MonorepoBuilder20220606\Symfony\Component\D
      */
     public final function nullOnInvalid()
     {
-        $this->invalidBehavior = \MonorepoBuilder20220606\Symfony\Component\DependencyInjection\ContainerInterface::NULL_ON_INVALID_REFERENCE;
+        $this->invalidBehavior = \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\ContainerInterface::NULL_ON_INVALID_REFERENCE;
         return $this;
     }
     /**
@@ -47,7 +47,7 @@ class ReferenceConfigurator extends \MonorepoBuilder20220606\Symfony\Component\D
      */
     public final function ignoreOnUninitialized()
     {
-        $this->invalidBehavior = \MonorepoBuilder20220606\Symfony\Component\DependencyInjection\ContainerInterface::IGNORE_ON_UNINITIALIZED_REFERENCE;
+        $this->invalidBehavior = \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\ContainerInterface::IGNORE_ON_UNINITIALIZED_REFERENCE;
         return $this;
     }
     public function __toString() : string

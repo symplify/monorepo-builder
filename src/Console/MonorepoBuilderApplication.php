@@ -3,9 +3,9 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Console;
 
-use MonorepoBuilder20220606\Symfony\Component\Console\Application;
-use MonorepoBuilder20220606\Symfony\Component\Console\Command\Command;
-final class MonorepoBuilderApplication extends \MonorepoBuilder20220606\Symfony\Component\Console\Application
+use MonorepoBuilder20220607\Symfony\Component\Console\Application;
+use MonorepoBuilder20220607\Symfony\Component\Console\Command\Command;
+final class MonorepoBuilderApplication extends \MonorepoBuilder20220607\Symfony\Component\Console\Application
 {
     /**
      * @param Command[] $commands
