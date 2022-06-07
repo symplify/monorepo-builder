@@ -26,14 +26,14 @@ if (\file_exists($scoperAutoloadFilepath)) {
     require_once $scoperAutoloadFilepath;
 }
 $configFiles = [];
-$argvInput = new \MonorepoBuilder20220607\Symfony\Component\Console\Input\ArgvInput();
-$configFile = \MonorepoBuilder20220607\resolveConfigFile($argvInput);
+$argvInput = new ArgvInput();
+$configFile = resolveConfigFile($argvInput);
 if (\is_string($configFile)) {
     $configFiles[] = $configFile;
 }
-$kernelBootAndApplicationRun = new \MonorepoBuilder20220607\Symplify\SymplifyKernel\ValueObject\KernelBootAndApplicationRun(\Symplify\MonorepoBuilder\Kernel\MonorepoBuilderKernel::class, $configFiles);
+$kernelBootAndApplicationRun = new KernelBootAndApplicationRun(MonorepoBuilderKernel::class, $configFiles);
 $kernelBootAndApplicationRun->run();
-function resolveConfigFile(\MonorepoBuilder20220607\Symfony\Component\Console\Input\ArgvInput $argvInput) : ?string
+function resolveConfigFile(ArgvInput $argvInput) : ?string
 {
     if ($argvInput->hasParameterOption(['-c', '--config'])) {
         $configOption = $argvInput->getParameterOption(['-c', '--config']);
@@ -41,7 +41,7 @@ function resolveConfigFile(\MonorepoBuilder20220607\Symfony\Component\Console\In
             return \realpath($configOption);
         }
     }
-    $defaultConfigFilePath = \getcwd() . '/' . \Symplify\MonorepoBuilder\ValueObject\File::CONFIG;
+    $defaultConfigFilePath = \getcwd() . '/' . File::CONFIG;
     if (\file_exists($defaultConfigFilePath)) {
         return $defaultConfigFilePath;
     }

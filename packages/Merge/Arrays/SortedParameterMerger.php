@@ -14,7 +14,7 @@ final class SortedParameterMerger
      * @var \Symplify\MonorepoBuilder\Merge\Arrays\ArraySorter
      */
     private $arraySorter;
-    public function __construct(\MonorepoBuilder20220607\Symplify\PackageBuilder\Yaml\ParametersMerger $parametersMerger, \Symplify\MonorepoBuilder\Merge\Arrays\ArraySorter $arraySorter)
+    public function __construct(ParametersMerger $parametersMerger, \Symplify\MonorepoBuilder\Merge\Arrays\ArraySorter $arraySorter)
     {
         $this->parametersMerger = $parametersMerger;
         $this->arraySorter = $arraySorter;

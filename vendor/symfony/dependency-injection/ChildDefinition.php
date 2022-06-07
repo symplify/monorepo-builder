@@ -17,7 +17,7 @@ use MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Exception\OutO
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class ChildDefinition extends \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Definition
+class ChildDefinition extends Definition
 {
     /**
      * @var string
@@ -85,7 +85,7 @@ class ChildDefinition extends \MonorepoBuilder20220607\Symfony\Component\Depende
         } elseif (\strncmp($index, '$', \strlen('$')) === 0) {
             $this->arguments[$index] = $value;
         } else {
-            throw new \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException('The argument must be an existing index or the name of a constructor\'s parameter.');
+            throw new InvalidArgumentException('The argument must be an existing index or the name of a constructor\'s parameter.');
         }
         return $this;
     }

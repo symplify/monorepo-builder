@@ -17,7 +17,7 @@ namespace MonorepoBuilder20220607\Symfony\Component\Config\Resource;
  *
  * @final
  */
-class ComposerResource implements \MonorepoBuilder20220607\Symfony\Component\Config\Resource\SelfCheckingResourceInterface
+class ComposerResource implements SelfCheckingResourceInterface
 {
     /**
      * @var mixed[]

@@ -16,24 +16,24 @@ use MonorepoBuilder20220607\Symfony\Component\DependencyInjection\ContainerInter
 /**
  * @author Maxime Steinhausser <maxime.steinhausser@gmail.com>
  */
-class ContainerParametersResourceChecker implements \MonorepoBuilder20220607\Symfony\Component\Config\ResourceCheckerInterface
+class ContainerParametersResourceChecker implements ResourceCheckerInterface
 {
     private $container;
-    public function __construct(\MonorepoBuilder20220607\Symfony\Component\DependencyInjection\ContainerInterface $container)
+    public function __construct(ContainerInterface $container)
     {
         $this->container = $container;
     }
     /**
      * {@inheritdoc}
      */
-    public function supports(\MonorepoBuilder20220607\Symfony\Component\Config\Resource\ResourceInterface $metadata) : bool
+    public function supports(ResourceInterface $metadata) : bool
     {
-        return $metadata instanceof \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Config\ContainerParametersResource;
+        return $metadata instanceof ContainerParametersResource;
     }
     /**
      * {@inheritdoc}
      */
-    public function isFresh(\MonorepoBuilder20220607\Symfony\Component\Config\Resource\ResourceInterface $resource, int $timestamp) : bool
+    public function isFresh(ResourceInterface $resource, int $timestamp) : bool
     {
         foreach ($resource->getParameters() as $key => $value) {
             if (!$this->container->hasParameter($key) || $this->container->getParameter($key) !== $value) {

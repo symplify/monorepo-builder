@@ -23,7 +23,7 @@ final class ComposerJsonProvider
      * @var \Symplify\ComposerJsonManipulator\ComposerJsonFactory
      */
     private $composerJsonFactory;
-    public function __construct(\MonorepoBuilder20220607\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager $jsonFileManager, \Symplify\MonorepoBuilder\Finder\PackageComposerFinder $packageComposerFinder, \MonorepoBuilder20220607\Symplify\ComposerJsonManipulator\ComposerJsonFactory $composerJsonFactory)
+    public function __construct(JsonFileManager $jsonFileManager, PackageComposerFinder $packageComposerFinder, ComposerJsonFactory $composerJsonFactory)
     {
         $this->jsonFileManager = $jsonFileManager;
         $this->packageComposerFinder = $packageComposerFinder;
@@ -70,7 +70,7 @@ final class ComposerJsonProvider
         }
         return $packageNames;
     }
-    public function getPackageFileInfoByName(string $packageName) : \MonorepoBuilder20220607\Symplify\SmartFileSystem\SmartFileInfo
+    public function getPackageFileInfoByName(string $packageName) : SmartFileInfo
     {
         foreach ($this->getPackagesComposerFileInfos() as $packagesComposerFileInfo) {
             $json = $this->jsonFileManager->loadFromFileInfo($packagesComposerFileInfo);
@@ -82,9 +82,9 @@ final class ComposerJsonProvider
             }
             return $packagesComposerFileInfo;
         }
-        throw new \MonorepoBuilder20220607\Symplify\SymplifyKernel\Exception\ShouldNotHappenException();
+        throw new ShouldNotHappenException();
     }
-    public function getRootComposerJson() : \MonorepoBuilder20220607\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson
+    public function getRootComposerJson() : ComposerJson
     {
         $rootFileInfo = $this->packageComposerFinder->getRootPackageComposerFile();
         return $this->composerJsonFactory->createFromFileInfo($rootFileInfo);

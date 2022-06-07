@@ -38,7 +38,7 @@ final class ComposerJsonRepositoriesUpdater
      * @var \Symplify\PackageBuilder\Console\Output\ConsoleDiffer
      */
     private $consoleDiffer;
-    public function __construct(\Symplify\MonorepoBuilder\Package\PackageNamesProvider $packageNamesProvider, \MonorepoBuilder20220607\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager $jsonFileManager, \MonorepoBuilder20220607\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \Symplify\MonorepoBuilder\Testing\ComposerJson\ComposerJsonSymlinker $composerJsonSymlinker, \Symplify\MonorepoBuilder\Testing\PackageDependency\UsedPackagesResolver $usedPackagesResolver, \MonorepoBuilder20220607\Symplify\PackageBuilder\Console\Output\ConsoleDiffer $consoleDiffer)
+    public function __construct(PackageNamesProvider $packageNamesProvider, JsonFileManager $jsonFileManager, SymfonyStyle $symfonyStyle, ComposerJsonSymlinker $composerJsonSymlinker, UsedPackagesResolver $usedPackagesResolver, ConsoleDiffer $consoleDiffer)
     {
         $this->packageNamesProvider = $packageNamesProvider;
         $this->jsonFileManager = $jsonFileManager;
@@ -47,7 +47,7 @@ final class ComposerJsonRepositoriesUpdater
         $this->usedPackagesResolver = $usedPackagesResolver;
         $this->consoleDiffer = $consoleDiffer;
     }
-    public function processPackage(\MonorepoBuilder20220607\Symplify\SmartFileSystem\SmartFileInfo $packageFileInfo, \MonorepoBuilder20220607\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $rootComposerJson, bool $symlink) : void
+    public function processPackage(SmartFileInfo $packageFileInfo, ComposerJson $rootComposerJson, bool $symlink) : void
     {
         $packageComposerJson = $this->jsonFileManager->loadFromFileInfo($packageFileInfo);
         $usedPackageNames = $this->usedPackagesResolver->resolveForPackage($packageComposerJson);
@@ -60,8 +60,8 @@ final class ComposerJsonRepositoriesUpdater
         $packageNames = $this->packageNamesProvider->provide();
         $oldComposerJsonContents = $packageFileInfo->getContents();
         $rootComposerJsonFileInfo = $rootComposerJson->getFileInfo();
-        if (!$rootComposerJsonFileInfo instanceof \MonorepoBuilder20220607\Symplify\SmartFileSystem\SmartFileInfo) {
-            throw new \MonorepoBuilder20220607\Symplify\SymplifyKernel\Exception\ShouldNotHappenException();
+        if (!$rootComposerJsonFileInfo instanceof SmartFileInfo) {
+            throw new ShouldNotHappenException();
         }
         $decoreatedPackageComposerJson = $this->composerJsonSymlinker->decoratePackageComposerJsonWithPackageSymlinks($packageFileInfo, $packageNames, $rootComposerJsonFileInfo, $symlink);
         $newComposerJsonContents = $this->jsonFileManager->printJsonToFileInfo($decoreatedPackageComposerJson, $packageFileInfo);

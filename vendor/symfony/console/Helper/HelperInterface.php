@@ -20,11 +20,11 @@ interface HelperInterface
     /**
      * Sets the helper set associated with this helper.
      */
-    public function setHelperSet(\MonorepoBuilder20220607\Symfony\Component\Console\Helper\HelperSet $helperSet = null);
+    public function setHelperSet(HelperSet $helperSet = null);
     /**
      * Gets the helper set associated with this helper.
      */
-    public function getHelperSet() : ?\MonorepoBuilder20220607\Symfony\Component\Console\Helper\HelperSet;
+    public function getHelperSet() : ?HelperSet;
     /**
      * Returns the canonical name of this helper.
      *

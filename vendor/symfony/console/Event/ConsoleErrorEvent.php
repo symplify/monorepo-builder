@@ -18,7 +18,7 @@ use MonorepoBuilder20220607\Symfony\Component\Console\Output\OutputInterface;
  *
  * @author Wouter de Jong <wouter@wouterj.nl>
  */
-final class ConsoleErrorEvent extends \MonorepoBuilder20220607\Symfony\Component\Console\Event\ConsoleEvent
+final class ConsoleErrorEvent extends ConsoleEvent
 {
     /**
      * @var \Throwable
@@ -28,7 +28,7 @@ final class ConsoleErrorEvent extends \MonorepoBuilder20220607\Symfony\Component
      * @var int
      */
     private $exitCode;
-    public function __construct(\MonorepoBuilder20220607\Symfony\Component\Console\Input\InputInterface $input, \MonorepoBuilder20220607\Symfony\Component\Console\Output\OutputInterface $output, \Throwable $error, \MonorepoBuilder20220607\Symfony\Component\Console\Command\Command $command = null)
+    public function __construct(InputInterface $input, OutputInterface $output, \Throwable $error, Command $command = null)
     {
         parent::__construct($command, $input, $output);
         $this->error = $error;

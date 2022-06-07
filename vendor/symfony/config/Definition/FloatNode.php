@@ -16,7 +16,7 @@ use MonorepoBuilder20220607\Symfony\Component\Config\Definition\Exception\Invali
  *
  * @author Jeanmonod David <david.jeanmonod@gmail.com>
  */
-class FloatNode extends \MonorepoBuilder20220607\Symfony\Component\Config\Definition\NumericNode
+class FloatNode extends NumericNode
 {
     /**
      * {@inheritdoc}
@@ -29,7 +29,7 @@ class FloatNode extends \MonorepoBuilder20220607\Symfony\Component\Config\Defini
             $value = (float) $value;
         }
         if (!\is_float($value)) {
-            $ex = new \MonorepoBuilder20220607\Symfony\Component\Config\Definition\Exception\InvalidTypeException(\sprintf('Invalid type for path "%s". Expected "float", but got "%s".', $this->getPath(), \get_debug_type($value)));
+            $ex = new InvalidTypeException(\sprintf('Invalid type for path "%s". Expected "float", but got "%s".', $this->getPath(), \get_debug_type($value)));
             if ($hint = $this->getInfo()) {
                 $ex->addHint($hint);
             }

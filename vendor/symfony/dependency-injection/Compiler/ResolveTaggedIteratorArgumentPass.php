@@ -16,7 +16,7 @@ use MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Argument\Tagge
  *
  * @author Roland Franssen <franssen.roland@gmail.com>
  */
-class ResolveTaggedIteratorArgumentPass extends \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Compiler\AbstractRecursivePass
+class ResolveTaggedIteratorArgumentPass extends AbstractRecursivePass
 {
     use PriorityTaggedServiceTrait;
     /**
@@ -26,7 +26,7 @@ class ResolveTaggedIteratorArgumentPass extends \MonorepoBuilder20220607\Symfony
      */
     protected function processValue($value, bool $isRoot = \false)
     {
-        if (!$value instanceof \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument) {
+        if (!$value instanceof TaggedIteratorArgument) {
             return parent::processValue($value, $isRoot);
         }
         $value->setValues($this->findAndSortTaggedServices($value, $this->container));

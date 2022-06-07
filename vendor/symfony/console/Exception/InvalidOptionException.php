@@ -15,6 +15,6 @@ namespace MonorepoBuilder20220607\Symfony\Component\Console\Exception;
  *
  * @author Jérôme Tamarelle <jerome@tamarelle.net>
  */
-class InvalidOptionException extends \InvalidArgumentException implements \MonorepoBuilder20220607\Symfony\Component\Console\Exception\ExceptionInterface
+class InvalidOptionException extends \InvalidArgumentException implements ExceptionInterface
 {
 }

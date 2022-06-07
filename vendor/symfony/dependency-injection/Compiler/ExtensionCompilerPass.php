@@ -17,15 +17,15 @@ use MonorepoBuilder20220607\Symfony\Component\DependencyInjection\ContainerBuild
  *
  * @author Wouter J <wouter@wouterj.nl>
  */
-class ExtensionCompilerPass implements \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
+class ExtensionCompilerPass implements CompilerPassInterface
 {
     /**
      * {@inheritdoc}
      */
-    public function process(\MonorepoBuilder20220607\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    public function process(ContainerBuilder $container)
     {
         foreach ($container->getExtensions() as $extension) {
-            if (!$extension instanceof \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface) {
+            if (!$extension instanceof CompilerPassInterface) {
                 continue;
             }
             $extension->process($container);

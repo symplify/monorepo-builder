@@ -19,7 +19,7 @@ use MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Reference;
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class CheckExceptionOnInvalidReferenceBehaviorPass extends \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Compiler\AbstractRecursivePass
+class CheckExceptionOnInvalidReferenceBehaviorPass extends AbstractRecursivePass
 {
     /**
      * @var mixed[]
@@ -28,7 +28,7 @@ class CheckExceptionOnInvalidReferenceBehaviorPass extends \MonorepoBuilder20220
     /**
      * {@inheritdoc}
      */
-    public function process(\MonorepoBuilder20220607\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    public function process(ContainerBuilder $container)
     {
         $this->serviceLocatorContextIds = [];
         foreach ($container->findTaggedServiceIds('container.service_locator_context') as $id => $tags) {
@@ -47,10 +47,10 @@ class CheckExceptionOnInvalidReferenceBehaviorPass extends \MonorepoBuilder20220
      */
     protected function processValue($value, bool $isRoot = \false)
     {
-        if (!$value instanceof \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Reference) {
+        if (!$value instanceof Reference) {
             return parent::processValue($value, $isRoot);
         }
-        if (\MonorepoBuilder20220607\Symfony\Component\DependencyInjection\ContainerInterface::EXCEPTION_ON_INVALID_REFERENCE < $value->getInvalidBehavior() || $this->container->has($id = (string) $value)) {
+        if (ContainerInterface::EXCEPTION_ON_INVALID_REFERENCE < $value->getInvalidBehavior() || $this->container->has($id = (string) $value)) {
             return $value;
         }
         $currentId = $this->currentId;
@@ -63,13 +63,13 @@ class CheckExceptionOnInvalidReferenceBehaviorPass extends \MonorepoBuilder20220
                     if ($k !== $id) {
                         $currentId = $k . '" in the container provided to "' . $currentId;
                     }
-                    throw new \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException($id, $currentId, null, $this->getAlternatives($id));
+                    throw new ServiceNotFoundException($id, $currentId, null, $this->getAlternatives($id));
                 }
             }
         }
         if ('.' === $currentId[0] && $graph->hasNode($currentId)) {
             foreach ($graph->getNode($currentId)->getInEdges() as $edge) {
-                if (!$edge->getValue() instanceof \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Reference || \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\ContainerInterface::EXCEPTION_ON_INVALID_REFERENCE < $edge->getValue()->getInvalidBehavior()) {
+                if (!$edge->getValue() instanceof Reference || ContainerInterface::EXCEPTION_ON_INVALID_REFERENCE < $edge->getValue()->getInvalidBehavior()) {
                     continue;
                 }
                 $sourceId = $edge->getSourceNode()->getId();
@@ -79,7 +79,7 @@ class CheckExceptionOnInvalidReferenceBehaviorPass extends \MonorepoBuilder20220
                 }
             }
         }
-        throw new \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException($id, $currentId, null, $this->getAlternatives($id));
+        throw new ServiceNotFoundException($id, $currentId, null, $this->getAlternatives($id));
     }
     private function getAlternatives(string $id) : array
     {

@@ -11,20 +11,20 @@ use Symplify\MonorepoBuilder\ValueObject\Option;
  * @see \Symplify\MonorepoBuilder\Tests\Merge\ComposerJsonDecorator\RemoverComposerJsonDecoratorTest
  * @see \Symplify\MonorepoBuilder\Tests\Merge\ComposerJsonDecorator\RemoverComposerJsonDecorator\RemoverComposerJsonDecoratorTest
  */
-final class RemoverComposerJsonDecorator implements \Symplify\MonorepoBuilder\Merge\Contract\ComposerJsonDecoratorInterface
+final class RemoverComposerJsonDecorator implements ComposerJsonDecoratorInterface
 {
     /**
      * @var \Symplify\MonorepoBuilder\Merge\Configuration\ModifyingComposerJsonProvider
      */
     private $modifyingComposerJsonProvider;
-    public function __construct(\Symplify\MonorepoBuilder\Merge\Configuration\ModifyingComposerJsonProvider $modifyingComposerJsonProvider)
+    public function __construct(ModifyingComposerJsonProvider $modifyingComposerJsonProvider)
     {
         $this->modifyingComposerJsonProvider = $modifyingComposerJsonProvider;
     }
-    public function decorate(\MonorepoBuilder20220607\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJson) : void
+    public function decorate(ComposerJson $composerJson) : void
     {
         $removingComposerJson = $this->modifyingComposerJsonProvider->getRemovingComposerJson();
-        if (!$removingComposerJson instanceof \MonorepoBuilder20220607\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson) {
+        if (!$removingComposerJson instanceof ComposerJson) {
             return;
         }
         $this->processRequire($composerJson, $removingComposerJson);
@@ -33,7 +33,7 @@ final class RemoverComposerJsonDecorator implements \Symplify\MonorepoBuilder\Me
         $this->processAutoloadDev($composerJson, $removingComposerJson);
         $this->processRoot($composerJson, $removingComposerJson);
     }
-    private function processRequire(\MonorepoBuilder20220607\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJson, \MonorepoBuilder20220607\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJsonToRemove) : void
+    private function processRequire(ComposerJson $composerJson, ComposerJson $composerJsonToRemove) : void
     {
         if ($composerJsonToRemove->getRequire() === []) {
             return;
@@ -45,7 +45,7 @@ final class RemoverComposerJsonDecorator implements \Symplify\MonorepoBuilder\Me
         }
         $composerJson->setRequire($currentRequire);
     }
-    private function processRequireDev(\MonorepoBuilder20220607\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJson, \MonorepoBuilder20220607\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJsonToRemove) : void
+    private function processRequireDev(ComposerJson $composerJson, ComposerJson $composerJsonToRemove) : void
     {
         if ($composerJsonToRemove->getRequireDev() === []) {
             return;
@@ -57,7 +57,7 @@ final class RemoverComposerJsonDecorator implements \Symplify\MonorepoBuilder\Me
         }
         $composerJson->setRequireDev($currentRequireDev);
     }
-    private function processAutoload(\MonorepoBuilder20220607\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJson, \MonorepoBuilder20220607\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJsonToRemove) : void
+    private function processAutoload(ComposerJson $composerJson, ComposerJson $composerJsonToRemove) : void
     {
         if ($composerJsonToRemove->getAutoload() === []) {
             return;
@@ -75,7 +75,7 @@ final class RemoverComposerJsonDecorator implements \Symplify\MonorepoBuilder\Me
         }
         $composerJson->setAutoload($currentAutoload);
     }
-    private function processAutoloadDev(\MonorepoBuilder20220607\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJson, \MonorepoBuilder20220607\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJsonToRemove) : void
+    private function processAutoloadDev(ComposerJson $composerJson, ComposerJson $composerJsonToRemove) : void
     {
         if ($composerJsonToRemove->getAutoloadDev() === []) {
             return;
@@ -93,7 +93,7 @@ final class RemoverComposerJsonDecorator implements \Symplify\MonorepoBuilder\Me
         }
         $composerJson->setAutoloadDev($currentAutoloadDev);
     }
-    private function processRoot(\MonorepoBuilder20220607\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJson, \MonorepoBuilder20220607\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $removingComposerJson) : void
+    private function processRoot(ComposerJson $composerJson, ComposerJson $removingComposerJson) : void
     {
         if ($removingComposerJson->getMinimumStability()) {
             $composerJson->removeMinimumStability();
@@ -104,7 +104,7 @@ final class RemoverComposerJsonDecorator implements \Symplify\MonorepoBuilder\Me
         if (\count($removingComposerJson->getRepositories()) !== 1) {
             return;
         }
-        if ($removingComposerJson->getRepositories()[0] !== \Symplify\MonorepoBuilder\ValueObject\Option::REMOVE_COMPLETELY) {
+        if ($removingComposerJson->getRepositories()[0] !== Option::REMOVE_COMPLETELY) {
             return;
         }
         $composerJson->setRepositories([]);

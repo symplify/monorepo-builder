@@ -10,7 +10,7 @@ final class PackageJsonProvider
      * @var \Symplify\MonorepoBuilder\Package\PackageProvider
      */
     private $packageProvider;
-    public function __construct(\Symplify\MonorepoBuilder\Package\PackageProvider $packageProvider)
+    public function __construct(PackageProvider $packageProvider)
     {
         $this->packageProvider = $packageProvider;
     }

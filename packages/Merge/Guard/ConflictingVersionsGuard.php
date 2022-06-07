@@ -21,7 +21,7 @@ final class ConflictingVersionsGuard
      * @var \Symplify\MonorepoBuilder\Validator\ConflictingPackageVersionsReporter
      */
     private $conflictingPackageVersionsReporter;
-    public function __construct(\Symplify\MonorepoBuilder\VersionValidator $versionValidator, \Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider $composerJsonProvider, \Symplify\MonorepoBuilder\Validator\ConflictingPackageVersionsReporter $conflictingPackageVersionsReporter)
+    public function __construct(VersionValidator $versionValidator, ComposerJsonProvider $composerJsonProvider, ConflictingPackageVersionsReporter $conflictingPackageVersionsReporter)
     {
         $this->versionValidator = $versionValidator;
         $this->composerJsonProvider = $composerJsonProvider;
@@ -34,6 +34,6 @@ final class ConflictingVersionsGuard
             return;
         }
         $this->conflictingPackageVersionsReporter->report($conflictingPackageVersions);
-        throw new \MonorepoBuilder20220607\Symplify\SymplifyKernel\Exception\ShouldNotHappenException('Fix conflicting package version first');
+        throw new ShouldNotHappenException('Fix conflicting package version first');
     }
 }

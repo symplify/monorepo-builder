@@ -11,7 +11,7 @@ final class UsedPackagesResolver
      * @var \Symplify\MonorepoBuilder\Package\PackageNamesProvider
      */
     private $packageNamesProvider;
-    public function __construct(\Symplify\MonorepoBuilder\Package\PackageNamesProvider $packageNamesProvider)
+    public function __construct(PackageNamesProvider $packageNamesProvider)
     {
         $this->packageNamesProvider = $packageNamesProvider;
     }
@@ -22,7 +22,7 @@ final class UsedPackagesResolver
     public function resolveForPackage(array $packageComposerJson) : array
     {
         $usedPackageNames = [];
-        foreach ([\MonorepoBuilder20220607\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE, \MonorepoBuilder20220607\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE_DEV] as $section) {
+        foreach ([ComposerJsonSection::REQUIRE, ComposerJsonSection::REQUIRE_DEV] as $section) {
             if (!isset($packageComposerJson[$section])) {
                 continue;
             }

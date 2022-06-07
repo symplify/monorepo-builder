@@ -20,7 +20,7 @@ final class ConflictingUpdater
      * @var \Symplify\ComposerJsonManipulator\Printer\ComposerJsonPrinter
      */
     private $composerJsonPrinter;
-    public function __construct(\MonorepoBuilder20220607\Symplify\ComposerJsonManipulator\ComposerJsonFactory $composerJsonFactory, \MonorepoBuilder20220607\Symplify\ComposerJsonManipulator\Printer\ComposerJsonPrinter $composerJsonPrinter)
+    public function __construct(ComposerJsonFactory $composerJsonFactory, ComposerJsonPrinter $composerJsonPrinter)
     {
         $this->composerJsonFactory = $composerJsonFactory;
         $this->composerJsonPrinter = $composerJsonPrinter;
@@ -29,7 +29,7 @@ final class ConflictingUpdater
      * @param string[] $packageNames
      * @param SmartFileInfo[] $packageComposerFileInfos
      */
-    public function updateFileInfosWithVendorAndVersion(array $packageComposerFileInfos, array $packageNames, \PharIo\Version\Version $conflictingVersion) : void
+    public function updateFileInfosWithVendorAndVersion(array $packageComposerFileInfos, array $packageNames, Version $conflictingVersion) : void
     {
         foreach ($packageComposerFileInfos as $packageComposerFileInfo) {
             $composerJson = $this->composerJsonFactory->createFromFileInfo($packageComposerFileInfo);

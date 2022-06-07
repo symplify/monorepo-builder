@@ -15,7 +15,7 @@ final class ExpectedAndOutputFileInfoPair
      * @var \Symplify\SmartFileSystem\SmartFileInfo|null
      */
     private $outputFileInfo;
-    public function __construct(\MonorepoBuilder20220607\Symplify\SmartFileSystem\SmartFileInfo $expectedFileInfo, ?\MonorepoBuilder20220607\Symplify\SmartFileSystem\SmartFileInfo $outputFileInfo)
+    public function __construct(SmartFileInfo $expectedFileInfo, ?SmartFileInfo $outputFileInfo)
     {
         $this->expectedFileInfo = $expectedFileInfo;
         $this->outputFileInfo = $outputFileInfo;
@@ -32,8 +32,8 @@ final class ExpectedAndOutputFileInfoPair
      */
     public function getOutputFileContent() : string
     {
-        if (!$this->outputFileInfo instanceof \MonorepoBuilder20220607\Symplify\SmartFileSystem\SmartFileInfo) {
-            throw new \MonorepoBuilder20220607\Symplify\SymplifyKernel\Exception\ShouldNotHappenException();
+        if (!$this->outputFileInfo instanceof SmartFileInfo) {
+            throw new ShouldNotHappenException();
         }
         return $this->outputFileInfo->getContents();
     }

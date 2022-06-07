@@ -10,13 +10,13 @@ use MonorepoBuilder20220607\Symfony\Component\Config\Loader\LoaderResolver;
 use MonorepoBuilder20220607\Symfony\Component\DependencyInjection\ContainerBuilder;
 use MonorepoBuilder20220607\Symplify\PackageBuilder\DependencyInjection\FileLoader\ParameterMergingPhpFileLoader;
 use MonorepoBuilder20220607\Symplify\SymplifyKernel\Contract\Config\LoaderFactoryInterface;
-final class ParameterMergingLoaderFactory implements \MonorepoBuilder20220607\Symplify\SymplifyKernel\Contract\Config\LoaderFactoryInterface
+final class ParameterMergingLoaderFactory implements LoaderFactoryInterface
 {
-    public function create(\MonorepoBuilder20220607\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder, string $currentWorkingDirectory) : \MonorepoBuilder20220607\Symfony\Component\Config\Loader\LoaderInterface
+    public function create(ContainerBuilder $containerBuilder, string $currentWorkingDirectory) : \MonorepoBuilder20220607\Symfony\Component\Config\Loader\LoaderInterface
     {
-        $fileLocator = new \MonorepoBuilder20220607\Symfony\Component\Config\FileLocator([$currentWorkingDirectory]);
-        $loaders = [new \MonorepoBuilder20220607\Symfony\Component\Config\Loader\GlobFileLoader($fileLocator), new \MonorepoBuilder20220607\Symplify\PackageBuilder\DependencyInjection\FileLoader\ParameterMergingPhpFileLoader($containerBuilder, $fileLocator)];
-        $loaderResolver = new \MonorepoBuilder20220607\Symfony\Component\Config\Loader\LoaderResolver($loaders);
-        return new \MonorepoBuilder20220607\Symfony\Component\Config\Loader\DelegatingLoader($loaderResolver);
+        $fileLocator = new FileLocator([$currentWorkingDirectory]);
+        $loaders = [new GlobFileLoader($fileLocator), new ParameterMergingPhpFileLoader($containerBuilder, $fileLocator)];
+        $loaderResolver = new LoaderResolver($loaders);
+        return new DelegatingLoader($loaderResolver);
     }
 }

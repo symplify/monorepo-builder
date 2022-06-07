@@ -13,6 +13,6 @@ namespace MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Exceptio
 /**
  * Base OutOfBoundsException for Dependency Injection component.
  */
-class OutOfBoundsException extends \OutOfBoundsException implements \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Exception\ExceptionInterface
+class OutOfBoundsException extends \OutOfBoundsException implements ExceptionInterface
 {
 }

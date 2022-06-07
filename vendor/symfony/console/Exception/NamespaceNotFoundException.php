@@ -15,6 +15,6 @@ namespace MonorepoBuilder20220607\Symfony\Component\Console\Exception;
  *
  * @author Pierre du Plessis <pdples@gmail.com>
  */
-class NamespaceNotFoundException extends \MonorepoBuilder20220607\Symfony\Component\Console\Exception\CommandNotFoundException
+class NamespaceNotFoundException extends CommandNotFoundException
 {
 }

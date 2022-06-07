@@ -32,10 +32,10 @@ final class DevMasterAliasUpdater
      * @var \Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager
      */
     private $jsonFileManager;
-    public function __construct(\MonorepoBuilder20220607\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager $jsonFileManager, \MonorepoBuilder20220607\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider)
+    public function __construct(JsonFileManager $jsonFileManager, ParameterProvider $parameterProvider)
     {
         $this->jsonFileManager = $jsonFileManager;
-        $this->branchAliasTarget = self::COMPOSER_BRANCH_PREFIX . $parameterProvider->provideStringParameter(\Symplify\MonorepoBuilder\ValueObject\Option::DEFAULT_BRANCH_NAME);
+        $this->branchAliasTarget = self::COMPOSER_BRANCH_PREFIX . $parameterProvider->provideStringParameter(Option::DEFAULT_BRANCH_NAME);
     }
     /**
      * @param SmartFileInfo[] $fileInfos

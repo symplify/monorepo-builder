@@ -15,6 +15,6 @@ namespace MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Exceptio
  *
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class EnvNotFoundException extends \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException
+class EnvNotFoundException extends InvalidArgumentException
 {
 }

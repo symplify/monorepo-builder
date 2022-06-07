@@ -19,7 +19,7 @@ namespace MonorepoBuilder20220607\Symfony\Component\Config;
  *
  * @author Matthias Pigulla <mp@webfactory.de>
  */
-class ConfigCacheFactory implements \MonorepoBuilder20220607\Symfony\Component\Config\ConfigCacheFactoryInterface
+class ConfigCacheFactory implements ConfigCacheFactoryInterface
 {
     /**
      * @var bool
@@ -35,9 +35,9 @@ class ConfigCacheFactory implements \MonorepoBuilder20220607\Symfony\Component\C
     /**
      * {@inheritdoc}
      */
-    public function cache(string $file, callable $callback) : \MonorepoBuilder20220607\Symfony\Component\Config\ConfigCacheInterface
+    public function cache(string $file, callable $callback) : ConfigCacheInterface
     {
-        $cache = new \MonorepoBuilder20220607\Symfony\Component\Config\ConfigCache($file, $this->debug);
+        $cache = new ConfigCache($file, $this->debug);
         if (!$cache->isFresh()) {
             $callback($cache);
         }

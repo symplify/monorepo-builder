@@ -18,7 +18,7 @@ final class ProcessRunner
      * @var \Symfony\Component\Console\Style\SymfonyStyle
      */
     private $symfonyStyle;
-    public function __construct(\MonorepoBuilder20220607\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle)
+    public function __construct(SymfonyStyle $symfonyStyle)
     {
         $this->symfonyStyle = $symfonyStyle;
     }
@@ -48,19 +48,19 @@ final class ProcessRunner
     /**
      * @param string|string[] $commandLine
      */
-    private function createProcess($commandLine, ?string $cwd) : \MonorepoBuilder20220607\Symfony\Component\Process\Process
+    private function createProcess($commandLine, ?string $cwd) : Process
     {
         // @since Symfony 4.2: https://github.com/symfony/symfony/pull/27821
-        if (\is_string($commandLine) && \method_exists(\MonorepoBuilder20220607\Symfony\Component\Process\Process::class, 'fromShellCommandline')) {
-            return \MonorepoBuilder20220607\Symfony\Component\Process\Process::fromShellCommandline($commandLine, $cwd, null, null, self::TIMEOUT);
+        if (\is_string($commandLine) && \method_exists(Process::class, 'fromShellCommandline')) {
+            return Process::fromShellCommandline($commandLine, $cwd, null, null, self::TIMEOUT);
         }
-        return new \MonorepoBuilder20220607\Symfony\Component\Process\Process($commandLine, $cwd, null, null, self::TIMEOUT);
+        return new Process($commandLine, $cwd, null, null, self::TIMEOUT);
     }
-    private function reportResult(\MonorepoBuilder20220607\Symfony\Component\Process\Process $process) : void
+    private function reportResult(Process $process) : void
     {
         if ($process->isSuccessful()) {
             return;
         }
-        throw new \MonorepoBuilder20220607\Symfony\Component\Process\Exception\ProcessFailedException($process);
+        throw new ProcessFailedException($process);
     }
 }

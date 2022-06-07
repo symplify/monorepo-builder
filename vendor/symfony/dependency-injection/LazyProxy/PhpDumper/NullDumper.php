@@ -18,26 +18,26 @@ use MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Definition;
  *
  * @final
  */
-class NullDumper implements \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\LazyProxy\PhpDumper\DumperInterface
+class NullDumper implements DumperInterface
 {
     /**
      * {@inheritdoc}
      */
-    public function isProxyCandidate(\MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Definition $definition) : bool
+    public function isProxyCandidate(Definition $definition) : bool
     {
         return \false;
     }
     /**
      * {@inheritdoc}
      */
-    public function getProxyFactoryCode(\MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Definition $definition, string $id, string $factoryCode) : string
+    public function getProxyFactoryCode(Definition $definition, string $id, string $factoryCode) : string
     {
         return '';
     }
     /**
      * {@inheritdoc}
      */
-    public function getProxyCode(\MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Definition $definition) : string
+    public function getProxyCode(Definition $definition) : string
     {
         return '';
     }

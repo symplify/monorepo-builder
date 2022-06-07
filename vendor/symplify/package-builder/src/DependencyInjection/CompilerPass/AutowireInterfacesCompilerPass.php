@@ -5,7 +5,7 @@ namespace MonorepoBuilder20220607\Symplify\PackageBuilder\DependencyInjection\Co
 
 use MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use MonorepoBuilder20220607\Symfony\Component\DependencyInjection\ContainerBuilder;
-final class AutowireInterfacesCompilerPass implements \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface
+final class AutowireInterfacesCompilerPass implements CompilerPassInterface
 {
     /**
      * @var string[]
@@ -18,7 +18,7 @@ final class AutowireInterfacesCompilerPass implements \MonorepoBuilder20220607\S
     {
         $this->typesToAutowire = $typesToAutowire;
     }
-    public function process(\MonorepoBuilder20220607\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder) : void
+    public function process(ContainerBuilder $containerBuilder) : void
     {
         $definitions = $containerBuilder->getDefinitions();
         foreach ($definitions as $definition) {

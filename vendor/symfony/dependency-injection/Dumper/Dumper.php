@@ -16,10 +16,10 @@ use MonorepoBuilder20220607\Symfony\Component\DependencyInjection\ContainerBuild
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-abstract class Dumper implements \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Dumper\DumperInterface
+abstract class Dumper implements DumperInterface
 {
     protected $container;
-    public function __construct(\MonorepoBuilder20220607\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    public function __construct(ContainerBuilder $container)
     {
         $this->container = $container;
     }

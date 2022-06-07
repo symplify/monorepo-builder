@@ -12,6 +12,6 @@ interface ReleaseWorkerInterface
      * - "Dump new items to CHANGELOG.md"
      * - "Run coding standards"
      */
-    public function getDescription(\PharIo\Version\Version $version) : string;
-    public function work(\PharIo\Version\Version $version) : void;
+    public function getDescription(Version $version) : string;
+    public function work(Version $version) : void;
 }

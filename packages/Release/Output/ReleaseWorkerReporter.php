@@ -12,18 +12,18 @@ final class ReleaseWorkerReporter
      * @var \Symfony\Component\Console\Style\SymfonyStyle
      */
     private $symfonyStyle;
-    public function __construct(\MonorepoBuilder20220607\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle)
+    public function __construct(SymfonyStyle $symfonyStyle)
     {
         $this->symfonyStyle = $symfonyStyle;
     }
-    public function printMetadata(\Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface $releaseWorker) : void
+    public function printMetadata(ReleaseWorkerInterface $releaseWorker) : void
     {
         if (!$this->symfonyStyle->isVerbose()) {
             return;
         }
         // show debug data on -v/--verbose/--debug
         $this->symfonyStyle->writeln('class: ' . \get_class($releaseWorker));
-        if ($releaseWorker instanceof \Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\StageAwareInterface) {
+        if ($releaseWorker instanceof StageAwareInterface) {
             $this->symfonyStyle->writeln('stage: ' . $releaseWorker->getStage());
         }
         $this->symfonyStyle->newLine();

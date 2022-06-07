@@ -17,6 +17,6 @@ use MonorepoBuilder20220607\Psr\Container\ContainerExceptionInterface;
  * @author Fabien Potencier <fabien@symfony.com>
  * @author Bulat Shakirzyanov <bulat@theopenskyproject.com>
  */
-interface ExceptionInterface extends \MonorepoBuilder20220607\Psr\Container\ContainerExceptionInterface
+interface ExceptionInterface extends ContainerExceptionInterface
 {
 }

@@ -17,13 +17,13 @@ use MonorepoBuilder20220607\Symfony\Component\Console\Input\InputInterface;
  *
  * @author Wouter J <waldio.webdesign@gmail.com>
  */
-abstract class InputAwareHelper extends \MonorepoBuilder20220607\Symfony\Component\Console\Helper\Helper implements \MonorepoBuilder20220607\Symfony\Component\Console\Input\InputAwareInterface
+abstract class InputAwareHelper extends Helper implements InputAwareInterface
 {
     protected $input;
     /**
      * {@inheritdoc}
      */
-    public function setInput(\MonorepoBuilder20220607\Symfony\Component\Console\Input\InputInterface $input)
+    public function setInput(InputInterface $input)
     {
         $this->input = $input;
     }

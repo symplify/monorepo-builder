@@ -20,14 +20,14 @@ use MonorepoBuilder20220607\Symfony\Component\EventDispatcher\EventSubscriberInt
  * @author James Halsall <james.t.halsall@googlemail.com>
  * @author Robin Chalas <robin.chalas@gmail.com>
  */
-class ErrorListener implements \MonorepoBuilder20220607\Symfony\Component\EventDispatcher\EventSubscriberInterface
+class ErrorListener implements EventSubscriberInterface
 {
     private $logger;
-    public function __construct(\MonorepoBuilder20220607\Psr\Log\LoggerInterface $logger = null)
+    public function __construct(LoggerInterface $logger = null)
     {
         $this->logger = $logger;
     }
-    public function onConsoleError(\MonorepoBuilder20220607\Symfony\Component\Console\Event\ConsoleErrorEvent $event)
+    public function onConsoleError(ConsoleErrorEvent $event)
     {
         if (null === $this->logger) {
             return;
@@ -39,7 +39,7 @@ class ErrorListener implements \MonorepoBuilder20220607\Symfony\Component\EventD
         }
         $this->logger->critical('Error thrown while running command "{command}". Message: "{message}"', ['exception' => $error, 'command' => $inputString, 'message' => $error->getMessage()]);
     }
-    public function onConsoleTerminate(\MonorepoBuilder20220607\Symfony\Component\Console\Event\ConsoleTerminateEvent $event)
+    public function onConsoleTerminate(ConsoleTerminateEvent $event)
     {
         if (null === $this->logger) {
             return;
@@ -56,9 +56,9 @@ class ErrorListener implements \MonorepoBuilder20220607\Symfony\Component\EventD
     }
     public static function getSubscribedEvents() : array
     {
-        return [\MonorepoBuilder20220607\Symfony\Component\Console\ConsoleEvents::ERROR => ['onConsoleError', -128], \MonorepoBuilder20220607\Symfony\Component\Console\ConsoleEvents::TERMINATE => ['onConsoleTerminate', -128]];
+        return [ConsoleEvents::ERROR => ['onConsoleError', -128], ConsoleEvents::TERMINATE => ['onConsoleTerminate', -128]];
     }
-    private static function getInputString(\MonorepoBuilder20220607\Symfony\Component\Console\Event\ConsoleEvent $event) : ?string
+    private static function getInputString(ConsoleEvent $event) : ?string
     {
         $commandName = $event->getCommand() ? $event->getCommand()->getName() : null;
         $input = $event->getInput();

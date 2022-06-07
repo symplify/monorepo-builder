@@ -15,6 +15,6 @@ namespace MonorepoBuilder20220607\Symfony\Component\Process\Exception;
  *
  * @author Romain Neutron <imprec@gmail.com>
  */
-class LogicException extends \LogicException implements \MonorepoBuilder20220607\Symfony\Component\Process\Exception\ExceptionInterface
+class LogicException extends \LogicException implements ExceptionInterface
 {
 }

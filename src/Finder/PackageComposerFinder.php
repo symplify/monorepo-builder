@@ -30,15 +30,15 @@ final class PackageComposerFinder
      * @var \Symplify\SmartFileSystem\Finder\FinderSanitizer
      */
     private $finderSanitizer;
-    public function __construct(\MonorepoBuilder20220607\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider, \MonorepoBuilder20220607\Symplify\SmartFileSystem\Finder\FinderSanitizer $finderSanitizer)
+    public function __construct(ParameterProvider $parameterProvider, FinderSanitizer $finderSanitizer)
     {
         $this->finderSanitizer = $finderSanitizer;
-        $this->packageDirectories = $parameterProvider->provideArrayParameter(\Symplify\MonorepoBuilder\ValueObject\Option::PACKAGE_DIRECTORIES);
-        $this->packageDirectoriesExcludes = $parameterProvider->provideArrayParameter(\Symplify\MonorepoBuilder\ValueObject\Option::PACKAGE_DIRECTORIES_EXCLUDES);
+        $this->packageDirectories = $parameterProvider->provideArrayParameter(Option::PACKAGE_DIRECTORIES);
+        $this->packageDirectoriesExcludes = $parameterProvider->provideArrayParameter(Option::PACKAGE_DIRECTORIES_EXCLUDES);
     }
-    public function getRootPackageComposerFile() : \MonorepoBuilder20220607\Symplify\SmartFileSystem\SmartFileInfo
+    public function getRootPackageComposerFile() : SmartFileInfo
     {
-        return new \MonorepoBuilder20220607\Symplify\SmartFileSystem\SmartFileInfo(\getcwd() . \DIRECTORY_SEPARATOR . 'composer.json');
+        return new SmartFileInfo(\getcwd() . \DIRECTORY_SEPARATOR . 'composer.json');
     }
     /**
      * @return SmartFileInfo[]
@@ -46,11 +46,11 @@ final class PackageComposerFinder
     public function getPackageComposerFiles() : array
     {
         if ($this->packageDirectories === []) {
-            $errorMessage = \sprintf('First define package directories in "monorepo-builder.php" config.%sUse $parameters->set(Option::%s, "...");', \PHP_EOL, \Symplify\MonorepoBuilder\ValueObject\Option::PACKAGE_DIRECTORIES);
-            throw new \Symplify\MonorepoBuilder\Exception\ConfigurationException($errorMessage);
+            $errorMessage = \sprintf('First define package directories in "monorepo-builder.php" config.%sUse $parameters->set(Option::%s, "...");', \PHP_EOL, Option::PACKAGE_DIRECTORIES);
+            throw new ConfigurationException($errorMessage);
         }
         if ($this->cachedPackageComposerFiles === []) {
-            $finder = \MonorepoBuilder20220607\Symfony\Component\Finder\Finder::create()->files()->in($this->packageDirectories)->exclude('compiler')->exclude('templates')->exclude('vendor')->exclude('build')->exclude('node_modules')->name('composer.json');
+            $finder = Finder::create()->files()->in($this->packageDirectories)->exclude('compiler')->exclude('templates')->exclude('vendor')->exclude('build')->exclude('node_modules')->name('composer.json');
             if ($this->packageDirectoriesExcludes !== []) {
                 $finder->exclude($this->packageDirectoriesExcludes);
             }
@@ -64,6 +64,6 @@ final class PackageComposerFinder
     private function isPHPUnit() : bool
     {
         // defined by PHPUnit
-        return \defined('PHPUNIT_COMPOSER_INSTALL') || \defined('__PHPUNIT_PHAR__');
+        return \defined('MonorepoBuilder20220607\\PHPUNIT_COMPOSER_INSTALL') || \defined('MonorepoBuilder20220607\\__PHPUNIT_PHAR__');
     }
 }

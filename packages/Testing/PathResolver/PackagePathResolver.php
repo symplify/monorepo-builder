@@ -12,7 +12,7 @@ final class PackagePathResolver
     /**
      * See https://getcomposer.org/doc/05-repositories.md#path
      */
-    public function resolveRelativePathToLocalPackage(\MonorepoBuilder20220607\Symplify\SmartFileSystem\SmartFileInfo $rootComposerFileInfo, \MonorepoBuilder20220607\Symplify\SmartFileSystem\SmartFileInfo $packageComposerFileInfo) : string
+    public function resolveRelativePathToLocalPackage(SmartFileInfo $rootComposerFileInfo, SmartFileInfo $packageComposerFileInfo) : string
     {
         $relativeFolderPathToLocalPackage = $this->resolveRelativeFolderPathToLocalPackage($rootComposerFileInfo, $packageComposerFileInfo);
         $relativeDirectoryToRoot = $this->resolveRelativeDirectoryToRoot($rootComposerFileInfo, $packageComposerFileInfo);
@@ -21,7 +21,7 @@ final class PackagePathResolver
     /**
      * See https://getcomposer.org/doc/05-repositories.md#path
      */
-    public function resolveRelativeFolderPathToLocalPackage(\MonorepoBuilder20220607\Symplify\SmartFileSystem\SmartFileInfo $rootComposerFileInfo, \MonorepoBuilder20220607\Symplify\SmartFileSystem\SmartFileInfo $packageComposerFileInfo) : string
+    public function resolveRelativeFolderPathToLocalPackage(SmartFileInfo $rootComposerFileInfo, SmartFileInfo $packageComposerFileInfo) : string
     {
         $currentDirectory = \dirname($packageComposerFileInfo->getRealPath());
         $nestingLevel = 0;
@@ -31,7 +31,7 @@ final class PackagePathResolver
         }
         return \str_repeat('../', $nestingLevel);
     }
-    public function resolveRelativeDirectoryToRoot(\MonorepoBuilder20220607\Symplify\SmartFileSystem\SmartFileInfo $rootComposerFileInfo, \MonorepoBuilder20220607\Symplify\SmartFileSystem\SmartFileInfo $packageComposerFileInfo) : string
+    public function resolveRelativeDirectoryToRoot(SmartFileInfo $rootComposerFileInfo, SmartFileInfo $packageComposerFileInfo) : string
     {
         $rootDirectory = \dirname($rootComposerFileInfo->getRealPath());
         return \dirname($packageComposerFileInfo->getRelativeFilePathFromDirectory($rootDirectory));

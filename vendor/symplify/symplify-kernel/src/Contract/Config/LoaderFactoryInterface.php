@@ -7,5 +7,5 @@ use MonorepoBuilder20220607\Symfony\Component\Config\Loader\LoaderInterface;
 use MonorepoBuilder20220607\Symfony\Component\DependencyInjection\ContainerBuilder;
 interface LoaderFactoryInterface
 {
-    public function create(\MonorepoBuilder20220607\Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder, string $currentWorkingDirectory) : \MonorepoBuilder20220607\Symfony\Component\Config\Loader\LoaderInterface;
+    public function create(ContainerBuilder $containerBuilder, string $currentWorkingDirectory) : LoaderInterface;
 }

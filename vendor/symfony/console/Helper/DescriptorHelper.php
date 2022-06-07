@@ -22,7 +22,7 @@ use MonorepoBuilder20220607\Symfony\Component\Console\Output\OutputInterface;
  *
  * @author Jean-François Simon <contact@jfsimon.fr>
  */
-class DescriptorHelper extends \MonorepoBuilder20220607\Symfony\Component\Console\Helper\Helper
+class DescriptorHelper extends Helper
 {
     /**
      * @var DescriptorInterface[]
@@ -30,7 +30,7 @@ class DescriptorHelper extends \MonorepoBuilder20220607\Symfony\Component\Consol
     private $descriptors = [];
     public function __construct()
     {
-        $this->register('txt', new \MonorepoBuilder20220607\Symfony\Component\Console\Descriptor\TextDescriptor())->register('xml', new \MonorepoBuilder20220607\Symfony\Component\Console\Descriptor\XmlDescriptor())->register('json', new \MonorepoBuilder20220607\Symfony\Component\Console\Descriptor\JsonDescriptor())->register('md', new \MonorepoBuilder20220607\Symfony\Component\Console\Descriptor\MarkdownDescriptor());
+        $this->register('txt', new TextDescriptor())->register('xml', new XmlDescriptor())->register('json', new JsonDescriptor())->register('md', new MarkdownDescriptor());
     }
     /**
      * Describes an object if supported.
@@ -41,11 +41,11 @@ class DescriptorHelper extends \MonorepoBuilder20220607\Symfony\Component\Consol
      *
      * @throws InvalidArgumentException when the given format is not supported
      */
-    public function describe(\MonorepoBuilder20220607\Symfony\Component\Console\Output\OutputInterface $output, ?object $object, array $options = [])
+    public function describe(OutputInterface $output, ?object $object, array $options = [])
     {
         $options = \array_merge(['raw_text' => \false, 'format' => 'txt'], $options);
         if (!isset($this->descriptors[$options['format']])) {
-            throw new \MonorepoBuilder20220607\Symfony\Component\Console\Exception\InvalidArgumentException(\sprintf('Unsupported format "%s".', $options['format']));
+            throw new InvalidArgumentException(\sprintf('Unsupported format "%s".', $options['format']));
         }
         $descriptor = $this->descriptors[$options['format']];
         $descriptor->describe($output, $object, $options);
@@ -55,7 +55,7 @@ class DescriptorHelper extends \MonorepoBuilder20220607\Symfony\Component\Consol
      *
      * @return $this
      */
-    public function register(string $format, \MonorepoBuilder20220607\Symfony\Component\Console\Descriptor\DescriptorInterface $descriptor)
+    public function register(string $format, DescriptorInterface $descriptor)
     {
         $this->descriptors[$format] = $descriptor;
         return $this;

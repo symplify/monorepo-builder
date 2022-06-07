@@ -15,6 +15,6 @@ namespace MonorepoBuilder20220607\Symfony\Component\Config\Definition\Exception;
  *
  * @author Victor Berchet <victor.berchet@suumit.com>
  */
-class InvalidDefinitionException extends \MonorepoBuilder20220607\Symfony\Component\Config\Definition\Exception\Exception
+class InvalidDefinitionException extends Exception
 {
 }

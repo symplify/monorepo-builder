@@ -15,7 +15,7 @@ namespace MonorepoBuilder20220607\Symfony\Component\Config\Exception;
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class FileLoaderImportCircularReferenceException extends \MonorepoBuilder20220607\Symfony\Component\Config\Exception\LoaderLoadException
+class FileLoaderImportCircularReferenceException extends LoaderLoadException
 {
     public function __construct(array $resources, int $code = 0, \Throwable $previous = null)
     {

@@ -12,7 +12,7 @@ final class DependencyUpdater
      * @var \Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager
      */
     private $jsonFileManager;
-    public function __construct(\MonorepoBuilder20220607\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager $jsonFileManager)
+    public function __construct(JsonFileManager $jsonFileManager)
     {
         $this->jsonFileManager = $jsonFileManager;
     }
@@ -24,8 +24,8 @@ final class DependencyUpdater
     {
         foreach ($smartFileInfos as $smartFileInfo) {
             $json = $this->jsonFileManager->loadFromFileInfo($smartFileInfo);
-            $json = $this->processSectionWithPackages($json, $packageNames, $version, \MonorepoBuilder20220607\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE);
-            $json = $this->processSectionWithPackages($json, $packageNames, $version, \MonorepoBuilder20220607\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE_DEV);
+            $json = $this->processSectionWithPackages($json, $packageNames, $version, ComposerJsonSection::REQUIRE);
+            $json = $this->processSectionWithPackages($json, $packageNames, $version, ComposerJsonSection::REQUIRE_DEV);
             $this->jsonFileManager->printJsonToFileInfo($json, $smartFileInfo);
         }
     }
@@ -36,8 +36,8 @@ final class DependencyUpdater
     {
         foreach ($smartFileInfos as $smartFileInfo) {
             $json = $this->jsonFileManager->loadFromFileInfo($smartFileInfo);
-            $json = $this->processSection($json, $vendor, $version, \MonorepoBuilder20220607\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE);
-            $json = $this->processSection($json, $vendor, $version, \MonorepoBuilder20220607\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE_DEV);
+            $json = $this->processSection($json, $vendor, $version, ComposerJsonSection::REQUIRE);
+            $json = $this->processSection($json, $vendor, $version, ComposerJsonSection::REQUIRE_DEV);
             $this->jsonFileManager->printJsonToFileInfo($json, $smartFileInfo);
         }
     }

@@ -22,7 +22,7 @@ use MonorepoBuilder20220607\Symfony\Component\Console\Output\OutputInterface;
  *
  * @see https://www.php-fig.org/psr/psr-3/
  */
-class ConsoleLogger extends \MonorepoBuilder20220607\Psr\Log\AbstractLogger
+class ConsoleLogger extends AbstractLogger
 {
     public const INFO = 'info';
     public const ERROR = 'error';
@@ -30,16 +30,16 @@ class ConsoleLogger extends \MonorepoBuilder20220607\Psr\Log\AbstractLogger
     /**
      * @var mixed[]
      */
-    private $verbosityLevelMap = [\MonorepoBuilder20220607\Psr\Log\LogLevel::EMERGENCY => \MonorepoBuilder20220607\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_NORMAL, \MonorepoBuilder20220607\Psr\Log\LogLevel::ALERT => \MonorepoBuilder20220607\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_NORMAL, \MonorepoBuilder20220607\Psr\Log\LogLevel::CRITICAL => \MonorepoBuilder20220607\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_NORMAL, \MonorepoBuilder20220607\Psr\Log\LogLevel::ERROR => \MonorepoBuilder20220607\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_NORMAL, \MonorepoBuilder20220607\Psr\Log\LogLevel::WARNING => \MonorepoBuilder20220607\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_NORMAL, \MonorepoBuilder20220607\Psr\Log\LogLevel::NOTICE => \MonorepoBuilder20220607\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_VERBOSE, \MonorepoBuilder20220607\Psr\Log\LogLevel::INFO => \MonorepoBuilder20220607\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_VERY_VERBOSE, \MonorepoBuilder20220607\Psr\Log\LogLevel::DEBUG => \MonorepoBuilder20220607\Symfony\Component\Console\Output\OutputInterface::VERBOSITY_DEBUG];
+    private $verbosityLevelMap = [LogLevel::EMERGENCY => OutputInterface::VERBOSITY_NORMAL, LogLevel::ALERT => OutputInterface::VERBOSITY_NORMAL, LogLevel::CRITICAL => OutputInterface::VERBOSITY_NORMAL, LogLevel::ERROR => OutputInterface::VERBOSITY_NORMAL, LogLevel::WARNING => OutputInterface::VERBOSITY_NORMAL, LogLevel::NOTICE => OutputInterface::VERBOSITY_VERBOSE, LogLevel::INFO => OutputInterface::VERBOSITY_VERY_VERBOSE, LogLevel::DEBUG => OutputInterface::VERBOSITY_DEBUG];
     /**
      * @var mixed[]
      */
-    private $formatLevelMap = [\MonorepoBuilder20220607\Psr\Log\LogLevel::EMERGENCY => self::ERROR, \MonorepoBuilder20220607\Psr\Log\LogLevel::ALERT => self::ERROR, \MonorepoBuilder20220607\Psr\Log\LogLevel::CRITICAL => self::ERROR, \MonorepoBuilder20220607\Psr\Log\LogLevel::ERROR => self::ERROR, \MonorepoBuilder20220607\Psr\Log\LogLevel::WARNING => self::INFO, \MonorepoBuilder20220607\Psr\Log\LogLevel::NOTICE => self::INFO, \MonorepoBuilder20220607\Psr\Log\LogLevel::INFO => self::INFO, \MonorepoBuilder20220607\Psr\Log\LogLevel::DEBUG => self::INFO];
+    private $formatLevelMap = [LogLevel::EMERGENCY => self::ERROR, LogLevel::ALERT => self::ERROR, LogLevel::CRITICAL => self::ERROR, LogLevel::ERROR => self::ERROR, LogLevel::WARNING => self::INFO, LogLevel::NOTICE => self::INFO, LogLevel::INFO => self::INFO, LogLevel::DEBUG => self::INFO];
     /**
      * @var bool
      */
     private $errored = \false;
-    public function __construct(\MonorepoBuilder20220607\Symfony\Component\Console\Output\OutputInterface $output, array $verbosityLevelMap = [], array $formatLevelMap = [])
+    public function __construct(OutputInterface $output, array $verbosityLevelMap = [], array $formatLevelMap = [])
     {
         $this->output = $output;
         $this->verbosityLevelMap = $verbosityLevelMap + $this->verbosityLevelMap;
@@ -51,12 +51,12 @@ class ConsoleLogger extends \MonorepoBuilder20220607\Psr\Log\AbstractLogger
     public function log($level, $message, array $context = []) : void
     {
         if (!isset($this->verbosityLevelMap[$level])) {
-            throw new \MonorepoBuilder20220607\Psr\Log\InvalidArgumentException(\sprintf('The log level "%s" does not exist.', $level));
+            throw new InvalidArgumentException(\sprintf('The log level "%s" does not exist.', $level));
         }
         $output = $this->output;
         // Write to the error output if necessary and available
         if (self::ERROR === $this->formatLevelMap[$level]) {
-            if ($this->output instanceof \MonorepoBuilder20220607\Symfony\Component\Console\Output\ConsoleOutputInterface) {
+            if ($this->output instanceof ConsoleOutputInterface) {
                 $output = $output->getErrorOutput();
             }
             $this->errored = \true;

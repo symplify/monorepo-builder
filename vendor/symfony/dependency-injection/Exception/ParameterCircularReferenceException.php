@@ -15,7 +15,7 @@ namespace MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Exceptio
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class ParameterCircularReferenceException extends \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Exception\RuntimeException
+class ParameterCircularReferenceException extends RuntimeException
 {
     /**
      * @var mixed[]

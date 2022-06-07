@@ -15,6 +15,6 @@ namespace MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Exceptio
  *
  * @author Bulat Shakirzyanov <bulat@theopenskyproject.com>
  */
-class InvalidArgumentException extends \InvalidArgumentException implements \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Exception\ExceptionInterface
+class InvalidArgumentException extends \InvalidArgumentException implements ExceptionInterface
 {
 }

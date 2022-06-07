@@ -10,7 +10,7 @@ final class RequireRequireDevDuplicateCleaner
      * @param array<string, mixed> $requireDev
      * @return array<string, mixed>
      */
-    public function unsetPackageFromRequire(\MonorepoBuilder20220607\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $mainComposerJson, array $requireDev) : array
+    public function unsetPackageFromRequire(ComposerJson $mainComposerJson, array $requireDev) : array
     {
         // give require priority
         $requirePackageNames = $mainComposerJson->getRequirePackageNames();

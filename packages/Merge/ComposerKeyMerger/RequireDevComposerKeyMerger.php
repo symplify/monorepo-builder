@@ -7,7 +7,7 @@ use MonorepoBuilder20220607\Symplify\ComposerJsonManipulator\ValueObject\Compose
 use Symplify\MonorepoBuilder\Merge\Arrays\SortedParameterMerger;
 use Symplify\MonorepoBuilder\Merge\Cleaner\RequireRequireDevDuplicateCleaner;
 use Symplify\MonorepoBuilder\Merge\Contract\ComposerKeyMergerInterface;
-final class RequireDevComposerKeyMerger implements \Symplify\MonorepoBuilder\Merge\Contract\ComposerKeyMergerInterface
+final class RequireDevComposerKeyMerger implements ComposerKeyMergerInterface
 {
     /**
      * @var \Symplify\MonorepoBuilder\Merge\Arrays\SortedParameterMerger
@@ -17,12 +17,12 @@ final class RequireDevComposerKeyMerger implements \Symplify\MonorepoBuilder\Mer
      * @var \Symplify\MonorepoBuilder\Merge\Cleaner\RequireRequireDevDuplicateCleaner
      */
     private $requireRequireDevDuplicateCleaner;
-    public function __construct(\Symplify\MonorepoBuilder\Merge\Arrays\SortedParameterMerger $sortedParameterMerger, \Symplify\MonorepoBuilder\Merge\Cleaner\RequireRequireDevDuplicateCleaner $requireRequireDevDuplicateCleaner)
+    public function __construct(SortedParameterMerger $sortedParameterMerger, RequireRequireDevDuplicateCleaner $requireRequireDevDuplicateCleaner)
     {
         $this->sortedParameterMerger = $sortedParameterMerger;
         $this->requireRequireDevDuplicateCleaner = $requireRequireDevDuplicateCleaner;
     }
-    public function merge(\MonorepoBuilder20220607\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $mainComposerJson, \MonorepoBuilder20220607\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $newComposerJson) : void
+    public function merge(ComposerJson $mainComposerJson, ComposerJson $newComposerJson) : void
     {
         if ($newComposerJson->getRequireDev() === []) {
             return;

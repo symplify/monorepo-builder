@@ -5,9 +5,9 @@ namespace Symplify\MonorepoBuilder\Merge\ComposerJsonDecorator;
 
 use MonorepoBuilder20220607\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
 use Symplify\MonorepoBuilder\Merge\Contract\ComposerJsonDecoratorInterface;
-final class FilterOutDuplicatedRequireAndRequireDevJsonDecorator implements \Symplify\MonorepoBuilder\Merge\Contract\ComposerJsonDecoratorInterface
+final class FilterOutDuplicatedRequireAndRequireDevJsonDecorator implements ComposerJsonDecoratorInterface
 {
-    public function decorate(\MonorepoBuilder20220607\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJson) : void
+    public function decorate(ComposerJson $composerJson) : void
     {
         if ($composerJson->getRequire() === []) {
             return;

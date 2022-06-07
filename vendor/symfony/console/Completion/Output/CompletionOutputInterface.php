@@ -19,5 +19,5 @@ use MonorepoBuilder20220607\Symfony\Component\Console\Output\OutputInterface;
  */
 interface CompletionOutputInterface
 {
-    public function write(\MonorepoBuilder20220607\Symfony\Component\Console\Completion\CompletionSuggestions $suggestions, \MonorepoBuilder20220607\Symfony\Component\Console\Output\OutputInterface $output) : void;
+    public function write(CompletionSuggestions $suggestions, OutputInterface $output) : void;
 }

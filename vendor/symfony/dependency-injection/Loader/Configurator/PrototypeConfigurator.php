@@ -15,7 +15,7 @@ use MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Loader\PhpFile
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class PrototypeConfigurator extends \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Loader\Configurator\AbstractServiceConfigurator
+class PrototypeConfigurator extends AbstractServiceConfigurator
 {
     use Traits\AbstractTrait;
     use Traits\ArgumentTrait;
@@ -46,9 +46,9 @@ class PrototypeConfigurator extends \MonorepoBuilder20220607\Symfony\Component\D
      * @var bool
      */
     private $allowParent;
-    public function __construct(\MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Loader\Configurator\ServicesConfigurator $parent, \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Loader\PhpFileLoader $loader, \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Definition $defaults, string $namespace, string $resource, bool $allowParent)
+    public function __construct(ServicesConfigurator $parent, PhpFileLoader $loader, Definition $defaults, string $namespace, string $resource, bool $allowParent)
     {
-        $definition = new \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Definition();
+        $definition = new Definition();
         if (!$defaults->isPublic() || !$defaults->isPrivate()) {
             $definition->setPublic($defaults->isPublic());
         }

@@ -18,13 +18,13 @@ use MonorepoBuilder20220607\Symfony\Component\Console\Output\OutputInterface;
  *
  * @author Francesco Levorato <git@flevour.net>
  */
-final class ConsoleTerminateEvent extends \MonorepoBuilder20220607\Symfony\Component\Console\Event\ConsoleEvent
+final class ConsoleTerminateEvent extends ConsoleEvent
 {
     /**
      * @var int
      */
     private $exitCode;
-    public function __construct(\MonorepoBuilder20220607\Symfony\Component\Console\Command\Command $command, \MonorepoBuilder20220607\Symfony\Component\Console\Input\InputInterface $input, \MonorepoBuilder20220607\Symfony\Component\Console\Output\OutputInterface $output, int $exitCode)
+    public function __construct(Command $command, InputInterface $input, OutputInterface $output, int $exitCode)
     {
         parent::__construct($command, $input, $output);
         $this->setExitCode($exitCode);

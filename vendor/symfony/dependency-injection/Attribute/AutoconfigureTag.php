@@ -16,7 +16,7 @@ namespace MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Attribut
  * @author Nicolas Grekas <p@tchwork.com>
  */
 #[\Attribute(\Attribute::TARGET_CLASS | \Attribute::IS_REPEATABLE)]
-class AutoconfigureTag extends \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Attribute\Autoconfigure
+class AutoconfigureTag extends Autoconfigure
 {
     public function __construct(string $name = null, array $attributes = [])
     {

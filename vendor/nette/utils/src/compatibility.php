@@ -10,19 +10,19 @@ namespace MonorepoBuilder20220607\Nette\Utils;
 use MonorepoBuilder20220607\Nette;
 if (\false) {
     /** @deprecated use Nette\HtmlStringable */
-    interface IHtmlString extends \MonorepoBuilder20220607\Nette\HtmlStringable
+    interface IHtmlString extends Nette\HtmlStringable
     {
     }
-} elseif (!\interface_exists(\MonorepoBuilder20220607\Nette\Utils\IHtmlString::class)) {
-    \class_alias(\MonorepoBuilder20220607\Nette\HtmlStringable::class, \MonorepoBuilder20220607\Nette\Utils\IHtmlString::class);
+} elseif (!\interface_exists(IHtmlString::class)) {
+    \class_alias(Nette\HtmlStringable::class, IHtmlString::class);
 }
 namespace MonorepoBuilder20220607\Nette\Localization;
 
 if (\false) {
     /** @deprecated use Nette\Localization\Translator */
-    interface ITranslator extends \MonorepoBuilder20220607\Nette\Localization\Translator
+    interface ITranslator extends Translator
     {
     }
-} elseif (!\interface_exists(\MonorepoBuilder20220607\Nette\Localization\ITranslator::class)) {
-    \class_alias(\MonorepoBuilder20220607\Nette\Localization\Translator::class, \MonorepoBuilder20220607\Nette\Localization\ITranslator::class);
+} elseif (!\interface_exists(ITranslator::class)) {
+    \class_alias(Translator::class, ITranslator::class);
 }

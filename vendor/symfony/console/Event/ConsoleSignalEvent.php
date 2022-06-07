@@ -16,13 +16,13 @@ use MonorepoBuilder20220607\Symfony\Component\Console\Output\OutputInterface;
 /**
  * @author marie <marie@users.noreply.github.com>
  */
-final class ConsoleSignalEvent extends \MonorepoBuilder20220607\Symfony\Component\Console\Event\ConsoleEvent
+final class ConsoleSignalEvent extends ConsoleEvent
 {
     /**
      * @var int
      */
     private $handlingSignal;
-    public function __construct(\MonorepoBuilder20220607\Symfony\Component\Console\Command\Command $command, \MonorepoBuilder20220607\Symfony\Component\Console\Input\InputInterface $input, \MonorepoBuilder20220607\Symfony\Component\Console\Output\OutputInterface $output, int $handlingSignal)
+    public function __construct(Command $command, InputInterface $input, OutputInterface $output, int $handlingSignal)
     {
         parent::__construct($command, $input, $output);
         $this->handlingSignal = $handlingSignal;

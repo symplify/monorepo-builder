@@ -16,7 +16,7 @@ use MonorepoBuilder20220607\Symfony\Component\DependencyInjection\ServiceLocator
  *
  * @internal
  */
-class ServiceLocator extends \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\ServiceLocator
+class ServiceLocator extends BaseServiceLocator
 {
     /**
      * @var \Closure

@@ -19,7 +19,7 @@ final class VersionValidator
     /**
      * @var string[]
      */
-    private const SECTIONS = [\MonorepoBuilder20220607\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE, \MonorepoBuilder20220607\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE_DEV];
+    private const SECTIONS = [ComposerJsonSection::REQUIRE, ComposerJsonSection::REQUIRE_DEV];
     /**
      * @var \Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager
      */
@@ -32,7 +32,7 @@ final class VersionValidator
      * @var \Symplify\PackageBuilder\Parameter\ParameterProvider
      */
     private $parameterProvider;
-    public function __construct(\MonorepoBuilder20220607\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager $jsonFileManager, \Symplify\MonorepoBuilder\Merge\Configuration\ModifyingComposerJsonProvider $modifyingComposerJsonProvider, \MonorepoBuilder20220607\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider)
+    public function __construct(JsonFileManager $jsonFileManager, ModifyingComposerJsonProvider $modifyingComposerJsonProvider, ParameterProvider $parameterProvider)
     {
         $this->jsonFileManager = $jsonFileManager;
         $this->modifyingComposerJsonProvider = $modifyingComposerJsonProvider;
@@ -67,16 +67,16 @@ final class VersionValidator
     private function appendAppendingComposerJson(array $packageVersionsPerFile) : array
     {
         $appendingComposerJson = $this->modifyingComposerJsonProvider->getAppendingComposerJson();
-        if (!$appendingComposerJson instanceof \MonorepoBuilder20220607\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson) {
+        if (!$appendingComposerJson instanceof ComposerJson) {
             return $packageVersionsPerFile;
         }
         $requires = $appendingComposerJson->getRequire();
         foreach ($requires as $packageName => $packageVersion) {
-            $packageVersionsPerFile[$packageName][\Symplify\MonorepoBuilder\ValueObject\File::CONFIG] = $packageVersion;
+            $packageVersionsPerFile[$packageName][File::CONFIG] = $packageVersion;
         }
         $requiredevs = $appendingComposerJson->getRequireDev();
         foreach ($requiredevs as $packageName => $packageVersion) {
-            $packageVersionsPerFile[$packageName][\Symplify\MonorepoBuilder\ValueObject\File::CONFIG] = $packageVersion;
+            $packageVersionsPerFile[$packageName][File::CONFIG] = $packageVersion;
         }
         return $packageVersionsPerFile;
     }
@@ -103,7 +103,7 @@ final class VersionValidator
     }
     private function isPackageAllowedVersionConflict(string $packageName) : bool
     {
-        $excludePackageVersionConflicts = $this->parameterProvider->provideArrayParameter(\Symplify\MonorepoBuilder\ValueObject\Option::EXCLUDE_PACKAGE_VERSION_CONFLICTS);
+        $excludePackageVersionConflicts = $this->parameterProvider->provideArrayParameter(Option::EXCLUDE_PACKAGE_VERSION_CONFLICTS);
         return \in_array($packageName, $excludePackageVersionConflicts, \true);
     }
 }

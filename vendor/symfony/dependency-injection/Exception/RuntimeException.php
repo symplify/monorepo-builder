@@ -15,6 +15,6 @@ namespace MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Exceptio
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class RuntimeException extends \RuntimeException implements \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Exception\ExceptionInterface
+class RuntimeException extends \RuntimeException implements ExceptionInterface
 {
 }

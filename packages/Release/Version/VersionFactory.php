@@ -17,47 +17,47 @@ final class VersionFactory
      * @var \Symplify\MonorepoBuilder\Contract\Git\TagResolverInterface
      */
     private $tagResolver;
-    public function __construct(\Symplify\MonorepoBuilder\Release\Guard\ReleaseGuard $releaseGuard, \Symplify\MonorepoBuilder\Contract\Git\TagResolverInterface $tagResolver)
+    public function __construct(ReleaseGuard $releaseGuard, TagResolverInterface $tagResolver)
     {
         $this->releaseGuard = $releaseGuard;
         $this->tagResolver = $tagResolver;
     }
-    public function createValidVersion(string $versionArgument, string $stage) : \PharIo\Version\Version
+    public function createValidVersion(string $versionArgument, string $stage) : Version
     {
         // normalize to workaround phar-io bug
         $versionArgument = \strtolower($versionArgument);
-        if (\in_array($versionArgument, \Symplify\MonorepoBuilder\Release\ValueObject\SemVersion::ALL, \true)) {
+        if (\in_array($versionArgument, SemVersion::ALL, \true)) {
             return $this->resolveNextVersionByVersionKind($versionArgument);
         }
         // this object performs validation of version
-        $version = new \PharIo\Version\Version($versionArgument);
+        $version = new Version($versionArgument);
         $this->releaseGuard->guardVersion($version, $stage);
         return $version;
     }
-    private function resolveNextVersionByVersionKind(string $versionKind) : \PharIo\Version\Version
+    private function resolveNextVersionByVersionKind(string $versionKind) : Version
     {
         // get current version
         $mostRecentVersion = $this->tagResolver->resolve(\getcwd());
         if ($mostRecentVersion === null) {
             // the very first tag
-            return new \PharIo\Version\Version('v0.1.0');
+            return new Version('v0.1.0');
         }
-        $mostRecentVersion = new \PharIo\Version\Version($mostRecentVersion);
+        $mostRecentVersion = new Version($mostRecentVersion);
         $value = $mostRecentVersion->getMajor()->getValue();
         $currentMinorVersion = $mostRecentVersion->getMinor()->getValue();
         $currentPatchVersion = $mostRecentVersion->getPatch()->getValue();
-        if ($versionKind === \Symplify\MonorepoBuilder\Release\ValueObject\SemVersion::MAJOR) {
+        if ($versionKind === SemVersion::MAJOR) {
             ++$value;
             $currentMinorVersion = 0;
             $currentPatchVersion = 0;
         }
-        if ($versionKind === \Symplify\MonorepoBuilder\Release\ValueObject\SemVersion::MINOR) {
+        if ($versionKind === SemVersion::MINOR) {
             ++$currentMinorVersion;
             $currentPatchVersion = 0;
         }
-        if ($versionKind === \Symplify\MonorepoBuilder\Release\ValueObject\SemVersion::PATCH) {
+        if ($versionKind === SemVersion::PATCH) {
             ++$currentPatchVersion;
         }
-        return new \PharIo\Version\Version(\sprintf('%d.%d.%d', $value, $currentMinorVersion, $currentPatchVersion));
+        return new Version(\sprintf('%d.%d.%d', $value, $currentMinorVersion, $currentPatchVersion));
     }
 }

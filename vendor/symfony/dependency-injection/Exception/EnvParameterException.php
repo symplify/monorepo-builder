@@ -15,7 +15,7 @@ namespace MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Exceptio
  *
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class EnvParameterException extends \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException
+class EnvParameterException extends InvalidArgumentException
 {
     public function __construct(array $envs, \Throwable $previous = null, string $message = 'Incompatible use of dynamic environment variables "%s" found in parameters.')
     {

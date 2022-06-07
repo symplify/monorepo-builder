@@ -19,7 +19,7 @@ use MonorepoBuilder20220607\Symfony\Contracts\Service\ServiceProviderInterface;
  *
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class ResolveServiceSubscribersPass extends \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Compiler\AbstractRecursivePass
+class ResolveServiceSubscribersPass extends AbstractRecursivePass
 {
     /**
      * @var string|null
@@ -31,10 +31,10 @@ class ResolveServiceSubscribersPass extends \MonorepoBuilder20220607\Symfony\Com
      */
     protected function processValue($value, bool $isRoot = \false)
     {
-        if ($value instanceof \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Reference && $this->serviceLocator && \in_array((string) $value, [\MonorepoBuilder20220607\Psr\Container\ContainerInterface::class, \MonorepoBuilder20220607\Symfony\Contracts\Service\ServiceProviderInterface::class], \true)) {
-            return new \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Reference($this->serviceLocator);
+        if ($value instanceof Reference && $this->serviceLocator && \in_array((string) $value, [ContainerInterface::class, ServiceProviderInterface::class], \true)) {
+            return new Reference($this->serviceLocator);
         }
-        if (!$value instanceof \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Definition) {
+        if (!$value instanceof Definition) {
             return parent::processValue($value, $isRoot);
         }
         $serviceLocator = $this->serviceLocator;

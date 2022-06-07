@@ -4,7 +4,7 @@ declare (strict_types=1);
 namespace MonorepoBuilder20220607;
 
 use MonorepoBuilder20220607\Symfony\Component\Console\Style\SymfonyStyle;
-use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use MonorepoBuilder20220607\Symplify\PackageBuilder\Console\Style\SymfonyStyleFactory;
 use MonorepoBuilder20220607\Symplify\PackageBuilder\Parameter\ParameterProvider;
 use MonorepoBuilder20220607\Symplify\PackageBuilder\Reflection\PrivatesAccessor;
@@ -14,18 +14,18 @@ use MonorepoBuilder20220607\Symplify\SmartFileSystem\Finder\FinderSanitizer;
 use MonorepoBuilder20220607\Symplify\SmartFileSystem\Finder\SmartFinder;
 use MonorepoBuilder20220607\Symplify\SmartFileSystem\SmartFileSystem;
 use function MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Loader\Configurator\service;
-return static function (\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator $containerConfigurator) : void {
+return static function (ContainerConfigurator $containerConfigurator) : void {
     $services = $containerConfigurator->services();
     $services->defaults()->public()->autowire();
     // symfony style
-    $services->set(\MonorepoBuilder20220607\Symplify\PackageBuilder\Console\Style\SymfonyStyleFactory::class);
-    $services->set(\MonorepoBuilder20220607\Symfony\Component\Console\Style\SymfonyStyle::class)->factory([\MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Loader\Configurator\service(\MonorepoBuilder20220607\Symplify\PackageBuilder\Console\Style\SymfonyStyleFactory::class), 'create']);
+    $services->set(SymfonyStyleFactory::class);
+    $services->set(SymfonyStyle::class)->factory([service(SymfonyStyleFactory::class), 'create']);
     // filesystem
-    $services->set(\MonorepoBuilder20220607\Symplify\SmartFileSystem\Finder\FinderSanitizer::class);
-    $services->set(\MonorepoBuilder20220607\Symplify\SmartFileSystem\SmartFileSystem::class);
-    $services->set(\MonorepoBuilder20220607\Symplify\SmartFileSystem\Finder\SmartFinder::class);
-    $services->set(\MonorepoBuilder20220607\Symplify\SmartFileSystem\FileSystemGuard::class);
-    $services->set(\MonorepoBuilder20220607\Symplify\SmartFileSystem\FileSystemFilter::class);
-    $services->set(\MonorepoBuilder20220607\Symplify\PackageBuilder\Parameter\ParameterProvider::class)->args([\MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Loader\Configurator\service('service_container')]);
-    $services->set(\MonorepoBuilder20220607\Symplify\PackageBuilder\Reflection\PrivatesAccessor::class);
+    $services->set(FinderSanitizer::class);
+    $services->set(SmartFileSystem::class);
+    $services->set(SmartFinder::class);
+    $services->set(FileSystemGuard::class);
+    $services->set(FileSystemFilter::class);
+    $services->set(ParameterProvider::class)->args([service('service_container')]);
+    $services->set(PrivatesAccessor::class);
 };

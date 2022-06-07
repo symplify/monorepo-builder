@@ -16,7 +16,7 @@ use MonorepoBuilder20220607\Psr\Container\NotFoundExceptionInterface;
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class ParameterNotFoundException extends \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException implements \MonorepoBuilder20220607\Psr\Container\NotFoundExceptionInterface
+class ParameterNotFoundException extends InvalidArgumentException implements NotFoundExceptionInterface
 {
     /**
      * @var string

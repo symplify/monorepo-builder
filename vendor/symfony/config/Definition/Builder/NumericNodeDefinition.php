@@ -16,7 +16,7 @@ use MonorepoBuilder20220607\Symfony\Component\Config\Definition\Exception\Invali
  *
  * @author David Jeanmonod <david.jeanmonod@gmail.com>
  */
-abstract class NumericNodeDefinition extends \MonorepoBuilder20220607\Symfony\Component\Config\Definition\Builder\ScalarNodeDefinition
+abstract class NumericNodeDefinition extends ScalarNodeDefinition
 {
     protected $min;
     protected $max;
@@ -60,6 +60,6 @@ abstract class NumericNodeDefinition extends \MonorepoBuilder20220607\Symfony\Co
      */
     public function cannotBeEmpty()
     {
-        throw new \MonorepoBuilder20220607\Symfony\Component\Config\Definition\Exception\InvalidDefinitionException('->cannotBeEmpty() is not applicable to NumericNodeDefinition.');
+        throw new InvalidDefinitionException('->cannotBeEmpty() is not applicable to NumericNodeDefinition.');
     }
 }

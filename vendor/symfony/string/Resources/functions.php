@@ -10,25 +10,25 @@
  */
 namespace MonorepoBuilder20220607\Symfony\Component\String;
 
-if (!\function_exists(\MonorepoBuilder20220607\Symfony\Component\String\u::class)) {
-    function u(?string $string = '') : \MonorepoBuilder20220607\Symfony\Component\String\UnicodeString
+if (!\function_exists(u::class)) {
+    function u(?string $string = '') : UnicodeString
     {
-        return new \MonorepoBuilder20220607\Symfony\Component\String\UnicodeString($string ?? '');
+        return new UnicodeString($string ?? '');
     }
 }
-if (!\function_exists(\MonorepoBuilder20220607\Symfony\Component\String\b::class)) {
-    function b(?string $string = '') : \MonorepoBuilder20220607\Symfony\Component\String\ByteString
+if (!\function_exists(b::class)) {
+    function b(?string $string = '') : ByteString
     {
-        return new \MonorepoBuilder20220607\Symfony\Component\String\ByteString($string ?? '');
+        return new ByteString($string ?? '');
     }
 }
-if (!\function_exists(\MonorepoBuilder20220607\Symfony\Component\String\s::class)) {
+if (!\function_exists(s::class)) {
     /**
      * @return UnicodeString|ByteString
      */
-    function s(?string $string = '') : \MonorepoBuilder20220607\Symfony\Component\String\AbstractString
+    function s(?string $string = '') : AbstractString
     {
         $string = $string ?? '';
-        return \preg_match('//u', $string) ? new \MonorepoBuilder20220607\Symfony\Component\String\UnicodeString($string) : new \MonorepoBuilder20220607\Symfony\Component\String\ByteString($string);
+        return \preg_match('//u', $string) ? new UnicodeString($string) : new ByteString($string);
     }
 }

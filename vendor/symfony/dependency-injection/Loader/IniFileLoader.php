@@ -17,7 +17,7 @@ use MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Exception\Inva
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class IniFileLoader extends \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Loader\FileLoader
+class IniFileLoader extends FileLoader
 {
     /**
      * {@inheritdoc}
@@ -31,7 +31,7 @@ class IniFileLoader extends \MonorepoBuilder20220607\Symfony\Component\Dependenc
         // first pass to catch parsing errors
         $result = \parse_ini_file($path, \true);
         if (\false === $result || [] === $result) {
-            throw new \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('The "%s" file is not valid.', $resource));
+            throw new InvalidArgumentException(\sprintf('The "%s" file is not valid.', $resource));
         }
         // real raw parsing
         $result = \parse_ini_file($path, \true, \INI_SCANNER_RAW);
@@ -85,7 +85,7 @@ class IniFileLoader extends \MonorepoBuilder20220607\Symfony\Component\Dependenc
                 // quoted string
                 return \substr($value, 1, -1);
             default:
-                return \MonorepoBuilder20220607\Symfony\Component\Config\Util\XmlUtils::phpize($value);
+                return XmlUtils::phpize($value);
         }
     }
 }

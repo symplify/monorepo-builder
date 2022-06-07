@@ -11,7 +11,7 @@ use Symplify\MonorepoBuilder\Validator\SourcesPresenceValidator;
 use Symplify\MonorepoBuilder\VersionValidator;
 use MonorepoBuilder20220607\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
 use MonorepoBuilder20220607\Symplify\PackageBuilder\Console\Command\CommandNaming;
-final class ValidateCommand extends \MonorepoBuilder20220607\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand
+final class ValidateCommand extends AbstractSymplifyCommand
 {
     /**
      * @var \Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider
@@ -29,7 +29,7 @@ final class ValidateCommand extends \MonorepoBuilder20220607\Symplify\PackageBui
      * @var \Symplify\MonorepoBuilder\Validator\SourcesPresenceValidator
      */
     private $sourcesPresenceValidator;
-    public function __construct(\Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider $composerJsonProvider, \Symplify\MonorepoBuilder\VersionValidator $versionValidator, \Symplify\MonorepoBuilder\Validator\ConflictingPackageVersionsReporter $conflictingPackageVersionsReporter, \Symplify\MonorepoBuilder\Validator\SourcesPresenceValidator $sourcesPresenceValidator)
+    public function __construct(ComposerJsonProvider $composerJsonProvider, VersionValidator $versionValidator, ConflictingPackageVersionsReporter $conflictingPackageVersionsReporter, SourcesPresenceValidator $sourcesPresenceValidator)
     {
         $this->composerJsonProvider = $composerJsonProvider;
         $this->versionValidator = $versionValidator;
@@ -39,10 +39,10 @@ final class ValidateCommand extends \MonorepoBuilder20220607\Symplify\PackageBui
     }
     protected function configure() : void
     {
-        $this->setName(\MonorepoBuilder20220607\Symplify\PackageBuilder\Console\Command\CommandNaming::classToName(self::class));
+        $this->setName(CommandNaming::classToName(self::class));
         $this->setDescription('Validates synchronized versions in "composer.json" in all found packages.');
     }
-    protected function execute(\MonorepoBuilder20220607\Symfony\Component\Console\Input\InputInterface $input, \MonorepoBuilder20220607\Symfony\Component\Console\Output\OutputInterface $output) : int
+    protected function execute(InputInterface $input, OutputInterface $output) : int
     {
         $this->sourcesPresenceValidator->validatePackageComposerJsons();
         $conflictingPackageVersions = $this->versionValidator->findConflictingPackageVersionsInFileInfos($this->composerJsonProvider->getRootAndPackageFileInfos());

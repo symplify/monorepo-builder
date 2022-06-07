@@ -6,17 +6,17 @@ namespace Symplify\MonorepoBuilder\Merge\ComposerKeyMerger;
 use MonorepoBuilder20220607\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
 use Symplify\MonorepoBuilder\Merge\Arrays\SortedParameterMerger;
 use Symplify\MonorepoBuilder\Merge\Contract\ComposerKeyMergerInterface;
-final class ProvideComposerKeyMerger implements \Symplify\MonorepoBuilder\Merge\Contract\ComposerKeyMergerInterface
+final class ProvideComposerKeyMerger implements ComposerKeyMergerInterface
 {
     /**
      * @var \Symplify\MonorepoBuilder\Merge\Arrays\SortedParameterMerger
      */
     private $sortedParameterMerger;
-    public function __construct(\Symplify\MonorepoBuilder\Merge\Arrays\SortedParameterMerger $sortedParameterMerger)
+    public function __construct(SortedParameterMerger $sortedParameterMerger)
     {
         $this->sortedParameterMerger = $sortedParameterMerger;
     }
-    public function merge(\MonorepoBuilder20220607\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $mainComposerJson, \MonorepoBuilder20220607\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $newComposerJson) : void
+    public function merge(ComposerJson $mainComposerJson, ComposerJson $newComposerJson) : void
     {
         if ($newComposerJson->getProvide() === []) {
             return;

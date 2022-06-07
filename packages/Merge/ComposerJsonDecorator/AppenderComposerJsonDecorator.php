@@ -10,7 +10,7 @@ use Symplify\MonorepoBuilder\Merge\Contract\ComposerJsonDecoratorInterface;
 /**
  * @see \Symplify\MonorepoBuilder\Tests\Merge\ComposerJsonDecorator\AppenderComposerJsonDecorator\AppenderComposerJsonDecoratorTest
  */
-final class AppenderComposerJsonDecorator implements \Symplify\MonorepoBuilder\Merge\Contract\ComposerJsonDecoratorInterface
+final class AppenderComposerJsonDecorator implements ComposerJsonDecoratorInterface
 {
     /**
      * @var \Symplify\MonorepoBuilder\Merge\ComposerJsonMerger
@@ -20,15 +20,15 @@ final class AppenderComposerJsonDecorator implements \Symplify\MonorepoBuilder\M
      * @var \Symplify\MonorepoBuilder\Merge\Configuration\ModifyingComposerJsonProvider
      */
     private $modifyingComposerJsonProvider;
-    public function __construct(\Symplify\MonorepoBuilder\Merge\ComposerJsonMerger $composerJsonMerger, \Symplify\MonorepoBuilder\Merge\Configuration\ModifyingComposerJsonProvider $modifyingComposerJsonProvider)
+    public function __construct(ComposerJsonMerger $composerJsonMerger, ModifyingComposerJsonProvider $modifyingComposerJsonProvider)
     {
         $this->composerJsonMerger = $composerJsonMerger;
         $this->modifyingComposerJsonProvider = $modifyingComposerJsonProvider;
     }
-    public function decorate(\MonorepoBuilder20220607\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJson) : void
+    public function decorate(ComposerJson $composerJson) : void
     {
         $appendingComposerJson = $this->modifyingComposerJsonProvider->getAppendingComposerJson();
-        if (!$appendingComposerJson instanceof \MonorepoBuilder20220607\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson) {
+        if (!$appendingComposerJson instanceof ComposerJson) {
             return;
         }
         $this->composerJsonMerger->mergeJsonToRoot($composerJson, $appendingComposerJson);

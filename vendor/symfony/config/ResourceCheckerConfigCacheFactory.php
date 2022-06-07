@@ -16,7 +16,7 @@ namespace MonorepoBuilder20220607\Symfony\Component\Config;
  *
  * @author Matthias Pigulla <mp@webfactory.de>
  */
-class ResourceCheckerConfigCacheFactory implements \MonorepoBuilder20220607\Symfony\Component\Config\ConfigCacheFactoryInterface
+class ResourceCheckerConfigCacheFactory implements ConfigCacheFactoryInterface
 {
     /**
      * @var mixed[]
@@ -32,9 +32,9 @@ class ResourceCheckerConfigCacheFactory implements \MonorepoBuilder20220607\Symf
     /**
      * {@inheritdoc}
      */
-    public function cache(string $file, callable $callable) : \MonorepoBuilder20220607\Symfony\Component\Config\ConfigCacheInterface
+    public function cache(string $file, callable $callable) : ConfigCacheInterface
     {
-        $cache = new \MonorepoBuilder20220607\Symfony\Component\Config\ResourceCheckerConfigCache($file, $this->resourceCheckers);
+        $cache = new ResourceCheckerConfigCache($file, $this->resourceCheckers);
         if (!$cache->isFresh()) {
             $callable($cache);
         }

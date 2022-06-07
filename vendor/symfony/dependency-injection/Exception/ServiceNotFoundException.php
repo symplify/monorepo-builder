@@ -16,7 +16,7 @@ use MonorepoBuilder20220607\Psr\Container\NotFoundExceptionInterface;
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class ServiceNotFoundException extends \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException implements \MonorepoBuilder20220607\Psr\Container\NotFoundExceptionInterface
+class ServiceNotFoundException extends InvalidArgumentException implements NotFoundExceptionInterface
 {
     /**
      * @var string

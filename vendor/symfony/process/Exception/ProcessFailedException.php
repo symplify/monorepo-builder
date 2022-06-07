@@ -16,13 +16,13 @@ use MonorepoBuilder20220607\Symfony\Component\Process\Process;
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class ProcessFailedException extends \MonorepoBuilder20220607\Symfony\Component\Process\Exception\RuntimeException
+class ProcessFailedException extends RuntimeException
 {
     private $process;
-    public function __construct(\MonorepoBuilder20220607\Symfony\Component\Process\Process $process)
+    public function __construct(Process $process)
     {
         if ($process->isSuccessful()) {
-            throw new \MonorepoBuilder20220607\Symfony\Component\Process\Exception\InvalidArgumentException('Expected a failed process, but the given process was successful.');
+            throw new InvalidArgumentException('Expected a failed process, but the given process was successful.');
         }
         $error = \sprintf('The command "%s" failed.' . "\n\nExit Code: %s(%s)\n\nWorking directory: %s", $process->getCommandLine(), $process->getExitCode(), $process->getExitCodeText(), $process->getWorkingDirectory());
         if (!$process->isOutputDisabled()) {

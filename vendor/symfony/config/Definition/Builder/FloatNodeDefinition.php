@@ -16,13 +16,13 @@ use MonorepoBuilder20220607\Symfony\Component\Config\Definition\FloatNode;
  *
  * @author Jeanmonod David <david.jeanmonod@gmail.com>
  */
-class FloatNodeDefinition extends \MonorepoBuilder20220607\Symfony\Component\Config\Definition\Builder\NumericNodeDefinition
+class FloatNodeDefinition extends NumericNodeDefinition
 {
     /**
      * Instantiates a Node.
      */
     protected function instantiateNode() : \MonorepoBuilder20220607\Symfony\Component\Config\Definition\ScalarNode
     {
-        return new \MonorepoBuilder20220607\Symfony\Component\Config\Definition\FloatNode($this->name, $this->parent, $this->min, $this->max, $this->pathSeparator);
+        return new FloatNode($this->name, $this->parent, $this->min, $this->max, $this->pathSeparator);
     }
 }

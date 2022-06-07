@@ -13,15 +13,15 @@ final class StageResolver
      * @var \Symplify\MonorepoBuilder\Release\Guard\ReleaseGuard
      */
     private $releaseGuard;
-    public function __construct(\Symplify\MonorepoBuilder\Release\Guard\ReleaseGuard $releaseGuard)
+    public function __construct(ReleaseGuard $releaseGuard)
     {
         $this->releaseGuard = $releaseGuard;
     }
-    public function resolveFromInput(\MonorepoBuilder20220607\Symfony\Component\Console\Input\InputInterface $input) : string
+    public function resolveFromInput(InputInterface $input) : string
     {
-        $stage = (string) $input->getOption(\Symplify\MonorepoBuilder\ValueObject\Option::STAGE);
+        $stage = (string) $input->getOption(Option::STAGE);
         // empty
-        if ($stage === \Symplify\MonorepoBuilder\Release\ValueObject\Stage::MAIN) {
+        if ($stage === Stage::MAIN) {
             $this->releaseGuard->guardRequiredStageOnEmptyStage();
         } else {
             $this->releaseGuard->guardStage($stage);

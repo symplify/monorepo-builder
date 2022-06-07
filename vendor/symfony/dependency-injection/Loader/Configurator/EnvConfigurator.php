@@ -11,7 +11,7 @@
 namespace MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Loader\Configurator;
 
 use MonorepoBuilder20220607\Symfony\Component\Config\Loader\ParamConfigurator;
-class EnvConfigurator extends \MonorepoBuilder20220607\Symfony\Component\Config\Loader\ParamConfigurator
+class EnvConfigurator extends ParamConfigurator
 {
     /**
      * @var string[]

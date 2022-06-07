@@ -20,7 +20,7 @@ final class PackageNamesProvider
      * @var \Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager
      */
     private $jsonFileManager;
-    public function __construct(\Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider $composerJsonProvider, \MonorepoBuilder20220607\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager $jsonFileManager)
+    public function __construct(ComposerJsonProvider $composerJsonProvider, JsonFileManager $jsonFileManager)
     {
         $this->composerJsonProvider = $composerJsonProvider;
         $this->jsonFileManager = $jsonFileManager;
@@ -42,7 +42,7 @@ final class PackageNamesProvider
         }
         return $this->names;
     }
-    private function extractNameFromFileInfo(\MonorepoBuilder20220607\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : ?string
+    private function extractNameFromFileInfo(SmartFileInfo $smartFileInfo) : ?string
     {
         $json = $this->jsonFileManager->loadFromFileInfo($smartFileInfo);
         return $json['name'] ?? null;

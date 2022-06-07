@@ -16,7 +16,7 @@ use MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Exception\Logi
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class FrozenParameterBag extends \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\ParameterBag\ParameterBag
+class FrozenParameterBag extends ParameterBag
 {
     /**
      * For performance reasons, the constructor assumes that
@@ -36,14 +36,14 @@ class FrozenParameterBag extends \MonorepoBuilder20220607\Symfony\Component\Depe
      */
     public function clear()
     {
-        throw new \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Exception\LogicException('Impossible to call clear() on a frozen ParameterBag.');
+        throw new LogicException('Impossible to call clear() on a frozen ParameterBag.');
     }
     /**
      * {@inheritdoc}
      */
     public function add(array $parameters)
     {
-        throw new \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Exception\LogicException('Impossible to call add() on a frozen ParameterBag.');
+        throw new LogicException('Impossible to call add() on a frozen ParameterBag.');
     }
     /**
      * {@inheritdoc}
@@ -51,13 +51,13 @@ class FrozenParameterBag extends \MonorepoBuilder20220607\Symfony\Component\Depe
      */
     public function set(string $name, $value)
     {
-        throw new \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Exception\LogicException('Impossible to call set() on a frozen ParameterBag.');
+        throw new LogicException('Impossible to call set() on a frozen ParameterBag.');
     }
     /**
      * {@inheritdoc}
      */
     public function remove(string $name)
     {
-        throw new \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Exception\LogicException('Impossible to call remove() on a frozen ParameterBag.');
+        throw new LogicException('Impossible to call remove() on a frozen ParameterBag.');
     }
 }

@@ -11,13 +11,13 @@ final class ExpectedAliasResolver
      * @var \Symplify\MonorepoBuilder\Utils\VersionUtils
      */
     private $versionUtils;
-    public function __construct(\Symplify\MonorepoBuilder\Utils\VersionUtils $versionUtils)
+    public function __construct(VersionUtils $versionUtils)
     {
         $this->versionUtils = $versionUtils;
     }
     public function resolve() : string
     {
-        $process = new \MonorepoBuilder20220607\Symfony\Component\Process\Process(['git', 'describe', '--abbrev=0', '--tags']);
+        $process = new Process(['git', 'describe', '--abbrev=0', '--tags']);
         $process->run();
         $output = $process->getOutput();
         return $this->versionUtils->getNextAliasFormat($output);

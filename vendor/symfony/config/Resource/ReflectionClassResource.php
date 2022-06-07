@@ -18,7 +18,7 @@ use MonorepoBuilder20220607\Symfony\Contracts\Service\ServiceSubscriberInterface
  *
  * @final
  */
-class ReflectionClassResource implements \MonorepoBuilder20220607\Symfony\Component\Config\Resource\SelfCheckingResourceInterface
+class ReflectionClassResource implements SelfCheckingResourceInterface
 {
     /**
      * @var mixed[]
@@ -207,18 +207,18 @@ class ReflectionClassResource implements \MonorepoBuilder20220607\Symfony\Compon
         if ($class->isAbstract() || $class->isInterface() || $class->isTrait()) {
             return;
         }
-        if (\interface_exists(\MonorepoBuilder20220607\Symfony\Component\EventDispatcher\EventSubscriberInterface::class, \false) && $class->isSubclassOf(\MonorepoBuilder20220607\Symfony\Component\EventDispatcher\EventSubscriberInterface::class)) {
-            (yield \MonorepoBuilder20220607\Symfony\Component\EventDispatcher\EventSubscriberInterface::class);
+        if (\interface_exists(EventSubscriberInterface::class, \false) && $class->isSubclassOf(EventSubscriberInterface::class)) {
+            (yield EventSubscriberInterface::class);
             (yield \print_r($class->name::getSubscribedEvents(), \true));
         }
-        if (\interface_exists(\MonorepoBuilder20220607\Symfony\Component\Messenger\Handler\MessageSubscriberInterface::class, \false) && $class->isSubclassOf(\MonorepoBuilder20220607\Symfony\Component\Messenger\Handler\MessageSubscriberInterface::class)) {
-            (yield \MonorepoBuilder20220607\Symfony\Component\Messenger\Handler\MessageSubscriberInterface::class);
+        if (\interface_exists(MessageSubscriberInterface::class, \false) && $class->isSubclassOf(MessageSubscriberInterface::class)) {
+            (yield MessageSubscriberInterface::class);
             foreach ($class->name::getHandledMessages() as $key => $value) {
                 (yield $key . \print_r($value, \true));
             }
         }
-        if (\interface_exists(\MonorepoBuilder20220607\Symfony\Contracts\Service\ServiceSubscriberInterface::class, \false) && $class->isSubclassOf(\MonorepoBuilder20220607\Symfony\Contracts\Service\ServiceSubscriberInterface::class)) {
-            (yield \MonorepoBuilder20220607\Symfony\Contracts\Service\ServiceSubscriberInterface::class);
+        if (\interface_exists(ServiceSubscriberInterface::class, \false) && $class->isSubclassOf(ServiceSubscriberInterface::class)) {
+            (yield ServiceSubscriberInterface::class);
             (yield \print_r($class->name::getSubscribedServices(), \true));
         }
     }

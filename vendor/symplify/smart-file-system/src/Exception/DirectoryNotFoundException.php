@@ -4,6 +4,6 @@ declare (strict_types=1);
 namespace MonorepoBuilder20220607\Symplify\SmartFileSystem\Exception;
 
 use Exception;
-final class DirectoryNotFoundException extends \Exception
+final class DirectoryNotFoundException extends Exception
 {
 }

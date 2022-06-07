@@ -34,12 +34,12 @@ final class ReleaseWorkerProvider
      */
     public function provideByStage(string $stage) : array
     {
-        if ($stage === \Symplify\MonorepoBuilder\Release\ValueObject\Stage::MAIN) {
+        if ($stage === Stage::MAIN) {
             return $this->releaseWorkers;
         }
         $activeReleaseWorkers = [];
         foreach ($this->releaseWorkers as $releaseWorker) {
-            if (!$releaseWorker instanceof \Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\StageAwareInterface) {
+            if (!$releaseWorker instanceof StageAwareInterface) {
                 continue;
             }
             if ($stage !== $releaseWorker->getStage()) {

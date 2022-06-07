@@ -17,19 +17,19 @@ use MonorepoBuilder20220607\Symfony\Component\Config\Definition\VariableNode;
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class VariableNodeDefinition extends \MonorepoBuilder20220607\Symfony\Component\Config\Definition\Builder\NodeDefinition
+class VariableNodeDefinition extends NodeDefinition
 {
     /**
      * Instantiate a Node.
      */
-    protected function instantiateNode() : \MonorepoBuilder20220607\Symfony\Component\Config\Definition\VariableNode
+    protected function instantiateNode() : VariableNode
     {
-        return new \MonorepoBuilder20220607\Symfony\Component\Config\Definition\VariableNode($this->name, $this->parent, $this->pathSeparator);
+        return new VariableNode($this->name, $this->parent, $this->pathSeparator);
     }
     /**
      * {@inheritdoc}
      */
-    protected function createNode() : \MonorepoBuilder20220607\Symfony\Component\Config\Definition\NodeInterface
+    protected function createNode() : NodeInterface
     {
         $node = $this->instantiateNode();
         if (null !== $this->normalization) {

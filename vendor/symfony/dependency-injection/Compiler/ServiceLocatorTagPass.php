@@ -24,7 +24,7 @@ use MonorepoBuilder20220607\Symfony\Component\DependencyInjection\ServiceLocator
  *
  * @author Nicolas Grekas <p@tchwork.com>
  */
-final class ServiceLocatorTagPass extends \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Compiler\AbstractRecursivePass
+final class ServiceLocatorTagPass extends AbstractRecursivePass
 {
     use PriorityTaggedServiceTrait;
     /**
@@ -33,32 +33,32 @@ final class ServiceLocatorTagPass extends \MonorepoBuilder20220607\Symfony\Compo
      */
     protected function processValue($value, bool $isRoot = \false)
     {
-        if ($value instanceof \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument) {
+        if ($value instanceof ServiceLocatorArgument) {
             if ($value->getTaggedIteratorArgument()) {
                 $value->setValues($this->findAndSortTaggedServices($value->getTaggedIteratorArgument(), $this->container));
             }
             return self::register($this->container, $value->getValues());
         }
-        if (!$value instanceof \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Definition || !$value->hasTag('container.service_locator')) {
+        if (!$value instanceof Definition || !$value->hasTag('container.service_locator')) {
             return parent::processValue($value, $isRoot);
         }
         if (!$value->getClass()) {
-            $value->setClass(\MonorepoBuilder20220607\Symfony\Component\DependencyInjection\ServiceLocator::class);
+            $value->setClass(ServiceLocator::class);
         }
         $services = $value->getArguments()[0] ?? null;
-        if ($services instanceof \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument) {
+        if ($services instanceof TaggedIteratorArgument) {
             $services = $this->findAndSortTaggedServices($services, $this->container);
         }
         if (!\is_array($services)) {
-            throw new \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Invalid definition for service "%s": an array of references is expected as first argument when the "container.service_locator" tag is set.', $this->currentId));
+            throw new InvalidArgumentException(\sprintf('Invalid definition for service "%s": an array of references is expected as first argument when the "container.service_locator" tag is set.', $this->currentId));
         }
         $i = 0;
         foreach ($services as $k => $v) {
-            if ($v instanceof \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument) {
+            if ($v instanceof ServiceClosureArgument) {
                 continue;
             }
-            if (!$v instanceof \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Reference) {
-                throw new \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Invalid definition for service "%s": an array of references is expected as first argument when the "container.service_locator" tag is set, "%s" found for key "%s".', $this->currentId, \get_debug_type($v), $k));
+            if (!$v instanceof Reference) {
+                throw new InvalidArgumentException(\sprintf('Invalid definition for service "%s": an array of references is expected as first argument when the "container.service_locator" tag is set, "%s" found for key "%s".', $this->currentId, \get_debug_type($v), $k));
             }
             if ($i === $k) {
                 unset($services[$k]);
@@ -67,36 +67,36 @@ final class ServiceLocatorTagPass extends \MonorepoBuilder20220607\Symfony\Compo
             } elseif (\is_int($k)) {
                 $i = null;
             }
-            $services[$k] = new \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument($v);
+            $services[$k] = new ServiceClosureArgument($v);
         }
         \ksort($services);
         $value->setArgument(0, $services);
-        $id = '.service_locator.' . \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\ContainerBuilder::hash($value);
+        $id = '.service_locator.' . ContainerBuilder::hash($value);
         if ($isRoot) {
             if ($id !== $this->currentId) {
-                $this->container->setAlias($id, new \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Alias($this->currentId, \false));
+                $this->container->setAlias($id, new Alias($this->currentId, \false));
             }
             return $value;
         }
         $this->container->setDefinition($id, $value->setPublic(\false));
-        return new \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Reference($id);
+        return new Reference($id);
     }
     /**
      * @param Reference[] $refMap
      */
-    public static function register(\MonorepoBuilder20220607\Symfony\Component\DependencyInjection\ContainerBuilder $container, array $refMap, string $callerId = null) : \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Reference
+    public static function register(ContainerBuilder $container, array $refMap, string $callerId = null) : Reference
     {
         foreach ($refMap as $id => $ref) {
-            if (!$ref instanceof \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Reference) {
-                throw new \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException(\sprintf('Invalid service locator definition: only services can be referenced, "%s" found for key "%s". Inject parameter values using constructors instead.', \get_debug_type($ref), $id));
+            if (!$ref instanceof Reference) {
+                throw new InvalidArgumentException(\sprintf('Invalid service locator definition: only services can be referenced, "%s" found for key "%s". Inject parameter values using constructors instead.', \get_debug_type($ref), $id));
             }
-            $refMap[$id] = new \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument($ref);
+            $refMap[$id] = new ServiceClosureArgument($ref);
         }
-        $locator = (new \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Definition(\MonorepoBuilder20220607\Symfony\Component\DependencyInjection\ServiceLocator::class))->addArgument($refMap)->addTag('container.service_locator');
+        $locator = (new Definition(ServiceLocator::class))->addArgument($refMap)->addTag('container.service_locator');
         if (null !== $callerId && $container->hasDefinition($callerId)) {
             $locator->setBindings($container->getDefinition($callerId)->getBindings());
         }
-        if (!$container->hasDefinition($id = '.service_locator.' . \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\ContainerBuilder::hash($locator))) {
+        if (!$container->hasDefinition($id = '.service_locator.' . ContainerBuilder::hash($locator))) {
             $container->setDefinition($id, $locator);
         }
         if (null !== $callerId) {
@@ -104,8 +104,8 @@ final class ServiceLocatorTagPass extends \MonorepoBuilder20220607\Symfony\Compo
             // Locators are shared when they hold the exact same list of factories;
             // to have them specialized per consumer service, we use a cloning factory
             // to derivate customized instances from the prototype one.
-            $container->register($id .= '.' . $callerId, \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\ServiceLocator::class)->setFactory([new \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Reference($locatorId), 'withContext'])->addTag('container.service_locator_context', ['id' => $callerId])->addArgument($callerId)->addArgument(new \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Reference('service_container'));
+            $container->register($id .= '.' . $callerId, ServiceLocator::class)->setFactory([new Reference($locatorId), 'withContext'])->addTag('container.service_locator_context', ['id' => $callerId])->addArgument($callerId)->addArgument(new Reference('service_container'));
         }
-        return new \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Reference($id);
+        return new Reference($id);
     }
 }

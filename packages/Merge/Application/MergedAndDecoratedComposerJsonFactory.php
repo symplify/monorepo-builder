@@ -23,7 +23,7 @@ final class MergedAndDecoratedComposerJsonFactory
     /**
      * @param ComposerJsonDecoratorInterface[] $composerJsonDecorators
      */
-    public function __construct(\Symplify\MonorepoBuilder\Merge\ComposerJsonMerger $composerJsonMerger, array $composerJsonDecorators)
+    public function __construct(ComposerJsonMerger $composerJsonMerger, array $composerJsonDecorators)
     {
         $this->composerJsonMerger = $composerJsonMerger;
         $this->composerJsonDecorators = $composerJsonDecorators;
@@ -31,7 +31,7 @@ final class MergedAndDecoratedComposerJsonFactory
     /**
      * @param SmartFileInfo[] $packageFileInfos
      */
-    public function createFromRootConfigAndPackageFileInfos(\MonorepoBuilder20220607\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $mainComposerJson, array $packageFileInfos) : void
+    public function createFromRootConfigAndPackageFileInfos(ComposerJson $mainComposerJson, array $packageFileInfos) : void
     {
         $mergedAndDecoratedComposerJson = $this->mergePackageFileInfosAndDecorate($packageFileInfos);
         $this->composerJsonMerger->mergeJsonToRoot($mainComposerJson, $mergedAndDecoratedComposerJson);
@@ -39,7 +39,7 @@ final class MergedAndDecoratedComposerJsonFactory
     /**
      * @param SmartFileInfo[] $packageFileInfos
      */
-    private function mergePackageFileInfosAndDecorate(array $packageFileInfos) : \MonorepoBuilder20220607\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson
+    private function mergePackageFileInfosAndDecorate(array $packageFileInfos) : ComposerJson
     {
         $mergedComposerJson = $this->composerJsonMerger->mergeFileInfos($packageFileInfos);
         foreach ($this->composerJsonDecorators as $composerJsonDecorator) {

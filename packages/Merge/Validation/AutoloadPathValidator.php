@@ -12,14 +12,14 @@ final class AutoloadPathValidator
      * @var \Symplify\SmartFileSystem\FileSystemGuard
      */
     private $fileSystemGuard;
-    public function __construct(\MonorepoBuilder20220607\Symplify\SmartFileSystem\FileSystemGuard $fileSystemGuard)
+    public function __construct(FileSystemGuard $fileSystemGuard)
     {
         $this->fileSystemGuard = $fileSystemGuard;
     }
-    public function ensureAutoloadPathExists(\MonorepoBuilder20220607\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJson) : void
+    public function ensureAutoloadPathExists(ComposerJson $composerJson) : void
     {
         $composerJsonFileInfo = $composerJson->getFileInfo();
-        if (!$composerJsonFileInfo instanceof \MonorepoBuilder20220607\Symplify\SmartFileSystem\SmartFileInfo) {
+        if (!$composerJsonFileInfo instanceof SmartFileInfo) {
             return;
         }
         $autoloadDirectories = $composerJson->getAbsoluteAutoloadDirectories();

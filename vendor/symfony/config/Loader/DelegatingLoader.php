@@ -19,9 +19,9 @@ use MonorepoBuilder20220607\Symfony\Component\Config\Exception\LoaderLoadExcepti
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class DelegatingLoader extends \MonorepoBuilder20220607\Symfony\Component\Config\Loader\Loader
+class DelegatingLoader extends Loader
 {
-    public function __construct(\MonorepoBuilder20220607\Symfony\Component\Config\Loader\LoaderResolverInterface $resolver)
+    public function __construct(LoaderResolverInterface $resolver)
     {
         $this->resolver = $resolver;
     }
@@ -33,7 +33,7 @@ class DelegatingLoader extends \MonorepoBuilder20220607\Symfony\Component\Config
     public function load($resource, string $type = null)
     {
         if (\false === ($loader = $this->resolver->resolve($resource, $type))) {
-            throw new \MonorepoBuilder20220607\Symfony\Component\Config\Exception\LoaderLoadException($resource, null, 0, null, $type);
+            throw new LoaderLoadException($resource, null, 0, null, $type);
         }
         return $loader->load($resource, $type);
     }

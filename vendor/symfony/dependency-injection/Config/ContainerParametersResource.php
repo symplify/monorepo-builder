@@ -18,7 +18,7 @@ use MonorepoBuilder20220607\Symfony\Component\Config\Resource\ResourceInterface;
  *
  * @final
  */
-class ContainerParametersResource implements \MonorepoBuilder20220607\Symfony\Component\Config\Resource\ResourceInterface
+class ContainerParametersResource implements ResourceInterface
 {
     /**
      * @var mixed[]

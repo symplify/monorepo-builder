@@ -19,12 +19,12 @@ use MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Definition;
  *
  * @author Marco Pivetta <ocramius@gmail.com>
  */
-class RealServiceInstantiator implements \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\LazyProxy\Instantiator\InstantiatorInterface
+class RealServiceInstantiator implements InstantiatorInterface
 {
     /**
      * {@inheritdoc}
      */
-    public function instantiateProxy(\MonorepoBuilder20220607\Symfony\Component\DependencyInjection\ContainerInterface $container, \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Definition $definition, string $id, callable $realInstantiator) : object
+    public function instantiateProxy(ContainerInterface $container, Definition $definition, string $id, callable $realInstantiator) : object
     {
         return $realInstantiator();
     }

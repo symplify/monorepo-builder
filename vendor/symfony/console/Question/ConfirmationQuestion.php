@@ -15,7 +15,7 @@ namespace MonorepoBuilder20220607\Symfony\Component\Console\Question;
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class ConfirmationQuestion extends \MonorepoBuilder20220607\Symfony\Component\Console\Question\Question
+class ConfirmationQuestion extends Question
 {
     /**
      * @var string

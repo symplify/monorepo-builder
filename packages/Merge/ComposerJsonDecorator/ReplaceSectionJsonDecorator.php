@@ -6,17 +6,17 @@ namespace Symplify\MonorepoBuilder\Merge\ComposerJsonDecorator;
 use MonorepoBuilder20220607\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
 use Symplify\MonorepoBuilder\Merge\Configuration\MergedPackagesCollector;
 use Symplify\MonorepoBuilder\Merge\Contract\ComposerJsonDecoratorInterface;
-final class ReplaceSectionJsonDecorator implements \Symplify\MonorepoBuilder\Merge\Contract\ComposerJsonDecoratorInterface
+final class ReplaceSectionJsonDecorator implements ComposerJsonDecoratorInterface
 {
     /**
      * @var \Symplify\MonorepoBuilder\Merge\Configuration\MergedPackagesCollector
      */
     private $mergedPackagesCollector;
-    public function __construct(\Symplify\MonorepoBuilder\Merge\Configuration\MergedPackagesCollector $mergedPackagesCollector)
+    public function __construct(MergedPackagesCollector $mergedPackagesCollector)
     {
         $this->mergedPackagesCollector = $mergedPackagesCollector;
     }
-    public function decorate(\MonorepoBuilder20220607\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJson) : void
+    public function decorate(ComposerJson $composerJson) : void
     {
         $mergedPackages = $this->mergedPackagesCollector->getPackages();
         foreach ($mergedPackages as $mergedPackage) {

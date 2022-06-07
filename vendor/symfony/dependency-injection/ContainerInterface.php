@@ -20,7 +20,7 @@ use MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Exception\Serv
  * @author Fabien Potencier <fabien@symfony.com>
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-interface ContainerInterface extends \MonorepoBuilder20220607\Psr\Container\ContainerInterface
+interface ContainerInterface extends PsrContainerInterface
 {
     public const RUNTIME_EXCEPTION_ON_INVALID_REFERENCE = 0;
     public const EXCEPTION_ON_INVALID_REFERENCE = 1;

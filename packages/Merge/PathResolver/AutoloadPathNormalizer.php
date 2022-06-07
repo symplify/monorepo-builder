@@ -19,7 +19,7 @@ final class AutoloadPathNormalizer
      *
      * @see https://github.com/symplify/symplify/issues/1333
      */
-    public function normalizeAutoloadPaths(\MonorepoBuilder20220607\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $packageComposerJson, \MonorepoBuilder20220607\Symplify\SmartFileSystem\SmartFileInfo $packageFile) : void
+    public function normalizeAutoloadPaths(ComposerJson $packageComposerJson, SmartFileInfo $packageFile) : void
     {
         $autoload = $this->normalizeAutoloadArray($packageFile, $packageComposerJson->getAutoload());
         $packageComposerJson->setAutoload($autoload);
@@ -30,7 +30,7 @@ final class AutoloadPathNormalizer
      * @param mixed[] $autoloadArray
      * @return mixed[]
      */
-    private function normalizeAutoloadArray(\MonorepoBuilder20220607\Symplify\SmartFileSystem\SmartFileInfo $packageFile, array $autoloadArray) : array
+    private function normalizeAutoloadArray(SmartFileInfo $packageFile, array $autoloadArray) : array
     {
         foreach (self::SECTIONS_WITH_PATH as $sectionWithPath) {
             if (!isset($autoloadArray[$sectionWithPath])) {
@@ -44,7 +44,7 @@ final class AutoloadPathNormalizer
      * @param mixed[] $autoloadSubsection
      * @return mixed[]
      */
-    private function relativizePath(array $autoloadSubsection, \MonorepoBuilder20220607\Symplify\SmartFileSystem\SmartFileInfo $packageFileInfo) : array
+    private function relativizePath(array $autoloadSubsection, SmartFileInfo $packageFileInfo) : array
     {
         $packageRelativeDirectory = \dirname($packageFileInfo->getRelativeFilePathFromDirectory(\getcwd()));
         foreach ($autoloadSubsection as $key => $value) {

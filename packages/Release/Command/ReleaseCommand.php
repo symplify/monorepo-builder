@@ -18,7 +18,7 @@ use Symplify\MonorepoBuilder\ValueObject\File;
 use Symplify\MonorepoBuilder\ValueObject\Option;
 use MonorepoBuilder20220607\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
 use MonorepoBuilder20220607\Symplify\PackageBuilder\Console\Command\CommandNaming;
-final class ReleaseCommand extends \MonorepoBuilder20220607\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand
+final class ReleaseCommand extends AbstractSymplifyCommand
 {
     /**
      * @var \Symplify\MonorepoBuilder\Release\ReleaseWorkerProvider
@@ -40,7 +40,7 @@ final class ReleaseCommand extends \MonorepoBuilder20220607\Symplify\PackageBuil
      * @var \Symplify\MonorepoBuilder\Release\Output\ReleaseWorkerReporter
      */
     private $releaseWorkerReporter;
-    public function __construct(\Symplify\MonorepoBuilder\Release\ReleaseWorkerProvider $releaseWorkerProvider, \Symplify\MonorepoBuilder\Validator\SourcesPresenceValidator $sourcesPresenceValidator, \Symplify\MonorepoBuilder\Release\Configuration\StageResolver $stageResolver, \Symplify\MonorepoBuilder\Release\Configuration\VersionResolver $versionResolver, \Symplify\MonorepoBuilder\Release\Output\ReleaseWorkerReporter $releaseWorkerReporter)
+    public function __construct(ReleaseWorkerProvider $releaseWorkerProvider, SourcesPresenceValidator $sourcesPresenceValidator, StageResolver $stageResolver, VersionResolver $versionResolver, ReleaseWorkerReporter $releaseWorkerReporter)
     {
         $this->releaseWorkerProvider = $releaseWorkerProvider;
         $this->sourcesPresenceValidator = $sourcesPresenceValidator;
@@ -51,27 +51,27 @@ final class ReleaseCommand extends \MonorepoBuilder20220607\Symplify\PackageBuil
     }
     protected function configure() : void
     {
-        $this->setName(\MonorepoBuilder20220607\Symplify\PackageBuilder\Console\Command\CommandNaming::classToName(self::class));
+        $this->setName(CommandNaming::classToName(self::class));
         $this->setDescription('Perform release process with set Release Workers.');
-        $description = \sprintf('Release version, in format "<major>.<minor>.<patch>" or "v<major>.<minor>.<patch> or one of keywords: "%s"', \implode('", "', \Symplify\MonorepoBuilder\Release\ValueObject\SemVersion::ALL));
-        $this->addArgument(\Symplify\MonorepoBuilder\ValueObject\Option::VERSION, \MonorepoBuilder20220607\Symfony\Component\Console\Input\InputArgument::REQUIRED, $description);
-        $this->addOption(\Symplify\MonorepoBuilder\ValueObject\Option::DRY_RUN, null, \MonorepoBuilder20220607\Symfony\Component\Console\Input\InputOption::VALUE_NONE, 'Do not perform operations, just their preview');
-        $this->addOption(\Symplify\MonorepoBuilder\ValueObject\Option::STAGE, null, \MonorepoBuilder20220607\Symfony\Component\Console\Input\InputOption::VALUE_REQUIRED, 'Name of stage to perform', \Symplify\MonorepoBuilder\Release\ValueObject\Stage::MAIN);
+        $description = \sprintf('Release version, in format "<major>.<minor>.<patch>" or "v<major>.<minor>.<patch> or one of keywords: "%s"', \implode('", "', SemVersion::ALL));
+        $this->addArgument(Option::VERSION, InputArgument::REQUIRED, $description);
+        $this->addOption(Option::DRY_RUN, null, InputOption::VALUE_NONE, 'Do not perform operations, just their preview');
+        $this->addOption(Option::STAGE, null, InputOption::VALUE_REQUIRED, 'Name of stage to perform', Stage::MAIN);
     }
-    protected function execute(\MonorepoBuilder20220607\Symfony\Component\Console\Input\InputInterface $input, \MonorepoBuilder20220607\Symfony\Component\Console\Output\OutputInterface $output) : int
+    protected function execute(InputInterface $input, OutputInterface $output) : int
     {
         $this->sourcesPresenceValidator->validateRootComposerJsonName();
         // validation phase
         $stage = $this->stageResolver->resolveFromInput($input);
         $releaseWorkers = $this->releaseWorkerProvider->provideByStage($stage);
         if ($releaseWorkers === []) {
-            $errorMessage = \sprintf('There are no release workers registered. Be sure to add them to "%s"', \Symplify\MonorepoBuilder\ValueObject\File::CONFIG);
+            $errorMessage = \sprintf('There are no release workers registered. Be sure to add them to "%s"', File::CONFIG);
             $this->symfonyStyle->error($errorMessage);
             return self::FAILURE;
         }
         $totalWorkerCount = \count($releaseWorkers);
         $i = 0;
-        $isDryRun = (bool) $input->getOption(\Symplify\MonorepoBuilder\ValueObject\Option::DRY_RUN);
+        $isDryRun = (bool) $input->getOption(Option::DRY_RUN);
         $version = $this->versionResolver->resolveVersion($input, $stage);
         foreach ($releaseWorkers as $releaseWorker) {
             $title = \sprintf('%d/%d) ', ++$i, $totalWorkerCount) . $releaseWorker->getDescription($version);
@@ -83,7 +83,7 @@ final class ReleaseCommand extends \MonorepoBuilder20220607\Symplify\PackageBuil
         }
         if ($isDryRun) {
             $this->symfonyStyle->note('Running in dry mode, nothing is changed');
-        } elseif ($stage === \Symplify\MonorepoBuilder\Release\ValueObject\Stage::MAIN) {
+        } elseif ($stage === Stage::MAIN) {
             $message = \sprintf('Version "%s" is now released!', $version->getVersionString());
             $this->symfonyStyle->success($message);
         } else {

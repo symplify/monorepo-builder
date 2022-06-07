@@ -6,5 +6,5 @@ namespace Symplify\MonorepoBuilder\Merge\Contract;
 use MonorepoBuilder20220607\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
 interface ComposerJsonDecoratorInterface
 {
-    public function decorate(\MonorepoBuilder20220607\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJson) : void;
+    public function decorate(ComposerJson $composerJson) : void;
 }

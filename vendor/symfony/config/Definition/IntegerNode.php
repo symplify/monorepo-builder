@@ -16,7 +16,7 @@ use MonorepoBuilder20220607\Symfony\Component\Config\Definition\Exception\Invali
  *
  * @author Jeanmonod David <david.jeanmonod@gmail.com>
  */
-class IntegerNode extends \MonorepoBuilder20220607\Symfony\Component\Config\Definition\NumericNode
+class IntegerNode extends NumericNode
 {
     /**
      * {@inheritdoc}
@@ -25,7 +25,7 @@ class IntegerNode extends \MonorepoBuilder20220607\Symfony\Component\Config\Defi
     protected function validateType($value)
     {
         if (!\is_int($value)) {
-            $ex = new \MonorepoBuilder20220607\Symfony\Component\Config\Definition\Exception\InvalidTypeException(\sprintf('Invalid type for path "%s". Expected "int", but got "%s".', $this->getPath(), \get_debug_type($value)));
+            $ex = new InvalidTypeException(\sprintf('Invalid type for path "%s". Expected "int", but got "%s".', $this->getPath(), \get_debug_type($value)));
             if ($hint = $this->getInfo()) {
                 $ex->addHint($hint);
             }

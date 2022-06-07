@@ -15,9 +15,9 @@ final class VersionUtils
      * @var string
      */
     private $packageAliasFormat;
-    public function __construct(\MonorepoBuilder20220607\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider)
+    public function __construct(ParameterProvider $parameterProvider)
     {
-        $this->packageAliasFormat = $parameterProvider->provideStringParameter(\Symplify\MonorepoBuilder\ValueObject\Option::PACKAGE_ALIAS_FORMAT);
+        $this->packageAliasFormat = $parameterProvider->provideStringParameter(Option::PACKAGE_ALIAS_FORMAT);
     }
     /**
      * @param \PharIo\Version\Version|string $version
@@ -54,14 +54,14 @@ final class VersionUtils
     /**
      * @param \PharIo\Version\Version|string $version
      */
-    private function normalizeVersion($version) : \PharIo\Version\Version
+    private function normalizeVersion($version) : Version
     {
         if (\is_string($version)) {
-            return new \PharIo\Version\Version($version);
+            return new Version($version);
         }
         return $version;
     }
-    private function getNextMinorNumber(\PharIo\Version\Version $version) : int
+    private function getNextMinorNumber(Version $version) : int
     {
         if ($version->hasPreReleaseSuffix()) {
             return (int) $version->getMinor()->getValue();

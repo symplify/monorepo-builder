@@ -17,7 +17,7 @@ use MonorepoBuilder20220607\Symfony\Contracts\Service\Attribute\Required;
  *
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class AutowireRequiredMethodsPass extends \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Compiler\AbstractRecursivePass
+class AutowireRequiredMethodsPass extends AbstractRecursivePass
 {
     /**
      * {@inheritdoc}
@@ -27,7 +27,7 @@ class AutowireRequiredMethodsPass extends \MonorepoBuilder20220607\Symfony\Compo
     protected function processValue($value, bool $isRoot = \false)
     {
         $value = parent::processValue($value, $isRoot);
-        if (!$value instanceof \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Definition || !$value->isAutowired() || $value->isAbstract() || !$value->getClass()) {
+        if (!$value instanceof Definition || !$value->isAutowired() || $value->isAbstract() || !$value->getClass()) {
             return $value;
         }
         if (!($reflectionClass = $this->container->getReflectionClass($value->getClass(), \false))) {
@@ -44,7 +44,7 @@ class AutowireRequiredMethodsPass extends \MonorepoBuilder20220607\Symfony\Compo
                 continue;
             }
             while (\true) {
-                if (\method_exists($r, 'getAttributes') ? $r->getAttributes(\MonorepoBuilder20220607\Symfony\Contracts\Service\Attribute\Required::class) : []) {
+                if (\method_exists($r, 'getAttributes') ? $r->getAttributes(Required::class) : []) {
                     if ($this->isWither($r, $r->getDocComment() ?: '')) {
                         $withers[] = [$r->name, [], \true];
                     } else {

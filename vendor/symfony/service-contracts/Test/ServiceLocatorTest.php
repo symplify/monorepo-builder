@@ -13,11 +13,11 @@ namespace MonorepoBuilder20220607\Symfony\Contracts\Service\Test;
 use MonorepoBuilder20220607\PHPUnit\Framework\TestCase;
 use MonorepoBuilder20220607\Psr\Container\ContainerInterface;
 use MonorepoBuilder20220607\Symfony\Contracts\Service\ServiceLocatorTrait;
-abstract class ServiceLocatorTest extends \MonorepoBuilder20220607\PHPUnit\Framework\TestCase
+abstract class ServiceLocatorTest extends TestCase
 {
-    protected function getServiceLocator(array $factories) : \MonorepoBuilder20220607\Psr\Container\ContainerInterface
+    protected function getServiceLocator(array $factories) : ContainerInterface
     {
-        return new class($factories) implements \MonorepoBuilder20220607\Psr\Container\ContainerInterface
+        return new class($factories) implements ContainerInterface
         {
             use ServiceLocatorTrait;
         };

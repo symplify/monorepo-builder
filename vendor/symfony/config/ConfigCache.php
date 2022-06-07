@@ -21,7 +21,7 @@ use MonorepoBuilder20220607\Symfony\Component\Config\Resource\SelfCheckingResour
  * @author Fabien Potencier <fabien@symfony.com>
  * @author Matthias Pigulla <mp@webfactory.de>
  */
-class ConfigCache extends \MonorepoBuilder20220607\Symfony\Component\Config\ResourceCheckerConfigCache
+class ConfigCache extends ResourceCheckerConfigCache
 {
     /**
      * @var bool
@@ -36,7 +36,7 @@ class ConfigCache extends \MonorepoBuilder20220607\Symfony\Component\Config\Reso
         $this->debug = $debug;
         $checkers = [];
         if (\true === $this->debug) {
-            $checkers = [new \MonorepoBuilder20220607\Symfony\Component\Config\Resource\SelfCheckingResourceChecker()];
+            $checkers = [new SelfCheckingResourceChecker()];
         }
         parent::__construct($file, $checkers);
     }

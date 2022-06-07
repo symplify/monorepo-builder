@@ -16,7 +16,7 @@ use MonorepoBuilder20220607\Symfony\Component\Config\Exception\LoaderLoadExcepti
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-abstract class Loader implements \MonorepoBuilder20220607\Symfony\Component\Config\Loader\LoaderInterface
+abstract class Loader implements LoaderInterface
 {
     protected $resolver;
     protected $env;
@@ -27,14 +27,14 @@ abstract class Loader implements \MonorepoBuilder20220607\Symfony\Component\Conf
     /**
      * {@inheritdoc}
      */
-    public function getResolver() : \MonorepoBuilder20220607\Symfony\Component\Config\Loader\LoaderResolverInterface
+    public function getResolver() : LoaderResolverInterface
     {
         return $this->resolver;
     }
     /**
      * {@inheritdoc}
      */
-    public function setResolver(\MonorepoBuilder20220607\Symfony\Component\Config\Loader\LoaderResolverInterface $resolver)
+    public function setResolver(LoaderResolverInterface $resolver)
     {
         $this->resolver = $resolver;
     }
@@ -54,14 +54,14 @@ abstract class Loader implements \MonorepoBuilder20220607\Symfony\Component\Conf
      * @throws LoaderLoadException If no loader is found
      * @param mixed $resource
      */
-    public function resolve($resource, string $type = null) : \MonorepoBuilder20220607\Symfony\Component\Config\Loader\LoaderInterface
+    public function resolve($resource, string $type = null) : LoaderInterface
     {
         if ($this->supports($resource, $type)) {
             return $this;
         }
         $loader = null === $this->resolver ? \false : $this->resolver->resolve($resource, $type);
         if (\false === $loader) {
-            throw new \MonorepoBuilder20220607\Symfony\Component\Config\Exception\LoaderLoadException($resource, null, 0, null, $type);
+            throw new LoaderLoadException($resource, null, 0, null, $type);
         }
         return $loader;
     }

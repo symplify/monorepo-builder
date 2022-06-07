@@ -15,6 +15,6 @@ namespace MonorepoBuilder20220607\Symfony\Component\Config\Definition\Exception;
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class InvalidTypeException extends \MonorepoBuilder20220607\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+class InvalidTypeException extends InvalidConfigurationException
 {
 }

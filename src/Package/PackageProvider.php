@@ -18,7 +18,7 @@ final class PackageProvider
      * @var \Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager
      */
     private $jsonFileManager;
-    public function __construct(\Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider $composerJsonProvider, \MonorepoBuilder20220607\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager $jsonFileManager)
+    public function __construct(ComposerJsonProvider $composerJsonProvider, JsonFileManager $jsonFileManager)
     {
         $this->composerJsonProvider = $composerJsonProvider;
         $this->jsonFileManager = $jsonFileManager;
@@ -32,19 +32,19 @@ final class PackageProvider
         foreach ($this->composerJsonProvider->getPackagesComposerFileInfos() as $packagesComposerFileInfo) {
             $packageName = $this->detectNameFromFileInfo($packagesComposerFileInfo);
             $hasTests = \file_exists($packagesComposerFileInfo->getRealPathDirectory() . '/tests');
-            $packages[] = new \Symplify\MonorepoBuilder\ValueObject\Package($packageName, $hasTests);
+            $packages[] = new Package($packageName, $hasTests);
         }
-        \usort($packages, function (\Symplify\MonorepoBuilder\ValueObject\Package $firstPackage, \Symplify\MonorepoBuilder\ValueObject\Package $secondPackage) : int {
+        \usort($packages, function (Package $firstPackage, Package $secondPackage) : int {
             return $firstPackage->getShortName() <=> $secondPackage->getShortName();
         });
         return $packages;
     }
-    private function detectNameFromFileInfo(\MonorepoBuilder20220607\Symplify\SmartFileSystem\SmartFileInfo $smartFileInfo) : string
+    private function detectNameFromFileInfo(SmartFileInfo $smartFileInfo) : string
     {
         $json = $this->jsonFileManager->loadFromFileInfo($smartFileInfo);
         if (!isset($json['name'])) {
             $errorMessage = \sprintf('Package "name" is missing in "composer.json" for "%s"', $smartFileInfo->getRelativeFilePathFromCwd());
-            throw new \MonorepoBuilder20220607\Symplify\SymplifyKernel\Exception\ShouldNotHappenException($errorMessage);
+            throw new ShouldNotHappenException($errorMessage);
         }
         return (string) $json['name'];
     }

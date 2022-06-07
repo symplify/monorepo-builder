@@ -9,7 +9,7 @@ use MonorepoBuilder20220607\Symplify\EasyCI\Exception\ShouldNotHappenException;
 use Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider;
 use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface;
 use MonorepoBuilder20220607\Symplify\SmartFileSystem\SmartFileInfo;
-final class UpdateReplaceReleaseWorker implements \Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface
+final class UpdateReplaceReleaseWorker implements ReleaseWorkerInterface
 {
     /**
      * @var \Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider
@@ -19,12 +19,12 @@ final class UpdateReplaceReleaseWorker implements \Symplify\MonorepoBuilder\Rele
      * @var \Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager
      */
     private $jsonFileManager;
-    public function __construct(\Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider $composerJsonProvider, \MonorepoBuilder20220607\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager $jsonFileManager)
+    public function __construct(ComposerJsonProvider $composerJsonProvider, JsonFileManager $jsonFileManager)
     {
         $this->composerJsonProvider = $composerJsonProvider;
         $this->jsonFileManager = $jsonFileManager;
     }
-    public function work(\PharIo\Version\Version $version) : void
+    public function work(Version $version) : void
     {
         $rootComposerJson = $this->composerJsonProvider->getRootComposerJson();
         $replace = $rootComposerJson->getReplace();
@@ -41,12 +41,12 @@ final class UpdateReplaceReleaseWorker implements \Symplify\MonorepoBuilder\Rele
         }
         $rootComposerJson->setReplace($newReplace);
         $rootFileInfo = $rootComposerJson->getFileInfo();
-        if (!$rootFileInfo instanceof \MonorepoBuilder20220607\Symplify\SmartFileSystem\SmartFileInfo) {
-            throw new \MonorepoBuilder20220607\Symplify\EasyCI\Exception\ShouldNotHappenException();
+        if (!$rootFileInfo instanceof SmartFileInfo) {
+            throw new ShouldNotHappenException();
         }
         $this->jsonFileManager->printJsonToFileInfo($rootComposerJson->getJsonArray(), $rootFileInfo);
     }
-    public function getDescription(\PharIo\Version\Version $version) : string
+    public function getDescription(Version $version) : string
     {
         return 'Update "replace" version in "composer.json" to new tag to avoid circular dependencies conflicts';
     }

@@ -16,7 +16,7 @@ use MonorepoBuilder20220607\Symplify\SymplifyKernel\ValueObject\SymplifyKernelCo
 /**
  * @api
  */
-abstract class AbstractSymplifyKernel implements \MonorepoBuilder20220607\Symplify\SymplifyKernel\Contract\LightKernelInterface
+abstract class AbstractSymplifyKernel implements LightKernelInterface
 {
     /**
      * @var \Symfony\Component\DependencyInjection\Container|null
@@ -27,11 +27,11 @@ abstract class AbstractSymplifyKernel implements \MonorepoBuilder20220607\Sympli
      * @param CompilerPassInterface[] $compilerPasses
      * @param ExtensionInterface[] $extensions
      */
-    public function create(array $configFiles, array $compilerPasses = [], array $extensions = []) : \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\ContainerInterface
+    public function create(array $configFiles, array $compilerPasses = [], array $extensions = []) : ContainerInterface
     {
-        $containerBuilderFactory = new \MonorepoBuilder20220607\Symplify\SymplifyKernel\ContainerBuilderFactory(new \MonorepoBuilder20220607\Symplify\SymplifyKernel\Config\Loader\ParameterMergingLoaderFactory());
-        $compilerPasses[] = new \MonorepoBuilder20220607\Symplify\AutowireArrayParameter\DependencyInjection\CompilerPass\AutowireArrayParameterCompilerPass();
-        $configFiles[] = \MonorepoBuilder20220607\Symplify\SymplifyKernel\ValueObject\SymplifyKernelConfig::FILE_PATH;
+        $containerBuilderFactory = new ContainerBuilderFactory(new ParameterMergingLoaderFactory());
+        $compilerPasses[] = new AutowireArrayParameterCompilerPass();
+        $configFiles[] = SymplifyKernelConfig::FILE_PATH;
         $containerBuilder = $containerBuilderFactory->create($configFiles, $compilerPasses, $extensions);
         $containerBuilder->compile();
         $this->container = $containerBuilder;
@@ -39,8 +39,8 @@ abstract class AbstractSymplifyKernel implements \MonorepoBuilder20220607\Sympli
     }
     public function getContainer() : \MonorepoBuilder20220607\Psr\Container\ContainerInterface
     {
-        if (!$this->container instanceof \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Container) {
-            throw new \MonorepoBuilder20220607\Symplify\SymplifyKernel\Exception\ShouldNotHappenException();
+        if (!$this->container instanceof Container) {
+            throw new ShouldNotHappenException();
         }
         return $this->container;
     }

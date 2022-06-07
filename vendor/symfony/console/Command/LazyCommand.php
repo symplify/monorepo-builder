@@ -20,7 +20,7 @@ use MonorepoBuilder20220607\Symfony\Component\Console\Output\OutputInterface;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-final class LazyCommand extends \MonorepoBuilder20220607\Symfony\Component\Console\Command\Command
+final class LazyCommand extends Command
 {
     private $command;
     /**
@@ -37,14 +37,14 @@ final class LazyCommand extends \MonorepoBuilder20220607\Symfony\Component\Conso
     {
         $this->getCommand()->ignoreValidationErrors();
     }
-    public function setApplication(\MonorepoBuilder20220607\Symfony\Component\Console\Application $application = null) : void
+    public function setApplication(Application $application = null) : void
     {
         if ($this->command instanceof parent) {
             $this->command->setApplication($application);
         }
         parent::setApplication($application);
     }
-    public function setHelperSet(\MonorepoBuilder20220607\Symfony\Component\Console\Helper\HelperSet $helperSet) : void
+    public function setHelperSet(HelperSet $helperSet) : void
     {
         if ($this->command instanceof parent) {
             $this->command->setHelperSet($helperSet);
@@ -55,11 +55,11 @@ final class LazyCommand extends \MonorepoBuilder20220607\Symfony\Component\Conso
     {
         return $this->isEnabled ?? $this->getCommand()->isEnabled();
     }
-    public function run(\MonorepoBuilder20220607\Symfony\Component\Console\Input\InputInterface $input, \MonorepoBuilder20220607\Symfony\Component\Console\Output\OutputInterface $output) : int
+    public function run(InputInterface $input, OutputInterface $output) : int
     {
         return $this->getCommand()->run($input, $output);
     }
-    public function complete(\MonorepoBuilder20220607\Symfony\Component\Console\Completion\CompletionInput $input, \MonorepoBuilder20220607\Symfony\Component\Console\Completion\CompletionSuggestions $suggestions) : void
+    public function complete(CompletionInput $input, CompletionSuggestions $suggestions) : void
     {
         $this->getCommand()->complete($input, $suggestions);
     }
@@ -87,11 +87,11 @@ final class LazyCommand extends \MonorepoBuilder20220607\Symfony\Component\Conso
         $this->getCommand()->setDefinition($definition);
         return $this;
     }
-    public function getDefinition() : \MonorepoBuilder20220607\Symfony\Component\Console\Input\InputDefinition
+    public function getDefinition() : InputDefinition
     {
         return $this->getCommand()->getDefinition();
     }
-    public function getNativeDefinition() : \MonorepoBuilder20220607\Symfony\Component\Console\Input\InputDefinition
+    public function getNativeDefinition() : InputDefinition
     {
         return $this->getCommand()->getNativeDefinition();
     }

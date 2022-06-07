@@ -8,7 +8,7 @@ use MonorepoBuilder20220607\Symfony\Component\Console\Input\InputInterface;
 use MonorepoBuilder20220607\Symfony\Component\Console\Output\OutputInterface;
 use MonorepoBuilder20220607\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
 use MonorepoBuilder20220607\Symplify\PackageBuilder\Console\Command\CommandNaming;
-final class InitCommand extends \MonorepoBuilder20220607\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand
+final class InitCommand extends AbstractSymplifyCommand
 {
     /**
      * @var string
@@ -16,11 +16,11 @@ final class InitCommand extends \MonorepoBuilder20220607\Symplify\PackageBuilder
     private const OUTPUT = 'output';
     protected function configure() : void
     {
-        $this->setName(\MonorepoBuilder20220607\Symplify\PackageBuilder\Console\Command\CommandNaming::classToName(self::class));
+        $this->setName(CommandNaming::classToName(self::class));
         $this->setDescription('Creates empty monorepo directory and composer.json structure.');
-        $this->addArgument(self::OUTPUT, \MonorepoBuilder20220607\Symfony\Component\Console\Input\InputArgument::OPTIONAL, 'Directory to generate monorepo into.', \getcwd());
+        $this->addArgument(self::OUTPUT, InputArgument::OPTIONAL, 'Directory to generate monorepo into.', \getcwd());
     }
-    protected function execute(\MonorepoBuilder20220607\Symfony\Component\Console\Input\InputInterface $input, \MonorepoBuilder20220607\Symfony\Component\Console\Output\OutputInterface $output) : int
+    protected function execute(InputInterface $input, OutputInterface $output) : int
     {
         /** @var string $output */
         $output = $input->getArgument(self::OUTPUT);

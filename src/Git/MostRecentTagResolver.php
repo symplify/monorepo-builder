@@ -5,7 +5,7 @@ namespace Symplify\MonorepoBuilder\Git;
 
 use Symplify\MonorepoBuilder\Contract\Git\TagResolverInterface;
 use Symplify\MonorepoBuilder\Release\Process\ProcessRunner;
-final class MostRecentTagResolver implements \Symplify\MonorepoBuilder\Contract\Git\TagResolverInterface
+final class MostRecentTagResolver implements TagResolverInterface
 {
     /**
      * @var string[]
@@ -15,7 +15,7 @@ final class MostRecentTagResolver implements \Symplify\MonorepoBuilder\Contract\
      * @var \Symplify\MonorepoBuilder\Release\Process\ProcessRunner
      */
     private $processRunner;
-    public function __construct(\Symplify\MonorepoBuilder\Release\Process\ProcessRunner $processRunner)
+    public function __construct(ProcessRunner $processRunner)
     {
         $this->processRunner = $processRunner;
     }

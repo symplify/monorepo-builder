@@ -14,16 +14,16 @@ final class InputFileInfoAndExpectedFileInfo
      * @var \Symplify\SmartFileSystem\SmartFileInfo
      */
     private $expectedFileInfo;
-    public function __construct(\MonorepoBuilder20220607\Symplify\SmartFileSystem\SmartFileInfo $inputFileInfo, \MonorepoBuilder20220607\Symplify\SmartFileSystem\SmartFileInfo $expectedFileInfo)
+    public function __construct(SmartFileInfo $inputFileInfo, SmartFileInfo $expectedFileInfo)
     {
         $this->inputFileInfo = $inputFileInfo;
         $this->expectedFileInfo = $expectedFileInfo;
     }
-    public function getInputFileInfo() : \MonorepoBuilder20220607\Symplify\SmartFileSystem\SmartFileInfo
+    public function getInputFileInfo() : SmartFileInfo
     {
         return $this->inputFileInfo;
     }
-    public function getExpectedFileInfo() : \MonorepoBuilder20220607\Symplify\SmartFileSystem\SmartFileInfo
+    public function getExpectedFileInfo() : SmartFileInfo
     {
         return $this->expectedFileInfo;
     }

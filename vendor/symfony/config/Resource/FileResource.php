@@ -19,7 +19,7 @@ namespace MonorepoBuilder20220607\Symfony\Component\Config\Resource;
  *
  * @final
  */
-class FileResource implements \MonorepoBuilder20220607\Symfony\Component\Config\Resource\SelfCheckingResourceInterface
+class FileResource implements SelfCheckingResourceInterface
 {
     /**
      * @var string

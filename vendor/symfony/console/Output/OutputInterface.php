@@ -71,9 +71,9 @@ interface OutputInterface
      * Gets the decorated flag.
      */
     public function isDecorated() : bool;
-    public function setFormatter(\MonorepoBuilder20220607\Symfony\Component\Console\Formatter\OutputFormatterInterface $formatter);
+    public function setFormatter(OutputFormatterInterface $formatter);
     /**
      * Returns current output formatter instance.
      */
-    public function getFormatter() : \MonorepoBuilder20220607\Symfony\Component\Console\Formatter\OutputFormatterInterface;
+    public function getFormatter() : OutputFormatterInterface;
 }

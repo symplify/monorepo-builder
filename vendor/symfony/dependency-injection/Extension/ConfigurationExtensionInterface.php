@@ -24,5 +24,5 @@ interface ConfigurationExtensionInterface
      *
      * @return ConfigurationInterface|null
      */
-    public function getConfiguration(array $config, \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\ContainerBuilder $container);
+    public function getConfiguration(array $config, ContainerBuilder $container);
 }

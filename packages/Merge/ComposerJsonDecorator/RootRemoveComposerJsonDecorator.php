@@ -12,17 +12,17 @@ use Symplify\MonorepoBuilder\Merge\Contract\ComposerJsonDecoratorInterface;
  *
  * @see \Symplify\MonorepoBuilder\Tests\Merge\ComposerJsonDecorator\RootRemoveComposerJsonDecorator\RootRemoveComposerJsonDecoratorTest
  */
-final class RootRemoveComposerJsonDecorator implements \Symplify\MonorepoBuilder\Merge\Contract\ComposerJsonDecoratorInterface
+final class RootRemoveComposerJsonDecorator implements ComposerJsonDecoratorInterface
 {
     /**
      * @var \Symplify\MonorepoBuilder\Merge\Configuration\MergedPackagesCollector
      */
     private $mergedPackagesCollector;
-    public function __construct(\Symplify\MonorepoBuilder\Merge\Configuration\MergedPackagesCollector $mergedPackagesCollector)
+    public function __construct(MergedPackagesCollector $mergedPackagesCollector)
     {
         $this->mergedPackagesCollector = $mergedPackagesCollector;
     }
-    public function decorate(\MonorepoBuilder20220607\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $composerJson) : void
+    public function decorate(ComposerJson $composerJson) : void
     {
         $require = $this->filterOutMergedPackages($composerJson->getRequire());
         $composerJson->setRequire($require);

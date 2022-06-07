@@ -10,7 +10,7 @@ use Symplify\MonorepoBuilder\Finder\PackageComposerFinder;
 use Symplify\MonorepoBuilder\Git\ExpectedAliasResolver;
 use MonorepoBuilder20220607\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
 use MonorepoBuilder20220607\Symplify\PackageBuilder\Console\Command\CommandNaming;
-final class PackageAliasCommand extends \MonorepoBuilder20220607\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand
+final class PackageAliasCommand extends AbstractSymplifyCommand
 {
     /**
      * @var \Symplify\MonorepoBuilder\Finder\PackageComposerFinder
@@ -24,7 +24,7 @@ final class PackageAliasCommand extends \MonorepoBuilder20220607\Symplify\Packag
      * @var \Symplify\MonorepoBuilder\Git\ExpectedAliasResolver
      */
     private $expectedAliasResolver;
-    public function __construct(\Symplify\MonorepoBuilder\Finder\PackageComposerFinder $packageComposerFinder, \Symplify\MonorepoBuilder\DevMasterAliasUpdater $devMasterAliasUpdater, \Symplify\MonorepoBuilder\Git\ExpectedAliasResolver $expectedAliasResolver)
+    public function __construct(PackageComposerFinder $packageComposerFinder, DevMasterAliasUpdater $devMasterAliasUpdater, ExpectedAliasResolver $expectedAliasResolver)
     {
         $this->packageComposerFinder = $packageComposerFinder;
         $this->devMasterAliasUpdater = $devMasterAliasUpdater;
@@ -33,10 +33,10 @@ final class PackageAliasCommand extends \MonorepoBuilder20220607\Symplify\Packag
     }
     protected function configure() : void
     {
-        $this->setName(\MonorepoBuilder20220607\Symplify\PackageBuilder\Console\Command\CommandNaming::classToName(self::class));
+        $this->setName(CommandNaming::classToName(self::class));
         $this->setDescription('Updates branch alias in "composer.json" all found packages');
     }
-    protected function execute(\MonorepoBuilder20220607\Symfony\Component\Console\Input\InputInterface $input, \MonorepoBuilder20220607\Symfony\Component\Console\Output\OutputInterface $output) : int
+    protected function execute(InputInterface $input, OutputInterface $output) : int
     {
         $composerPackageFiles = $this->packageComposerFinder->getPackageComposerFiles();
         if ($composerPackageFiles === []) {

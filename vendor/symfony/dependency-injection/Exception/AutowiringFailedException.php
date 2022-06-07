@@ -13,7 +13,7 @@ namespace MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Exceptio
 /**
  * Thrown when a definition cannot be autowired.
  */
-class AutowiringFailedException extends \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Exception\RuntimeException
+class AutowiringFailedException extends RuntimeException
 {
     /**
      * @var string

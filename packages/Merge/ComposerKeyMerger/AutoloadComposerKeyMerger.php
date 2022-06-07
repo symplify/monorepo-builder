@@ -7,7 +7,7 @@ use MonorepoBuilder20220607\Symplify\ComposerJsonManipulator\ValueObject\Compose
 use Symplify\MonorepoBuilder\Merge\Arrays\SortedParameterMerger;
 use Symplify\MonorepoBuilder\Merge\Contract\ComposerKeyMergerInterface;
 use Symplify\MonorepoBuilder\Merge\Validation\AutoloadPathValidator;
-final class AutoloadComposerKeyMerger implements \Symplify\MonorepoBuilder\Merge\Contract\ComposerKeyMergerInterface
+final class AutoloadComposerKeyMerger implements ComposerKeyMergerInterface
 {
     /**
      * @var \Symplify\MonorepoBuilder\Merge\Validation\AutoloadPathValidator
@@ -17,12 +17,12 @@ final class AutoloadComposerKeyMerger implements \Symplify\MonorepoBuilder\Merge
      * @var \Symplify\MonorepoBuilder\Merge\Arrays\SortedParameterMerger
      */
     private $sortedParameterMerger;
-    public function __construct(\Symplify\MonorepoBuilder\Merge\Validation\AutoloadPathValidator $autoloadPathValidator, \Symplify\MonorepoBuilder\Merge\Arrays\SortedParameterMerger $sortedParameterMerger)
+    public function __construct(AutoloadPathValidator $autoloadPathValidator, SortedParameterMerger $sortedParameterMerger)
     {
         $this->autoloadPathValidator = $autoloadPathValidator;
         $this->sortedParameterMerger = $sortedParameterMerger;
     }
-    public function merge(\MonorepoBuilder20220607\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $mainComposerJson, \MonorepoBuilder20220607\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson $newComposerJson) : void
+    public function merge(ComposerJson $mainComposerJson, ComposerJson $newComposerJson) : void
     {
         if ($newComposerJson->getAutoload() === []) {
             return;

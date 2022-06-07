@@ -37,12 +37,12 @@ final class ReleaseGuard
     /**
      * @param ReleaseWorkerInterface[] $releaseWorkers
      */
-    public function __construct(\MonorepoBuilder20220607\Symplify\PackageBuilder\Parameter\ParameterProvider $parameterProvider, \Symplify\MonorepoBuilder\Contract\Git\TagResolverInterface $tagResolver, array $releaseWorkers)
+    public function __construct(ParameterProvider $parameterProvider, TagResolverInterface $tagResolver, array $releaseWorkers)
     {
         $this->tagResolver = $tagResolver;
         $this->releaseWorkers = $releaseWorkers;
-        $this->isStageRequired = $parameterProvider->provideBoolParameter(\Symplify\MonorepoBuilder\ValueObject\Option::IS_STAGE_REQUIRED);
-        $this->stagesToAllowExistingTag = $parameterProvider->provideArrayParameter(\Symplify\MonorepoBuilder\ValueObject\Option::STAGES_TO_ALLOW_EXISTING_TAG);
+        $this->isStageRequired = $parameterProvider->provideBoolParameter(Option::IS_STAGE_REQUIRED);
+        $this->stagesToAllowExistingTag = $parameterProvider->provideArrayParameter(Option::STAGES_TO_ALLOW_EXISTING_TAG);
     }
     public function guardRequiredStageOnEmptyStage() : void
     {
@@ -55,7 +55,7 @@ final class ReleaseGuard
             return;
         }
         // stage is required → show options
-        throw new \Symplify\MonorepoBuilder\Release\Exception\ConfigurationException(\sprintf('Set "--%s <name>" option first. Pick one of: "%s"', \Symplify\MonorepoBuilder\ValueObject\Option::STAGE, \implode('", "', $this->getStages())));
+        throw new ConfigurationException(\sprintf('Set "--%s <name>" option first. Pick one of: "%s"', Option::STAGE, \implode('", "', $this->getStages())));
     }
     public function guardStage(string $stage) : void
     {
@@ -64,12 +64,12 @@ final class ReleaseGuard
             return;
         }
         // stage has invalid value
-        throw new \Symplify\MonorepoBuilder\Release\Exception\ConfigurationException(\sprintf('Stage "%s" was not found. Pick one of: "%s"', $stage, \implode('", "', $this->getStages())));
+        throw new ConfigurationException(\sprintf('Stage "%s" was not found. Pick one of: "%s"', $stage, \implode('", "', $this->getStages())));
     }
-    public function guardVersion(\PharIo\Version\Version $version, string $stage) : void
+    public function guardVersion(Version $version, string $stage) : void
     {
         // stage is set and it doesn't need a validation
-        if ($stage !== \Symplify\MonorepoBuilder\Release\ValueObject\Stage::MAIN && \in_array($stage, $this->stagesToAllowExistingTag, \true)) {
+        if ($stage !== Stage::MAIN && \in_array($stage, $this->stagesToAllowExistingTag, \true)) {
             return;
         }
         $this->ensureVersionIsNewerThanLastOne($version);
@@ -84,14 +84,14 @@ final class ReleaseGuard
         }
         $stages = [];
         foreach ($this->releaseWorkers as $releaseWorker) {
-            if ($releaseWorker instanceof \Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\StageAwareInterface) {
+            if ($releaseWorker instanceof StageAwareInterface) {
                 $stages[] = $releaseWorker->getStage();
             }
         }
         $this->stages = \array_unique($stages);
         return $this->stages;
     }
-    private function ensureVersionIsNewerThanLastOne(\PharIo\Version\Version $version) : void
+    private function ensureVersionIsNewerThanLastOne(Version $version) : void
     {
         $mostRecentVersion = $this->tagResolver->resolve(\getcwd());
         // no tag yet
@@ -101,10 +101,10 @@ final class ReleaseGuard
         // normalize to workaround phar-io bug
         $mostRecentVersion = \strtolower($mostRecentVersion);
         // validation
-        $mostRecentVersion = new \PharIo\Version\Version($mostRecentVersion);
+        $mostRecentVersion = new Version($mostRecentVersion);
         if ($version->isGreaterThan($mostRecentVersion)) {
             return;
         }
-        throw new \Symplify\MonorepoBuilder\Exception\Git\InvalidGitVersionException(\sprintf('Provided version "%s" must be greater than the last one: "%s"', $version->getVersionString(), $mostRecentVersion->getVersionString()));
+        throw new InvalidGitVersionException(\sprintf('Provided version "%s" must be greater than the last one: "%s"', $version->getVersionString(), $mostRecentVersion->getVersionString()));
     }
 }

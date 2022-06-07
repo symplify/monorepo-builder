@@ -16,7 +16,7 @@ use MonorepoBuilder20220607\Symfony\Component\Config\Definition\Exception\Invali
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class BooleanNode extends \MonorepoBuilder20220607\Symfony\Component\Config\Definition\ScalarNode
+class BooleanNode extends ScalarNode
 {
     /**
      * {@inheritdoc}
@@ -25,7 +25,7 @@ class BooleanNode extends \MonorepoBuilder20220607\Symfony\Component\Config\Defi
     protected function validateType($value)
     {
         if (!\is_bool($value)) {
-            $ex = new \MonorepoBuilder20220607\Symfony\Component\Config\Definition\Exception\InvalidTypeException(\sprintf('Invalid type for path "%s". Expected "bool", but got "%s".', $this->getPath(), \get_debug_type($value)));
+            $ex = new InvalidTypeException(\sprintf('Invalid type for path "%s". Expected "bool", but got "%s".', $this->getPath(), \get_debug_type($value)));
             if ($hint = $this->getInfo()) {
                 $ex->addHint($hint);
             }

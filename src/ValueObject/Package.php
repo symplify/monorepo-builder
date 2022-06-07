@@ -17,7 +17,7 @@ final class Package
     public function __construct(string $name, bool $hasTests)
     {
         $this->hasTests = $hasTests;
-        $this->shortName = (string) \MonorepoBuilder20220607\Nette\Utils\Strings::after($name, '/', -1);
+        $this->shortName = (string) Strings::after($name, '/', -1);
     }
     public function getShortName() : string
     {

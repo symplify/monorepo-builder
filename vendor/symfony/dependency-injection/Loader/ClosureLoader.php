@@ -19,10 +19,10 @@ use MonorepoBuilder20220607\Symfony\Component\DependencyInjection\ContainerBuild
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class ClosureLoader extends \MonorepoBuilder20220607\Symfony\Component\Config\Loader\Loader
+class ClosureLoader extends Loader
 {
     private $container;
-    public function __construct(\MonorepoBuilder20220607\Symfony\Component\DependencyInjection\ContainerBuilder $container, string $env = null)
+    public function __construct(ContainerBuilder $container, string $env = null)
     {
         $this->container = $container;
         parent::__construct($env);

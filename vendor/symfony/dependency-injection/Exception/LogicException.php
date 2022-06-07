@@ -13,6 +13,6 @@ namespace MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Exceptio
 /**
  * Base LogicException for Dependency Injection component.
  */
-class LogicException extends \LogicException implements \MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Exception\ExceptionInterface
+class LogicException extends \LogicException implements ExceptionInterface
 {
 }

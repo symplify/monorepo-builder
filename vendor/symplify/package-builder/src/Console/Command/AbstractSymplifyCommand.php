@@ -11,7 +11,7 @@ use MonorepoBuilder20220607\Symplify\PackageBuilder\ValueObject\Option;
 use MonorepoBuilder20220607\Symplify\SmartFileSystem\FileSystemGuard;
 use MonorepoBuilder20220607\Symplify\SmartFileSystem\Finder\SmartFinder;
 use MonorepoBuilder20220607\Symplify\SmartFileSystem\SmartFileSystem;
-abstract class AbstractSymplifyCommand extends \MonorepoBuilder20220607\Symfony\Component\Console\Command\Command
+abstract class AbstractSymplifyCommand extends Command
 {
     /**
      * @var \Symfony\Component\Console\Style\SymfonyStyle
@@ -32,12 +32,12 @@ abstract class AbstractSymplifyCommand extends \MonorepoBuilder20220607\Symfony\
     public function __construct()
     {
         parent::__construct();
-        $this->addOption(\MonorepoBuilder20220607\Symplify\PackageBuilder\ValueObject\Option::CONFIG, 'c', \MonorepoBuilder20220607\Symfony\Component\Console\Input\InputOption::VALUE_REQUIRED, 'Path to config file');
+        $this->addOption(Option::CONFIG, 'c', InputOption::VALUE_REQUIRED, 'Path to config file');
     }
     /**
      * @required
      */
-    public function autowire(\MonorepoBuilder20220607\Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle, \MonorepoBuilder20220607\Symplify\SmartFileSystem\SmartFileSystem $smartFileSystem, \MonorepoBuilder20220607\Symplify\SmartFileSystem\Finder\SmartFinder $smartFinder, \MonorepoBuilder20220607\Symplify\SmartFileSystem\FileSystemGuard $fileSystemGuard) : void
+    public function autowire(SymfonyStyle $symfonyStyle, SmartFileSystem $smartFileSystem, SmartFinder $smartFinder, FileSystemGuard $fileSystemGuard) : void
     {
         $this->symfonyStyle = $symfonyStyle;
         $this->smartFileSystem = $smartFileSystem;
