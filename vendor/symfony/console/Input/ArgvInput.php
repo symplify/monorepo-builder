@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220607\Symfony\Component\Console\Input;
+namespace MonorepoBuilder20220608\Symfony\Component\Console\Input;
 
-use MonorepoBuilder20220607\Symfony\Component\Console\Exception\RuntimeException;
+use MonorepoBuilder20220608\Symfony\Component\Console\Exception\RuntimeException;
 /**
  * ArgvInput represents an input coming from the CLI arguments.
  *

@@ -8,19 +8,19 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Loader;
+namespace MonorepoBuilder20220608\Symfony\Component\DependencyInjection\Loader;
 
-use MonorepoBuilder20220607\Symfony\Component\Config\Builder\ConfigBuilderGenerator;
-use MonorepoBuilder20220607\Symfony\Component\Config\Builder\ConfigBuilderGeneratorInterface;
-use MonorepoBuilder20220607\Symfony\Component\Config\Builder\ConfigBuilderInterface;
-use MonorepoBuilder20220607\Symfony\Component\Config\FileLocatorInterface;
-use MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Attribute\When;
-use MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Container;
-use MonorepoBuilder20220607\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Extension\ConfigurationExtensionInterface;
-use MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
-use MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use MonorepoBuilder20220608\Symfony\Component\Config\Builder\ConfigBuilderGenerator;
+use MonorepoBuilder20220608\Symfony\Component\Config\Builder\ConfigBuilderGeneratorInterface;
+use MonorepoBuilder20220608\Symfony\Component\Config\Builder\ConfigBuilderInterface;
+use MonorepoBuilder20220608\Symfony\Component\Config\FileLocatorInterface;
+use MonorepoBuilder20220608\Symfony\Component\DependencyInjection\Attribute\When;
+use MonorepoBuilder20220608\Symfony\Component\DependencyInjection\Container;
+use MonorepoBuilder20220608\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder20220608\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use MonorepoBuilder20220608\Symfony\Component\DependencyInjection\Extension\ConfigurationExtensionInterface;
+use MonorepoBuilder20220608\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
+use MonorepoBuilder20220608\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 /**
  * PhpFileLoader loads service definitions from a PHP file.
  *

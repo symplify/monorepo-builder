@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Compiler;
+namespace MonorepoBuilder20220608\Symfony\Component\DependencyInjection\Compiler;
 
-use MonorepoBuilder20220607\Symfony\Component\DependencyInjection\ChildDefinition;
-use MonorepoBuilder20220607\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Definition;
-use MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Exception\LogicException;
-use MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use MonorepoBuilder20220608\Symfony\Component\DependencyInjection\ChildDefinition;
+use MonorepoBuilder20220608\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder20220608\Symfony\Component\DependencyInjection\Definition;
+use MonorepoBuilder20220608\Symfony\Component\DependencyInjection\Exception\LogicException;
+use MonorepoBuilder20220608\Symfony\Component\DependencyInjection\Exception\RuntimeException;
 /**
  * @author Alexander M. Turek <me@derrabus.de>
  */

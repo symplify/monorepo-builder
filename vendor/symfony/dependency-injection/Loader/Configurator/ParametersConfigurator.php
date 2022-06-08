@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Loader\Configurator;
+namespace MonorepoBuilder20220608\Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use MonorepoBuilder20220607\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use MonorepoBuilder20220607\Symfony\Component\ExpressionLanguage\Expression;
+use MonorepoBuilder20220608\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder20220608\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use MonorepoBuilder20220608\Symfony\Component\ExpressionLanguage\Expression;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */

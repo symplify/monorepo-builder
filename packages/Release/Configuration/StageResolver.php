@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Release\Configuration;
 
-use MonorepoBuilder20220607\Symfony\Component\Console\Input\InputInterface;
+use MonorepoBuilder20220608\Symfony\Component\Console\Input\InputInterface;
 use Symplify\MonorepoBuilder\Release\Guard\ReleaseGuard;
 use Symplify\MonorepoBuilder\Release\ValueObject\Stage;
 use Symplify\MonorepoBuilder\ValueObject\Option;

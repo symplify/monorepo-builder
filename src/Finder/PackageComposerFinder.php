@@ -3,12 +3,12 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Finder;
 
-use MonorepoBuilder20220607\Symfony\Component\Finder\Finder;
+use MonorepoBuilder20220608\Symfony\Component\Finder\Finder;
 use Symplify\MonorepoBuilder\Exception\ConfigurationException;
 use Symplify\MonorepoBuilder\ValueObject\Option;
-use MonorepoBuilder20220607\Symplify\PackageBuilder\Parameter\ParameterProvider;
-use MonorepoBuilder20220607\Symplify\SmartFileSystem\Finder\FinderSanitizer;
-use MonorepoBuilder20220607\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder20220608\Symplify\PackageBuilder\Parameter\ParameterProvider;
+use MonorepoBuilder20220608\Symplify\SmartFileSystem\Finder\FinderSanitizer;
+use MonorepoBuilder20220608\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\MonorepoBuilder\Tests\Finder\PackageComposerFinder\PackageComposerFinderTest
  */
@@ -64,6 +64,6 @@ final class PackageComposerFinder
     private function isPHPUnit() : bool
     {
         // defined by PHPUnit
-        return \defined('MonorepoBuilder20220607\\PHPUNIT_COMPOSER_INSTALL') || \defined('MonorepoBuilder20220607\\__PHPUNIT_PHAR__');
+        return \defined('MonorepoBuilder20220608\\PHPUNIT_COMPOSER_INSTALL') || \defined('MonorepoBuilder20220608\\__PHPUNIT_PHAR__');
     }
 }

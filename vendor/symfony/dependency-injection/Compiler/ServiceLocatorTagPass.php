@@ -8,17 +8,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Compiler;
+namespace MonorepoBuilder20220608\Symfony\Component\DependencyInjection\Compiler;
 
-use MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Alias;
-use MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
-use MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
-use MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument;
-use MonorepoBuilder20220607\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Definition;
-use MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Reference;
-use MonorepoBuilder20220607\Symfony\Component\DependencyInjection\ServiceLocator;
+use MonorepoBuilder20220608\Symfony\Component\DependencyInjection\Alias;
+use MonorepoBuilder20220608\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
+use MonorepoBuilder20220608\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
+use MonorepoBuilder20220608\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument;
+use MonorepoBuilder20220608\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder20220608\Symfony\Component\DependencyInjection\Definition;
+use MonorepoBuilder20220608\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use MonorepoBuilder20220608\Symfony\Component\DependencyInjection\Reference;
+use MonorepoBuilder20220608\Symfony\Component\DependencyInjection\ServiceLocator;
 /**
  * Applies the "container.service_locator" tag by wrapping references into ServiceClosureArgument instances.
  *

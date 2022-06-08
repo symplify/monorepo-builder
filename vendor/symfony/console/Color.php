@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220607\Symfony\Component\Console;
+namespace MonorepoBuilder20220608\Symfony\Component\Console;
 
-use MonorepoBuilder20220607\Symfony\Component\Console\Exception\InvalidArgumentException;
+use MonorepoBuilder20220608\Symfony\Component\Console\Exception\InvalidArgumentException;
 /**
  * @author Fabien Potencier <fabien@symfony.com>
  */

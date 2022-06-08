@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\ValueObject;
 
-use MonorepoBuilder20220607\Nette\Utils\Strings;
+use MonorepoBuilder20220608\Nette\Utils\Strings;
 final class Package
 {
     /**

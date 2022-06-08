@@ -3,9 +3,9 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder;
 
-use MonorepoBuilder20220607\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
-use MonorepoBuilder20220607\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
-use MonorepoBuilder20220607\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder20220608\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
+use MonorepoBuilder20220608\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
+use MonorepoBuilder20220608\Symplify\SmartFileSystem\SmartFileInfo;
 final class DependencyUpdater
 {
     /**

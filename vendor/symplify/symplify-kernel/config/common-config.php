@@ -1,19 +1,19 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20220607;
+namespace MonorepoBuilder20220608;
 
-use MonorepoBuilder20220607\Symfony\Component\Console\Style\SymfonyStyle;
-use MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
-use MonorepoBuilder20220607\Symplify\PackageBuilder\Console\Style\SymfonyStyleFactory;
-use MonorepoBuilder20220607\Symplify\PackageBuilder\Parameter\ParameterProvider;
-use MonorepoBuilder20220607\Symplify\PackageBuilder\Reflection\PrivatesAccessor;
-use MonorepoBuilder20220607\Symplify\SmartFileSystem\FileSystemFilter;
-use MonorepoBuilder20220607\Symplify\SmartFileSystem\FileSystemGuard;
-use MonorepoBuilder20220607\Symplify\SmartFileSystem\Finder\FinderSanitizer;
-use MonorepoBuilder20220607\Symplify\SmartFileSystem\Finder\SmartFinder;
-use MonorepoBuilder20220607\Symplify\SmartFileSystem\SmartFileSystem;
-use function MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Loader\Configurator\service;
+use MonorepoBuilder20220608\Symfony\Component\Console\Style\SymfonyStyle;
+use MonorepoBuilder20220608\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use MonorepoBuilder20220608\Symplify\PackageBuilder\Console\Style\SymfonyStyleFactory;
+use MonorepoBuilder20220608\Symplify\PackageBuilder\Parameter\ParameterProvider;
+use MonorepoBuilder20220608\Symplify\PackageBuilder\Reflection\PrivatesAccessor;
+use MonorepoBuilder20220608\Symplify\SmartFileSystem\FileSystemFilter;
+use MonorepoBuilder20220608\Symplify\SmartFileSystem\FileSystemGuard;
+use MonorepoBuilder20220608\Symplify\SmartFileSystem\Finder\FinderSanitizer;
+use MonorepoBuilder20220608\Symplify\SmartFileSystem\Finder\SmartFinder;
+use MonorepoBuilder20220608\Symplify\SmartFileSystem\SmartFileSystem;
+use function MonorepoBuilder20220608\Symfony\Component\DependencyInjection\Loader\Configurator\service;
 return static function (ContainerConfigurator $containerConfigurator) : void {
     $services = $containerConfigurator->services();
     $services->defaults()->public()->autowire();

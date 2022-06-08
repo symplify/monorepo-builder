@@ -1,14 +1,14 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20220607\Symplify\SymplifyKernel;
+namespace MonorepoBuilder20220608\Symplify\SymplifyKernel;
 
-use MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
-use MonorepoBuilder20220607\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder20220607\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
-use MonorepoBuilder20220607\Symplify\SymplifyKernel\Contract\Config\LoaderFactoryInterface;
-use MonorepoBuilder20220607\Symplify\SymplifyKernel\DependencyInjection\LoadExtensionConfigsCompilerPass;
-use MonorepoBuilder20220607\Webmozart\Assert\Assert;
+use MonorepoBuilder20220608\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
+use MonorepoBuilder20220608\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder20220608\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
+use MonorepoBuilder20220608\Symplify\SymplifyKernel\Contract\Config\LoaderFactoryInterface;
+use MonorepoBuilder20220608\Symplify\SymplifyKernel\DependencyInjection\LoadExtensionConfigsCompilerPass;
+use MonorepoBuilder20220608\Webmozart\Assert\Assert;
 /**
  * @see \Symplify\SymplifyKernel\Tests\ContainerBuilderFactory\ContainerBuilderFactoryTest
  */

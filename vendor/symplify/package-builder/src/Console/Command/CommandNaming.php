@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20220607\Symplify\PackageBuilder\Console\Command;
+namespace MonorepoBuilder20220608\Symplify\PackageBuilder\Console\Command;
 
-use MonorepoBuilder20220607\Nette\Utils\Strings;
-use MonorepoBuilder20220607\Symfony\Component\Console\Command\Command;
+use MonorepoBuilder20220608\Nette\Utils\Strings;
+use MonorepoBuilder20220608\Symfony\Component\Console\Command\Command;
 /**
  * @api
  * @see \Symplify\PackageBuilder\Tests\Console\Command\CommandNamingTest

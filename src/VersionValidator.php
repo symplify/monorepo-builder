@@ -3,14 +3,14 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder;
 
-use MonorepoBuilder20220607\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
-use MonorepoBuilder20220607\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
-use MonorepoBuilder20220607\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
+use MonorepoBuilder20220608\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
+use MonorepoBuilder20220608\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
+use MonorepoBuilder20220608\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
 use Symplify\MonorepoBuilder\Merge\Configuration\ModifyingComposerJsonProvider;
 use Symplify\MonorepoBuilder\ValueObject\File;
 use Symplify\MonorepoBuilder\ValueObject\Option;
-use MonorepoBuilder20220607\Symplify\PackageBuilder\Parameter\ParameterProvider;
-use MonorepoBuilder20220607\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder20220608\Symplify\PackageBuilder\Parameter\ParameterProvider;
+use MonorepoBuilder20220608\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\MonorepoBuilder\Tests\VersionValidator\VersionValidatorTest
  */

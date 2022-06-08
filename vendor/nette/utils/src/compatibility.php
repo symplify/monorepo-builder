@@ -5,9 +5,9 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace MonorepoBuilder20220607\Nette\Utils;
+namespace MonorepoBuilder20220608\Nette\Utils;
 
-use MonorepoBuilder20220607\Nette;
+use MonorepoBuilder20220608\Nette;
 if (\false) {
     /** @deprecated use Nette\HtmlStringable */
     interface IHtmlString extends Nette\HtmlStringable
@@ -16,7 +16,7 @@ if (\false) {
 } elseif (!\interface_exists(IHtmlString::class)) {
     \class_alias(Nette\HtmlStringable::class, IHtmlString::class);
 }
-namespace MonorepoBuilder20220607\Nette\Localization;
+namespace MonorepoBuilder20220608\Nette\Localization;
 
 if (\false) {
     /** @deprecated use Nette\Localization\Translator */
