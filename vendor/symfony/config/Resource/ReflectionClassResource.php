@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220608\Symfony\Component\Config\Resource;
+namespace MonorepoBuilder20220609\Symfony\Component\Config\Resource;
 
-use MonorepoBuilder20220608\Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use MonorepoBuilder20220608\Symfony\Component\Messenger\Handler\MessageSubscriberInterface;
-use MonorepoBuilder20220608\Symfony\Contracts\Service\ServiceSubscriberInterface;
+use MonorepoBuilder20220609\Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use MonorepoBuilder20220609\Symfony\Component\Messenger\Handler\MessageSubscriberInterface;
+use MonorepoBuilder20220609\Symfony\Contracts\Service\ServiceSubscriberInterface;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  *

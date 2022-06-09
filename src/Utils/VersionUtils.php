@@ -5,7 +5,7 @@ namespace Symplify\MonorepoBuilder\Utils;
 
 use PharIo\Version\Version;
 use Symplify\MonorepoBuilder\ValueObject\Option;
-use MonorepoBuilder20220608\Symplify\PackageBuilder\Parameter\ParameterProvider;
+use MonorepoBuilder20220609\Symplify\PackageBuilder\Parameter\ParameterProvider;
 /**
  * @see \Symplify\MonorepoBuilder\Tests\Utils\VersionUtilsTest
  */

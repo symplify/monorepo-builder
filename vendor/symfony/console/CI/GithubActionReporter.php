@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220608\Symfony\Component\Console\CI;
+namespace MonorepoBuilder20220609\Symfony\Component\Console\CI;
 
-use MonorepoBuilder20220608\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder20220609\Symfony\Component\Console\Output\OutputInterface;
 /**
  * Utility class for Github actions.
  *

@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220608\Symfony\Component\Process;
+namespace MonorepoBuilder20220609\Symfony\Component\Process;
 
-use MonorepoBuilder20220608\Symfony\Component\Process\Exception\LogicException;
-use MonorepoBuilder20220608\Symfony\Component\Process\Exception\RuntimeException;
+use MonorepoBuilder20220609\Symfony\Component\Process\Exception\LogicException;
+use MonorepoBuilder20220609\Symfony\Component\Process\Exception\RuntimeException;
 /**
  * PhpProcess runs a PHP script in an independent process.
  *

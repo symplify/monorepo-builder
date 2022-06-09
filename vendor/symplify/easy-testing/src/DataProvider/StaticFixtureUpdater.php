@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20220608\Symplify\EasyTesting\DataProvider;
+namespace MonorepoBuilder20220609\Symplify\EasyTesting\DataProvider;
 
-use MonorepoBuilder20220608\Symplify\SmartFileSystem\SmartFileInfo;
-use MonorepoBuilder20220608\Symplify\SmartFileSystem\SmartFileSystem;
+use MonorepoBuilder20220609\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder20220609\Symplify\SmartFileSystem\SmartFileSystem;
 /**
  * @api
  */

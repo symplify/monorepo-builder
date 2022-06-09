@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220608\Symfony\Component\Process\Pipes;
+namespace MonorepoBuilder20220609\Symfony\Component\Process\Pipes;
 
-use MonorepoBuilder20220608\Symfony\Component\Process\Process;
+use MonorepoBuilder20220609\Symfony\Component\Process\Process;
 /**
  * UnixPipes implementation uses unix pipes as handles.
  *

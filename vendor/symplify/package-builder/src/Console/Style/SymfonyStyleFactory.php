@@ -1,15 +1,15 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20220608\Symplify\PackageBuilder\Console\Style;
+namespace MonorepoBuilder20220609\Symplify\PackageBuilder\Console\Style;
 
-use MonorepoBuilder20220608\Symfony\Component\Console\Application;
-use MonorepoBuilder20220608\Symfony\Component\Console\Input\ArgvInput;
-use MonorepoBuilder20220608\Symfony\Component\Console\Output\ConsoleOutput;
-use MonorepoBuilder20220608\Symfony\Component\Console\Output\OutputInterface;
-use MonorepoBuilder20220608\Symfony\Component\Console\Style\SymfonyStyle;
-use MonorepoBuilder20220608\Symplify\EasyTesting\PHPUnit\StaticPHPUnitEnvironment;
-use MonorepoBuilder20220608\Symplify\PackageBuilder\Reflection\PrivatesCaller;
+use MonorepoBuilder20220609\Symfony\Component\Console\Application;
+use MonorepoBuilder20220609\Symfony\Component\Console\Input\ArgvInput;
+use MonorepoBuilder20220609\Symfony\Component\Console\Output\ConsoleOutput;
+use MonorepoBuilder20220609\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder20220609\Symfony\Component\Console\Style\SymfonyStyle;
+use MonorepoBuilder20220609\Symplify\EasyTesting\PHPUnit\StaticPHPUnitEnvironment;
+use MonorepoBuilder20220609\Symplify\PackageBuilder\Reflection\PrivatesCaller;
 /**
  * @api
  */

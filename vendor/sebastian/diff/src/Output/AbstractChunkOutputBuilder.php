@@ -9,7 +9,7 @@ declare (strict_types=1);
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220608\SebastianBergmann\Diff\Output;
+namespace MonorepoBuilder20220609\SebastianBergmann\Diff\Output;
 
 use function count;
 abstract class AbstractChunkOutputBuilder implements DiffOutputBuilderInterface

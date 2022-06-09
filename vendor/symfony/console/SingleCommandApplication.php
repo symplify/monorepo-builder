@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220608\Symfony\Component\Console;
+namespace MonorepoBuilder20220609\Symfony\Component\Console;
 
-use MonorepoBuilder20220608\Symfony\Component\Console\Command\Command;
-use MonorepoBuilder20220608\Symfony\Component\Console\Input\InputInterface;
-use MonorepoBuilder20220608\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder20220609\Symfony\Component\Console\Command\Command;
+use MonorepoBuilder20220609\Symfony\Component\Console\Input\InputInterface;
+use MonorepoBuilder20220609\Symfony\Component\Console\Output\OutputInterface;
 /**
  * @author Grégoire Pineau <lyrixx@lyrixx.info>
  */

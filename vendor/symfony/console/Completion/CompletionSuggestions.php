@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220608\Symfony\Component\Console\Completion;
+namespace MonorepoBuilder20220609\Symfony\Component\Console\Completion;
 
-use MonorepoBuilder20220608\Symfony\Component\Console\Input\InputOption;
+use MonorepoBuilder20220609\Symfony\Component\Console\Input\InputOption;
 /**
  * Stores all completion suggestions for the current input.
  *

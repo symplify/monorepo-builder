@@ -5,9 +5,9 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace MonorepoBuilder20220608\Nette\Utils;
+namespace MonorepoBuilder20220609\Nette\Utils;
 
-use MonorepoBuilder20220608\Nette;
+use MonorepoBuilder20220609\Nette;
 /**
  * Nette\Object behaviour mixin.
  * @deprecated

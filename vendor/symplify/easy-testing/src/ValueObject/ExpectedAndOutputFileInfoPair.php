@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20220608\Symplify\EasyTesting\ValueObject;
+namespace MonorepoBuilder20220609\Symplify\EasyTesting\ValueObject;
 
-use MonorepoBuilder20220608\Symplify\SmartFileSystem\SmartFileInfo;
-use MonorepoBuilder20220608\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
+use MonorepoBuilder20220609\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder20220609\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
 final class ExpectedAndOutputFileInfoPair
 {
     /**
