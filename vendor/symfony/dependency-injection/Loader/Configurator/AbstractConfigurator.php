@@ -8,17 +8,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220609\Symfony\Component\DependencyInjection\Loader\Configurator;
+namespace MonorepoBuilder20220610\Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use MonorepoBuilder20220609\Symfony\Component\Config\Loader\ParamConfigurator;
-use MonorepoBuilder20220609\Symfony\Component\DependencyInjection\Argument\AbstractArgument;
-use MonorepoBuilder20220609\Symfony\Component\DependencyInjection\Argument\ArgumentInterface;
-use MonorepoBuilder20220609\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
-use MonorepoBuilder20220609\Symfony\Component\DependencyInjection\Definition;
-use MonorepoBuilder20220609\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use MonorepoBuilder20220609\Symfony\Component\DependencyInjection\Parameter;
-use MonorepoBuilder20220609\Symfony\Component\DependencyInjection\Reference;
-use MonorepoBuilder20220609\Symfony\Component\ExpressionLanguage\Expression;
+use MonorepoBuilder20220610\Symfony\Component\Config\Loader\ParamConfigurator;
+use MonorepoBuilder20220610\Symfony\Component\DependencyInjection\Argument\AbstractArgument;
+use MonorepoBuilder20220610\Symfony\Component\DependencyInjection\Argument\ArgumentInterface;
+use MonorepoBuilder20220610\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
+use MonorepoBuilder20220610\Symfony\Component\DependencyInjection\Definition;
+use MonorepoBuilder20220610\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use MonorepoBuilder20220610\Symfony\Component\DependencyInjection\Parameter;
+use MonorepoBuilder20220610\Symfony\Component\DependencyInjection\Reference;
+use MonorepoBuilder20220610\Symfony\Component\ExpressionLanguage\Expression;
 abstract class AbstractConfigurator
 {
     public const FACTORY = 'unknown';

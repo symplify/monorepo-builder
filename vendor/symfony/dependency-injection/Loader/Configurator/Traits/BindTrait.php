@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220609\Symfony\Component\DependencyInjection\Loader\Configurator\Traits;
+namespace MonorepoBuilder20220610\Symfony\Component\DependencyInjection\Loader\Configurator\Traits;
 
-use MonorepoBuilder20220609\Symfony\Component\DependencyInjection\Argument\BoundArgument;
-use MonorepoBuilder20220609\Symfony\Component\DependencyInjection\Loader\Configurator\DefaultsConfigurator;
-use MonorepoBuilder20220609\Symfony\Component\DependencyInjection\Loader\Configurator\InstanceofConfigurator;
+use MonorepoBuilder20220610\Symfony\Component\DependencyInjection\Argument\BoundArgument;
+use MonorepoBuilder20220610\Symfony\Component\DependencyInjection\Loader\Configurator\DefaultsConfigurator;
+use MonorepoBuilder20220610\Symfony\Component\DependencyInjection\Loader\Configurator\InstanceofConfigurator;
 trait BindTrait
 {
     /**

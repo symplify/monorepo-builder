@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220609\Symfony\Component\Console\Helper;
+namespace MonorepoBuilder20220610\Symfony\Component\Console\Helper;
 
-use MonorepoBuilder20220609\Symfony\Component\Console\Formatter\OutputFormatter;
-use MonorepoBuilder20220609\Symfony\Component\Console\Output\OutputInterface;
-use MonorepoBuilder20220609\Symfony\Component\Console\Question\ChoiceQuestion;
-use MonorepoBuilder20220609\Symfony\Component\Console\Question\ConfirmationQuestion;
-use MonorepoBuilder20220609\Symfony\Component\Console\Question\Question;
-use MonorepoBuilder20220609\Symfony\Component\Console\Style\SymfonyStyle;
+use MonorepoBuilder20220610\Symfony\Component\Console\Formatter\OutputFormatter;
+use MonorepoBuilder20220610\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder20220610\Symfony\Component\Console\Question\ChoiceQuestion;
+use MonorepoBuilder20220610\Symfony\Component\Console\Question\ConfirmationQuestion;
+use MonorepoBuilder20220610\Symfony\Component\Console\Question\Question;
+use MonorepoBuilder20220610\Symfony\Component\Console\Style\SymfonyStyle;
 /**
  * Symfony Style Guide compliant question helper.
  *

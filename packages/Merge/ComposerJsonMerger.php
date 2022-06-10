@@ -3,12 +3,12 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Merge;
 
-use MonorepoBuilder20220609\Symplify\ComposerJsonManipulator\ComposerJsonFactory;
-use MonorepoBuilder20220609\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
+use MonorepoBuilder20220610\Symplify\ComposerJsonManipulator\ComposerJsonFactory;
+use MonorepoBuilder20220610\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
 use Symplify\MonorepoBuilder\Merge\Configuration\MergedPackagesCollector;
 use Symplify\MonorepoBuilder\Merge\Contract\ComposerKeyMergerInterface;
 use Symplify\MonorepoBuilder\Merge\PathResolver\AutoloadPathNormalizer;
-use MonorepoBuilder20220609\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder20220610\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\MonorepoBuilder\Tests\Merge\ComposerJsonMerger\ComposerJsonMergerTest
  */

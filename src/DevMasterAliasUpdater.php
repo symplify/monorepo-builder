@@ -3,10 +3,10 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder;
 
-use MonorepoBuilder20220609\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
+use MonorepoBuilder20220610\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
 use Symplify\MonorepoBuilder\ValueObject\Option;
-use MonorepoBuilder20220609\Symplify\PackageBuilder\Parameter\ParameterProvider;
-use MonorepoBuilder20220609\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder20220610\Symplify\PackageBuilder\Parameter\ParameterProvider;
+use MonorepoBuilder20220610\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\MonorepoBuilder\Tests\DevMasterAliasUpdater\DevMasterAliasUpdaterTest
  */

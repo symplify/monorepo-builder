@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220609\Symfony\Component\Console\Input;
+namespace MonorepoBuilder20220610\Symfony\Component\Console\Input;
 
-use MonorepoBuilder20220609\Symfony\Component\Console\Exception\InvalidArgumentException;
-use MonorepoBuilder20220609\Symfony\Component\Console\Exception\InvalidOptionException;
+use MonorepoBuilder20220610\Symfony\Component\Console\Exception\InvalidArgumentException;
+use MonorepoBuilder20220610\Symfony\Component\Console\Exception\InvalidOptionException;
 /**
  * ArrayInput represents an input provided as an array.
  *

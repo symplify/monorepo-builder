@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220609\Symfony\Component\Process\Pipes;
+namespace MonorepoBuilder20220610\Symfony\Component\Process\Pipes;
 
-use MonorepoBuilder20220609\Symfony\Component\Process\Exception\InvalidArgumentException;
+use MonorepoBuilder20220610\Symfony\Component\Process\Exception\InvalidArgumentException;
 /**
  * @author Romain Neutron <imprec@gmail.com>
  *

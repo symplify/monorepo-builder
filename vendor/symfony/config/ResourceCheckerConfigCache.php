@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220609\Symfony\Component\Config;
+namespace MonorepoBuilder20220610\Symfony\Component\Config;
 
-use MonorepoBuilder20220609\Symfony\Component\Config\Resource\ResourceInterface;
-use MonorepoBuilder20220609\Symfony\Component\Filesystem\Exception\IOException;
-use MonorepoBuilder20220609\Symfony\Component\Filesystem\Filesystem;
+use MonorepoBuilder20220610\Symfony\Component\Config\Resource\ResourceInterface;
+use MonorepoBuilder20220610\Symfony\Component\Filesystem\Exception\IOException;
+use MonorepoBuilder20220610\Symfony\Component\Filesystem\Filesystem;
 /**
  * ResourceCheckerConfigCache uses instances of ResourceCheckerInterface
  * to check whether cached data is still fresh.

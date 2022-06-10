@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220609\Symfony\Component\Config\Definition;
+namespace MonorepoBuilder20220610\Symfony\Component\Config\Definition;
 
-use MonorepoBuilder20220609\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
-use MonorepoBuilder20220609\Symfony\Component\Config\Definition\Exception\InvalidTypeException;
-use MonorepoBuilder20220609\Symfony\Component\Config\Definition\Exception\UnsetKeyException;
+use MonorepoBuilder20220610\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
+use MonorepoBuilder20220610\Symfony\Component\Config\Definition\Exception\InvalidTypeException;
+use MonorepoBuilder20220610\Symfony\Component\Config\Definition\Exception\UnsetKeyException;
 /**
  * Represents an Array node in the config tree.
  *

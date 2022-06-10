@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20220609\Symplify\PackageBuilder\Console\Input;
+namespace MonorepoBuilder20220610\Symplify\PackageBuilder\Console\Input;
 
-use MonorepoBuilder20220609\Symfony\Component\Console\Input\ArgvInput;
+use MonorepoBuilder20220610\Symfony\Component\Console\Input\ArgvInput;
 /**
  * @api
  */

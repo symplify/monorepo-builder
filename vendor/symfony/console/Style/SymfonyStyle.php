@@ -8,25 +8,25 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220609\Symfony\Component\Console\Style;
+namespace MonorepoBuilder20220610\Symfony\Component\Console\Style;
 
-use MonorepoBuilder20220609\Symfony\Component\Console\Exception\InvalidArgumentException;
-use MonorepoBuilder20220609\Symfony\Component\Console\Exception\RuntimeException;
-use MonorepoBuilder20220609\Symfony\Component\Console\Formatter\OutputFormatter;
-use MonorepoBuilder20220609\Symfony\Component\Console\Helper\Helper;
-use MonorepoBuilder20220609\Symfony\Component\Console\Helper\ProgressBar;
-use MonorepoBuilder20220609\Symfony\Component\Console\Helper\SymfonyQuestionHelper;
-use MonorepoBuilder20220609\Symfony\Component\Console\Helper\Table;
-use MonorepoBuilder20220609\Symfony\Component\Console\Helper\TableCell;
-use MonorepoBuilder20220609\Symfony\Component\Console\Helper\TableSeparator;
-use MonorepoBuilder20220609\Symfony\Component\Console\Input\InputInterface;
-use MonorepoBuilder20220609\Symfony\Component\Console\Output\ConsoleOutputInterface;
-use MonorepoBuilder20220609\Symfony\Component\Console\Output\OutputInterface;
-use MonorepoBuilder20220609\Symfony\Component\Console\Output\TrimmedBufferOutput;
-use MonorepoBuilder20220609\Symfony\Component\Console\Question\ChoiceQuestion;
-use MonorepoBuilder20220609\Symfony\Component\Console\Question\ConfirmationQuestion;
-use MonorepoBuilder20220609\Symfony\Component\Console\Question\Question;
-use MonorepoBuilder20220609\Symfony\Component\Console\Terminal;
+use MonorepoBuilder20220610\Symfony\Component\Console\Exception\InvalidArgumentException;
+use MonorepoBuilder20220610\Symfony\Component\Console\Exception\RuntimeException;
+use MonorepoBuilder20220610\Symfony\Component\Console\Formatter\OutputFormatter;
+use MonorepoBuilder20220610\Symfony\Component\Console\Helper\Helper;
+use MonorepoBuilder20220610\Symfony\Component\Console\Helper\ProgressBar;
+use MonorepoBuilder20220610\Symfony\Component\Console\Helper\SymfonyQuestionHelper;
+use MonorepoBuilder20220610\Symfony\Component\Console\Helper\Table;
+use MonorepoBuilder20220610\Symfony\Component\Console\Helper\TableCell;
+use MonorepoBuilder20220610\Symfony\Component\Console\Helper\TableSeparator;
+use MonorepoBuilder20220610\Symfony\Component\Console\Input\InputInterface;
+use MonorepoBuilder20220610\Symfony\Component\Console\Output\ConsoleOutputInterface;
+use MonorepoBuilder20220610\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder20220610\Symfony\Component\Console\Output\TrimmedBufferOutput;
+use MonorepoBuilder20220610\Symfony\Component\Console\Question\ChoiceQuestion;
+use MonorepoBuilder20220610\Symfony\Component\Console\Question\ConfirmationQuestion;
+use MonorepoBuilder20220610\Symfony\Component\Console\Question\Question;
+use MonorepoBuilder20220610\Symfony\Component\Console\Terminal;
 /**
  * Output decorator helpers for the Symfony Style Guide.
  *

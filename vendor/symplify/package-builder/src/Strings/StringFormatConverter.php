@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20220609\Symplify\PackageBuilder\Strings;
+namespace MonorepoBuilder20220610\Symplify\PackageBuilder\Strings;
 
-use MonorepoBuilder20220609\Nette\Utils\Strings;
+use MonorepoBuilder20220610\Nette\Utils\Strings;
 /**
  * @api
  * @see \Symplify\PackageBuilder\Tests\Strings\StringFormatConverterTest

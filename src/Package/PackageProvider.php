@@ -3,11 +3,11 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Package;
 
-use MonorepoBuilder20220609\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
+use MonorepoBuilder20220610\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
 use Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider;
 use Symplify\MonorepoBuilder\ValueObject\Package;
-use MonorepoBuilder20220609\Symplify\SmartFileSystem\SmartFileInfo;
-use MonorepoBuilder20220609\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
+use MonorepoBuilder20220610\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder20220610\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
 final class PackageProvider
 {
     /**

@@ -8,26 +8,26 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220609\Symfony\Component\DependencyInjection\Dumper;
+namespace MonorepoBuilder20220610\Symfony\Component\DependencyInjection\Dumper;
 
-use MonorepoBuilder20220609\Symfony\Component\DependencyInjection\Alias;
-use MonorepoBuilder20220609\Symfony\Component\DependencyInjection\Argument\AbstractArgument;
-use MonorepoBuilder20220609\Symfony\Component\DependencyInjection\Argument\ArgumentInterface;
-use MonorepoBuilder20220609\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
-use MonorepoBuilder20220609\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
-use MonorepoBuilder20220609\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
-use MonorepoBuilder20220609\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument;
-use MonorepoBuilder20220609\Symfony\Component\DependencyInjection\ContainerInterface;
-use MonorepoBuilder20220609\Symfony\Component\DependencyInjection\Definition;
-use MonorepoBuilder20220609\Symfony\Component\DependencyInjection\Exception\LogicException;
-use MonorepoBuilder20220609\Symfony\Component\DependencyInjection\Exception\RuntimeException;
-use MonorepoBuilder20220609\Symfony\Component\DependencyInjection\Parameter;
-use MonorepoBuilder20220609\Symfony\Component\DependencyInjection\Reference;
-use MonorepoBuilder20220609\Symfony\Component\ExpressionLanguage\Expression;
-use MonorepoBuilder20220609\Symfony\Component\Yaml\Dumper as YmlDumper;
-use MonorepoBuilder20220609\Symfony\Component\Yaml\Parser;
-use MonorepoBuilder20220609\Symfony\Component\Yaml\Tag\TaggedValue;
-use MonorepoBuilder20220609\Symfony\Component\Yaml\Yaml;
+use MonorepoBuilder20220610\Symfony\Component\DependencyInjection\Alias;
+use MonorepoBuilder20220610\Symfony\Component\DependencyInjection\Argument\AbstractArgument;
+use MonorepoBuilder20220610\Symfony\Component\DependencyInjection\Argument\ArgumentInterface;
+use MonorepoBuilder20220610\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
+use MonorepoBuilder20220610\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
+use MonorepoBuilder20220610\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
+use MonorepoBuilder20220610\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument;
+use MonorepoBuilder20220610\Symfony\Component\DependencyInjection\ContainerInterface;
+use MonorepoBuilder20220610\Symfony\Component\DependencyInjection\Definition;
+use MonorepoBuilder20220610\Symfony\Component\DependencyInjection\Exception\LogicException;
+use MonorepoBuilder20220610\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use MonorepoBuilder20220610\Symfony\Component\DependencyInjection\Parameter;
+use MonorepoBuilder20220610\Symfony\Component\DependencyInjection\Reference;
+use MonorepoBuilder20220610\Symfony\Component\ExpressionLanguage\Expression;
+use MonorepoBuilder20220610\Symfony\Component\Yaml\Dumper as YmlDumper;
+use MonorepoBuilder20220610\Symfony\Component\Yaml\Parser;
+use MonorepoBuilder20220610\Symfony\Component\Yaml\Tag\TaggedValue;
+use MonorepoBuilder20220610\Symfony\Component\Yaml\Yaml;
 /**
  * YamlDumper dumps a service container as a YAML string.
  *
