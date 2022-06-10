@@ -17,7 +17,6 @@ use Symplify\MonorepoBuilder\Validator\SourcesPresenceValidator;
 use Symplify\MonorepoBuilder\ValueObject\File;
 use Symplify\MonorepoBuilder\ValueObject\Option;
 use MonorepoBuilder20220610\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
-use MonorepoBuilder20220610\Symplify\PackageBuilder\Console\Command\CommandNaming;
 final class ReleaseCommand extends AbstractSymplifyCommand
 {
     /**
@@ -51,7 +50,7 @@ final class ReleaseCommand extends AbstractSymplifyCommand
     }
     protected function configure() : void
     {
-        $this->setName(CommandNaming::classToName(self::class));
+        $this->setName('release');
         $this->setDescription('Perform release process with set Release Workers.');
         $description = \sprintf('Release version, in format "<major>.<minor>.<patch>" or "v<major>.<minor>.<patch> or one of keywords: "%s"', \implode('", "', SemVersion::ALL));
         $this->addArgument(Option::VERSION, InputArgument::REQUIRED, $description);

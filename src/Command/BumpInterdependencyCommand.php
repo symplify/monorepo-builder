@@ -10,7 +10,6 @@ use Symplify\MonorepoBuilder\DependencyUpdater;
 use Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider;
 use Symplify\MonorepoBuilder\Validator\SourcesPresenceValidator;
 use MonorepoBuilder20220610\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
-use MonorepoBuilder20220610\Symplify\PackageBuilder\Console\Command\CommandNaming;
 use MonorepoBuilder20220610\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
 final class BumpInterdependencyCommand extends AbstractSymplifyCommand
 {
@@ -39,7 +38,7 @@ final class BumpInterdependencyCommand extends AbstractSymplifyCommand
     }
     protected function configure() : void
     {
-        $this->setName(CommandNaming::classToName(self::class));
+        $this->setName('bump-interdependency');
         $this->setDescription('Bump dependency of split packages on each other');
         $this->addArgument(self::VERSION_ARGUMENT, InputArgument::REQUIRED, 'New version of inter-dependencies, e.g. "^4.4.2"');
     }

@@ -13,7 +13,6 @@ use Symplify\MonorepoBuilder\Merge\Application\MergedAndDecoratedComposerJsonFac
 use Symplify\MonorepoBuilder\Merge\Guard\ConflictingVersionsGuard;
 use Symplify\MonorepoBuilder\Validator\SourcesPresenceValidator;
 use MonorepoBuilder20220610\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
-use MonorepoBuilder20220610\Symplify\PackageBuilder\Console\Command\CommandNaming;
 final class MergeCommand extends AbstractSymplifyCommand
 {
     /**
@@ -52,7 +51,7 @@ final class MergeCommand extends AbstractSymplifyCommand
     }
     protected function configure() : void
     {
-        $this->setName(CommandNaming::classToName(self::class));
+        $this->setName('merge');
         $this->setDescription('Merge "composer.json" from all found packages to root one');
     }
     protected function execute(InputInterface $input, OutputInterface $output) : int

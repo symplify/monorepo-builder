@@ -9,7 +9,6 @@ use Symplify\MonorepoBuilder\DevMasterAliasUpdater;
 use Symplify\MonorepoBuilder\Finder\PackageComposerFinder;
 use Symplify\MonorepoBuilder\Git\ExpectedAliasResolver;
 use MonorepoBuilder20220610\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
-use MonorepoBuilder20220610\Symplify\PackageBuilder\Console\Command\CommandNaming;
 final class PackageAliasCommand extends AbstractSymplifyCommand
 {
     /**
@@ -33,7 +32,7 @@ final class PackageAliasCommand extends AbstractSymplifyCommand
     }
     protected function configure() : void
     {
-        $this->setName(CommandNaming::classToName(self::class));
+        $this->setName('package-alias');
         $this->setDescription('Updates branch alias in "composer.json" all found packages');
     }
     protected function execute(InputInterface $input, OutputInterface $output) : int
