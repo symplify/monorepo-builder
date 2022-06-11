@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220610\Symfony\Component\DependencyInjection;
+namespace MonorepoBuilder20220611\Symfony\Component\DependencyInjection;
 
-use MonorepoBuilder20220610\Symfony\Component\ExpressionLanguage\ExpressionFunction;
-use MonorepoBuilder20220610\Symfony\Component\ExpressionLanguage\ExpressionFunctionProviderInterface;
+use MonorepoBuilder20220611\Symfony\Component\ExpressionLanguage\ExpressionFunction;
+use MonorepoBuilder20220611\Symfony\Component\ExpressionLanguage\ExpressionFunctionProviderInterface;
 /**
  * Define some ExpressionLanguage functions.
  *

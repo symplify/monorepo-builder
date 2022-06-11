@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220610\Symfony\Component\Config\Definition;
+namespace MonorepoBuilder20220611\Symfony\Component\Config\Definition;
 
-use MonorepoBuilder20220610\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
+use MonorepoBuilder20220611\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
 /**
  * This node represents a value of variable type in the config tree.
  *

@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220610\Symfony\Component\DependencyInjection\Compiler;
+namespace MonorepoBuilder20220611\Symfony\Component\DependencyInjection\Compiler;
 
-use MonorepoBuilder20220610\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder20220611\Symfony\Component\DependencyInjection\ContainerBuilder;
 /**
  * Remove private aliases from the container. They were only used to establish
  * dependencies between services, and these dependencies have been resolved in

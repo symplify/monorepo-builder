@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220610\Symfony\Component\Config\Loader;
+namespace MonorepoBuilder20220611\Symfony\Component\Config\Loader;
 
-use MonorepoBuilder20220610\Symfony\Component\Config\Exception\FileLoaderImportCircularReferenceException;
-use MonorepoBuilder20220610\Symfony\Component\Config\Exception\FileLocatorFileNotFoundException;
-use MonorepoBuilder20220610\Symfony\Component\Config\Exception\LoaderLoadException;
-use MonorepoBuilder20220610\Symfony\Component\Config\FileLocatorInterface;
-use MonorepoBuilder20220610\Symfony\Component\Config\Resource\FileExistenceResource;
-use MonorepoBuilder20220610\Symfony\Component\Config\Resource\GlobResource;
+use MonorepoBuilder20220611\Symfony\Component\Config\Exception\FileLoaderImportCircularReferenceException;
+use MonorepoBuilder20220611\Symfony\Component\Config\Exception\FileLocatorFileNotFoundException;
+use MonorepoBuilder20220611\Symfony\Component\Config\Exception\LoaderLoadException;
+use MonorepoBuilder20220611\Symfony\Component\Config\FileLocatorInterface;
+use MonorepoBuilder20220611\Symfony\Component\Config\Resource\FileExistenceResource;
+use MonorepoBuilder20220611\Symfony\Component\Config\Resource\GlobResource;
 /**
  * FileLoader is the abstract class used by all built-in loaders that are file based.
  *

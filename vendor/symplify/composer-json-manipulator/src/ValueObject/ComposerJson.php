@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20220610\Symplify\ComposerJsonManipulator\ValueObject;
+namespace MonorepoBuilder20220611\Symplify\ComposerJsonManipulator\ValueObject;
 
-use MonorepoBuilder20220610\Nette\Utils\Arrays;
-use MonorepoBuilder20220610\Nette\Utils\Strings;
-use MonorepoBuilder20220610\Symplify\ComposerJsonManipulator\Sorter\ComposerPackageSorter;
-use MonorepoBuilder20220610\Symplify\SmartFileSystem\SmartFileInfo;
-use MonorepoBuilder20220610\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
+use MonorepoBuilder20220611\Nette\Utils\Arrays;
+use MonorepoBuilder20220611\Nette\Utils\Strings;
+use MonorepoBuilder20220611\Symplify\ComposerJsonManipulator\Sorter\ComposerPackageSorter;
+use MonorepoBuilder20220611\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder20220611\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
 /**
  * @api
  * @see \Symplify\ComposerJsonManipulator\Tests\ValueObject\ComposerJsonTest

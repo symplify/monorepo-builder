@@ -4,7 +4,7 @@ declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Release\Configuration;
 
 use PharIo\Version\Version;
-use MonorepoBuilder20220610\Symfony\Component\Console\Input\InputInterface;
+use MonorepoBuilder20220611\Symfony\Component\Console\Input\InputInterface;
 use Symplify\MonorepoBuilder\Release\Version\VersionFactory;
 use Symplify\MonorepoBuilder\ValueObject\Option;
 final class VersionResolver

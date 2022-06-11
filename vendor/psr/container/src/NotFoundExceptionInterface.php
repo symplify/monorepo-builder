@@ -1,6 +1,6 @@
 <?php
 
-namespace MonorepoBuilder20220610\Psr\Container;
+namespace MonorepoBuilder20220611\Psr\Container;
 
 /**
  * No entry was found in the container.

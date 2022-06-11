@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220610\Symfony\Component\String\Slugger;
+namespace MonorepoBuilder20220611\Symfony\Component\String\Slugger;
 
-use MonorepoBuilder20220610\Symfony\Component\String\AbstractUnicodeString;
-use MonorepoBuilder20220610\Symfony\Component\String\UnicodeString;
-use MonorepoBuilder20220610\Symfony\Contracts\Translation\LocaleAwareInterface;
+use MonorepoBuilder20220611\Symfony\Component\String\AbstractUnicodeString;
+use MonorepoBuilder20220611\Symfony\Component\String\UnicodeString;
+use MonorepoBuilder20220611\Symfony\Contracts\Translation\LocaleAwareInterface;
 if (!\interface_exists(LocaleAwareInterface::class)) {
     throw new \LogicException('You cannot use the "Symfony\\Component\\String\\Slugger\\AsciiSlugger" as the "symfony/translation-contracts" package is not installed. Try running "composer require symfony/translation-contracts".');
 }
