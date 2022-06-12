@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220611\Symfony\Component\Config\Resource;
+namespace MonorepoBuilder20220612\Symfony\Component\Config\Resource;
 
-use MonorepoBuilder20220611\Symfony\Component\Config\ResourceCheckerInterface;
+use MonorepoBuilder20220612\Symfony\Component\Config\ResourceCheckerInterface;
 /**
  * Resource checker for instances of SelfCheckingResourceInterface.
  *

@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20220611\Symplify\EasyTesting\FixtureSplitter;
+namespace MonorepoBuilder20220612\Symplify\EasyTesting\FixtureSplitter;
 
-use MonorepoBuilder20220611\Nette\Utils\Strings;
-use MonorepoBuilder20220611\Symplify\EasyTesting\ValueObject\FixtureSplit\TrioContent;
-use MonorepoBuilder20220611\Symplify\EasyTesting\ValueObject\SplitLine;
-use MonorepoBuilder20220611\Symplify\SmartFileSystem\SmartFileInfo;
-use MonorepoBuilder20220611\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
+use MonorepoBuilder20220612\Nette\Utils\Strings;
+use MonorepoBuilder20220612\Symplify\EasyTesting\ValueObject\FixtureSplit\TrioContent;
+use MonorepoBuilder20220612\Symplify\EasyTesting\ValueObject\SplitLine;
+use MonorepoBuilder20220612\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder20220612\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
 /**
  * @api
  */

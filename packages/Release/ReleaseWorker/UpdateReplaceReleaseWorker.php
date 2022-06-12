@@ -4,11 +4,11 @@ declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Release\ReleaseWorker;
 
 use PharIo\Version\Version;
-use MonorepoBuilder20220611\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
-use MonorepoBuilder20220611\Symplify\EasyCI\Exception\ShouldNotHappenException;
+use MonorepoBuilder20220612\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
+use MonorepoBuilder20220612\Symplify\EasyCI\Exception\ShouldNotHappenException;
 use Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider;
 use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface;
-use MonorepoBuilder20220611\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder20220612\Symplify\SmartFileSystem\SmartFileInfo;
 final class UpdateReplaceReleaseWorker implements ReleaseWorkerInterface
 {
     /**

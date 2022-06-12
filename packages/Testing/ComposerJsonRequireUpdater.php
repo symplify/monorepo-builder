@@ -3,12 +3,12 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Testing;
 
-use MonorepoBuilder20220611\Symfony\Component\Console\Style\SymfonyStyle;
-use MonorepoBuilder20220611\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
+use MonorepoBuilder20220612\Symfony\Component\Console\Style\SymfonyStyle;
+use MonorepoBuilder20220612\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
 use Symplify\MonorepoBuilder\Testing\ComposerJson\ComposerVersionManipulator;
 use Symplify\MonorepoBuilder\Testing\PackageDependency\UsedPackagesResolver;
-use MonorepoBuilder20220611\Symplify\PackageBuilder\Console\Output\ConsoleDiffer;
-use MonorepoBuilder20220611\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder20220612\Symplify\PackageBuilder\Console\Output\ConsoleDiffer;
+use MonorepoBuilder20220612\Symplify\SmartFileSystem\SmartFileInfo;
 final class ComposerJsonRequireUpdater
 {
     /**

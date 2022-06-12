@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20220611\Symplify\PackageBuilder\DependencyInjection\CompilerPass;
+namespace MonorepoBuilder20220612\Symplify\PackageBuilder\DependencyInjection\CompilerPass;
 
-use MonorepoBuilder20220611\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
-use MonorepoBuilder20220611\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder20220612\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
+use MonorepoBuilder20220612\Symfony\Component\DependencyInjection\ContainerBuilder;
 final class AutowireInterfacesCompilerPass implements CompilerPassInterface
 {
     /**

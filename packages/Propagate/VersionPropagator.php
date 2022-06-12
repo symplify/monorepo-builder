@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Propagate;
 
-use MonorepoBuilder20220611\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
+use MonorepoBuilder20220612\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
 final class VersionPropagator
 {
     public function propagate(ComposerJson $mainComposerJson, ComposerJson $otherComposerJson) : void

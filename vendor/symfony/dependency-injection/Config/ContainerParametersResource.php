@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220611\Symfony\Component\DependencyInjection\Config;
+namespace MonorepoBuilder20220612\Symfony\Component\DependencyInjection\Config;
 
-use MonorepoBuilder20220611\Symfony\Component\Config\Resource\ResourceInterface;
+use MonorepoBuilder20220612\Symfony\Component\Config\Resource\ResourceInterface;
 /**
  * Tracks container parameters.
  *

@@ -3,9 +3,9 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Merge\Validation;
 
-use MonorepoBuilder20220611\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
-use MonorepoBuilder20220611\Symplify\SmartFileSystem\FileSystemGuard;
-use MonorepoBuilder20220611\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder20220612\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
+use MonorepoBuilder20220612\Symplify\SmartFileSystem\FileSystemGuard;
+use MonorepoBuilder20220612\Symplify\SmartFileSystem\SmartFileInfo;
 final class AutoloadPathValidator
 {
     /**

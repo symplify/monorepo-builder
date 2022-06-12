@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220611\Symfony\Component\DependencyInjection\ParameterBag;
+namespace MonorepoBuilder20220612\Symfony\Component\DependencyInjection\ParameterBag;
 
-use MonorepoBuilder20220611\Symfony\Component\DependencyInjection\Exception\ParameterCircularReferenceException;
-use MonorepoBuilder20220611\Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException;
-use MonorepoBuilder20220611\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use MonorepoBuilder20220612\Symfony\Component\DependencyInjection\Exception\ParameterCircularReferenceException;
+use MonorepoBuilder20220612\Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException;
+use MonorepoBuilder20220612\Symfony\Component\DependencyInjection\Exception\RuntimeException;
 /**
  * Holds parameters.
  *

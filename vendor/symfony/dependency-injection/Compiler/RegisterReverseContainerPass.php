@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220611\Symfony\Component\DependencyInjection\Compiler;
+namespace MonorepoBuilder20220612\Symfony\Component\DependencyInjection\Compiler;
 
-use MonorepoBuilder20220611\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
-use MonorepoBuilder20220611\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder20220611\Symfony\Component\DependencyInjection\ContainerInterface;
-use MonorepoBuilder20220611\Symfony\Component\DependencyInjection\Definition;
-use MonorepoBuilder20220611\Symfony\Component\DependencyInjection\Reference;
+use MonorepoBuilder20220612\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
+use MonorepoBuilder20220612\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder20220612\Symfony\Component\DependencyInjection\ContainerInterface;
+use MonorepoBuilder20220612\Symfony\Component\DependencyInjection\Definition;
+use MonorepoBuilder20220612\Symfony\Component\DependencyInjection\Reference;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */

@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220611\Symfony\Component\Console\Tester;
+namespace MonorepoBuilder20220612\Symfony\Component\Console\Tester;
 
-use MonorepoBuilder20220611\PHPUnit\Framework\Assert;
-use MonorepoBuilder20220611\Symfony\Component\Console\Input\InputInterface;
-use MonorepoBuilder20220611\Symfony\Component\Console\Output\ConsoleOutput;
-use MonorepoBuilder20220611\Symfony\Component\Console\Output\OutputInterface;
-use MonorepoBuilder20220611\Symfony\Component\Console\Output\StreamOutput;
-use MonorepoBuilder20220611\Symfony\Component\Console\Tester\Constraint\CommandIsSuccessful;
+use MonorepoBuilder20220612\PHPUnit\Framework\Assert;
+use MonorepoBuilder20220612\Symfony\Component\Console\Input\InputInterface;
+use MonorepoBuilder20220612\Symfony\Component\Console\Output\ConsoleOutput;
+use MonorepoBuilder20220612\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder20220612\Symfony\Component\Console\Output\StreamOutput;
+use MonorepoBuilder20220612\Symfony\Component\Console\Tester\Constraint\CommandIsSuccessful;
 /**
  * @author Amrouche Hamza <hamza.simperfit@gmail.com>
  */

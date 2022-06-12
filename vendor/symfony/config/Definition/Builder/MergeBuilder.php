@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220611\Symfony\Component\Config\Definition\Builder;
+namespace MonorepoBuilder20220612\Symfony\Component\Config\Definition\Builder;
 
 /**
  * This class builds merge conditions.
