@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit293c321279001fedb03624bd08057259
+class ComposerStaticInitc567b774b88812c03ecc269b1f9656ac
 {
     public static $files = array (
         '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
@@ -804,9 +804,9 @@ class ComposerStaticInit293c321279001fedb03624bd08057259
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit293c321279001fedb03624bd08057259::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit293c321279001fedb03624bd08057259::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit293c321279001fedb03624bd08057259::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitc567b774b88812c03ecc269b1f9656ac::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitc567b774b88812c03ecc269b1f9656ac::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitc567b774b88812c03ecc269b1f9656ac::$classMap;
 
         }, null, ClassLoader::class);
     }
