@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220613\Symfony\Component\Config\Resource;
+namespace MonorepoBuilder202206\Symfony\Component\Config\Resource;
 
-use MonorepoBuilder20220613\Symfony\Component\Finder\Finder;
-use MonorepoBuilder20220613\Symfony\Component\Finder\Glob;
+use MonorepoBuilder202206\Symfony\Component\Finder\Finder;
+use MonorepoBuilder202206\Symfony\Component\Finder\Glob;
 /**
  * GlobResource represents a set of resources stored on the filesystem.
  *

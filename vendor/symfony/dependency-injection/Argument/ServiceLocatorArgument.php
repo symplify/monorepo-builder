@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220613\Symfony\Component\DependencyInjection\Argument;
+namespace MonorepoBuilder202206\Symfony\Component\DependencyInjection\Argument;
 
-use MonorepoBuilder20220613\Symfony\Component\DependencyInjection\Reference;
+use MonorepoBuilder202206\Symfony\Component\DependencyInjection\Reference;
 /**
  * Represents a closure acting as a service locator.
  *

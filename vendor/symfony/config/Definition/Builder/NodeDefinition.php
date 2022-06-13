@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220613\Symfony\Component\Config\Definition\Builder;
+namespace MonorepoBuilder202206\Symfony\Component\Config\Definition\Builder;
 
-use MonorepoBuilder20220613\Symfony\Component\Config\Definition\BaseNode;
-use MonorepoBuilder20220613\Symfony\Component\Config\Definition\Exception\InvalidDefinitionException;
-use MonorepoBuilder20220613\Symfony\Component\Config\Definition\NodeInterface;
+use MonorepoBuilder202206\Symfony\Component\Config\Definition\BaseNode;
+use MonorepoBuilder202206\Symfony\Component\Config\Definition\Exception\InvalidDefinitionException;
+use MonorepoBuilder202206\Symfony\Component\Config\Definition\NodeInterface;
 /**
  * This class provides a fluent interface for defining a node.
  *

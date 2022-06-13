@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220613\Symfony\Component\DependencyInjection;
+namespace MonorepoBuilder202206\Symfony\Component\DependencyInjection;
 
-use MonorepoBuilder20220613\Symfony\Component\DependencyInjection\Exception\EnvNotFoundException;
-use MonorepoBuilder20220613\Symfony\Component\DependencyInjection\Exception\ParameterCircularReferenceException;
-use MonorepoBuilder20220613\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use MonorepoBuilder202206\Symfony\Component\DependencyInjection\Exception\EnvNotFoundException;
+use MonorepoBuilder202206\Symfony\Component\DependencyInjection\Exception\ParameterCircularReferenceException;
+use MonorepoBuilder202206\Symfony\Component\DependencyInjection\Exception\RuntimeException;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */

@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220613\Symfony\Component\DependencyInjection\Loader;
+namespace MonorepoBuilder202206\Symfony\Component\DependencyInjection\Loader;
 
-use MonorepoBuilder20220613\Symfony\Component\Config\Loader\Loader;
-use MonorepoBuilder20220613\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder202206\Symfony\Component\Config\Loader\Loader;
+use MonorepoBuilder202206\Symfony\Component\DependencyInjection\ContainerBuilder;
 /**
  * ClosureLoader loads service definitions from a PHP closure.
  *

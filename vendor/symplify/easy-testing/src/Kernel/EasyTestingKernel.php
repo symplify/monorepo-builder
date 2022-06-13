@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20220613\Symplify\EasyTesting\Kernel;
+namespace MonorepoBuilder202206\Symplify\EasyTesting\Kernel;
 
-use MonorepoBuilder20220613\Psr\Container\ContainerInterface;
-use MonorepoBuilder20220613\Symplify\EasyTesting\ValueObject\EasyTestingConfig;
-use MonorepoBuilder20220613\Symplify\SymplifyKernel\HttpKernel\AbstractSymplifyKernel;
+use MonorepoBuilder202206\Psr\Container\ContainerInterface;
+use MonorepoBuilder202206\Symplify\EasyTesting\ValueObject\EasyTestingConfig;
+use MonorepoBuilder202206\Symplify\SymplifyKernel\HttpKernel\AbstractSymplifyKernel;
 final class EasyTestingKernel extends AbstractSymplifyKernel
 {
     /**

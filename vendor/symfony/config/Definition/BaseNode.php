@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220613\Symfony\Component\Config\Definition;
+namespace MonorepoBuilder202206\Symfony\Component\Config\Definition;
 
-use MonorepoBuilder20220613\Symfony\Component\Config\Definition\Exception\Exception;
-use MonorepoBuilder20220613\Symfony\Component\Config\Definition\Exception\ForbiddenOverwriteException;
-use MonorepoBuilder20220613\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
-use MonorepoBuilder20220613\Symfony\Component\Config\Definition\Exception\InvalidTypeException;
-use MonorepoBuilder20220613\Symfony\Component\Config\Definition\Exception\UnsetKeyException;
+use MonorepoBuilder202206\Symfony\Component\Config\Definition\Exception\Exception;
+use MonorepoBuilder202206\Symfony\Component\Config\Definition\Exception\ForbiddenOverwriteException;
+use MonorepoBuilder202206\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
+use MonorepoBuilder202206\Symfony\Component\Config\Definition\Exception\InvalidTypeException;
+use MonorepoBuilder202206\Symfony\Component\Config\Definition\Exception\UnsetKeyException;
 /**
  * The base node class.
  *

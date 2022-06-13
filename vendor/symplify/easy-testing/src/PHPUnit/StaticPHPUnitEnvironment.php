@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20220613\Symplify\EasyTesting\PHPUnit;
+namespace MonorepoBuilder202206\Symplify\EasyTesting\PHPUnit;
 
 /**
  * @api
@@ -13,6 +13,6 @@ final class StaticPHPUnitEnvironment
      */
     public static function isPHPUnitRun() : bool
     {
-        return \defined('MonorepoBuilder20220613\\PHPUNIT_COMPOSER_INSTALL') || \defined('MonorepoBuilder20220613\\__PHPUNIT_PHAR__');
+        return \defined('MonorepoBuilder202206\\PHPUNIT_COMPOSER_INSTALL') || \defined('MonorepoBuilder202206\\__PHPUNIT_PHAR__');
     }
 }

@@ -5,9 +5,9 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace MonorepoBuilder20220613\Nette\Utils;
+namespace MonorepoBuilder202206\Nette\Utils;
 
-use MonorepoBuilder20220613\Nette;
+use MonorepoBuilder202206\Nette;
 use function is_array, is_int, is_object, count;
 /**
  * Array tools library.

@@ -1,6 +1,6 @@
 <?php
 
-namespace MonorepoBuilder20220613\Webmozart\Assert;
+namespace MonorepoBuilder202206\Webmozart\Assert;
 
 use ArrayAccess;
 use Closure;

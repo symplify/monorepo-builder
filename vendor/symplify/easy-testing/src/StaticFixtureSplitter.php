@@ -1,15 +1,15 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20220613\Symplify\EasyTesting;
+namespace MonorepoBuilder202206\Symplify\EasyTesting;
 
-use MonorepoBuilder20220613\Nette\Utils\Strings;
-use MonorepoBuilder20220613\Symplify\EasyTesting\ValueObject\InputAndExpected;
-use MonorepoBuilder20220613\Symplify\EasyTesting\ValueObject\InputFileInfoAndExpected;
-use MonorepoBuilder20220613\Symplify\EasyTesting\ValueObject\InputFileInfoAndExpectedFileInfo;
-use MonorepoBuilder20220613\Symplify\EasyTesting\ValueObject\SplitLine;
-use MonorepoBuilder20220613\Symplify\SmartFileSystem\SmartFileInfo;
-use MonorepoBuilder20220613\Symplify\SmartFileSystem\SmartFileSystem;
+use MonorepoBuilder202206\Nette\Utils\Strings;
+use MonorepoBuilder202206\Symplify\EasyTesting\ValueObject\InputAndExpected;
+use MonorepoBuilder202206\Symplify\EasyTesting\ValueObject\InputFileInfoAndExpected;
+use MonorepoBuilder202206\Symplify\EasyTesting\ValueObject\InputFileInfoAndExpectedFileInfo;
+use MonorepoBuilder202206\Symplify\EasyTesting\ValueObject\SplitLine;
+use MonorepoBuilder202206\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder202206\Symplify\SmartFileSystem\SmartFileSystem;
 /**
  * @api
  */

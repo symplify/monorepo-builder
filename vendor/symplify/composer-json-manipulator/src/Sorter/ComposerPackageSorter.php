@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20220613\Symplify\ComposerJsonManipulator\Sorter;
+namespace MonorepoBuilder202206\Symplify\ComposerJsonManipulator\Sorter;
 
-use MonorepoBuilder20220613\Nette\Utils\Strings;
+use MonorepoBuilder202206\Nette\Utils\Strings;
 /**
  * Mostly inspired by https://github.com/composer/composer/blob/master/src/Composer/Json/JsonManipulator.php
  *

@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220613\Symfony\Component\DependencyInjection\Exception;
+namespace MonorepoBuilder202206\Symfony\Component\DependencyInjection\Exception;
 
-use MonorepoBuilder20220613\Psr\Container\NotFoundExceptionInterface;
+use MonorepoBuilder202206\Psr\Container\NotFoundExceptionInterface;
 /**
  * This exception is thrown when a non-existent parameter is used.
  *

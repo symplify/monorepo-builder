@@ -1,19 +1,19 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20220613;
+namespace MonorepoBuilder202206;
 
-use MonorepoBuilder20220613\Symfony\Component\Console\Style\SymfonyStyle;
-use MonorepoBuilder20220613\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
-use MonorepoBuilder20220613\Symplify\PackageBuilder\Console\Style\SymfonyStyleFactory;
-use MonorepoBuilder20220613\Symplify\PackageBuilder\Parameter\ParameterProvider;
-use MonorepoBuilder20220613\Symplify\PackageBuilder\Reflection\PrivatesAccessor;
-use MonorepoBuilder20220613\Symplify\SmartFileSystem\FileSystemFilter;
-use MonorepoBuilder20220613\Symplify\SmartFileSystem\FileSystemGuard;
-use MonorepoBuilder20220613\Symplify\SmartFileSystem\Finder\FinderSanitizer;
-use MonorepoBuilder20220613\Symplify\SmartFileSystem\Finder\SmartFinder;
-use MonorepoBuilder20220613\Symplify\SmartFileSystem\SmartFileSystem;
-use function MonorepoBuilder20220613\Symfony\Component\DependencyInjection\Loader\Configurator\service;
+use MonorepoBuilder202206\Symfony\Component\Console\Style\SymfonyStyle;
+use MonorepoBuilder202206\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use MonorepoBuilder202206\Symplify\PackageBuilder\Console\Style\SymfonyStyleFactory;
+use MonorepoBuilder202206\Symplify\PackageBuilder\Parameter\ParameterProvider;
+use MonorepoBuilder202206\Symplify\PackageBuilder\Reflection\PrivatesAccessor;
+use MonorepoBuilder202206\Symplify\SmartFileSystem\FileSystemFilter;
+use MonorepoBuilder202206\Symplify\SmartFileSystem\FileSystemGuard;
+use MonorepoBuilder202206\Symplify\SmartFileSystem\Finder\FinderSanitizer;
+use MonorepoBuilder202206\Symplify\SmartFileSystem\Finder\SmartFinder;
+use MonorepoBuilder202206\Symplify\SmartFileSystem\SmartFileSystem;
+use function MonorepoBuilder202206\Symfony\Component\DependencyInjection\Loader\Configurator\service;
 return static function (ContainerConfigurator $containerConfigurator) : void {
     $services = $containerConfigurator->services();
     $services->defaults()->public()->autowire();

@@ -5,9 +5,9 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace MonorepoBuilder20220613\Nette;
+namespace MonorepoBuilder202206\Nette;
 
-use MonorepoBuilder20220613\Nette\Utils\ObjectHelpers;
+use MonorepoBuilder202206\Nette\Utils\ObjectHelpers;
 /**
  * Strict class for better experience.
  * - 'did you mean' hints

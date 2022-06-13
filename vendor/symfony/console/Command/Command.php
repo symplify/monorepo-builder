@@ -8,21 +8,21 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220613\Symfony\Component\Console\Command;
+namespace MonorepoBuilder202206\Symfony\Component\Console\Command;
 
-use MonorepoBuilder20220613\Symfony\Component\Console\Application;
-use MonorepoBuilder20220613\Symfony\Component\Console\Attribute\AsCommand;
-use MonorepoBuilder20220613\Symfony\Component\Console\Completion\CompletionInput;
-use MonorepoBuilder20220613\Symfony\Component\Console\Completion\CompletionSuggestions;
-use MonorepoBuilder20220613\Symfony\Component\Console\Exception\ExceptionInterface;
-use MonorepoBuilder20220613\Symfony\Component\Console\Exception\InvalidArgumentException;
-use MonorepoBuilder20220613\Symfony\Component\Console\Exception\LogicException;
-use MonorepoBuilder20220613\Symfony\Component\Console\Helper\HelperSet;
-use MonorepoBuilder20220613\Symfony\Component\Console\Input\InputArgument;
-use MonorepoBuilder20220613\Symfony\Component\Console\Input\InputDefinition;
-use MonorepoBuilder20220613\Symfony\Component\Console\Input\InputInterface;
-use MonorepoBuilder20220613\Symfony\Component\Console\Input\InputOption;
-use MonorepoBuilder20220613\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder202206\Symfony\Component\Console\Application;
+use MonorepoBuilder202206\Symfony\Component\Console\Attribute\AsCommand;
+use MonorepoBuilder202206\Symfony\Component\Console\Completion\CompletionInput;
+use MonorepoBuilder202206\Symfony\Component\Console\Completion\CompletionSuggestions;
+use MonorepoBuilder202206\Symfony\Component\Console\Exception\ExceptionInterface;
+use MonorepoBuilder202206\Symfony\Component\Console\Exception\InvalidArgumentException;
+use MonorepoBuilder202206\Symfony\Component\Console\Exception\LogicException;
+use MonorepoBuilder202206\Symfony\Component\Console\Helper\HelperSet;
+use MonorepoBuilder202206\Symfony\Component\Console\Input\InputArgument;
+use MonorepoBuilder202206\Symfony\Component\Console\Input\InputDefinition;
+use MonorepoBuilder202206\Symfony\Component\Console\Input\InputInterface;
+use MonorepoBuilder202206\Symfony\Component\Console\Input\InputOption;
+use MonorepoBuilder202206\Symfony\Component\Console\Output\OutputInterface;
 /**
  * Base class for all commands.
  *
@@ -260,7 +260,7 @@ class Command
                         \cli_set_process_title($this->processTitle);
                     }
                 }
-            } elseif (\function_exists('MonorepoBuilder20220613\\setproctitle')) {
+            } elseif (\function_exists('MonorepoBuilder202206\\setproctitle')) {
                 setproctitle($this->processTitle);
             } elseif (OutputInterface::VERBOSITY_VERY_VERBOSE === $output->getVerbosity()) {
                 $output->writeln('<comment>Install the proctitle PECL to be able to change the process title.</comment>');
