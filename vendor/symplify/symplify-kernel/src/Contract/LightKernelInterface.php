@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder20220612\Symplify\SymplifyKernel\Contract;
+namespace MonorepoBuilder20220613\Symplify\SymplifyKernel\Contract;
 
-use MonorepoBuilder20220612\Psr\Container\ContainerInterface;
+use MonorepoBuilder20220613\Psr\Container\ContainerInterface;
 /**
  * @api
  */

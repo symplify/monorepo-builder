@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220612\Symfony\Component\Config\Loader;
+namespace MonorepoBuilder20220613\Symfony\Component\Config\Loader;
 
-use MonorepoBuilder20220612\Symfony\Component\Config\Exception\LoaderLoadException;
+use MonorepoBuilder20220613\Symfony\Component\Config\Exception\LoaderLoadException;
 /**
  * DelegatingLoader delegates loading to other loaders using a loader resolver.
  *

@@ -3,9 +3,9 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Package;
 
-use MonorepoBuilder20220612\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
+use MonorepoBuilder20220613\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
 use Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider;
-use MonorepoBuilder20220612\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder20220613\Symplify\SmartFileSystem\SmartFileInfo;
 final class PackageNamesProvider
 {
     /**

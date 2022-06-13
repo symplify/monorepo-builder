@@ -8,18 +8,18 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220612\Symfony\Component\Console\DependencyInjection;
+namespace MonorepoBuilder20220613\Symfony\Component\Console\DependencyInjection;
 
-use MonorepoBuilder20220612\Symfony\Component\Console\Command\Command;
-use MonorepoBuilder20220612\Symfony\Component\Console\Command\LazyCommand;
-use MonorepoBuilder20220612\Symfony\Component\Console\CommandLoader\ContainerCommandLoader;
-use MonorepoBuilder20220612\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
-use MonorepoBuilder20220612\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
-use MonorepoBuilder20220612\Symfony\Component\DependencyInjection\Compiler\ServiceLocatorTagPass;
-use MonorepoBuilder20220612\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder20220612\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use MonorepoBuilder20220612\Symfony\Component\DependencyInjection\Reference;
-use MonorepoBuilder20220612\Symfony\Component\DependencyInjection\TypedReference;
+use MonorepoBuilder20220613\Symfony\Component\Console\Command\Command;
+use MonorepoBuilder20220613\Symfony\Component\Console\Command\LazyCommand;
+use MonorepoBuilder20220613\Symfony\Component\Console\CommandLoader\ContainerCommandLoader;
+use MonorepoBuilder20220613\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
+use MonorepoBuilder20220613\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
+use MonorepoBuilder20220613\Symfony\Component\DependencyInjection\Compiler\ServiceLocatorTagPass;
+use MonorepoBuilder20220613\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder20220613\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use MonorepoBuilder20220613\Symfony\Component\DependencyInjection\Reference;
+use MonorepoBuilder20220613\Symfony\Component\DependencyInjection\TypedReference;
 /**
  * Registers console commands.
  *

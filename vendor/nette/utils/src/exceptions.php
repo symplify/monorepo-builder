@@ -5,7 +5,7 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace MonorepoBuilder20220612\Nette;
+namespace MonorepoBuilder20220613\Nette;
 
 /**
  * The exception that is thrown when the value of an argument is

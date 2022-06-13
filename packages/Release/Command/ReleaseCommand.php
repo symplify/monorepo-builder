@@ -3,10 +3,10 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Release\Command;
 
-use MonorepoBuilder20220612\Symfony\Component\Console\Input\InputArgument;
-use MonorepoBuilder20220612\Symfony\Component\Console\Input\InputInterface;
-use MonorepoBuilder20220612\Symfony\Component\Console\Input\InputOption;
-use MonorepoBuilder20220612\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder20220613\Symfony\Component\Console\Input\InputArgument;
+use MonorepoBuilder20220613\Symfony\Component\Console\Input\InputInterface;
+use MonorepoBuilder20220613\Symfony\Component\Console\Input\InputOption;
+use MonorepoBuilder20220613\Symfony\Component\Console\Output\OutputInterface;
 use Symplify\MonorepoBuilder\Release\Configuration\StageResolver;
 use Symplify\MonorepoBuilder\Release\Configuration\VersionResolver;
 use Symplify\MonorepoBuilder\Release\Output\ReleaseWorkerReporter;
@@ -16,7 +16,7 @@ use Symplify\MonorepoBuilder\Release\ValueObject\Stage;
 use Symplify\MonorepoBuilder\Validator\SourcesPresenceValidator;
 use Symplify\MonorepoBuilder\ValueObject\File;
 use Symplify\MonorepoBuilder\ValueObject\Option;
-use MonorepoBuilder20220612\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
+use MonorepoBuilder20220613\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
 final class ReleaseCommand extends AbstractSymplifyCommand
 {
     /**

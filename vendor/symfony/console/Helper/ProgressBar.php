@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder20220612\Symfony\Component\Console\Helper;
+namespace MonorepoBuilder20220613\Symfony\Component\Console\Helper;
 
-use MonorepoBuilder20220612\Symfony\Component\Console\Cursor;
-use MonorepoBuilder20220612\Symfony\Component\Console\Exception\LogicException;
-use MonorepoBuilder20220612\Symfony\Component\Console\Output\ConsoleOutputInterface;
-use MonorepoBuilder20220612\Symfony\Component\Console\Output\ConsoleSectionOutput;
-use MonorepoBuilder20220612\Symfony\Component\Console\Output\OutputInterface;
-use MonorepoBuilder20220612\Symfony\Component\Console\Terminal;
+use MonorepoBuilder20220613\Symfony\Component\Console\Cursor;
+use MonorepoBuilder20220613\Symfony\Component\Console\Exception\LogicException;
+use MonorepoBuilder20220613\Symfony\Component\Console\Output\ConsoleOutputInterface;
+use MonorepoBuilder20220613\Symfony\Component\Console\Output\ConsoleSectionOutput;
+use MonorepoBuilder20220613\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder20220613\Symfony\Component\Console\Terminal;
 /**
  * The ProgressBar provides helpers to display progress output.
  *

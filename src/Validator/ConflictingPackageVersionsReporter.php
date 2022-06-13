@@ -3,8 +3,8 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Validator;
 
-use MonorepoBuilder20220612\Symfony\Component\Console\Style\SymfonyStyle;
-use MonorepoBuilder20220612\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder20220613\Symfony\Component\Console\Style\SymfonyStyle;
+use MonorepoBuilder20220613\Symplify\SmartFileSystem\SmartFileInfo;
 final class ConflictingPackageVersionsReporter
 {
     /**

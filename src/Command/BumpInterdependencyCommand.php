@@ -3,14 +3,14 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Command;
 
-use MonorepoBuilder20220612\Symfony\Component\Console\Input\InputArgument;
-use MonorepoBuilder20220612\Symfony\Component\Console\Input\InputInterface;
-use MonorepoBuilder20220612\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder20220613\Symfony\Component\Console\Input\InputArgument;
+use MonorepoBuilder20220613\Symfony\Component\Console\Input\InputInterface;
+use MonorepoBuilder20220613\Symfony\Component\Console\Output\OutputInterface;
 use Symplify\MonorepoBuilder\DependencyUpdater;
 use Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider;
 use Symplify\MonorepoBuilder\Validator\SourcesPresenceValidator;
-use MonorepoBuilder20220612\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
-use MonorepoBuilder20220612\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
+use MonorepoBuilder20220613\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
+use MonorepoBuilder20220613\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
 final class BumpInterdependencyCommand extends AbstractSymplifyCommand
 {
     /**

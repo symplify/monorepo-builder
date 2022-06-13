@@ -3,8 +3,8 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Console;
 
-use MonorepoBuilder20220612\Symfony\Component\Console\Application;
-use MonorepoBuilder20220612\Symfony\Component\Console\Command\Command;
+use MonorepoBuilder20220613\Symfony\Component\Console\Application;
+use MonorepoBuilder20220613\Symfony\Component\Console\Command\Command;
 final class MonorepoBuilderApplication extends Application
 {
     /**

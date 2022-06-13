@@ -3,12 +3,12 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Kernel;
 
-use MonorepoBuilder20220612\Psr\Container\ContainerInterface;
-use MonorepoBuilder20220612\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonManipulatorConfig;
+use MonorepoBuilder20220613\Psr\Container\ContainerInterface;
+use MonorepoBuilder20220613\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonManipulatorConfig;
 use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface;
-use MonorepoBuilder20220612\Symplify\PackageBuilder\DependencyInjection\CompilerPass\AutowireInterfacesCompilerPass;
-use MonorepoBuilder20220612\Symplify\PackageBuilder\ValueObject\ConsoleColorDiffConfig;
-use MonorepoBuilder20220612\Symplify\SymplifyKernel\HttpKernel\AbstractSymplifyKernel;
+use MonorepoBuilder20220613\Symplify\PackageBuilder\DependencyInjection\CompilerPass\AutowireInterfacesCompilerPass;
+use MonorepoBuilder20220613\Symplify\PackageBuilder\ValueObject\ConsoleColorDiffConfig;
+use MonorepoBuilder20220613\Symplify\SymplifyKernel\HttpKernel\AbstractSymplifyKernel;
 final class MonorepoBuilderKernel extends AbstractSymplifyKernel
 {
     /**
