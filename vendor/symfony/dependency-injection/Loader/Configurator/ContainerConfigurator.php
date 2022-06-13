@@ -103,10 +103,6 @@ class ContainerConfigurator extends AbstractConfigurator
     }
 }
 /**
- * @author Nicolas Grekas <p@tchwork.com>
- */
-\class_alias('MonorepoBuilder202206\\Symfony\\Component\\DependencyInjection\\Loader\\Configurator\\ContainerConfigurator', 'Symfony\\Component\\DependencyInjection\\Loader\\Configurator\\ContainerConfigurator', \false);
-/**
  * Creates a parameter.
  */
 function param(string $name) : ParamConfigurator
