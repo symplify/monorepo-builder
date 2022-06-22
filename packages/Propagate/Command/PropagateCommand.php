@@ -4,11 +4,13 @@ declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Propagate\Command;
 
 use MonorepoBuilder202206\Symfony\Component\Console\Input\InputInterface;
+use MonorepoBuilder202206\Symfony\Component\Console\Input\InputOption;
 use MonorepoBuilder202206\Symfony\Component\Console\Output\OutputInterface;
 use MonorepoBuilder202206\Symplify\Astral\Exception\ShouldNotHappenException;
 use MonorepoBuilder202206\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
 use Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider;
 use Symplify\MonorepoBuilder\Propagate\VersionPropagator;
+use Symplify\MonorepoBuilder\ValueObject\Option;
 use MonorepoBuilder202206\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
 use MonorepoBuilder202206\Symplify\SmartFileSystem\SmartFileInfo;
 final class PropagateCommand extends AbstractSymplifyCommand
@@ -36,10 +38,12 @@ final class PropagateCommand extends AbstractSymplifyCommand
     {
         $this->setName('propagate');
         $this->setDescription('Propagate versions from root "composer.json" to all packages, the opposite of "merge" command');
+        $this->addOption(Option::DRY_RUN, null, InputOption::VALUE_NONE, 'Report conflict on missing types');
     }
     protected function execute(InputInterface $input, OutputInterface $output) : int
     {
         $rootComposerJson = $this->composerJsonProvider->getRootComposerJson();
+        $isDryRun = (bool) $input->getOption(Option::DRY_RUN);
         foreach ($this->composerJsonProvider->getPackageComposerJsons() as $packageComposerJson) {
             $originalPackageComposerJson = clone $packageComposerJson;
             $this->versionPropagator->propagate($rootComposerJson, $packageComposerJson);
@@ -49,6 +53,10 @@ final class PropagateCommand extends AbstractSymplifyCommand
             $packageFileInfo = $packageComposerJson->getFileInfo();
             if (!$packageFileInfo instanceof SmartFileInfo) {
                 throw new ShouldNotHappenException();
+            }
+            if ($isDryRun) {
+                $this->symfonyStyle->error('Run "composer propagate" to update package versions');
+                return self::FAILURE;
             }
             $this->jsonFileManager->printComposerJsonToFilePath($packageComposerJson, $packageFileInfo->getRealPath());
             $message = \sprintf('"%s" was updated to inherit root composer.json versions', $packageFileInfo->getRelativeFilePathFromCwd());
