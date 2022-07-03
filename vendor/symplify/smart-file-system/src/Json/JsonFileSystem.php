@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder202206\Symplify\SmartFileSystem\Json;
+namespace MonorepoBuilder202207\Symplify\SmartFileSystem\Json;
 
-use MonorepoBuilder202206\Nette\Utils\Arrays;
-use MonorepoBuilder202206\Nette\Utils\Json;
-use MonorepoBuilder202206\Symplify\SmartFileSystem\FileSystemGuard;
-use MonorepoBuilder202206\Symplify\SmartFileSystem\SmartFileSystem;
+use MonorepoBuilder202207\Nette\Utils\Arrays;
+use MonorepoBuilder202207\Nette\Utils\Json;
+use MonorepoBuilder202207\Symplify\SmartFileSystem\FileSystemGuard;
+use MonorepoBuilder202207\Symplify\SmartFileSystem\SmartFileSystem;
 /**
  * @api
  * @see \Symplify\SmartFileSystem\Tests\Json\JsonFileSystem\JsonFileSystemTest

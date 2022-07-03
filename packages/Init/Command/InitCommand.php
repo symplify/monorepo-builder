@@ -3,10 +3,10 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Init\Command;
 
-use MonorepoBuilder202206\Symfony\Component\Console\Input\InputArgument;
-use MonorepoBuilder202206\Symfony\Component\Console\Input\InputInterface;
-use MonorepoBuilder202206\Symfony\Component\Console\Output\OutputInterface;
-use MonorepoBuilder202206\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
+use MonorepoBuilder202207\Symfony\Component\Console\Input\InputArgument;
+use MonorepoBuilder202207\Symfony\Component\Console\Input\InputInterface;
+use MonorepoBuilder202207\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder202207\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
 final class InitCommand extends AbstractSymplifyCommand
 {
     /**

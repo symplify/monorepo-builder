@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder202206\Symplify\AutowireArrayParameter\DocBlock;
+namespace MonorepoBuilder202207\Symplify\AutowireArrayParameter\DocBlock;
 
-use MonorepoBuilder202206\Nette\Utils\Strings;
+use MonorepoBuilder202207\Nette\Utils\Strings;
 /**
  * @see \Symplify\AutowireArrayParameter\Tests\DocBlock\ParamTypeDocBlockResolverTest
  */

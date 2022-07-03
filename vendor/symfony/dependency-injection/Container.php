@@ -8,20 +8,20 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202206\Symfony\Component\DependencyInjection;
+namespace MonorepoBuilder202207\Symfony\Component\DependencyInjection;
 
-use MonorepoBuilder202206\Symfony\Component\DependencyInjection\Argument\RewindableGenerator;
-use MonorepoBuilder202206\Symfony\Component\DependencyInjection\Argument\ServiceLocator as ArgumentServiceLocator;
-use MonorepoBuilder202206\Symfony\Component\DependencyInjection\Exception\EnvNotFoundException;
-use MonorepoBuilder202206\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use MonorepoBuilder202206\Symfony\Component\DependencyInjection\Exception\ParameterCircularReferenceException;
-use MonorepoBuilder202206\Symfony\Component\DependencyInjection\Exception\RuntimeException;
-use MonorepoBuilder202206\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
-use MonorepoBuilder202206\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
-use MonorepoBuilder202206\Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag;
-use MonorepoBuilder202206\Symfony\Component\DependencyInjection\ParameterBag\FrozenParameterBag;
-use MonorepoBuilder202206\Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
-use MonorepoBuilder202206\Symfony\Contracts\Service\ResetInterface;
+use MonorepoBuilder202207\Symfony\Component\DependencyInjection\Argument\RewindableGenerator;
+use MonorepoBuilder202207\Symfony\Component\DependencyInjection\Argument\ServiceLocator as ArgumentServiceLocator;
+use MonorepoBuilder202207\Symfony\Component\DependencyInjection\Exception\EnvNotFoundException;
+use MonorepoBuilder202207\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use MonorepoBuilder202207\Symfony\Component\DependencyInjection\Exception\ParameterCircularReferenceException;
+use MonorepoBuilder202207\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use MonorepoBuilder202207\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
+use MonorepoBuilder202207\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
+use MonorepoBuilder202207\Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag;
+use MonorepoBuilder202207\Symfony\Component\DependencyInjection\ParameterBag\FrozenParameterBag;
+use MonorepoBuilder202207\Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
+use MonorepoBuilder202207\Symfony\Contracts\Service\ResetInterface;
 // Help opcache.preload discover always-needed symbols
 \class_exists(RewindableGenerator::class);
 \class_exists(ArgumentServiceLocator::class);

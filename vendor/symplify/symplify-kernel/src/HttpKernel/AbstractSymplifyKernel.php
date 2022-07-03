@@ -1,18 +1,18 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder202206\Symplify\SymplifyKernel\HttpKernel;
+namespace MonorepoBuilder202207\Symplify\SymplifyKernel\HttpKernel;
 
-use MonorepoBuilder202206\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
-use MonorepoBuilder202206\Symfony\Component\DependencyInjection\Container;
-use MonorepoBuilder202206\Symfony\Component\DependencyInjection\ContainerInterface;
-use MonorepoBuilder202206\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
-use MonorepoBuilder202206\Symplify\AutowireArrayParameter\DependencyInjection\CompilerPass\AutowireArrayParameterCompilerPass;
-use MonorepoBuilder202206\Symplify\SymplifyKernel\Config\Loader\ParameterMergingLoaderFactory;
-use MonorepoBuilder202206\Symplify\SymplifyKernel\ContainerBuilderFactory;
-use MonorepoBuilder202206\Symplify\SymplifyKernel\Contract\LightKernelInterface;
-use MonorepoBuilder202206\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
-use MonorepoBuilder202206\Symplify\SymplifyKernel\ValueObject\SymplifyKernelConfig;
+use MonorepoBuilder202207\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
+use MonorepoBuilder202207\Symfony\Component\DependencyInjection\Container;
+use MonorepoBuilder202207\Symfony\Component\DependencyInjection\ContainerInterface;
+use MonorepoBuilder202207\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
+use MonorepoBuilder202207\Symplify\AutowireArrayParameter\DependencyInjection\CompilerPass\AutowireArrayParameterCompilerPass;
+use MonorepoBuilder202207\Symplify\SymplifyKernel\Config\Loader\ParameterMergingLoaderFactory;
+use MonorepoBuilder202207\Symplify\SymplifyKernel\ContainerBuilderFactory;
+use MonorepoBuilder202207\Symplify\SymplifyKernel\Contract\LightKernelInterface;
+use MonorepoBuilder202207\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
+use MonorepoBuilder202207\Symplify\SymplifyKernel\ValueObject\SymplifyKernelConfig;
 /**
  * @api
  */
@@ -37,7 +37,7 @@ abstract class AbstractSymplifyKernel implements LightKernelInterface
         $this->container = $containerBuilder;
         return $containerBuilder;
     }
-    public function getContainer() : \MonorepoBuilder202206\Psr\Container\ContainerInterface
+    public function getContainer() : \MonorepoBuilder202207\Psr\Container\ContainerInterface
     {
         if (!$this->container instanceof Container) {
             throw new ShouldNotHappenException();

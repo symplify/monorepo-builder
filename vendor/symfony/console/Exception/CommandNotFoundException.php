@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202206\Symfony\Component\Console\Exception;
+namespace MonorepoBuilder202207\Symfony\Component\Console\Exception;
 
 /**
  * Represents an incorrect command name typed in the console.

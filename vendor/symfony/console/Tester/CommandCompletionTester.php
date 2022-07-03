@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202206\Symfony\Component\Console\Tester;
+namespace MonorepoBuilder202207\Symfony\Component\Console\Tester;
 
-use MonorepoBuilder202206\Symfony\Component\Console\Command\Command;
-use MonorepoBuilder202206\Symfony\Component\Console\Completion\CompletionInput;
-use MonorepoBuilder202206\Symfony\Component\Console\Completion\CompletionSuggestions;
+use MonorepoBuilder202207\Symfony\Component\Console\Command\Command;
+use MonorepoBuilder202207\Symfony\Component\Console\Completion\CompletionInput;
+use MonorepoBuilder202207\Symfony\Component\Console\Completion\CompletionSuggestions;
 /**
  * Eases the testing of command completion.
  *

@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder202206\Symplify\ComposerJsonManipulator;
+namespace MonorepoBuilder202207\Symplify\ComposerJsonManipulator;
 
-use MonorepoBuilder202206\Nette\Utils\Json;
-use MonorepoBuilder202206\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
-use MonorepoBuilder202206\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
-use MonorepoBuilder202206\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
-use MonorepoBuilder202206\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder202207\Nette\Utils\Json;
+use MonorepoBuilder202207\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
+use MonorepoBuilder202207\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
+use MonorepoBuilder202207\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
+use MonorepoBuilder202207\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @api
  * @see \Symplify\ComposerJsonManipulator\Tests\ComposerJsonFactory\ComposerJsonFactoryTest

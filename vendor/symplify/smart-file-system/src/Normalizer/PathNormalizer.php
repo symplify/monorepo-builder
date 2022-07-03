@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder202206\Symplify\SmartFileSystem\Normalizer;
+namespace MonorepoBuilder202207\Symplify\SmartFileSystem\Normalizer;
 
-use MonorepoBuilder202206\Nette\Utils\Strings;
+use MonorepoBuilder202207\Nette\Utils\Strings;
 /**
  * @api
  *

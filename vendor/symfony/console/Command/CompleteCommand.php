@@ -8,17 +8,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202206\Symfony\Component\Console\Command;
+namespace MonorepoBuilder202207\Symfony\Component\Console\Command;
 
-use MonorepoBuilder202206\Symfony\Component\Console\Completion\CompletionInput;
-use MonorepoBuilder202206\Symfony\Component\Console\Completion\CompletionSuggestions;
-use MonorepoBuilder202206\Symfony\Component\Console\Completion\Output\BashCompletionOutput;
-use MonorepoBuilder202206\Symfony\Component\Console\Completion\Output\CompletionOutputInterface;
-use MonorepoBuilder202206\Symfony\Component\Console\Exception\CommandNotFoundException;
-use MonorepoBuilder202206\Symfony\Component\Console\Exception\ExceptionInterface;
-use MonorepoBuilder202206\Symfony\Component\Console\Input\InputInterface;
-use MonorepoBuilder202206\Symfony\Component\Console\Input\InputOption;
-use MonorepoBuilder202206\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder202207\Symfony\Component\Console\Completion\CompletionInput;
+use MonorepoBuilder202207\Symfony\Component\Console\Completion\CompletionSuggestions;
+use MonorepoBuilder202207\Symfony\Component\Console\Completion\Output\BashCompletionOutput;
+use MonorepoBuilder202207\Symfony\Component\Console\Completion\Output\CompletionOutputInterface;
+use MonorepoBuilder202207\Symfony\Component\Console\Exception\CommandNotFoundException;
+use MonorepoBuilder202207\Symfony\Component\Console\Exception\ExceptionInterface;
+use MonorepoBuilder202207\Symfony\Component\Console\Input\InputInterface;
+use MonorepoBuilder202207\Symfony\Component\Console\Input\InputOption;
+use MonorepoBuilder202207\Symfony\Component\Console\Output\OutputInterface;
 /**
  * Responsible for providing the values to the shell completion.
  *

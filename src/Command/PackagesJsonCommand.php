@@ -3,13 +3,13 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Command;
 
-use MonorepoBuilder202206\Nette\Utils\Json;
-use MonorepoBuilder202206\Symfony\Component\Console\Input\InputInterface;
-use MonorepoBuilder202206\Symfony\Component\Console\Input\InputOption;
-use MonorepoBuilder202206\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder202207\Nette\Utils\Json;
+use MonorepoBuilder202207\Symfony\Component\Console\Input\InputInterface;
+use MonorepoBuilder202207\Symfony\Component\Console\Input\InputOption;
+use MonorepoBuilder202207\Symfony\Component\Console\Output\OutputInterface;
 use Symplify\MonorepoBuilder\Json\PackageJsonProvider;
 use Symplify\MonorepoBuilder\ValueObject\Option;
-use MonorepoBuilder202206\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
+use MonorepoBuilder202207\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
 final class PackagesJsonCommand extends AbstractSymplifyCommand
 {
     /**

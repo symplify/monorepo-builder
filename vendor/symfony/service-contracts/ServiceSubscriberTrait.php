@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202206\Symfony\Contracts\Service;
+namespace MonorepoBuilder202207\Symfony\Contracts\Service;
 
-use MonorepoBuilder202206\Psr\Container\ContainerInterface;
-use MonorepoBuilder202206\Symfony\Contracts\Service\Attribute\SubscribedService;
+use MonorepoBuilder202207\Psr\Container\ContainerInterface;
+use MonorepoBuilder202207\Symfony\Contracts\Service\Attribute\SubscribedService;
 /**
  * Implementation of ServiceSubscriberInterface that determines subscribed services from
  * method return types. Service ids are available as "ClassName::methodName".

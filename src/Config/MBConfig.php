@@ -3,10 +3,10 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Config;
 
-use MonorepoBuilder202206\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use MonorepoBuilder202207\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface;
 use Symplify\MonorepoBuilder\ValueObject\Option;
-use MonorepoBuilder202206\Webmozart\Assert\Assert;
+use MonorepoBuilder202207\Webmozart\Assert\Assert;
 final class MBConfig extends ContainerConfigurator
 {
     /**

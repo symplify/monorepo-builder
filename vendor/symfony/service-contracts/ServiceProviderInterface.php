@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202206\Symfony\Contracts\Service;
+namespace MonorepoBuilder202207\Symfony\Contracts\Service;
 
-use MonorepoBuilder202206\Psr\Container\ContainerInterface;
+use MonorepoBuilder202207\Psr\Container\ContainerInterface;
 /**
  * A ServiceProviderInterface exposes the identifiers and the types of services provided by a container.
  *

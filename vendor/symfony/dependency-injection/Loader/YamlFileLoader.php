@@ -8,28 +8,28 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202206\Symfony\Component\DependencyInjection\Loader;
+namespace MonorepoBuilder202207\Symfony\Component\DependencyInjection\Loader;
 
-use MonorepoBuilder202206\Symfony\Component\DependencyInjection\Alias;
-use MonorepoBuilder202206\Symfony\Component\DependencyInjection\Argument\AbstractArgument;
-use MonorepoBuilder202206\Symfony\Component\DependencyInjection\Argument\BoundArgument;
-use MonorepoBuilder202206\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
-use MonorepoBuilder202206\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
-use MonorepoBuilder202206\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
-use MonorepoBuilder202206\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument;
-use MonorepoBuilder202206\Symfony\Component\DependencyInjection\ChildDefinition;
-use MonorepoBuilder202206\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder202206\Symfony\Component\DependencyInjection\ContainerInterface;
-use MonorepoBuilder202206\Symfony\Component\DependencyInjection\Definition;
-use MonorepoBuilder202206\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use MonorepoBuilder202206\Symfony\Component\DependencyInjection\Exception\RuntimeException;
-use MonorepoBuilder202206\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
-use MonorepoBuilder202206\Symfony\Component\DependencyInjection\Reference;
-use MonorepoBuilder202206\Symfony\Component\ExpressionLanguage\Expression;
-use MonorepoBuilder202206\Symfony\Component\Yaml\Exception\ParseException;
-use MonorepoBuilder202206\Symfony\Component\Yaml\Parser as YamlParser;
-use MonorepoBuilder202206\Symfony\Component\Yaml\Tag\TaggedValue;
-use MonorepoBuilder202206\Symfony\Component\Yaml\Yaml;
+use MonorepoBuilder202207\Symfony\Component\DependencyInjection\Alias;
+use MonorepoBuilder202207\Symfony\Component\DependencyInjection\Argument\AbstractArgument;
+use MonorepoBuilder202207\Symfony\Component\DependencyInjection\Argument\BoundArgument;
+use MonorepoBuilder202207\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
+use MonorepoBuilder202207\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
+use MonorepoBuilder202207\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
+use MonorepoBuilder202207\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument;
+use MonorepoBuilder202207\Symfony\Component\DependencyInjection\ChildDefinition;
+use MonorepoBuilder202207\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder202207\Symfony\Component\DependencyInjection\ContainerInterface;
+use MonorepoBuilder202207\Symfony\Component\DependencyInjection\Definition;
+use MonorepoBuilder202207\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use MonorepoBuilder202207\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use MonorepoBuilder202207\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
+use MonorepoBuilder202207\Symfony\Component\DependencyInjection\Reference;
+use MonorepoBuilder202207\Symfony\Component\ExpressionLanguage\Expression;
+use MonorepoBuilder202207\Symfony\Component\Yaml\Exception\ParseException;
+use MonorepoBuilder202207\Symfony\Component\Yaml\Parser as YamlParser;
+use MonorepoBuilder202207\Symfony\Component\Yaml\Tag\TaggedValue;
+use MonorepoBuilder202207\Symfony\Component\Yaml\Yaml;
 /**
  * YamlFileLoader loads YAML files service definitions.
  *
@@ -553,7 +553,7 @@ class YamlFileLoader extends FileLoader
      */
     protected function loadFile(string $file) : ?array
     {
-        if (!\class_exists(\MonorepoBuilder202206\Symfony\Component\Yaml\Parser::class)) {
+        if (!\class_exists(\MonorepoBuilder202207\Symfony\Component\Yaml\Parser::class)) {
             throw new RuntimeException('Unable to load YAML config files as the Symfony Yaml Component is not installed.');
         }
         if (!\stream_is_local($file)) {

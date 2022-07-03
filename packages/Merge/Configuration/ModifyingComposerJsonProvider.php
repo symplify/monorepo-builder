@@ -3,10 +3,10 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Merge\Configuration;
 
-use MonorepoBuilder202206\Symplify\ComposerJsonManipulator\ComposerJsonFactory;
-use MonorepoBuilder202206\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
+use MonorepoBuilder202207\Symplify\ComposerJsonManipulator\ComposerJsonFactory;
+use MonorepoBuilder202207\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
 use Symplify\MonorepoBuilder\ValueObject\Option;
-use MonorepoBuilder202206\Symplify\PackageBuilder\Parameter\ParameterProvider;
+use MonorepoBuilder202207\Symplify\PackageBuilder\Parameter\ParameterProvider;
 final class ModifyingComposerJsonProvider
 {
     /**

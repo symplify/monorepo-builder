@@ -5,9 +5,9 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace MonorepoBuilder202206\Nette\Utils;
+namespace MonorepoBuilder202207\Nette\Utils;
 
-use MonorepoBuilder202206\Nette;
+use MonorepoBuilder202207\Nette;
 /**
  * File system tool.
  */

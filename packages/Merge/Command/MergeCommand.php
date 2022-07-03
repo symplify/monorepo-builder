@@ -3,16 +3,16 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Merge\Command;
 
-use MonorepoBuilder202206\Symfony\Component\Console\Input\InputInterface;
-use MonorepoBuilder202206\Symfony\Component\Console\Output\OutputInterface;
-use MonorepoBuilder202206\Symplify\ComposerJsonManipulator\ComposerJsonFactory;
-use MonorepoBuilder202206\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
-use MonorepoBuilder202206\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
+use MonorepoBuilder202207\Symfony\Component\Console\Input\InputInterface;
+use MonorepoBuilder202207\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder202207\Symplify\ComposerJsonManipulator\ComposerJsonFactory;
+use MonorepoBuilder202207\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
+use MonorepoBuilder202207\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
 use Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider;
 use Symplify\MonorepoBuilder\Merge\Application\MergedAndDecoratedComposerJsonFactory;
 use Symplify\MonorepoBuilder\Merge\Guard\ConflictingVersionsGuard;
 use Symplify\MonorepoBuilder\Validator\SourcesPresenceValidator;
-use MonorepoBuilder202206\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
+use MonorepoBuilder202207\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
 final class MergeCommand extends AbstractSymplifyCommand
 {
     /**

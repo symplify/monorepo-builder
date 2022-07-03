@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder202206\Symplify\AutowireArrayParameter\DependencyInjection;
+namespace MonorepoBuilder202207\Symplify\AutowireArrayParameter\DependencyInjection;
 
-use MonorepoBuilder202206\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder202206\Symfony\Component\DependencyInjection\Definition;
-use MonorepoBuilder202206\Symplify\AutowireArrayParameter\Exception\DependencyInjection\DefinitionForTypeNotFoundException;
+use MonorepoBuilder202207\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder202207\Symfony\Component\DependencyInjection\Definition;
+use MonorepoBuilder202207\Symplify\AutowireArrayParameter\Exception\DependencyInjection\DefinitionForTypeNotFoundException;
 use Throwable;
 /**
  * @api

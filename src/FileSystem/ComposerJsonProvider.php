@@ -3,12 +3,12 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\FileSystem;
 
-use MonorepoBuilder202206\Symplify\ComposerJsonManipulator\ComposerJsonFactory;
-use MonorepoBuilder202206\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
-use MonorepoBuilder202206\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
+use MonorepoBuilder202207\Symplify\ComposerJsonManipulator\ComposerJsonFactory;
+use MonorepoBuilder202207\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
+use MonorepoBuilder202207\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
 use Symplify\MonorepoBuilder\Finder\PackageComposerFinder;
-use MonorepoBuilder202206\Symplify\SmartFileSystem\SmartFileInfo;
-use MonorepoBuilder202206\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
+use MonorepoBuilder202207\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder202207\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
 final class ComposerJsonProvider
 {
     /**

@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Merge\Arrays;
 
-use MonorepoBuilder202206\Symplify\PackageBuilder\Yaml\ParametersMerger;
+use MonorepoBuilder202207\Symplify\PackageBuilder\Yaml\ParametersMerger;
 final class SortedParameterMerger
 {
     /**

@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder202206\Symplify\PackageBuilder\Parameter;
+namespace MonorepoBuilder202207\Symplify\PackageBuilder\Parameter;
 
-use MonorepoBuilder202206\Symfony\Component\DependencyInjection\ContainerInterface;
-use MonorepoBuilder202206\Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException;
-use MonorepoBuilder202206\Symfony\Component\HttpFoundation\ParameterBag;
+use MonorepoBuilder202207\Symfony\Component\DependencyInjection\ContainerInterface;
+use MonorepoBuilder202207\Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException;
+use MonorepoBuilder202207\Symfony\Component\HttpFoundation\ParameterBag;
 /**
  * @api
  * @see \Symplify\PackageBuilder\Tests\Parameter\ParameterProviderTest
