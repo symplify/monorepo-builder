@@ -10,6 +10,7 @@ use MonorepoBuilder202207\Symplify\EasyTesting\StaticFixtureSplitter;
 use MonorepoBuilder202207\Symplify\SmartFileSystem\Exception\DirectoryNotFoundException;
 use MonorepoBuilder202207\Symplify\SmartFileSystem\Exception\FileNotFoundException;
 /**
+ * @api
  * @see \Symplify\SmartFileSystem\Tests\SmartFileInfo\SmartFileInfoTest
  */
 final class SmartFileInfo extends SplFileInfo
