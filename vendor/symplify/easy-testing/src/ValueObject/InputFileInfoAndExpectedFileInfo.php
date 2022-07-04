@@ -4,6 +4,9 @@ declare (strict_types=1);
 namespace MonorepoBuilder202207\Symplify\EasyTesting\ValueObject;
 
 use MonorepoBuilder202207\Symplify\SmartFileSystem\SmartFileInfo;
+/**
+ * @api
+ */
 final class InputFileInfoAndExpectedFileInfo
 {
     /**
