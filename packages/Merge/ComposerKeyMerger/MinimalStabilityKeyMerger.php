@@ -3,10 +3,13 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Merge\ComposerKeyMerger;
 
-use MonorepoBuilder202207\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
-use Symplify\MonorepoBuilder\Merge\Contract\ComposerKeyMergerInterface;
 use PharIo\Version\InvalidPreReleaseSuffixException;
 use PharIo\Version\PreReleaseSuffix;
+use MonorepoBuilder202207\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
+use Symplify\MonorepoBuilder\Merge\Contract\ComposerKeyMergerInterface;
+/**
+ * @see \Symplify\MonorepoBuilder\Tests\Merge\ComposerKeyMerger\MinimalStabilityKeyMergerTest
+ */
 final class MinimalStabilityKeyMerger implements ComposerKeyMergerInterface
 {
     public function merge(ComposerJson $mainComposerJson, ComposerJson $newComposerJson) : void
