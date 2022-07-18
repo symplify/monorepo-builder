@@ -64,7 +64,7 @@ final class ComposerJsonRepositoriesUpdater
             throw new ShouldNotHappenException();
         }
         $decoreatedPackageComposerJson = $this->composerJsonSymlinker->decoratePackageComposerJsonWithPackageSymlinks($packageFileInfo, $packageNames, $rootComposerJsonFileInfo, $symlink);
-        $newComposerJsonContents = $this->jsonFileManager->printJsonToFileInfo($decoreatedPackageComposerJson, $packageFileInfo);
+        $newComposerJsonContents = $this->jsonFileManager->printJsonToFileInfoAndReturn($decoreatedPackageComposerJson, $packageFileInfo);
         $message = \sprintf('File "%s" was updated', $packageFileInfo->getRelativeFilePathFromCwd());
         $this->symfonyStyle->title($message);
         $diff = $this->consoleDiffer->diff($oldComposerJsonContents, $newComposerJsonContents);

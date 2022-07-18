@@ -50,7 +50,7 @@ final class ComposerJsonRequireUpdater
         }
         $packageComposerJson = $this->composerVersionManipulator->decorateAsteriskVersionForUsedPackages($packageComposerJson, $usedPackageNames);
         $oldComposerJsonContents = $packageFileInfo->getContents();
-        $newComposerJsonContents = $this->jsonFileManager->printJsonToFileInfo($packageComposerJson, $packageFileInfo);
+        $newComposerJsonContents = $this->jsonFileManager->printJsonToFileInfoAndReturn($packageComposerJson, $packageFileInfo);
         $message = \sprintf('File "%s" was updated', $packageFileInfo->getRelativeFilePathFromCwd());
         $this->symfonyStyle->title($message);
         $diff = $this->consoleDiffer->diff($oldComposerJsonContents, $newComposerJsonContents);
