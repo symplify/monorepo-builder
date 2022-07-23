@@ -34,7 +34,7 @@ final class PackageProvider
             $hasTests = \file_exists($packagesComposerFileInfo->getRealPathDirectory() . '/tests');
             $packages[] = new Package($packageName, $hasTests);
         }
-        \usort($packages, function (Package $firstPackage, Package $secondPackage) : int {
+        \usort($packages, static function (Package $firstPackage, Package $secondPackage) : int {
             return $firstPackage->getShortName() <=> $secondPackage->getShortName();
         });
         return $packages;
