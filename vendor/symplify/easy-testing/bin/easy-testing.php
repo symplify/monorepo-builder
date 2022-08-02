@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder202207;
+namespace MonorepoBuilder202208;
 
-use MonorepoBuilder202207\Symplify\EasyTesting\Kernel\EasyTestingKernel;
-use MonorepoBuilder202207\Symplify\SymplifyKernel\ValueObject\KernelBootAndApplicationRun;
+use MonorepoBuilder202208\Symplify\EasyTesting\Kernel\EasyTestingKernel;
+use MonorepoBuilder202208\Symplify\SymplifyKernel\ValueObject\KernelBootAndApplicationRun;
 $possibleAutoloadPaths = [
     // dependency
     __DIR__ . '/../../../autoload.php',

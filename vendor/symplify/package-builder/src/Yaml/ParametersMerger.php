@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder202207\Symplify\PackageBuilder\Yaml;
+namespace MonorepoBuilder202208\Symplify\PackageBuilder\Yaml;
 
 final class ParametersMerger
 {

@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202207\Symfony\Component\DependencyInjection\Argument;
+namespace MonorepoBuilder202208\Symfony\Component\DependencyInjection\Argument;
 
-use MonorepoBuilder202207\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use MonorepoBuilder202207\Symfony\Component\DependencyInjection\Reference;
+use MonorepoBuilder202208\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use MonorepoBuilder202208\Symfony\Component\DependencyInjection\Reference;
 /**
  * @author Titouan Galopin <galopintitouan@gmail.com>
  * @author Nicolas Grekas <p@tchwork.com>

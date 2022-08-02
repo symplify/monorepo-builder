@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202207\Symfony\Component\Filesystem;
+namespace MonorepoBuilder202208\Symfony\Component\Filesystem;
 
-use MonorepoBuilder202207\Symfony\Component\Filesystem\Exception\InvalidArgumentException;
-use MonorepoBuilder202207\Symfony\Component\Filesystem\Exception\RuntimeException;
+use MonorepoBuilder202208\Symfony\Component\Filesystem\Exception\InvalidArgumentException;
+use MonorepoBuilder202208\Symfony\Component\Filesystem\Exception\RuntimeException;
 /**
  * Contains utility methods for handling path strings.
  *

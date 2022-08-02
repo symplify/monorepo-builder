@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202207\Symfony\Component\Console\Event;
+namespace MonorepoBuilder202208\Symfony\Component\Console\Event;
 
-use MonorepoBuilder202207\Symfony\Component\Console\Command\Command;
-use MonorepoBuilder202207\Symfony\Component\Console\Input\InputInterface;
-use MonorepoBuilder202207\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder202208\Symfony\Component\Console\Command\Command;
+use MonorepoBuilder202208\Symfony\Component\Console\Input\InputInterface;
+use MonorepoBuilder202208\Symfony\Component\Console\Output\OutputInterface;
 /**
  * Allows to manipulate the exit code of a command after its execution.
  *

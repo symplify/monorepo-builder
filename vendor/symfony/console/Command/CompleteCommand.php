@@ -8,17 +8,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202207\Symfony\Component\Console\Command;
+namespace MonorepoBuilder202208\Symfony\Component\Console\Command;
 
-use MonorepoBuilder202207\Symfony\Component\Console\Completion\CompletionInput;
-use MonorepoBuilder202207\Symfony\Component\Console\Completion\CompletionSuggestions;
-use MonorepoBuilder202207\Symfony\Component\Console\Completion\Output\BashCompletionOutput;
-use MonorepoBuilder202207\Symfony\Component\Console\Completion\Output\CompletionOutputInterface;
-use MonorepoBuilder202207\Symfony\Component\Console\Exception\CommandNotFoundException;
-use MonorepoBuilder202207\Symfony\Component\Console\Exception\ExceptionInterface;
-use MonorepoBuilder202207\Symfony\Component\Console\Input\InputInterface;
-use MonorepoBuilder202207\Symfony\Component\Console\Input\InputOption;
-use MonorepoBuilder202207\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder202208\Symfony\Component\Console\Completion\CompletionInput;
+use MonorepoBuilder202208\Symfony\Component\Console\Completion\CompletionSuggestions;
+use MonorepoBuilder202208\Symfony\Component\Console\Completion\Output\BashCompletionOutput;
+use MonorepoBuilder202208\Symfony\Component\Console\Completion\Output\CompletionOutputInterface;
+use MonorepoBuilder202208\Symfony\Component\Console\Exception\CommandNotFoundException;
+use MonorepoBuilder202208\Symfony\Component\Console\Exception\ExceptionInterface;
+use MonorepoBuilder202208\Symfony\Component\Console\Input\InputInterface;
+use MonorepoBuilder202208\Symfony\Component\Console\Input\InputOption;
+use MonorepoBuilder202208\Symfony\Component\Console\Output\OutputInterface;
 /**
  * Responsible for providing the values to the shell completion.
  *
@@ -51,13 +51,13 @@ final class CompleteCommand extends Command
     {
         try {
             // uncomment when a bugfix or BC break has been introduced in the shell completion scripts
-            //$version = $input->getOption('symfony');
-            //if ($version && version_compare($version, 'x.y', '>=')) {
+            // $version = $input->getOption('symfony');
+            // if ($version && version_compare($version, 'x.y', '>=')) {
             //    $message = sprintf('Completion script version is not supported ("%s" given, ">=x.y" required).', $version);
             //    $this->log($message);
             //    $output->writeln($message.' Install the Symfony completion script again by using the "completion" command.');
             //    return 126;
-            //}
+            // }
             $shell = $input->getOption('shell');
             if (!$shell) {
                 throw new \RuntimeException('The "--shell" option must be set.');

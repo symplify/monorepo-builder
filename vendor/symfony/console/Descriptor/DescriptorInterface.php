@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202207\Symfony\Component\Console\Descriptor;
+namespace MonorepoBuilder202208\Symfony\Component\Console\Descriptor;
 
-use MonorepoBuilder202207\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder202208\Symfony\Component\Console\Output\OutputInterface;
 /**
  * Descriptor interface.
  *

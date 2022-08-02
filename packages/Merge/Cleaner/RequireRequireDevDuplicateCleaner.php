@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Merge\Cleaner;
 
-use MonorepoBuilder202207\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
+use MonorepoBuilder202208\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
 final class RequireRequireDevDuplicateCleaner
 {
     /**

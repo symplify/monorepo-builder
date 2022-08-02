@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202207\Symfony\Component\Console\CommandLoader;
+namespace MonorepoBuilder202208\Symfony\Component\Console\CommandLoader;
 
-use MonorepoBuilder202207\Symfony\Component\Console\Command\Command;
-use MonorepoBuilder202207\Symfony\Component\Console\Exception\CommandNotFoundException;
+use MonorepoBuilder202208\Symfony\Component\Console\Command\Command;
+use MonorepoBuilder202208\Symfony\Component\Console\Exception\CommandNotFoundException;
 /**
  * @author Robin Chalas <robin.chalas@gmail.com>
  */

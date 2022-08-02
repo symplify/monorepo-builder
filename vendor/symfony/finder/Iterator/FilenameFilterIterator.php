@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202207\Symfony\Component\Finder\Iterator;
+namespace MonorepoBuilder202208\Symfony\Component\Finder\Iterator;
 
-use MonorepoBuilder202207\Symfony\Component\Finder\Glob;
+use MonorepoBuilder202208\Symfony\Component\Finder\Glob;
 /**
  * FilenameFilterIterator filters files by patterns (a regexp, a glob, or a string).
  *

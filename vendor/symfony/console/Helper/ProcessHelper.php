@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202207\Symfony\Component\Console\Helper;
+namespace MonorepoBuilder202208\Symfony\Component\Console\Helper;
 
-use MonorepoBuilder202207\Symfony\Component\Console\Output\ConsoleOutputInterface;
-use MonorepoBuilder202207\Symfony\Component\Console\Output\OutputInterface;
-use MonorepoBuilder202207\Symfony\Component\Process\Exception\ProcessFailedException;
-use MonorepoBuilder202207\Symfony\Component\Process\Process;
+use MonorepoBuilder202208\Symfony\Component\Console\Output\ConsoleOutputInterface;
+use MonorepoBuilder202208\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder202208\Symfony\Component\Process\Exception\ProcessFailedException;
+use MonorepoBuilder202208\Symfony\Component\Process\Process;
 /**
  * The ProcessHelper class provides helpers to run external processes.
  *

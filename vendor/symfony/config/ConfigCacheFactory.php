@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202207\Symfony\Component\Config;
+namespace MonorepoBuilder202208\Symfony\Component\Config;
 
 /**
  * Basic implementation of ConfigCacheFactoryInterface that

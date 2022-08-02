@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202207\Symfony\Component\Console\Helper;
+namespace MonorepoBuilder202208\Symfony\Component\Console\Helper;
 
 /**
  * HelperInterface is the interface all helpers must implement.

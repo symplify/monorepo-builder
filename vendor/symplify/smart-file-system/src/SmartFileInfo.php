@@ -1,14 +1,14 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder202207\Symplify\SmartFileSystem;
+namespace MonorepoBuilder202208\Symplify\SmartFileSystem;
 
-use MonorepoBuilder202207\Nette\Utils\Strings;
-use MonorepoBuilder202207\Symfony\Component\Finder\SplFileInfo;
-use MonorepoBuilder202207\Symplify\EasyTesting\PHPUnit\StaticPHPUnitEnvironment;
-use MonorepoBuilder202207\Symplify\EasyTesting\StaticFixtureSplitter;
-use MonorepoBuilder202207\Symplify\SmartFileSystem\Exception\DirectoryNotFoundException;
-use MonorepoBuilder202207\Symplify\SmartFileSystem\Exception\FileNotFoundException;
+use MonorepoBuilder202208\Nette\Utils\Strings;
+use MonorepoBuilder202208\Symfony\Component\Finder\SplFileInfo;
+use MonorepoBuilder202208\Symplify\EasyTesting\PHPUnit\StaticPHPUnitEnvironment;
+use MonorepoBuilder202208\Symplify\EasyTesting\StaticFixtureSplitter;
+use MonorepoBuilder202208\Symplify\SmartFileSystem\Exception\DirectoryNotFoundException;
+use MonorepoBuilder202208\Symplify\SmartFileSystem\Exception\FileNotFoundException;
 /**
  * @api
  * @see \Symplify\SmartFileSystem\Tests\SmartFileInfo\SmartFileInfoTest

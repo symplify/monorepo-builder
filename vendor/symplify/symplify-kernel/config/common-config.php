@@ -1,19 +1,19 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder202207;
+namespace MonorepoBuilder202208;
 
-use MonorepoBuilder202207\Symfony\Component\Console\Style\SymfonyStyle;
-use MonorepoBuilder202207\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
-use MonorepoBuilder202207\Symplify\PackageBuilder\Console\Style\SymfonyStyleFactory;
-use MonorepoBuilder202207\Symplify\PackageBuilder\Parameter\ParameterProvider;
-use MonorepoBuilder202207\Symplify\PackageBuilder\Reflection\PrivatesAccessor;
-use MonorepoBuilder202207\Symplify\SmartFileSystem\FileSystemFilter;
-use MonorepoBuilder202207\Symplify\SmartFileSystem\FileSystemGuard;
-use MonorepoBuilder202207\Symplify\SmartFileSystem\Finder\FinderSanitizer;
-use MonorepoBuilder202207\Symplify\SmartFileSystem\Finder\SmartFinder;
-use MonorepoBuilder202207\Symplify\SmartFileSystem\SmartFileSystem;
-use function MonorepoBuilder202207\Symfony\Component\DependencyInjection\Loader\Configurator\service;
+use MonorepoBuilder202208\Symfony\Component\Console\Style\SymfonyStyle;
+use MonorepoBuilder202208\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use MonorepoBuilder202208\Symplify\PackageBuilder\Console\Style\SymfonyStyleFactory;
+use MonorepoBuilder202208\Symplify\PackageBuilder\Parameter\ParameterProvider;
+use MonorepoBuilder202208\Symplify\PackageBuilder\Reflection\PrivatesAccessor;
+use MonorepoBuilder202208\Symplify\SmartFileSystem\FileSystemFilter;
+use MonorepoBuilder202208\Symplify\SmartFileSystem\FileSystemGuard;
+use MonorepoBuilder202208\Symplify\SmartFileSystem\Finder\FinderSanitizer;
+use MonorepoBuilder202208\Symplify\SmartFileSystem\Finder\SmartFinder;
+use MonorepoBuilder202208\Symplify\SmartFileSystem\SmartFileSystem;
+use function MonorepoBuilder202208\Symfony\Component\DependencyInjection\Loader\Configurator\service;
 return static function (ContainerConfigurator $containerConfigurator) : void {
     $services = $containerConfigurator->services();
     $services->defaults()->public()->autowire();

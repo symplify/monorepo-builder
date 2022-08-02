@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202207\Symfony\Component\Config\Definition\Builder;
+namespace MonorepoBuilder202208\Symfony\Component\Config\Definition\Builder;
 
-use MonorepoBuilder202207\Symfony\Component\Config\Definition\ArrayNode;
-use MonorepoBuilder202207\Symfony\Component\Config\Definition\Exception\InvalidDefinitionException;
-use MonorepoBuilder202207\Symfony\Component\Config\Definition\NodeInterface;
-use MonorepoBuilder202207\Symfony\Component\Config\Definition\PrototypedArrayNode;
+use MonorepoBuilder202208\Symfony\Component\Config\Definition\ArrayNode;
+use MonorepoBuilder202208\Symfony\Component\Config\Definition\Exception\InvalidDefinitionException;
+use MonorepoBuilder202208\Symfony\Component\Config\Definition\NodeInterface;
+use MonorepoBuilder202208\Symfony\Component\Config\Definition\PrototypedArrayNode;
 /**
  * This class provides a fluent interface for defining an array node.
  *

@@ -8,25 +8,25 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202207\Symfony\Component\Console\Style;
+namespace MonorepoBuilder202208\Symfony\Component\Console\Style;
 
-use MonorepoBuilder202207\Symfony\Component\Console\Exception\InvalidArgumentException;
-use MonorepoBuilder202207\Symfony\Component\Console\Exception\RuntimeException;
-use MonorepoBuilder202207\Symfony\Component\Console\Formatter\OutputFormatter;
-use MonorepoBuilder202207\Symfony\Component\Console\Helper\Helper;
-use MonorepoBuilder202207\Symfony\Component\Console\Helper\ProgressBar;
-use MonorepoBuilder202207\Symfony\Component\Console\Helper\SymfonyQuestionHelper;
-use MonorepoBuilder202207\Symfony\Component\Console\Helper\Table;
-use MonorepoBuilder202207\Symfony\Component\Console\Helper\TableCell;
-use MonorepoBuilder202207\Symfony\Component\Console\Helper\TableSeparator;
-use MonorepoBuilder202207\Symfony\Component\Console\Input\InputInterface;
-use MonorepoBuilder202207\Symfony\Component\Console\Output\ConsoleOutputInterface;
-use MonorepoBuilder202207\Symfony\Component\Console\Output\OutputInterface;
-use MonorepoBuilder202207\Symfony\Component\Console\Output\TrimmedBufferOutput;
-use MonorepoBuilder202207\Symfony\Component\Console\Question\ChoiceQuestion;
-use MonorepoBuilder202207\Symfony\Component\Console\Question\ConfirmationQuestion;
-use MonorepoBuilder202207\Symfony\Component\Console\Question\Question;
-use MonorepoBuilder202207\Symfony\Component\Console\Terminal;
+use MonorepoBuilder202208\Symfony\Component\Console\Exception\InvalidArgumentException;
+use MonorepoBuilder202208\Symfony\Component\Console\Exception\RuntimeException;
+use MonorepoBuilder202208\Symfony\Component\Console\Formatter\OutputFormatter;
+use MonorepoBuilder202208\Symfony\Component\Console\Helper\Helper;
+use MonorepoBuilder202208\Symfony\Component\Console\Helper\ProgressBar;
+use MonorepoBuilder202208\Symfony\Component\Console\Helper\SymfonyQuestionHelper;
+use MonorepoBuilder202208\Symfony\Component\Console\Helper\Table;
+use MonorepoBuilder202208\Symfony\Component\Console\Helper\TableCell;
+use MonorepoBuilder202208\Symfony\Component\Console\Helper\TableSeparator;
+use MonorepoBuilder202208\Symfony\Component\Console\Input\InputInterface;
+use MonorepoBuilder202208\Symfony\Component\Console\Output\ConsoleOutputInterface;
+use MonorepoBuilder202208\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder202208\Symfony\Component\Console\Output\TrimmedBufferOutput;
+use MonorepoBuilder202208\Symfony\Component\Console\Question\ChoiceQuestion;
+use MonorepoBuilder202208\Symfony\Component\Console\Question\ConfirmationQuestion;
+use MonorepoBuilder202208\Symfony\Component\Console\Question\Question;
+use MonorepoBuilder202208\Symfony\Component\Console\Terminal;
 /**
  * Output decorator helpers for the Symfony Style Guide.
  *
@@ -376,16 +376,16 @@ class SymfonyStyle extends OutputStyle
         $chars = \substr(\str_replace(\PHP_EOL, "\n", $this->bufferedOutput->fetch()), -2);
         if (!isset($chars[0])) {
             $this->newLine();
-            //empty history, so we should start with a new line.
+            // empty history, so we should start with a new line.
             return;
         }
-        //Prepend new line for each non LF chars (This means no blank line was output before)
+        // Prepend new line for each non LF chars (This means no blank line was output before)
         $this->newLine(2 - \substr_count($chars, "\n"));
     }
     private function autoPrependText() : void
     {
         $fetched = $this->bufferedOutput->fetch();
-        //Prepend new line if last char isn't EOL:
+        // Prepend new line if last char isn't EOL:
         if (\substr_compare($fetched, "\n", -\strlen("\n")) !== 0) {
             $this->newLine();
         }

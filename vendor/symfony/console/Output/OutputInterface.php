@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202207\Symfony\Component\Console\Output;
+namespace MonorepoBuilder202208\Symfony\Component\Console\Output;
 
-use MonorepoBuilder202207\Symfony\Component\Console\Formatter\OutputFormatterInterface;
+use MonorepoBuilder202208\Symfony\Component\Console\Formatter\OutputFormatterInterface;
 /**
  * OutputInterface is the interface implemented by all Output classes.
  *

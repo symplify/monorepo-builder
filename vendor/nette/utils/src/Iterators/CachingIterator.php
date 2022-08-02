@@ -5,9 +5,9 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace MonorepoBuilder202207\Nette\Iterators;
+namespace MonorepoBuilder202208\Nette\Iterators;
 
-use MonorepoBuilder202207\Nette;
+use MonorepoBuilder202208\Nette;
 /**
  * Smarter caching iterator.
  *

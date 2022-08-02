@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202207\Symfony\Component\Config\Definition\Builder;
+namespace MonorepoBuilder202208\Symfony\Component\Config\Definition\Builder;
 
-use MonorepoBuilder202207\Symfony\Component\Config\Definition\Exception\InvalidDefinitionException;
+use MonorepoBuilder202208\Symfony\Component\Config\Definition\Exception\InvalidDefinitionException;
 /**
  * Abstract class that contains common code of integer and float node definitions.
  *

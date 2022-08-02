@@ -1,15 +1,15 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder202207\Symplify\EasyTesting\DataProvider;
+namespace MonorepoBuilder202208\Symplify\EasyTesting\DataProvider;
 
 use Iterator;
-use MonorepoBuilder202207\Nette\Utils\Strings;
-use MonorepoBuilder202207\Symfony\Component\Finder\Finder;
-use MonorepoBuilder202207\Symfony\Component\Finder\SplFileInfo;
-use MonorepoBuilder202207\Symplify\SmartFileSystem\Exception\FileNotFoundException;
-use MonorepoBuilder202207\Symplify\SmartFileSystem\SmartFileInfo;
-use MonorepoBuilder202207\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
+use MonorepoBuilder202208\Nette\Utils\Strings;
+use MonorepoBuilder202208\Symfony\Component\Finder\Finder;
+use MonorepoBuilder202208\Symfony\Component\Finder\SplFileInfo;
+use MonorepoBuilder202208\Symplify\SmartFileSystem\Exception\FileNotFoundException;
+use MonorepoBuilder202208\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder202208\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
 /**
  * @api
  * @see \Symplify\EasyTesting\Tests\DataProvider\StaticFixtureFinder\StaticFixtureFinderTest

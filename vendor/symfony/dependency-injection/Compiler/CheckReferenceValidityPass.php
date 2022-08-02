@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202207\Symfony\Component\DependencyInjection\Compiler;
+namespace MonorepoBuilder202208\Symfony\Component\DependencyInjection\Compiler;
 
-use MonorepoBuilder202207\Symfony\Component\DependencyInjection\Definition;
-use MonorepoBuilder202207\Symfony\Component\DependencyInjection\Exception\RuntimeException;
-use MonorepoBuilder202207\Symfony\Component\DependencyInjection\Reference;
+use MonorepoBuilder202208\Symfony\Component\DependencyInjection\Definition;
+use MonorepoBuilder202208\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use MonorepoBuilder202208\Symfony\Component\DependencyInjection\Reference;
 /**
  * Checks the validity of references.
  *

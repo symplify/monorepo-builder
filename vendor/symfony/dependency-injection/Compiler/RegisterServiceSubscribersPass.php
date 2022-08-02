@@ -8,19 +8,19 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202207\Symfony\Component\DependencyInjection\Compiler;
+namespace MonorepoBuilder202208\Symfony\Component\DependencyInjection\Compiler;
 
-use MonorepoBuilder202207\Psr\Container\ContainerInterface as PsrContainerInterface;
-use MonorepoBuilder202207\Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use MonorepoBuilder202207\Symfony\Component\DependencyInjection\Argument\BoundArgument;
-use MonorepoBuilder202207\Symfony\Component\DependencyInjection\ContainerInterface;
-use MonorepoBuilder202207\Symfony\Component\DependencyInjection\Definition;
-use MonorepoBuilder202207\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use MonorepoBuilder202207\Symfony\Component\DependencyInjection\Reference;
-use MonorepoBuilder202207\Symfony\Component\DependencyInjection\TypedReference;
-use MonorepoBuilder202207\Symfony\Component\HttpFoundation\Session\SessionInterface;
-use MonorepoBuilder202207\Symfony\Contracts\Service\ServiceProviderInterface;
-use MonorepoBuilder202207\Symfony\Contracts\Service\ServiceSubscriberInterface;
+use MonorepoBuilder202208\Psr\Container\ContainerInterface as PsrContainerInterface;
+use MonorepoBuilder202208\Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use MonorepoBuilder202208\Symfony\Component\DependencyInjection\Argument\BoundArgument;
+use MonorepoBuilder202208\Symfony\Component\DependencyInjection\ContainerInterface;
+use MonorepoBuilder202208\Symfony\Component\DependencyInjection\Definition;
+use MonorepoBuilder202208\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use MonorepoBuilder202208\Symfony\Component\DependencyInjection\Reference;
+use MonorepoBuilder202208\Symfony\Component\DependencyInjection\TypedReference;
+use MonorepoBuilder202208\Symfony\Component\HttpFoundation\Session\SessionInterface;
+use MonorepoBuilder202208\Symfony\Contracts\Service\ServiceProviderInterface;
+use MonorepoBuilder202208\Symfony\Contracts\Service\ServiceSubscriberInterface;
 /**
  * Compiler pass to register tagged services that require a service locator.
  *

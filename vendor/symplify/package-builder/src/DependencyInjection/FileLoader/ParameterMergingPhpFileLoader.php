@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder202207\Symplify\PackageBuilder\DependencyInjection\FileLoader;
+namespace MonorepoBuilder202208\Symplify\PackageBuilder\DependencyInjection\FileLoader;
 
-use MonorepoBuilder202207\Symfony\Component\Config\FileLocatorInterface;
-use MonorepoBuilder202207\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder202207\Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
-use MonorepoBuilder202207\Symplify\PackageBuilder\Yaml\ParametersMerger;
+use MonorepoBuilder202208\Symfony\Component\Config\FileLocatorInterface;
+use MonorepoBuilder202208\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder202208\Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
+use MonorepoBuilder202208\Symplify\PackageBuilder\Yaml\ParametersMerger;
 /**
  * @api
  *
