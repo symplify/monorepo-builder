@@ -1068,7 +1068,7 @@
             "dist": {
                 "type": "path",
                 "url": "..\/..\/packages\/autowire-array-parameter",
-                "reference": "3aa2353f634b89444744884b131152744faaff3d"
+                "reference": "a4f04f2c8389dd0a2904567e8612e293bfd86cba"
             },
             "require": {
                 "nette\/utils": "^3.2",
@@ -1103,7 +1103,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "11.1-dev"
+                    "dev-main": "11.2-dev"
                 }
             },
             "installation-source": "dist",
@@ -1134,7 +1134,7 @@
             "dist": {
                 "type": "path",
                 "url": "..\/..\/packages\/composer-json-manipulator",
-                "reference": "6253159055dac6cfc4ea52d4de79d0a8fd6f3a55"
+                "reference": "aed9e06d2c1c5e49d9049974c8fc7f70da5ba875"
             },
             "require": {
                 "nette\/utils": "^3.2",
@@ -1172,7 +1172,7 @@
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "11.1-dev"
+                    "dev-main": "11.2-dev"
                 }
             },
             "installation-source": "dist",
@@ -1203,7 +1203,7 @@
             "dist": {
                 "type": "path",
                 "url": "..\/..\/packages\/easy-testing",
-                "reference": "ddc5181dee562c7402aa181ccab92cef7bf92964"
+                "reference": "bda5f5d5515539d72e9ed2b1d7966cba66299087"
             },
             "require": {
                 "nette\/utils": "^3.2",
@@ -1243,7 +1243,7 @@
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "11.1-dev"
+                    "dev-main": "11.2-dev"
                 }
             },
             "installation-source": "dist",
@@ -1274,7 +1274,7 @@
             "dist": {
                 "type": "path",
                 "url": "..\/..\/packages\/package-builder",
-                "reference": "a0fb64e2e52f6f24e0bc0bf8a773189778a81f35"
+                "reference": "5f78f3edc1b23f77969ac685d7e0fb3295437f6b"
             },
             "require": {
                 "nette\/utils": "^3.2",
@@ -1313,7 +1313,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "11.1-dev"
+                    "dev-main": "11.2-dev"
                 }
             },
             "installation-source": "dist",
@@ -1344,7 +1344,7 @@
             "dist": {
                 "type": "path",
                 "url": "..\/..\/packages\/smart-file-system",
-                "reference": "eb5b19dfe8a67046529c5cdc0eb81b53a56392c0"
+                "reference": "664cd2ee398fffcf8f99a94cf39167fd4d488883"
             },
             "require": {
                 "nette\/utils": "^3.2",
@@ -1381,7 +1381,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "11.1-dev"
+                    "dev-main": "11.2-dev"
                 }
             },
             "installation-source": "dist",
@@ -1412,7 +1412,7 @@
             "dist": {
                 "type": "path",
                 "url": "..\/..\/packages\/symplify-kernel",
-                "reference": "ab33a8ae309f9e375b101d57861b43448b49a582"
+                "reference": "3706ff3443a29f4dbc1961b2e91cc0a91bf07860"
             },
             "require": {
                 "php": ">=8.0",
@@ -1448,7 +1448,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "11.1-dev"
+                    "dev-main": "11.2-dev"
                 }
             },
             "installation-source": "dist",
