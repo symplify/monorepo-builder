@@ -5,9 +5,9 @@ namespace Symplify\MonorepoBuilder\Release\ReleaseWorker;
 
 use PharIo\Version\Version;
 use MonorepoBuilder202208\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
-use MonorepoBuilder202208\Symplify\EasyCI\Exception\ShouldNotHappenException;
 use Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider;
 use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface;
+use Symplify\MonorepoBuilder\Release\Exception\MissingComposerJsonException;
 use MonorepoBuilder202208\Symplify\SmartFileSystem\SmartFileInfo;
 final class UpdateReplaceReleaseWorker implements ReleaseWorkerInterface
 {
@@ -42,7 +42,7 @@ final class UpdateReplaceReleaseWorker implements ReleaseWorkerInterface
         $rootComposerJson->setReplace($newReplace);
         $rootFileInfo = $rootComposerJson->getFileInfo();
         if (!$rootFileInfo instanceof SmartFileInfo) {
-            throw new ShouldNotHappenException();
+            throw new MissingComposerJsonException();
         }
         $this->jsonFileManager->printJsonToFileInfo($rootComposerJson->getJsonArray(), $rootFileInfo);
     }

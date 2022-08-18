@@ -6,8 +6,8 @@ namespace Symplify\MonorepoBuilder\Propagate\Command;
 use MonorepoBuilder202208\Symfony\Component\Console\Input\InputInterface;
 use MonorepoBuilder202208\Symfony\Component\Console\Input\InputOption;
 use MonorepoBuilder202208\Symfony\Component\Console\Output\OutputInterface;
-use MonorepoBuilder202208\Symplify\Astral\Exception\ShouldNotHappenException;
 use MonorepoBuilder202208\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
+use Symplify\MonorepoBuilder\Exception\MissingComposerJsonException;
 use Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider;
 use Symplify\MonorepoBuilder\Propagate\VersionPropagator;
 use Symplify\MonorepoBuilder\ValueObject\Option;
@@ -52,7 +52,7 @@ final class PropagateCommand extends AbstractSymplifyCommand
             }
             $packageFileInfo = $packageComposerJson->getFileInfo();
             if (!$packageFileInfo instanceof SmartFileInfo) {
-                throw new ShouldNotHappenException();
+                throw new MissingComposerJsonException();
             }
             if ($isDryRun) {
                 $this->symfonyStyle->error('Run "composer propagate" to update package versions');

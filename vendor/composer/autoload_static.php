@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit0c611f2da45857107bae7feefa1133a6
+class ComposerStaticInit6a506ec48f3e3c689ebcb248087e1635
 {
     public static $files = array (
         '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
@@ -719,6 +719,7 @@ class ComposerStaticInit0c611f2da45857107bae7feefa1133a6
         'Symplify\\MonorepoBuilder\\DevMasterAliasUpdater' => __DIR__ . '/../..' . '/src/DevMasterAliasUpdater.php',
         'Symplify\\MonorepoBuilder\\Exception\\ConfigurationException' => __DIR__ . '/../..' . '/src/Exception/ConfigurationException.php',
         'Symplify\\MonorepoBuilder\\Exception\\Git\\InvalidGitVersionException' => __DIR__ . '/../..' . '/src/Exception/Git/InvalidGitVersionException.php',
+        'Symplify\\MonorepoBuilder\\Exception\\MissingComposerJsonException' => __DIR__ . '/../..' . '/src/Exception/MissingComposerJsonException.php',
         'Symplify\\MonorepoBuilder\\Exception\\Validator\\InvalidComposerJsonSetupException' => __DIR__ . '/../..' . '/src/Exception/Validator/InvalidComposerJsonSetupException.php',
         'Symplify\\MonorepoBuilder\\FileSystem\\ComposerJsonProvider' => __DIR__ . '/../..' . '/src/FileSystem/ComposerJsonProvider.php',
         'Symplify\\MonorepoBuilder\\Finder\\PackageComposerFinder' => __DIR__ . '/../..' . '/src/Finder/PackageComposerFinder.php',
@@ -767,6 +768,7 @@ class ComposerStaticInit0c611f2da45857107bae7feefa1133a6
         'Symplify\\MonorepoBuilder\\Release\\Contract\\ReleaseWorker\\ReleaseWorkerInterface' => __DIR__ . '/../..' . '/packages/Release/Contract/ReleaseWorker/ReleaseWorkerInterface.php',
         'Symplify\\MonorepoBuilder\\Release\\Contract\\ReleaseWorker\\StageAwareInterface' => __DIR__ . '/../..' . '/packages/Release/Contract/ReleaseWorker/StageAwareInterface.php',
         'Symplify\\MonorepoBuilder\\Release\\Exception\\ConfigurationException' => __DIR__ . '/../..' . '/packages/Release/Exception/ConfigurationException.php',
+        'Symplify\\MonorepoBuilder\\Release\\Exception\\MissingComposerJsonException' => __DIR__ . '/../..' . '/packages/Release/Exception/MissingComposerJsonException.php',
         'Symplify\\MonorepoBuilder\\Release\\Guard\\ReleaseGuard' => __DIR__ . '/../..' . '/packages/Release/Guard/ReleaseGuard.php',
         'Symplify\\MonorepoBuilder\\Release\\Output\\ReleaseWorkerReporter' => __DIR__ . '/../..' . '/packages/Release/Output/ReleaseWorkerReporter.php',
         'Symplify\\MonorepoBuilder\\Release\\Process\\ProcessRunner' => __DIR__ . '/../..' . '/packages/Release/Process/ProcessRunner.php',
@@ -803,9 +805,9 @@ class ComposerStaticInit0c611f2da45857107bae7feefa1133a6
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit0c611f2da45857107bae7feefa1133a6::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit0c611f2da45857107bae7feefa1133a6::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit0c611f2da45857107bae7feefa1133a6::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit6a506ec48f3e3c689ebcb248087e1635::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit6a506ec48f3e3c689ebcb248087e1635::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit6a506ec48f3e3c689ebcb248087e1635::$classMap;
 
         }, null, ClassLoader::class);
     }
