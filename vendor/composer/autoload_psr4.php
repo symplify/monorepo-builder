@@ -12,7 +12,6 @@ return array(
     'MonorepoBuilder202208\\Symplify\\SymplifyKernel\\' => array($vendorDir . '/symplify/symplify-kernel/src'),
     'MonorepoBuilder202208\\Symplify\\SmartFileSystem\\' => array($vendorDir . '/symplify/smart-file-system/src'),
     'MonorepoBuilder202208\\Symplify\\PackageBuilder\\' => array($vendorDir . '/symplify/package-builder/src'),
-    'MonorepoBuilder202208\\Symplify\\EasyTesting\\' => array($vendorDir . '/symplify/easy-testing/src'),
     'MonorepoBuilder202208\\Symplify\\ComposerJsonManipulator\\' => array($vendorDir . '/symplify/composer-json-manipulator/src'),
     'MonorepoBuilder202208\\Symplify\\AutowireArrayParameter\\' => array($vendorDir . '/symplify/autowire-array-parameter/src'),
     'MonorepoBuilder202208\\Symfony\\Contracts\\Service\\' => array($vendorDir . '/symfony/service-contracts'),
