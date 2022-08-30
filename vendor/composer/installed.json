@@ -1068,7 +1068,7 @@
             "dist": {
                 "type": "path",
                 "url": "..\/..\/packages\/autowire-array-parameter",
-                "reference": "047bc85aa1a87ca95064fb6a63343f03a4d28b46"
+                "reference": "41a39e1b80ef140cb80f36272715c3c90396bd21"
             },
             "require": {
                 "nette\/utils": "^3.2",
@@ -1077,7 +1077,6 @@
                 "symplify\/package-builder": "dev-main"
             },
             "conflict": {
-                "symplify\/astral": "<11.1.5",
                 "symplify\/coding-standard": "<11.1.5",
                 "symplify\/composer-json-manipulator": "<11.1.5",
                 "symplify\/config-transformer": "<11.1.5",
@@ -1134,7 +1133,7 @@
             "dist": {
                 "type": "path",
                 "url": "..\/..\/packages\/composer-json-manipulator",
-                "reference": "34559e6c1df0a43f4d73d445ea149ab4e66bb56d"
+                "reference": "88b57ff79502a951a9c58cbbbd6c68ec11cc9457"
             },
             "require": {
                 "nette\/utils": "^3.2",
@@ -1147,7 +1146,6 @@
                 "symplify\/symplify-kernel": "dev-main"
             },
             "conflict": {
-                "symplify\/astral": "<11.1.5",
                 "symplify\/autowire-array-parameter": "<11.1.5",
                 "symplify\/coding-standard": "<11.1.5",
                 "symplify\/config-transformer": "<11.1.5",
@@ -1203,7 +1201,7 @@
             "dist": {
                 "type": "path",
                 "url": "..\/..\/packages\/easy-testing",
-                "reference": "56c33a3f345fce727e6066539776fc83356f84c9"
+                "reference": "67424c83c0457bee1a958017db3fa1666c47faef"
             },
             "require": {
                 "nette\/utils": "^3.2",
@@ -1216,7 +1214,6 @@
                 "symplify\/symplify-kernel": "dev-main"
             },
             "conflict": {
-                "symplify\/astral": "<11.1.5",
                 "symplify\/autowire-array-parameter": "<11.1.5",
                 "symplify\/coding-standard": "<11.1.5",
                 "symplify\/composer-json-manipulator": "<11.1.5",
@@ -1274,7 +1271,7 @@
             "dist": {
                 "type": "path",
                 "url": "..\/..\/packages\/package-builder",
-                "reference": "bf9a0948fdc55d8453cffc9bd8e9fc66bc8e56f7"
+                "reference": "228026112b95b44736f2d0221c01dab8ee8f0c8b"
             },
             "require": {
                 "nette\/utils": "^3.2",
@@ -1288,7 +1285,6 @@
                 "symplify\/symplify-kernel": "dev-main"
             },
             "conflict": {
-                "symplify\/astral": "<11.1.5",
                 "symplify\/autowire-array-parameter": "<11.1.5",
                 "symplify\/coding-standard": "<11.1.5",
                 "symplify\/composer-json-manipulator": "<11.1.5",
@@ -1344,7 +1340,7 @@
             "dist": {
                 "type": "path",
                 "url": "..\/..\/packages\/smart-file-system",
-                "reference": "c2d1995482f2e853c64152fcd49272ca89fbfca8"
+                "reference": "c31892abb534689a51c2ce63cc5393df2cef94db"
             },
             "require": {
                 "nette\/utils": "^3.2",
@@ -1353,7 +1349,6 @@
                 "symfony\/finder": "^6.0"
             },
             "conflict": {
-                "symplify\/astral": "<11.1.5",
                 "symplify\/autowire-array-parameter": "<11.1.5",
                 "symplify\/coding-standard": "<11.1.5",
                 "symplify\/composer-json-manipulator": "<11.1.5",
@@ -1412,7 +1407,7 @@
             "dist": {
                 "type": "path",
                 "url": "..\/..\/packages\/symplify-kernel",
-                "reference": "ed118a1a5397244e43f1b74cb9dfba8ca1e30a34"
+                "reference": "c1ef9056b06bbccdb3df82487571c294aeda2778"
             },
             "require": {
                 "php": ">=8.0",
@@ -1425,7 +1420,6 @@
                 "webmozart\/assert": "^1.10"
             },
             "conflict": {
-                "symplify\/astral": "<11.1.5",
                 "symplify\/coding-standard": "<11.1.5",
                 "symplify\/config-transformer": "<11.1.5",
                 "symplify\/easy-ci": "<11.1.5",
