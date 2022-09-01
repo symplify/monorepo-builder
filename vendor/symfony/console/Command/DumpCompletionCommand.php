@@ -8,16 +8,16 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202208\Symfony\Component\Console\Command;
+namespace MonorepoBuilder202209\Symfony\Component\Console\Command;
 
-use MonorepoBuilder202208\Symfony\Component\Console\Completion\CompletionInput;
-use MonorepoBuilder202208\Symfony\Component\Console\Completion\CompletionSuggestions;
-use MonorepoBuilder202208\Symfony\Component\Console\Input\InputArgument;
-use MonorepoBuilder202208\Symfony\Component\Console\Input\InputInterface;
-use MonorepoBuilder202208\Symfony\Component\Console\Input\InputOption;
-use MonorepoBuilder202208\Symfony\Component\Console\Output\ConsoleOutputInterface;
-use MonorepoBuilder202208\Symfony\Component\Console\Output\OutputInterface;
-use MonorepoBuilder202208\Symfony\Component\Process\Process;
+use MonorepoBuilder202209\Symfony\Component\Console\Completion\CompletionInput;
+use MonorepoBuilder202209\Symfony\Component\Console\Completion\CompletionSuggestions;
+use MonorepoBuilder202209\Symfony\Component\Console\Input\InputArgument;
+use MonorepoBuilder202209\Symfony\Component\Console\Input\InputInterface;
+use MonorepoBuilder202209\Symfony\Component\Console\Input\InputOption;
+use MonorepoBuilder202209\Symfony\Component\Console\Output\ConsoleOutputInterface;
+use MonorepoBuilder202209\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder202209\Symfony\Component\Process\Process;
 /**
  * Dumps the completion script for the current shell.
  *

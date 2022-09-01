@@ -3,16 +3,16 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Propagate\Command;
 
-use MonorepoBuilder202208\Symfony\Component\Console\Input\InputInterface;
-use MonorepoBuilder202208\Symfony\Component\Console\Input\InputOption;
-use MonorepoBuilder202208\Symfony\Component\Console\Output\OutputInterface;
-use MonorepoBuilder202208\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
+use MonorepoBuilder202209\Symfony\Component\Console\Input\InputInterface;
+use MonorepoBuilder202209\Symfony\Component\Console\Input\InputOption;
+use MonorepoBuilder202209\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder202209\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
 use Symplify\MonorepoBuilder\Exception\MissingComposerJsonException;
 use Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider;
 use Symplify\MonorepoBuilder\Propagate\VersionPropagator;
 use Symplify\MonorepoBuilder\ValueObject\Option;
-use MonorepoBuilder202208\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
-use MonorepoBuilder202208\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder202209\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
+use MonorepoBuilder202209\Symplify\SmartFileSystem\SmartFileInfo;
 final class PropagateCommand extends AbstractSymplifyCommand
 {
     /**

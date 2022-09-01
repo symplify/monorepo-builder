@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder202208\Symplify\PackageBuilder\Reflection;
+namespace MonorepoBuilder202209\Symplify\PackageBuilder\Reflection;
 
 use ReflectionProperty;
-use MonorepoBuilder202208\Symplify\PackageBuilder\Exception\InvalidPrivatePropertyTypeException;
-use MonorepoBuilder202208\Symplify\PackageBuilder\Exception\MissingPrivatePropertyException;
+use MonorepoBuilder202209\Symplify\PackageBuilder\Exception\InvalidPrivatePropertyTypeException;
+use MonorepoBuilder202209\Symplify\PackageBuilder\Exception\MissingPrivatePropertyException;
 /**
  * @api
  * @see \Symplify\PackageBuilder\Tests\Reflection\PrivatesAccessorTest

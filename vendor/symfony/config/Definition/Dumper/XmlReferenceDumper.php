@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202208\Symfony\Component\Config\Definition\Dumper;
+namespace MonorepoBuilder202209\Symfony\Component\Config\Definition\Dumper;
 
-use MonorepoBuilder202208\Symfony\Component\Config\Definition\ArrayNode;
-use MonorepoBuilder202208\Symfony\Component\Config\Definition\BaseNode;
-use MonorepoBuilder202208\Symfony\Component\Config\Definition\ConfigurationInterface;
-use MonorepoBuilder202208\Symfony\Component\Config\Definition\EnumNode;
-use MonorepoBuilder202208\Symfony\Component\Config\Definition\NodeInterface;
-use MonorepoBuilder202208\Symfony\Component\Config\Definition\PrototypedArrayNode;
+use MonorepoBuilder202209\Symfony\Component\Config\Definition\ArrayNode;
+use MonorepoBuilder202209\Symfony\Component\Config\Definition\BaseNode;
+use MonorepoBuilder202209\Symfony\Component\Config\Definition\ConfigurationInterface;
+use MonorepoBuilder202209\Symfony\Component\Config\Definition\EnumNode;
+use MonorepoBuilder202209\Symfony\Component\Config\Definition\NodeInterface;
+use MonorepoBuilder202209\Symfony\Component\Config\Definition\PrototypedArrayNode;
 /**
  * Dumps an XML reference configuration for the given configuration/node instance.
  *

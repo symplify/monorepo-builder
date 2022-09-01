@@ -3,8 +3,8 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Merge\PathResolver;
 
-use MonorepoBuilder202208\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
-use MonorepoBuilder202208\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder202209\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
+use MonorepoBuilder202209\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\MonorepoBuilder\Tests\Merge\PathResolver\AutoloadPathNormalizerTest
  */
@@ -27,8 +27,8 @@ final class AutoloadPathNormalizer
         $packageComposerJson->setAutoloadDev($autoloadDev);
     }
     /**
-     * @param mixed[] $autoloadArray
-     * @return mixed[]
+     * @param array<string, mixed> $autoloadArray
+     * @return array<string, mixed>
      */
     private function normalizeAutoloadArray(SmartFileInfo $packageFile, array $autoloadArray) : array
     {

@@ -8,19 +8,19 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202208\Symfony\Component\DependencyInjection\Loader\Configurator;
+namespace MonorepoBuilder202209\Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use MonorepoBuilder202208\Symfony\Component\Config\Loader\ParamConfigurator;
-use MonorepoBuilder202208\Symfony\Component\DependencyInjection\Argument\AbstractArgument;
-use MonorepoBuilder202208\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
-use MonorepoBuilder202208\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
-use MonorepoBuilder202208\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument;
-use MonorepoBuilder202208\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder202208\Symfony\Component\DependencyInjection\Definition;
-use MonorepoBuilder202208\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use MonorepoBuilder202208\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
-use MonorepoBuilder202208\Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
-use MonorepoBuilder202208\Symfony\Component\ExpressionLanguage\Expression;
+use MonorepoBuilder202209\Symfony\Component\Config\Loader\ParamConfigurator;
+use MonorepoBuilder202209\Symfony\Component\DependencyInjection\Argument\AbstractArgument;
+use MonorepoBuilder202209\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
+use MonorepoBuilder202209\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
+use MonorepoBuilder202209\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument;
+use MonorepoBuilder202209\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder202209\Symfony\Component\DependencyInjection\Definition;
+use MonorepoBuilder202209\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use MonorepoBuilder202209\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
+use MonorepoBuilder202209\Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
+use MonorepoBuilder202209\Symfony\Component\ExpressionLanguage\Expression;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
@@ -105,7 +105,7 @@ class ContainerConfigurator extends AbstractConfigurator
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-\class_alias('MonorepoBuilder202208\\Symfony\\Component\\DependencyInjection\\Loader\\Configurator\\ContainerConfigurator', 'Symfony\\Component\\DependencyInjection\\Loader\\Configurator\\ContainerConfigurator', \false);
+\class_alias('MonorepoBuilder202209\\Symfony\\Component\\DependencyInjection\\Loader\\Configurator\\ContainerConfigurator', 'Symfony\\Component\\DependencyInjection\\Loader\\Configurator\\ContainerConfigurator', \false);
 /**
  * Creates a parameter.
  */

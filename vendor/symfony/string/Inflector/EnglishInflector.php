@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202208\Symfony\Component\String\Inflector;
+namespace MonorepoBuilder202209\Symfony\Component\String\Inflector;
 
 final class EnglishInflector implements InflectorInterface
 {

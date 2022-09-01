@@ -3,9 +3,9 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Testing\ComposerJson;
 
-use MonorepoBuilder202208\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
+use MonorepoBuilder202209\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
 use Symplify\MonorepoBuilder\ValueObject\Option;
-use MonorepoBuilder202208\Symplify\PackageBuilder\Parameter\ParameterProvider;
+use MonorepoBuilder202209\Symplify\PackageBuilder\Parameter\ParameterProvider;
 final class ComposerVersionManipulator
 {
     /**

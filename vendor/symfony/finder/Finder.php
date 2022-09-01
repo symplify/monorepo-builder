@@ -8,20 +8,20 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202208\Symfony\Component\Finder;
+namespace MonorepoBuilder202209\Symfony\Component\Finder;
 
-use MonorepoBuilder202208\Symfony\Component\Finder\Comparator\DateComparator;
-use MonorepoBuilder202208\Symfony\Component\Finder\Comparator\NumberComparator;
-use MonorepoBuilder202208\Symfony\Component\Finder\Exception\DirectoryNotFoundException;
-use MonorepoBuilder202208\Symfony\Component\Finder\Iterator\CustomFilterIterator;
-use MonorepoBuilder202208\Symfony\Component\Finder\Iterator\DateRangeFilterIterator;
-use MonorepoBuilder202208\Symfony\Component\Finder\Iterator\DepthRangeFilterIterator;
-use MonorepoBuilder202208\Symfony\Component\Finder\Iterator\ExcludeDirectoryFilterIterator;
-use MonorepoBuilder202208\Symfony\Component\Finder\Iterator\FilecontentFilterIterator;
-use MonorepoBuilder202208\Symfony\Component\Finder\Iterator\FilenameFilterIterator;
-use MonorepoBuilder202208\Symfony\Component\Finder\Iterator\LazyIterator;
-use MonorepoBuilder202208\Symfony\Component\Finder\Iterator\SizeRangeFilterIterator;
-use MonorepoBuilder202208\Symfony\Component\Finder\Iterator\SortableIterator;
+use MonorepoBuilder202209\Symfony\Component\Finder\Comparator\DateComparator;
+use MonorepoBuilder202209\Symfony\Component\Finder\Comparator\NumberComparator;
+use MonorepoBuilder202209\Symfony\Component\Finder\Exception\DirectoryNotFoundException;
+use MonorepoBuilder202209\Symfony\Component\Finder\Iterator\CustomFilterIterator;
+use MonorepoBuilder202209\Symfony\Component\Finder\Iterator\DateRangeFilterIterator;
+use MonorepoBuilder202209\Symfony\Component\Finder\Iterator\DepthRangeFilterIterator;
+use MonorepoBuilder202209\Symfony\Component\Finder\Iterator\ExcludeDirectoryFilterIterator;
+use MonorepoBuilder202209\Symfony\Component\Finder\Iterator\FilecontentFilterIterator;
+use MonorepoBuilder202209\Symfony\Component\Finder\Iterator\FilenameFilterIterator;
+use MonorepoBuilder202209\Symfony\Component\Finder\Iterator\LazyIterator;
+use MonorepoBuilder202209\Symfony\Component\Finder\Iterator\SizeRangeFilterIterator;
+use MonorepoBuilder202209\Symfony\Component\Finder\Iterator\SortableIterator;
 /**
  * Finder allows to build rules to find files and directories.
  *

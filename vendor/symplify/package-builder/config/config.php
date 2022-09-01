@@ -1,14 +1,14 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder202208;
+namespace MonorepoBuilder202209;
 
-use MonorepoBuilder202208\SebastianBergmann\Diff\Differ;
-use MonorepoBuilder202208\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
-use MonorepoBuilder202208\Symplify\PackageBuilder\Console\Formatter\ColorConsoleDiffFormatter;
-use MonorepoBuilder202208\Symplify\PackageBuilder\Console\Output\ConsoleDiffer;
-use MonorepoBuilder202208\Symplify\PackageBuilder\Diff\Output\CompleteUnifiedDiffOutputBuilderFactory;
-use MonorepoBuilder202208\Symplify\PackageBuilder\Reflection\PrivatesAccessor;
+use MonorepoBuilder202209\SebastianBergmann\Diff\Differ;
+use MonorepoBuilder202209\Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use MonorepoBuilder202209\Symplify\PackageBuilder\Console\Formatter\ColorConsoleDiffFormatter;
+use MonorepoBuilder202209\Symplify\PackageBuilder\Console\Output\ConsoleDiffer;
+use MonorepoBuilder202209\Symplify\PackageBuilder\Diff\Output\CompleteUnifiedDiffOutputBuilderFactory;
+use MonorepoBuilder202209\Symplify\PackageBuilder\Reflection\PrivatesAccessor;
 return static function (ContainerConfigurator $containerConfigurator) : void {
     $services = $containerConfigurator->services();
     $services->defaults()->public()->autowire();

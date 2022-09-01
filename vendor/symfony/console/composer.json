@@ -53,7 +53,7 @@
     },
     "autoload": {
         "psr-4": {
-            "MonorepoBuilder202208\\Symfony\\Component\\Console\\": ""
+            "MonorepoBuilder202209\\Symfony\\Component\\Console\\": ""
         },
         "exclude-from-classmap": [
             "\/Tests\/"

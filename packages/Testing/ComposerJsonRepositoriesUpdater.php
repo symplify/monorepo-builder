@@ -3,15 +3,15 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Testing;
 
-use MonorepoBuilder202208\Symfony\Component\Console\Style\SymfonyStyle;
-use MonorepoBuilder202208\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
-use MonorepoBuilder202208\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
+use MonorepoBuilder202209\Symfony\Component\Console\Style\SymfonyStyle;
+use MonorepoBuilder202209\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
+use MonorepoBuilder202209\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
 use Symplify\MonorepoBuilder\Package\PackageNamesProvider;
 use Symplify\MonorepoBuilder\Testing\ComposerJson\ComposerJsonSymlinker;
 use Symplify\MonorepoBuilder\Testing\PackageDependency\UsedPackagesResolver;
-use MonorepoBuilder202208\Symplify\PackageBuilder\Console\Output\ConsoleDiffer;
-use MonorepoBuilder202208\Symplify\SmartFileSystem\SmartFileInfo;
-use MonorepoBuilder202208\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
+use MonorepoBuilder202209\Symplify\PackageBuilder\Console\Output\ConsoleDiffer;
+use MonorepoBuilder202209\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder202209\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
 final class ComposerJsonRepositoriesUpdater
 {
     /**

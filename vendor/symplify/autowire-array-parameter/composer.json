@@ -9,16 +9,17 @@
         "symplify\/package-builder": "dev-main"
     },
     "require-dev": {
-        "phpunit\/phpunit": "^9.5.23"
+        "phpunit\/phpunit": "^9.5.23",
+        "symplify\/symplify-kernel": "dev-main"
     },
     "autoload": {
         "psr-4": {
-            "MonorepoBuilder202208\\Symplify\\AutowireArrayParameter\\": "src"
+            "MonorepoBuilder202209\\Symplify\\AutowireArrayParameter\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "MonorepoBuilder202208\\Symplify\\AutowireArrayParameter\\Tests\\": "tests"
+            "MonorepoBuilder202209\\Symplify\\AutowireArrayParameter\\Tests\\": "tests"
         }
     },
     "extra": {

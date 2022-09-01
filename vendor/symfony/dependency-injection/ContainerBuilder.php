@@ -8,42 +8,42 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202208\Symfony\Component\DependencyInjection;
+namespace MonorepoBuilder202209\Symfony\Component\DependencyInjection;
 
-use MonorepoBuilder202208\Composer\InstalledVersions;
-use MonorepoBuilder202208\Symfony\Component\Config\Resource\ClassExistenceResource;
-use MonorepoBuilder202208\Symfony\Component\Config\Resource\ComposerResource;
-use MonorepoBuilder202208\Symfony\Component\Config\Resource\DirectoryResource;
-use MonorepoBuilder202208\Symfony\Component\Config\Resource\FileExistenceResource;
-use MonorepoBuilder202208\Symfony\Component\Config\Resource\FileResource;
-use MonorepoBuilder202208\Symfony\Component\Config\Resource\GlobResource;
-use MonorepoBuilder202208\Symfony\Component\Config\Resource\ReflectionClassResource;
-use MonorepoBuilder202208\Symfony\Component\Config\Resource\ResourceInterface;
-use MonorepoBuilder202208\Symfony\Component\DependencyInjection\Argument\AbstractArgument;
-use MonorepoBuilder202208\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
-use MonorepoBuilder202208\Symfony\Component\DependencyInjection\Argument\RewindableGenerator;
-use MonorepoBuilder202208\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
-use MonorepoBuilder202208\Symfony\Component\DependencyInjection\Argument\ServiceLocator;
-use MonorepoBuilder202208\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
-use MonorepoBuilder202208\Symfony\Component\DependencyInjection\Attribute\Target;
-use MonorepoBuilder202208\Symfony\Component\DependencyInjection\Compiler\Compiler;
-use MonorepoBuilder202208\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
-use MonorepoBuilder202208\Symfony\Component\DependencyInjection\Compiler\PassConfig;
-use MonorepoBuilder202208\Symfony\Component\DependencyInjection\Compiler\ResolveEnvPlaceholdersPass;
-use MonorepoBuilder202208\Symfony\Component\DependencyInjection\Exception\BadMethodCallException;
-use MonorepoBuilder202208\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use MonorepoBuilder202208\Symfony\Component\DependencyInjection\Exception\LogicException;
-use MonorepoBuilder202208\Symfony\Component\DependencyInjection\Exception\RuntimeException;
-use MonorepoBuilder202208\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
-use MonorepoBuilder202208\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
-use MonorepoBuilder202208\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
-use MonorepoBuilder202208\Symfony\Component\DependencyInjection\LazyProxy\Instantiator\InstantiatorInterface;
-use MonorepoBuilder202208\Symfony\Component\DependencyInjection\LazyProxy\Instantiator\RealServiceInstantiator;
-use MonorepoBuilder202208\Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag;
-use MonorepoBuilder202208\Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
-use MonorepoBuilder202208\Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
-use MonorepoBuilder202208\Symfony\Component\ExpressionLanguage\Expression;
-use MonorepoBuilder202208\Symfony\Component\ExpressionLanguage\ExpressionFunctionProviderInterface;
+use MonorepoBuilder202209\Composer\InstalledVersions;
+use MonorepoBuilder202209\Symfony\Component\Config\Resource\ClassExistenceResource;
+use MonorepoBuilder202209\Symfony\Component\Config\Resource\ComposerResource;
+use MonorepoBuilder202209\Symfony\Component\Config\Resource\DirectoryResource;
+use MonorepoBuilder202209\Symfony\Component\Config\Resource\FileExistenceResource;
+use MonorepoBuilder202209\Symfony\Component\Config\Resource\FileResource;
+use MonorepoBuilder202209\Symfony\Component\Config\Resource\GlobResource;
+use MonorepoBuilder202209\Symfony\Component\Config\Resource\ReflectionClassResource;
+use MonorepoBuilder202209\Symfony\Component\Config\Resource\ResourceInterface;
+use MonorepoBuilder202209\Symfony\Component\DependencyInjection\Argument\AbstractArgument;
+use MonorepoBuilder202209\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
+use MonorepoBuilder202209\Symfony\Component\DependencyInjection\Argument\RewindableGenerator;
+use MonorepoBuilder202209\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
+use MonorepoBuilder202209\Symfony\Component\DependencyInjection\Argument\ServiceLocator;
+use MonorepoBuilder202209\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
+use MonorepoBuilder202209\Symfony\Component\DependencyInjection\Attribute\Target;
+use MonorepoBuilder202209\Symfony\Component\DependencyInjection\Compiler\Compiler;
+use MonorepoBuilder202209\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
+use MonorepoBuilder202209\Symfony\Component\DependencyInjection\Compiler\PassConfig;
+use MonorepoBuilder202209\Symfony\Component\DependencyInjection\Compiler\ResolveEnvPlaceholdersPass;
+use MonorepoBuilder202209\Symfony\Component\DependencyInjection\Exception\BadMethodCallException;
+use MonorepoBuilder202209\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use MonorepoBuilder202209\Symfony\Component\DependencyInjection\Exception\LogicException;
+use MonorepoBuilder202209\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use MonorepoBuilder202209\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
+use MonorepoBuilder202209\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
+use MonorepoBuilder202209\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
+use MonorepoBuilder202209\Symfony\Component\DependencyInjection\LazyProxy\Instantiator\InstantiatorInterface;
+use MonorepoBuilder202209\Symfony\Component\DependencyInjection\LazyProxy\Instantiator\RealServiceInstantiator;
+use MonorepoBuilder202209\Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag;
+use MonorepoBuilder202209\Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
+use MonorepoBuilder202209\Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
+use MonorepoBuilder202209\Symfony\Component\ExpressionLanguage\Expression;
+use MonorepoBuilder202209\Symfony\Component\ExpressionLanguage\ExpressionFunctionProviderInterface;
 /**
  * ContainerBuilder is a DI container that provides an API to easily describe services.
  *
@@ -1366,7 +1366,7 @@ class ContainerBuilder extends Container implements TaggedContainerInterface
     private function getExpressionLanguage() : ExpressionLanguage
     {
         if (!isset($this->expressionLanguage)) {
-            if (!\class_exists(\MonorepoBuilder202208\Symfony\Component\ExpressionLanguage\ExpressionLanguage::class)) {
+            if (!\class_exists(\MonorepoBuilder202209\Symfony\Component\ExpressionLanguage\ExpressionLanguage::class)) {
                 throw new LogicException('Unable to use expressions as the Symfony ExpressionLanguage component is not installed.');
             }
             $this->expressionLanguage = new ExpressionLanguage(null, $this->expressionLanguageProviders);

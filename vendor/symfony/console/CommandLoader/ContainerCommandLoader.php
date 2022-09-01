@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202208\Symfony\Component\Console\CommandLoader;
+namespace MonorepoBuilder202209\Symfony\Component\Console\CommandLoader;
 
-use MonorepoBuilder202208\Psr\Container\ContainerInterface;
-use MonorepoBuilder202208\Symfony\Component\Console\Command\Command;
-use MonorepoBuilder202208\Symfony\Component\Console\Exception\CommandNotFoundException;
+use MonorepoBuilder202209\Psr\Container\ContainerInterface;
+use MonorepoBuilder202209\Symfony\Component\Console\Command\Command;
+use MonorepoBuilder202209\Symfony\Component\Console\Exception\CommandNotFoundException;
 /**
  * Loads commands from a PSR-11 container.
  *

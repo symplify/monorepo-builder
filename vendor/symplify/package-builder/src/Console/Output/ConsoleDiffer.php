@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder202208\Symplify\PackageBuilder\Console\Output;
+namespace MonorepoBuilder202209\Symplify\PackageBuilder\Console\Output;
 
-use MonorepoBuilder202208\SebastianBergmann\Diff\Differ;
-use MonorepoBuilder202208\Symplify\PackageBuilder\Console\Formatter\ColorConsoleDiffFormatter;
+use MonorepoBuilder202209\SebastianBergmann\Diff\Differ;
+use MonorepoBuilder202209\Symplify\PackageBuilder\Console\Formatter\ColorConsoleDiffFormatter;
 /**
  * @api
  */

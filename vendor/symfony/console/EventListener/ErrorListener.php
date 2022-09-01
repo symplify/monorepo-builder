@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202208\Symfony\Component\Console\EventListener;
+namespace MonorepoBuilder202209\Symfony\Component\Console\EventListener;
 
-use MonorepoBuilder202208\Psr\Log\LoggerInterface;
-use MonorepoBuilder202208\Symfony\Component\Console\ConsoleEvents;
-use MonorepoBuilder202208\Symfony\Component\Console\Event\ConsoleErrorEvent;
-use MonorepoBuilder202208\Symfony\Component\Console\Event\ConsoleEvent;
-use MonorepoBuilder202208\Symfony\Component\Console\Event\ConsoleTerminateEvent;
-use MonorepoBuilder202208\Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use MonorepoBuilder202209\Psr\Log\LoggerInterface;
+use MonorepoBuilder202209\Symfony\Component\Console\ConsoleEvents;
+use MonorepoBuilder202209\Symfony\Component\Console\Event\ConsoleErrorEvent;
+use MonorepoBuilder202209\Symfony\Component\Console\Event\ConsoleEvent;
+use MonorepoBuilder202209\Symfony\Component\Console\Event\ConsoleTerminateEvent;
+use MonorepoBuilder202209\Symfony\Component\EventDispatcher\EventSubscriberInterface;
 /**
  * @author James Halsall <james.t.halsall@googlemail.com>
  * @author Robin Chalas <robin.chalas@gmail.com>

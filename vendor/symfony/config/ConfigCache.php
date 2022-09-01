@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202208\Symfony\Component\Config;
+namespace MonorepoBuilder202209\Symfony\Component\Config;
 
-use MonorepoBuilder202208\Symfony\Component\Config\Resource\SelfCheckingResourceChecker;
+use MonorepoBuilder202209\Symfony\Component\Config\Resource\SelfCheckingResourceChecker;
 /**
  * ConfigCache caches arbitrary content in files on disk.
  *

@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202208\Symfony\Component\DependencyInjection\Dumper;
+namespace MonorepoBuilder202209\Symfony\Component\DependencyInjection\Dumper;
 
-use MonorepoBuilder202208\Symfony\Component\DependencyInjection\Argument\ArgumentInterface;
-use MonorepoBuilder202208\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder202208\Symfony\Component\DependencyInjection\Definition;
-use MonorepoBuilder202208\Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException;
-use MonorepoBuilder202208\Symfony\Component\DependencyInjection\Parameter;
-use MonorepoBuilder202208\Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
-use MonorepoBuilder202208\Symfony\Component\DependencyInjection\Reference;
+use MonorepoBuilder202209\Symfony\Component\DependencyInjection\Argument\ArgumentInterface;
+use MonorepoBuilder202209\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder202209\Symfony\Component\DependencyInjection\Definition;
+use MonorepoBuilder202209\Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException;
+use MonorepoBuilder202209\Symfony\Component\DependencyInjection\Parameter;
+use MonorepoBuilder202209\Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
+use MonorepoBuilder202209\Symfony\Component\DependencyInjection\Reference;
 /**
  * GraphvizDumper dumps a service container as a graphviz file.
  *

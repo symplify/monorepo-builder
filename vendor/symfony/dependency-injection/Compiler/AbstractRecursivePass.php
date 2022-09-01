@@ -8,17 +8,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202208\Symfony\Component\DependencyInjection\Compiler;
+namespace MonorepoBuilder202209\Symfony\Component\DependencyInjection\Compiler;
 
-use MonorepoBuilder202208\Symfony\Component\DependencyInjection\Argument\ArgumentInterface;
-use MonorepoBuilder202208\Symfony\Component\DependencyInjection\ChildDefinition;
-use MonorepoBuilder202208\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder202208\Symfony\Component\DependencyInjection\Definition;
-use MonorepoBuilder202208\Symfony\Component\DependencyInjection\Exception\LogicException;
-use MonorepoBuilder202208\Symfony\Component\DependencyInjection\Exception\RuntimeException;
-use MonorepoBuilder202208\Symfony\Component\DependencyInjection\ExpressionLanguage;
-use MonorepoBuilder202208\Symfony\Component\DependencyInjection\Reference;
-use MonorepoBuilder202208\Symfony\Component\ExpressionLanguage\Expression;
+use MonorepoBuilder202209\Symfony\Component\DependencyInjection\Argument\ArgumentInterface;
+use MonorepoBuilder202209\Symfony\Component\DependencyInjection\ChildDefinition;
+use MonorepoBuilder202209\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder202209\Symfony\Component\DependencyInjection\Definition;
+use MonorepoBuilder202209\Symfony\Component\DependencyInjection\Exception\LogicException;
+use MonorepoBuilder202209\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use MonorepoBuilder202209\Symfony\Component\DependencyInjection\ExpressionLanguage;
+use MonorepoBuilder202209\Symfony\Component\DependencyInjection\Reference;
+use MonorepoBuilder202209\Symfony\Component\ExpressionLanguage\Expression;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */

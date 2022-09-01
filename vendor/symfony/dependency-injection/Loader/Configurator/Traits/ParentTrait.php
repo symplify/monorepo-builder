@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202208\Symfony\Component\DependencyInjection\Loader\Configurator\Traits;
+namespace MonorepoBuilder202209\Symfony\Component\DependencyInjection\Loader\Configurator\Traits;
 
-use MonorepoBuilder202208\Symfony\Component\DependencyInjection\ChildDefinition;
-use MonorepoBuilder202208\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use MonorepoBuilder202209\Symfony\Component\DependencyInjection\ChildDefinition;
+use MonorepoBuilder202209\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
 trait ParentTrait
 {
     /**

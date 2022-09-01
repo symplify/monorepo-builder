@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202208\Symfony\Component\DependencyInjection\Argument;
+namespace MonorepoBuilder202209\Symfony\Component\DependencyInjection\Argument;
 
-use MonorepoBuilder202208\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use MonorepoBuilder202208\Symfony\Component\DependencyInjection\Reference;
+use MonorepoBuilder202209\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use MonorepoBuilder202209\Symfony\Component\DependencyInjection\Reference;
 /**
  * Represents a service wrapped in a memoizing closure.
  *
