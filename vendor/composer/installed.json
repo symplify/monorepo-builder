@@ -1335,7 +1335,7 @@
             "dist": {
                 "type": "path",
                 "url": "..\/..\/packages\/symplify-kernel",
-                "reference": "f6b2e4e1e0548f59861825226ab86560f17686a8"
+                "reference": "2c6f11d5612638fac9944d2e62a5bdd707d8b9bd"
             },
             "require": {
                 "php": ">=8.0",
@@ -1344,7 +1344,7 @@
                 "symplify\/autowire-array-parameter": "dev-main",
                 "symplify\/package-builder": "dev-main",
                 "symplify\/smart-file-system": "dev-main",
-                "webmozart\/assert": "^1.10"
+                "webmozart\/assert": "^1.11"
             },
             "conflict": {
                 "symplify\/coding-standard": "<11.1.7",
