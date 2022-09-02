@@ -4,11 +4,12 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitb346012458b7692f7d841d21a6765992
+class ComposerStaticInit4f1dde3782d6cf3a48c5af93162f812b
 {
     public static $files = array (
         '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
         '23c18046f52bef3eea034657bafda50f' => __DIR__ . '/..' . '/symfony/polyfill-php81/bootstrap.php',
+        'e69f7f6ee287b969198c3c9d6777bd38' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/bootstrap.php',
         'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
     );
 
@@ -17,6 +18,7 @@ class ComposerStaticInitb346012458b7692f7d841d21a6765992
         array (
             'Symplify\\MonorepoBuilder\\' => 25,
             'Symfony\\Polyfill\\Php81\\' => 23,
+            'Symfony\\Polyfill\\Intl\\Normalizer\\' => 33,
         ),
         'M' => 
         array (
@@ -47,6 +49,10 @@ class ComposerStaticInitb346012458b7692f7d841d21a6765992
         'Symfony\\Polyfill\\Php81\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-php81',
+        ),
+        'Symfony\\Polyfill\\Intl\\Normalizer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer',
         ),
         'MonorepoBuilder202209\\Webmozart\\Assert\\' => 
         array (
@@ -660,6 +666,7 @@ class ComposerStaticInitb346012458b7692f7d841d21a6765992
         'MonorepoBuilder202209\\Webmozart\\Assert\\Assert' => __DIR__ . '/..' . '/webmozart/assert/src/Assert.php',
         'MonorepoBuilder202209\\Webmozart\\Assert\\InvalidArgumentException' => __DIR__ . '/..' . '/webmozart/assert/src/InvalidArgumentException.php',
         'MonorepoBuilder202209\\Webmozart\\Assert\\Mixin' => __DIR__ . '/..' . '/webmozart/assert/src/Mixin.php',
+        'Normalizer' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/Resources/stubs/Normalizer.php',
         'PharIo\\Version\\AbstractVersionConstraint' => __DIR__ . '/..' . '/phar-io/version/src/constraints/AbstractVersionConstraint.php',
         'PharIo\\Version\\AndVersionConstraintGroup' => __DIR__ . '/..' . '/phar-io/version/src/constraints/AndVersionConstraintGroup.php',
         'PharIo\\Version\\AnyVersionConstraint' => __DIR__ . '/..' . '/phar-io/version/src/constraints/AnyVersionConstraint.php',
@@ -682,6 +689,7 @@ class ComposerStaticInitb346012458b7692f7d841d21a6765992
         'PharIo\\Version\\VersionConstraintValue' => __DIR__ . '/..' . '/phar-io/version/src/VersionConstraintValue.php',
         'PharIo\\Version\\VersionNumber' => __DIR__ . '/..' . '/phar-io/version/src/VersionNumber.php',
         'ReturnTypeWillChange' => __DIR__ . '/..' . '/symfony/polyfill-php81/Resources/stubs/ReturnTypeWillChange.php',
+        'Symfony\\Polyfill\\Intl\\Normalizer\\Normalizer' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/Normalizer.php',
         'Symfony\\Polyfill\\Php81\\Php81' => __DIR__ . '/..' . '/symfony/polyfill-php81/Php81.php',
         'Symplify\\MonorepoBuilder\\Command\\BumpInterdependencyCommand' => __DIR__ . '/../..' . '/src/Command/BumpInterdependencyCommand.php',
         'Symplify\\MonorepoBuilder\\Command\\PackageAliasCommand' => __DIR__ . '/../..' . '/src/Command/PackageAliasCommand.php',
@@ -781,9 +789,9 @@ class ComposerStaticInitb346012458b7692f7d841d21a6765992
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitb346012458b7692f7d841d21a6765992::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitb346012458b7692f7d841d21a6765992::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitb346012458b7692f7d841d21a6765992::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit4f1dde3782d6cf3a48c5af93162f812b::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit4f1dde3782d6cf3a48c5af93162f812b::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit4f1dde3782d6cf3a48c5af93162f812b::$classMap;
 
         }, null, ClassLoader::class);
     }
