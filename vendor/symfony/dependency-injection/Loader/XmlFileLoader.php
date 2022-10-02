@@ -8,25 +8,25 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202209\Symfony\Component\DependencyInjection\Loader;
+namespace MonorepoBuilder202210\Symfony\Component\DependencyInjection\Loader;
 
-use MonorepoBuilder202209\Symfony\Component\Config\Util\XmlUtils;
-use MonorepoBuilder202209\Symfony\Component\DependencyInjection\Alias;
-use MonorepoBuilder202209\Symfony\Component\DependencyInjection\Argument\AbstractArgument;
-use MonorepoBuilder202209\Symfony\Component\DependencyInjection\Argument\BoundArgument;
-use MonorepoBuilder202209\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
-use MonorepoBuilder202209\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
-use MonorepoBuilder202209\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
-use MonorepoBuilder202209\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument;
-use MonorepoBuilder202209\Symfony\Component\DependencyInjection\ChildDefinition;
-use MonorepoBuilder202209\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder202209\Symfony\Component\DependencyInjection\ContainerInterface;
-use MonorepoBuilder202209\Symfony\Component\DependencyInjection\Definition;
-use MonorepoBuilder202209\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use MonorepoBuilder202209\Symfony\Component\DependencyInjection\Exception\RuntimeException;
-use MonorepoBuilder202209\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
-use MonorepoBuilder202209\Symfony\Component\DependencyInjection\Reference;
-use MonorepoBuilder202209\Symfony\Component\ExpressionLanguage\Expression;
+use MonorepoBuilder202210\Symfony\Component\Config\Util\XmlUtils;
+use MonorepoBuilder202210\Symfony\Component\DependencyInjection\Alias;
+use MonorepoBuilder202210\Symfony\Component\DependencyInjection\Argument\AbstractArgument;
+use MonorepoBuilder202210\Symfony\Component\DependencyInjection\Argument\BoundArgument;
+use MonorepoBuilder202210\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
+use MonorepoBuilder202210\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
+use MonorepoBuilder202210\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
+use MonorepoBuilder202210\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument;
+use MonorepoBuilder202210\Symfony\Component\DependencyInjection\ChildDefinition;
+use MonorepoBuilder202210\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder202210\Symfony\Component\DependencyInjection\ContainerInterface;
+use MonorepoBuilder202210\Symfony\Component\DependencyInjection\Definition;
+use MonorepoBuilder202210\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use MonorepoBuilder202210\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use MonorepoBuilder202210\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
+use MonorepoBuilder202210\Symfony\Component\DependencyInjection\Reference;
+use MonorepoBuilder202210\Symfony\Component\ExpressionLanguage\Expression;
 /**
  * XmlFileLoader loads XML files service definitions.
  *

@@ -1,15 +1,15 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder202209\Symplify\ComposerJsonManipulator\FileSystem;
+namespace MonorepoBuilder202210\Symplify\ComposerJsonManipulator\FileSystem;
 
-use MonorepoBuilder202209\Nette\Utils\Json;
-use MonorepoBuilder202209\Symplify\ComposerJsonManipulator\Json\JsonCleaner;
-use MonorepoBuilder202209\Symplify\ComposerJsonManipulator\Json\JsonInliner;
-use MonorepoBuilder202209\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
-use MonorepoBuilder202209\Symplify\PackageBuilder\Configuration\StaticEolConfiguration;
-use MonorepoBuilder202209\Symplify\SmartFileSystem\SmartFileInfo;
-use MonorepoBuilder202209\Symplify\SmartFileSystem\SmartFileSystem;
+use MonorepoBuilder202210\Nette\Utils\Json;
+use MonorepoBuilder202210\Symplify\ComposerJsonManipulator\Json\JsonCleaner;
+use MonorepoBuilder202210\Symplify\ComposerJsonManipulator\Json\JsonInliner;
+use MonorepoBuilder202210\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
+use MonorepoBuilder202210\Symplify\PackageBuilder\Configuration\StaticEolConfiguration;
+use MonorepoBuilder202210\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder202210\Symplify\SmartFileSystem\SmartFileSystem;
 /**
  * @see \Symplify\MonorepoBuilder\Tests\FileSystem\JsonFileManager\JsonFileManagerTest
  */

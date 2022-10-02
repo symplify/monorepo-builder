@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202209\Symfony\Component\String;
+namespace MonorepoBuilder202210\Symfony\Component\String;
 
-use MonorepoBuilder202209\Symfony\Component\String\Exception\ExceptionInterface;
-use MonorepoBuilder202209\Symfony\Component\String\Exception\InvalidArgumentException;
+use MonorepoBuilder202210\Symfony\Component\String\Exception\ExceptionInterface;
+use MonorepoBuilder202210\Symfony\Component\String\Exception\InvalidArgumentException;
 /**
  * Represents a string of Unicode code points encoded as UTF-8.
  *

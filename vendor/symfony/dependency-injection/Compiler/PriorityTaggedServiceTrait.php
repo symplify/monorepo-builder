@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202209\Symfony\Component\DependencyInjection\Compiler;
+namespace MonorepoBuilder202210\Symfony\Component\DependencyInjection\Compiler;
 
-use MonorepoBuilder202209\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument;
-use MonorepoBuilder202209\Symfony\Component\DependencyInjection\Attribute\AsTaggedItem;
-use MonorepoBuilder202209\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder202209\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use MonorepoBuilder202209\Symfony\Component\DependencyInjection\Reference;
-use MonorepoBuilder202209\Symfony\Component\DependencyInjection\TypedReference;
+use MonorepoBuilder202210\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument;
+use MonorepoBuilder202210\Symfony\Component\DependencyInjection\Attribute\AsTaggedItem;
+use MonorepoBuilder202210\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder202210\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use MonorepoBuilder202210\Symfony\Component\DependencyInjection\Reference;
+use MonorepoBuilder202210\Symfony\Component\DependencyInjection\TypedReference;
 /**
  * Trait that allows a generic method to find and sort service by priority option in the tag.
  *

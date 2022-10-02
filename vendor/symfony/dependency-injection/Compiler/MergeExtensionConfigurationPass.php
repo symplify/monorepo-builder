@@ -8,18 +8,18 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202209\Symfony\Component\DependencyInjection\Compiler;
+namespace MonorepoBuilder202210\Symfony\Component\DependencyInjection\Compiler;
 
-use MonorepoBuilder202209\Symfony\Component\Config\Definition\BaseNode;
-use MonorepoBuilder202209\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder202209\Symfony\Component\DependencyInjection\Exception\LogicException;
-use MonorepoBuilder202209\Symfony\Component\DependencyInjection\Exception\RuntimeException;
-use MonorepoBuilder202209\Symfony\Component\DependencyInjection\Extension\ConfigurationExtensionInterface;
-use MonorepoBuilder202209\Symfony\Component\DependencyInjection\Extension\Extension;
-use MonorepoBuilder202209\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
-use MonorepoBuilder202209\Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
-use MonorepoBuilder202209\Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag;
-use MonorepoBuilder202209\Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
+use MonorepoBuilder202210\Symfony\Component\Config\Definition\BaseNode;
+use MonorepoBuilder202210\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder202210\Symfony\Component\DependencyInjection\Exception\LogicException;
+use MonorepoBuilder202210\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use MonorepoBuilder202210\Symfony\Component\DependencyInjection\Extension\ConfigurationExtensionInterface;
+use MonorepoBuilder202210\Symfony\Component\DependencyInjection\Extension\Extension;
+use MonorepoBuilder202210\Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
+use MonorepoBuilder202210\Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
+use MonorepoBuilder202210\Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag;
+use MonorepoBuilder202210\Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 /**
  * Merges extension configs into the container builder.
  *

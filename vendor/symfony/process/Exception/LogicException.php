@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202209\Symfony\Component\Process\Exception;
+namespace MonorepoBuilder202210\Symfony\Component\Process\Exception;
 
 /**
  * LogicException for the Process Component.

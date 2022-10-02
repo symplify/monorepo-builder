@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder202209\Symplify\ComposerJsonManipulator\Json;
+namespace MonorepoBuilder202210\Symplify\ComposerJsonManipulator\Json;
 
-use MonorepoBuilder202209\Nette\Utils\Strings;
-use MonorepoBuilder202209\Symplify\ComposerJsonManipulator\ValueObject\Option;
-use MonorepoBuilder202209\Symplify\PackageBuilder\Parameter\ParameterProvider;
+use MonorepoBuilder202210\Nette\Utils\Strings;
+use MonorepoBuilder202210\Symplify\ComposerJsonManipulator\ValueObject\Option;
+use MonorepoBuilder202210\Symplify\PackageBuilder\Parameter\ParameterProvider;
 final class JsonInliner
 {
     /**

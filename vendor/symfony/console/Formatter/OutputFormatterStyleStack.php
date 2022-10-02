@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202209\Symfony\Component\Console\Formatter;
+namespace MonorepoBuilder202210\Symfony\Component\Console\Formatter;
 
-use MonorepoBuilder202209\Symfony\Component\Console\Exception\InvalidArgumentException;
-use MonorepoBuilder202209\Symfony\Contracts\Service\ResetInterface;
+use MonorepoBuilder202210\Symfony\Component\Console\Exception\InvalidArgumentException;
+use MonorepoBuilder202210\Symfony\Contracts\Service\ResetInterface;
 /**
  * @author Jean-François Simon <contact@jfsimon.fr>
  */

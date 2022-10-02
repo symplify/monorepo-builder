@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Merge\ComposerJsonDecorator;
 
-use MonorepoBuilder202209\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
+use MonorepoBuilder202210\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
 use Symplify\MonorepoBuilder\Merge\Configuration\MergedPackagesCollector;
 use Symplify\MonorepoBuilder\Merge\Contract\ComposerJsonDecoratorInterface;
 final class ReplaceSectionJsonDecorator implements ComposerJsonDecoratorInterface

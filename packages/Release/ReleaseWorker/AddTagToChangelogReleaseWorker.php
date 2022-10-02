@@ -3,11 +3,11 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Release\ReleaseWorker;
 
-use MonorepoBuilder202209\Nette\Utils\DateTime;
-use MonorepoBuilder202209\Nette\Utils\Strings;
+use MonorepoBuilder202210\Nette\Utils\DateTime;
+use MonorepoBuilder202210\Nette\Utils\Strings;
 use PharIo\Version\Version;
 use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface;
-use MonorepoBuilder202209\Symplify\SmartFileSystem\SmartFileSystem;
+use MonorepoBuilder202210\Symplify\SmartFileSystem\SmartFileSystem;
 final class AddTagToChangelogReleaseWorker implements ReleaseWorkerInterface
 {
     /**

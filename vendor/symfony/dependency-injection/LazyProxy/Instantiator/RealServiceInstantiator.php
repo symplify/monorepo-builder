@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202209\Symfony\Component\DependencyInjection\LazyProxy\Instantiator;
+namespace MonorepoBuilder202210\Symfony\Component\DependencyInjection\LazyProxy\Instantiator;
 
-use MonorepoBuilder202209\Symfony\Component\DependencyInjection\ContainerInterface;
-use MonorepoBuilder202209\Symfony\Component\DependencyInjection\Definition;
+use MonorepoBuilder202210\Symfony\Component\DependencyInjection\ContainerInterface;
+use MonorepoBuilder202210\Symfony\Component\DependencyInjection\Definition;
 /**
  * {@inheritdoc}
  *

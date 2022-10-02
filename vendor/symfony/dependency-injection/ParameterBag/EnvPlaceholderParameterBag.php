@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202209\Symfony\Component\DependencyInjection\ParameterBag;
+namespace MonorepoBuilder202210\Symfony\Component\DependencyInjection\ParameterBag;
 
-use MonorepoBuilder202209\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use MonorepoBuilder202209\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use MonorepoBuilder202210\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use MonorepoBuilder202210\Symfony\Component\DependencyInjection\Exception\RuntimeException;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
@@ -39,7 +39,7 @@ class EnvPlaceholderParameterBag extends ParameterBag
     private static $counter = 0;
     /**
      * {@inheritdoc}
-     * @return mixed[]|bool|string|int|float|null
+     * @return mixed[]|bool|string|int|float|\UnitEnum|null
      */
     public function get(string $name)
     {

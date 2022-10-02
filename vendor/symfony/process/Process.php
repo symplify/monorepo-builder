@@ -8,17 +8,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202209\Symfony\Component\Process;
+namespace MonorepoBuilder202210\Symfony\Component\Process;
 
-use MonorepoBuilder202209\Symfony\Component\Process\Exception\InvalidArgumentException;
-use MonorepoBuilder202209\Symfony\Component\Process\Exception\LogicException;
-use MonorepoBuilder202209\Symfony\Component\Process\Exception\ProcessFailedException;
-use MonorepoBuilder202209\Symfony\Component\Process\Exception\ProcessSignaledException;
-use MonorepoBuilder202209\Symfony\Component\Process\Exception\ProcessTimedOutException;
-use MonorepoBuilder202209\Symfony\Component\Process\Exception\RuntimeException;
-use MonorepoBuilder202209\Symfony\Component\Process\Pipes\PipesInterface;
-use MonorepoBuilder202209\Symfony\Component\Process\Pipes\UnixPipes;
-use MonorepoBuilder202209\Symfony\Component\Process\Pipes\WindowsPipes;
+use MonorepoBuilder202210\Symfony\Component\Process\Exception\InvalidArgumentException;
+use MonorepoBuilder202210\Symfony\Component\Process\Exception\LogicException;
+use MonorepoBuilder202210\Symfony\Component\Process\Exception\ProcessFailedException;
+use MonorepoBuilder202210\Symfony\Component\Process\Exception\ProcessSignaledException;
+use MonorepoBuilder202210\Symfony\Component\Process\Exception\ProcessTimedOutException;
+use MonorepoBuilder202210\Symfony\Component\Process\Exception\RuntimeException;
+use MonorepoBuilder202210\Symfony\Component\Process\Pipes\PipesInterface;
+use MonorepoBuilder202210\Symfony\Component\Process\Pipes\UnixPipes;
+use MonorepoBuilder202210\Symfony\Component\Process\Pipes\WindowsPipes;
 /**
  * Process is a thin wrapper around proc_* functions to easily
  * start independent PHP processes.

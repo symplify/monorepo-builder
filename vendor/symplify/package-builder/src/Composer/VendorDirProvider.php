@@ -1,9 +1,9 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder202209\Symplify\PackageBuilder\Composer;
+namespace MonorepoBuilder202210\Symplify\PackageBuilder\Composer;
 
-use MonorepoBuilder202209\Composer\Autoload\ClassLoader;
+use MonorepoBuilder202210\Composer\Autoload\ClassLoader;
 use ReflectionClass;
 /**
  * @api

@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder202209\Symplify\SymplifyKernel\Exception;
+namespace MonorepoBuilder202210\Symplify\SymplifyKernel\Exception;
 
 use Exception;
 /**

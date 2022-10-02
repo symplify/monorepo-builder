@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202209\Symfony\Component\Console\Question;
+namespace MonorepoBuilder202210\Symfony\Component\Console\Question;
 
-use MonorepoBuilder202209\Symfony\Component\Console\Exception\InvalidArgumentException;
+use MonorepoBuilder202210\Symfony\Component\Console\Exception\InvalidArgumentException;
 /**
  * Represents a choice question.
  *

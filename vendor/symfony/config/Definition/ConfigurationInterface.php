@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202209\Symfony\Component\Config\Definition;
+namespace MonorepoBuilder202210\Symfony\Component\Config\Definition;
 
-use MonorepoBuilder202209\Symfony\Component\Config\Definition\Builder\TreeBuilder;
+use MonorepoBuilder202210\Symfony\Component\Config\Definition\Builder\TreeBuilder;
 /**
  * Configuration interface.
  *

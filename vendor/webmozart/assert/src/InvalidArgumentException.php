@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202209\Webmozart\Assert;
+namespace MonorepoBuilder202210\Webmozart\Assert;
 
 class InvalidArgumentException extends \InvalidArgumentException
 {

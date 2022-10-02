@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202209\Symfony\Component\Process;
+namespace MonorepoBuilder202210\Symfony\Component\Process;
 
-use MonorepoBuilder202209\Symfony\Component\Process\Exception\RuntimeException;
+use MonorepoBuilder202210\Symfony\Component\Process\Exception\RuntimeException;
 /**
  * Provides a way to continuously write to the input of a Process until the InputStream is closed.
  *

@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder202209\Symplify\ComposerJsonManipulator\Json;
+namespace MonorepoBuilder202210\Symplify\ComposerJsonManipulator\Json;
 
 final class JsonCleaner
 {

@@ -8,20 +8,20 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202209\Symfony\Component\Config\Builder;
+namespace MonorepoBuilder202210\Symfony\Component\Config\Builder;
 
-use MonorepoBuilder202209\Symfony\Component\Config\Definition\ArrayNode;
-use MonorepoBuilder202209\Symfony\Component\Config\Definition\BooleanNode;
-use MonorepoBuilder202209\Symfony\Component\Config\Definition\ConfigurationInterface;
-use MonorepoBuilder202209\Symfony\Component\Config\Definition\EnumNode;
-use MonorepoBuilder202209\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
-use MonorepoBuilder202209\Symfony\Component\Config\Definition\FloatNode;
-use MonorepoBuilder202209\Symfony\Component\Config\Definition\IntegerNode;
-use MonorepoBuilder202209\Symfony\Component\Config\Definition\NodeInterface;
-use MonorepoBuilder202209\Symfony\Component\Config\Definition\PrototypedArrayNode;
-use MonorepoBuilder202209\Symfony\Component\Config\Definition\ScalarNode;
-use MonorepoBuilder202209\Symfony\Component\Config\Definition\VariableNode;
-use MonorepoBuilder202209\Symfony\Component\Config\Loader\ParamConfigurator;
+use MonorepoBuilder202210\Symfony\Component\Config\Definition\ArrayNode;
+use MonorepoBuilder202210\Symfony\Component\Config\Definition\BooleanNode;
+use MonorepoBuilder202210\Symfony\Component\Config\Definition\ConfigurationInterface;
+use MonorepoBuilder202210\Symfony\Component\Config\Definition\EnumNode;
+use MonorepoBuilder202210\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
+use MonorepoBuilder202210\Symfony\Component\Config\Definition\FloatNode;
+use MonorepoBuilder202210\Symfony\Component\Config\Definition\IntegerNode;
+use MonorepoBuilder202210\Symfony\Component\Config\Definition\NodeInterface;
+use MonorepoBuilder202210\Symfony\Component\Config\Definition\PrototypedArrayNode;
+use MonorepoBuilder202210\Symfony\Component\Config\Definition\ScalarNode;
+use MonorepoBuilder202210\Symfony\Component\Config\Definition\VariableNode;
+use MonorepoBuilder202210\Symfony\Component\Config\Loader\ParamConfigurator;
 /**
  * Generate ConfigBuilders to help create valid config.
  *
@@ -48,7 +48,7 @@ class ConfigBuilderGenerator implements ConfigBuilderGeneratorInterface
     {
         $this->classes = [];
         $rootNode = $configuration->getConfigTreeBuilder()->buildTree();
-        $rootClass = new ClassBuilder('MonorepoBuilder202209\\Symfony\\Config', $rootNode->getName());
+        $rootClass = new ClassBuilder('MonorepoBuilder202210\\Symfony\\Config', $rootNode->getName());
         $path = $this->getFullPath($rootClass);
         if (!\is_file($path)) {
             // Generate the class if the file not exists

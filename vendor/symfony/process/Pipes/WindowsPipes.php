@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202209\Symfony\Component\Process\Pipes;
+namespace MonorepoBuilder202210\Symfony\Component\Process\Pipes;
 
-use MonorepoBuilder202209\Symfony\Component\Process\Exception\RuntimeException;
-use MonorepoBuilder202209\Symfony\Component\Process\Process;
+use MonorepoBuilder202210\Symfony\Component\Process\Exception\RuntimeException;
+use MonorepoBuilder202210\Symfony\Component\Process\Process;
 /**
  * WindowsPipes implementation uses temporary files as handles.
  *
