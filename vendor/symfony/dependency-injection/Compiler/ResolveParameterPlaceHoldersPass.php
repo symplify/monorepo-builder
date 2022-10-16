@@ -13,6 +13,7 @@ namespace MonorepoBuilder202210\Symfony\Component\DependencyInjection\Compiler;
 use MonorepoBuilder202210\Symfony\Component\DependencyInjection\ContainerBuilder;
 use MonorepoBuilder202210\Symfony\Component\DependencyInjection\Definition;
 use MonorepoBuilder202210\Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException;
+use MonorepoBuilder202210\Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 /**
  * Resolves all parameter placeholders "%somevalue%" to their real values.
  *
@@ -20,6 +21,9 @@ use MonorepoBuilder202210\Symfony\Component\DependencyInjection\Exception\Parame
  */
 class ResolveParameterPlaceHoldersPass extends AbstractRecursivePass
 {
+    /**
+     * @var \Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface
+     */
     private $bag;
     /**
      * @var bool

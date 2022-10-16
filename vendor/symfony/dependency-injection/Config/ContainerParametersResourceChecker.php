@@ -18,6 +18,9 @@ use MonorepoBuilder202210\Symfony\Component\DependencyInjection\ContainerInterfa
  */
 class ContainerParametersResourceChecker implements ResourceCheckerInterface
 {
+    /**
+     * @var \Symfony\Component\DependencyInjection\ContainerInterface
+     */
     private $container;
     public function __construct(ContainerInterface $container)
     {

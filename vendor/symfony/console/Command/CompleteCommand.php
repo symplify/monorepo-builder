@@ -10,10 +10,12 @@
  */
 namespace MonorepoBuilder202210\Symfony\Component\Console\Command;
 
+use MonorepoBuilder202210\Symfony\Component\Console\Attribute\AsCommand;
 use MonorepoBuilder202210\Symfony\Component\Console\Completion\CompletionInput;
 use MonorepoBuilder202210\Symfony\Component\Console\Completion\CompletionSuggestions;
 use MonorepoBuilder202210\Symfony\Component\Console\Completion\Output\BashCompletionOutput;
 use MonorepoBuilder202210\Symfony\Component\Console\Completion\Output\CompletionOutputInterface;
+use MonorepoBuilder202210\Symfony\Component\Console\Completion\Output\FishCompletionOutput;
 use MonorepoBuilder202210\Symfony\Component\Console\Exception\CommandNotFoundException;
 use MonorepoBuilder202210\Symfony\Component\Console\Exception\ExceptionInterface;
 use MonorepoBuilder202210\Symfony\Component\Console\Input\InputInterface;
@@ -24,9 +26,16 @@ use MonorepoBuilder202210\Symfony\Component\Console\Output\OutputInterface;
  *
  * @author Wouter de Jong <wouter@wouterj.nl>
  */
+#[\Symfony\Component\Console\Attribute\AsCommand(name: '|_complete', description: 'Internal command to provide shell completion suggestions')]
 final class CompleteCommand extends Command
 {
+    /**
+     * @deprecated since Symfony 6.1
+     */
     protected static $defaultName = '|_complete';
+    /**
+     * @deprecated since Symfony 6.1
+     */
     protected static $defaultDescription = 'Internal command to provide shell completion suggestions';
     private $completionOutputs;
     private $isDebug = \false;
@@ -36,7 +45,7 @@ final class CompleteCommand extends Command
     public function __construct(array $completionOutputs = [])
     {
         // must be set before the parent constructor, as the property value is used in configure()
-        $this->completionOutputs = $completionOutputs + ['bash' => BashCompletionOutput::class];
+        $this->completionOutputs = $completionOutputs + ['bash' => BashCompletionOutput::class, 'fish' => FishCompletionOutput::class];
         parent::__construct();
     }
     protected function configure() : void
@@ -121,7 +130,7 @@ final class CompleteCommand extends Command
         $completionInput = CompletionInput::fromTokens($input->getOption('input'), (int) $currentIndex);
         try {
             $completionInput->bind($this->getApplication()->getDefinition());
-        } catch (ExceptionInterface $e) {
+        } catch (ExceptionInterface $exception) {
         }
         return $completionInput;
     }
@@ -133,7 +142,7 @@ final class CompleteCommand extends Command
                 return null;
             }
             return $this->getApplication()->find($inputName);
-        } catch (CommandNotFoundException $e) {
+        } catch (CommandNotFoundException $exception) {
         }
         return null;
     }

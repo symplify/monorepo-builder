@@ -12,6 +12,7 @@ namespace MonorepoBuilder202210\Symfony\Component\Console\Command;
 
 use MonorepoBuilder202210\Symfony\Component\Console\Exception\LogicException;
 use MonorepoBuilder202210\Symfony\Component\Lock\LockFactory;
+use MonorepoBuilder202210\Symfony\Component\Lock\LockInterface;
 use MonorepoBuilder202210\Symfony\Component\Lock\Store\FlockStore;
 use MonorepoBuilder202210\Symfony\Component\Lock\Store\SemaphoreStore;
 /**
@@ -21,7 +22,10 @@ use MonorepoBuilder202210\Symfony\Component\Lock\Store\SemaphoreStore;
  */
 trait LockableTrait
 {
-    private $lock = null;
+    /**
+     * @var \Symfony\Component\Lock\LockInterface|null
+     */
+    private $lock;
     /**
      * Locks a command.
      */

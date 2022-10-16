@@ -22,6 +22,9 @@ use MonorepoBuilder202210\Symfony\Component\Console\Formatter\OutputFormatterInt
  */
 class NullOutput implements OutputInterface
 {
+    /**
+     * @var \Symfony\Component\Console\Formatter\NullOutputFormatter
+     */
     private $formatter;
     /**
      * {@inheritdoc}

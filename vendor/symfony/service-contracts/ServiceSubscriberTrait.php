@@ -11,6 +11,7 @@
 namespace MonorepoBuilder202210\Symfony\Contracts\Service;
 
 use MonorepoBuilder202210\Psr\Container\ContainerInterface;
+use MonorepoBuilder202210\Symfony\Contracts\Service\Attribute\Required;
 use MonorepoBuilder202210\Symfony\Contracts\Service\Attribute\SubscribedService;
 /**
  * Implementation of ServiceSubscriberInterface that determines subscribed services from

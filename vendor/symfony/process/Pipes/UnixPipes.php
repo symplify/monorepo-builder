@@ -85,7 +85,7 @@ class UnixPipes extends AbstractPipes
         $r = $this->pipes;
         unset($r[0]);
         // let's have a look if something changed in streams
-        \set_error_handler([$this, 'handleError']);
+        \set_error_handler(\Closure::fromCallable([$this, 'handleError']));
         if (($r || $w) && \false === \stream_select($r, $w, $e, 0, $blocking ? Process::TIMEOUT_PRECISION * 1000000.0 : 0)) {
             \restore_error_handler();
             // if a system call has been interrupted, forget about it, let's try again

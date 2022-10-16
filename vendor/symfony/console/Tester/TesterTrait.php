@@ -21,6 +21,9 @@ use MonorepoBuilder202210\Symfony\Component\Console\Tester\Constraint\CommandIsS
  */
 trait TesterTrait
 {
+    /**
+     * @var \Symfony\Component\Console\Output\StreamOutput
+     */
     private $output;
     /**
      * @var mixed[]
@@ -30,6 +33,9 @@ trait TesterTrait
      * @var bool
      */
     private $captureStreamsIndependently = \false;
+    /**
+     * @var \Symfony\Component\Console\Input\InputInterface
+     */
     private $input;
     /**
      * @var int
@@ -140,11 +146,9 @@ trait TesterTrait
             $errorOutput->setDecorated($this->output->isDecorated());
             $reflectedOutput = new \ReflectionObject($this->output);
             $strErrProperty = $reflectedOutput->getProperty('stderr');
-            $strErrProperty->setAccessible(\true);
             $strErrProperty->setValue($this->output, $errorOutput);
             $reflectedParent = $reflectedOutput->getParentClass();
             $streamProperty = $reflectedParent->getProperty('stream');
-            $streamProperty->setAccessible(\true);
             $streamProperty->setValue($this->output, \fopen('php://memory', 'w', \false));
         }
     }

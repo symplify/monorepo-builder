@@ -18,6 +18,9 @@ use MonorepoBuilder202210\Symfony\Component\Console\Color;
  */
 class OutputFormatterStyle implements OutputFormatterStyleInterface
 {
+    /**
+     * @var \Symfony\Component\Console\Color
+     */
     private $color;
     /**
      * @var string
