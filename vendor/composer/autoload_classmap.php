@@ -619,6 +619,7 @@ return array(
     'Symplify\\MonorepoBuilder\\Merge\\ComposerJsonDecorator\\FilterOutDuplicatedRequireAndRequireDevJsonDecorator' => $baseDir . '/packages/Merge/ComposerJsonDecorator/FilterOutDuplicatedRequireAndRequireDevJsonDecorator.php',
     'Symplify\\MonorepoBuilder\\Merge\\ComposerJsonDecorator\\RemoverComposerJsonDecorator' => $baseDir . '/packages/Merge/ComposerJsonDecorator/RemoverComposerJsonDecorator.php',
     'Symplify\\MonorepoBuilder\\Merge\\ComposerJsonDecorator\\ReplaceSectionJsonDecorator' => $baseDir . '/packages/Merge/ComposerJsonDecorator/ReplaceSectionJsonDecorator.php',
+    'Symplify\\MonorepoBuilder\\Merge\\ComposerJsonDecorator\\RepositoryPathComposerJsonDecorator' => $baseDir . '/packages/Merge/ComposerJsonDecorator/RepositoryPathComposerJsonDecorator.php',
     'Symplify\\MonorepoBuilder\\Merge\\ComposerJsonDecorator\\RootRemoveComposerJsonDecorator' => $baseDir . '/packages/Merge/ComposerJsonDecorator/RootRemoveComposerJsonDecorator.php',
     'Symplify\\MonorepoBuilder\\Merge\\ComposerJsonDecorator\\SortComposerJsonDecorator' => $baseDir . '/packages/Merge/ComposerJsonDecorator/SortComposerJsonDecorator.php',
     'Symplify\\MonorepoBuilder\\Merge\\ComposerJsonMerger' => $baseDir . '/packages/Merge/ComposerJsonMerger.php',

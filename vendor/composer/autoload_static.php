@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit72a362886874c066644af8bfbe0a0a23
+class ComposerStaticInit85f44cba9c6c0009796e38266f499eb4
 {
     public static $files = array (
         '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
@@ -724,6 +724,7 @@ class ComposerStaticInit72a362886874c066644af8bfbe0a0a23
         'Symplify\\MonorepoBuilder\\Merge\\ComposerJsonDecorator\\FilterOutDuplicatedRequireAndRequireDevJsonDecorator' => __DIR__ . '/../..' . '/packages/Merge/ComposerJsonDecorator/FilterOutDuplicatedRequireAndRequireDevJsonDecorator.php',
         'Symplify\\MonorepoBuilder\\Merge\\ComposerJsonDecorator\\RemoverComposerJsonDecorator' => __DIR__ . '/../..' . '/packages/Merge/ComposerJsonDecorator/RemoverComposerJsonDecorator.php',
         'Symplify\\MonorepoBuilder\\Merge\\ComposerJsonDecorator\\ReplaceSectionJsonDecorator' => __DIR__ . '/../..' . '/packages/Merge/ComposerJsonDecorator/ReplaceSectionJsonDecorator.php',
+        'Symplify\\MonorepoBuilder\\Merge\\ComposerJsonDecorator\\RepositoryPathComposerJsonDecorator' => __DIR__ . '/../..' . '/packages/Merge/ComposerJsonDecorator/RepositoryPathComposerJsonDecorator.php',
         'Symplify\\MonorepoBuilder\\Merge\\ComposerJsonDecorator\\RootRemoveComposerJsonDecorator' => __DIR__ . '/../..' . '/packages/Merge/ComposerJsonDecorator/RootRemoveComposerJsonDecorator.php',
         'Symplify\\MonorepoBuilder\\Merge\\ComposerJsonDecorator\\SortComposerJsonDecorator' => __DIR__ . '/../..' . '/packages/Merge/ComposerJsonDecorator/SortComposerJsonDecorator.php',
         'Symplify\\MonorepoBuilder\\Merge\\ComposerJsonMerger' => __DIR__ . '/../..' . '/packages/Merge/ComposerJsonMerger.php',
@@ -792,9 +793,9 @@ class ComposerStaticInit72a362886874c066644af8bfbe0a0a23
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit72a362886874c066644af8bfbe0a0a23::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit72a362886874c066644af8bfbe0a0a23::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit72a362886874c066644af8bfbe0a0a23::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit85f44cba9c6c0009796e38266f499eb4::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit85f44cba9c6c0009796e38266f499eb4::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit85f44cba9c6c0009796e38266f499eb4::$classMap;
 
         }, null, ClassLoader::class);
     }
