@@ -32,7 +32,7 @@ final class AutowireArrayParameterCompilerPass implements CompilerPassInterface
      * @var string[]
      * @noRector
      */
-    private $excludedFatalClasses = ['MonorepoBuilder202210\\Symfony\\Component\\Form\\FormExtensionInterface', 'MonorepoBuilder202210\\Symfony\\Component\\Asset\\PackageInterface', 'MonorepoBuilder202210\\Symfony\\Component\\Config\\Loader\\LoaderInterface', 'MonorepoBuilder202210\\Symfony\\Component\\VarDumper\\Dumper\\ContextProvider\\ContextProviderInterface', 'MonorepoBuilder202210\\EasyCorp\\Bundle\\EasyAdminBundle\\Form\\Type\\Configurator\\TypeConfiguratorInterface', 'MonorepoBuilder202210\\Sonata\\CoreBundle\\Model\\Adapter\\AdapterInterface', 'MonorepoBuilder202210\\Sonata\\Doctrine\\Adapter\\AdapterChain', 'MonorepoBuilder202210\\Sonata\\Twig\\Extension\\TemplateExtension', 'MonorepoBuilder202210\\Symfony\\Component\\HttpKernel\\KernelInterface'];
+    private array $excludedFatalClasses = ['MonorepoBuilder202210\\Symfony\\Component\\Form\\FormExtensionInterface', 'MonorepoBuilder202210\\Symfony\\Component\\Asset\\PackageInterface', 'MonorepoBuilder202210\\Symfony\\Component\\Config\\Loader\\LoaderInterface', 'MonorepoBuilder202210\\Symfony\\Component\\VarDumper\\Dumper\\ContextProvider\\ContextProviderInterface', 'MonorepoBuilder202210\\EasyCorp\\Bundle\\EasyAdminBundle\\Form\\Type\\Configurator\\TypeConfiguratorInterface', 'MonorepoBuilder202210\\Sonata\\CoreBundle\\Model\\Adapter\\AdapterInterface', 'MonorepoBuilder202210\\Sonata\\Doctrine\\Adapter\\AdapterChain', 'MonorepoBuilder202210\\Sonata\\Twig\\Extension\\TemplateExtension', 'MonorepoBuilder202210\\Symfony\\Component\\HttpKernel\\KernelInterface'];
     /**
      * @var \Symplify\AutowireArrayParameter\DependencyInjection\DefinitionFinder
      */
