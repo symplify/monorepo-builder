@@ -1144,7 +1144,7 @@
             "dist": {
                 "type": "path",
                 "url": "..\/..\/packages\/composer-json-manipulator",
-                "reference": "48b4f87002ad05ee82eed6e29aa384f551655e2a"
+                "reference": "3fe509454e18503988b254bf94ec76bb1af300de"
             },
             "require": {
                 "nette\/utils": "^3.2",
@@ -1177,7 +1177,7 @@
             "require-dev": {
                 "phpunit\/phpunit": "^9.5.25"
             },
-            "type": "symfony-bundle",
+            "type": "library",
             "extra": {
                 "branch-alias": {
                     "dev-main": "11.2-dev"
