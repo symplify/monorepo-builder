@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202210\Symfony\Component\DependencyInjection;
+namespace MonorepoBuilder202211\Symfony\Component\DependencyInjection;
 
-use MonorepoBuilder202210\Psr\Container\ContainerInterface;
-use MonorepoBuilder202210\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
+use MonorepoBuilder202211\Psr\Container\ContainerInterface;
+use MonorepoBuilder202211\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
 /**
  * Turns public and "container.reversible" services back to their ids.
  *

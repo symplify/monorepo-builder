@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202210\Symfony\Component\DependencyInjection\Compiler;
+namespace MonorepoBuilder202211\Symfony\Component\DependencyInjection\Compiler;
 
-use MonorepoBuilder202210\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder202210\Symfony\Component\DependencyInjection\Exception\EnvParameterException;
+use MonorepoBuilder202211\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder202211\Symfony\Component\DependencyInjection\Exception\EnvParameterException;
 /**
  * This class is used to remove circular dependencies between individual passes.
  *

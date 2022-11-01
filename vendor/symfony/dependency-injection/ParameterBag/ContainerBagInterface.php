@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202210\Symfony\Component\DependencyInjection\ParameterBag;
+namespace MonorepoBuilder202211\Symfony\Component\DependencyInjection\ParameterBag;
 
-use MonorepoBuilder202210\Psr\Container\ContainerInterface;
-use MonorepoBuilder202210\Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException;
+use MonorepoBuilder202211\Psr\Container\ContainerInterface;
+use MonorepoBuilder202211\Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException;
 /**
  * ContainerBagInterface is the interface implemented by objects that manage service container parameters.
  *

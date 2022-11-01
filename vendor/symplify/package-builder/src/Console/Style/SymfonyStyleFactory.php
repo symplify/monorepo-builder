@@ -1,14 +1,14 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder202210\Symplify\PackageBuilder\Console\Style;
+namespace MonorepoBuilder202211\Symplify\PackageBuilder\Console\Style;
 
-use MonorepoBuilder202210\Symfony\Component\Console\Application;
-use MonorepoBuilder202210\Symfony\Component\Console\Input\ArgvInput;
-use MonorepoBuilder202210\Symfony\Component\Console\Output\ConsoleOutput;
-use MonorepoBuilder202210\Symfony\Component\Console\Output\OutputInterface;
-use MonorepoBuilder202210\Symfony\Component\Console\Style\SymfonyStyle;
-use MonorepoBuilder202210\Symplify\PackageBuilder\Reflection\PrivatesCaller;
+use MonorepoBuilder202211\Symfony\Component\Console\Application;
+use MonorepoBuilder202211\Symfony\Component\Console\Input\ArgvInput;
+use MonorepoBuilder202211\Symfony\Component\Console\Output\ConsoleOutput;
+use MonorepoBuilder202211\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder202211\Symfony\Component\Console\Style\SymfonyStyle;
+use MonorepoBuilder202211\Symplify\PackageBuilder\Reflection\PrivatesCaller;
 /**
  * @api
  */
@@ -47,6 +47,6 @@ final class SymfonyStyleFactory
      */
     private function isPHPUnitRun() : bool
     {
-        return \defined('MonorepoBuilder202210\\PHPUNIT_COMPOSER_INSTALL') || \defined('MonorepoBuilder202210\\__PHPUNIT_PHAR__');
+        return \defined('MonorepoBuilder202211\\PHPUNIT_COMPOSER_INSTALL') || \defined('MonorepoBuilder202211\\__PHPUNIT_PHAR__');
     }
 }

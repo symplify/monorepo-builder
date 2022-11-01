@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202210\Symfony\Component\Process\Exception;
+namespace MonorepoBuilder202211\Symfony\Component\Process\Exception;
 
-use MonorepoBuilder202210\Symfony\Component\Process\Process;
+use MonorepoBuilder202211\Symfony\Component\Process\Process;
 /**
  * Exception that is thrown when a process times out.
  *

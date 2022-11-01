@@ -8,18 +8,18 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202210\Symfony\Component\DependencyInjection\Loader\Configurator;
+namespace MonorepoBuilder202211\Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use MonorepoBuilder202210\Symfony\Component\Config\Loader\ParamConfigurator;
-use MonorepoBuilder202210\Symfony\Component\DependencyInjection\Alias;
-use MonorepoBuilder202210\Symfony\Component\DependencyInjection\Argument\AbstractArgument;
-use MonorepoBuilder202210\Symfony\Component\DependencyInjection\Argument\ArgumentInterface;
-use MonorepoBuilder202210\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
-use MonorepoBuilder202210\Symfony\Component\DependencyInjection\Definition;
-use MonorepoBuilder202210\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use MonorepoBuilder202210\Symfony\Component\DependencyInjection\Parameter;
-use MonorepoBuilder202210\Symfony\Component\DependencyInjection\Reference;
-use MonorepoBuilder202210\Symfony\Component\ExpressionLanguage\Expression;
+use MonorepoBuilder202211\Symfony\Component\Config\Loader\ParamConfigurator;
+use MonorepoBuilder202211\Symfony\Component\DependencyInjection\Alias;
+use MonorepoBuilder202211\Symfony\Component\DependencyInjection\Argument\AbstractArgument;
+use MonorepoBuilder202211\Symfony\Component\DependencyInjection\Argument\ArgumentInterface;
+use MonorepoBuilder202211\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
+use MonorepoBuilder202211\Symfony\Component\DependencyInjection\Definition;
+use MonorepoBuilder202211\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use MonorepoBuilder202211\Symfony\Component\DependencyInjection\Parameter;
+use MonorepoBuilder202211\Symfony\Component\DependencyInjection\Reference;
+use MonorepoBuilder202211\Symfony\Component\ExpressionLanguage\Expression;
 abstract class AbstractConfigurator
 {
     public const FACTORY = 'unknown';

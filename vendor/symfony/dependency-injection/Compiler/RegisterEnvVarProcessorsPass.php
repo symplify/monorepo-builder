@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202210\Symfony\Component\DependencyInjection\Compiler;
+namespace MonorepoBuilder202211\Symfony\Component\DependencyInjection\Compiler;
 
-use MonorepoBuilder202210\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder202210\Symfony\Component\DependencyInjection\EnvVarProcessor;
-use MonorepoBuilder202210\Symfony\Component\DependencyInjection\EnvVarProcessorInterface;
-use MonorepoBuilder202210\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use MonorepoBuilder202210\Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag;
-use MonorepoBuilder202210\Symfony\Component\DependencyInjection\Reference;
+use MonorepoBuilder202211\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder202211\Symfony\Component\DependencyInjection\EnvVarProcessor;
+use MonorepoBuilder202211\Symfony\Component\DependencyInjection\EnvVarProcessorInterface;
+use MonorepoBuilder202211\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use MonorepoBuilder202211\Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag;
+use MonorepoBuilder202211\Symfony\Component\DependencyInjection\Reference;
 /**
  * Creates the container.env_var_processors_locator service.
  *

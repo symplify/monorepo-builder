@@ -1,19 +1,19 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder202210\Symplify\AutowireArrayParameter\DependencyInjection\CompilerPass;
+namespace MonorepoBuilder202211\Symplify\AutowireArrayParameter\DependencyInjection\CompilerPass;
 
-use MonorepoBuilder202210\Nette\Utils\Strings;
+use MonorepoBuilder202211\Nette\Utils\Strings;
 use ReflectionClass;
 use ReflectionMethod;
-use MonorepoBuilder202210\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
-use MonorepoBuilder202210\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder202210\Symfony\Component\DependencyInjection\Definition;
-use MonorepoBuilder202210\Symfony\Component\DependencyInjection\Reference;
-use MonorepoBuilder202210\Symplify\AutowireArrayParameter\DependencyInjection\DefinitionFinder;
-use MonorepoBuilder202210\Symplify\AutowireArrayParameter\DocBlock\ParamTypeDocBlockResolver;
-use MonorepoBuilder202210\Symplify\AutowireArrayParameter\Skipper\ParameterSkipper;
-use MonorepoBuilder202210\Symplify\AutowireArrayParameter\TypeResolver\ParameterTypeResolver;
+use MonorepoBuilder202211\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
+use MonorepoBuilder202211\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder202211\Symfony\Component\DependencyInjection\Definition;
+use MonorepoBuilder202211\Symfony\Component\DependencyInjection\Reference;
+use MonorepoBuilder202211\Symplify\AutowireArrayParameter\DependencyInjection\DefinitionFinder;
+use MonorepoBuilder202211\Symplify\AutowireArrayParameter\DocBlock\ParamTypeDocBlockResolver;
+use MonorepoBuilder202211\Symplify\AutowireArrayParameter\Skipper\ParameterSkipper;
+use MonorepoBuilder202211\Symplify\AutowireArrayParameter\TypeResolver\ParameterTypeResolver;
 /**
  * @inspiration https://github.com/nette/di/pull/178
  * @see \Symplify\AutowireArrayParameter\Tests\DependencyInjection\CompilerPass\AutowireArrayParameterCompilerPassTest
@@ -33,7 +33,7 @@ final class AutowireArrayParameterCompilerPass implements CompilerPassInterface
      * @noRector \Rector\Privatization\Rector\Property\ChangeReadOnlyPropertyWithDefaultValueToConstantRector
      * @noRector \Rector\Php55\Rector\String_\StringClassNameToClassConstantRector
      */
-    private $excludedFatalClasses = ['MonorepoBuilder202210\\Symfony\\Component\\Form\\FormExtensionInterface', 'MonorepoBuilder202210\\Symfony\\Component\\Asset\\PackageInterface', 'MonorepoBuilder202210\\Symfony\\Component\\Config\\Loader\\LoaderInterface', 'MonorepoBuilder202210\\Symfony\\Component\\VarDumper\\Dumper\\ContextProvider\\ContextProviderInterface', 'MonorepoBuilder202210\\EasyCorp\\Bundle\\EasyAdminBundle\\Form\\Type\\Configurator\\TypeConfiguratorInterface', 'MonorepoBuilder202210\\Sonata\\CoreBundle\\Model\\Adapter\\AdapterInterface', 'MonorepoBuilder202210\\Sonata\\Doctrine\\Adapter\\AdapterChain', 'MonorepoBuilder202210\\Sonata\\Twig\\Extension\\TemplateExtension', 'MonorepoBuilder202210\\Symfony\\Component\\HttpKernel\\KernelInterface'];
+    private $excludedFatalClasses = ['MonorepoBuilder202211\\Symfony\\Component\\Form\\FormExtensionInterface', 'MonorepoBuilder202211\\Symfony\\Component\\Asset\\PackageInterface', 'MonorepoBuilder202211\\Symfony\\Component\\Config\\Loader\\LoaderInterface', 'MonorepoBuilder202211\\Symfony\\Component\\VarDumper\\Dumper\\ContextProvider\\ContextProviderInterface', 'MonorepoBuilder202211\\EasyCorp\\Bundle\\EasyAdminBundle\\Form\\Type\\Configurator\\TypeConfiguratorInterface', 'MonorepoBuilder202211\\Sonata\\CoreBundle\\Model\\Adapter\\AdapterInterface', 'MonorepoBuilder202211\\Sonata\\Doctrine\\Adapter\\AdapterChain', 'MonorepoBuilder202211\\Sonata\\Twig\\Extension\\TemplateExtension', 'MonorepoBuilder202211\\Symfony\\Component\\HttpKernel\\KernelInterface'];
     /**
      * @var \Symplify\AutowireArrayParameter\DependencyInjection\DefinitionFinder
      */

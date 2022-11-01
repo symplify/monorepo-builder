@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202210\Symfony\Component\Config\Util;
+namespace MonorepoBuilder202211\Symfony\Component\Config\Util;
 
-use MonorepoBuilder202210\Symfony\Component\Config\Util\Exception\InvalidXmlException;
-use MonorepoBuilder202210\Symfony\Component\Config\Util\Exception\XmlParsingException;
+use MonorepoBuilder202211\Symfony\Component\Config\Util\Exception\InvalidXmlException;
+use MonorepoBuilder202211\Symfony\Component\Config\Util\Exception\XmlParsingException;
 /**
  * XMLUtils is a bunch of utility methods to XML operations.
  *

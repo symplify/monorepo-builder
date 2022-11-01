@@ -6,7 +6,7 @@ namespace Symplify\MonorepoBuilder\Merge\Guard;
 use Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider;
 use Symplify\MonorepoBuilder\Validator\ConflictingPackageVersionsReporter;
 use Symplify\MonorepoBuilder\VersionValidator;
-use MonorepoBuilder202210\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
+use MonorepoBuilder202211\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
 final class ConflictingVersionsGuard
 {
     /**

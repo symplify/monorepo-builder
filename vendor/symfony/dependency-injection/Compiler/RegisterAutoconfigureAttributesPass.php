@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202210\Symfony\Component\DependencyInjection\Compiler;
+namespace MonorepoBuilder202211\Symfony\Component\DependencyInjection\Compiler;
 
-use MonorepoBuilder202210\Symfony\Component\DependencyInjection\Attribute\Autoconfigure;
-use MonorepoBuilder202210\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder202210\Symfony\Component\DependencyInjection\Definition;
-use MonorepoBuilder202210\Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
+use MonorepoBuilder202211\Symfony\Component\DependencyInjection\Attribute\Autoconfigure;
+use MonorepoBuilder202211\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder202211\Symfony\Component\DependencyInjection\Definition;
+use MonorepoBuilder202211\Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 /**
  * Reads #[Autoconfigure] attributes on definitions that are autoconfigured
  * and don't have the "container.ignore_attributes" tag.

@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder202210\Symplify\SmartFileSystem;
+namespace MonorepoBuilder202211\Symplify\SmartFileSystem;
 
-use MonorepoBuilder202210\Nette\Utils\Strings;
-use MonorepoBuilder202210\Symfony\Component\Filesystem\Exception\IOException;
-use MonorepoBuilder202210\Symfony\Component\Filesystem\Filesystem;
+use MonorepoBuilder202211\Nette\Utils\Strings;
+use MonorepoBuilder202211\Symfony\Component\Filesystem\Exception\IOException;
+use MonorepoBuilder202211\Symfony\Component\Filesystem\Filesystem;
 /**
  * @see \Symplify\SmartFileSystem\Tests\SmartFileSystem\SmartFileSystemTest
  */

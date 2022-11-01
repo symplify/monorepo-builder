@@ -8,16 +8,16 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202210\Symfony\Component\Console\Command;
+namespace MonorepoBuilder202211\Symfony\Component\Console\Command;
 
-use MonorepoBuilder202210\Symfony\Component\Console\Application;
-use MonorepoBuilder202210\Symfony\Component\Console\Completion\CompletionInput;
-use MonorepoBuilder202210\Symfony\Component\Console\Completion\CompletionSuggestions;
-use MonorepoBuilder202210\Symfony\Component\Console\Completion\Suggestion;
-use MonorepoBuilder202210\Symfony\Component\Console\Helper\HelperSet;
-use MonorepoBuilder202210\Symfony\Component\Console\Input\InputDefinition;
-use MonorepoBuilder202210\Symfony\Component\Console\Input\InputInterface;
-use MonorepoBuilder202210\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder202211\Symfony\Component\Console\Application;
+use MonorepoBuilder202211\Symfony\Component\Console\Completion\CompletionInput;
+use MonorepoBuilder202211\Symfony\Component\Console\Completion\CompletionSuggestions;
+use MonorepoBuilder202211\Symfony\Component\Console\Completion\Suggestion;
+use MonorepoBuilder202211\Symfony\Component\Console\Helper\HelperSet;
+use MonorepoBuilder202211\Symfony\Component\Console\Input\InputDefinition;
+use MonorepoBuilder202211\Symfony\Component\Console\Input\InputInterface;
+use MonorepoBuilder202211\Symfony\Component\Console\Output\OutputInterface;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */

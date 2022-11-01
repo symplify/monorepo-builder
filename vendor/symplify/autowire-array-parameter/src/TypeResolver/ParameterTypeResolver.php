@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder202210\Symplify\AutowireArrayParameter\TypeResolver;
+namespace MonorepoBuilder202211\Symplify\AutowireArrayParameter\TypeResolver;
 
-use MonorepoBuilder202210\Nette\Utils\Reflection;
+use MonorepoBuilder202211\Nette\Utils\Reflection;
 use ReflectionMethod;
-use MonorepoBuilder202210\Symplify\AutowireArrayParameter\DocBlock\ParamTypeDocBlockResolver;
+use MonorepoBuilder202211\Symplify\AutowireArrayParameter\DocBlock\ParamTypeDocBlockResolver;
 final class ParameterTypeResolver
 {
     /**

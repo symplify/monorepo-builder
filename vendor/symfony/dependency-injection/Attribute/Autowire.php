@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202210\Symfony\Component\DependencyInjection\Attribute;
+namespace MonorepoBuilder202211\Symfony\Component\DependencyInjection\Attribute;
 
-use MonorepoBuilder202210\Symfony\Component\DependencyInjection\Exception\LogicException;
-use MonorepoBuilder202210\Symfony\Component\DependencyInjection\Reference;
-use MonorepoBuilder202210\Symfony\Component\ExpressionLanguage\Expression;
+use MonorepoBuilder202211\Symfony\Component\DependencyInjection\Exception\LogicException;
+use MonorepoBuilder202211\Symfony\Component\DependencyInjection\Reference;
+use MonorepoBuilder202211\Symfony\Component\ExpressionLanguage\Expression;
 /**
  * Attribute to tell a parameter how to be autowired.
  *

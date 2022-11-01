@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202210\Symfony\Component\Config\Definition;
+namespace MonorepoBuilder202211\Symfony\Component\Config\Definition;
 
-use MonorepoBuilder202210\Symfony\Component\Config\Definition\Exception\DuplicateKeyException;
-use MonorepoBuilder202210\Symfony\Component\Config\Definition\Exception\Exception;
-use MonorepoBuilder202210\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
-use MonorepoBuilder202210\Symfony\Component\Config\Definition\Exception\UnsetKeyException;
+use MonorepoBuilder202211\Symfony\Component\Config\Definition\Exception\DuplicateKeyException;
+use MonorepoBuilder202211\Symfony\Component\Config\Definition\Exception\Exception;
+use MonorepoBuilder202211\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
+use MonorepoBuilder202211\Symfony\Component\Config\Definition\Exception\UnsetKeyException;
 /**
  * Represents a prototyped Array node in the config tree.
  *

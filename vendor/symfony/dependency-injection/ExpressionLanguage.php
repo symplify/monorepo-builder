@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202210\Symfony\Component\DependencyInjection;
+namespace MonorepoBuilder202211\Symfony\Component\DependencyInjection;
 
-use MonorepoBuilder202210\Psr\Cache\CacheItemPoolInterface;
-use MonorepoBuilder202210\Symfony\Component\ExpressionLanguage\ExpressionLanguage as BaseExpressionLanguage;
+use MonorepoBuilder202211\Psr\Cache\CacheItemPoolInterface;
+use MonorepoBuilder202211\Symfony\Component\ExpressionLanguage\ExpressionLanguage as BaseExpressionLanguage;
 if (!\class_exists(BaseExpressionLanguage::class)) {
     return;
 }

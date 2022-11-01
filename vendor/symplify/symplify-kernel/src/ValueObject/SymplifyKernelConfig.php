@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder202210\Symplify\SymplifyKernel\ValueObject;
+namespace MonorepoBuilder202211\Symplify\SymplifyKernel\ValueObject;
 
 /**
  * @api

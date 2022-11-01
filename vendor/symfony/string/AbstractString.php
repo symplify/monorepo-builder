@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202210\Symfony\Component\String;
+namespace MonorepoBuilder202211\Symfony\Component\String;
 
-use MonorepoBuilder202210\Symfony\Component\String\Exception\ExceptionInterface;
-use MonorepoBuilder202210\Symfony\Component\String\Exception\InvalidArgumentException;
-use MonorepoBuilder202210\Symfony\Component\String\Exception\RuntimeException;
+use MonorepoBuilder202211\Symfony\Component\String\Exception\ExceptionInterface;
+use MonorepoBuilder202211\Symfony\Component\String\Exception\InvalidArgumentException;
+use MonorepoBuilder202211\Symfony\Component\String\Exception\RuntimeException;
 /**
  * Represents a string of abstract characters.
  *

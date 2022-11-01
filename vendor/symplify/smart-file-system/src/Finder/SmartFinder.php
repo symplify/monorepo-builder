@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder202210\Symplify\SmartFileSystem\Finder;
+namespace MonorepoBuilder202211\Symplify\SmartFileSystem\Finder;
 
-use MonorepoBuilder202210\Symfony\Component\Finder\Finder;
-use MonorepoBuilder202210\Symplify\SmartFileSystem\FileSystemFilter;
-use MonorepoBuilder202210\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder202211\Symfony\Component\Finder\Finder;
+use MonorepoBuilder202211\Symplify\SmartFileSystem\FileSystemFilter;
+use MonorepoBuilder202211\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @api
  * @see \Symplify\SmartFileSystem\Tests\Finder\SmartFinder\SmartFinderTest

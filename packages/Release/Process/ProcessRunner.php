@@ -3,9 +3,9 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Release\Process;
 
-use MonorepoBuilder202210\Symfony\Component\Console\Style\SymfonyStyle;
-use MonorepoBuilder202210\Symfony\Component\Process\Exception\ProcessFailedException;
-use MonorepoBuilder202210\Symfony\Component\Process\Process;
+use MonorepoBuilder202211\Symfony\Component\Console\Style\SymfonyStyle;
+use MonorepoBuilder202211\Symfony\Component\Process\Exception\ProcessFailedException;
+use MonorepoBuilder202211\Symfony\Component\Process\Process;
 final class ProcessRunner
 {
     /**

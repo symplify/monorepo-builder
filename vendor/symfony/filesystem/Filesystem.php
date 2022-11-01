@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202210\Symfony\Component\Filesystem;
+namespace MonorepoBuilder202211\Symfony\Component\Filesystem;
 
-use MonorepoBuilder202210\Symfony\Component\Filesystem\Exception\FileNotFoundException;
-use MonorepoBuilder202210\Symfony\Component\Filesystem\Exception\InvalidArgumentException;
-use MonorepoBuilder202210\Symfony\Component\Filesystem\Exception\IOException;
+use MonorepoBuilder202211\Symfony\Component\Filesystem\Exception\FileNotFoundException;
+use MonorepoBuilder202211\Symfony\Component\Filesystem\Exception\InvalidArgumentException;
+use MonorepoBuilder202211\Symfony\Component\Filesystem\Exception\IOException;
 /**
  * Provides basic utility to manipulate the file system.
  *

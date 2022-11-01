@@ -170,7 +170,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder202210\\Psr\\Container\\": "src\/"
+                    "MonorepoBuilder202211\\Psr\\Container\\": "src\/"
                 }
             },
             "notification-url": "https:\/\/packagist.org\/downloads\/",
@@ -306,7 +306,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder202210\\Symfony\\Component\\Config\\": ""
+                    "MonorepoBuilder202211\\Symfony\\Component\\Config\\": ""
                 },
                 "exclude-from-classmap": [
                     "\/Tests\/"
@@ -399,7 +399,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder202210\\Symfony\\Component\\Console\\": ""
+                    "MonorepoBuilder202211\\Symfony\\Component\\Console\\": ""
                 },
                 "exclude-from-classmap": [
                     "\/Tests\/"
@@ -500,7 +500,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder202210\\Symfony\\Component\\DependencyInjection\\": ""
+                    "MonorepoBuilder202211\\Symfony\\Component\\DependencyInjection\\": ""
                 },
                 "exclude-from-classmap": [
                     "\/Tests\/"
@@ -636,7 +636,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder202210\\Symfony\\Component\\Filesystem\\": ""
+                    "MonorepoBuilder202211\\Symfony\\Component\\Filesystem\\": ""
                 },
                 "exclude-from-classmap": [
                     "\/Tests\/"
@@ -703,7 +703,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder202210\\Symfony\\Component\\Finder\\": ""
+                    "MonorepoBuilder202211\\Symfony\\Component\\Finder\\": ""
                 },
                 "exclude-from-classmap": [
                     "\/Tests\/"
@@ -854,7 +854,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder202210\\Symfony\\Component\\Process\\": ""
+                    "MonorepoBuilder202211\\Symfony\\Component\\Process\\": ""
                 },
                 "exclude-from-classmap": [
                     "\/Tests\/"
@@ -934,7 +934,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder202210\\Symfony\\Contracts\\Service\\": ""
+                    "MonorepoBuilder202211\\Symfony\\Contracts\\Service\\": ""
                 },
                 "exclude-from-classmap": [
                     "\/Test\/"
@@ -1022,7 +1022,7 @@
                     "Resources\/functions.php"
                 ],
                 "psr-4": {
-                    "MonorepoBuilder202210\\Symfony\\Component\\String\\": ""
+                    "MonorepoBuilder202211\\Symfony\\Component\\String\\": ""
                 },
                 "exclude-from-classmap": [
                     "\/Tests\/"
@@ -1119,12 +1119,12 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder202210\\Symplify\\AutowireArrayParameter\\": "src"
+                    "MonorepoBuilder202211\\Symplify\\AutowireArrayParameter\\": "src"
                 }
             },
             "autoload-dev": {
                 "psr-4": {
-                    "MonorepoBuilder202210\\Symplify\\AutowireArrayParameter\\Tests\\": "tests"
+                    "MonorepoBuilder202211\\Symplify\\AutowireArrayParameter\\Tests\\": "tests"
                 }
             },
             "license": [
@@ -1186,12 +1186,12 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder202210\\Symplify\\ComposerJsonManipulator\\": "src"
+                    "MonorepoBuilder202211\\Symplify\\ComposerJsonManipulator\\": "src"
                 }
             },
             "autoload-dev": {
                 "psr-4": {
-                    "MonorepoBuilder202210\\Symplify\\ComposerJsonManipulator\\Tests\\": "tests"
+                    "MonorepoBuilder202211\\Symplify\\ComposerJsonManipulator\\Tests\\": "tests"
                 }
             },
             "license": [
@@ -1255,12 +1255,12 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder202210\\Symplify\\PackageBuilder\\": "src"
+                    "MonorepoBuilder202211\\Symplify\\PackageBuilder\\": "src"
                 }
             },
             "autoload-dev": {
                 "psr-4": {
-                    "MonorepoBuilder202210\\Symplify\\PackageBuilder\\Tests\\": "tests"
+                    "MonorepoBuilder202211\\Symplify\\PackageBuilder\\Tests\\": "tests"
                 }
             },
             "license": [
@@ -1321,12 +1321,12 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder202210\\Symplify\\SmartFileSystem\\": "src"
+                    "MonorepoBuilder202211\\Symplify\\SmartFileSystem\\": "src"
                 }
             },
             "autoload-dev": {
                 "psr-4": {
-                    "MonorepoBuilder202210\\Symplify\\SmartFileSystem\\Tests\\": "tests"
+                    "MonorepoBuilder202211\\Symplify\\SmartFileSystem\\Tests\\": "tests"
                 }
             },
             "license": [
@@ -1386,12 +1386,12 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder202210\\Symplify\\SymplifyKernel\\": "src"
+                    "MonorepoBuilder202211\\Symplify\\SymplifyKernel\\": "src"
                 }
             },
             "autoload-dev": {
                 "psr-4": {
-                    "MonorepoBuilder202210\\Symplify\\SymplifyKernel\\Tests\\": "tests"
+                    "MonorepoBuilder202211\\Symplify\\SymplifyKernel\\Tests\\": "tests"
                 }
             },
             "license": [
@@ -1440,7 +1440,7 @@
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "MonorepoBuilder202210\\Webmozart\\Assert\\": "src\/"
+                    "MonorepoBuilder202211\\Webmozart\\Assert\\": "src\/"
                 }
             },
             "notification-url": "https:\/\/packagist.org\/downloads\/",

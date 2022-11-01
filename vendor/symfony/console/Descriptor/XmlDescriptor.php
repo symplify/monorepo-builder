@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202210\Symfony\Component\Console\Descriptor;
+namespace MonorepoBuilder202211\Symfony\Component\Console\Descriptor;
 
-use MonorepoBuilder202210\Symfony\Component\Console\Application;
-use MonorepoBuilder202210\Symfony\Component\Console\Command\Command;
-use MonorepoBuilder202210\Symfony\Component\Console\Input\InputArgument;
-use MonorepoBuilder202210\Symfony\Component\Console\Input\InputDefinition;
-use MonorepoBuilder202210\Symfony\Component\Console\Input\InputOption;
+use MonorepoBuilder202211\Symfony\Component\Console\Application;
+use MonorepoBuilder202211\Symfony\Component\Console\Command\Command;
+use MonorepoBuilder202211\Symfony\Component\Console\Input\InputArgument;
+use MonorepoBuilder202211\Symfony\Component\Console\Input\InputDefinition;
+use MonorepoBuilder202211\Symfony\Component\Console\Input\InputOption;
 /**
  * XML descriptor.
  *

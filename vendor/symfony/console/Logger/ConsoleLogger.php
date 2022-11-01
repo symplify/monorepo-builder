@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202210\Symfony\Component\Console\Logger;
+namespace MonorepoBuilder202211\Symfony\Component\Console\Logger;
 
-use MonorepoBuilder202210\Psr\Log\AbstractLogger;
-use MonorepoBuilder202210\Psr\Log\InvalidArgumentException;
-use MonorepoBuilder202210\Psr\Log\LogLevel;
-use MonorepoBuilder202210\Symfony\Component\Console\Output\ConsoleOutputInterface;
-use MonorepoBuilder202210\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder202211\Psr\Log\AbstractLogger;
+use MonorepoBuilder202211\Psr\Log\InvalidArgumentException;
+use MonorepoBuilder202211\Psr\Log\LogLevel;
+use MonorepoBuilder202211\Symfony\Component\Console\Output\ConsoleOutputInterface;
+use MonorepoBuilder202211\Symfony\Component\Console\Output\OutputInterface;
 /**
  * PSR-3 compliant console logger.
  *

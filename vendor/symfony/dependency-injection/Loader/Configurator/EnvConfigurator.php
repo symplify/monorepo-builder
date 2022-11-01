@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202210\Symfony\Component\DependencyInjection\Loader\Configurator;
+namespace MonorepoBuilder202211\Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use MonorepoBuilder202210\Symfony\Component\Config\Loader\ParamConfigurator;
+use MonorepoBuilder202211\Symfony\Component\Config\Loader\ParamConfigurator;
 class EnvConfigurator extends ParamConfigurator
 {
     /**
@@ -30,7 +30,7 @@ class EnvConfigurator extends ParamConfigurator
      */
     public function __call(string $name, array $arguments)
     {
-        $processor = \strtolower(\preg_replace(['/([A-Z]+)([A-Z][a-z])/', '/([a-z\\d])([A-Z])/'], 'MonorepoBuilder202210\\1_\\2', $name));
+        $processor = \strtolower(\preg_replace(['/([A-Z]+)([A-Z][a-z])/', '/([a-z\\d])([A-Z])/'], 'MonorepoBuilder202211\\1_\\2', $name));
         $this->custom($processor, ...$arguments);
         return $this;
     }

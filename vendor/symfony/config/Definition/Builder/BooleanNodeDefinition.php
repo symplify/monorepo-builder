@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202210\Symfony\Component\Config\Definition\Builder;
+namespace MonorepoBuilder202211\Symfony\Component\Config\Definition\Builder;
 
-use MonorepoBuilder202210\Symfony\Component\Config\Definition\BooleanNode;
-use MonorepoBuilder202210\Symfony\Component\Config\Definition\Exception\InvalidDefinitionException;
+use MonorepoBuilder202211\Symfony\Component\Config\Definition\BooleanNode;
+use MonorepoBuilder202211\Symfony\Component\Config\Definition\Exception\InvalidDefinitionException;
 /**
  * This class provides a fluent interface for defining a node.
  *
@@ -30,7 +30,7 @@ class BooleanNodeDefinition extends ScalarNodeDefinition
     /**
      * Instantiate a Node.
      */
-    protected function instantiateNode() : \MonorepoBuilder202210\Symfony\Component\Config\Definition\ScalarNode
+    protected function instantiateNode() : \MonorepoBuilder202211\Symfony\Component\Config\Definition\ScalarNode
     {
         return new BooleanNode($this->name, $this->parent, $this->pathSeparator);
     }

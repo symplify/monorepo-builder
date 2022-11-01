@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder202210\Symplify\PackageBuilder\Console\Formatter;
+namespace MonorepoBuilder202211\Symplify\PackageBuilder\Console\Formatter;
 
-use MonorepoBuilder202210\Nette\Utils\Strings;
-use MonorepoBuilder202210\Symfony\Component\Console\Formatter\OutputFormatter;
+use MonorepoBuilder202211\Nette\Utils\Strings;
+use MonorepoBuilder202211\Symfony\Component\Console\Formatter\OutputFormatter;
 /**
  * Inspired by @see https://github.com/FriendsOfPHP/PHP-CS-Fixer/blob/master/src/Differ/DiffConsoleFormatter.php to be
  * used as standalone class, without need to require whole package by Dariusz Rumiński <dariusz.ruminski@gmail.com>
