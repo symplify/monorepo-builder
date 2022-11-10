@@ -1078,7 +1078,7 @@
             "dist": {
                 "type": "path",
                 "url": "..\/..\/packages\/autowire-array-parameter",
-                "reference": "ac8122951a446f1be77d9fbbead6e16badf7b92e"
+                "reference": "63399c6edd8f048b3c013af9ab0e3f5150e46870"
             },
             "require": {
                 "nette\/utils": "^3.2",
@@ -1086,24 +1086,24 @@
                 "symfony\/dependency-injection": "^6.1"
             },
             "conflict": {
-                "symplify\/coding-standard": "<11.1.16",
-                "symplify\/composer-json-manipulator": "<11.1.16",
-                "symplify\/config-transformer": "<11.1.16",
-                "symplify\/easy-ci": "<11.1.16",
-                "symplify\/easy-coding-standard": "<11.1.16",
-                "symplify\/easy-parallel": "<11.1.16",
-                "symplify\/easy-testing": "<11.1.16",
-                "symplify\/monorepo-builder": "<11.1.16",
-                "symplify\/package-builder": "<11.1.16",
-                "symplify\/php-config-printer": "<11.1.16",
-                "symplify\/phpstan-extensions": "<11.1.16",
-                "symplify\/phpstan-rules": "<11.1.16",
-                "symplify\/rule-doc-generator": "<11.1.16",
-                "symplify\/rule-doc-generator-contracts": "<11.1.16",
-                "symplify\/smart-file-system": "<11.1.16",
-                "symplify\/symfony-static-dumper": "<11.1.16",
-                "symplify\/symplify-kernel": "<11.1.16",
-                "symplify\/vendor-patches": "<11.1.16"
+                "symplify\/coding-standard": "<11.1.17",
+                "symplify\/composer-json-manipulator": "<11.1.17",
+                "symplify\/config-transformer": "<11.1.17",
+                "symplify\/easy-ci": "<11.1.17",
+                "symplify\/easy-coding-standard": "<11.1.17",
+                "symplify\/easy-parallel": "<11.1.17",
+                "symplify\/easy-testing": "<11.1.17",
+                "symplify\/monorepo-builder": "<11.1.17",
+                "symplify\/package-builder": "<11.1.17",
+                "symplify\/php-config-printer": "<11.1.17",
+                "symplify\/phpstan-extensions": "<11.1.17",
+                "symplify\/phpstan-rules": "<11.1.17",
+                "symplify\/rule-doc-generator": "<11.1.17",
+                "symplify\/rule-doc-generator-contracts": "<11.1.17",
+                "symplify\/smart-file-system": "<11.1.17",
+                "symplify\/symfony-static-dumper": "<11.1.17",
+                "symplify\/symplify-kernel": "<11.1.17",
+                "symplify\/vendor-patches": "<11.1.17"
             },
             "require-dev": {
                 "phpunit\/phpunit": "^9.5.25",
@@ -1144,7 +1144,7 @@
             "dist": {
                 "type": "path",
                 "url": "..\/..\/packages\/composer-json-manipulator",
-                "reference": "3fe509454e18503988b254bf94ec76bb1af300de"
+                "reference": "84bf3a127752cf475949202fd0e9e271540febba"
             },
             "require": {
                 "nette\/utils": "^3.2",
@@ -1157,22 +1157,22 @@
                 "symplify\/symplify-kernel": "dev-main"
             },
             "conflict": {
-                "symplify\/autowire-array-parameter": "<11.1.16",
-                "symplify\/coding-standard": "<11.1.16",
-                "symplify\/config-transformer": "<11.1.16",
-                "symplify\/easy-ci": "<11.1.16",
-                "symplify\/easy-coding-standard": "<11.1.16",
-                "symplify\/easy-parallel": "<11.1.16",
-                "symplify\/easy-testing": "<11.1.16",
-                "symplify\/monorepo-builder": "<11.1.16",
-                "symplify\/php-config-printer": "<11.1.16",
-                "symplify\/phpstan-extensions": "<11.1.16",
-                "symplify\/phpstan-rules": "<11.1.16",
-                "symplify\/rule-doc-generator": "<11.1.16",
-                "symplify\/rule-doc-generator-contracts": "<11.1.16",
-                "symplify\/symfony-static-dumper": "<11.1.16",
+                "symplify\/autowire-array-parameter": "<11.1.17",
+                "symplify\/coding-standard": "<11.1.17",
+                "symplify\/config-transformer": "<11.1.17",
+                "symplify\/easy-ci": "<11.1.17",
+                "symplify\/easy-coding-standard": "<11.1.17",
+                "symplify\/easy-parallel": "<11.1.17",
+                "symplify\/easy-testing": "<11.1.17",
+                "symplify\/monorepo-builder": "<11.1.17",
+                "symplify\/php-config-printer": "<11.1.17",
+                "symplify\/phpstan-extensions": "<11.1.17",
+                "symplify\/phpstan-rules": "<11.1.17",
+                "symplify\/rule-doc-generator": "<11.1.17",
+                "symplify\/rule-doc-generator-contracts": "<11.1.17",
+                "symplify\/symfony-static-dumper": "<11.1.17",
                 "symplify\/symplify-kernel": "<9.4.70",
-                "symplify\/vendor-patches": "<11.1.16"
+                "symplify\/vendor-patches": "<11.1.17"
             },
             "require-dev": {
                 "phpunit\/phpunit": "^9.5.25"
@@ -1211,7 +1211,7 @@
             "dist": {
                 "type": "path",
                 "url": "..\/..\/packages\/package-builder",
-                "reference": "a7642a0e35c7c2d4ef38c64b9f7197b4c8c2a32d"
+                "reference": "3bd0cb4bc8e0db0dc252b4dd990b9c7cbe9a5bf6"
             },
             "require": {
                 "nette\/utils": "^3.2",
@@ -1223,24 +1223,24 @@
                 "symfony\/finder": "^6.1"
             },
             "conflict": {
-                "symplify\/autowire-array-parameter": "<11.1.16",
-                "symplify\/coding-standard": "<11.1.16",
-                "symplify\/composer-json-manipulator": "<11.1.16",
-                "symplify\/config-transformer": "<11.1.16",
-                "symplify\/easy-ci": "<11.1.16",
-                "symplify\/easy-coding-standard": "<11.1.16",
-                "symplify\/easy-parallel": "<11.1.16",
-                "symplify\/easy-testing": "<11.1.16",
-                "symplify\/monorepo-builder": "<11.1.16",
-                "symplify\/php-config-printer": "<11.1.16",
-                "symplify\/phpstan-extensions": "<11.1.16",
-                "symplify\/phpstan-rules": "<11.1.16",
-                "symplify\/rule-doc-generator": "<11.1.16",
-                "symplify\/rule-doc-generator-contracts": "<11.1.16",
-                "symplify\/smart-file-system": "<11.1.16",
-                "symplify\/symfony-static-dumper": "<11.1.16",
-                "symplify\/symplify-kernel": "<11.1.16",
-                "symplify\/vendor-patches": "<11.1.16"
+                "symplify\/autowire-array-parameter": "<11.1.17",
+                "symplify\/coding-standard": "<11.1.17",
+                "symplify\/composer-json-manipulator": "<11.1.17",
+                "symplify\/config-transformer": "<11.1.17",
+                "symplify\/easy-ci": "<11.1.17",
+                "symplify\/easy-coding-standard": "<11.1.17",
+                "symplify\/easy-parallel": "<11.1.17",
+                "symplify\/easy-testing": "<11.1.17",
+                "symplify\/monorepo-builder": "<11.1.17",
+                "symplify\/php-config-printer": "<11.1.17",
+                "symplify\/phpstan-extensions": "<11.1.17",
+                "symplify\/phpstan-rules": "<11.1.17",
+                "symplify\/rule-doc-generator": "<11.1.17",
+                "symplify\/rule-doc-generator-contracts": "<11.1.17",
+                "symplify\/smart-file-system": "<11.1.17",
+                "symplify\/symfony-static-dumper": "<11.1.17",
+                "symplify\/symplify-kernel": "<11.1.17",
+                "symplify\/vendor-patches": "<11.1.17"
             },
             "require-dev": {
                 "phpunit\/phpunit": "^9.5.25",
@@ -1280,7 +1280,7 @@
             "dist": {
                 "type": "path",
                 "url": "..\/..\/packages\/smart-file-system",
-                "reference": "c91e96ac1697796f171c8a51ebec52b72af16fe7"
+                "reference": "f025ea9a1c4b29289df8fef21bd8b46d2bddf90f"
             },
             "require": {
                 "nette\/utils": "^3.2",
@@ -1289,24 +1289,24 @@
                 "symfony\/finder": "^6.1"
             },
             "conflict": {
-                "symplify\/autowire-array-parameter": "<11.1.16",
-                "symplify\/coding-standard": "<11.1.16",
-                "symplify\/composer-json-manipulator": "<11.1.16",
-                "symplify\/config-transformer": "<11.1.16",
-                "symplify\/easy-ci": "<11.1.16",
-                "symplify\/easy-coding-standard": "<11.1.16",
-                "symplify\/easy-parallel": "<11.1.16",
-                "symplify\/easy-testing": "<11.1.16",
-                "symplify\/monorepo-builder": "<11.1.16",
-                "symplify\/package-builder": "<11.1.16",
-                "symplify\/php-config-printer": "<11.1.16",
-                "symplify\/phpstan-extensions": "<11.1.16",
-                "symplify\/phpstan-rules": "<11.1.16",
-                "symplify\/rule-doc-generator": "<11.1.16",
-                "symplify\/rule-doc-generator-contracts": "<11.1.16",
-                "symplify\/symfony-static-dumper": "<11.1.16",
-                "symplify\/symplify-kernel": "<11.1.16",
-                "symplify\/vendor-patches": "<11.1.16"
+                "symplify\/autowire-array-parameter": "<11.1.17",
+                "symplify\/coding-standard": "<11.1.17",
+                "symplify\/composer-json-manipulator": "<11.1.17",
+                "symplify\/config-transformer": "<11.1.17",
+                "symplify\/easy-ci": "<11.1.17",
+                "symplify\/easy-coding-standard": "<11.1.17",
+                "symplify\/easy-parallel": "<11.1.17",
+                "symplify\/easy-testing": "<11.1.17",
+                "symplify\/monorepo-builder": "<11.1.17",
+                "symplify\/package-builder": "<11.1.17",
+                "symplify\/php-config-printer": "<11.1.17",
+                "symplify\/phpstan-extensions": "<11.1.17",
+                "symplify\/phpstan-rules": "<11.1.17",
+                "symplify\/rule-doc-generator": "<11.1.17",
+                "symplify\/rule-doc-generator-contracts": "<11.1.17",
+                "symplify\/symfony-static-dumper": "<11.1.17",
+                "symplify\/symplify-kernel": "<11.1.17",
+                "symplify\/vendor-patches": "<11.1.17"
             },
             "require-dev": {
                 "nette\/finder": "^2.5.3",
@@ -1346,7 +1346,7 @@
             "dist": {
                 "type": "path",
                 "url": "..\/..\/packages\/symplify-kernel",
-                "reference": "0c4620f8d7cf234eba0a2d54d1563c0176cf946e"
+                "reference": "74a57187ffc66df8acaebeb57f61de07a4a54514"
             },
             "require": {
                 "php": ">=8.1",
@@ -1358,21 +1358,21 @@
                 "webmozart\/assert": "^1.11"
             },
             "conflict": {
-                "symplify\/coding-standard": "<11.1.16",
-                "symplify\/composer-json-manipulator": "<11.1.16",
-                "symplify\/config-transformer": "<11.1.16",
-                "symplify\/easy-ci": "<11.1.16",
-                "symplify\/easy-coding-standard": "<11.1.16",
-                "symplify\/easy-parallel": "<11.1.16",
-                "symplify\/easy-testing": "<11.1.16",
-                "symplify\/monorepo-builder": "<11.1.16",
-                "symplify\/php-config-printer": "<11.1.16",
-                "symplify\/phpstan-extensions": "<11.1.16",
-                "symplify\/phpstan-rules": "<11.1.16",
-                "symplify\/rule-doc-generator": "<11.1.16",
-                "symplify\/rule-doc-generator-contracts": "<11.1.16",
-                "symplify\/symfony-static-dumper": "<11.1.16",
-                "symplify\/vendor-patches": "<11.1.16"
+                "symplify\/coding-standard": "<11.1.17",
+                "symplify\/composer-json-manipulator": "<11.1.17",
+                "symplify\/config-transformer": "<11.1.17",
+                "symplify\/easy-ci": "<11.1.17",
+                "symplify\/easy-coding-standard": "<11.1.17",
+                "symplify\/easy-parallel": "<11.1.17",
+                "symplify\/easy-testing": "<11.1.17",
+                "symplify\/monorepo-builder": "<11.1.17",
+                "symplify\/php-config-printer": "<11.1.17",
+                "symplify\/phpstan-extensions": "<11.1.17",
+                "symplify\/phpstan-rules": "<11.1.17",
+                "symplify\/rule-doc-generator": "<11.1.17",
+                "symplify\/rule-doc-generator-contracts": "<11.1.17",
+                "symplify\/symfony-static-dumper": "<11.1.17",
+                "symplify\/vendor-patches": "<11.1.17"
             },
             "require-dev": {
                 "phpunit\/phpunit": "^9.5.25"
