@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202211\Symfony\Component\Console\Completion\Output;
+namespace MonorepoBuilder202212\Symfony\Component\Console\Completion\Output;
 
-use MonorepoBuilder202211\Symfony\Component\Console\Completion\CompletionSuggestions;
-use MonorepoBuilder202211\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder202212\Symfony\Component\Console\Completion\CompletionSuggestions;
+use MonorepoBuilder202212\Symfony\Component\Console\Output\OutputInterface;
 /**
  * @author Wouter de Jong <wouter@wouterj.nl>
  */

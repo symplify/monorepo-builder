@@ -8,17 +8,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202211\Symfony\Component\DependencyInjection\Compiler;
+namespace MonorepoBuilder202212\Symfony\Component\DependencyInjection\Compiler;
 
-use MonorepoBuilder202211\Symfony\Component\DependencyInjection\Alias;
-use MonorepoBuilder202211\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
-use MonorepoBuilder202211\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
-use MonorepoBuilder202211\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument;
-use MonorepoBuilder202211\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder202211\Symfony\Component\DependencyInjection\Definition;
-use MonorepoBuilder202211\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use MonorepoBuilder202211\Symfony\Component\DependencyInjection\Reference;
-use MonorepoBuilder202211\Symfony\Component\DependencyInjection\ServiceLocator;
+use MonorepoBuilder202212\Symfony\Component\DependencyInjection\Alias;
+use MonorepoBuilder202212\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
+use MonorepoBuilder202212\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
+use MonorepoBuilder202212\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument;
+use MonorepoBuilder202212\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder202212\Symfony\Component\DependencyInjection\Definition;
+use MonorepoBuilder202212\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use MonorepoBuilder202212\Symfony\Component\DependencyInjection\Reference;
+use MonorepoBuilder202212\Symfony\Component\DependencyInjection\ServiceLocator;
 /**
  * Applies the "container.service_locator" tag by wrapping references into ServiceClosureArgument instances.
  *
@@ -38,6 +38,9 @@ final class ServiceLocatorTagPass extends AbstractRecursivePass
                 $value->setValues($this->findAndSortTaggedServices($value->getTaggedIteratorArgument(), $this->container));
             }
             return self::register($this->container, $value->getValues());
+        }
+        if ($value instanceof Definition) {
+            $value->setBindings(parent::processValue($value->getBindings()));
         }
         if (!$value instanceof Definition || !$value->hasTag('container.service_locator')) {
             return parent::processValue($value, $isRoot);

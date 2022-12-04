@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202211\Symfony\Component\DependencyInjection\Compiler;
+namespace MonorepoBuilder202212\Symfony\Component\DependencyInjection\Compiler;
 
-use MonorepoBuilder202211\Symfony\Component\DependencyInjection\Argument\AbstractArgument;
-use MonorepoBuilder202211\Symfony\Component\DependencyInjection\Definition;
-use MonorepoBuilder202211\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use MonorepoBuilder202211\Symfony\Component\DependencyInjection\LazyProxy\ProxyHelper;
-use MonorepoBuilder202211\Symfony\Component\DependencyInjection\Reference;
+use MonorepoBuilder202212\Symfony\Component\DependencyInjection\Argument\AbstractArgument;
+use MonorepoBuilder202212\Symfony\Component\DependencyInjection\Definition;
+use MonorepoBuilder202212\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use MonorepoBuilder202212\Symfony\Component\DependencyInjection\Reference;
+use MonorepoBuilder202212\Symfony\Component\VarExporter\ProxyHelper;
 /**
  * Resolves named arguments to their corresponding numeric index.
  *
@@ -23,7 +23,6 @@ use MonorepoBuilder202211\Symfony\Component\DependencyInjection\Reference;
 class ResolveNamedArgumentsPass extends AbstractRecursivePass
 {
     /**
-     * {@inheritdoc}
      * @param mixed $value
      * @return mixed
      */
@@ -78,7 +77,7 @@ class ResolveNamedArgumentsPass extends AbstractRecursivePass
                 }
                 $typeFound = \false;
                 foreach ($parameters as $j => $p) {
-                    if (!\array_key_exists($j, $resolvedArguments) && ProxyHelper::getTypeHint($r, $p, \true) === $key) {
+                    if (!\array_key_exists($j, $resolvedArguments) && ProxyHelper::exportType($p, \true) === $key) {
                         $resolvedArguments[$j] = $argument;
                         $typeFound = \true;
                     }

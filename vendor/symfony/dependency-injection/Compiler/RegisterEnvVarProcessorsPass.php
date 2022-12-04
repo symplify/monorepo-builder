@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202211\Symfony\Component\DependencyInjection\Compiler;
+namespace MonorepoBuilder202212\Symfony\Component\DependencyInjection\Compiler;
 
-use MonorepoBuilder202211\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder202211\Symfony\Component\DependencyInjection\EnvVarProcessor;
-use MonorepoBuilder202211\Symfony\Component\DependencyInjection\EnvVarProcessorInterface;
-use MonorepoBuilder202211\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use MonorepoBuilder202211\Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag;
-use MonorepoBuilder202211\Symfony\Component\DependencyInjection\Reference;
+use MonorepoBuilder202212\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder202212\Symfony\Component\DependencyInjection\EnvVarProcessor;
+use MonorepoBuilder202212\Symfony\Component\DependencyInjection\EnvVarProcessorInterface;
+use MonorepoBuilder202212\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use MonorepoBuilder202212\Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag;
+use MonorepoBuilder202212\Symfony\Component\DependencyInjection\Reference;
 /**
  * Creates the container.env_var_processors_locator service.
  *
@@ -23,7 +23,7 @@ use MonorepoBuilder202211\Symfony\Component\DependencyInjection\Reference;
  */
 class RegisterEnvVarProcessorsPass implements CompilerPassInterface
 {
-    private const ALLOWED_TYPES = ['array', 'bool', 'float', 'int', 'string'];
+    private const ALLOWED_TYPES = ['array', 'bool', 'float', 'int', 'string', \BackedEnum::class];
     public function process(ContainerBuilder $container)
     {
         $bag = $container->getParameterBag();

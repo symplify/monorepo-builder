@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202211\Symfony\Component\Process;
+namespace MonorepoBuilder202212\Symfony\Component\Process;
 
-use MonorepoBuilder202211\Symfony\Component\Process\Exception\LogicException;
-use MonorepoBuilder202211\Symfony\Component\Process\Exception\RuntimeException;
+use MonorepoBuilder202212\Symfony\Component\Process\Exception\LogicException;
+use MonorepoBuilder202212\Symfony\Component\Process\Exception\RuntimeException;
 /**
  * PhpProcess runs a PHP script in an independent process.
  *
@@ -47,7 +47,6 @@ class PhpProcess extends Process
         parent::__construct($php, $cwd, $env, $script, $timeout);
     }
     /**
-     * {@inheritdoc}
      * @param mixed $input
      * @return $this
      */
@@ -55,9 +54,6 @@ class PhpProcess extends Process
     {
         throw new LogicException(\sprintf('The "%s()" method cannot be called when using "%s".', __METHOD__, self::class));
     }
-    /**
-     * {@inheritdoc}
-     */
     public function start(callable $callback = null, array $env = [])
     {
         if (null === $this->getCommandLine()) {

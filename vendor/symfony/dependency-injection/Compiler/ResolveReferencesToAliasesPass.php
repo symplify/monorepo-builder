@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202211\Symfony\Component\DependencyInjection\Compiler;
+namespace MonorepoBuilder202212\Symfony\Component\DependencyInjection\Compiler;
 
-use MonorepoBuilder202211\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder202211\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
-use MonorepoBuilder202211\Symfony\Component\DependencyInjection\Reference;
+use MonorepoBuilder202212\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder202212\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
+use MonorepoBuilder202212\Symfony\Component\DependencyInjection\Reference;
 /**
  * Replaces all references to aliases with references to the actual service.
  *
@@ -20,9 +20,6 @@ use MonorepoBuilder202211\Symfony\Component\DependencyInjection\Reference;
  */
 class ResolveReferencesToAliasesPass extends AbstractRecursivePass
 {
-    /**
-     * {@inheritdoc}
-     */
     public function process(ContainerBuilder $container)
     {
         parent::process($container);
@@ -35,7 +32,6 @@ class ResolveReferencesToAliasesPass extends AbstractRecursivePass
         }
     }
     /**
-     * {@inheritdoc}
      * @param mixed $value
      * @return mixed
      */

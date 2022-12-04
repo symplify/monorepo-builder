@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202211\Symfony\Component\DependencyInjection\Compiler;
+namespace MonorepoBuilder202212\Symfony\Component\DependencyInjection\Compiler;
 
-use MonorepoBuilder202211\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder202211\Symfony\Component\DependencyInjection\ContainerInterface;
-use MonorepoBuilder202211\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
-use MonorepoBuilder202211\Symfony\Component\DependencyInjection\Reference;
+use MonorepoBuilder202212\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder202212\Symfony\Component\DependencyInjection\ContainerInterface;
+use MonorepoBuilder202212\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
+use MonorepoBuilder202212\Symfony\Component\DependencyInjection\Reference;
 /**
  * Checks that all references are pointing to a valid service.
  *
@@ -25,9 +25,6 @@ class CheckExceptionOnInvalidReferenceBehaviorPass extends AbstractRecursivePass
      * @var mixed[]
      */
     private $serviceLocatorContextIds = [];
-    /**
-     * {@inheritdoc}
-     */
     public function process(ContainerBuilder $container)
     {
         $this->serviceLocatorContextIds = [];

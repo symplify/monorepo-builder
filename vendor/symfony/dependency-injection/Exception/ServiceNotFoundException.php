@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202211\Symfony\Component\DependencyInjection\Exception;
+namespace MonorepoBuilder202212\Symfony\Component\DependencyInjection\Exception;
 
-use MonorepoBuilder202211\Psr\Container\NotFoundExceptionInterface;
+use MonorepoBuilder202212\Psr\Container\NotFoundExceptionInterface;
 /**
  * This exception is thrown when a non-existent service is requested.
  *

@@ -8,17 +8,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202211\Symfony\Component\Process;
+namespace MonorepoBuilder202212\Symfony\Component\Process;
 
-use MonorepoBuilder202211\Symfony\Component\Process\Exception\InvalidArgumentException;
-use MonorepoBuilder202211\Symfony\Component\Process\Exception\LogicException;
-use MonorepoBuilder202211\Symfony\Component\Process\Exception\ProcessFailedException;
-use MonorepoBuilder202211\Symfony\Component\Process\Exception\ProcessSignaledException;
-use MonorepoBuilder202211\Symfony\Component\Process\Exception\ProcessTimedOutException;
-use MonorepoBuilder202211\Symfony\Component\Process\Exception\RuntimeException;
-use MonorepoBuilder202211\Symfony\Component\Process\Pipes\PipesInterface;
-use MonorepoBuilder202211\Symfony\Component\Process\Pipes\UnixPipes;
-use MonorepoBuilder202211\Symfony\Component\Process\Pipes\WindowsPipes;
+use MonorepoBuilder202212\Symfony\Component\Process\Exception\InvalidArgumentException;
+use MonorepoBuilder202212\Symfony\Component\Process\Exception\LogicException;
+use MonorepoBuilder202212\Symfony\Component\Process\Exception\ProcessFailedException;
+use MonorepoBuilder202212\Symfony\Component\Process\Exception\ProcessSignaledException;
+use MonorepoBuilder202212\Symfony\Component\Process\Exception\ProcessTimedOutException;
+use MonorepoBuilder202212\Symfony\Component\Process\Exception\RuntimeException;
+use MonorepoBuilder202212\Symfony\Component\Process\Pipes\PipesInterface;
+use MonorepoBuilder202212\Symfony\Component\Process\Pipes\UnixPipes;
+use MonorepoBuilder202212\Symfony\Component\Process\Pipes\WindowsPipes;
 /**
  * Process is a thin wrapper around proc_* functions to easily
  * start independent PHP processes.
@@ -309,6 +309,9 @@ class Process implements \IteratorAggregate
         }
         if (!\is_dir($this->cwd)) {
             throw new RuntimeException(\sprintf('The provided cwd "%s" does not exist.', $this->cwd));
+        }
+        if (\is_array($commandline)) {
+            $commandline = \implode(' ', $commandline);
         }
         $this->process = @\proc_open($commandline, $descriptors, $this->processPipes->pipes, $this->cwd, $envPairs, $this->options);
         if (!\is_resource($this->process)) {
@@ -1043,10 +1046,7 @@ class Process implements \IteratorAggregate
     public static function isTtySupported() : bool
     {
         static $isTtySupported;
-        if (null === $isTtySupported) {
-            $isTtySupported = (bool) @\proc_open('echo 1 >/dev/null', [['file', '/dev/tty', 'r'], ['file', '/dev/tty', 'w'], ['file', '/dev/tty', 'w']], $pipes);
-        }
-        return $isTtySupported;
+        return $isTtySupported = $isTtySupported ?? '/' === \DIRECTORY_SEPARATOR && \stream_isatty(\STDOUT);
     }
     /**
      * Returns whether PTY is supported on the current operating system.

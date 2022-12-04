@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202211\Symfony\Component\Config\Loader;
+namespace MonorepoBuilder202212\Symfony\Component\Config\Loader;
 
-use MonorepoBuilder202211\Symfony\Component\Config\Exception\LoaderLoadException;
+use MonorepoBuilder202212\Symfony\Component\Config\Exception\LoaderLoadException;
 /**
  * DelegatingLoader delegates loading to other loaders using a loader resolver.
  *
@@ -26,7 +26,6 @@ class DelegatingLoader extends Loader
         $this->resolver = $resolver;
     }
     /**
-     * {@inheritdoc}
      * @param mixed $resource
      * @return mixed
      */
@@ -38,7 +37,6 @@ class DelegatingLoader extends Loader
         return $loader->load($resource, $type);
     }
     /**
-     * {@inheritdoc}
      * @param mixed $resource
      */
     public function supports($resource, string $type = null) : bool

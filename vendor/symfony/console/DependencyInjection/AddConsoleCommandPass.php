@@ -8,18 +8,18 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202211\Symfony\Component\Console\DependencyInjection;
+namespace MonorepoBuilder202212\Symfony\Component\Console\DependencyInjection;
 
-use MonorepoBuilder202211\Symfony\Component\Console\Command\Command;
-use MonorepoBuilder202211\Symfony\Component\Console\Command\LazyCommand;
-use MonorepoBuilder202211\Symfony\Component\Console\CommandLoader\ContainerCommandLoader;
-use MonorepoBuilder202211\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
-use MonorepoBuilder202211\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
-use MonorepoBuilder202211\Symfony\Component\DependencyInjection\Compiler\ServiceLocatorTagPass;
-use MonorepoBuilder202211\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder202211\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use MonorepoBuilder202211\Symfony\Component\DependencyInjection\Reference;
-use MonorepoBuilder202211\Symfony\Component\DependencyInjection\TypedReference;
+use MonorepoBuilder202212\Symfony\Component\Console\Command\Command;
+use MonorepoBuilder202212\Symfony\Component\Console\Command\LazyCommand;
+use MonorepoBuilder202212\Symfony\Component\Console\CommandLoader\ContainerCommandLoader;
+use MonorepoBuilder202212\Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
+use MonorepoBuilder202212\Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
+use MonorepoBuilder202212\Symfony\Component\DependencyInjection\Compiler\ServiceLocatorTagPass;
+use MonorepoBuilder202212\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder202212\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use MonorepoBuilder202212\Symfony\Component\DependencyInjection\Reference;
+use MonorepoBuilder202212\Symfony\Component\DependencyInjection\TypedReference;
 /**
  * Registers console commands.
  *

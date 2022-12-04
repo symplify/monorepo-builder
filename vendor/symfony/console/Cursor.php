@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202211\Symfony\Component\Console;
+namespace MonorepoBuilder202212\Symfony\Component\Console;
 
-use MonorepoBuilder202211\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder202212\Symfony\Component\Console\Output\OutputInterface;
 /**
  * @author Pierre du Plessis <pdples@gmail.com>
  */
@@ -153,10 +153,7 @@ final class Cursor
     public function getCurrentPosition() : array
     {
         static $isTtySupported;
-        if (null === $isTtySupported && \function_exists('proc_open')) {
-            $isTtySupported = (bool) @\proc_open('echo 1 >/dev/null', [['file', '/dev/tty', 'r'], ['file', '/dev/tty', 'w'], ['file', '/dev/tty', 'w']], $pipes);
-        }
-        if (!$isTtySupported) {
+        if (!($isTtySupported = $isTtySupported ?? '/' === \DIRECTORY_SEPARATOR && \stream_isatty(\STDOUT))) {
             return [1, 1];
         }
         $sttyMode = \shell_exec('stty -g');

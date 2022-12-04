@@ -7,7 +7,7 @@ use PharIo\Version\Version;
 use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface;
 use Symplify\MonorepoBuilder\Release\Process\ProcessRunner;
 use Symplify\MonorepoBuilder\ValueObject\Option;
-use MonorepoBuilder202211\Symplify\PackageBuilder\Parameter\ParameterProvider;
+use MonorepoBuilder202212\Symplify\PackageBuilder\Parameter\ParameterProvider;
 use Throwable;
 final class TagVersionReleaseWorker implements ReleaseWorkerInterface
 {

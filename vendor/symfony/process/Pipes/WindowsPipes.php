@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202211\Symfony\Component\Process\Pipes;
+namespace MonorepoBuilder202212\Symfony\Component\Process\Pipes;
 
-use MonorepoBuilder202211\Symfony\Component\Process\Exception\RuntimeException;
-use MonorepoBuilder202211\Symfony\Component\Process\Process;
+use MonorepoBuilder202212\Symfony\Component\Process\Exception\RuntimeException;
+use MonorepoBuilder202212\Symfony\Component\Process\Process;
 /**
  * WindowsPipes implementation uses temporary files as handles.
  *
@@ -91,9 +91,6 @@ class WindowsPipes extends AbstractPipes
     {
         $this->close();
     }
-    /**
-     * {@inheritdoc}
-     */
     public function getDescriptors() : array
     {
         if (!$this->haveReadSupport) {
@@ -105,16 +102,10 @@ class WindowsPipes extends AbstractPipes
         // So we redirect output within the commandline and pass the nul device to the process
         return [['pipe', 'r'], ['file', 'NUL', 'w'], ['file', 'NUL', 'w']];
     }
-    /**
-     * {@inheritdoc}
-     */
     public function getFiles() : array
     {
         return $this->files;
     }
-    /**
-     * {@inheritdoc}
-     */
     public function readAndWrite(bool $blocking, bool $close = \false) : array
     {
         $this->unblock();
@@ -143,23 +134,14 @@ class WindowsPipes extends AbstractPipes
         }
         return $read;
     }
-    /**
-     * {@inheritdoc}
-     */
     public function haveReadSupport() : bool
     {
         return $this->haveReadSupport;
     }
-    /**
-     * {@inheritdoc}
-     */
     public function areOpen() : bool
     {
         return $this->pipes && $this->fileHandles;
     }
-    /**
-     * {@inheritdoc}
-     */
     public function close()
     {
         parent::close();

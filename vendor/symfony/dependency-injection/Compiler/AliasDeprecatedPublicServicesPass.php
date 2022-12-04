@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202211\Symfony\Component\DependencyInjection\Compiler;
+namespace MonorepoBuilder202212\Symfony\Component\DependencyInjection\Compiler;
 
-use MonorepoBuilder202211\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder202211\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use MonorepoBuilder202211\Symfony\Component\DependencyInjection\Reference;
+use MonorepoBuilder202212\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder202212\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use MonorepoBuilder202212\Symfony\Component\DependencyInjection\Reference;
 final class AliasDeprecatedPublicServicesPass extends AbstractRecursivePass
 {
     /**
@@ -20,7 +20,6 @@ final class AliasDeprecatedPublicServicesPass extends AbstractRecursivePass
      */
     private $aliases = [];
     /**
-     * {@inheritdoc}
      * @param mixed $value
      * @return mixed
      */
@@ -31,9 +30,6 @@ final class AliasDeprecatedPublicServicesPass extends AbstractRecursivePass
         }
         return parent::processValue($value, $isRoot);
     }
-    /**
-     * {@inheritdoc}
-     */
     public function process(ContainerBuilder $container)
     {
         foreach ($container->findTaggedServiceIds('container.private') as $id => $tags) {

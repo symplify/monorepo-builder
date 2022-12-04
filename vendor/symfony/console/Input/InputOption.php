@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202211\Symfony\Component\Console\Input;
+namespace MonorepoBuilder202212\Symfony\Component\Console\Input;
 
-use MonorepoBuilder202211\Symfony\Component\Console\Command\Command;
-use MonorepoBuilder202211\Symfony\Component\Console\Completion\CompletionInput;
-use MonorepoBuilder202211\Symfony\Component\Console\Completion\CompletionSuggestions;
-use MonorepoBuilder202211\Symfony\Component\Console\Completion\Suggestion;
-use MonorepoBuilder202211\Symfony\Component\Console\Exception\InvalidArgumentException;
-use MonorepoBuilder202211\Symfony\Component\Console\Exception\LogicException;
+use MonorepoBuilder202212\Symfony\Component\Console\Command\Command;
+use MonorepoBuilder202212\Symfony\Component\Console\Completion\CompletionInput;
+use MonorepoBuilder202212\Symfony\Component\Console\Completion\CompletionSuggestions;
+use MonorepoBuilder202212\Symfony\Component\Console\Completion\Suggestion;
+use MonorepoBuilder202212\Symfony\Component\Console\Exception\InvalidArgumentException;
+use MonorepoBuilder202212\Symfony\Component\Console\Exception\LogicException;
 /**
  * Represents a command line option.
  *
@@ -177,6 +177,9 @@ class InputOption
      */
     public function setDefault($default = null)
     {
+        if (1 > \func_num_args()) {
+            trigger_deprecation('symfony/console', '6.2', 'Calling "%s()" without any arguments is deprecated, pass null explicitly instead.', __METHOD__);
+        }
         if (self::VALUE_NONE === (self::VALUE_NONE & $this->mode) && null !== $default) {
             throw new LogicException('Cannot set a default value when using InputOption::VALUE_NONE mode.');
         }

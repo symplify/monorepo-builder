@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202211\Symfony\Component\Console\Helper;
+namespace MonorepoBuilder202212\Symfony\Component\Console\Helper;
 
-use MonorepoBuilder202211\Symfony\Component\Console\Output\ConsoleOutputInterface;
-use MonorepoBuilder202211\Symfony\Component\Console\Output\OutputInterface;
-use MonorepoBuilder202211\Symfony\Component\Process\Exception\ProcessFailedException;
-use MonorepoBuilder202211\Symfony\Component\Process\Process;
+use MonorepoBuilder202212\Symfony\Component\Console\Output\ConsoleOutputInterface;
+use MonorepoBuilder202212\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder202212\Symfony\Component\Process\Exception\ProcessFailedException;
+use MonorepoBuilder202212\Symfony\Component\Process\Process;
 /**
  * The ProcessHelper class provides helpers to run external processes.
  *
@@ -109,9 +109,6 @@ class ProcessHelper extends Helper
     {
         return \str_replace('<', '\\<', $str);
     }
-    /**
-     * {@inheritdoc}
-     */
     public function getName() : string
     {
         return 'process';

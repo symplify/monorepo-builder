@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202211\Symfony\Component\Config\Definition;
+namespace MonorepoBuilder202212\Symfony\Component\Config\Definition;
 
-use MonorepoBuilder202211\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
+use MonorepoBuilder202212\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
 /**
  * This node represents a numeric value in the config tree.
  *
@@ -31,7 +31,6 @@ class NumericNode extends ScalarNode
         $this->max = $max;
     }
     /**
-     * {@inheritdoc}
      * @param mixed $value
      * @return mixed
      */
@@ -53,7 +52,6 @@ class NumericNode extends ScalarNode
         return $value;
     }
     /**
-     * {@inheritdoc}
      * @param mixed $value
      */
     protected function isValueEmpty($value) : bool

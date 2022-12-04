@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202211\Symfony\Component\Config;
+namespace MonorepoBuilder202212\Symfony\Component\Config;
 
-use MonorepoBuilder202211\Symfony\Component\Config\Resource\ResourceInterface;
-use MonorepoBuilder202211\Symfony\Component\Filesystem\Exception\IOException;
-use MonorepoBuilder202211\Symfony\Component\Filesystem\Filesystem;
+use MonorepoBuilder202212\Symfony\Component\Config\Resource\ResourceInterface;
+use MonorepoBuilder202212\Symfony\Component\Filesystem\Exception\IOException;
+use MonorepoBuilder202212\Symfony\Component\Filesystem\Filesystem;
 /**
  * ResourceCheckerConfigCache uses instances of ResourceCheckerInterface
  * to check whether cached data is still fresh.
@@ -38,9 +38,6 @@ class ResourceCheckerConfigCache implements ConfigCacheInterface
         $this->file = $file;
         $this->resourceCheckers = $resourceCheckers;
     }
-    /**
-     * {@inheritdoc}
-     */
     public function getPath() : string
     {
         return $this->file;
@@ -119,7 +116,7 @@ class ResourceCheckerConfigCache implements ConfigCacheInterface
                 // discard chmod failure (some filesystem may not support it)
             }
         }
-        if (\function_exists('opcache_invalidate') && \filter_var(\ini_get('opcache.enable'), \FILTER_VALIDATE_BOOLEAN)) {
+        if (\function_exists('opcache_invalidate') && \filter_var(\ini_get('opcache.enable'), \FILTER_VALIDATE_BOOL)) {
             @\opcache_invalidate($this->file, \true);
         }
     }

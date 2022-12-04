@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202211\Symfony\Component\Config\Resource;
+namespace MonorepoBuilder202212\Symfony\Component\Config\Resource;
 
-use MonorepoBuilder202211\Symfony\Component\Finder\Finder;
-use MonorepoBuilder202211\Symfony\Component\Finder\Glob;
+use MonorepoBuilder202212\Symfony\Component\Finder\Finder;
+use MonorepoBuilder202212\Symfony\Component\Finder\Glob;
 /**
  * GlobResource represents a set of resources stored on the filesystem.
  *
@@ -82,9 +82,6 @@ class GlobResource implements \IteratorAggregate, SelfCheckingResourceInterface
     {
         return 'glob.' . $this->prefix . (int) $this->recursive . $this->pattern . (int) $this->forExclusion . \implode("\x00", $this->excludedPrefixes);
     }
-    /**
-     * {@inheritdoc}
-     */
     public function isFresh(int $timestamp) : bool
     {
         $hash = $this->computeHash();

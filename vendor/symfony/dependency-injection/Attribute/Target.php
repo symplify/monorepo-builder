@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202211\Symfony\Component\DependencyInjection\Attribute;
+namespace MonorepoBuilder202212\Symfony\Component\DependencyInjection\Attribute;
 
-use MonorepoBuilder202211\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use MonorepoBuilder202212\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
 /**
  * An attribute to tell how a dependency is used and hint named autowiring aliases.
  *

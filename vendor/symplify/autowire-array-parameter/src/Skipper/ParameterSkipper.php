@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder202211\Symplify\AutowireArrayParameter\Skipper;
+namespace MonorepoBuilder202212\Symplify\AutowireArrayParameter\Skipper;
 
 use ReflectionMethod;
 use ReflectionNamedType;
 use ReflectionParameter;
-use MonorepoBuilder202211\Symfony\Component\DependencyInjection\Definition;
-use MonorepoBuilder202211\Symplify\AutowireArrayParameter\TypeResolver\ParameterTypeResolver;
+use MonorepoBuilder202212\Symfony\Component\DependencyInjection\Definition;
+use MonorepoBuilder202212\Symplify\AutowireArrayParameter\TypeResolver\ParameterTypeResolver;
 final class ParameterSkipper
 {
     /**
@@ -15,7 +15,7 @@ final class ParameterSkipper
      *
      * @var string[]
      */
-    private const DEFAULT_EXCLUDED_FATAL_CLASSES = ['MonorepoBuilder202211\\Symfony\\Component\\Form\\FormExtensionInterface', 'MonorepoBuilder202211\\Symfony\\Component\\Asset\\PackageInterface', 'MonorepoBuilder202211\\Symfony\\Component\\Config\\Loader\\LoaderInterface', 'MonorepoBuilder202211\\Symfony\\Component\\VarDumper\\Dumper\\ContextProvider\\ContextProviderInterface', 'MonorepoBuilder202211\\EasyCorp\\Bundle\\EasyAdminBundle\\Form\\Type\\Configurator\\TypeConfiguratorInterface', 'MonorepoBuilder202211\\Sonata\\CoreBundle\\Model\\Adapter\\AdapterInterface', 'MonorepoBuilder202211\\Sonata\\Doctrine\\Adapter\\AdapterChain', 'MonorepoBuilder202211\\Sonata\\Twig\\Extension\\TemplateExtension'];
+    private const DEFAULT_EXCLUDED_FATAL_CLASSES = ['MonorepoBuilder202212\\Symfony\\Component\\Form\\FormExtensionInterface', 'MonorepoBuilder202212\\Symfony\\Component\\Asset\\PackageInterface', 'MonorepoBuilder202212\\Symfony\\Component\\Config\\Loader\\LoaderInterface', 'MonorepoBuilder202212\\Symfony\\Component\\VarDumper\\Dumper\\ContextProvider\\ContextProviderInterface', 'MonorepoBuilder202212\\EasyCorp\\Bundle\\EasyAdminBundle\\Form\\Type\\Configurator\\TypeConfiguratorInterface', 'MonorepoBuilder202212\\Sonata\\CoreBundle\\Model\\Adapter\\AdapterInterface', 'MonorepoBuilder202212\\Sonata\\Doctrine\\Adapter\\AdapterChain', 'MonorepoBuilder202212\\Sonata\\Twig\\Extension\\TemplateExtension'];
     /**
      * @var string[]
      */

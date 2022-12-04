@@ -1,11 +1,11 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder202211\Symplify\ComposerJsonManipulator\Printer;
+namespace MonorepoBuilder202212\Symplify\ComposerJsonManipulator\Printer;
 
-use MonorepoBuilder202211\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
-use MonorepoBuilder202211\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
-use MonorepoBuilder202211\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder202212\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
+use MonorepoBuilder202212\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
+use MonorepoBuilder202212\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @api
  */

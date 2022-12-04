@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202211\Symfony\Component\Config\Definition;
+namespace MonorepoBuilder202212\Symfony\Component\Config\Definition;
 
-use MonorepoBuilder202211\Symfony\Component\Config\Definition\Exception\ForbiddenOverwriteException;
-use MonorepoBuilder202211\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
-use MonorepoBuilder202211\Symfony\Component\Config\Definition\Exception\InvalidTypeException;
+use MonorepoBuilder202212\Symfony\Component\Config\Definition\Exception\ForbiddenOverwriteException;
+use MonorepoBuilder202212\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
+use MonorepoBuilder202212\Symfony\Component\Config\Definition\Exception\InvalidTypeException;
 /**
  * Common Interface among all nodes.
  *

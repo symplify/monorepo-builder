@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202211\Symfony\Component\Process\Exception;
+namespace MonorepoBuilder202212\Symfony\Component\Process\Exception;
 
-use MonorepoBuilder202211\Symfony\Component\Process\Process;
+use MonorepoBuilder202212\Symfony\Component\Process\Process;
 /**
  * Exception for failed processes.
  *

@@ -5,9 +5,9 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace MonorepoBuilder202211\Nette\Utils;
+namespace MonorepoBuilder202212\Nette\Utils;
 
-use MonorepoBuilder202211\Nette;
+use MonorepoBuilder202212\Nette;
 /**
  * JSON encoder and decoder.
  */

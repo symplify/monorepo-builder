@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Testing\PathResolver;
 
-use MonorepoBuilder202211\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder202212\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\MonorepoBuilder\Tests\Testing\PathResolver\PackagePathResolverTest
  */

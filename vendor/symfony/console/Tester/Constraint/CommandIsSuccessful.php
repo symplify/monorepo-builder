@@ -8,36 +8,24 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202211\Symfony\Component\Console\Tester\Constraint;
+namespace MonorepoBuilder202212\Symfony\Component\Console\Tester\Constraint;
 
-use MonorepoBuilder202211\PHPUnit\Framework\Constraint\Constraint;
-use MonorepoBuilder202211\Symfony\Component\Console\Command\Command;
+use MonorepoBuilder202212\PHPUnit\Framework\Constraint\Constraint;
+use MonorepoBuilder202212\Symfony\Component\Console\Command\Command;
 final class CommandIsSuccessful extends Constraint
 {
-    /**
-     * {@inheritdoc}
-     */
     public function toString() : string
     {
         return 'is successful';
     }
-    /**
-     * {@inheritdoc}
-     */
     protected function matches($other) : bool
     {
         return Command::SUCCESS === $other;
     }
-    /**
-     * {@inheritdoc}
-     */
     protected function failureDescription($other) : string
     {
         return 'the command ' . $this->toString();
     }
-    /**
-     * {@inheritdoc}
-     */
     protected function additionalFailureDescription($other) : string
     {
         $mapping = [Command::FAILURE => 'Command failed.', Command::INVALID => 'Command was invalid.'];

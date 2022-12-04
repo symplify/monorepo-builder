@@ -3,9 +3,9 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Merge\ComposerKeyMerger;
 
-use MonorepoBuilder202211\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
+use MonorepoBuilder202212\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
 use Symplify\MonorepoBuilder\Merge\Contract\ComposerKeyMergerInterface;
-use MonorepoBuilder202211\Symplify\PackageBuilder\Yaml\ParametersMerger;
+use MonorepoBuilder202212\Symplify\PackageBuilder\Yaml\ParametersMerger;
 final class ExtraComposerKeyMerger implements ComposerKeyMergerInterface
 {
     /**

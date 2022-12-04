@@ -1,15 +1,15 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder202211;
+namespace MonorepoBuilder202212;
 
-use MonorepoBuilder202211\Symfony\Component\Console\Application;
-use MonorepoBuilder202211\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
+use MonorepoBuilder202212\Symfony\Component\Console\Application;
+use MonorepoBuilder202212\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
 use Symplify\MonorepoBuilder\Config\MBConfig;
 use Symplify\MonorepoBuilder\Console\MonorepoBuilderApplication;
 use Symplify\MonorepoBuilder\ValueObject\Option;
-use MonorepoBuilder202211\Symplify\PackageBuilder\Reflection\PrivatesCaller;
-use MonorepoBuilder202211\Symplify\PackageBuilder\Yaml\ParametersMerger;
+use MonorepoBuilder202212\Symplify\PackageBuilder\Reflection\PrivatesCaller;
+use MonorepoBuilder202212\Symplify\PackageBuilder\Yaml\ParametersMerger;
 return static function (MBConfig $mbConfig) : void {
     $parameters = $mbConfig->parameters();
     $parameters->set('env(GITHUB_TOKEN)', null);

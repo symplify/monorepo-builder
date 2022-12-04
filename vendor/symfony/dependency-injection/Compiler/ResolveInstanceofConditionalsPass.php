@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202211\Symfony\Component\DependencyInjection\Compiler;
+namespace MonorepoBuilder202212\Symfony\Component\DependencyInjection\Compiler;
 
-use MonorepoBuilder202211\Symfony\Component\DependencyInjection\ChildDefinition;
-use MonorepoBuilder202211\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder202211\Symfony\Component\DependencyInjection\Definition;
-use MonorepoBuilder202211\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use MonorepoBuilder202211\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use MonorepoBuilder202212\Symfony\Component\DependencyInjection\ChildDefinition;
+use MonorepoBuilder202212\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder202212\Symfony\Component\DependencyInjection\Definition;
+use MonorepoBuilder202212\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use MonorepoBuilder202212\Symfony\Component\DependencyInjection\Exception\RuntimeException;
 /**
  * Applies instanceof conditionals to definitions.
  *
@@ -22,9 +22,6 @@ use MonorepoBuilder202211\Symfony\Component\DependencyInjection\Exception\Runtim
  */
 class ResolveInstanceofConditionalsPass implements CompilerPassInterface
 {
-    /**
-     * {@inheritdoc}
-     */
     public function process(ContainerBuilder $container)
     {
         foreach ($container->getAutoconfiguredInstanceof() as $interface => $definition) {
@@ -109,7 +106,7 @@ class ResolveInstanceofConditionalsPass implements CompilerPassInterface
                 foreach ($instanceofTags[$i] as $k => $v) {
                     if (null === $definition->getDecoratedService() || \in_array($k, $tagsToKeep, \true)) {
                         foreach ($v as $v) {
-                            if ($definition->hasTag($k) && \in_array($v, $definition->getTag($k))) {
+                            if ($definition->hasTag($k) && (!$v || \in_array($v, $definition->getTag($k)))) {
                                 continue;
                             }
                             $definition->addTag($k, $v);

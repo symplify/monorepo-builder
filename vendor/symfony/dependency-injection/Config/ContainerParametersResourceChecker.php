@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202211\Symfony\Component\DependencyInjection\Config;
+namespace MonorepoBuilder202212\Symfony\Component\DependencyInjection\Config;
 
-use MonorepoBuilder202211\Symfony\Component\Config\Resource\ResourceInterface;
-use MonorepoBuilder202211\Symfony\Component\Config\ResourceCheckerInterface;
-use MonorepoBuilder202211\Symfony\Component\DependencyInjection\ContainerInterface;
+use MonorepoBuilder202212\Symfony\Component\Config\Resource\ResourceInterface;
+use MonorepoBuilder202212\Symfony\Component\Config\ResourceCheckerInterface;
+use MonorepoBuilder202212\Symfony\Component\DependencyInjection\ContainerInterface;
 /**
  * @author Maxime Steinhausser <maxime.steinhausser@gmail.com>
  */
@@ -26,16 +26,10 @@ class ContainerParametersResourceChecker implements ResourceCheckerInterface
     {
         $this->container = $container;
     }
-    /**
-     * {@inheritdoc}
-     */
     public function supports(ResourceInterface $metadata) : bool
     {
         return $metadata instanceof ContainerParametersResource;
     }
-    /**
-     * {@inheritdoc}
-     */
     public function isFresh(ResourceInterface $resource, int $timestamp) : bool
     {
         foreach ($resource->getParameters() as $key => $value) {

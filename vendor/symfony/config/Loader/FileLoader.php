@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202211\Symfony\Component\Config\Loader;
+namespace MonorepoBuilder202212\Symfony\Component\Config\Loader;
 
-use MonorepoBuilder202211\Symfony\Component\Config\Exception\FileLoaderImportCircularReferenceException;
-use MonorepoBuilder202211\Symfony\Component\Config\Exception\FileLocatorFileNotFoundException;
-use MonorepoBuilder202211\Symfony\Component\Config\Exception\LoaderLoadException;
-use MonorepoBuilder202211\Symfony\Component\Config\FileLocatorInterface;
-use MonorepoBuilder202211\Symfony\Component\Config\Resource\FileExistenceResource;
-use MonorepoBuilder202211\Symfony\Component\Config\Resource\GlobResource;
+use MonorepoBuilder202212\Symfony\Component\Config\Exception\FileLoaderImportCircularReferenceException;
+use MonorepoBuilder202212\Symfony\Component\Config\Exception\FileLocatorFileNotFoundException;
+use MonorepoBuilder202212\Symfony\Component\Config\Exception\LoaderLoadException;
+use MonorepoBuilder202212\Symfony\Component\Config\FileLocatorInterface;
+use MonorepoBuilder202212\Symfony\Component\Config\Resource\FileExistenceResource;
+use MonorepoBuilder202212\Symfony\Component\Config\Resource\GlobResource;
 /**
  * FileLoader is the abstract class used by all built-in loaders that are file based.
  *
@@ -56,8 +56,6 @@ abstract class FileLoader extends Loader
      * @param bool                 $ignoreErrors   Whether to ignore import errors or not
      * @param string|null          $sourceResource The original resource importing the new resource
      * @param string|mixed[] $exclude Glob patterns to exclude from the import
-     *
-     * @return mixed
      *
      * @throws LoaderLoadException
      * @throws FileLoaderImportCircularReferenceException
@@ -125,7 +123,13 @@ abstract class FileLoader extends Loader
     {
         try {
             $loader = $this->resolve($resource, $type);
-            if ($loader instanceof self && null !== $this->currentDir) {
+            if ($loader instanceof DirectoryAwareLoaderInterface) {
+                $loader = $loader->forDirectory($this->currentDir);
+            }
+            if (!$loader instanceof self) {
+                return $loader->load($resource, $type);
+            }
+            if (null !== $this->currentDir) {
                 $resource = $loader->getLocator()->locate($resource, $this->currentDir, \false);
             }
             $resources = \is_array($resource) ? $resource : [$resource];

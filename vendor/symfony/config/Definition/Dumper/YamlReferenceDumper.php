@@ -8,17 +8,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202211\Symfony\Component\Config\Definition\Dumper;
+namespace MonorepoBuilder202212\Symfony\Component\Config\Definition\Dumper;
 
-use MonorepoBuilder202211\Symfony\Component\Config\Definition\ArrayNode;
-use MonorepoBuilder202211\Symfony\Component\Config\Definition\BaseNode;
-use MonorepoBuilder202211\Symfony\Component\Config\Definition\ConfigurationInterface;
-use MonorepoBuilder202211\Symfony\Component\Config\Definition\EnumNode;
-use MonorepoBuilder202211\Symfony\Component\Config\Definition\NodeInterface;
-use MonorepoBuilder202211\Symfony\Component\Config\Definition\PrototypedArrayNode;
-use MonorepoBuilder202211\Symfony\Component\Config\Definition\ScalarNode;
-use MonorepoBuilder202211\Symfony\Component\Config\Definition\VariableNode;
-use MonorepoBuilder202211\Symfony\Component\Yaml\Inline;
+use MonorepoBuilder202212\Symfony\Component\Config\Definition\ArrayNode;
+use MonorepoBuilder202212\Symfony\Component\Config\Definition\BaseNode;
+use MonorepoBuilder202212\Symfony\Component\Config\Definition\ConfigurationInterface;
+use MonorepoBuilder202212\Symfony\Component\Config\Definition\EnumNode;
+use MonorepoBuilder202212\Symfony\Component\Config\Definition\NodeInterface;
+use MonorepoBuilder202212\Symfony\Component\Config\Definition\PrototypedArrayNode;
+use MonorepoBuilder202212\Symfony\Component\Config\Definition\ScalarNode;
+use MonorepoBuilder202212\Symfony\Component\Config\Definition\VariableNode;
+use MonorepoBuilder202212\Symfony\Component\Yaml\Inline;
 /**
  * Dumps a Yaml reference configuration for the given configuration/node instance.
  *
@@ -140,7 +140,7 @@ class YamlReferenceDumper
             $this->writeLine('');
             $message = \count($example) > 1 ? 'Examples' : 'Example';
             $this->writeLine('# ' . $message . ':', $depth * 4 + 4);
-            $this->writeArray(\array_map([Inline::class, 'dump'], $example), $depth + 1);
+            $this->writeArray(\array_map(\Closure::fromCallable([Inline::class, 'dump']), $example), $depth + 1);
         }
         if ($children) {
             foreach ($children as $childNode) {

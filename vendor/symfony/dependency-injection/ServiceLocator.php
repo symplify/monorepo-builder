@@ -8,16 +8,16 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202211\Symfony\Component\DependencyInjection;
+namespace MonorepoBuilder202212\Symfony\Component\DependencyInjection;
 
-use MonorepoBuilder202211\Psr\Container\ContainerExceptionInterface;
-use MonorepoBuilder202211\Psr\Container\NotFoundExceptionInterface;
-use MonorepoBuilder202211\Symfony\Component\DependencyInjection\Exception\RuntimeException;
-use MonorepoBuilder202211\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
-use MonorepoBuilder202211\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
-use MonorepoBuilder202211\Symfony\Contracts\Service\ServiceLocatorTrait;
-use MonorepoBuilder202211\Symfony\Contracts\Service\ServiceProviderInterface;
-use MonorepoBuilder202211\Symfony\Contracts\Service\ServiceSubscriberInterface;
+use MonorepoBuilder202212\Psr\Container\ContainerExceptionInterface;
+use MonorepoBuilder202212\Psr\Container\NotFoundExceptionInterface;
+use MonorepoBuilder202212\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use MonorepoBuilder202212\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
+use MonorepoBuilder202212\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
+use MonorepoBuilder202212\Symfony\Contracts\Service\ServiceLocatorTrait;
+use MonorepoBuilder202212\Symfony\Contracts\Service\ServiceProviderInterface;
+use MonorepoBuilder202212\Symfony\Contracts\Service\ServiceSubscriberInterface;
 /**
  * @author Robin Chalas <robin.chalas@gmail.com>
  * @author Nicolas Grekas <p@tchwork.com>
@@ -36,7 +36,6 @@ class ServiceLocator implements ServiceProviderInterface, \Countable
      */
     private $container;
     /**
-     * {@inheritdoc}
      * @return mixed
      */
     public function get(string $id)

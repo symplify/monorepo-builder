@@ -11,7 +11,7 @@ use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\StageAwareInterface;
 use Symplify\MonorepoBuilder\Release\Exception\ConfigurationException;
 use Symplify\MonorepoBuilder\Release\ValueObject\Stage;
 use Symplify\MonorepoBuilder\ValueObject\Option;
-use MonorepoBuilder202211\Symplify\PackageBuilder\Parameter\ParameterProvider;
+use MonorepoBuilder202212\Symplify\PackageBuilder\Parameter\ParameterProvider;
 final class ReleaseGuard
 {
     /**
