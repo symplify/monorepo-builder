@@ -18,6 +18,9 @@ use MonorepoBuilder202212\Symfony\Component\DependencyInjection\Exception\Invali
  */
 class ResolveClassPass implements CompilerPassInterface
 {
+    /**
+     * {@inheritdoc}
+     */
     public function process(ContainerBuilder $container)
     {
         foreach ($container->getDefinitions() as $id => $definition) {

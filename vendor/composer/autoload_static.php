@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit9592c335ddb643b8719587129228e0ed
+class ComposerStaticInit92d4be24a7abe81bbe529925df00009f
 {
     public static $files = array (
         '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
@@ -27,7 +27,6 @@ class ComposerStaticInit9592c335ddb643b8719587129228e0ed
             'MonorepoBuilder202212\\Symplify\\ComposerJsonManipulator\\' => 55,
             'MonorepoBuilder202212\\Symplify\\AutowireArrayParameter\\' => 54,
             'MonorepoBuilder202212\\Symfony\\Contracts\\Service\\' => 48,
-            'MonorepoBuilder202212\\Symfony\\Component\\VarExporter\\' => 52,
             'MonorepoBuilder202212\\Symfony\\Component\\String\\' => 47,
             'MonorepoBuilder202212\\Symfony\\Component\\Process\\' => 48,
             'MonorepoBuilder202212\\Symfony\\Component\\Finder\\' => 47,
@@ -76,10 +75,6 @@ class ComposerStaticInit9592c335ddb643b8719587129228e0ed
         'MonorepoBuilder202212\\Symfony\\Contracts\\Service\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/service-contracts',
-        ),
-        'MonorepoBuilder202212\\Symfony\\Component\\VarExporter\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/var-exporter',
         ),
         'MonorepoBuilder202212\\Symfony\\Component\\String\\' => 
         array (
@@ -490,10 +485,8 @@ class ComposerStaticInit9592c335ddb643b8719587129228e0ed
         'MonorepoBuilder202212\\Symfony\\Component\\DependencyInjection\\Extension\\ExtensionTrait' => __DIR__ . '/..' . '/symfony/dependency-injection/Extension/ExtensionTrait.php',
         'MonorepoBuilder202212\\Symfony\\Component\\DependencyInjection\\Extension\\PrependExtensionInterface' => __DIR__ . '/..' . '/symfony/dependency-injection/Extension/PrependExtensionInterface.php',
         'MonorepoBuilder202212\\Symfony\\Component\\DependencyInjection\\LazyProxy\\Instantiator\\InstantiatorInterface' => __DIR__ . '/..' . '/symfony/dependency-injection/LazyProxy/Instantiator/InstantiatorInterface.php',
-        'MonorepoBuilder202212\\Symfony\\Component\\DependencyInjection\\LazyProxy\\Instantiator\\LazyServiceInstantiator' => __DIR__ . '/..' . '/symfony/dependency-injection/LazyProxy/Instantiator/LazyServiceInstantiator.php',
         'MonorepoBuilder202212\\Symfony\\Component\\DependencyInjection\\LazyProxy\\Instantiator\\RealServiceInstantiator' => __DIR__ . '/..' . '/symfony/dependency-injection/LazyProxy/Instantiator/RealServiceInstantiator.php',
         'MonorepoBuilder202212\\Symfony\\Component\\DependencyInjection\\LazyProxy\\PhpDumper\\DumperInterface' => __DIR__ . '/..' . '/symfony/dependency-injection/LazyProxy/PhpDumper/DumperInterface.php',
-        'MonorepoBuilder202212\\Symfony\\Component\\DependencyInjection\\LazyProxy\\PhpDumper\\LazyServiceDumper' => __DIR__ . '/..' . '/symfony/dependency-injection/LazyProxy/PhpDumper/LazyServiceDumper.php',
         'MonorepoBuilder202212\\Symfony\\Component\\DependencyInjection\\LazyProxy\\PhpDumper\\NullDumper' => __DIR__ . '/..' . '/symfony/dependency-injection/LazyProxy/PhpDumper/NullDumper.php',
         'MonorepoBuilder202212\\Symfony\\Component\\DependencyInjection\\LazyProxy\\ProxyHelper' => __DIR__ . '/..' . '/symfony/dependency-injection/LazyProxy/ProxyHelper.php',
         'MonorepoBuilder202212\\Symfony\\Component\\DependencyInjection\\Loader\\ClosureLoader' => __DIR__ . '/..' . '/symfony/dependency-injection/Loader/ClosureLoader.php',
@@ -612,24 +605,6 @@ class ComposerStaticInit9592c335ddb643b8719587129228e0ed
         'MonorepoBuilder202212\\Symfony\\Component\\String\\Slugger\\AsciiSlugger' => __DIR__ . '/..' . '/symfony/string/Slugger/AsciiSlugger.php',
         'MonorepoBuilder202212\\Symfony\\Component\\String\\Slugger\\SluggerInterface' => __DIR__ . '/..' . '/symfony/string/Slugger/SluggerInterface.php',
         'MonorepoBuilder202212\\Symfony\\Component\\String\\UnicodeString' => __DIR__ . '/..' . '/symfony/string/UnicodeString.php',
-        'MonorepoBuilder202212\\Symfony\\Component\\VarExporter\\Exception\\ClassNotFoundException' => __DIR__ . '/..' . '/symfony/var-exporter/Exception/ClassNotFoundException.php',
-        'MonorepoBuilder202212\\Symfony\\Component\\VarExporter\\Exception\\ExceptionInterface' => __DIR__ . '/..' . '/symfony/var-exporter/Exception/ExceptionInterface.php',
-        'MonorepoBuilder202212\\Symfony\\Component\\VarExporter\\Exception\\LogicException' => __DIR__ . '/..' . '/symfony/var-exporter/Exception/LogicException.php',
-        'MonorepoBuilder202212\\Symfony\\Component\\VarExporter\\Exception\\NotInstantiableTypeException' => __DIR__ . '/..' . '/symfony/var-exporter/Exception/NotInstantiableTypeException.php',
-        'MonorepoBuilder202212\\Symfony\\Component\\VarExporter\\Hydrator' => __DIR__ . '/..' . '/symfony/var-exporter/Hydrator.php',
-        'MonorepoBuilder202212\\Symfony\\Component\\VarExporter\\Instantiator' => __DIR__ . '/..' . '/symfony/var-exporter/Instantiator.php',
-        'MonorepoBuilder202212\\Symfony\\Component\\VarExporter\\Internal\\Exporter' => __DIR__ . '/..' . '/symfony/var-exporter/Internal/Exporter.php',
-        'MonorepoBuilder202212\\Symfony\\Component\\VarExporter\\Internal\\Hydrator' => __DIR__ . '/..' . '/symfony/var-exporter/Internal/Hydrator.php',
-        'MonorepoBuilder202212\\Symfony\\Component\\VarExporter\\Internal\\LazyObjectRegistry' => __DIR__ . '/..' . '/symfony/var-exporter/Internal/LazyObjectRegistry.php',
-        'MonorepoBuilder202212\\Symfony\\Component\\VarExporter\\Internal\\LazyObjectState' => __DIR__ . '/..' . '/symfony/var-exporter/Internal/LazyObjectState.php',
-        'MonorepoBuilder202212\\Symfony\\Component\\VarExporter\\Internal\\Reference' => __DIR__ . '/..' . '/symfony/var-exporter/Internal/Reference.php',
-        'MonorepoBuilder202212\\Symfony\\Component\\VarExporter\\Internal\\Registry' => __DIR__ . '/..' . '/symfony/var-exporter/Internal/Registry.php',
-        'MonorepoBuilder202212\\Symfony\\Component\\VarExporter\\Internal\\Values' => __DIR__ . '/..' . '/symfony/var-exporter/Internal/Values.php',
-        'MonorepoBuilder202212\\Symfony\\Component\\VarExporter\\LazyGhostTrait' => __DIR__ . '/..' . '/symfony/var-exporter/LazyGhostTrait.php',
-        'MonorepoBuilder202212\\Symfony\\Component\\VarExporter\\LazyObjectInterface' => __DIR__ . '/..' . '/symfony/var-exporter/LazyObjectInterface.php',
-        'MonorepoBuilder202212\\Symfony\\Component\\VarExporter\\LazyProxyTrait' => __DIR__ . '/..' . '/symfony/var-exporter/LazyProxyTrait.php',
-        'MonorepoBuilder202212\\Symfony\\Component\\VarExporter\\ProxyHelper' => __DIR__ . '/..' . '/symfony/var-exporter/ProxyHelper.php',
-        'MonorepoBuilder202212\\Symfony\\Component\\VarExporter\\VarExporter' => __DIR__ . '/..' . '/symfony/var-exporter/VarExporter.php',
         'MonorepoBuilder202212\\Symfony\\Contracts\\Service\\Attribute\\Required' => __DIR__ . '/..' . '/symfony/service-contracts/Attribute/Required.php',
         'MonorepoBuilder202212\\Symfony\\Contracts\\Service\\Attribute\\SubscribedService' => __DIR__ . '/..' . '/symfony/service-contracts/Attribute/SubscribedService.php',
         'MonorepoBuilder202212\\Symfony\\Contracts\\Service\\ResetInterface' => __DIR__ . '/..' . '/symfony/service-contracts/ResetInterface.php',
@@ -822,9 +797,9 @@ class ComposerStaticInit9592c335ddb643b8719587129228e0ed
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit9592c335ddb643b8719587129228e0ed::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit9592c335ddb643b8719587129228e0ed::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit9592c335ddb643b8719587129228e0ed::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit92d4be24a7abe81bbe529925df00009f::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit92d4be24a7abe81bbe529925df00009f::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit92d4be24a7abe81bbe529925df00009f::$classMap;
 
         }, null, ClassLoader::class);
     }

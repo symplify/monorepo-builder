@@ -13,8 +13,8 @@ namespace MonorepoBuilder202212\Symfony\Component\DependencyInjection\Compiler;
 use MonorepoBuilder202212\Symfony\Component\DependencyInjection\Argument\AbstractArgument;
 use MonorepoBuilder202212\Symfony\Component\DependencyInjection\Definition;
 use MonorepoBuilder202212\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use MonorepoBuilder202212\Symfony\Component\DependencyInjection\LazyProxy\ProxyHelper;
 use MonorepoBuilder202212\Symfony\Component\DependencyInjection\Reference;
-use MonorepoBuilder202212\Symfony\Component\VarExporter\ProxyHelper;
 /**
  * Resolves named arguments to their corresponding numeric index.
  *
@@ -23,6 +23,7 @@ use MonorepoBuilder202212\Symfony\Component\VarExporter\ProxyHelper;
 class ResolveNamedArgumentsPass extends AbstractRecursivePass
 {
     /**
+     * {@inheritdoc}
      * @param mixed $value
      * @return mixed
      */
@@ -77,7 +78,7 @@ class ResolveNamedArgumentsPass extends AbstractRecursivePass
                 }
                 $typeFound = \false;
                 foreach ($parameters as $j => $p) {
-                    if (!\array_key_exists($j, $resolvedArguments) && ProxyHelper::exportType($p, \true) === $key) {
+                    if (!\array_key_exists($j, $resolvedArguments) && ProxyHelper::getTypeHint($r, $p, \true) === $key) {
                         $resolvedArguments[$j] = $argument;
                         $typeFound = \true;
                     }

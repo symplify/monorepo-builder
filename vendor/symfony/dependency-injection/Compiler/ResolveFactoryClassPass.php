@@ -18,6 +18,7 @@ use MonorepoBuilder202212\Symfony\Component\DependencyInjection\Exception\Runtim
 class ResolveFactoryClassPass extends AbstractRecursivePass
 {
     /**
+     * {@inheritdoc}
      * @param mixed $value
      * @return mixed
      */

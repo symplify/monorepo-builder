@@ -18,6 +18,9 @@ use MonorepoBuilder202212\Symfony\Component\DependencyInjection\Exception\Invali
  */
 class AutoAliasServicePass implements CompilerPassInterface
 {
+    /**
+     * {@inheritdoc}
+     */
     public function process(ContainerBuilder $container)
     {
         foreach ($container->findTaggedServiceIds('auto_alias') as $serviceId => $tags) {
