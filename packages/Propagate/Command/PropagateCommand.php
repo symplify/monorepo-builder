@@ -6,7 +6,7 @@ namespace Symplify\MonorepoBuilder\Propagate\Command;
 use MonorepoBuilder202212\Symfony\Component\Console\Input\InputInterface;
 use MonorepoBuilder202212\Symfony\Component\Console\Input\InputOption;
 use MonorepoBuilder202212\Symfony\Component\Console\Output\OutputInterface;
-use MonorepoBuilder202212\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
+use Symplify\MonorepoBuilder\ComposerJsonManipulator\FileSystem\JsonFileManager;
 use Symplify\MonorepoBuilder\Exception\MissingComposerJsonException;
 use Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider;
 use Symplify\MonorepoBuilder\Propagate\VersionPropagator;
@@ -24,7 +24,7 @@ final class PropagateCommand extends AbstractSymplifyCommand
      */
     private $versionPropagator;
     /**
-     * @var \Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager
+     * @var \Symplify\MonorepoBuilder\ComposerJsonManipulator\FileSystem\JsonFileManager
      */
     private $jsonFileManager;
     public function __construct(ComposerJsonProvider $composerJsonProvider, VersionPropagator $versionPropagator, JsonFileManager $jsonFileManager)

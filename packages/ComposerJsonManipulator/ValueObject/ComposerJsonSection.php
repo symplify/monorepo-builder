@@ -1,7 +1,7 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder202212\Symplify\ComposerJsonManipulator\ValueObject;
+namespace Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject;
 
 /**
  * @api
@@ -106,7 +106,3 @@ final class ComposerJsonSection
      */
     public const VERSION = 'version';
 }
-/**
- * @api
- */
-\class_alias('MonorepoBuilder202212\\Symplify\\ComposerJsonManipulator\\ValueObject\\ComposerJsonSection', 'Symplify\\ComposerJsonManipulator\\ValueObject\\ComposerJsonSection', \false);

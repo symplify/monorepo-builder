@@ -1,16 +1,16 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder202212\Symplify\ComposerJsonManipulator\ValueObject;
+namespace Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject;
 
 use MonorepoBuilder202212\Nette\Utils\Arrays;
 use MonorepoBuilder202212\Nette\Utils\Strings;
-use MonorepoBuilder202212\Symplify\ComposerJsonManipulator\Sorter\ComposerPackageSorter;
+use Symplify\MonorepoBuilder\ComposerJsonManipulator\Sorter\ComposerPackageSorter;
 use MonorepoBuilder202212\Symplify\SmartFileSystem\SmartFileInfo;
 use MonorepoBuilder202212\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
 /**
  * @api
- * @see \Symplify\ComposerJsonManipulator\Tests\ValueObject\ComposerJsonTest
+ * @see \Symplify\MonorepoBuilder\Tests\ComposerJsonManipulator\ValueObject\ComposerJsonTest
  */
 final class ComposerJson
 {
@@ -95,7 +95,7 @@ final class ComposerJson
      */
     private $fileInfo;
     /**
-     * @var \Symplify\ComposerJsonManipulator\Sorter\ComposerPackageSorter
+     * @var \Symplify\MonorepoBuilder\ComposerJsonManipulator\Sorter\ComposerPackageSorter
      */
     private $composerPackageSorter;
     /**
@@ -346,14 +346,14 @@ final class ComposerJson
      */
     public function getJsonArray() : array
     {
-        $array = \array_filter([ComposerJsonSection::NAME => $this->name, ComposerJsonSection::DESCRIPTION => $this->description, ComposerJsonSection::KEYWORDS => $this->keywords, ComposerJsonSection::HOMEPAGE => $this->homepage, ComposerJsonSection::LICENSE => $this->license, ComposerJsonSection::AUTHORS => $this->authors, ComposerJsonSection::TYPE => $this->type, ComposerJsonSection::REQUIRE => $this->require, ComposerJsonSection::REQUIRE_DEV => $this->requireDev, ComposerJsonSection::AUTOLOAD => $this->autoload, ComposerJsonSection::AUTOLOAD_DEV => $this->autoloadDev, ComposerJsonSection::REPOSITORIES => $this->repositories, ComposerJsonSection::EXTRA => $this->extra, ComposerJsonSection::BIN => $this->bin, ComposerJsonSection::SCRIPTS => $this->scripts, ComposerJsonSection::SCRIPTS_DESCRIPTIONS => $this->scriptsDescriptions, ComposerJsonSection::SUGGEST => $this->suggest, ComposerJsonSection::CONFIG => $this->config, ComposerJsonSection::REPLACE => $this->replace, ComposerJsonSection::CONFLICT => $this->conflicts, ComposerJsonSection::PROVIDE => $this->provide, ComposerJsonSection::VERSION => $this->version]);
+        $array = \array_filter([\Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJsonSection::NAME => $this->name, \Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJsonSection::DESCRIPTION => $this->description, \Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJsonSection::KEYWORDS => $this->keywords, \Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJsonSection::HOMEPAGE => $this->homepage, \Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJsonSection::LICENSE => $this->license, \Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJsonSection::AUTHORS => $this->authors, \Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJsonSection::TYPE => $this->type, \Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE => $this->require, \Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REQUIRE_DEV => $this->requireDev, \Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJsonSection::AUTOLOAD => $this->autoload, \Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJsonSection::AUTOLOAD_DEV => $this->autoloadDev, \Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REPOSITORIES => $this->repositories, \Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJsonSection::EXTRA => $this->extra, \Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJsonSection::BIN => $this->bin, \Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJsonSection::SCRIPTS => $this->scripts, \Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJsonSection::SCRIPTS_DESCRIPTIONS => $this->scriptsDescriptions, \Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJsonSection::SUGGEST => $this->suggest, \Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJsonSection::CONFIG => $this->config, \Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJsonSection::REPLACE => $this->replace, \Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJsonSection::CONFLICT => $this->conflicts, \Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJsonSection::PROVIDE => $this->provide, \Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJsonSection::VERSION => $this->version]);
         if ($this->minimumStability !== null) {
-            $array[ComposerJsonSection::MINIMUM_STABILITY] = $this->minimumStability;
-            $this->moveValueToBack(ComposerJsonSection::MINIMUM_STABILITY);
+            $array[\Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJsonSection::MINIMUM_STABILITY] = $this->minimumStability;
+            $this->moveValueToBack(\Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJsonSection::MINIMUM_STABILITY);
         }
         if ($this->preferStable !== null) {
-            $array[ComposerJsonSection::PREFER_STABLE] = $this->preferStable;
-            $this->moveValueToBack(ComposerJsonSection::PREFER_STABLE);
+            $array[\Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJsonSection::PREFER_STABLE] = $this->preferStable;
+            $this->moveValueToBack(\Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJsonSection::PREFER_STABLE);
         }
         return $this->sortItemsByOrderedListOfKeys($array, $this->orderedKeys);
     }

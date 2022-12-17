@@ -3,8 +3,8 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Merge;
 
-use MonorepoBuilder202212\Symplify\ComposerJsonManipulator\ComposerJsonFactory;
-use MonorepoBuilder202212\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
+use Symplify\MonorepoBuilder\ComposerJsonManipulator\ComposerJsonFactory;
+use Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJson;
 use Symplify\MonorepoBuilder\Merge\Configuration\MergedPackagesCollector;
 use Symplify\MonorepoBuilder\Merge\Contract\ComposerKeyMergerInterface;
 use Symplify\MonorepoBuilder\Merge\PathResolver\AutoloadPathNormalizer;
@@ -15,7 +15,7 @@ use MonorepoBuilder202212\Symplify\SmartFileSystem\SmartFileInfo;
 final class ComposerJsonMerger
 {
     /**
-     * @var \Symplify\ComposerJsonManipulator\ComposerJsonFactory
+     * @var \Symplify\MonorepoBuilder\ComposerJsonManipulator\ComposerJsonFactory
      */
     private $composerJsonFactory;
     /**

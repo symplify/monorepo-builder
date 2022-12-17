@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Package;
 
-use MonorepoBuilder202212\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
+use Symplify\MonorepoBuilder\ComposerJsonManipulator\FileSystem\JsonFileManager;
 use Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider;
 use MonorepoBuilder202212\Symplify\SmartFileSystem\SmartFileInfo;
 final class PackageNamesProvider
@@ -17,7 +17,7 @@ final class PackageNamesProvider
      */
     private $composerJsonProvider;
     /**
-     * @var \Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager
+     * @var \Symplify\MonorepoBuilder\ComposerJsonManipulator\FileSystem\JsonFileManager
      */
     private $jsonFileManager;
     public function __construct(ComposerJsonProvider $composerJsonProvider, JsonFileManager $jsonFileManager)

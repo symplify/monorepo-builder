@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder;
 
-use MonorepoBuilder202212\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
+use Symplify\MonorepoBuilder\ComposerJsonManipulator\FileSystem\JsonFileManager;
 use Symplify\MonorepoBuilder\ValueObject\Option;
 use MonorepoBuilder202212\Symplify\PackageBuilder\Parameter\ParameterProvider;
 use MonorepoBuilder202212\Symplify\SmartFileSystem\SmartFileInfo;
@@ -29,7 +29,7 @@ final class DevMasterAliasUpdater
      */
     private $branchAliasTarget;
     /**
-     * @var \Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager
+     * @var \Symplify\MonorepoBuilder\ComposerJsonManipulator\FileSystem\JsonFileManager
      */
     private $jsonFileManager;
     public function __construct(JsonFileManager $jsonFileManager, ParameterProvider $parameterProvider)

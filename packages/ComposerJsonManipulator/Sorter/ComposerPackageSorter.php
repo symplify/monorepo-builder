@@ -1,13 +1,13 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder202212\Symplify\ComposerJsonManipulator\Sorter;
+namespace Symplify\MonorepoBuilder\ComposerJsonManipulator\Sorter;
 
 use MonorepoBuilder202212\Nette\Utils\Strings;
 /**
  * Mostly inspired by https://github.com/composer/composer/blob/master/src/Composer/Json/JsonManipulator.php
  *
- * @see \Symplify\ComposerJsonManipulator\Tests\Sorter\ComposerPackageSorterTest
+ * @see \Symplify\MonorepoBuilder\Tests\ComposerJsonManipulator\Sorter\ComposerPackageSorterTest
  */
 final class ComposerPackageSorter
 {

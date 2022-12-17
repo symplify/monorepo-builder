@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitb20f774dafe1dd6084101528423e9eb9
+class ComposerStaticInit51d0f4303d6b23d432011b1ee6a12c35
 {
     public static $files = array (
         '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
@@ -24,7 +24,6 @@ class ComposerStaticInitb20f774dafe1dd6084101528423e9eb9
             'MonorepoBuilder202212\\Symplify\\SymplifyKernel\\' => 46,
             'MonorepoBuilder202212\\Symplify\\SmartFileSystem\\' => 47,
             'MonorepoBuilder202212\\Symplify\\PackageBuilder\\' => 46,
-            'MonorepoBuilder202212\\Symplify\\ComposerJsonManipulator\\' => 55,
             'MonorepoBuilder202212\\Symplify\\AutowireArrayParameter\\' => 54,
             'MonorepoBuilder202212\\Symfony\\Contracts\\Service\\' => 48,
             'MonorepoBuilder202212\\Symfony\\Component\\String\\' => 47,
@@ -63,10 +62,6 @@ class ComposerStaticInitb20f774dafe1dd6084101528423e9eb9
         'MonorepoBuilder202212\\Symplify\\PackageBuilder\\' => 
         array (
             0 => __DIR__ . '/..' . '/symplify/package-builder/src',
-        ),
-        'MonorepoBuilder202212\\Symplify\\ComposerJsonManipulator\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symplify/composer-json-manipulator/src',
         ),
         'MonorepoBuilder202212\\Symplify\\AutowireArrayParameter\\' => 
         array (
@@ -618,16 +613,6 @@ class ComposerStaticInitb20f774dafe1dd6084101528423e9eb9
         'MonorepoBuilder202212\\Symplify\\AutowireArrayParameter\\Exception\\DependencyInjection\\DefinitionForTypeNotFoundException' => __DIR__ . '/..' . '/symplify/autowire-array-parameter/src/Exception/DependencyInjection/DefinitionForTypeNotFoundException.php',
         'MonorepoBuilder202212\\Symplify\\AutowireArrayParameter\\Skipper\\ParameterSkipper' => __DIR__ . '/..' . '/symplify/autowire-array-parameter/src/Skipper/ParameterSkipper.php',
         'MonorepoBuilder202212\\Symplify\\AutowireArrayParameter\\TypeResolver\\ParameterTypeResolver' => __DIR__ . '/..' . '/symplify/autowire-array-parameter/src/TypeResolver/ParameterTypeResolver.php',
-        'MonorepoBuilder202212\\Symplify\\ComposerJsonManipulator\\ComposerJsonFactory' => __DIR__ . '/..' . '/symplify/composer-json-manipulator/src/ComposerJsonFactory.php',
-        'MonorepoBuilder202212\\Symplify\\ComposerJsonManipulator\\FileSystem\\JsonFileManager' => __DIR__ . '/..' . '/symplify/composer-json-manipulator/src/FileSystem/JsonFileManager.php',
-        'MonorepoBuilder202212\\Symplify\\ComposerJsonManipulator\\Json\\JsonCleaner' => __DIR__ . '/..' . '/symplify/composer-json-manipulator/src/Json/JsonCleaner.php',
-        'MonorepoBuilder202212\\Symplify\\ComposerJsonManipulator\\Json\\JsonInliner' => __DIR__ . '/..' . '/symplify/composer-json-manipulator/src/Json/JsonInliner.php',
-        'MonorepoBuilder202212\\Symplify\\ComposerJsonManipulator\\Printer\\ComposerJsonPrinter' => __DIR__ . '/..' . '/symplify/composer-json-manipulator/src/Printer/ComposerJsonPrinter.php',
-        'MonorepoBuilder202212\\Symplify\\ComposerJsonManipulator\\Sorter\\ComposerPackageSorter' => __DIR__ . '/..' . '/symplify/composer-json-manipulator/src/Sorter/ComposerPackageSorter.php',
-        'MonorepoBuilder202212\\Symplify\\ComposerJsonManipulator\\ValueObject\\ComposerJson' => __DIR__ . '/..' . '/symplify/composer-json-manipulator/src/ValueObject/ComposerJson.php',
-        'MonorepoBuilder202212\\Symplify\\ComposerJsonManipulator\\ValueObject\\ComposerJsonManipulatorConfig' => __DIR__ . '/..' . '/symplify/composer-json-manipulator/src/ValueObject/ComposerJsonManipulatorConfig.php',
-        'MonorepoBuilder202212\\Symplify\\ComposerJsonManipulator\\ValueObject\\ComposerJsonSection' => __DIR__ . '/..' . '/symplify/composer-json-manipulator/src/ValueObject/ComposerJsonSection.php',
-        'MonorepoBuilder202212\\Symplify\\ComposerJsonManipulator\\ValueObject\\Option' => __DIR__ . '/..' . '/symplify/composer-json-manipulator/src/ValueObject/Option.php',
         'MonorepoBuilder202212\\Symplify\\PackageBuilder\\Composer\\VendorDirProvider' => __DIR__ . '/..' . '/symplify/package-builder/src/Composer/VendorDirProvider.php',
         'MonorepoBuilder202212\\Symplify\\PackageBuilder\\Configuration\\StaticEolConfiguration' => __DIR__ . '/..' . '/symplify/package-builder/src/Configuration/StaticEolConfiguration.php',
         'MonorepoBuilder202212\\Symplify\\PackageBuilder\\Console\\Command\\AbstractSymplifyCommand' => __DIR__ . '/..' . '/symplify/package-builder/src/Console/Command/AbstractSymplifyCommand.php',
@@ -702,6 +687,15 @@ class ComposerStaticInitb20f774dafe1dd6084101528423e9eb9
         'Symplify\\MonorepoBuilder\\Command\\PackageAliasCommand' => __DIR__ . '/../..' . '/src/Command/PackageAliasCommand.php',
         'Symplify\\MonorepoBuilder\\Command\\PackagesJsonCommand' => __DIR__ . '/../..' . '/src/Command/PackagesJsonCommand.php',
         'Symplify\\MonorepoBuilder\\Command\\ValidateCommand' => __DIR__ . '/../..' . '/src/Command/ValidateCommand.php',
+        'Symplify\\MonorepoBuilder\\ComposerJsonManipulator\\ComposerJsonFactory' => __DIR__ . '/../..' . '/packages/ComposerJsonManipulator/ComposerJsonFactory.php',
+        'Symplify\\MonorepoBuilder\\ComposerJsonManipulator\\FileSystem\\JsonFileManager' => __DIR__ . '/../..' . '/packages/ComposerJsonManipulator/FileSystem/JsonFileManager.php',
+        'Symplify\\MonorepoBuilder\\ComposerJsonManipulator\\Json\\JsonCleaner' => __DIR__ . '/../..' . '/packages/ComposerJsonManipulator/Json/JsonCleaner.php',
+        'Symplify\\MonorepoBuilder\\ComposerJsonManipulator\\Json\\JsonInliner' => __DIR__ . '/../..' . '/packages/ComposerJsonManipulator/Json/JsonInliner.php',
+        'Symplify\\MonorepoBuilder\\ComposerJsonManipulator\\Printer\\ComposerJsonPrinter' => __DIR__ . '/../..' . '/packages/ComposerJsonManipulator/Printer/ComposerJsonPrinter.php',
+        'Symplify\\MonorepoBuilder\\ComposerJsonManipulator\\Sorter\\ComposerPackageSorter' => __DIR__ . '/../..' . '/packages/ComposerJsonManipulator/Sorter/ComposerPackageSorter.php',
+        'Symplify\\MonorepoBuilder\\ComposerJsonManipulator\\ValueObject\\ComposerJson' => __DIR__ . '/../..' . '/packages/ComposerJsonManipulator/ValueObject/ComposerJson.php',
+        'Symplify\\MonorepoBuilder\\ComposerJsonManipulator\\ValueObject\\ComposerJsonSection' => __DIR__ . '/../..' . '/packages/ComposerJsonManipulator/ValueObject/ComposerJsonSection.php',
+        'Symplify\\MonorepoBuilder\\ComposerJsonManipulator\\ValueObject\\Option' => __DIR__ . '/../..' . '/packages/ComposerJsonManipulator/ValueObject/Option.php',
         'Symplify\\MonorepoBuilder\\Config\\MBConfig' => __DIR__ . '/../..' . '/src/Config/MBConfig.php',
         'Symplify\\MonorepoBuilder\\ConflictingUpdater' => __DIR__ . '/../..' . '/src/ConflictingUpdater.php',
         'Symplify\\MonorepoBuilder\\Console\\MonorepoBuilderApplication' => __DIR__ . '/../..' . '/src/Console/MonorepoBuilderApplication.php',
@@ -797,9 +791,9 @@ class ComposerStaticInitb20f774dafe1dd6084101528423e9eb9
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitb20f774dafe1dd6084101528423e9eb9::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitb20f774dafe1dd6084101528423e9eb9::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitb20f774dafe1dd6084101528423e9eb9::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit51d0f4303d6b23d432011b1ee6a12c35::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit51d0f4303d6b23d432011b1ee6a12c35::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit51d0f4303d6b23d432011b1ee6a12c35::$classMap;
 
         }, null, ClassLoader::class);
     }

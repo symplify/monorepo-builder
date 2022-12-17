@@ -5,9 +5,9 @@ namespace Symplify\MonorepoBuilder\Merge\Command;
 
 use MonorepoBuilder202212\Symfony\Component\Console\Input\InputInterface;
 use MonorepoBuilder202212\Symfony\Component\Console\Output\OutputInterface;
-use MonorepoBuilder202212\Symplify\ComposerJsonManipulator\ComposerJsonFactory;
-use MonorepoBuilder202212\Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager;
-use MonorepoBuilder202212\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
+use Symplify\MonorepoBuilder\ComposerJsonManipulator\ComposerJsonFactory;
+use Symplify\MonorepoBuilder\ComposerJsonManipulator\FileSystem\JsonFileManager;
+use Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJson;
 use Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider;
 use Symplify\MonorepoBuilder\Merge\Application\MergedAndDecoratedComposerJsonFactory;
 use Symplify\MonorepoBuilder\Merge\Guard\ConflictingVersionsGuard;
@@ -20,11 +20,11 @@ final class MergeCommand extends AbstractSymplifyCommand
      */
     private $composerJsonProvider;
     /**
-     * @var \Symplify\ComposerJsonManipulator\ComposerJsonFactory
+     * @var \Symplify\MonorepoBuilder\ComposerJsonManipulator\ComposerJsonFactory
      */
     private $composerJsonFactory;
     /**
-     * @var \Symplify\ComposerJsonManipulator\FileSystem\JsonFileManager
+     * @var \Symplify\MonorepoBuilder\ComposerJsonManipulator\FileSystem\JsonFileManager
      */
     private $jsonFileManager;
     /**

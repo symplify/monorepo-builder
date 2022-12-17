@@ -4,12 +4,17 @@ declare (strict_types=1);
 namespace MonorepoBuilder202212;
 
 use MonorepoBuilder202212\Symfony\Component\Console\Application;
-use MonorepoBuilder202212\Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
+use MonorepoBuilder202212\Symfony\Component\Console\Style\SymfonyStyle;
+use Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
 use Symplify\MonorepoBuilder\Config\MBConfig;
 use Symplify\MonorepoBuilder\Console\MonorepoBuilderApplication;
 use Symplify\MonorepoBuilder\ValueObject\Option;
+use MonorepoBuilder202212\Symplify\PackageBuilder\Console\Style\SymfonyStyleFactory;
+use MonorepoBuilder202212\Symplify\PackageBuilder\Parameter\ParameterProvider;
 use MonorepoBuilder202212\Symplify\PackageBuilder\Reflection\PrivatesCaller;
 use MonorepoBuilder202212\Symplify\PackageBuilder\Yaml\ParametersMerger;
+use MonorepoBuilder202212\Symplify\SmartFileSystem\SmartFileSystem;
+use function MonorepoBuilder202212\Symfony\Component\DependencyInjection\Loader\Configurator\service;
 return static function (MBConfig $mbConfig) : void {
     $parameters = $mbConfig->parameters();
     $parameters->set('env(GITHUB_TOKEN)', null);
@@ -24,7 +29,6 @@ return static function (MBConfig $mbConfig) : void {
     // for back compatibility, better switch to "main"
     $mbConfig->defaultBranch('master');
     $mbConfig->packageAliasFormat('<major>.<minor>-dev');
-    $mbConfig->composerInlineSections(['keywords']);
     $mbConfig->composerSectionOrder([ComposerJsonSection::NAME, ComposerJsonSection::TYPE, ComposerJsonSection::DESCRIPTION, ComposerJsonSection::KEYWORDS, ComposerJsonSection::HOMEPAGE, ComposerJsonSection::LICENSE, ComposerJsonSection::AUTHORS, ComposerJsonSection::BIN, ComposerJsonSection::REQUIRE, ComposerJsonSection::REQUIRE_DEV, ComposerJsonSection::AUTOLOAD, ComposerJsonSection::AUTOLOAD_DEV, ComposerJsonSection::REPOSITORIES, ComposerJsonSection::PROVIDE, ComposerJsonSection::CONFLICT, ComposerJsonSection::REPLACE, ComposerJsonSection::SCRIPTS, ComposerJsonSection::SCRIPTS_DESCRIPTIONS, ComposerJsonSection::SUGGEST, ComposerJsonSection::CONFIG, ComposerJsonSection::MINIMUM_STABILITY, ComposerJsonSection::PREFER_STABLE, ComposerJsonSection::EXTRA]);
     $services = $mbConfig->services();
     $services->defaults()->public()->autowire();
@@ -37,4 +41,9 @@ return static function (MBConfig $mbConfig) : void {
     $services->alias(Application::class, MonorepoBuilderApplication::class);
     $services->set(PrivatesCaller::class);
     $services->set(ParametersMerger::class);
+    $services->set(SmartFileSystem::class);
+    $services->set(PrivatesCaller::class);
+    $services->set(ParameterProvider::class)->args([service('service_container')]);
+    $services->set(SymfonyStyleFactory::class);
+    $services->set(SymfonyStyle::class)->factory([service(SymfonyStyleFactory::class), 'create']);
 };

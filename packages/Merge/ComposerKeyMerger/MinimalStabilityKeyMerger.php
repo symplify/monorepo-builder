@@ -5,7 +5,7 @@ namespace Symplify\MonorepoBuilder\Merge\ComposerKeyMerger;
 
 use PharIo\Version\InvalidPreReleaseSuffixException;
 use PharIo\Version\PreReleaseSuffix;
-use MonorepoBuilder202212\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
+use Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJson;
 use Symplify\MonorepoBuilder\Merge\Contract\ComposerKeyMergerInterface;
 /**
  * @see \Symplify\MonorepoBuilder\Tests\Merge\ComposerKeyMerger\MinimalStabilityKeyMergerTest

@@ -1,12 +1,12 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder202212\Symplify\ComposerJsonManipulator\FileSystem;
+namespace Symplify\MonorepoBuilder\ComposerJsonManipulator\FileSystem;
 
 use MonorepoBuilder202212\Nette\Utils\Json;
-use MonorepoBuilder202212\Symplify\ComposerJsonManipulator\Json\JsonCleaner;
-use MonorepoBuilder202212\Symplify\ComposerJsonManipulator\Json\JsonInliner;
-use MonorepoBuilder202212\Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
+use Symplify\MonorepoBuilder\ComposerJsonManipulator\Json\JsonCleaner;
+use Symplify\MonorepoBuilder\ComposerJsonManipulator\Json\JsonInliner;
+use Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJson;
 use MonorepoBuilder202212\Symplify\PackageBuilder\Configuration\StaticEolConfiguration;
 use MonorepoBuilder202212\Symplify\SmartFileSystem\SmartFileInfo;
 use MonorepoBuilder202212\Symplify\SmartFileSystem\SmartFileSystem;
@@ -24,11 +24,11 @@ final class JsonFileManager
      */
     private $smartFileSystem;
     /**
-     * @var \Symplify\ComposerJsonManipulator\Json\JsonCleaner
+     * @var \Symplify\MonorepoBuilder\ComposerJsonManipulator\Json\JsonCleaner
      */
     private $jsonCleaner;
     /**
-     * @var \Symplify\ComposerJsonManipulator\Json\JsonInliner
+     * @var \Symplify\MonorepoBuilder\ComposerJsonManipulator\Json\JsonInliner
      */
     private $jsonInliner;
     public function __construct(SmartFileSystem $smartFileSystem, JsonCleaner $jsonCleaner, JsonInliner $jsonInliner)
