@@ -3,24 +3,18 @@
 declare (strict_types=1);
 namespace MonorepoBuilder202212\Symplify\SmartFileSystem\Finder;
 
-use SplFileInfo;
-use MonorepoBuilder202212\Symfony\Component\Finder\Finder as SymfonyFinder;
-use MonorepoBuilder202212\Symfony\Component\Finder\SplFileInfo as SymfonySplFileInfo;
+use MonorepoBuilder202212\Symfony\Component\Finder\Finder;
+use MonorepoBuilder202212\Symfony\Component\Finder\SplFileInfo;
 use MonorepoBuilder202212\Symplify\SmartFileSystem\SmartFileInfo;
-/**
- * @see \Symplify\SmartFileSystem\Tests\Finder\FinderSanitizer\FinderSanitizerTest
- */
 final class FinderSanitizer
 {
     /**
-     * @param SymfonyFinder|mixed[] $files
      * @return SmartFileInfo[]
      */
-    public function sanitize($files) : array
+    public function sanitize(Finder $finder) : array
     {
         $smartFileInfos = [];
-        foreach ($files as $file) {
-            $fileInfo = \is_string($file) ? new SplFileInfo($file) : $file;
+        foreach ($finder as $fileInfo) {
             if (!$this->isFileInfoValid($fileInfo)) {
                 continue;
             }
