@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202212\Symfony\Component\Console\Formatter;
+namespace MonorepoBuilder202301\Symfony\Component\Console\Formatter;
 
-use MonorepoBuilder202212\Symfony\Component\Console\Exception\InvalidArgumentException;
+use MonorepoBuilder202301\Symfony\Component\Console\Exception\InvalidArgumentException;
 /**
  * Formatter class for console output.
  *

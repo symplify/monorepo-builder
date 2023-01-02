@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202212\Symfony\Component\Console\Output;
+namespace MonorepoBuilder202301\Symfony\Component\Console\Output;
 
-use MonorepoBuilder202212\Symfony\Component\Console\Formatter\OutputFormatterInterface;
-use MonorepoBuilder202212\Symfony\Component\Console\Helper\Helper;
-use MonorepoBuilder202212\Symfony\Component\Console\Terminal;
+use MonorepoBuilder202301\Symfony\Component\Console\Formatter\OutputFormatterInterface;
+use MonorepoBuilder202301\Symfony\Component\Console\Helper\Helper;
+use MonorepoBuilder202301\Symfony\Component\Console\Terminal;
 /**
  * @author Pierre du Plessis <pdples@gmail.com>
  * @author Gabriel Ostrolucký <gabriel.ostrolucky@gmail.com>

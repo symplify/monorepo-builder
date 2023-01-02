@@ -1,10 +1,10 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder202212\Symplify\SymplifyKernel\DependencyInjection;
+namespace MonorepoBuilder202301\Symplify\SymplifyKernel\DependencyInjection;
 
-use MonorepoBuilder202212\Symfony\Component\DependencyInjection\Compiler\MergeExtensionConfigurationPass;
-use MonorepoBuilder202212\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder202301\Symfony\Component\DependencyInjection\Compiler\MergeExtensionConfigurationPass;
+use MonorepoBuilder202301\Symfony\Component\DependencyInjection\ContainerBuilder;
 /**
  * Mimics @see \Symfony\Component\HttpKernel\DependencyInjection\MergeExtensionConfigurationPass without dependency on
  * symfony/http-kernel

@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202212\Symfony\Component\Config\Definition\Loader;
+namespace MonorepoBuilder202301\Symfony\Component\Config\Definition\Loader;
 
-use MonorepoBuilder202212\Symfony\Component\Config\Definition\Builder\TreeBuilder;
-use MonorepoBuilder202212\Symfony\Component\Config\Definition\Configurator\DefinitionConfigurator;
-use MonorepoBuilder202212\Symfony\Component\Config\FileLocatorInterface;
-use MonorepoBuilder202212\Symfony\Component\Config\Loader\FileLoader;
-use MonorepoBuilder202212\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder202301\Symfony\Component\Config\Definition\Builder\TreeBuilder;
+use MonorepoBuilder202301\Symfony\Component\Config\Definition\Configurator\DefinitionConfigurator;
+use MonorepoBuilder202301\Symfony\Component\Config\FileLocatorInterface;
+use MonorepoBuilder202301\Symfony\Component\Config\Loader\FileLoader;
+use MonorepoBuilder202301\Symfony\Component\DependencyInjection\ContainerBuilder;
 /**
  * DefinitionFileLoader loads config definitions from a PHP file.
  *

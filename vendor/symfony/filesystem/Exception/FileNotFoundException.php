@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202212\Symfony\Component\Filesystem\Exception;
+namespace MonorepoBuilder202301\Symfony\Component\Filesystem\Exception;
 
 /**
  * Exception class thrown when a file couldn't be found.

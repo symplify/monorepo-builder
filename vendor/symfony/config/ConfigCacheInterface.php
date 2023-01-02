@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202212\Symfony\Component\Config;
+namespace MonorepoBuilder202301\Symfony\Component\Config;
 
-use MonorepoBuilder202212\Symfony\Component\Config\Resource\ResourceInterface;
+use MonorepoBuilder202301\Symfony\Component\Config\Resource\ResourceInterface;
 /**
  * Interface for ConfigCache.
  *

@@ -5,7 +5,7 @@ namespace Symplify\MonorepoBuilder\Testing\ComposerJson;
 
 use Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
 use Symplify\MonorepoBuilder\ValueObject\Option;
-use MonorepoBuilder202212\Symplify\PackageBuilder\Parameter\ParameterProvider;
+use MonorepoBuilder202301\Symplify\PackageBuilder\Parameter\ParameterProvider;
 final class ComposerVersionManipulator
 {
     /**

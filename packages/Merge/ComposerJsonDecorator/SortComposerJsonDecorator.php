@@ -6,7 +6,7 @@ namespace Symplify\MonorepoBuilder\Merge\ComposerJsonDecorator;
 use Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJson;
 use Symplify\MonorepoBuilder\Merge\Contract\ComposerJsonDecoratorInterface;
 use Symplify\MonorepoBuilder\ValueObject\Option;
-use MonorepoBuilder202212\Symplify\PackageBuilder\Parameter\ParameterProvider;
+use MonorepoBuilder202301\Symplify\PackageBuilder\Parameter\ParameterProvider;
 /**
  * @see \Symplify\MonorepoBuilder\Tests\Merge\ComposerJsonDecorator\SortComposerJsonDecorator\SortComposerJsonDecoratorTest
  */

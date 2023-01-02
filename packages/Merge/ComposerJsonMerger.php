@@ -8,7 +8,7 @@ use Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJson;
 use Symplify\MonorepoBuilder\Merge\Configuration\MergedPackagesCollector;
 use Symplify\MonorepoBuilder\Merge\Contract\ComposerKeyMergerInterface;
 use Symplify\MonorepoBuilder\Merge\PathResolver\AutoloadPathNormalizer;
-use MonorepoBuilder202212\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder202301\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\MonorepoBuilder\Tests\Merge\ComposerJsonMerger\ComposerJsonMergerTest
  */

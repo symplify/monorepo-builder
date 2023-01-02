@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202212\Symfony\Component\Console\Command;
+namespace MonorepoBuilder202301\Symfony\Component\Console\Command;
 
-use MonorepoBuilder202212\Symfony\Component\Console\Exception\LogicException;
-use MonorepoBuilder202212\Symfony\Component\Lock\LockFactory;
-use MonorepoBuilder202212\Symfony\Component\Lock\LockInterface;
-use MonorepoBuilder202212\Symfony\Component\Lock\Store\FlockStore;
-use MonorepoBuilder202212\Symfony\Component\Lock\Store\SemaphoreStore;
+use MonorepoBuilder202301\Symfony\Component\Console\Exception\LogicException;
+use MonorepoBuilder202301\Symfony\Component\Lock\LockFactory;
+use MonorepoBuilder202301\Symfony\Component\Lock\LockInterface;
+use MonorepoBuilder202301\Symfony\Component\Lock\Store\FlockStore;
+use MonorepoBuilder202301\Symfony\Component\Lock\Store\SemaphoreStore;
 /**
  * Basic lock feature for commands.
  *

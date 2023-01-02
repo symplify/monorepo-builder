@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202212\Symfony\Component\Console\Command;
+namespace MonorepoBuilder202301\Symfony\Component\Console\Command;
 
-use MonorepoBuilder202212\Symfony\Component\Console\Attribute\AsCommand;
-use MonorepoBuilder202212\Symfony\Component\Console\Input\InputArgument;
-use MonorepoBuilder202212\Symfony\Component\Console\Input\InputInterface;
-use MonorepoBuilder202212\Symfony\Component\Console\Input\InputOption;
-use MonorepoBuilder202212\Symfony\Component\Console\Output\ConsoleOutputInterface;
-use MonorepoBuilder202212\Symfony\Component\Console\Output\OutputInterface;
-use MonorepoBuilder202212\Symfony\Component\Process\Process;
+use MonorepoBuilder202301\Symfony\Component\Console\Attribute\AsCommand;
+use MonorepoBuilder202301\Symfony\Component\Console\Input\InputArgument;
+use MonorepoBuilder202301\Symfony\Component\Console\Input\InputInterface;
+use MonorepoBuilder202301\Symfony\Component\Console\Input\InputOption;
+use MonorepoBuilder202301\Symfony\Component\Console\Output\ConsoleOutputInterface;
+use MonorepoBuilder202301\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder202301\Symfony\Component\Process\Process;
 /**
  * Dumps the completion script for the current shell.
  *

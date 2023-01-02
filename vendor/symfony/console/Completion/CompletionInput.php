@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202212\Symfony\Component\Console\Completion;
+namespace MonorepoBuilder202301\Symfony\Component\Console\Completion;
 
-use MonorepoBuilder202212\Symfony\Component\Console\Exception\RuntimeException;
-use MonorepoBuilder202212\Symfony\Component\Console\Input\ArgvInput;
-use MonorepoBuilder202212\Symfony\Component\Console\Input\InputDefinition;
-use MonorepoBuilder202212\Symfony\Component\Console\Input\InputOption;
+use MonorepoBuilder202301\Symfony\Component\Console\Exception\RuntimeException;
+use MonorepoBuilder202301\Symfony\Component\Console\Input\ArgvInput;
+use MonorepoBuilder202301\Symfony\Component\Console\Input\InputDefinition;
+use MonorepoBuilder202301\Symfony\Component\Console\Input\InputOption;
 /**
  * An input specialized for shell completion.
  *

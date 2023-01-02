@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202212\Symfony\Component\Console\Descriptor;
+namespace MonorepoBuilder202301\Symfony\Component\Console\Descriptor;
 
-use MonorepoBuilder202212\Symfony\Component\Console\Application;
-use MonorepoBuilder202212\Symfony\Component\Console\Command\Command;
-use MonorepoBuilder202212\Symfony\Component\Console\Input\InputArgument;
-use MonorepoBuilder202212\Symfony\Component\Console\Input\InputDefinition;
-use MonorepoBuilder202212\Symfony\Component\Console\Input\InputOption;
+use MonorepoBuilder202301\Symfony\Component\Console\Application;
+use MonorepoBuilder202301\Symfony\Component\Console\Command\Command;
+use MonorepoBuilder202301\Symfony\Component\Console\Input\InputArgument;
+use MonorepoBuilder202301\Symfony\Component\Console\Input\InputDefinition;
+use MonorepoBuilder202301\Symfony\Component\Console\Input\InputOption;
 /**
  * JSON descriptor.
  *

@@ -1,20 +1,20 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder202212;
+namespace MonorepoBuilder202301;
 
-use MonorepoBuilder202212\Symfony\Component\Console\Application;
-use MonorepoBuilder202212\Symfony\Component\Console\Style\SymfonyStyle;
+use MonorepoBuilder202301\Symfony\Component\Console\Application;
+use MonorepoBuilder202301\Symfony\Component\Console\Style\SymfonyStyle;
 use Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
 use Symplify\MonorepoBuilder\Config\MBConfig;
 use Symplify\MonorepoBuilder\Console\MonorepoBuilderApplication;
 use Symplify\MonorepoBuilder\ValueObject\Option;
-use MonorepoBuilder202212\Symplify\PackageBuilder\Console\Style\SymfonyStyleFactory;
-use MonorepoBuilder202212\Symplify\PackageBuilder\Parameter\ParameterProvider;
-use MonorepoBuilder202212\Symplify\PackageBuilder\Reflection\PrivatesCaller;
-use MonorepoBuilder202212\Symplify\PackageBuilder\Yaml\ParametersMerger;
-use MonorepoBuilder202212\Symplify\SmartFileSystem\SmartFileSystem;
-use function MonorepoBuilder202212\Symfony\Component\DependencyInjection\Loader\Configurator\service;
+use MonorepoBuilder202301\Symplify\PackageBuilder\Console\Style\SymfonyStyleFactory;
+use MonorepoBuilder202301\Symplify\PackageBuilder\Parameter\ParameterProvider;
+use MonorepoBuilder202301\Symplify\PackageBuilder\Reflection\PrivatesCaller;
+use MonorepoBuilder202301\Symplify\PackageBuilder\Yaml\ParametersMerger;
+use MonorepoBuilder202301\Symplify\SmartFileSystem\SmartFileSystem;
+use function MonorepoBuilder202301\Symfony\Component\DependencyInjection\Loader\Configurator\service;
 return static function (MBConfig $mbConfig) : void {
     $parameters = $mbConfig->parameters();
     $parameters->set('env(GITHUB_TOKEN)', null);

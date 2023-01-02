@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202212\Symfony\Component\DependencyInjection\Compiler;
+namespace MonorepoBuilder202301\Symfony\Component\DependencyInjection\Compiler;
 
-use MonorepoBuilder202212\Symfony\Component\Config\Definition\BaseNode;
-use MonorepoBuilder202212\Symfony\Component\Config\Definition\ConfigurationInterface;
-use MonorepoBuilder202212\Symfony\Component\Config\Definition\Processor;
-use MonorepoBuilder202212\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder202212\Symfony\Component\DependencyInjection\Extension\ConfigurationExtensionInterface;
-use MonorepoBuilder202212\Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag;
-use MonorepoBuilder202212\Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
+use MonorepoBuilder202301\Symfony\Component\Config\Definition\BaseNode;
+use MonorepoBuilder202301\Symfony\Component\Config\Definition\ConfigurationInterface;
+use MonorepoBuilder202301\Symfony\Component\Config\Definition\Processor;
+use MonorepoBuilder202301\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder202301\Symfony\Component\DependencyInjection\Extension\ConfigurationExtensionInterface;
+use MonorepoBuilder202301\Symfony\Component\DependencyInjection\ParameterBag\EnvPlaceholderParameterBag;
+use MonorepoBuilder202301\Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
 /**
  * Validates environment variable placeholders used in extension configuration with dummy values.
  *

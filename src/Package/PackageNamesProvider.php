@@ -5,7 +5,7 @@ namespace Symplify\MonorepoBuilder\Package;
 
 use Symplify\MonorepoBuilder\ComposerJsonManipulator\FileSystem\JsonFileManager;
 use Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider;
-use MonorepoBuilder202212\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder202301\Symplify\SmartFileSystem\SmartFileInfo;
 final class PackageNamesProvider
 {
     /**

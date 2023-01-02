@@ -6,7 +6,7 @@ namespace Symplify\MonorepoBuilder\Merge\Application;
 use Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJson;
 use Symplify\MonorepoBuilder\Merge\ComposerJsonMerger;
 use Symplify\MonorepoBuilder\Merge\Contract\ComposerJsonDecoratorInterface;
-use MonorepoBuilder202212\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder202301\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\MonorepoBuilder\Tests\Merge\Application\MergedAndDecoratedComposerJsonFactoryTest
  */

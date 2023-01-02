@@ -5,7 +5,7 @@ namespace Symplify\MonorepoBuilder;
 
 use Symplify\MonorepoBuilder\ComposerJsonManipulator\FileSystem\JsonFileManager;
 use Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
-use MonorepoBuilder202212\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder202301\Symplify\SmartFileSystem\SmartFileInfo;
 final class DependencyUpdater
 {
     /**

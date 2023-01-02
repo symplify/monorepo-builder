@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202212\Symfony\Component\Config\Exception;
+namespace MonorepoBuilder202301\Symfony\Component\Config\Exception;
 
 /**
  * Exception class for when a circular reference is detected when importing resources.

@@ -5,7 +5,7 @@ namespace Symplify\MonorepoBuilder\Merge\ComposerKeyMerger;
 
 use Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJson;
 use Symplify\MonorepoBuilder\Merge\Contract\ComposerKeyMergerInterface;
-use MonorepoBuilder202212\Symplify\PackageBuilder\Yaml\ParametersMerger;
+use MonorepoBuilder202301\Symplify\PackageBuilder\Yaml\ParametersMerger;
 final class ExtraComposerKeyMerger implements ComposerKeyMergerInterface
 {
     /**

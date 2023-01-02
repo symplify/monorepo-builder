@@ -8,7 +8,7 @@ use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterfa
 use Symplify\MonorepoBuilder\Release\Process\ProcessRunner;
 use Symplify\MonorepoBuilder\Utils\VersionUtils;
 use Symplify\MonorepoBuilder\ValueObject\Option;
-use MonorepoBuilder202212\Symplify\PackageBuilder\Parameter\ParameterProvider;
+use MonorepoBuilder202301\Symplify\PackageBuilder\Parameter\ParameterProvider;
 final class PushNextDevReleaseWorker implements ReleaseWorkerInterface
 {
     /**

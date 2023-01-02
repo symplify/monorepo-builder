@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202212\Symfony\Component\DependencyInjection\Loader\Configurator;
+namespace MonorepoBuilder202301\Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use MonorepoBuilder202212\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder202212\Symfony\Component\DependencyInjection\Definition;
+use MonorepoBuilder202301\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder202301\Symfony\Component\DependencyInjection\Definition;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */

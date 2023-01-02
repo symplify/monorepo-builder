@@ -8,20 +8,20 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202212\Symfony\Component\Console\Command;
+namespace MonorepoBuilder202301\Symfony\Component\Console\Command;
 
-use MonorepoBuilder202212\Symfony\Component\Console\Attribute\AsCommand;
-use MonorepoBuilder202212\Symfony\Component\Console\Completion\CompletionInput;
-use MonorepoBuilder202212\Symfony\Component\Console\Completion\CompletionSuggestions;
-use MonorepoBuilder202212\Symfony\Component\Console\Completion\Output\BashCompletionOutput;
-use MonorepoBuilder202212\Symfony\Component\Console\Completion\Output\CompletionOutputInterface;
-use MonorepoBuilder202212\Symfony\Component\Console\Completion\Output\FishCompletionOutput;
-use MonorepoBuilder202212\Symfony\Component\Console\Completion\Output\ZshCompletionOutput;
-use MonorepoBuilder202212\Symfony\Component\Console\Exception\CommandNotFoundException;
-use MonorepoBuilder202212\Symfony\Component\Console\Exception\ExceptionInterface;
-use MonorepoBuilder202212\Symfony\Component\Console\Input\InputInterface;
-use MonorepoBuilder202212\Symfony\Component\Console\Input\InputOption;
-use MonorepoBuilder202212\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder202301\Symfony\Component\Console\Attribute\AsCommand;
+use MonorepoBuilder202301\Symfony\Component\Console\Completion\CompletionInput;
+use MonorepoBuilder202301\Symfony\Component\Console\Completion\CompletionSuggestions;
+use MonorepoBuilder202301\Symfony\Component\Console\Completion\Output\BashCompletionOutput;
+use MonorepoBuilder202301\Symfony\Component\Console\Completion\Output\CompletionOutputInterface;
+use MonorepoBuilder202301\Symfony\Component\Console\Completion\Output\FishCompletionOutput;
+use MonorepoBuilder202301\Symfony\Component\Console\Completion\Output\ZshCompletionOutput;
+use MonorepoBuilder202301\Symfony\Component\Console\Exception\CommandNotFoundException;
+use MonorepoBuilder202301\Symfony\Component\Console\Exception\ExceptionInterface;
+use MonorepoBuilder202301\Symfony\Component\Console\Input\InputInterface;
+use MonorepoBuilder202301\Symfony\Component\Console\Input\InputOption;
+use MonorepoBuilder202301\Symfony\Component\Console\Output\OutputInterface;
 /**
  * Responsible for providing the values to the shell completion.
  *

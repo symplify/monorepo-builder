@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202212\Symfony\Component\Console\Input;
+namespace MonorepoBuilder202301\Symfony\Component\Console\Input;
 
-use MonorepoBuilder202212\Symfony\Component\Console\Command\Command;
-use MonorepoBuilder202212\Symfony\Component\Console\Completion\CompletionInput;
-use MonorepoBuilder202212\Symfony\Component\Console\Completion\CompletionSuggestions;
-use MonorepoBuilder202212\Symfony\Component\Console\Completion\Suggestion;
-use MonorepoBuilder202212\Symfony\Component\Console\Exception\InvalidArgumentException;
-use MonorepoBuilder202212\Symfony\Component\Console\Exception\LogicException;
+use MonorepoBuilder202301\Symfony\Component\Console\Command\Command;
+use MonorepoBuilder202301\Symfony\Component\Console\Completion\CompletionInput;
+use MonorepoBuilder202301\Symfony\Component\Console\Completion\CompletionSuggestions;
+use MonorepoBuilder202301\Symfony\Component\Console\Completion\Suggestion;
+use MonorepoBuilder202301\Symfony\Component\Console\Exception\InvalidArgumentException;
+use MonorepoBuilder202301\Symfony\Component\Console\Exception\LogicException;
 /**
  * Represents a command line argument.
  *

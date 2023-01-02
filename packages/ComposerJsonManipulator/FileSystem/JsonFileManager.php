@@ -3,13 +3,13 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\ComposerJsonManipulator\FileSystem;
 
-use MonorepoBuilder202212\Nette\Utils\Json;
+use MonorepoBuilder202301\Nette\Utils\Json;
 use Symplify\MonorepoBuilder\ComposerJsonManipulator\Json\JsonCleaner;
 use Symplify\MonorepoBuilder\ComposerJsonManipulator\Json\JsonInliner;
 use Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJson;
-use MonorepoBuilder202212\Symplify\PackageBuilder\Configuration\StaticEolConfiguration;
-use MonorepoBuilder202212\Symplify\SmartFileSystem\SmartFileInfo;
-use MonorepoBuilder202212\Symplify\SmartFileSystem\SmartFileSystem;
+use MonorepoBuilder202301\Symplify\PackageBuilder\Configuration\StaticEolConfiguration;
+use MonorepoBuilder202301\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder202301\Symplify\SmartFileSystem\SmartFileSystem;
 /**
  * @see \Symplify\MonorepoBuilder\Tests\FileSystem\JsonFileManager\JsonFileManagerTest
  */

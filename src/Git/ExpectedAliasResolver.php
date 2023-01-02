@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Git;
 
-use MonorepoBuilder202212\Symfony\Component\Process\Process;
+use MonorepoBuilder202301\Symfony\Component\Process\Process;
 use Symplify\MonorepoBuilder\Utils\VersionUtils;
 final class ExpectedAliasResolver
 {

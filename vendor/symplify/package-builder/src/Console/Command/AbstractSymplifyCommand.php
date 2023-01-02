@@ -1,16 +1,16 @@
 <?php
 
 declare (strict_types=1);
-namespace MonorepoBuilder202212\Symplify\PackageBuilder\Console\Command;
+namespace MonorepoBuilder202301\Symplify\PackageBuilder\Console\Command;
 
-use MonorepoBuilder202212\Symfony\Component\Console\Command\Command;
-use MonorepoBuilder202212\Symfony\Component\Console\Input\InputOption;
-use MonorepoBuilder202212\Symfony\Component\Console\Style\SymfonyStyle;
-use MonorepoBuilder202212\Symfony\Contracts\Service\Attribute\Required;
-use MonorepoBuilder202212\Symplify\PackageBuilder\ValueObject\Option;
-use MonorepoBuilder202212\Symplify\SmartFileSystem\FileSystemGuard;
-use MonorepoBuilder202212\Symplify\SmartFileSystem\Finder\SmartFinder;
-use MonorepoBuilder202212\Symplify\SmartFileSystem\SmartFileSystem;
+use MonorepoBuilder202301\Symfony\Component\Console\Command\Command;
+use MonorepoBuilder202301\Symfony\Component\Console\Input\InputOption;
+use MonorepoBuilder202301\Symfony\Component\Console\Style\SymfonyStyle;
+use MonorepoBuilder202301\Symfony\Contracts\Service\Attribute\Required;
+use MonorepoBuilder202301\Symplify\PackageBuilder\ValueObject\Option;
+use MonorepoBuilder202301\Symplify\SmartFileSystem\FileSystemGuard;
+use MonorepoBuilder202301\Symplify\SmartFileSystem\Finder\SmartFinder;
+use MonorepoBuilder202301\Symplify\SmartFileSystem\SmartFileSystem;
 abstract class AbstractSymplifyCommand extends Command
 {
     /**

@@ -8,16 +8,16 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202212\Symfony\Component\DependencyInjection\Compiler;
+namespace MonorepoBuilder202301\Symfony\Component\DependencyInjection\Compiler;
 
-use MonorepoBuilder202212\Symfony\Component\DependencyInjection\Argument\ArgumentInterface;
-use MonorepoBuilder202212\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
-use MonorepoBuilder202212\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder202212\Symfony\Component\DependencyInjection\ContainerInterface;
-use MonorepoBuilder202212\Symfony\Component\DependencyInjection\Definition;
-use MonorepoBuilder202212\Symfony\Component\DependencyInjection\Exception\LogicException;
-use MonorepoBuilder202212\Symfony\Component\DependencyInjection\Reference;
-use MonorepoBuilder202212\Symfony\Component\ExpressionLanguage\Expression;
+use MonorepoBuilder202301\Symfony\Component\DependencyInjection\Argument\ArgumentInterface;
+use MonorepoBuilder202301\Symfony\Component\DependencyInjection\Argument\IteratorArgument;
+use MonorepoBuilder202301\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder202301\Symfony\Component\DependencyInjection\ContainerInterface;
+use MonorepoBuilder202301\Symfony\Component\DependencyInjection\Definition;
+use MonorepoBuilder202301\Symfony\Component\DependencyInjection\Exception\LogicException;
+use MonorepoBuilder202301\Symfony\Component\DependencyInjection\Reference;
+use MonorepoBuilder202301\Symfony\Component\ExpressionLanguage\Expression;
 /**
  * Run this pass before passes that need to know more about the relation of
  * your services.

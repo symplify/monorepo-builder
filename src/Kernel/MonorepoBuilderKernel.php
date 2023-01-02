@@ -3,11 +3,11 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Kernel;
 
-use MonorepoBuilder202212\Psr\Container\ContainerInterface;
+use MonorepoBuilder202301\Psr\Container\ContainerInterface;
 use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface;
-use MonorepoBuilder202212\Symplify\PackageBuilder\DependencyInjection\CompilerPass\AutowireInterfacesCompilerPass;
-use MonorepoBuilder202212\Symplify\PackageBuilder\ValueObject\ConsoleColorDiffConfig;
-use MonorepoBuilder202212\Symplify\SymplifyKernel\HttpKernel\AbstractSymplifyKernel;
+use MonorepoBuilder202301\Symplify\PackageBuilder\DependencyInjection\CompilerPass\AutowireInterfacesCompilerPass;
+use MonorepoBuilder202301\Symplify\PackageBuilder\ValueObject\ConsoleColorDiffConfig;
+use MonorepoBuilder202301\Symplify\SymplifyKernel\HttpKernel\AbstractSymplifyKernel;
 final class MonorepoBuilderKernel extends AbstractSymplifyKernel
 {
     /**

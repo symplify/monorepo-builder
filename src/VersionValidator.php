@@ -9,8 +9,8 @@ use Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJsonSec
 use Symplify\MonorepoBuilder\Merge\Configuration\ModifyingComposerJsonProvider;
 use Symplify\MonorepoBuilder\ValueObject\File;
 use Symplify\MonorepoBuilder\ValueObject\Option;
-use MonorepoBuilder202212\Symplify\PackageBuilder\Parameter\ParameterProvider;
-use MonorepoBuilder202212\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder202301\Symplify\PackageBuilder\Parameter\ParameterProvider;
+use MonorepoBuilder202301\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\MonorepoBuilder\Tests\VersionValidator\VersionValidatorTest
  */

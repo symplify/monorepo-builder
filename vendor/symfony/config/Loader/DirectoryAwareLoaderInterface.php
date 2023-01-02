@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202212\Symfony\Component\Config\Loader;
+namespace MonorepoBuilder202301\Symfony\Component\Config\Loader;
 
 /**
  * A loader that can be scoped to a given filesystem directory.

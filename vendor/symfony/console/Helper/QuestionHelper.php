@@ -8,22 +8,22 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202212\Symfony\Component\Console\Helper;
+namespace MonorepoBuilder202301\Symfony\Component\Console\Helper;
 
-use MonorepoBuilder202212\Symfony\Component\Console\Cursor;
-use MonorepoBuilder202212\Symfony\Component\Console\Exception\MissingInputException;
-use MonorepoBuilder202212\Symfony\Component\Console\Exception\RuntimeException;
-use MonorepoBuilder202212\Symfony\Component\Console\Formatter\OutputFormatter;
-use MonorepoBuilder202212\Symfony\Component\Console\Formatter\OutputFormatterStyle;
-use MonorepoBuilder202212\Symfony\Component\Console\Input\InputInterface;
-use MonorepoBuilder202212\Symfony\Component\Console\Input\StreamableInputInterface;
-use MonorepoBuilder202212\Symfony\Component\Console\Output\ConsoleOutputInterface;
-use MonorepoBuilder202212\Symfony\Component\Console\Output\ConsoleSectionOutput;
-use MonorepoBuilder202212\Symfony\Component\Console\Output\OutputInterface;
-use MonorepoBuilder202212\Symfony\Component\Console\Question\ChoiceQuestion;
-use MonorepoBuilder202212\Symfony\Component\Console\Question\Question;
-use MonorepoBuilder202212\Symfony\Component\Console\Terminal;
-use function MonorepoBuilder202212\Symfony\Component\String\s;
+use MonorepoBuilder202301\Symfony\Component\Console\Cursor;
+use MonorepoBuilder202301\Symfony\Component\Console\Exception\MissingInputException;
+use MonorepoBuilder202301\Symfony\Component\Console\Exception\RuntimeException;
+use MonorepoBuilder202301\Symfony\Component\Console\Formatter\OutputFormatter;
+use MonorepoBuilder202301\Symfony\Component\Console\Formatter\OutputFormatterStyle;
+use MonorepoBuilder202301\Symfony\Component\Console\Input\InputInterface;
+use MonorepoBuilder202301\Symfony\Component\Console\Input\StreamableInputInterface;
+use MonorepoBuilder202301\Symfony\Component\Console\Output\ConsoleOutputInterface;
+use MonorepoBuilder202301\Symfony\Component\Console\Output\ConsoleSectionOutput;
+use MonorepoBuilder202301\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder202301\Symfony\Component\Console\Question\ChoiceQuestion;
+use MonorepoBuilder202301\Symfony\Component\Console\Question\Question;
+use MonorepoBuilder202301\Symfony\Component\Console\Terminal;
+use function MonorepoBuilder202301\Symfony\Component\String\s;
 /**
  * The QuestionHelper class provides helpers to interact with the user.
  *

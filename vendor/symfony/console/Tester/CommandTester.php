@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202212\Symfony\Component\Console\Tester;
+namespace MonorepoBuilder202301\Symfony\Component\Console\Tester;
 
-use MonorepoBuilder202212\Symfony\Component\Console\Command\Command;
-use MonorepoBuilder202212\Symfony\Component\Console\Input\ArrayInput;
+use MonorepoBuilder202301\Symfony\Component\Console\Command\Command;
+use MonorepoBuilder202301\Symfony\Component\Console\Input\ArrayInput;
 /**
  * Eases the testing of console commands.
  *

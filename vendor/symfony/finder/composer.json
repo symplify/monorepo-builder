@@ -23,7 +23,7 @@
     },
     "autoload": {
         "psr-4": {
-            "MonorepoBuilder202212\\Symfony\\Component\\Finder\\": ""
+            "MonorepoBuilder202301\\Symfony\\Component\\Finder\\": ""
         },
         "exclude-from-classmap": [
             "\/Tests\/"

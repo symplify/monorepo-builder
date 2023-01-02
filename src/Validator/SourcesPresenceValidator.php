@@ -6,7 +6,7 @@ namespace Symplify\MonorepoBuilder\Validator;
 use Symplify\MonorepoBuilder\Exception\Validator\InvalidComposerJsonSetupException;
 use Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider;
 use Symplify\MonorepoBuilder\ValueObject\Option;
-use MonorepoBuilder202212\Symplify\PackageBuilder\Parameter\ParameterProvider;
+use MonorepoBuilder202301\Symplify\PackageBuilder\Parameter\ParameterProvider;
 final class SourcesPresenceValidator
 {
     /**

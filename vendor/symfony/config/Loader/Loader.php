@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202212\Symfony\Component\Config\Loader;
+namespace MonorepoBuilder202301\Symfony\Component\Config\Loader;
 
-use MonorepoBuilder202212\Symfony\Component\Config\Exception\LoaderLoadException;
+use MonorepoBuilder202301\Symfony\Component\Config\Exception\LoaderLoadException;
 /**
  * Loader is the abstract class used by all built-in loaders.
  *

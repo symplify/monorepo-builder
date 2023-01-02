@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202212\Symfony\Component\DependencyInjection\Compiler;
+namespace MonorepoBuilder202301\Symfony\Component\DependencyInjection\Compiler;
 
-use MonorepoBuilder202212\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder202212\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
+use MonorepoBuilder202301\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder202301\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
 /**
  * Checks your services for circular references.
  *

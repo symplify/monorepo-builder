@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\ComposerJsonManipulator\Sorter;
 
-use MonorepoBuilder202212\Nette\Utils\Strings;
+use MonorepoBuilder202301\Nette\Utils\Strings;
 /**
  * Mostly inspired by https://github.com/composer/composer/blob/master/src/Composer/Json/JsonManipulator.php
  *

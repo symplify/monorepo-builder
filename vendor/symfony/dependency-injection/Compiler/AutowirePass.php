@@ -8,24 +8,24 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202212\Symfony\Component\DependencyInjection\Compiler;
+namespace MonorepoBuilder202301\Symfony\Component\DependencyInjection\Compiler;
 
-use MonorepoBuilder202212\Symfony\Component\Config\Resource\ClassExistenceResource;
-use MonorepoBuilder202212\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
-use MonorepoBuilder202212\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument;
-use MonorepoBuilder202212\Symfony\Component\DependencyInjection\Attribute\Autowire;
-use MonorepoBuilder202212\Symfony\Component\DependencyInjection\Attribute\MapDecorated;
-use MonorepoBuilder202212\Symfony\Component\DependencyInjection\Attribute\TaggedIterator;
-use MonorepoBuilder202212\Symfony\Component\DependencyInjection\Attribute\TaggedLocator;
-use MonorepoBuilder202212\Symfony\Component\DependencyInjection\Attribute\Target;
-use MonorepoBuilder202212\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder202212\Symfony\Component\DependencyInjection\ContainerInterface;
-use MonorepoBuilder202212\Symfony\Component\DependencyInjection\Definition;
-use MonorepoBuilder202212\Symfony\Component\DependencyInjection\Exception\AutowiringFailedException;
-use MonorepoBuilder202212\Symfony\Component\DependencyInjection\Exception\RuntimeException;
-use MonorepoBuilder202212\Symfony\Component\DependencyInjection\LazyProxy\ProxyHelper;
-use MonorepoBuilder202212\Symfony\Component\DependencyInjection\Reference;
-use MonorepoBuilder202212\Symfony\Component\DependencyInjection\TypedReference;
+use MonorepoBuilder202301\Symfony\Component\Config\Resource\ClassExistenceResource;
+use MonorepoBuilder202301\Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
+use MonorepoBuilder202301\Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument;
+use MonorepoBuilder202301\Symfony\Component\DependencyInjection\Attribute\Autowire;
+use MonorepoBuilder202301\Symfony\Component\DependencyInjection\Attribute\MapDecorated;
+use MonorepoBuilder202301\Symfony\Component\DependencyInjection\Attribute\TaggedIterator;
+use MonorepoBuilder202301\Symfony\Component\DependencyInjection\Attribute\TaggedLocator;
+use MonorepoBuilder202301\Symfony\Component\DependencyInjection\Attribute\Target;
+use MonorepoBuilder202301\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder202301\Symfony\Component\DependencyInjection\ContainerInterface;
+use MonorepoBuilder202301\Symfony\Component\DependencyInjection\Definition;
+use MonorepoBuilder202301\Symfony\Component\DependencyInjection\Exception\AutowiringFailedException;
+use MonorepoBuilder202301\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use MonorepoBuilder202301\Symfony\Component\DependencyInjection\LazyProxy\ProxyHelper;
+use MonorepoBuilder202301\Symfony\Component\DependencyInjection\Reference;
+use MonorepoBuilder202301\Symfony\Component\DependencyInjection\TypedReference;
 /**
  * Inspects existing service definitions and wires the autowired ones using the type hints of their classes.
  *

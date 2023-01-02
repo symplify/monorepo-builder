@@ -8,16 +8,16 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202212\Symfony\Component\DependencyInjection;
+namespace MonorepoBuilder202301\Symfony\Component\DependencyInjection;
 
-use MonorepoBuilder202212\Psr\Container\ContainerExceptionInterface;
-use MonorepoBuilder202212\Psr\Container\NotFoundExceptionInterface;
-use MonorepoBuilder202212\Symfony\Component\DependencyInjection\Exception\RuntimeException;
-use MonorepoBuilder202212\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
-use MonorepoBuilder202212\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
-use MonorepoBuilder202212\Symfony\Contracts\Service\ServiceLocatorTrait;
-use MonorepoBuilder202212\Symfony\Contracts\Service\ServiceProviderInterface;
-use MonorepoBuilder202212\Symfony\Contracts\Service\ServiceSubscriberInterface;
+use MonorepoBuilder202301\Psr\Container\ContainerExceptionInterface;
+use MonorepoBuilder202301\Psr\Container\NotFoundExceptionInterface;
+use MonorepoBuilder202301\Symfony\Component\DependencyInjection\Exception\RuntimeException;
+use MonorepoBuilder202301\Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
+use MonorepoBuilder202301\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
+use MonorepoBuilder202301\Symfony\Contracts\Service\ServiceLocatorTrait;
+use MonorepoBuilder202301\Symfony\Contracts\Service\ServiceProviderInterface;
+use MonorepoBuilder202301\Symfony\Contracts\Service\ServiceSubscriberInterface;
 /**
  * @author Robin Chalas <robin.chalas@gmail.com>
  * @author Nicolas Grekas <p@tchwork.com>

@@ -3,15 +3,15 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Testing\Command;
 
-use MonorepoBuilder202212\Symfony\Component\Console\Input\InputArgument;
-use MonorepoBuilder202212\Symfony\Component\Console\Input\InputInterface;
-use MonorepoBuilder202212\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder202301\Symfony\Component\Console\Input\InputArgument;
+use MonorepoBuilder202301\Symfony\Component\Console\Input\InputInterface;
+use MonorepoBuilder202301\Symfony\Component\Console\Output\OutputInterface;
 use Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider;
 use Symplify\MonorepoBuilder\Testing\ComposerJsonRepositoriesUpdater;
 use Symplify\MonorepoBuilder\Testing\ComposerJsonRequireUpdater;
 use Symplify\MonorepoBuilder\Testing\ValueObject\Option;
-use MonorepoBuilder202212\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
-use MonorepoBuilder202212\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder202301\Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
+use MonorepoBuilder202301\Symplify\SmartFileSystem\SmartFileInfo;
 final class LocalizeComposerPathsCommand extends AbstractSymplifyCommand
 {
     /**

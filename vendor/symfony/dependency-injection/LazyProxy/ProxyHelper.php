@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202212\Symfony\Component\DependencyInjection\LazyProxy;
+namespace MonorepoBuilder202301\Symfony\Component\DependencyInjection\LazyProxy;
 
 /**
  * @author Nicolas Grekas <p@tchwork.com>

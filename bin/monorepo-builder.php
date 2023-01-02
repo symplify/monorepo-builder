@@ -2,12 +2,12 @@
 
 // decoupled in own "*.php" file, so ECS, Rector and PHPStan works out of the box here
 declare (strict_types=1);
-namespace MonorepoBuilder202212;
+namespace MonorepoBuilder202301;
 
-use MonorepoBuilder202212\Symfony\Component\Console\Input\ArgvInput;
+use MonorepoBuilder202301\Symfony\Component\Console\Input\ArgvInput;
 use Symplify\MonorepoBuilder\Kernel\MonorepoBuilderKernel;
 use Symplify\MonorepoBuilder\ValueObject\File;
-use MonorepoBuilder202212\Symplify\SymplifyKernel\ValueObject\KernelBootAndApplicationRun;
+use MonorepoBuilder202301\Symplify\SymplifyKernel\ValueObject\KernelBootAndApplicationRun;
 # 1. autoload
 $possibleAutoloadPaths = [
     // dependency

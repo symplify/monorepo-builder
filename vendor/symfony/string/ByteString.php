@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202212\Symfony\Component\String;
+namespace MonorepoBuilder202301\Symfony\Component\String;
 
-use MonorepoBuilder202212\Symfony\Component\String\Exception\ExceptionInterface;
-use MonorepoBuilder202212\Symfony\Component\String\Exception\InvalidArgumentException;
-use MonorepoBuilder202212\Symfony\Component\String\Exception\RuntimeException;
+use MonorepoBuilder202301\Symfony\Component\String\Exception\ExceptionInterface;
+use MonorepoBuilder202301\Symfony\Component\String\Exception\InvalidArgumentException;
+use MonorepoBuilder202301\Symfony\Component\String\Exception\RuntimeException;
 /**
  * Represents a binary-safe string of bytes.
  *
@@ -330,7 +330,7 @@ class ByteString extends AbstractString
     public function snake()
     {
         $str = $this->camel();
-        $str->string = \strtolower(\preg_replace(['/([A-Z]+)([A-Z][a-z])/', '/([a-z\\d])([A-Z])/'], 'MonorepoBuilder202212\\1_\\2', $str->string));
+        $str->string = \strtolower(\preg_replace(['/([A-Z]+)([A-Z][a-z])/', '/([a-z\\d])([A-Z])/'], 'MonorepoBuilder202301\\1_\\2', $str->string));
         return $str;
     }
     /**

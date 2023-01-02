@@ -8,10 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202212\Symfony\Contracts\Service\Attribute;
+namespace MonorepoBuilder202301\Symfony\Contracts\Service\Attribute;
 
-use MonorepoBuilder202212\Symfony\Contracts\Service\ServiceSubscriberInterface;
-use MonorepoBuilder202212\Symfony\Contracts\Service\ServiceSubscriberTrait;
+use MonorepoBuilder202301\Symfony\Contracts\Service\ServiceSubscriberInterface;
+use MonorepoBuilder202301\Symfony\Contracts\Service\ServiceSubscriberTrait;
 /**
  * For use as the return value for {@see ServiceSubscriberInterface}.
  *

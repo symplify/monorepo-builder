@@ -3,11 +3,11 @@
 declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject;
 
-use MonorepoBuilder202212\Nette\Utils\Arrays;
-use MonorepoBuilder202212\Nette\Utils\Strings;
+use MonorepoBuilder202301\Nette\Utils\Arrays;
+use MonorepoBuilder202301\Nette\Utils\Strings;
 use Symplify\MonorepoBuilder\ComposerJsonManipulator\Sorter\ComposerPackageSorter;
-use MonorepoBuilder202212\Symplify\SmartFileSystem\SmartFileInfo;
-use MonorepoBuilder202212\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
+use MonorepoBuilder202301\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder202301\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
 /**
  * @api
  * @see \Symplify\MonorepoBuilder\Tests\ComposerJsonManipulator\ValueObject\ComposerJsonTest

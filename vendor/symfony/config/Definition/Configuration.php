@@ -8,13 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202212\Symfony\Component\Config\Definition;
+namespace MonorepoBuilder202301\Symfony\Component\Config\Definition;
 
-use MonorepoBuilder202212\Symfony\Component\Config\Definition\Builder\TreeBuilder;
-use MonorepoBuilder202212\Symfony\Component\Config\Definition\Configurator\DefinitionConfigurator;
-use MonorepoBuilder202212\Symfony\Component\Config\Definition\Loader\DefinitionFileLoader;
-use MonorepoBuilder202212\Symfony\Component\Config\FileLocator;
-use MonorepoBuilder202212\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder202301\Symfony\Component\Config\Definition\Builder\TreeBuilder;
+use MonorepoBuilder202301\Symfony\Component\Config\Definition\Configurator\DefinitionConfigurator;
+use MonorepoBuilder202301\Symfony\Component\Config\Definition\Loader\DefinitionFileLoader;
+use MonorepoBuilder202301\Symfony\Component\Config\FileLocator;
+use MonorepoBuilder202301\Symfony\Component\DependencyInjection\ContainerBuilder;
 /**
  * @author Yonel Ceruto <yonelceruto@gmail.com>
  *

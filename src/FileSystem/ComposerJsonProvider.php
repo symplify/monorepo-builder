@@ -7,8 +7,8 @@ use Symplify\MonorepoBuilder\ComposerJsonManipulator\ComposerJsonFactory;
 use Symplify\MonorepoBuilder\ComposerJsonManipulator\FileSystem\JsonFileManager;
 use Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJson;
 use Symplify\MonorepoBuilder\Finder\PackageComposerFinder;
-use MonorepoBuilder202212\Symplify\SmartFileSystem\SmartFileInfo;
-use MonorepoBuilder202212\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
+use MonorepoBuilder202301\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder202301\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
 final class ComposerJsonProvider
 {
     /**

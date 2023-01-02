@@ -5,7 +5,7 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 declare (strict_types=1);
-namespace MonorepoBuilder202212\Nette\Localization;
+namespace MonorepoBuilder202301\Nette\Localization;
 
 /**
  * Translator adapter.

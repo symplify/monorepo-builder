@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202212\Symfony\Component\Config\Definition\Builder;
+namespace MonorepoBuilder202301\Symfony\Component\Config\Definition\Builder;
 
-use MonorepoBuilder202212\Symfony\Component\Config\Definition\Exception\UnsetKeyException;
+use MonorepoBuilder202301\Symfony\Component\Config\Definition\Exception\UnsetKeyException;
 /**
  * This class builds an if expression.
  *

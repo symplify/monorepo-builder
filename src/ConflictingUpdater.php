@@ -6,7 +6,7 @@ namespace Symplify\MonorepoBuilder;
 use PharIo\Version\Version;
 use Symplify\MonorepoBuilder\ComposerJsonManipulator\ComposerJsonFactory;
 use Symplify\MonorepoBuilder\ComposerJsonManipulator\Printer\ComposerJsonPrinter;
-use MonorepoBuilder202212\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder202301\Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\MonorepoBuilder\Tests\ConflictingUpdater\ConflictingUpdaterTest
  */

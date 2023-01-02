@@ -8,14 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202212\Symfony\Component\Console\Command;
+namespace MonorepoBuilder202301\Symfony\Component\Console\Command;
 
-use MonorepoBuilder202212\Symfony\Component\Console\Descriptor\ApplicationDescription;
-use MonorepoBuilder202212\Symfony\Component\Console\Helper\DescriptorHelper;
-use MonorepoBuilder202212\Symfony\Component\Console\Input\InputArgument;
-use MonorepoBuilder202212\Symfony\Component\Console\Input\InputInterface;
-use MonorepoBuilder202212\Symfony\Component\Console\Input\InputOption;
-use MonorepoBuilder202212\Symfony\Component\Console\Output\OutputInterface;
+use MonorepoBuilder202301\Symfony\Component\Console\Descriptor\ApplicationDescription;
+use MonorepoBuilder202301\Symfony\Component\Console\Helper\DescriptorHelper;
+use MonorepoBuilder202301\Symfony\Component\Console\Input\InputArgument;
+use MonorepoBuilder202301\Symfony\Component\Console\Input\InputInterface;
+use MonorepoBuilder202301\Symfony\Component\Console\Input\InputOption;
+use MonorepoBuilder202301\Symfony\Component\Console\Output\OutputInterface;
 /**
  * ListCommand displays the list of all available commands for the application.
  *

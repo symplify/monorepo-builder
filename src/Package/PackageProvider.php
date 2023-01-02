@@ -6,8 +6,8 @@ namespace Symplify\MonorepoBuilder\Package;
 use Symplify\MonorepoBuilder\ComposerJsonManipulator\FileSystem\JsonFileManager;
 use Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider;
 use Symplify\MonorepoBuilder\ValueObject\Package;
-use MonorepoBuilder202212\Symplify\SmartFileSystem\SmartFileInfo;
-use MonorepoBuilder202212\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
+use MonorepoBuilder202301\Symplify\SmartFileSystem\SmartFileInfo;
+use MonorepoBuilder202301\Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
 final class PackageProvider
 {
     /**

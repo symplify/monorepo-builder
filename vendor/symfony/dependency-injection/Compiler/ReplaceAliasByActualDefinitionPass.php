@@ -8,12 +8,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace MonorepoBuilder202212\Symfony\Component\DependencyInjection\Compiler;
+namespace MonorepoBuilder202301\Symfony\Component\DependencyInjection\Compiler;
 
-use MonorepoBuilder202212\Symfony\Component\DependencyInjection\ContainerBuilder;
-use MonorepoBuilder202212\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use MonorepoBuilder202212\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
-use MonorepoBuilder202212\Symfony\Component\DependencyInjection\Reference;
+use MonorepoBuilder202301\Symfony\Component\DependencyInjection\ContainerBuilder;
+use MonorepoBuilder202301\Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use MonorepoBuilder202301\Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
+use MonorepoBuilder202301\Symfony\Component\DependencyInjection\Reference;
 /**
  * Replaces aliases with actual service definitions, effectively removing these
  * aliases.
