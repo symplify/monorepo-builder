@@ -1079,7 +1079,7 @@
             "dist": {
                 "type": "path",
                 "url": "..\/..\/packages\/autowire-array-parameter",
-                "reference": "03d11457e76c5f4e7b607c1c54e6ef4e72666b5a"
+                "reference": "28bb54172d1743fb51cd19c73f99acca9e05f4f8"
             },
             "require": {
                 "nette\/utils": "^3.2",
@@ -1101,8 +1101,7 @@
                 "symplify\/rule-doc-generator-contracts": "<11.1.24",
                 "symplify\/smart-file-system": "<11.1.24",
                 "symplify\/symfony-static-dumper": "<11.1.24",
-                "symplify\/symplify-kernel": "<11.1.24",
-                "symplify\/vendor-patches": "<11.1.24"
+                "symplify\/symplify-kernel": "<11.1.24"
             },
             "require-dev": {
                 "phpunit\/phpunit": "^9.5.26",
@@ -1143,7 +1142,7 @@
             "dist": {
                 "type": "path",
                 "url": "..\/..\/packages\/package-builder",
-                "reference": "26e09b8202d7dc1d0fe630a6840246a02df88178"
+                "reference": "73068a7fac452453b3898e3438b97b542d0643e7"
             },
             "require": {
                 "nette\/utils": "^3.2",
@@ -1169,8 +1168,7 @@
                 "symplify\/rule-doc-generator-contracts": "<11.1.24",
                 "symplify\/smart-file-system": "<11.1.24",
                 "symplify\/symfony-static-dumper": "<11.1.24",
-                "symplify\/symplify-kernel": "<11.1.24",
-                "symplify\/vendor-patches": "<11.1.24"
+                "symplify\/symplify-kernel": "<11.1.24"
             },
             "require-dev": {
                 "phpunit\/phpunit": "^9.5.26",
@@ -1210,7 +1208,7 @@
             "dist": {
                 "type": "path",
                 "url": "..\/..\/packages\/smart-file-system",
-                "reference": "a068501576d63052cc47ddd21971f35b19c46a4e"
+                "reference": "38f13bec488f9b8349f5774a287b53b4236ece23"
             },
             "require": {
                 "nette\/utils": "^3.2",
@@ -1233,8 +1231,7 @@
                 "symplify\/rule-doc-generator": "<11.1.24",
                 "symplify\/rule-doc-generator-contracts": "<11.1.24",
                 "symplify\/symfony-static-dumper": "<11.1.24",
-                "symplify\/symplify-kernel": "<11.1.24",
-                "symplify\/vendor-patches": "<11.1.24"
+                "symplify\/symplify-kernel": "<11.1.24"
             },
             "require-dev": {
                 "phpunit\/phpunit": "^9.5.26"
@@ -1273,7 +1270,7 @@
             "dist": {
                 "type": "path",
                 "url": "..\/..\/packages\/symplify-kernel",
-                "reference": "2b070e9ffd85ff0cc968e6ebeea66f364ac2335e"
+                "reference": "07ee0baf9dd97722b57fc091ffd82edc3a4b1312"
             },
             "require": {
                 "php": ">=8.1",
@@ -1296,8 +1293,7 @@
                 "symplify\/phpstan-rules": "<11.1.24",
                 "symplify\/rule-doc-generator": "<11.1.24",
                 "symplify\/rule-doc-generator-contracts": "<11.1.24",
-                "symplify\/symfony-static-dumper": "<11.1.24",
-                "symplify\/vendor-patches": "<11.1.24"
+                "symplify\/symfony-static-dumper": "<11.1.24"
             },
             "require-dev": {
                 "phpunit\/phpunit": "^9.5.26"
