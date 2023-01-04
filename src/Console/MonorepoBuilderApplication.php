@@ -1,10 +1,12 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
+
 namespace Symplify\MonorepoBuilder\Console;
 
-use MonorepoBuilder202301\Symfony\Component\Console\Application;
-use MonorepoBuilder202301\Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Application;
+use Symfony\Component\Console\Command\Command;
+
 final class MonorepoBuilderApplication extends Application
 {
     /**
