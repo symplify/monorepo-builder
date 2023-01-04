@@ -12,5 +12,7 @@ return static function (EasyCIConfig $easyCIConfig): void {
         \Symplify\MonorepoBuilder\Exception\MissingComposerJsonException::class,
         \Symplify\MonorepoBuilder\Git\MostRecentTagResolver::class,
         \Symplify\MonorepoBuilder\Package\PackageNamesProvider::class,
+        \Symplify\MonorepoBuilder\Console\MonorepoBuilderApplication::class,
+        \Symplify\MonorepoBuilder\Kernel\MonorepoBuilderKernel::class,
     ]);
 };
