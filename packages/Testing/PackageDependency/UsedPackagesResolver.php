@@ -9,9 +9,13 @@ use Symplify\MonorepoBuilder\Package\PackageNamesProvider;
 
 final class UsedPackagesResolver
 {
-    public function __construct(
-        private PackageNamesProvider $packageNamesProvider
-    ) {
+    /**
+     * @var \Symplify\MonorepoBuilder\Package\PackageNamesProvider
+     */
+    private $packageNamesProvider;
+    public function __construct(PackageNamesProvider $packageNamesProvider)
+    {
+        $this->packageNamesProvider = $packageNamesProvider;
     }
 
     /**

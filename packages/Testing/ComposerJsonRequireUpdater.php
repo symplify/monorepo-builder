@@ -13,13 +13,33 @@ use Symplify\SmartFileSystem\SmartFileInfo;
 
 final class ComposerJsonRequireUpdater
 {
-    public function __construct(
-        private JsonFileManager $jsonFileManager,
-        private SymfonyStyle $symfonyStyle,
-        private ComposerVersionManipulator $composerVersionManipulator,
-        private UsedPackagesResolver $usedPackagesResolver,
-        private ConsoleDiffer $consoleDiffer
-    ) {
+    /**
+     * @var \Symplify\MonorepoBuilder\ComposerJsonManipulator\FileSystem\JsonFileManager
+     */
+    private $jsonFileManager;
+    /**
+     * @var \Symfony\Component\Console\Style\SymfonyStyle
+     */
+    private $symfonyStyle;
+    /**
+     * @var \Symplify\MonorepoBuilder\Testing\ComposerJson\ComposerVersionManipulator
+     */
+    private $composerVersionManipulator;
+    /**
+     * @var \Symplify\MonorepoBuilder\Testing\PackageDependency\UsedPackagesResolver
+     */
+    private $usedPackagesResolver;
+    /**
+     * @var \Symplify\PackageBuilder\Console\Output\ConsoleDiffer
+     */
+    private $consoleDiffer;
+    public function __construct(JsonFileManager $jsonFileManager, SymfonyStyle $symfonyStyle, ComposerVersionManipulator $composerVersionManipulator, UsedPackagesResolver $usedPackagesResolver, ConsoleDiffer $consoleDiffer)
+    {
+        $this->jsonFileManager = $jsonFileManager;
+        $this->symfonyStyle = $symfonyStyle;
+        $this->composerVersionManipulator = $composerVersionManipulator;
+        $this->usedPackagesResolver = $usedPackagesResolver;
+        $this->consoleDiffer = $consoleDiffer;
     }
 
     public function processPackage(SmartFileInfo $packageFileInfo): void

@@ -13,12 +13,28 @@ use Symplify\MonorepoBuilder\Utils\VersionUtils;
 
 final class SetCurrentMutualDependenciesReleaseWorker implements ReleaseWorkerInterface
 {
-    public function __construct(
-        private VersionUtils $versionUtils,
-        private DependencyUpdater $dependencyUpdater,
-        private ComposerJsonProvider $composerJsonProvider,
-        private PackageNamesProvider $packageNamesProvider
-    ) {
+    /**
+     * @var \Symplify\MonorepoBuilder\Utils\VersionUtils
+     */
+    private $versionUtils;
+    /**
+     * @var \Symplify\MonorepoBuilder\DependencyUpdater
+     */
+    private $dependencyUpdater;
+    /**
+     * @var \Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider
+     */
+    private $composerJsonProvider;
+    /**
+     * @var \Symplify\MonorepoBuilder\Package\PackageNamesProvider
+     */
+    private $packageNamesProvider;
+    public function __construct(VersionUtils $versionUtils, DependencyUpdater $dependencyUpdater, ComposerJsonProvider $composerJsonProvider, PackageNamesProvider $packageNamesProvider)
+    {
+        $this->versionUtils = $versionUtils;
+        $this->dependencyUpdater = $dependencyUpdater;
+        $this->composerJsonProvider = $composerJsonProvider;
+        $this->packageNamesProvider = $packageNamesProvider;
     }
 
     public function work(Version $version): void

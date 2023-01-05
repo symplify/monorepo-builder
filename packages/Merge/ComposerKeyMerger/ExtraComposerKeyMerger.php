@@ -14,10 +14,14 @@ final class ExtraComposerKeyMerger implements ComposerKeyMergerInterface
      * @var string
      */
     private const PHPSTAN = 'phpstan';
+    /**
+     * @var \Symplify\PackageBuilder\Yaml\ParametersMerger
+     */
+    private $parametersMerger;
 
-    public function __construct(
-        private ParametersMerger $parametersMerger
-    ) {
+    public function __construct(ParametersMerger $parametersMerger)
+    {
+        $this->parametersMerger = $parametersMerger;
     }
 
     public function merge(ComposerJson $mainComposerJson, ComposerJson $newComposerJson): void

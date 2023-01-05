@@ -17,10 +17,14 @@ final class AddTagToChangelogReleaseWorker implements ReleaseWorkerInterface
      * @see https://regex101.com/r/5KOvEb/1
      */
     private const UNRELEASED_HEADLINE_REGEX = '#\#\# Unreleased#';
+    /**
+     * @var \Symplify\SmartFileSystem\SmartFileSystem
+     */
+    private $smartFileSystem;
 
-    public function __construct(
-        private SmartFileSystem $smartFileSystem
-    ) {
+    public function __construct(SmartFileSystem $smartFileSystem)
+    {
+        $this->smartFileSystem = $smartFileSystem;
     }
 
     public function work(Version $version): void

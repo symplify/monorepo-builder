@@ -20,13 +20,25 @@ final class JsonFileManager
     /**
      * @var array<string, mixed[]>
      */
-    private array $cachedJSONFiles = [];
+    private $cachedJSONFiles = [];
+    /**
+     * @var \Symplify\SmartFileSystem\SmartFileSystem
+     */
+    private $smartFileSystem;
+    /**
+     * @var \Symplify\MonorepoBuilder\ComposerJsonManipulator\Json\JsonCleaner
+     */
+    private $jsonCleaner;
+    /**
+     * @var \Symplify\MonorepoBuilder\ComposerJsonManipulator\Json\JsonInliner
+     */
+    private $jsonInliner;
 
-    public function __construct(
-        private SmartFileSystem $smartFileSystem,
-        private JsonCleaner $jsonCleaner,
-        private JsonInliner $jsonInliner
-    ) {
+    public function __construct(SmartFileSystem $smartFileSystem, JsonCleaner $jsonCleaner, JsonInliner $jsonInliner)
+    {
+        $this->smartFileSystem = $smartFileSystem;
+        $this->jsonCleaner = $jsonCleaner;
+        $this->jsonInliner = $jsonInliner;
     }
 
     /**

@@ -13,13 +13,26 @@ use Symplify\PackageBuilder\Parameter\ParameterProvider;
 
 final class PushNextDevReleaseWorker implements ReleaseWorkerInterface
 {
-    private string $branchName;
+    /**
+     * @var string
+     */
+    private $branchName;
+    /**
+     * @var \Symplify\MonorepoBuilder\Release\Process\ProcessRunner
+     */
+    private $processRunner;
+    /**
+     * @var \Symplify\MonorepoBuilder\Utils\VersionUtils
+     */
+    private $versionUtils;
 
     public function __construct(
-        private ProcessRunner $processRunner,
-        private VersionUtils $versionUtils,
+        ProcessRunner $processRunner,
+        VersionUtils $versionUtils,
         ParameterProvider $parameterProvider
     ) {
+        $this->processRunner = $processRunner;
+        $this->versionUtils = $versionUtils;
         $this->branchName = $parameterProvider->provideStringParameter(Option::DEFAULT_BRANCH_NAME);
     }
 

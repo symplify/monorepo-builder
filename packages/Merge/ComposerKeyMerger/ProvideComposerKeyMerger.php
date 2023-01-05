@@ -10,9 +10,13 @@ use Symplify\MonorepoBuilder\Merge\Contract\ComposerKeyMergerInterface;
 
 final class ProvideComposerKeyMerger implements ComposerKeyMergerInterface
 {
-    public function __construct(
-        private SortedParameterMerger $sortedParameterMerger
-    ) {
+    /**
+     * @var \Symplify\MonorepoBuilder\Merge\Arrays\SortedParameterMerger
+     */
+    private $sortedParameterMerger;
+    public function __construct(SortedParameterMerger $sortedParameterMerger)
+    {
+        $this->sortedParameterMerger = $sortedParameterMerger;
     }
 
     public function merge(ComposerJson $mainComposerJson, ComposerJson $newComposerJson): void

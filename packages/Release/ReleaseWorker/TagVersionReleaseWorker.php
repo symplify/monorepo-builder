@@ -13,12 +13,20 @@ use Throwable;
 
 final class TagVersionReleaseWorker implements ReleaseWorkerInterface
 {
-    private string $branchName;
+    /**
+     * @var string
+     */
+    private $branchName;
+    /**
+     * @var \Symplify\MonorepoBuilder\Release\Process\ProcessRunner
+     */
+    private $processRunner;
 
     public function __construct(
-        private ProcessRunner $processRunner,
+        ProcessRunner $processRunner,
         ParameterProvider $parameterProvider
     ) {
+        $this->processRunner = $processRunner;
         $this->branchName = $parameterProvider->provideStringParameter(Option::DEFAULT_BRANCH_NAME);
     }
 
@@ -31,7 +39,7 @@ final class TagVersionReleaseWorker implements ReleaseWorkerInterface
             );
 
             $this->processRunner->run($gitAddCommitCommand);
-        } catch (Throwable) {
+        } catch (Throwable $exception) {
             // nothing to commit
         }
 

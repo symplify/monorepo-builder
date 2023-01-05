@@ -59,7 +59,9 @@ final class AutoloadPathNormalizer
         foreach ($autoloadSubsection as $key => $value) {
             if (is_array($value)) {
                 $autoloadSubsection[$key] = array_map(
-                    fn ($path): string => $this->relativizeSinglePath($packageRelativeDirectory, $path),
+                    function ($path) use ($packageRelativeDirectory) : string {
+                        return $this->relativizeSinglePath($packageRelativeDirectory, $path);
+                    },
                     $value
                 );
             } else {
@@ -73,7 +75,7 @@ final class AutoloadPathNormalizer
     private function relativizeSinglePath(string $packageRelativeDirectory, string $path): string
     {
         // prevent prefixing, as vendor is the same in both locations
-        if (\str_starts_with($path, 'vendor/')) {
+        if (strncmp($path, 'vendor/', strlen('vendor/')) === 0) {
             return $path;
         }
 

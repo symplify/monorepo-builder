@@ -11,10 +11,18 @@ use Symplify\MonorepoBuilder\Merge\Contract\ComposerKeyMergerInterface;
 
 final class RequireDevComposerKeyMerger implements ComposerKeyMergerInterface
 {
-    public function __construct(
-        private SortedParameterMerger $sortedParameterMerger,
-        private RequireRequireDevDuplicateCleaner $requireRequireDevDuplicateCleaner
-    ) {
+    /**
+     * @var \Symplify\MonorepoBuilder\Merge\Arrays\SortedParameterMerger
+     */
+    private $sortedParameterMerger;
+    /**
+     * @var \Symplify\MonorepoBuilder\Merge\Cleaner\RequireRequireDevDuplicateCleaner
+     */
+    private $requireRequireDevDuplicateCleaner;
+    public function __construct(SortedParameterMerger $sortedParameterMerger, RequireRequireDevDuplicateCleaner $requireRequireDevDuplicateCleaner)
+    {
+        $this->sortedParameterMerger = $sortedParameterMerger;
+        $this->requireRequireDevDuplicateCleaner = $requireRequireDevDuplicateCleaner;
     }
 
     public function merge(ComposerJson $mainComposerJson, ComposerJson $newComposerJson): void

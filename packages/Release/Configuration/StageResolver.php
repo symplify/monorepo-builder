@@ -11,9 +11,13 @@ use Symplify\MonorepoBuilder\ValueObject\Option;
 
 final class StageResolver
 {
-    public function __construct(
-        private ReleaseGuard $releaseGuard
-    ) {
+    /**
+     * @var \Symplify\MonorepoBuilder\Release\Guard\ReleaseGuard
+     */
+    private $releaseGuard;
+    public function __construct(ReleaseGuard $releaseGuard)
+    {
+        $this->releaseGuard = $releaseGuard;
     }
 
     public function resolveFromInput(InputInterface $input): string

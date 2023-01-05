@@ -17,14 +17,30 @@ use Symplify\SmartFileSystem\SmartFileInfo;
 final class ComposerJsonMerger
 {
     /**
+     * @var \Symplify\MonorepoBuilder\ComposerJsonManipulator\ComposerJsonFactory
+     */
+    private $composerJsonFactory;
+    /**
+     * @var \Symplify\MonorepoBuilder\Merge\Configuration\MergedPackagesCollector
+     */
+    private $mergedPackagesCollector;
+    /**
+     * @var \Symplify\MonorepoBuilder\Merge\PathResolver\AutoloadPathNormalizer
+     */
+    private $autoloadPathNormalizer;
+    /**
+     * @var ComposerKeyMergerInterface[]
+     */
+    private $composerKeyMergers;
+    /**
      * @param ComposerKeyMergerInterface[] $composerKeyMergers
      */
-    public function __construct(
-        private ComposerJsonFactory $composerJsonFactory,
-        private MergedPackagesCollector $mergedPackagesCollector,
-        private AutoloadPathNormalizer $autoloadPathNormalizer,
-        private array $composerKeyMergers
-    ) {
+    public function __construct(ComposerJsonFactory $composerJsonFactory, MergedPackagesCollector $mergedPackagesCollector, AutoloadPathNormalizer $autoloadPathNormalizer, array $composerKeyMergers)
+    {
+        $this->composerJsonFactory = $composerJsonFactory;
+        $this->mergedPackagesCollector = $mergedPackagesCollector;
+        $this->autoloadPathNormalizer = $autoloadPathNormalizer;
+        $this->composerKeyMergers = $composerKeyMergers;
     }
 
     /**

@@ -26,113 +26,140 @@ final class ComposerJson
      */
     private const PHP = 'php';
 
-    private ?string $name = null;
+    /**
+     * @var string|null
+     */
+    private $name;
 
-    private ?string $description = null;
+    /**
+     * @var string|null
+     */
+    private $description;
 
     /**
      * @var string[]
      */
-    private array $keywords = [];
+    private $keywords = [];
 
-    private ?string $homepage = null;
+    /**
+     * @var string|null
+     */
+    private $homepage;
 
     /**
      * @var string|string[]|null
      */
-    private array|string|null $license = null;
+    private $license = null;
 
-    private ?string $minimumStability = null;
+    /**
+     * @var string|null
+     */
+    private $minimumStability;
 
-    private ?bool $preferStable = null;
+    /**
+     * @var bool|null
+     */
+    private $preferStable;
 
     /**
      * @var mixed[]
      */
-    private array $repositories = [];
+    private $repositories = [];
 
     /**
      * @var array<string, string>
      */
-    private array $require = [];
+    private $require = [];
 
     /**
      * @var mixed[]
      */
-    private array $autoload = [];
+    private $autoload = [];
 
     /**
      * @var mixed[]
      */
-    private array $extra = [];
+    private $extra = [];
 
     /**
      * @var array<string, string>
      */
-    private array $requireDev = [];
+    private $requireDev = [];
 
     /**
      * @var mixed[]
      */
-    private array $autoloadDev = [];
+    private $autoloadDev = [];
 
     /**
      * @var string[]
      */
-    private array $orderedKeys = [];
+    private $orderedKeys = [];
 
     /**
      * @var array<string, string>
      */
-    private array $replace = [];
+    private $replace = [];
 
     /**
      * @var array<string, string|string[]>
      */
-    private array $scripts = [];
+    private $scripts = [];
 
     /**
      * @var mixed[]
      */
-    private array $config = [];
+    private $config = [];
 
-    private ?SmartFileInfo $fileInfo = null;
+    /**
+     * @var \Symplify\SmartFileSystem\SmartFileInfo|null
+     */
+    private $fileInfo;
 
-    private ComposerPackageSorter $composerPackageSorter;
+    /**
+     * @var \Symplify\MonorepoBuilder\ComposerJsonManipulator\Sorter\ComposerPackageSorter
+     */
+    private $composerPackageSorter;
 
     /**
      * @var array<string, string>
      */
-    private array $conflicts = [];
+    private $conflicts = [];
 
     /**
      * @var mixed[]
      */
-    private array $bin = [];
+    private $bin = [];
 
-    private ?string $type = null;
+    /**
+     * @var string|null
+     */
+    private $type;
 
     /**
      * @var mixed[]
      */
-    private array $authors = [];
+    private $authors = [];
 
     /**
      * @var array<string, string>
      */
-    private array $scriptsDescriptions = [];
+    private $scriptsDescriptions = [];
 
     /**
      * @var array<string, string>
      */
-    private array $suggest = [];
+    private $suggest = [];
 
-    private ?string $version = null;
+    /**
+     * @var string|null
+     */
+    private $version;
 
     /**
      * @var array<string, string>
      */
-    private array $provide = [];
+    private $provide = [];
 
     public function __construct()
     {
@@ -494,7 +521,7 @@ final class ComposerJson
     /**
      * @param string|string[]|null $license
      */
-    public function setLicense(string | array | null $license): void
+    public function setLicense($license): void
     {
         $this->license = $license;
     }
@@ -502,7 +529,7 @@ final class ComposerJson
     /**
      * @return string|string[]|null
      */
-    public function getLicense(): string|array|null
+    public function getLicense()
     {
         return $this->license;
     }
@@ -867,8 +894,9 @@ final class ComposerJson
 
     /**
      * @param string[] $items
+     * @return int|string|bool
      */
-    private function findPosition(string $key, array $items): int | string | bool
+    private function findPosition(string $key, array $items)
     {
         return array_search($key, $items, true);
     }
