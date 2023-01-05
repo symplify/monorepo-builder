@@ -17,11 +17,26 @@ use Symplify\SmartFileSystem\SmartFileInfo;
 
 final class PropagateCommand extends AbstractSymplifyCommand
 {
+    /**
+     * @var \Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider
+     */
+    private $composerJsonProvider;
+    /**
+     * @var \Symplify\MonorepoBuilder\Propagate\VersionPropagator
+     */
+    private $versionPropagator;
+    /**
+     * @var \Symplify\MonorepoBuilder\ComposerJsonManipulator\FileSystem\JsonFileManager
+     */
+    private $jsonFileManager;
     public function __construct(
-        private ComposerJsonProvider $composerJsonProvider,
-        private VersionPropagator $versionPropagator,
-        private JsonFileManager $jsonFileManager
+        ComposerJsonProvider $composerJsonProvider,
+        VersionPropagator $versionPropagator,
+        JsonFileManager $jsonFileManager
     ) {
+        $this->composerJsonProvider = $composerJsonProvider;
+        $this->versionPropagator = $versionPropagator;
+        $this->jsonFileManager = $jsonFileManager;
         parent::__construct();
     }
 

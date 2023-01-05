@@ -13,10 +13,18 @@ use Symplify\SmartFileSystem\SmartFileInfo;
 
 final class UpdateReplaceReleaseWorker implements ReleaseWorkerInterface
 {
-    public function __construct(
-        private ComposerJsonProvider $composerJsonProvider,
-        private JsonFileManager $jsonFileManager
-    ) {
+    /**
+     * @var \Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider
+     */
+    private $composerJsonProvider;
+    /**
+     * @var \Symplify\MonorepoBuilder\ComposerJsonManipulator\FileSystem\JsonFileManager
+     */
+    private $jsonFileManager;
+    public function __construct(ComposerJsonProvider $composerJsonProvider, JsonFileManager $jsonFileManager)
+    {
+        $this->composerJsonProvider = $composerJsonProvider;
+        $this->jsonFileManager = $jsonFileManager;
     }
 
     public function work(Version $version): void

@@ -21,13 +21,38 @@ use Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
 
 final class ReleaseCommand extends AbstractSymplifyCommand
 {
+    /**
+     * @var \Symplify\MonorepoBuilder\Release\ReleaseWorkerProvider
+     */
+    private $releaseWorkerProvider;
+    /**
+     * @var \Symplify\MonorepoBuilder\Validator\SourcesPresenceValidator
+     */
+    private $sourcesPresenceValidator;
+    /**
+     * @var \Symplify\MonorepoBuilder\Release\Configuration\StageResolver
+     */
+    private $stageResolver;
+    /**
+     * @var \Symplify\MonorepoBuilder\Release\Configuration\VersionResolver
+     */
+    private $versionResolver;
+    /**
+     * @var \Symplify\MonorepoBuilder\Release\Output\ReleaseWorkerReporter
+     */
+    private $releaseWorkerReporter;
     public function __construct(
-        private ReleaseWorkerProvider $releaseWorkerProvider,
-        private SourcesPresenceValidator $sourcesPresenceValidator,
-        private StageResolver $stageResolver,
-        private VersionResolver $versionResolver,
-        private ReleaseWorkerReporter $releaseWorkerReporter
+        ReleaseWorkerProvider $releaseWorkerProvider,
+        SourcesPresenceValidator $sourcesPresenceValidator,
+        StageResolver $stageResolver,
+        VersionResolver $versionResolver,
+        ReleaseWorkerReporter $releaseWorkerReporter
     ) {
+        $this->releaseWorkerProvider = $releaseWorkerProvider;
+        $this->sourcesPresenceValidator = $sourcesPresenceValidator;
+        $this->stageResolver = $stageResolver;
+        $this->versionResolver = $versionResolver;
+        $this->releaseWorkerReporter = $releaseWorkerReporter;
         parent::__construct();
     }
 

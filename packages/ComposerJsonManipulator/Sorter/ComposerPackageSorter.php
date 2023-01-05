@@ -37,9 +37,11 @@ final class ComposerPackageSorter
     {
         uksort(
             $packages,
-            fn (string $firstPackageName, string $secondPackageName): int => $this->createNameWithPriority(
-                $firstPackageName
-            ) <=> $this->createNameWithPriority($secondPackageName)
+            function (string $firstPackageName, string $secondPackageName) : int {
+                return $this->createNameWithPriority(
+                    $firstPackageName
+                ) <=> $this->createNameWithPriority($secondPackageName);
+            }
         );
 
         return $packages;

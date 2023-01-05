@@ -10,9 +10,13 @@ use Symplify\SmartFileSystem\SmartFileInfo;
 
 final class AutoloadPathValidator
 {
-    public function __construct(
-        private FileSystemGuard $fileSystemGuard
-    ) {
+    /**
+     * @var \Symplify\SmartFileSystem\FileSystemGuard
+     */
+    private $fileSystemGuard;
+    public function __construct(FileSystemGuard $fileSystemGuard)
+    {
+        $this->fileSystemGuard = $fileSystemGuard;
     }
 
     public function ensureAutoloadPathExists(ComposerJson $composerJson): void

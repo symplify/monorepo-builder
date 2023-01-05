@@ -16,26 +16,39 @@ use Symplify\PackageBuilder\Parameter\ParameterProvider;
 
 final class ReleaseGuard
 {
-    private bool $isStageRequired = false;
+    /**
+     * @var bool
+     */
+    private $isStageRequired = false;
 
     /**
      * @var string[]
      */
-    private array $stages = [];
+    private $stages = [];
 
     /**
      * @var string[]
      */
-    private array $stagesToAllowExistingTag = [];
+    private $stagesToAllowExistingTag = [];
+    /**
+     * @var \Symplify\MonorepoBuilder\Contract\Git\TagResolverInterface
+     */
+    private $tagResolver;
+    /**
+     * @var ReleaseWorkerInterface[]
+     */
+    private $releaseWorkers;
 
     /**
      * @param ReleaseWorkerInterface[] $releaseWorkers
      */
     public function __construct(
         ParameterProvider $parameterProvider,
-        private TagResolverInterface $tagResolver,
-        private array $releaseWorkers
+        TagResolverInterface $tagResolver,
+        array $releaseWorkers
     ) {
+        $this->tagResolver = $tagResolver;
+        $this->releaseWorkers = $releaseWorkers;
         $this->isStageRequired = $parameterProvider->provideBoolParameter(Option::IS_STAGE_REQUIRED);
         $this->stagesToAllowExistingTag = $parameterProvider->provideArrayParameter(
             Option::STAGES_TO_ALLOW_EXISTING_TAG

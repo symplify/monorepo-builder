@@ -15,10 +15,14 @@ final class JsonInliner
      * @see https://regex101.com/r/jhWo9g/1
      */
     private const SPACE_REGEX = '#\s+#';
+    /**
+     * @var \Symplify\PackageBuilder\Parameter\ParameterProvider
+     */
+    private $parameterProvider;
 
-    public function __construct(
-        private ParameterProvider $parameterProvider
-    ) {
+    public function __construct(ParameterProvider $parameterProvider)
+    {
+        $this->parameterProvider = $parameterProvider;
     }
 
     public function inlineSections(string $jsonContent): string

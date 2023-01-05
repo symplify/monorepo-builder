@@ -11,10 +11,18 @@ use Symplify\MonorepoBuilder\Merge\Validation\AutoloadPathValidator;
 
 final class AutoloadComposerKeyMerger implements ComposerKeyMergerInterface
 {
-    public function __construct(
-        private AutoloadPathValidator $autoloadPathValidator,
-        private SortedParameterMerger $sortedParameterMerger
-    ) {
+    /**
+     * @var \Symplify\MonorepoBuilder\Merge\Validation\AutoloadPathValidator
+     */
+    private $autoloadPathValidator;
+    /**
+     * @var \Symplify\MonorepoBuilder\Merge\Arrays\SortedParameterMerger
+     */
+    private $sortedParameterMerger;
+    public function __construct(AutoloadPathValidator $autoloadPathValidator, SortedParameterMerger $sortedParameterMerger)
+    {
+        $this->autoloadPathValidator = $autoloadPathValidator;
+        $this->sortedParameterMerger = $sortedParameterMerger;
     }
 
     public function merge(ComposerJson $mainComposerJson, ComposerJson $newComposerJson): void

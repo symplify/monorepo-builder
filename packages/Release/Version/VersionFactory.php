@@ -11,10 +11,18 @@ use Symplify\MonorepoBuilder\Release\ValueObject\SemVersion;
 
 final class VersionFactory
 {
-    public function __construct(
-        private ReleaseGuard $releaseGuard,
-        private TagResolverInterface $tagResolver
-    ) {
+    /**
+     * @var \Symplify\MonorepoBuilder\Release\Guard\ReleaseGuard
+     */
+    private $releaseGuard;
+    /**
+     * @var \Symplify\MonorepoBuilder\Contract\Git\TagResolverInterface
+     */
+    private $tagResolver;
+    public function __construct(ReleaseGuard $releaseGuard, TagResolverInterface $tagResolver)
+    {
+        $this->releaseGuard = $releaseGuard;
+        $this->tagResolver = $tagResolver;
     }
 
     public function createValidVersion(string $versionArgument, string $stage): Version

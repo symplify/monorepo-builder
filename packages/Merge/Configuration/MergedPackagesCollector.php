@@ -9,7 +9,7 @@ final class MergedPackagesCollector
     /**
      * @var string[]
      */
-    private array $packages = [];
+    private $packages = [];
 
     public function addPackage(string $package): void
     {

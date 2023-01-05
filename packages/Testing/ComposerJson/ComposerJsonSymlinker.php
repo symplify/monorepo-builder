@@ -29,12 +29,24 @@ final class ComposerJsonSymlinker
      * @var string
      */
     private const OPTIONS = 'options';
+    /**
+     * @var \Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider
+     */
+    private $composerJsonProvider;
+    /**
+     * @var \Symplify\MonorepoBuilder\Testing\PathResolver\PackagePathResolver
+     */
+    private $packagePathResolver;
+    /**
+     * @var \Symplify\MonorepoBuilder\ComposerJsonManipulator\FileSystem\JsonFileManager
+     */
+    private $jsonFileManager;
 
-    public function __construct(
-        private ComposerJsonProvider $composerJsonProvider,
-        private PackagePathResolver $packagePathResolver,
-        private JsonFileManager $jsonFileManager
-    ) {
+    public function __construct(ComposerJsonProvider $composerJsonProvider, PackagePathResolver $packagePathResolver, JsonFileManager $jsonFileManager)
+    {
+        $this->composerJsonProvider = $composerJsonProvider;
+        $this->packagePathResolver = $packagePathResolver;
+        $this->jsonFileManager = $jsonFileManager;
     }
 
     /**

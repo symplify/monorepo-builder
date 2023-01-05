@@ -1,79 +1,71 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Utils;
 
 use PharIo\Version\Version;
 use Symplify\MonorepoBuilder\ValueObject\Option;
-use Symplify\PackageBuilder\Parameter\ParameterProvider;
-
+use MonorepoBuilder202301\Symplify\PackageBuilder\Parameter\ParameterProvider;
 /**
  * @see \Symplify\MonorepoBuilder\Tests\Utils\VersionUtilsTest
  */
 final class VersionUtils
 {
-    private string $packageAliasFormat;
-
+    /**
+     * @var string
+     */
+    private $packageAliasFormat;
     public function __construct(ParameterProvider $parameterProvider)
     {
         $this->packageAliasFormat = $parameterProvider->provideStringParameter(Option::PACKAGE_ALIAS_FORMAT);
     }
-
-    public function getNextAliasFormat(Version | string $version): string
+    /**
+     * @param \PharIo\Version\Version|string $version
+     */
+    public function getNextAliasFormat($version) : string
     {
         $version = $this->normalizeVersion($version);
-
         /** @var Version $minor */
         $minor = $this->getNextMinorNumber($version);
-
-        return str_replace(
-            ['<major>', '<minor>'],
-            [$version->getMajor()->getValue(), $minor],
-            $this->packageAliasFormat
-        );
+        return \str_replace(['<major>', '<minor>'], [$version->getMajor()->getValue(), $minor], $this->packageAliasFormat);
     }
-
-    public function getRequiredNextFormat(Version | string $version): string
+    /**
+     * @param \PharIo\Version\Version|string $version
+     */
+    public function getRequiredNextFormat($version) : string
     {
         $version = $this->normalizeVersion($version);
         $minor = $this->getNextMinorNumber($version);
-
         return '^' . $version->getMajor()->getValue() . '.' . $minor;
     }
-
-    public function getRequiredFormat(Version | string $version): string
+    /**
+     * @param \PharIo\Version\Version|string $version
+     */
+    public function getRequiredFormat($version) : string
     {
         $version = $this->normalizeVersion($version);
-
         $requireVersion = '^' . $version->getMajor()->getValue() . '.' . $version->getMinor()->getValue();
-
-        $value = $version->getPatch()
-            ->getValue();
+        $value = $version->getPatch()->getValue();
         if ($value > 0) {
             $requireVersion .= '.' . $value;
         }
-
         return $requireVersion;
     }
-
-    private function normalizeVersion(Version | string $version): Version
+    /**
+     * @param \PharIo\Version\Version|string $version
+     */
+    private function normalizeVersion($version) : Version
     {
-        if (is_string($version)) {
+        if (\is_string($version)) {
             return new Version($version);
         }
-
         return $version;
     }
-
-    private function getNextMinorNumber(Version $version): int
+    private function getNextMinorNumber(Version $version) : int
     {
         if ($version->hasPreReleaseSuffix()) {
-            return (int) $version->getMinor()
-                ->getValue();
+            return (int) $version->getMinor()->getValue();
         }
-
-        return $version->getMinor()
-            ->getValue() + 1;
+        return $version->getMinor()->getValue() + 1;
     }
 }

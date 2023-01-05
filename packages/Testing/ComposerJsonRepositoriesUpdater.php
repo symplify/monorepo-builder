@@ -16,14 +16,38 @@ use Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
 
 final class ComposerJsonRepositoriesUpdater
 {
-    public function __construct(
-        private PackageNamesProvider $packageNamesProvider,
-        private JsonFileManager $jsonFileManager,
-        private SymfonyStyle $symfonyStyle,
-        private ComposerJsonSymlinker $composerJsonSymlinker,
-        private UsedPackagesResolver $usedPackagesResolver,
-        private ConsoleDiffer $consoleDiffer
-    ) {
+    /**
+     * @var \Symplify\MonorepoBuilder\Package\PackageNamesProvider
+     */
+    private $packageNamesProvider;
+    /**
+     * @var \Symplify\MonorepoBuilder\ComposerJsonManipulator\FileSystem\JsonFileManager
+     */
+    private $jsonFileManager;
+    /**
+     * @var \Symfony\Component\Console\Style\SymfonyStyle
+     */
+    private $symfonyStyle;
+    /**
+     * @var \Symplify\MonorepoBuilder\Testing\ComposerJson\ComposerJsonSymlinker
+     */
+    private $composerJsonSymlinker;
+    /**
+     * @var \Symplify\MonorepoBuilder\Testing\PackageDependency\UsedPackagesResolver
+     */
+    private $usedPackagesResolver;
+    /**
+     * @var \Symplify\PackageBuilder\Console\Output\ConsoleDiffer
+     */
+    private $consoleDiffer;
+    public function __construct(PackageNamesProvider $packageNamesProvider, JsonFileManager $jsonFileManager, SymfonyStyle $symfonyStyle, ComposerJsonSymlinker $composerJsonSymlinker, UsedPackagesResolver $usedPackagesResolver, ConsoleDiffer $consoleDiffer)
+    {
+        $this->packageNamesProvider = $packageNamesProvider;
+        $this->jsonFileManager = $jsonFileManager;
+        $this->symfonyStyle = $symfonyStyle;
+        $this->composerJsonSymlinker = $composerJsonSymlinker;
+        $this->usedPackagesResolver = $usedPackagesResolver;
+        $this->consoleDiffer = $consoleDiffer;
     }
 
     public function processPackage(SmartFileInfo $packageFileInfo, ComposerJson $rootComposerJson, bool $symlink): void

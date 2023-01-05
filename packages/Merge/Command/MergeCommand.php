@@ -17,14 +17,44 @@ use Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
 
 final class MergeCommand extends AbstractSymplifyCommand
 {
+    /**
+     * @var \Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider
+     */
+    private $composerJsonProvider;
+    /**
+     * @var \Symplify\MonorepoBuilder\ComposerJsonManipulator\ComposerJsonFactory
+     */
+    private $composerJsonFactory;
+    /**
+     * @var \Symplify\MonorepoBuilder\ComposerJsonManipulator\FileSystem\JsonFileManager
+     */
+    private $jsonFileManager;
+    /**
+     * @var \Symplify\MonorepoBuilder\Merge\Application\MergedAndDecoratedComposerJsonFactory
+     */
+    private $mergedAndDecoratedComposerJsonFactory;
+    /**
+     * @var \Symplify\MonorepoBuilder\Validator\SourcesPresenceValidator
+     */
+    private $sourcesPresenceValidator;
+    /**
+     * @var \Symplify\MonorepoBuilder\Merge\Guard\ConflictingVersionsGuard
+     */
+    private $conflictingVersionsGuard;
     public function __construct(
-        private ComposerJsonProvider $composerJsonProvider,
-        private ComposerJsonFactory $composerJsonFactory,
-        private JsonFileManager $jsonFileManager,
-        private MergedAndDecoratedComposerJsonFactory $mergedAndDecoratedComposerJsonFactory,
-        private SourcesPresenceValidator $sourcesPresenceValidator,
-        private ConflictingVersionsGuard $conflictingVersionsGuard
+        ComposerJsonProvider $composerJsonProvider,
+        ComposerJsonFactory $composerJsonFactory,
+        JsonFileManager $jsonFileManager,
+        MergedAndDecoratedComposerJsonFactory $mergedAndDecoratedComposerJsonFactory,
+        SourcesPresenceValidator $sourcesPresenceValidator,
+        ConflictingVersionsGuard $conflictingVersionsGuard
     ) {
+        $this->composerJsonProvider = $composerJsonProvider;
+        $this->composerJsonFactory = $composerJsonFactory;
+        $this->jsonFileManager = $jsonFileManager;
+        $this->mergedAndDecoratedComposerJsonFactory = $mergedAndDecoratedComposerJsonFactory;
+        $this->sourcesPresenceValidator = $sourcesPresenceValidator;
+        $this->conflictingVersionsGuard = $conflictingVersionsGuard;
         parent::__construct();
     }
 

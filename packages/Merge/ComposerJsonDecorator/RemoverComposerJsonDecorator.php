@@ -15,9 +15,13 @@ use Symplify\MonorepoBuilder\ValueObject\Option;
  */
 final class RemoverComposerJsonDecorator implements ComposerJsonDecoratorInterface
 {
-    public function __construct(
-        private ModifyingComposerJsonProvider $modifyingComposerJsonProvider
-    ) {
+    /**
+     * @var \Symplify\MonorepoBuilder\Merge\Configuration\ModifyingComposerJsonProvider
+     */
+    private $modifyingComposerJsonProvider;
+    public function __construct(ModifyingComposerJsonProvider $modifyingComposerJsonProvider)
+    {
+        $this->modifyingComposerJsonProvider = $modifyingComposerJsonProvider;
     }
 
     public function decorate(ComposerJson $composerJson): void

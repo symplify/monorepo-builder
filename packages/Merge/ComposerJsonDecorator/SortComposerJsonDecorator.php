@@ -17,7 +17,7 @@ final class SortComposerJsonDecorator implements ComposerJsonDecoratorInterface
     /**
      * @var string[]
      */
-    private array $sectionOrder = [];
+    private $sectionOrder = [];
 
     public function __construct(ParameterProvider $parameterProvider)
     {
@@ -30,13 +30,18 @@ final class SortComposerJsonDecorator implements ComposerJsonDecoratorInterface
 
         usort(
             $orderedKeys,
-            fn (string $key1, string $key2): int => $this->findKeyPosition($key1) <=> $this->findKeyPosition($key2)
+            function (string $key1, string $key2) : int {
+                return $this->findKeyPosition($key1) <=> $this->findKeyPosition($key2);
+            }
         );
 
         $composerJson->setOrderedKeys($orderedKeys);
     }
 
-    private function findKeyPosition(string $key): int | string | bool
+    /**
+     * @return int|string|bool
+     */
+    private function findKeyPosition(string $key)
     {
         return array_search($key, $this->sectionOrder, true);
     }

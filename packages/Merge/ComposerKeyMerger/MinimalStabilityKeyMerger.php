@@ -18,13 +18,13 @@ final class MinimalStabilityKeyMerger implements ComposerKeyMergerInterface
     {
         try {
             $newStability = new PreReleaseSuffix((string) $newComposerJson->getMinimumStability());
-        } catch (InvalidPreReleaseSuffixException) {
+        } catch (InvalidPreReleaseSuffixException $exception) {
             return;
         }
 
         try {
             $mainStability = new PreReleaseSuffix((string) $mainComposerJson->getMinimumStability());
-        } catch (InvalidPreReleaseSuffixException) {
+        } catch (InvalidPreReleaseSuffixException $exception) {
             $mainStability = null;
         }
 

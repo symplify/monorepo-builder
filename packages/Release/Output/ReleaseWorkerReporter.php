@@ -10,9 +10,13 @@ use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\StageAwareInterface;
 
 final class ReleaseWorkerReporter
 {
-    public function __construct(
-        private SymfonyStyle $symfonyStyle
-    ) {
+    /**
+     * @var \Symfony\Component\Console\Style\SymfonyStyle
+     */
+    private $symfonyStyle;
+    public function __construct(SymfonyStyle $symfonyStyle)
+    {
+        $this->symfonyStyle = $symfonyStyle;
     }
 
     public function printMetadata(ReleaseWorkerInterface $releaseWorker): void
@@ -22,7 +26,7 @@ final class ReleaseWorkerReporter
         }
 
         // show debug data on -v/--verbose/--debug
-        $this->symfonyStyle->writeln('class: ' . $releaseWorker::class);
+        $this->symfonyStyle->writeln('class: ' . get_class($releaseWorker));
         if ($releaseWorker instanceof StageAwareInterface) {
             $this->symfonyStyle->writeln('stage: ' . $releaseWorker->getStage());
         }

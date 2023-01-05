@@ -13,9 +13,13 @@ use Symplify\SmartFileSystem\SmartFileInfo;
  */
 final class ComposerJsonPrinter
 {
-    public function __construct(
-        private JsonFileManager $jsonFileManager
-    ) {
+    /**
+     * @var \Symplify\MonorepoBuilder\ComposerJsonManipulator\FileSystem\JsonFileManager
+     */
+    private $jsonFileManager;
+    public function __construct(JsonFileManager $jsonFileManager)
+    {
+        $this->jsonFileManager = $jsonFileManager;
     }
 
     public function printToString(ComposerJson $composerJson): string
@@ -23,7 +27,10 @@ final class ComposerJsonPrinter
         return $this->jsonFileManager->encodeJsonToFileContent($composerJson->getJsonArray());
     }
 
-    public function print(ComposerJson $composerJson, string | SmartFileInfo $targetFile): void
+    /**
+     * @param string|\Symplify\SmartFileSystem\SmartFileInfo $targetFile
+     */
+    public function print(ComposerJson $composerJson, $targetFile): void
     {
         if (is_string($targetFile)) {
             $this->jsonFileManager->printComposerJsonToFilePath($composerJson, $targetFile);
