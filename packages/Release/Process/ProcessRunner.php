@@ -1,13 +1,11 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Release\Process;
 
-use Symfony\Component\Console\Style\SymfonyStyle;
-use Symfony\Component\Process\Exception\ProcessFailedException;
-use Symfony\Component\Process\Process;
-
+use MonorepoBuilder202301\Symfony\Component\Console\Style\SymfonyStyle;
+use MonorepoBuilder202301\Symfony\Component\Process\Exception\ProcessFailedException;
+use MonorepoBuilder202301\Symfony\Component\Process\Process;
 final class ProcessRunner
 {
     /**
@@ -16,60 +14,53 @@ final class ProcessRunner
      * @var float
      */
     private const TIMEOUT = 10 * 60.0;
-
-    public function __construct(
-        private SymfonyStyle $symfonyStyle
-    ) {
+    /**
+     * @var \Symfony\Component\Console\Style\SymfonyStyle
+     */
+    private $symfonyStyle;
+    public function __construct(SymfonyStyle $symfonyStyle)
+    {
+        $this->symfonyStyle = $symfonyStyle;
     }
-
     /**
      * @param string|string[] $commandLine
      */
-    public function run(string | array $commandLine, ?string $cwd = null): string
+    public function run($commandLine, ?string $cwd = null) : string
     {
         if ($this->symfonyStyle->isVerbose()) {
             $this->symfonyStyle->note('Running process: ' . $this->normalizeToString($commandLine));
         }
-
         $process = $this->createProcess($commandLine, $cwd);
         $process->run();
-
         $this->reportResult($process);
-
         return $process->getOutput();
     }
-
     /**
      * @param string|string[] $content
      */
-    private function normalizeToString(string | array $content): string
+    private function normalizeToString($content) : string
     {
-        if (is_array($content)) {
-            return implode(' ', $content);
+        if (\is_array($content)) {
+            return \implode(' ', $content);
         }
-
         return $content;
     }
-
     /**
      * @param string|string[] $commandLine
      */
-    private function createProcess(string | array $commandLine, ?string $cwd): Process
+    private function createProcess($commandLine, ?string $cwd) : Process
     {
         // @since Symfony 4.2: https://github.com/symfony/symfony/pull/27821
-        if (is_string($commandLine) && method_exists(Process::class, 'fromShellCommandline')) {
+        if (\is_string($commandLine) && \method_exists(Process::class, 'fromShellCommandline')) {
             return Process::fromShellCommandline($commandLine, $cwd, null, null, self::TIMEOUT);
         }
-
         return new Process($commandLine, $cwd, null, null, self::TIMEOUT);
     }
-
-    private function reportResult(Process $process): void
+    private function reportResult(Process $process) : void
     {
         if ($process->isSuccessful()) {
             return;
         }
-
         throw new ProcessFailedException($process);
     }
 }
