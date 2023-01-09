@@ -12,5 +12,10 @@
         "branch-alias": {
             "dev-main": "10.3-dev"
         }
+    },
+    "autoload": {
+        "files": [
+            "bootstrap.php"
+        ]
     }
 }

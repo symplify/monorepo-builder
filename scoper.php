@@ -35,7 +35,7 @@ $polyfillsStubs = array_map(
 
 // see https://github.com/humbug/php-scoper
 return [
-    'prefix' => 'MonorepoBuilder' . $timestamp,
+    'prefix' => 'MonorepoBuilderPrefix' . $timestamp,
     'exclude-files' => [
         // these paths are relative to this file location, so it should be in the root directory
         'vendor/symfony/deprecation-contracts/function.php',
