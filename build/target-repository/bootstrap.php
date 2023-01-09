@@ -12,7 +12,7 @@ spl_autoload_register(function (string $class): void {
     }
 
     // load prefixed or native class, e.g. for running tests
-    if (strpos($class, 'MonorepoBuilder\\') === 0) {
+    if (strpos($class, 'MonorepoBuilderPrefix') === 0 || strpos($class, 'MonorepoBuilder\\') === 0) {
         if ($composerAutoloader === null) {
             // prefixed version autoload
             $composerAutoloader = require __DIR__ . '/vendor/autoload.php';
