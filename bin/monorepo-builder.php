@@ -10,6 +10,8 @@ use Symplify\MonorepoBuilder\Kernel\MonorepoBuilderKernel;
 use Symplify\MonorepoBuilder\ValueObject\File;
 use Symplify\SymplifyKernel\ValueObject\KernelBootAndApplicationRun;
 
+define('__MONOREPO_BUILDER_RUNNING__', true);
+
 # 1. autoload
 $possibleAutoloadPaths = [
     // dependency
