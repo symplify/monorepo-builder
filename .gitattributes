@@ -4,3 +4,5 @@ phpunit.xml export-ignore
 *.md export-ignore
 /tests export-ignore
 /packages-tests export-ignore
+
+.phpunit.result.cache

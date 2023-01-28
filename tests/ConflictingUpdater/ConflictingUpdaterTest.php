@@ -8,7 +8,6 @@ use PharIo\Version\Version;
 use Symplify\MonorepoBuilder\ConflictingUpdater;
 use Symplify\MonorepoBuilder\Kernel\MonorepoBuilderKernel;
 use Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
-use Symplify\SmartFileSystem\SmartFileInfo;
 use Symplify\SmartFileSystem\SmartFileSystem;
 
 final class ConflictingUpdaterTest extends AbstractKernelTestCase
@@ -33,10 +32,10 @@ final class ConflictingUpdaterTest extends AbstractKernelTestCase
             __DIR__ . '/Fixture/input_composer.json'
         );
 
-        $packageComposerFileInfos = [new SmartFileInfo(__DIR__ . '/Fixture/input_composer.json')];
+        $packageComposerFilePaths = [__DIR__ . '/Fixture/input_composer.json'];
 
-        $this->conflictingUpdater->updateFileInfosWithVendorAndVersion(
-            $packageComposerFileInfos,
+        $this->conflictingUpdater->updateFilePathsWithVendorAndVersion(
+            $packageComposerFilePaths,
             ['symplify/another-package', 'symplify/package-builder'],
             new Version('9.2')
         );

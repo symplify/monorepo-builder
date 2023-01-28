@@ -13,6 +13,7 @@ use Symplify\MonorepoBuilder\Testing\ComposerJsonRequireUpdater;
 use Symplify\MonorepoBuilder\Testing\ValueObject\Option;
 use Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
 use Symplify\SmartFileSystem\SmartFileInfo;
+use Webmozart\Assert\Assert;
 
 final class LocalizeComposerPathsCommand extends AbstractSymplifyCommand
 {
@@ -34,7 +35,7 @@ final class LocalizeComposerPathsCommand extends AbstractSymplifyCommand
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $packageComposerJson = (string) $input->getArgument(Option::PACKAGE_COMPOSER_JSON);
-        $this->fileSystemGuard->ensureFileExists($packageComposerJson, __METHOD__);
+        Assert::fileExists($packageComposerJson, __METHOD__);
 
         $packageComposerJsonFileInfo = new SmartFileInfo($packageComposerJson);
         $rootComposerJson = $this->composerJsonProvider->getRootComposerJson();

@@ -23,7 +23,7 @@ final class SetCurrentMutualConflictsReleaseWorker implements ReleaseWorkerInter
 
     public function work(Version $version): void
     {
-        $this->conflictingUpdater->updateFileInfosWithVendorAndVersion(
+        $this->conflictingUpdater->updateFilePathsWithVendorAndVersion(
             $this->composerJsonProvider->getPackagesComposerFileInfos(),
             $this->packageNamesProvider->provide(),
             $version

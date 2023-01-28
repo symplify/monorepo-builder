@@ -14,7 +14,7 @@ use Symplify\PackageBuilder\Console\Style\SymfonyStyleFactory;
 use Symplify\PackageBuilder\Parameter\ParameterProvider;
 use Symplify\PackageBuilder\Reflection\PrivatesCaller;
 use Symplify\PackageBuilder\Yaml\ParametersMerger;
-use Symplify\SmartFileSystem\SmartFileSystem;
+
 use function Symfony\Component\DependencyInjection\Loader\Configurator\service;
 
 return static function (MBConfig $mbConfig): void {
@@ -94,7 +94,6 @@ return static function (MBConfig $mbConfig): void {
     $services->set(PrivatesCaller::class);
     $services->set(ParametersMerger::class);
 
-    $services->set(SmartFileSystem::class);
     $services->set(PrivatesCaller::class);
 
     $services->set(ParameterProvider::class)
