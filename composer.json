@@ -26,7 +26,8 @@
         "symplify/easy-ci": "^11.1",
         "symplify/phpstan-extensions": "^11.1",
         "phpstan/extension-installer": "^1.2",
-        "php-parallel-lint/php-parallel-lint": "^1.3"
+        "php-parallel-lint/php-parallel-lint": "^1.3",
+        "tracy/tracy": "^2.9"
     },
     "autoload": {
         "psr-4": {

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Symplify\MonorepoBuilder\Release\Version;
 
+use Nette\Utils\Strings;
 use PharIo\Version\Version;
 use Symplify\MonorepoBuilder\Contract\Git\TagResolverInterface;
 use Symplify\MonorepoBuilder\Release\Guard\ReleaseGuard;
@@ -22,6 +23,7 @@ final class VersionFactory
         // normalize to workaround phar-io bug
         $versionArgument = strtolower($versionArgument);
 
+        // remove 4th level
         if (in_array($versionArgument, SemVersion::ALL, true)) {
             return $this->resolveNextVersionByVersionKind($versionArgument);
         }
@@ -40,6 +42,12 @@ final class VersionFactory
         if ($mostRecentVersionString === null) {
             // the very first tag
             return new Version('v0.1.0');
+        }
+
+        // narrow long invalid version like 10.5.2.72 to 10.5.2
+        $dotCount = substr_count($mostRecentVersionString, '.');
+        if ($dotCount === 3) {
+            $mostRecentVersionString = Strings::before($mostRecentVersionString, '.', -1);
         }
 
         $mostRecentVersion = new Version($mostRecentVersionString);

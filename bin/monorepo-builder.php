@@ -14,6 +14,8 @@ define('__MONOREPO_BUILDER_RUNNING__', true);
 
 # 1. autoload
 $possibleAutoloadPaths = [
+    // local
+    __DIR__ . '/../vendor/autoload.php',
     // dependency
     __DIR__ . '/../../../autoload.php',
     // monorepo
