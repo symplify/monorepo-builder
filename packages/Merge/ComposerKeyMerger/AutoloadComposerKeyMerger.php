@@ -7,12 +7,10 @@ namespace Symplify\MonorepoBuilder\Merge\ComposerKeyMerger;
 use Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJson;
 use Symplify\MonorepoBuilder\Merge\Arrays\SortedParameterMerger;
 use Symplify\MonorepoBuilder\Merge\Contract\ComposerKeyMergerInterface;
-use Symplify\MonorepoBuilder\Merge\Validation\AutoloadPathValidator;
 
 final class AutoloadComposerKeyMerger implements ComposerKeyMergerInterface
 {
     public function __construct(
-        private AutoloadPathValidator $autoloadPathValidator,
         private SortedParameterMerger $sortedParameterMerger
     ) {
     }
@@ -22,8 +20,6 @@ final class AutoloadComposerKeyMerger implements ComposerKeyMergerInterface
         if ($newComposerJson->getAutoload() === []) {
             return;
         }
-
-        $this->autoloadPathValidator->ensureAutoloadPathExists($newComposerJson);
 
         $autoload = $this->sortedParameterMerger->mergeRecursiveAndSort(
             $mainComposerJson->getAutoload(),

@@ -7,7 +7,6 @@ namespace Symplify\MonorepoBuilder;
 use PharIo\Version\Version;
 use Symplify\MonorepoBuilder\ComposerJsonManipulator\ComposerJsonFactory;
 use Symplify\MonorepoBuilder\ComposerJsonManipulator\Printer\ComposerJsonPrinter;
-use Symplify\SmartFileSystem\SmartFileInfo;
 
 /**
  * @see \Symplify\MonorepoBuilder\Tests\ConflictingUpdater\ConflictingUpdaterTest
@@ -22,15 +21,15 @@ final class ConflictingUpdater
 
     /**
      * @param string[] $packageNames
-     * @param SmartFileInfo[] $packageComposerFileInfos
+     * @param string[] $packageComposerFilePaths
      */
-    public function updateFileInfosWithVendorAndVersion(
-        array $packageComposerFileInfos,
+    public function updateFilePathsWithVendorAndVersion(
+        array $packageComposerFilePaths,
         array $packageNames,
         Version $conflictingVersion
     ): void {
-        foreach ($packageComposerFileInfos as $packageComposerFileInfo) {
-            $composerJson = $this->composerJsonFactory->createFromFileInfo($packageComposerFileInfo);
+        foreach ($packageComposerFilePaths as $packageComposerFilePath) {
+            $composerJson = $this->composerJsonFactory->createFromFilePath($packageComposerFilePath);
             $conflicts = $composerJson->getConflicts();
 
             $requiredPackagesNames = $composerJson->getRequirePackageNames();
@@ -52,7 +51,7 @@ final class ConflictingUpdater
             $composerJson->setConflicts($conflicts);
 
             // update file
-            $this->composerJsonPrinter->print($composerJson, $packageComposerFileInfo);
+            $this->composerJsonPrinter->print($composerJson, $packageComposerFilePath);
         }
     }
 }
