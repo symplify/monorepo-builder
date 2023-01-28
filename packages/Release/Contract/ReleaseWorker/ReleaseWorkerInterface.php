@@ -1,11 +1,9 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker;
 
 use PharIo\Version\Version;
-
 interface ReleaseWorkerInterface
 {
     /**
@@ -14,7 +12,6 @@ interface ReleaseWorkerInterface
      * - "Dump new items to CHANGELOG.md"
      * - "Run coding standards"
      */
-    public function getDescription(Version $version): string;
-
-    public function work(Version $version): void;
+    public function getDescription(Version $version) : string;
+    public function work(Version $version) : void;
 }
