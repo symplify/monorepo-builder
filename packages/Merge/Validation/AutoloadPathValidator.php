@@ -1,30 +1,30 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Merge\Validation;
 
 use Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJson;
-use Symplify\SmartFileSystem\FileSystemGuard;
-use Symplify\SmartFileSystem\SmartFileInfo;
-
+use MonorepoBuilderPrefix202301\Symplify\SmartFileSystem\FileSystemGuard;
+use MonorepoBuilderPrefix202301\Symplify\SmartFileSystem\SmartFileInfo;
 final class AutoloadPathValidator
 {
-    public function __construct(
-        private FileSystemGuard $fileSystemGuard
-    ) {
+    /**
+     * @var \Symplify\SmartFileSystem\FileSystemGuard
+     */
+    private $fileSystemGuard;
+    public function __construct(FileSystemGuard $fileSystemGuard)
+    {
+        $this->fileSystemGuard = $fileSystemGuard;
     }
-
-    public function ensureAutoloadPathExists(ComposerJson $composerJson): void
+    public function ensureAutoloadPathExists(ComposerJson $composerJson) : void
     {
         $composerJsonFileInfo = $composerJson->getFileInfo();
-        if (! $composerJsonFileInfo instanceof SmartFileInfo) {
+        if (!$composerJsonFileInfo instanceof SmartFileInfo) {
             return;
         }
-
         $autoloadDirectories = $composerJson->getAbsoluteAutoloadDirectories();
         foreach ($autoloadDirectories as $autoloadDirectory) {
-            $message = sprintf('In "%s"', $composerJsonFileInfo->getRelativeFilePathFromCwd());
+            $message = \sprintf('In "%s"', $composerJsonFileInfo->getRelativeFilePathFromCwd());
             $this->fileSystemGuard->ensureDirectoryExists($autoloadDirectory, $message);
         }
     }
