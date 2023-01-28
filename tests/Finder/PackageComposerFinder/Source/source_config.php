@@ -8,10 +8,10 @@ use Symplify\MonorepoBuilder\ValueObject\Option;
 return static function (ContainerConfigurator $containerConfigurator): void {
     $parameters = $containerConfigurator->parameters();
     $parameters->set(Option::PACKAGE_DIRECTORIES, [
-        __DIR__ . '/../Source'
+        __DIR__ . '/../Source',
     ]);
 
     $parameters->set(Option::PACKAGE_DIRECTORIES_EXCLUDES, [
-        'ExcludeThis'
+        'ExcludeThis',
     ]);
 };
