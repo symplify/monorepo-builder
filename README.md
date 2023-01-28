@@ -49,9 +49,9 @@ vendor/bin/monorepo-builder merge
 Typical location for packages is `/packages`. But what if you have different naming or extra `/projects` directory?
 
 ```php
-use Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
+// monorepo-builder.php
+use Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
 use Symplify\MonorepoBuilder\Config\MBConfig;
-use Symplify\MonorepoBuilder\ValueObject\Option;
 
 return static function (MBConfig $mbConfig): void {
     // where are the packages located?
@@ -62,7 +62,7 @@ return static function (MBConfig $mbConfig): void {
         __DIR__ . '/projects',
     ]);
 
-    // how to skip packages in loaded directories?
+    // how skip packages in loaded direectories?
     $mbConfig->packageDirectoriesExcludes([__DIR__ . '/packages/secret-package']);
 
     // "merge" command related
@@ -83,10 +83,6 @@ return static function (MBConfig $mbConfig): void {
         ComposerJsonSection::REQUIRE => [
             // the line is removed by key, so version is irrelevant, thus *
             'phpunit/phpunit' => '*',
-        ],
-        ComposerJsonSection::REPOSITORIES => [
-            // this will remove all repositories
-            Option::REMOVE_COMPLETELY,
         ],
     ]);
 };
@@ -133,11 +129,13 @@ This will add alias `3.1-dev` to `composer.json` in each package.
 If you prefer [`3.1.x-dev`](https://getcomposer.org/doc/articles/aliases.md#branch-alias) over default `3.1-dev`, you can configure it:
 
 ```php
-use Symplify\MonorepoBuilder\Config\MBConfig;
+use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use Symplify\MonorepoBuilder\ValueObject\Option;
 
-return static function (MBConfig $mbConfig): void {
+return static function (ContainerConfigurator $containerConfigurator): void {
+    $parameters = $containerConfigurator->parameters();
     // default: "<major>.<minor>-dev"
-    $mbConfig->packageAliasFormat('<major>.<minor>.x-dev');
+    $parameters->set(Option::PACKAGE_ALIAS_FORMAT, '<major>.<minor>.x-dev');
 };
 ```
 
@@ -170,7 +168,7 @@ And add the following release workers to your `monorepo-builder.php`:
 ```php
 // File: monorepo-builder.php
 
-use Symplify\MonorepoBuilder\Config\MBConfig;
+use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symplify\MonorepoBuilder\Release\ReleaseWorker\AddTagToChangelogReleaseWorker;
 use Symplify\MonorepoBuilder\Release\ReleaseWorker\PushNextDevReleaseWorker;
 use Symplify\MonorepoBuilder\Release\ReleaseWorker\PushTagReleaseWorker;
@@ -180,22 +178,21 @@ use Symplify\MonorepoBuilder\Release\ReleaseWorker\TagVersionReleaseWorker;
 use Symplify\MonorepoBuilder\Release\ReleaseWorker\UpdateBranchAliasReleaseWorker;
 use Symplify\MonorepoBuilder\Release\ReleaseWorker\UpdateReplaceReleaseWorker;
 
-return static function (MBConfig $mbConfig): void {
-    // release workers - in order to execute
-    $mbConfig->workers([
-        UpdateReplaceReleaseWorker::class,
-        SetCurrentMutualDependenciesReleaseWorker::class,
-        AddTagToChangelogReleaseWorker::class,
-        TagVersionReleaseWorker::class,
-        PushTagReleaseWorker::class,
-        SetNextMutualDependenciesReleaseWorker::class,
-        UpdateBranchAliasReleaseWorker::class,
-        PushNextDevReleaseWorker::class,
-    ]);
+return static function (ContainerConfigurator $containerConfigurator): void {
+    $services = $containerConfigurator->services();
+
+    # release workers - in order to execute
+    $services->set(UpdateReplaceReleaseWorker::class);
+    $services->set(SetCurrentMutualDependenciesReleaseWorker::class);
+    $services->set(AddTagToChangelogReleaseWorker::class);
+    $services->set(TagVersionReleaseWorker::class);
+    $services->set(PushTagReleaseWorker::class);
+    $services->set(SetNextMutualDependenciesReleaseWorker::class);
+    $services->set(UpdateBranchAliasReleaseWorker::class);
+    $services->set(PushNextDevReleaseWorker::class);
 };
 ```
 
-You can also include your own workers. Just add services that implements `ReleaseWorkerInterface`.
 Are you afraid to tag and push? Use `--dry-run` to see only descriptions:
 
 ```bash
@@ -209,6 +206,33 @@ vendor/bin/monorepo-builder release patch
 ```
 
 You can use `minor` and `major` too.
+
+### 7. Set Your Own Release Flow
+
+There is set of few default release workers - classes that implement `Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface`.
+
+You need to register them as services. Feel free to start with default ones:
+
+```php
+use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+
+return static function (ContainerConfigurator $containerConfigurator): void {
+    $services = $containerConfigurator->services();
+
+    // release workers - in order to execute
+    $services->set(Symplify\MonorepoBuilder\Release\ReleaseWorker\SetCurrentMutualDependenciesReleaseWorker::class);
+    $services->set(Symplify\MonorepoBuilder\Release\ReleaseWorker\AddTagToChangelogReleaseWorker::class);
+
+    // you can extend with your own
+    $services->set(App\SendPigeonToTwitterReleaseWorker::class);
+
+    $services->set(Symplify\MonorepoBuilder\Release\ReleaseWorker\TagVersionReleaseWorker::class);
+    $services->set(Symplify\MonorepoBuilder\Release\ReleaseWorker\PushTagReleaseWorker::class);
+    $services->set(Symplify\MonorepoBuilder\Release\ReleaseWorker\SetNextMutualDependenciesReleaseWorker::class);
+    $services->set(Symplify\MonorepoBuilder\Release\ReleaseWorker\UpdateBranchAliasReleaseWorker::class);
+    $services->set(Symplify\MonorepoBuilder\Release\ReleaseWorker\PushNextDevReleaseWorker::class);
+};
+```
 
 <br>
 
