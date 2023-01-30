@@ -14,7 +14,7 @@ composer require symplify/monorepo-builder --dev
 
 ## Usage
 
-### 0. Are you New to Monorepo?
+### 1. Are you New to Monorepo?
 
 The best to lean-in fast is to read basic intro at blog post [All You Always Wanted to Know About Monorepo](https://www.tomasvotruba.com/blog/2019/10/28/all-you-always-wanted-to-know-about-monorepo-but-were-afraid-to-ask/#what-is-monorepo).
 We also made a simple command to make that easy for you:
@@ -25,7 +25,7 @@ vendor/bin/monorepo-builder init
 
 And the basic setup is done!
 
-### 1. Merge local `composer.json` to the Root One
+### 2. Merge local `composer.json` to the Root One
 
 Merges configured sections to the root `composer.json`, so you can only edit `composer.json` of particular packages and let script to synchronize it.
 
@@ -92,7 +92,7 @@ return static function (MBConfig $mbConfig): void {
 };
 ```
 
-### 2. Bump Package Inter-dependencies
+### 3. Bump Package Inter-dependencies
 
 Let's say you release `symplify/symplify` 4.0 and you need package to depend on version `^4.0` for each other:
 
@@ -100,7 +100,7 @@ Let's say you release `symplify/symplify` 4.0 and you need package to depend on 
 vendor/bin/monorepo-builder bump-interdependency "^4.0"
 ```
 
-### 3. Keep Synchronized Package Version
+### 4. Keep Synchronized Package Version
 
 In synchronized monorepo, it's common to use same package version to prevent bugs and WTFs. So if one of your package uses `symfony/console` 3.4 and the other `symfony/console` 4.1, this will tell you:
 
@@ -108,7 +108,7 @@ In synchronized monorepo, it's common to use same package version to prevent bug
 vendor/bin/monorepo-builder validate
 ```
 
-### 4. Keep Package Alias Up-To-Date
+### 5. Keep Package Alias Up-To-Date
 
 You can see this even if there is already version 3.0 out:
 
@@ -141,13 +141,13 @@ return static function (MBConfig $mbConfig): void {
 };
 ```
 
-### 5. Split Directories to Git Repositories
+### 6. Split Directories to Git Repositories
 
 Thanks to GitHub Actions, this was never simpler to set up. Use [symplify/github-action-monorepo-split](https://github.com/symplify/github-action-monorepo-split).
 
 How to configure it? See our local setup at [.github/workflows/split_monorepo.yaml](https://github.com/symplify/symplify/blob/main/.github/workflows/split_monorepo.yaml)
 
-### 6. Release Flow
+### 7. Release Flow
 
 When a new version of your package is released, you have to do many manual steps:
 
@@ -168,8 +168,6 @@ vendor/bin/monorepo-builder release v7.0
 And add the following release workers to your `monorepo-builder.php`:
 
 ```php
-// File: monorepo-builder.php
-
 use Symplify\MonorepoBuilder\Config\MBConfig;
 use Symplify\MonorepoBuilder\Release\ReleaseWorker\AddTagToChangelogReleaseWorker;
 use Symplify\MonorepoBuilder\Release\ReleaseWorker\PushNextDevReleaseWorker;
@@ -199,7 +197,7 @@ You can also include your own workers. Just add services that implements `Releas
 Are you afraid to tag and push? Use `--dry-run` to see only descriptions:
 
 ```bash
-vendor/bin/monorepo-builder release v7.0 --dry-run
+vendor/bin/monorepo-builder release 7.0 --dry-run
 ```
 
 Do you want to release next [patch version](https://semver.org/), e.g. current `v0.7.1` → next `v0.7.2`?
@@ -209,13 +207,3 @@ vendor/bin/monorepo-builder release patch
 ```
 
 You can use `minor` and `major` too.
-
-<br>
-
-## Report Issues
-
-In case you are experiencing a bug or want to request a new feature head over to the [Symplify monorepo issue tracker](https://github.com/symplify/symplify/issues)
-
-## Contribute
-
-The sources of this package are contained in the Symplify monorepo. We welcome contributions for this package on [symplify/symplify](https://github.com/symplify/symplify).
