@@ -145,7 +145,7 @@ return static function (MBConfig $mbConfig): void {
 
 Thanks to GitHub Actions, this was never simpler to set up. Use [symplify/github-action-monorepo-split](https://github.com/symplify/github-action-monorepo-split).
 
-How to configure it? See our local setup at [.github/workflows/split_monorepo.yaml](https://github.com/symplify/symplify/blob/main/.github/workflows/split_monorepo.yaml)
+How to configure it? See our local setup at [.github/workflows/split_monorepo.yaml](https://github.com/danharrin/monorepo-split-github-action/blob/main/.github/workflows/split.yaml)
 
 ### 7. Release Flow
 
