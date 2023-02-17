@@ -57,7 +57,7 @@ final class BumpInterdependencyCommand extends AbstractSymplifyCommand
 
         $this->dependencyUpdater->updateFileInfosWithVendorAndVersion(
             $this->composerJsonProvider->getPackagesComposerFileInfos(),
-            $vendorName,
+            $vendorName . '/',
             $version
         );
 
