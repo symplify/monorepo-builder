@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Symplify\MonorepoBuilder\Tests\DependencyUpdater;
 
 use Symplify\MonorepoBuilder\DependencyUpdater;
@@ -26,6 +28,7 @@ class DependencyUpdaterTest extends AbstractKernelTestCase
     {
         $this->smartFileSystem->copy(__DIR__ . '/Source/backup-first.json', __DIR__ . '/Source/first.json');
     }
+
     public function testUpdateFileInfosWithVendorAndVersion()
     {
         $fileInfos = [new SmartFileInfo(__DIR__ . '/Source/first.json')];
