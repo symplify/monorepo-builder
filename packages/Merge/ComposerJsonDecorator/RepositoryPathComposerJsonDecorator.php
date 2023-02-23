@@ -28,7 +28,7 @@ final class RepositoryPathComposerJsonDecorator implements ComposerJsonDecorator
         $repositories = $composerJson->getRepositories();
 
         foreach ($repositories as $index => $repository) {
-            if ($repository['type'] !== 'path') {
+            if (($repository['type'] ?? '') !== 'path') {
                 continue;
             }
 
@@ -44,7 +44,7 @@ final class RepositoryPathComposerJsonDecorator implements ComposerJsonDecorator
         $paths = [];
 
         foreach ($repositories as $index => $repository) {
-            if ($repository['type'] !== 'path') {
+            if (($repository['type'] ?? '') !== 'path') {
                 continue;
             }
 

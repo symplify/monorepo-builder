@@ -31,6 +31,9 @@ final class RepositoryPathComposerJsonDecoratorTest extends AbstractComposerJson
                 'type' => 'path',
                 'url' => 'libs/*/',
             ],
+            [
+                'packagist.org' => false,
+            ],
         ],
     ];
 
@@ -71,13 +74,16 @@ final class RepositoryPathComposerJsonDecoratorTest extends AbstractComposerJson
 
         $expectedComposerJson = [
             ComposerJsonSection::REPOSITORIES => [
-                [
+                0 => [
                     'type' => 'artifact',
                     'url' => 'path/to/directory/with/zips/',
                 ],
-                [
+                1 => [
                     'type' => 'path',
                     'url' => 'libs/*/',
+                ],
+                3 => [
+                    'packagist.org' => false,
                 ],
             ],
         ];
