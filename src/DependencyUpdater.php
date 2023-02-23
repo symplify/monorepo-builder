@@ -109,7 +109,7 @@ final class DependencyUpdater
         string $packageName,
         string $packageVersion
     ): bool {
-        if (! \str_starts_with($packageName, $vendor)) {
+        if (! \str_starts_with($packageName, $vendor . '/')) {
             return true;
         }
 

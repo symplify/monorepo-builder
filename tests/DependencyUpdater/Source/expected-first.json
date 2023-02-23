@@ -1,0 +1,12 @@
+{
+    "require": {
+        "ex/package-one": "5.0-dev",
+        "ex/package-two": "5.0-dev",
+        "example/package-one": "4.0-dev"
+    },
+    "require-dev": {
+        "ex/package-one": "5.0-dev",
+        "ex/package-two": "5.0-dev",
+        "example/package-one": "4.0-dev"
+    }
+}
