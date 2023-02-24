@@ -1,0 +1,13 @@
+{
+    "extra": {
+        "patches": {
+            "example/package-one": [
+                "vendor/symplify/monorepo-builder/patch-files/example.patch"
+            ],
+            "example/package-two": {
+                "Patch description": "vendor/symplify/monorepo-builder/patch-files/example.patch",
+                "Patch two description": "./vendor/symplify/monorepo-builder/patch-files/example.patch"
+            }
+        }
+    }
+}

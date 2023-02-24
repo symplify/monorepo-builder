@@ -7,8 +7,8 @@ namespace Symplify\MonorepoBuilder\Merge;
 use Symplify\MonorepoBuilder\ComposerJsonManipulator\ComposerJsonFactory;
 use Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJson;
 use Symplify\MonorepoBuilder\Merge\Configuration\MergedPackagesCollector;
+use Symplify\MonorepoBuilder\Merge\Contract\ComposerPathNormalizerInterface;
 use Symplify\MonorepoBuilder\Merge\Contract\ComposerKeyMergerInterface;
-use Symplify\MonorepoBuilder\Merge\PathResolver\AutoloadPathNormalizer;
 use Symplify\SmartFileSystem\SmartFileInfo;
 
 /**
@@ -18,12 +18,13 @@ final class ComposerJsonMerger
 {
     /**
      * @param ComposerKeyMergerInterface[] $composerKeyMergers
+     * @param ComposerPathNormalizerInterface[] $composerPathNormalizers
      */
     public function __construct(
         private ComposerJsonFactory $composerJsonFactory,
         private MergedPackagesCollector $mergedPackagesCollector,
-        private AutoloadPathNormalizer $autoloadPathNormalizer,
-        private array $composerKeyMergers
+        private array $composerKeyMergers,
+        private array $composerPathNormalizers
     ) {
     }
 
@@ -65,7 +66,9 @@ final class ComposerJsonMerger
         SmartFileInfo $packageFileInfo
     ): void {
         // prepare paths before autolaod merging
-        $this->autoloadPathNormalizer->normalizeAutoloadPaths($newComposerJson, $packageFileInfo);
+        foreach ($this->composerPathNormalizers as $composerPathNormalizer) {
+            $composerPathNormalizer->normalizePaths($newComposerJson, $packageFileInfo);
+        }
         $this->mergeJsonToRoot($mainComposerJson, $newComposerJson);
     }
 }

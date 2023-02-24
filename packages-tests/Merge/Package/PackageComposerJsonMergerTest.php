@@ -25,4 +25,11 @@ final class PackageComposerJsonMergerTest extends AbstractMergeTestCase
 
         $this->doTestDirectoryMergeToFile(__DIR__ . '/SourceUniqueRepositories', $expectedComposerJson);
     }
+
+    public function testComposerPatches(): void
+    {
+        $expectedComposerJson = $this->createComposerJson(__DIR__ . '/PackageComposerJsonMergerSource/expected-with-composer-patches.json');
+
+        $this->doTestDirectoryMergeToFile(__DIR__ . '/SourceComposerPatches', $expectedComposerJson);
+    }
 }

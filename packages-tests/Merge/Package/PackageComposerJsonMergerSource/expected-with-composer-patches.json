@@ -1,0 +1,16 @@
+{
+    "extra": {
+        "patches": {
+            "example/package-one": [
+                "packages-tests/Merge/Package/SourceComposerPatches/patch-files/example.patch"
+            ],
+            "example/package-two": {
+                "Patch description": "packages-tests/Merge/Package/SourceComposerPatches/patch-files/example.patch",
+                "Patch two description": "packages-tests/Merge/Package/SourceComposerPatches/patch-files/example.patch"
+            },
+            "symfony/dependency-injection": [
+                "https://raw.githubusercontent.com/symplify/vendor-patch-files/main/patches/generic-php-config-loader.patch"
+            ]
+        }
+    }
+}
