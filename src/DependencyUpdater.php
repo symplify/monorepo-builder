@@ -8,6 +8,9 @@ use Symplify\MonorepoBuilder\ComposerJsonManipulator\FileSystem\JsonFileManager;
 use Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
 use Symplify\SmartFileSystem\SmartFileInfo;
 
+/**
+ * @see \Symplify\MonorepoBuilder\Tests\DependencyUpdater\DependencyUpdaterTest
+ */
 final class DependencyUpdater
 {
     public function __construct(

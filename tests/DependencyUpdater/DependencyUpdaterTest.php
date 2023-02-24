@@ -10,7 +10,7 @@ use Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
 use Symplify\SmartFileSystem\SmartFileInfo;
 use Symplify\SmartFileSystem\SmartFileSystem;
 
-class DependencyUpdaterTest extends AbstractKernelTestCase
+final class DependencyUpdaterTest extends AbstractKernelTestCase
 {
     private DependencyUpdater $dependencyUpdater;
 
@@ -29,7 +29,7 @@ class DependencyUpdaterTest extends AbstractKernelTestCase
         $this->smartFileSystem->copy(__DIR__ . '/Source/backup-first.json', __DIR__ . '/Source/first.json');
     }
 
-    public function testUpdateFileInfosWithVendorAndVersion()
+    public function testUpdateFileInfosWithVendorAndVersion(): void
     {
         $fileInfos = [new SmartFileInfo(__DIR__ . '/Source/first.json')];
 
