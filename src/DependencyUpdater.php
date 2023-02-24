@@ -8,6 +8,9 @@ use Symplify\MonorepoBuilder\ComposerJsonManipulator\FileSystem\JsonFileManager;
 use Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
 use Symplify\SmartFileSystem\SmartFileInfo;
 
+/**
+ * @see \Symplify\MonorepoBuilder\Tests\DependencyUpdater\DependencyUpdaterTest
+ */
 final class DependencyUpdater
 {
     public function __construct(
@@ -109,7 +112,7 @@ final class DependencyUpdater
         string $packageName,
         string $packageVersion
     ): bool {
-        if (! \str_starts_with($packageName, $vendor)) {
+        if (! \str_starts_with($packageName, $vendor . '/')) {
             return true;
         }
 
