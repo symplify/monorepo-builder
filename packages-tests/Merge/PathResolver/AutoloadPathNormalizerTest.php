@@ -28,7 +28,7 @@ final class AutoloadPathNormalizerTest extends AbstractComposerJsonDecoratorTest
         $autoloadFileInfo = new SmartFileInfo(__DIR__ . '/AutoloadPathNormalizerSource/autoload.json');
         $composerJson = $this->createComposerJson($autoloadFileInfo);
 
-        $this->autoloadPathNormalizer->normalizeAutoloadPaths($composerJson, $autoloadFileInfo);
+        $this->autoloadPathNormalizer->normalizePaths($composerJson, $autoloadFileInfo);
         $this->assertComposerJsonEquals(
             __DIR__ . '/AutoloadPathNormalizerSource/expected-autoload.json',
             $composerJson

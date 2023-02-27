@@ -5,12 +5,13 @@ declare(strict_types=1);
 namespace Symplify\MonorepoBuilder\Merge\PathResolver;
 
 use Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJson;
+use Symplify\MonorepoBuilder\Merge\Contract\ComposerPathNormalizerInterface;
 use Symplify\SmartFileSystem\SmartFileInfo;
 
 /**
- * @see \Symplify\MonorepoBuilder\Tests\Merge\PathResolver\AutoloadPathNormalizerTest
+ * @see \Symplify\MonorepoBuilder\Tests\Merge\Package\PackageComposerJsonMergerTest
  */
-final class AutoloadPathNormalizer
+final class AutoloadPathNormalizer implements ComposerPathNormalizerInterface
 {
     /**
      * @var string[]
@@ -22,7 +23,7 @@ final class AutoloadPathNormalizer
      *
      * @see https://github.com/symplify/symplify/issues/1333
      */
-    public function normalizeAutoloadPaths(ComposerJson $packageComposerJson, SmartFileInfo $packageFile): void
+    public function normalizePaths(ComposerJson $packageComposerJson, SmartFileInfo $packageFile): void
     {
         $autoload = $this->normalizeAutoloadArray($packageFile, $packageComposerJson->getAutoload());
         $packageComposerJson->setAutoload($autoload);
