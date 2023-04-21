@@ -18,13 +18,11 @@ final class MonorepoBuilderKernel extends AbstractSymplifyKernel
     public function createFromConfigs(array $configFiles): ContainerInterface
     {
         // Always prepend default config files
-        $configFiles = array_merge(
-            [
-                ConsoleColorDiffConfig::FILE_PATH,
-                __DIR__ . '/../../config/config.php',
-            ],
-            $configFiles,
-        );
+        $configFiles = [
+            ConsoleColorDiffConfig::FILE_PATH,
+            __DIR__ . '/../../config/config.php',
+            ...$configFiles,
+        ];
 
         $autowireInterfacesCompilerPass = new AutowireInterfacesCompilerPass([ReleaseWorkerInterface::class]);
         $compilerPasses = [$autowireInterfacesCompilerPass];
