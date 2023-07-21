@@ -74,6 +74,6 @@ final class VersionFactory
             ++$currentPatchVersion;
         }
 
-        return new Version(sprintf('%d.%d.%d', $value, $currentMinorVersion, $currentPatchVersion));
+        return new Version(sprintf('v%d.%d.%d', $value, $currentMinorVersion, $currentPatchVersion));
     }
 }
