@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Symplify\MonorepoBuilder\Merge\ComposerKeyMerger;
 
 use Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJson;
+use Symplify\MonorepoBuilder\Merge\Arrays\SortedParameterMerger;
 use Symplify\MonorepoBuilder\Merge\Contract\ComposerKeyMergerInterface;
-use Symplify\PackageBuilder\Yaml\ParametersMerger;
 
 final class ExtraComposerKeyMerger implements ComposerKeyMergerInterface
 {
@@ -16,7 +16,7 @@ final class ExtraComposerKeyMerger implements ComposerKeyMergerInterface
     private const PHPSTAN = 'phpstan';
 
     public function __construct(
-        private ParametersMerger $parametersMerger
+        private SortedParameterMerger $sorted_parameter_merger
     ) {
     }
 
@@ -37,7 +37,7 @@ final class ExtraComposerKeyMerger implements ComposerKeyMergerInterface
             }
         }
 
-        $extra = $this->parametersMerger->mergeWithCombine($mainComposerJson->getExtra(), $newComposerJsonExtra);
+        $extra = $this->sorted_parameter_merger->mergeRecursiveAndSort($mainComposerJson->getExtra(), $newComposerJsonExtra);
 
         // do not merge extra alias as only for local packages
         if (isset($extra['branch-alias'])) {
