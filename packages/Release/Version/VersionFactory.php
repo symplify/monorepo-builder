@@ -18,14 +18,14 @@ final class VersionFactory
     ) {
     }
 
-    public function createValidVersion(string $versionArgument, string $stage): Version
+    public function createValidVersion(string $versionArgument, string $stage, ?string $nextVersionPrefix): Version
     {
         // normalize to workaround phar-io bug
         $versionArgument = strtolower($versionArgument);
 
         // remove 4th level
         if (in_array($versionArgument, SemVersion::ALL, true)) {
-            return $this->resolveNextVersionByVersionKind($versionArgument);
+            return $this->resolveNextVersionByVersionKind($versionArgument, $nextVersionPrefix);
         }
 
         // this object performs validation of version
@@ -35,13 +35,13 @@ final class VersionFactory
         return $version;
     }
 
-    private function resolveNextVersionByVersionKind(string $versionKind): Version
+    private function resolveNextVersionByVersionKind(string $versionKind, ?string $versionPrefix): Version
     {
         // get current version
         $mostRecentVersionString = $this->tagResolver->resolve(getcwd());
         if ($mostRecentVersionString === null) {
             // the very first tag
-            return new Version('v0.1.0');
+            return new Version(sprintf("%s0.1.0", $versionPrefix));
         }
 
         // narrow long invalid version like 10.5.2.72 to 10.5.2
@@ -74,6 +74,6 @@ final class VersionFactory
             ++$currentPatchVersion;
         }
 
-        return new Version(sprintf('v%d.%d.%d', $value, $currentMinorVersion, $currentPatchVersion));
+        return new Version(sprintf('%s%d.%d.%d', $versionPrefix, $value, $currentMinorVersion, $currentPatchVersion));
     }
 }

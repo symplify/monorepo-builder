@@ -16,6 +16,12 @@ final class Option
      * @var string
      * @api
      */
+    public const VERSION_PREFIX = 'version-prefix';
+
+    /**
+     * @var string
+     * @api
+     */
     public const DRY_RUN = 'dry-run';
 
     /**
