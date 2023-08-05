@@ -7,6 +7,9 @@ namespace Symplify\MonorepoBuilder\Git;
 use Symplify\MonorepoBuilder\Contract\Git\TagResolverInterface;
 use Symplify\MonorepoBuilder\Release\Process\ProcessRunner;
 
+/**
+ * @api used by default autowire
+ */
 final class MostRecentTagResolver implements TagResolverInterface
 {
     /**
