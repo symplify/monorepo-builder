@@ -20,7 +20,7 @@ final class DependencyUpdaterTest extends AbstractKernelTestCase
     {
         $this->bootKernel(MonorepoBuilderKernel::class);
 
-        $this->dependencyUpdater =  $this->getService(DependencyUpdater::class);
+        $this->dependencyUpdater = $this->getService(DependencyUpdater::class);
         $this->smartFileSystem = $this->getService(SmartFileSystem::class);
     }
 
