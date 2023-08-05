@@ -91,7 +91,7 @@ final class ComposerJsonProvider
 
     public function getRootComposerJson(): ComposerJson
     {
-        $rootFileInfo = $this->packageComposerFinder->getRootPackageComposerFile();
-        return $this->composerJsonFactory->createFromFileInfo($rootFileInfo);
+        $rootPackageComposerFile = $this->packageComposerFinder->getRootPackageComposerFile();
+        return $this->composerJsonFactory->createFromFileInfo($rootPackageComposerFile);
     }
 }
