@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Symplify\MonorepoBuilder\Tests\Merge\ComposerJsonMerger;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use Iterator;
 use Symplify\EasyTesting\DataProvider\StaticFixtureFinder;
 use Symplify\MonorepoBuilder\Merge\ComposerJsonMerger;
@@ -21,9 +22,7 @@ final class ComposerJsonMergerTest extends AbstractComposerJsonDecoratorTest
         $this->composerJsonMerger = $this->getService(ComposerJsonMerger::class);
     }
 
-    /**
-     * @dataProvider provideData()
-     */
+    #[DataProvider('provideData')]
     public function testFixture(SmartFileInfo $fixtureFileInfo): void
     {
         $trioContent = $this->trioFixtureSplitter->splitFileInfo($fixtureFileInfo);
@@ -36,7 +35,7 @@ final class ComposerJsonMergerTest extends AbstractComposerJsonDecoratorTest
         $this->assertComposerJsonEquals($trioContent->getExpectedResult(), $mainComposerJson);
     }
 
-    public function provideData(): Iterator
+    public static function provideData(): Iterator
     {
         return StaticFixtureFinder::yieldDirectoryExclusively(__DIR__ . '/Fixture', '*.json');
     }

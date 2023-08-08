@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Symplify\MonorepoBuilder\Tests\Propagate\VersionPropagator;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use Iterator;
 use Symplify\EasyTesting\DataProvider\StaticFixtureFinder;
 use Symplify\MonorepoBuilder\Propagate\VersionPropagator;
@@ -20,9 +21,7 @@ final class VersionPropagaterTest extends AbstractComposerJsonDecoratorTest
         $this->versionPropagator = $this->getService(VersionPropagator::class);
     }
 
-    /**
-     * @dataProvider provideData()
-     */
+    #[DataProvider('provideData')]
     public function test(SmartFileInfo $fixtureFileInfo): void
     {
         $trioContent = $this->trioFixtureSplitter->splitFileInfo($fixtureFileInfo);
@@ -35,7 +34,7 @@ final class VersionPropagaterTest extends AbstractComposerJsonDecoratorTest
         $this->assertComposerJsonEquals($trioContent->getExpectedResult(), $packageComposerJson);
     }
 
-    public function provideData(): Iterator
+    public static function provideData(): Iterator
     {
         return StaticFixtureFinder::yieldDirectoryExclusively(__DIR__ . '/Fixture', '*.json');
     }

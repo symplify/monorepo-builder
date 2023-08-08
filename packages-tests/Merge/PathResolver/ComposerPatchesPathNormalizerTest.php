@@ -9,13 +9,9 @@ use Symplify\MonorepoBuilder\Tests\Merge\ComposerJsonDecorator\AbstractComposerJ
 
 final class ComposerPatchesPathNormalizerTest extends AbstractComposerJsonDecoratorTest
 {
-    private ComposerPatchesPathNormalizer $composerPatchesPathNormalizer;
-
     protected function setUp(): void
     {
         parent::setUp();
-
-        $this->composerPatchesPathNormalizer = $this->getService(ComposerPatchesPathNormalizer::class);
     }
 
     public function test(): void

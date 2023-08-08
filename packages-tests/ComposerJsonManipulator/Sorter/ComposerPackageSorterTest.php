@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Symplify\MonorepoBuilder\Tests\ComposerJsonManipulator\Sorter;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use Iterator;
 use Symplify\MonorepoBuilder\ComposerJsonManipulator\Sorter\ComposerPackageSorter;
 use Symplify\MonorepoBuilder\Kernel\MonorepoBuilderKernel;
@@ -20,10 +21,10 @@ final class ComposerPackageSorterTest extends AbstractKernelTestCase
     }
 
     /**
-     * @dataProvider provideData()
      * @param array<string, string> $packages
      * @param array<string, string> $expectedSortedPackages
      */
+    #[DataProvider('provideData')]
     public function test(array $packages, array $expectedSortedPackages): void
     {
         $sortedPackages = $this->composerPackageSorter->sortPackages($packages);
@@ -33,7 +34,7 @@ final class ComposerPackageSorterTest extends AbstractKernelTestCase
     /**
      * @return Iterator<array<int, array<string, string>>>
      */
-    public function provideData(): Iterator
+    public static function provideData(): Iterator
     {
         yield [
             [

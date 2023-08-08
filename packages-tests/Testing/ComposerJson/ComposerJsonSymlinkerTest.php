@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Symplify\MonorepoBuilder\Tests\Testing\ComposerJson;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use Iterator;
 use Nette\Utils\Json;
 use Symplify\MonorepoBuilder\Kernel\MonorepoBuilderKernel;
@@ -22,9 +23,7 @@ final class ComposerJsonSymlinkerTest extends AbstractKernelTestCase
         $this->composerJsonSymlinker = $this->getService(ComposerJsonSymlinker::class);
     }
 
-    /**
-     * @dataProvider provideData()
-     */
+    #[DataProvider('provideData')]
     public function testItCanAppendPathRepository(
         string $packagePath,
         string $packageName,
@@ -48,7 +47,7 @@ final class ComposerJsonSymlinkerTest extends AbstractKernelTestCase
     /**
      * @return Iterator<string[]|bool[]>
      */
-    public function provideData(): Iterator
+    public static function provideData(): Iterator
     {
         yield [
             __DIR__ . '/packages/package-one/composer.json',

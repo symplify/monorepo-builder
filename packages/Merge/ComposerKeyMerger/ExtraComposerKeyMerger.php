@@ -16,7 +16,7 @@ final class ExtraComposerKeyMerger implements ComposerKeyMergerInterface
     private const PHPSTAN = 'phpstan';
 
     public function __construct(
-        private SortedParameterMerger $sorted_parameter_merger
+        private SortedParameterMerger $sortedParameterMerger
     ) {
     }
 
@@ -37,7 +37,7 @@ final class ExtraComposerKeyMerger implements ComposerKeyMergerInterface
             }
         }
 
-        $extra = $this->sorted_parameter_merger->mergeRecursiveAndSort($mainComposerJson->getExtra(), $newComposerJsonExtra);
+        $extra = $this->sortedParameterMerger->mergeRecursiveAndSort($mainComposerJson->getExtra(), $newComposerJsonExtra);
 
         // do not merge extra alias as only for local packages
         if (isset($extra['branch-alias'])) {

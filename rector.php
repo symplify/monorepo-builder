@@ -21,10 +21,19 @@ return static function (RectorConfig $rectorConfig): void {
         PHPUnitSetList::PHPUNIT_CODE_QUALITY,
     ]);
 
+    $rectorConfig->rules([
+        Rector\PHPUnit\PHPUnit70\Rector\Class_\RemoveDataProviderTestPrefixRector::class,
+        Rector\PHPUnit\PHPUnit100\Rector\Class_\StaticDataProviderClassMethodRector::class,
+        Rector\PHPUnit\AnnotationsToAttributes\Rector\ClassMethod\DataProviderAnnotationToAttributeRector::class,
+
+    ]);
+
     $rectorConfig->paths([
         __DIR__ . '/config',
         __DIR__ . '/src',
         __DIR__ . '/tests',
+        __DIR__ . '/packages',
+        __DIR__ . '/packages-tests',
     ]);
 
     $rectorConfig->importNames();

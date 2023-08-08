@@ -230,7 +230,7 @@ final class ComposerJson
      */
     public function getAbsoluteAutoloadDirectories(): array
     {
-        if ($this->fileInfo === null) {
+        if (!$this->fileInfo instanceof SmartFileInfo) {
             throw new ShouldNotHappenException();
         }
 
@@ -832,7 +832,7 @@ final class ComposerJson
 
     private function resolveExistingAutoloadDirectory(string $autoloadDirectory): string
     {
-        if ($this->fileInfo === null) {
+        if (!$this->fileInfo instanceof SmartFileInfo) {
             throw new ShouldNotHappenException();
         }
 
