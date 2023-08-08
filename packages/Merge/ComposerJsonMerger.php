@@ -69,6 +69,7 @@ final class ComposerJsonMerger
         foreach ($this->composerPathNormalizers as $composerPathNormalizer) {
             $composerPathNormalizer->normalizePaths($newComposerJson, $packageFileInfo);
         }
+
         $this->mergeJsonToRoot($mainComposerJson, $newComposerJson);
     }
 }

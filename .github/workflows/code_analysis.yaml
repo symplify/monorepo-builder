@@ -30,7 +30,7 @@ jobs:
 
                     -
                         name: 'Tests'
-                        run: vendor/bin/phpunit
+                        run: vendor/bin/phpunit --testdox
 
                     -
                         name: 'PHP Linter'

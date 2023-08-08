@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Symplify\MonorepoBuilder\Tests\Merge\ComposerKeyMerger;
 
-use Iterator;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Symplify\EasyTesting\DataProvider\StaticFixtureFinder;
 use Symplify\MonorepoBuilder\Merge\ComposerKeyMerger\MinimalStabilityKeyMerger;
 use Symplify\MonorepoBuilder\Tests\Merge\ComposerJsonDecorator\AbstractComposerJsonDecoratorTest;
@@ -15,9 +15,7 @@ use Symplify\SmartFileSystem\SmartFileInfo;
  */
 final class MinimalStabilityKeyMergerTest extends AbstractComposerJsonDecoratorTest
 {
-    /**
-     * @dataProvider provideData
-     */
+    #[DataProvider('provideData')]
     public function testFixture(SmartFileInfo $fixtureFileInfo): void
     {
         $trioContent = $this->trioFixtureSplitter->splitFileInfo($fixtureFileInfo);
@@ -30,7 +28,7 @@ final class MinimalStabilityKeyMergerTest extends AbstractComposerJsonDecoratorT
         $this->assertComposerJsonEquals($trioContent->getExpectedResult(), $mainComposerJson);
     }
 
-    public function provideData(): Iterator
+    public static function provideData(): iterable
     {
         return StaticFixtureFinder::yieldDirectoryExclusively(__DIR__ . '/Fixture/MinimalStability', '*.json');
     }

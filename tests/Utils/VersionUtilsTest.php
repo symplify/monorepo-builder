@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Symplify\MonorepoBuilder\Tests\Utils;
 
 use Iterator;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Symplify\MonorepoBuilder\Kernel\MonorepoBuilderKernel;
 use Symplify\MonorepoBuilder\Utils\VersionUtils;
 use Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
@@ -19,16 +20,14 @@ final class VersionUtilsTest extends AbstractKernelTestCase
         $this->versionUtils = $this->getService(VersionUtils::class);
     }
 
-    /**
-     * @dataProvider provideDataAlias()
-     */
+    #[DataProvider('provideDataAlias')]
     public function testAlias(string $currentVersion, string $expectedVersion): void
     {
         $nextAliasVersion = $this->versionUtils->getNextAliasFormat($currentVersion);
         $this->assertSame($expectedVersion, $nextAliasVersion);
     }
 
-    public function provideDataAlias(): Iterator
+    public static function provideDataAlias(): Iterator
     {
         yield ['v4.0.0', '4.1-dev'];
         yield ['4.0.0', '4.1-dev'];
@@ -36,25 +35,21 @@ final class VersionUtilsTest extends AbstractKernelTestCase
         yield ['v8.0-beta', '8.0-dev'];
     }
 
-    /**
-     * @dataProvider provideDataForRequiredNextVersion()
-     */
+    #[DataProvider('provideDataForRequiredNextVersion')]
     public function testRequiredNextVersion(string $currentVersion, string $expectedVersion): void
     {
         $nextRequiredVersion = $this->versionUtils->getRequiredNextFormat($currentVersion);
         $this->assertSame($expectedVersion, $nextRequiredVersion);
     }
 
-    public function provideDataForRequiredNextVersion(): Iterator
+    public static function provideDataForRequiredNextVersion(): Iterator
     {
         yield ['v4.0.0', '^4.1'];
         yield ['4.0.0', '^4.1'];
         yield ['8.0-beta', '^8.0'];
     }
 
-    /**
-     * @dataProvider provideDataForRequiredVersion()
-     */
+    #[DataProvider('provideDataForRequiredVersion')]
     public function testRequiredVersion(string $currentVersion, string $expectedVersion): void
     {
         $requiredVersion = $this->versionUtils->getRequiredFormat($currentVersion);
@@ -62,9 +57,9 @@ final class VersionUtilsTest extends AbstractKernelTestCase
     }
 
     /**
-     * @return \Iterator<string[]>
+     * @return Iterator<string[]>
      */
-    public function provideDataForRequiredVersion(): Iterator
+    public static function provideDataForRequiredVersion(): Iterator
     {
         yield ['v4.0.0', '^4.0'];
         yield ['4.0.0', '^4.0'];
