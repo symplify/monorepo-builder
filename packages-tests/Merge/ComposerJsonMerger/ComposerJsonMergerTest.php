@@ -37,6 +37,6 @@ final class ComposerJsonMergerTest extends AbstractComposerJsonDecoratorTest
 
     public static function provideData(): Iterator
     {
-        return StaticFixtureFinder::yieldDirectoryExclusively(__DIR__ . '/Fixture', '*.json');
+        return StaticFixtureFinder::yieldDirectoryExclusively(__DIR__ . '/Fixture', '*.test');
     }
 }
