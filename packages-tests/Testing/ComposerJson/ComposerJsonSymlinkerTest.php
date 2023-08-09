@@ -53,35 +53,35 @@ final class ComposerJsonSymlinkerTest extends AbstractKernelTestCase
             __DIR__ . '/packages/package-one/composer.json',
             'example/package-two',
             false,
-            __DIR__ . '/Fixture/expected_path_repository.json',
+            __DIR__ . '/Fixture/expected_path_repository.test',
         ];
 
         yield [
             __DIR__ . '/packages/package-two/composer.json',
             'example/package-one',
             false,
-            __DIR__ . '/Fixture/expected_repository.json',
+            __DIR__ . '/Fixture/expected_repository.test',
         ];
 
         yield [
             __DIR__ . '/packages/package-two/composer.json',
             'example/package-one',
             true,
-            __DIR__ . '/Fixture/expected_symlink_true.json',
+            __DIR__ . '/Fixture/expected_symlink_true.test',
         ];
 
         yield [
             __DIR__ . '/packages/package-three/composer.json',
             'example/package-one',
             false,
-            __DIR__ . '/Fixture/expected_reuse_existing_repository.json',
+            __DIR__ . '/Fixture/expected_reuse_existing_repository.test',
         ];
 
         yield [
             __DIR__ . '/packages/with-more-depth/package-four/composer.json',
             'example/package-two',
             false,
-            __DIR__ . '/Fixture/expected_deeper_path_repository.json',
+            __DIR__ . '/Fixture/expected_deeper_path_repository.test',
         ];
     }
 }

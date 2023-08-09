@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Symplify\MonorepoBuilder\Tests\Merge\ComposerKeyMerger;
 
+use Iterator;
 use PHPUnit\Framework\Attributes\DataProvider;
 use Symplify\EasyTesting\DataProvider\StaticFixtureFinder;
 use Symplify\MonorepoBuilder\Merge\ComposerKeyMerger\MinimalStabilityKeyMerger;
@@ -28,8 +29,8 @@ final class MinimalStabilityKeyMergerTest extends AbstractComposerJsonDecoratorT
         $this->assertComposerJsonEquals($trioContent->getExpectedResult(), $mainComposerJson);
     }
 
-    public static function provideData(): iterable
+    public static function provideData(): Iterator
     {
-        return StaticFixtureFinder::yieldDirectoryExclusively(__DIR__ . '/Fixture/MinimalStability', '*.json');
+        return StaticFixtureFinder::yieldDirectoryExclusively(__DIR__ . '/Fixture/MinimalStability', '*.test');
     }
 }
