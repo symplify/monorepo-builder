@@ -3,19 +3,17 @@ name: Downgraded Release
 on:
     push:
         tags:
-            # avoid infinite looping, skip tags that ends with ".72"
             # see https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#example-including-and-excluding-branches
             - '*'
-            - '!**.72'
 
 jobs:
     downgrade_release:
         runs-on: ubuntu-latest
 
         steps:
-            -   uses: "actions/checkout@v3"
-                with:
-                    token: ${{ secrets.WORKFLOWS_TOKEN }}
+            - uses: "actions/checkout@v3"
+              with:
+                  token: ${{ secrets.WORKFLOWS_TOKEN }}
 
             -
                 uses: "shivammathur/setup-php@v2"
@@ -24,42 +22,41 @@ jobs:
                     coverage: none
 
             # invoke patches
-            -   run: composer install --ansi
+            - run: composer install --ansi
 
             # but no dev packages
-            -   run: composer update --no-dev --ansi
+            - run: composer update --no-dev --ansi
 
             # get rector to "rector-local" directory, to avoid downgrading itself in the /vendor
-            -   run: mkdir rector-local
-            -   run: composer require rector/rector --working-dir rector-local --ansi
+            - run: mkdir rector-local
+            - run: composer require rector/rector --working-dir rector-local --ansi
 
             # downgrade to PHP 7.2
-            -   run: rector-local/vendor/bin/rector process bin src packages config vendor --config build/rector-downgrade-php-72.php --ansi
+            - run: rector-local/vendor/bin/rector process bin src packages config vendor --config build/rector-downgrade-php-72.php --ansi
 
             # clear the dev files
-            -   run: rm -rf tests ecs.php phpstan.neon phpunit.xml .gitignore .editorconfig
+            - run: rm -rf tests ecs.php phpstan.neon phpunit.xml .gitignore .editorconfig
 
             # prefix and scope
-            -   run: sh prefix-code.sh
+            - run: sh prefix-code.sh
 
             # copy PHP 7.2 composer + workflows
-            -   run: cp -r build/target-repository/. .
+            - run: cp -r build/target-repository/. .
 
             # clear the dev files
-            -   run: rm -rf build prefix-code.sh monorepo-builder.php full-tool-build.sh scoper.php rector.php rector-local packages-tests php-scoper.phar
+            - run: rm -rf build prefix-code.sh monorepo-builder.php full-tool-build.sh scoper.php rector.php rector-local packages-tests php-scoper.phar
 
             # setup git user
             -
                 run: |
                     git config user.email "action@github.com"
                     git config user.name "GitHub Action"
-            # publish to the same repository with a new tag
-            # see https://tomasvotruba.com/blog/how-to-release-php-81-and-72-package-in-the-same-repository/
+
             -
                 name: "Tag Downgraded Code"
                 run: |
                     # separate a "git add" to add untracked (new) files too
                     git add --all
                     git commit -m "release PHP 7.2 downgraded"
-                    git tag "${GITHUB_REF#refs/tags/}.72"
-                    git push origin "${GITHUB_REF#refs/tags/}.72"
+                    git tag -a "${GITHUB_REF#refs/tags/}" -m 'PHP 7.2 downgraded' --force
+                    git push origin "${GITHUB_REF#refs/tags/}" --force
