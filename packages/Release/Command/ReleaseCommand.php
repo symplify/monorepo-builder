@@ -81,6 +81,13 @@ final class ReleaseCommand extends AbstractSymplifyCommand
             $this->releaseWorkerReporter->printMetadata($releaseWorker);
 
             if (! $isDryRun) {
+                if (method_exists($releaseWorker,'shouldConfirm')
+                    && $releaseWorker->shouldConfirm()['whenTrue']()
+                    && ! $this->symfonyStyle->confirm($releaseWorker->shouldConfirm()['message'])
+                ){
+                        return self::FAILURE;
+                }
+
                 $releaseWorker->work($version);
             }
         }
