@@ -1,14 +1,12 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Merge\ComposerJsonDecorator;
 
 use Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJson;
 use Symplify\MonorepoBuilder\Merge\Contract\ComposerJsonDecoratorInterface;
 use Symplify\MonorepoBuilder\ValueObject\Option;
-use Symplify\PackageBuilder\Parameter\ParameterProvider;
-
+use MonorepoBuilderPrefix202308\Symplify\PackageBuilder\Parameter\ParameterProvider;
 /**
  * @see \Symplify\MonorepoBuilder\Tests\Merge\ComposerJsonDecorator\SortComposerJsonDecorator\SortComposerJsonDecoratorTest
  */
@@ -17,27 +15,24 @@ final class SortComposerJsonDecorator implements ComposerJsonDecoratorInterface
     /**
      * @var string[]
      */
-    private array $sectionOrder = [];
-
+    private $sectionOrder = [];
     public function __construct(ParameterProvider $parameterProvider)
     {
         $this->sectionOrder = $parameterProvider->provideArrayParameter(Option::SECTION_ORDER);
     }
-
-    public function decorate(ComposerJson $composerJson): void
+    public function decorate(ComposerJson $composerJson) : void
     {
         $orderedKeys = $composerJson->getOrderedKeys();
-
-        usort(
-            $orderedKeys,
-            fn (string $key1, string $key2): int => $this->findKeyPosition($key1) <=> $this->findKeyPosition($key2)
-        );
-
+        \usort($orderedKeys, function (string $key1, string $key2) : int {
+            return $this->findKeyPosition($key1) <=> $this->findKeyPosition($key2);
+        });
         $composerJson->setOrderedKeys($orderedKeys);
     }
-
-    private function findKeyPosition(string $key): int | string | bool
+    /**
+     * @return int|string|bool
+     */
+    private function findKeyPosition(string $key)
     {
-        return array_search($key, $this->sectionOrder, true);
+        return \array_search($key, $this->sectionOrder, \true);
     }
 }
