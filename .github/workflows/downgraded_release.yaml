@@ -23,6 +23,7 @@ jobs:
 
             # invoke patches
             - run: composer config allow-plugins.cweagans/composer-patches true
+            - run: composer config allow-plugins.phpstan/extension-installer true
             - run: composer install --ansi --no-interaction
 
             # but no dev packages
