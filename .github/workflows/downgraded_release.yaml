@@ -22,10 +22,10 @@ jobs:
                     coverage: none
 
             # invoke patches
-            - run: composer install --ansi
+            - run: composer install --ansi --no-interaction --no-plugins
 
             # but no dev packages
-            - run: composer update --no-dev --ansi
+            - run: composer update --no-dev --ansi --no-interaction --no-plugins
 
             # get rector to "rector-local" directory, to avoid downgrading itself in the /vendor
             - run: mkdir rector-local
