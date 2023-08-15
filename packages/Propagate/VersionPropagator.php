@@ -1,22 +1,18 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Propagate;
 
 use Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJson;
-
 final class VersionPropagator
 {
-    public function propagate(ComposerJson $mainComposerJson, ComposerJson $otherComposerJson): void
+    public function propagate(ComposerJson $mainComposerJson, ComposerJson $otherComposerJson) : void
     {
-        $packagesToVersions = array_merge($mainComposerJson->getRequire(), $mainComposerJson->getRequireDev());
-
+        $packagesToVersions = \array_merge($mainComposerJson->getRequire(), $mainComposerJson->getRequireDev());
         foreach ($packagesToVersions as $packageName => $packageVersion) {
-            if (! $otherComposerJson->hasPackage($packageName)) {
+            if (!$otherComposerJson->hasPackage($packageName)) {
                 continue;
             }
-
             $otherComposerJson->changePackageVersion($packageName, $packageVersion);
         }
     }
