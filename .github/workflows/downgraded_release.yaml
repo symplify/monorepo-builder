@@ -22,6 +22,7 @@ jobs:
                     coverage: none
 
             # invoke patches
+            - run: composer config allow-plugins.cweagans/composer-patches true
             - run: composer install --ansi --no-interaction
 
             # but no dev packages
