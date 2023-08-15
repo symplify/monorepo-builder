@@ -1,7 +1,6 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Merge\Configuration;
 
 final class MergedPackagesCollector
@@ -9,22 +8,18 @@ final class MergedPackagesCollector
     /**
      * @var string[]
      */
-    private array $packages = [];
-
-    public function addPackage(string $package): void
+    private $packages = [];
+    public function addPackage(string $package) : void
     {
         $this->packages[] = $package;
     }
-
     /**
      * @return string[]
      */
-    public function getPackages(): array
+    public function getPackages() : array
     {
-        $this->packages = array_unique($this->packages);
-
-        sort($this->packages);
-
+        $this->packages = \array_unique($this->packages);
+        \sort($this->packages);
         return $this->packages;
     }
 }

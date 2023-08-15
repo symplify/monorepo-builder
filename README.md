@@ -14,7 +14,7 @@ composer require symplify/monorepo-builder --dev
 
 ## Usage
 
-### 1. Are you New to Monorepo?
+### 0. Are you New to Monorepo?
 
 The best to lean-in fast is to read basic intro at blog post [All You Always Wanted to Know About Monorepo](https://www.tomasvotruba.com/blog/2019/10/28/all-you-always-wanted-to-know-about-monorepo-but-were-afraid-to-ask/#what-is-monorepo).
 We also made a simple command to make that easy for you:
@@ -25,7 +25,7 @@ vendor/bin/monorepo-builder init
 
 And the basic setup is done!
 
-### 2. Merge local `composer.json` to the Root One
+### 1. Merge local `composer.json` to the Root One
 
 Merges configured sections to the root `composer.json`, so you can only edit `composer.json` of particular packages and let script to synchronize it.
 
@@ -49,9 +49,9 @@ vendor/bin/monorepo-builder merge
 Typical location for packages is `/packages`. But what if you have different naming or extra `/projects` directory?
 
 ```php
-use Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
+// monorepo-builder.php
+use Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
 use Symplify\MonorepoBuilder\Config\MBConfig;
-use Symplify\MonorepoBuilder\ValueObject\Option;
 
 return static function (MBConfig $mbConfig): void {
     // where are the packages located?
@@ -62,7 +62,7 @@ return static function (MBConfig $mbConfig): void {
         __DIR__ . '/projects',
     ]);
 
-    // how to skip packages in loaded directories?
+    // how skip packages in loaded direectories?
     $mbConfig->packageDirectoriesExcludes([__DIR__ . '/packages/secret-package']);
 
     // "merge" command related
@@ -84,15 +84,11 @@ return static function (MBConfig $mbConfig): void {
             // the line is removed by key, so version is irrelevant, thus *
             'phpunit/phpunit' => '*',
         ],
-        ComposerJsonSection::REPOSITORIES => [
-            // this will remove all repositories
-            Option::REMOVE_COMPLETELY,
-        ],
     ]);
 };
 ```
 
-### 3. Bump Package Inter-dependencies
+### 2. Bump Package Inter-dependencies
 
 Let's say you release `symplify/symplify` 4.0 and you need package to depend on version `^4.0` for each other:
 
@@ -100,7 +96,7 @@ Let's say you release `symplify/symplify` 4.0 and you need package to depend on 
 vendor/bin/monorepo-builder bump-interdependency "^4.0"
 ```
 
-### 4. Keep Synchronized Package Version
+### 3. Keep Synchronized Package Version
 
 In synchronized monorepo, it's common to use same package version to prevent bugs and WTFs. So if one of your package uses `symfony/console` 3.4 and the other `symfony/console` 4.1, this will tell you:
 
@@ -108,7 +104,7 @@ In synchronized monorepo, it's common to use same package version to prevent bug
 vendor/bin/monorepo-builder validate
 ```
 
-### 5. Keep Package Alias Up-To-Date
+### 4. Keep Package Alias Up-To-Date
 
 You can see this even if there is already version 3.0 out:
 
@@ -133,21 +129,23 @@ This will add alias `3.1-dev` to `composer.json` in each package.
 If you prefer [`3.1.x-dev`](https://getcomposer.org/doc/articles/aliases.md#branch-alias) over default `3.1-dev`, you can configure it:
 
 ```php
-use Symplify\MonorepoBuilder\Config\MBConfig;
+use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use Symplify\MonorepoBuilder\ValueObject\Option;
 
-return static function (MBConfig $mbConfig): void {
+return static function (ContainerConfigurator $containerConfigurator): void {
+    $parameters = $containerConfigurator->parameters();
     // default: "<major>.<minor>-dev"
-    $mbConfig->packageAliasFormat('<major>.<minor>.x-dev');
+    $parameters->set(Option::PACKAGE_ALIAS_FORMAT, '<major>.<minor>.x-dev');
 };
 ```
 
-### 6. Split Directories to Git Repositories
+### 5. Split Directories to Git Repositories
 
 Thanks to GitHub Actions, this was never simpler to set up. Use [symplify/github-action-monorepo-split](https://github.com/symplify/github-action-monorepo-split).
 
-How to configure it? See our local setup at [.github/workflows/split_monorepo.yaml](https://github.com/danharrin/monorepo-split-github-action/blob/main/.github/workflows/split.yaml)
+How to configure it? See our local setup at [.github/workflows/split_monorepo.yaml](https://github.com/symplify/symplify/blob/main/.github/workflows/split_monorepo.yaml)
 
-### 7. Release Flow
+### 6. Release Flow
 
 When a new version of your package is released, you have to do many manual steps:
 
@@ -168,7 +166,9 @@ vendor/bin/monorepo-builder release v7.0
 And add the following release workers to your `monorepo-builder.php`:
 
 ```php
-use Symplify\MonorepoBuilder\Config\MBConfig;
+// File: monorepo-builder.php
+
+use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symplify\MonorepoBuilder\Release\ReleaseWorker\AddTagToChangelogReleaseWorker;
 use Symplify\MonorepoBuilder\Release\ReleaseWorker\PushNextDevReleaseWorker;
 use Symplify\MonorepoBuilder\Release\ReleaseWorker\PushTagReleaseWorker;
@@ -178,26 +178,25 @@ use Symplify\MonorepoBuilder\Release\ReleaseWorker\TagVersionReleaseWorker;
 use Symplify\MonorepoBuilder\Release\ReleaseWorker\UpdateBranchAliasReleaseWorker;
 use Symplify\MonorepoBuilder\Release\ReleaseWorker\UpdateReplaceReleaseWorker;
 
-return static function (MBConfig $mbConfig): void {
-    // release workers - in order to execute
-    $mbConfig->workers([
-        UpdateReplaceReleaseWorker::class,
-        SetCurrentMutualDependenciesReleaseWorker::class,
-        AddTagToChangelogReleaseWorker::class,
-        TagVersionReleaseWorker::class,
-        PushTagReleaseWorker::class,
-        SetNextMutualDependenciesReleaseWorker::class,
-        UpdateBranchAliasReleaseWorker::class,
-        PushNextDevReleaseWorker::class,
-    ]);
+return static function (ContainerConfigurator $containerConfigurator): void {
+    $services = $containerConfigurator->services();
+
+    # release workers - in order to execute
+    $services->set(UpdateReplaceReleaseWorker::class);
+    $services->set(SetCurrentMutualDependenciesReleaseWorker::class);
+    $services->set(AddTagToChangelogReleaseWorker::class);
+    $services->set(TagVersionReleaseWorker::class);
+    $services->set(PushTagReleaseWorker::class);
+    $services->set(SetNextMutualDependenciesReleaseWorker::class);
+    $services->set(UpdateBranchAliasReleaseWorker::class);
+    $services->set(PushNextDevReleaseWorker::class);
 };
 ```
 
-You can also include your own workers. Just add services that implements `ReleaseWorkerInterface`.
 Are you afraid to tag and push? Use `--dry-run` to see only descriptions:
 
 ```bash
-vendor/bin/monorepo-builder release 7.0 --dry-run
+vendor/bin/monorepo-builder release v7.0 --dry-run
 ```
 
 Do you want to release next [patch version](https://semver.org/), e.g. current `v0.7.1` → next `v0.7.2`?
@@ -207,3 +206,40 @@ vendor/bin/monorepo-builder release patch
 ```
 
 You can use `minor` and `major` too.
+
+### 7. Set Your Own Release Flow
+
+There is set of few default release workers - classes that implement `Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface`.
+
+You need to register them as services. Feel free to start with default ones:
+
+```php
+use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+
+return static function (ContainerConfigurator $containerConfigurator): void {
+    $services = $containerConfigurator->services();
+
+    // release workers - in order to execute
+    $services->set(Symplify\MonorepoBuilder\Release\ReleaseWorker\SetCurrentMutualDependenciesReleaseWorker::class);
+    $services->set(Symplify\MonorepoBuilder\Release\ReleaseWorker\AddTagToChangelogReleaseWorker::class);
+
+    // you can extend with your own
+    $services->set(App\SendPigeonToTwitterReleaseWorker::class);
+
+    $services->set(Symplify\MonorepoBuilder\Release\ReleaseWorker\TagVersionReleaseWorker::class);
+    $services->set(Symplify\MonorepoBuilder\Release\ReleaseWorker\PushTagReleaseWorker::class);
+    $services->set(Symplify\MonorepoBuilder\Release\ReleaseWorker\SetNextMutualDependenciesReleaseWorker::class);
+    $services->set(Symplify\MonorepoBuilder\Release\ReleaseWorker\UpdateBranchAliasReleaseWorker::class);
+    $services->set(Symplify\MonorepoBuilder\Release\ReleaseWorker\PushNextDevReleaseWorker::class);
+};
+```
+
+<br>
+
+## Report Issues
+
+In case you are experiencing a bug or want to request a new feature head over to the [Symplify monorepo issue tracker](https://github.com/symplify/symplify/issues)
+
+## Contribute
+
+The sources of this package are contained in the Symplify monorepo. We welcome contributions for this package on [symplify/symplify](https://github.com/symplify/symplify).
