@@ -1,7 +1,6 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Merge\Arrays;
 
 final class ArraySorter
@@ -10,33 +9,29 @@ final class ArraySorter
      * @param mixed[] $array
      * @return mixed[]
      */
-    public function recursiveSort(array $array): array
+    public function recursiveSort(array $array) : array
     {
         if ($array === []) {
             return $array;
         }
-
         if ($this->isSequential($array)) {
-            sort($array);
+            \sort($array);
         } else {
-            ksort($array);
+            \ksort($array);
         }
-
         foreach ($array as $key => $value) {
-            if (is_array($value)) {
+            if (\is_array($value)) {
                 $array[$key] = $this->recursiveSort($value);
             }
         }
-
         return $array;
     }
-
     /**
      * @param mixed[] $array
      */
-    private function isSequential(array $array): bool
+    private function isSequential(array $array) : bool
     {
-        $zeroToItemCount = range(0, count($array) - 1);
-        return array_keys($array) === $zeroToItemCount;
+        $zeroToItemCount = \range(0, \count($array) - 1);
+        return \array_keys($array) === $zeroToItemCount;
     }
 }
