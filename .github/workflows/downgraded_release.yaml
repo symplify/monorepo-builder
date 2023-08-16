@@ -11,49 +11,82 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: "actions/checkout@v3"
+      -
+        id: check_tag
+        run: |
+          MESSAGE=$(git tag -l --format='%(contents)' $(git describe --tags $(git rev-list --tags --max-count=1)))
+          if echo $MESSAGE | grep -q "PHP 7.2 downgraded"; then
+            echo "NEEDED_DOWNGRADE=1" >> $GITHUB_ENV
+          else
+            echo "NEEDED_DOWNGRADE=0" >> $GITHUB_ENV
+          fi
+
+      -
+        uses: "actions/checkout@v3"
+        if: env.NEEDED_DOWNGRADE == '1'
         with:
           token: ${{ secrets.WORKFLOWS_TOKEN }}
 
       -
         uses: "shivammathur/setup-php@v2"
+        if: env.NEEDED_DOWNGRADE == '1'
         with:
           php-version: 8.1
           coverage: none
 
       # invoke patches
-      - run: composer install --ansi --no-interaction
+      -
+        if: env.NEEDED_DOWNGRADE == '1'
+        run: composer install --ansi --no-interaction
 
       # but no dev packages
-      - run: composer update --no-dev --ansi --no-interaction
+      -
+        if: env.NEEDED_DOWNGRADE == '1'
+        run: composer update --no-dev --ansi --no-interaction
 
       # get rector to "rector-local" directory, to avoid downgrading itself in the /vendor
-      - run: mkdir rector-local
-      - run: composer require rector/rector --working-dir rector-local --ansi
+      -
+        if: env.NEEDED_DOWNGRADE == '1'
+        run: mkdir rector-local
+      -
+        if: env.NEEDED_DOWNGRADE == '1'
+        run: composer require rector/rector --working-dir rector-local --ansi
 
       # downgrade to PHP 7.2
-      - run: rector-local/vendor/bin/rector process bin src packages config vendor --config build/rector-downgrade-php-72.php --ansi
+      -
+        if: env.NEEDED_DOWNGRADE == '1'
+        run: rector-local/vendor/bin/rector process bin src packages config vendor --config build/rector-downgrade-php-72.php --ansi
 
       # clear the dev files
-      - run: rm -rf tests ecs.php phpstan.neon phpunit.xml .gitignore .editorconfig
+      -
+        if: env.NEEDED_DOWNGRADE == '1'
+        run: rm -rf tests ecs.php phpstan.neon phpunit.xml .gitignore .editorconfig
 
       # prefix and scope
-      - run: sh prefix-code.sh
+      -
+        if: env.NEEDED_DOWNGRADE == '1'
+        run: sh prefix-code.sh
 
       # copy PHP 7.2 composer + workflows
-      - run: cp -r build/target-repository/. .
+      -
+        if: env.NEEDED_DOWNGRADE == '1'
+        run: cp -r build/target-repository/. .
 
       # clear the dev files
-      - run: rm -rf build prefix-code.sh monorepo-builder.php full-tool-build.sh scoper.php rector.php rector-local packages-tests php-scoper.phar
+      -
+        if: env.NEEDED_DOWNGRADE == '1'
+        run: rm -rf build prefix-code.sh monorepo-builder.php full-tool-build.sh scoper.php rector.php rector-local packages-tests php-scoper.phar
 
       # setup git user
       -
+        if: env.NEEDED_DOWNGRADE == '1'
         run: |
           git config user.email "action@github.com"
           git config user.name "GitHub Action"
 
       -
         name: "Tag Downgraded Code"
+        if: env.NEEDED_DOWNGRADE == '1'
         run: |
           # separate a "git add" to add untracked (new) files too
           git add --all
