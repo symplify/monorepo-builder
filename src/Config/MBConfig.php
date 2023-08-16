@@ -11,6 +11,8 @@ use Webmozart\Assert\Assert;
 
 final class MBConfig extends ContainerConfigurator
 {
+    private static bool $disableDefaultWorkers = false;
+
     /**
      * @param string[] $packageDirectories
      */
@@ -21,6 +23,16 @@ final class MBConfig extends ContainerConfigurator
 
         $parameters = $this->parameters();
         $parameters->set(Option::PACKAGE_DIRECTORIES, $packageDirectories);
+    }
+
+    public static function isDisableDefaultWorkers(): bool
+    {
+        return self::$disableDefaultWorkers;
+    }
+
+    public static function disableDefaultWorkers(): void
+    {
+        self::$disableDefaultWorkers = true;
     }
 
     /**

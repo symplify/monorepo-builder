@@ -76,9 +76,11 @@ return static function (MBConfig $mbConfig): void {
             __DIR__ . '/../packages/Release/ReleaseWorker',
         ]);
 
-    // add default for easy tag and push without need to make configs
-    $services->set(TagVersionReleaseWorker::class);
-    $services->set(PushTagReleaseWorker::class);
+    if (! $mbConfig->isDisableDefaultWorkers()) {
+        // add default for easy tag and push without need to make configs
+        $services->set(TagVersionReleaseWorker::class);
+        $services->set(PushTagReleaseWorker::class);
+    }
 
     $services->load('Symplify\MonorepoBuilder\\', __DIR__ . '/../src')
         ->exclude([
