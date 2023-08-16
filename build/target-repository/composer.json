@@ -17,5 +17,11 @@
         "files": [
             "bootstrap.php"
         ]
+    },
+    "config": {
+        "allow-plugins": {
+            "cweagans/composer-patches": true,
+            "phpstan/extension-installer": true
+        }
     }
 }
