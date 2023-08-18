@@ -193,6 +193,15 @@ return static function (MBConfig $mbConfig): void {
 };
 ```
 
+These `TagVersionReleaseWorker` and `PushTagReleaseWorker` are enabled by default.
+If you want to disable these default workers, you can use the following code.
+
+```php
+return static function (MBConfig $mbConfig): void {
+    $mbConfig->disableDefaultWorkers();
+};
+```
+
 You can also include your own workers. Just add services that implements `ReleaseWorkerInterface`.
 Are you afraid to tag and push? Use `--dry-run` to see only descriptions:
 
