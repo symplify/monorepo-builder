@@ -12,6 +12,11 @@ jobs:
 
     steps:
       -
+        uses: "actions/checkout@v3"
+        with:
+          token: ${{ secrets.WORKFLOWS_TOKEN }}
+
+      -
         id: check_tag
         run: |
           MESSAGE=$(git tag -l --format='%(contents)' $(git describe --tags $(git rev-list --tags --max-count=1)))
@@ -20,12 +25,6 @@ jobs:
           else
             echo "NEEDED_DOWNGRADE=0" >> $GITHUB_ENV
           fi
-
-      -
-        uses: "actions/checkout@v3"
-        if: env.NEEDED_DOWNGRADE == '1'
-        with:
-          token: ${{ secrets.WORKFLOWS_TOKEN }}
 
       -
         uses: "shivammathur/setup-php@v2"
