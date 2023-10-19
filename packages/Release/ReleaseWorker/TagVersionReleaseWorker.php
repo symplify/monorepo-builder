@@ -63,8 +63,9 @@ final class TagVersionReleaseWorker implements ReleaseWorkerInterface
 
     private function getDefaultBranch(): ?string
     {
-        exec("git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'",$outputs,$result_code);
+        exec('git remote set-head origin -a');
+        exec("git symbolic-ref --short refs/remotes/origin/HEAD | cut -d '/' -f 2",$outputs,$result_code);
 
-        return $result_code === 0 ? $outputs[0] : null;
+        return $result_code === 0 ? $outputs[0] ?? null : null;
     }
 }
