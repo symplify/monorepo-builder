@@ -1,39 +1,23 @@
-name: Bare Run on various PHP versions
+name: Bare Run
 
-on:
-  push:
-    tags:
-      - '*'
+on: [pull_request, push]
 
 jobs:
-  bare_run:
-    runs-on: ubuntu-latest
+    bare_run:
+        runs-on: ubuntu-latest
 
-    strategy:
-      fail-fast: false
-      matrix:
-        php_version: ['7.2', '7.3', '7.4', '8.0']
+        strategy:
+            fail-fast: false
+            matrix:
+                php_version: ['7.2', '7.3', '7.4', '8.0']
 
-    steps:
-      - uses: actions/checkout@v3
+        steps:
+            -   uses: actions/checkout@v2
 
-      -
-        id: check_tag
-        run: |
-          MESSAGE=$(git tag -l --format='%(contents)' $(git describe --tags $(git rev-list --tags --max-count=1)))
-          if echo $MESSAGE | grep -q "PHP 7.2 downgraded"; then
-            echo "NEEDED_DOWNGRADE=1" >> $GITHUB_ENV
-          else
-            echo "NEEDED_DOWNGRADE=0" >> $GITHUB_ENV
-          fi
+            -
+                uses: shivammathur/setup-php@v2
+                with:
+                    php-version: ${{ matrix.php_version }}
+                    coverage: none
 
-      -
-        name: Setup PHP And Run Monorepo
-        if: env.NEEDED_DOWNGRADE == '1'
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: ${{ matrix.php_version }}
-          coverage: none
-      -
-        if: env.NEEDED_DOWNGRADE == '1'
-        run: php bin/monorepo-builder list --ansi
+            -   run: php bin/monorepo-builder list --ansi
