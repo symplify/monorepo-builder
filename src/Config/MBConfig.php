@@ -41,7 +41,6 @@ final class MBConfig extends ContainerConfigurator
     public function packageDirectoriesExcludes(array $packageDirectories): void
     {
         Assert::allString($packageDirectories);
-        Assert::allFileExists($packageDirectories);
 
         $parameters = $this->parameters();
         $parameters->set(Option::PACKAGE_DIRECTORIES_EXCLUDES, $packageDirectories);
