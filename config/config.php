@@ -46,6 +46,8 @@ return static function (MBConfig $mbConfig): void {
         ComposerJsonSection::HOMEPAGE,
         ComposerJsonSection::LICENSE,
         ComposerJsonSection::AUTHORS,
+        ComposerJsonSection::SUPPORT,
+        ComposerJsonSection::FUNDING,
         ComposerJsonSection::BIN,
         ComposerJsonSection::REQUIRE,
         ComposerJsonSection::REQUIRE_DEV,

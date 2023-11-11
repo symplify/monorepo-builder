@@ -7,6 +7,16 @@
     "require": {
         "php": ">=7.3"
     },
+    "support": {
+        "email": "support@example.org",
+        "irc": "irc://irc.freenode.org/example"
+    },
+    "funding": [
+        {
+            "type": "example",
+            "url": "https://www.patreon.com/example"
+        }
+    ],
     "require-dev": {
         "phpunit/phpunit": "^8.5|^9.4"
     },
