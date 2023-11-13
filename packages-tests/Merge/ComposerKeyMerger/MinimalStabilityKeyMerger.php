@@ -8,13 +8,13 @@ use Iterator;
 use PHPUnit\Framework\Attributes\DataProvider;
 use Symplify\EasyTesting\DataProvider\StaticFixtureFinder;
 use Symplify\MonorepoBuilder\Merge\ComposerKeyMerger\MinimalStabilityKeyMerger;
-use Symplify\MonorepoBuilder\Tests\Merge\ComposerJsonDecorator\AbstractComposerJsonDecoratorTest;
+use Symplify\MonorepoBuilder\Tests\Merge\ComposerJsonDecorator\AbstractComposerJsonDecorator;
 use Symplify\SmartFileSystem\SmartFileInfo;
 
 /**
  * @coversDefaultClass \Symplify\MonorepoBuilder\Merge\ComposerKeyMerger\MinimalStabilityKeyMerger
  */
-final class MinimalStabilityKeyMergerTest extends AbstractComposerJsonDecoratorTest
+final class MinimalStabilityKeyMerger extends AbstractComposerJsonDecorator
 {
     #[DataProvider('provideData')]
     public function testFixture(SmartFileInfo $fixtureFileInfo): void

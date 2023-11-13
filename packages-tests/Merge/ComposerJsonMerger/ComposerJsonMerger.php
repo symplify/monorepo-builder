@@ -8,10 +8,10 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use Iterator;
 use Symplify\EasyTesting\DataProvider\StaticFixtureFinder;
 use Symplify\MonorepoBuilder\Merge\ComposerJsonMerger;
-use Symplify\MonorepoBuilder\Tests\Merge\ComposerJsonDecorator\AbstractComposerJsonDecoratorTest;
+use Symplify\MonorepoBuilder\Tests\Merge\ComposerJsonDecorator\AbstractComposerJsonDecorator;
 use Symplify\SmartFileSystem\SmartFileInfo;
 
-final class ComposerJsonMergerTest extends AbstractComposerJsonDecoratorTest
+final class ComposerJsonMerger extends AbstractComposerJsonDecorator
 {
     private ComposerJsonMerger $composerJsonMerger;
 

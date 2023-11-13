@@ -7,9 +7,9 @@ namespace Symplify\MonorepoBuilder\Tests\Merge\ComposerJsonDecorator\AppenderCom
 use Symplify\MonorepoBuilder\ComposerJsonManipulator\ComposerJsonFactory;
 use Symplify\MonorepoBuilder\Kernel\MonorepoBuilderKernel;
 use Symplify\MonorepoBuilder\Merge\ComposerJsonDecorator\AppenderComposerJsonDecorator;
-use Symplify\MonorepoBuilder\Tests\Merge\ComposerJsonDecorator\AbstractComposerJsonDecoratorTest;
+use Symplify\MonorepoBuilder\Tests\Merge\ComposerJsonDecorator\AbstractComposerJsonDecorator;
 
-final class AppenderComposerJsonDecoratorTest extends AbstractComposerJsonDecoratorTest
+final class AppenderComposerJsonDecorator extends AbstractComposerJsonDecorator
 {
     private AppenderComposerJsonDecorator $appenderComposerJsonDecorator;
 

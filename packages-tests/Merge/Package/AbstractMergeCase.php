@@ -7,11 +7,11 @@ namespace Symplify\MonorepoBuilder\Tests\Merge\Package;
 use Symfony\Component\Finder\Finder;
 use Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJson;
 use Symplify\MonorepoBuilder\Merge\ComposerJsonMerger;
-use Symplify\MonorepoBuilder\Tests\Merge\ComposerJsonDecorator\AbstractComposerJsonDecoratorTest;
+use Symplify\MonorepoBuilder\Tests\Merge\ComposerJsonDecorator\AbstractComposerJsonDecorator;
 use Symplify\SmartFileSystem\Finder\FinderSanitizer;
 use Symplify\SmartFileSystem\SmartFileInfo;
 
-abstract class AbstractMergeTestCase extends AbstractComposerJsonDecoratorTest
+abstract class AbstractMergeCase extends AbstractComposerJsonDecorator
 {
     private ComposerJsonMerger $composerJsonMerger;
 

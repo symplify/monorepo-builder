@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Symplify\MonorepoBuilder\Tests\Merge\PathResolver;
 
 use Symplify\MonorepoBuilder\Merge\PathResolver\AutoloadPathNormalizer;
-use Symplify\MonorepoBuilder\Tests\Merge\ComposerJsonDecorator\AbstractComposerJsonDecoratorTest;
+use Symplify\MonorepoBuilder\Tests\Merge\ComposerJsonDecorator\AbstractComposerJsonDecorator;
 use Symplify\SmartFileSystem\SmartFileInfo;
 
-final class AutoloadPathNormalizerTest extends AbstractComposerJsonDecoratorTest
+final class AutoloadPathNormalizer extends AbstractComposerJsonDecorator
 {
     private AutoloadPathNormalizer $autoloadPathNormalizer;
 

@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Symplify\MonorepoBuilder\Tests\Merge\Package\CombineStringsToArrayJsonMerger;
 
-use Symplify\MonorepoBuilder\Tests\Merge\Package\AbstractMergeTestCase;
+use Symplify\MonorepoBuilder\Tests\Merge\Package\AbstractMergeCase;
 
-final class CombineStringsToArrayJsonMergerTest extends AbstractMergeTestCase
+final class CombineStringsToArrayJsonMergerTest extends AbstractMergeCase
 {
     public function testIdenticalNamespaces(): void
     {

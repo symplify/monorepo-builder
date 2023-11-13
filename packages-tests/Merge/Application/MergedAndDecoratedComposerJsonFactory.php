@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Symplify\MonorepoBuilder\Tests\Merge\Application;
 
 use Symplify\MonorepoBuilder\Merge\Application\MergedAndDecoratedComposerJsonFactory;
-use Symplify\MonorepoBuilder\Tests\Merge\ComposerJsonDecorator\AbstractComposerJsonDecoratorTest;
+use Symplify\MonorepoBuilder\Tests\Merge\ComposerJsonDecorator\AbstractComposerJsonDecorator;
 use Symplify\SmartFileSystem\SmartFileInfo;
 
-final class MergedAndDecoratedComposerJsonFactoryTest extends AbstractComposerJsonDecoratorTest
+final class MergedAndDecoratedComposerJsonFactory extends AbstractComposerJsonDecorator
 {
     private MergedAndDecoratedComposerJsonFactory $mergedAndDecoratedComposerJsonFactory;
 

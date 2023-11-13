@@ -9,9 +9,9 @@ use Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJson;
 use Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
 use Symplify\MonorepoBuilder\Kernel\MonorepoBuilderKernel;
 use Symplify\MonorepoBuilder\Merge\ComposerJsonDecorator\RepositoryPathComposerJsonDecorator;
-use Symplify\MonorepoBuilder\Tests\Merge\ComposerJsonDecorator\AbstractComposerJsonDecoratorTest;
+use Symplify\MonorepoBuilder\Tests\Merge\ComposerJsonDecorator\AbstractComposerJsonDecorator;
 
-final class RepositoryPathComposerJsonDecoratorTest extends AbstractComposerJsonDecoratorTest
+final class RepositoryPathComposerJsonDecorator extends AbstractComposerJsonDecorator
 {
     /**
      * @var mixed[]
