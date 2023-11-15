@@ -9,10 +9,6 @@ use Symplify\MonorepoBuilder\Merge\Configuration\ModifyingComposerJsonProvider;
 use Symplify\MonorepoBuilder\Merge\Contract\ComposerJsonDecoratorInterface;
 use Symplify\MonorepoBuilder\ValueObject\Option;
 
-/**
- * @see \Symplify\MonorepoBuilder\Tests\Merge\ComposerJsonDecorator\RemoverComposerJsonDecoratorTest
- * @see \Symplify\MonorepoBuilder\Tests\Merge\ComposerJsonDecorator\RemoverComposerJsonDecorator\RemoverComposerJsonDecoratorTest
- */
 final class RemoverComposerJsonDecorator implements ComposerJsonDecoratorInterface
 {
     public function __construct(

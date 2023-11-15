@@ -67,6 +67,16 @@ final class ComposerJson
     private array $extra = [];
 
     /**
+     * @var mixed[]
+     */
+    private array $funding = [];
+
+    /**
+     * @var mixed[]
+     */
+    private array $support = [];
+
+    /**
      * @var array<string, string>
      */
     private array $requireDev = [];
@@ -336,6 +346,38 @@ final class ComposerJson
         $this->extra = $extra;
     }
 
+    /**
+     * @return mixed[]
+     */
+    public function getFunding(): array
+    {
+        return $this->funding;
+    }
+
+    /**
+     * @param mixed[] $funding
+     */
+    public function setFunding(array $funding): void
+    {
+        $this->funding = $funding;
+    }
+
+    /**
+     * @return mixed[]
+     */
+    public function getSupport(): array
+    {
+        return $this->support;
+    }
+
+    /**
+     * @param mixed[] $support
+     */
+    public function setSupport(array $support): void
+    {
+        $this->support = $support;
+    }
+
     public function getName(): ?string
     {
         return $this->name;
@@ -416,6 +458,8 @@ final class ComposerJson
             ComposerJsonSection::CONFLICT => $this->conflicts,
             ComposerJsonSection::PROVIDE => $this->provide,
             ComposerJsonSection::VERSION => $this->version,
+            ComposerJsonSection::FUNDING => $this->funding,
+            ComposerJsonSection::SUPPORT => $this->support,
         ]);
 
         if ($this->minimumStability !== null) {

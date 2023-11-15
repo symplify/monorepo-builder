@@ -11,7 +11,7 @@ use Symplify\MonorepoBuilder\Kernel\MonorepoBuilderKernel;
 use Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
 use Symplify\SmartFileSystem\SmartFileInfo;
 
-abstract class AbstractComposerJsonDecoratorTest extends AbstractKernelTestCase
+abstract class AbstractComposerJsonDecorator extends AbstractKernelTestCase
 {
     protected ComposerJsonFactory $composerJsonFactory;
 

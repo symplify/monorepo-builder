@@ -129,4 +129,14 @@ final class ComposerJsonSection
      * @var string
      */
     public const VERSION = 'version';
+
+    /**
+     * @var string
+     */
+    public const FUNDING = 'funding';
+
+    /**
+     * @var string
+     */
+    public const SUPPORT = 'support';
 }

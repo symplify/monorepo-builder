@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Symplify\MonorepoBuilder\Tests\Merge\Package;
 
-final class PackageComposerJsonMergerTest extends AbstractMergeTestCase
+final class PackageComposerJsonMergerTest extends AbstractMergeCase
 {
     public function test(): void
     {

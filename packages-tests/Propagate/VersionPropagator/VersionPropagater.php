@@ -8,10 +8,10 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use Iterator;
 use Symplify\EasyTesting\DataProvider\StaticFixtureFinder;
 use Symplify\MonorepoBuilder\Propagate\VersionPropagator;
-use Symplify\MonorepoBuilder\Tests\Merge\ComposerJsonDecorator\AbstractComposerJsonDecoratorTest;
+use Symplify\MonorepoBuilder\Tests\Merge\ComposerJsonDecorator\AbstractComposerJsonDecorator;
 use Symplify\SmartFileSystem\SmartFileInfo;
 
-final class VersionPropagaterTest extends AbstractComposerJsonDecoratorTest
+final class VersionPropagater extends AbstractComposerJsonDecorator
 {
     private VersionPropagator $versionPropagator;
 

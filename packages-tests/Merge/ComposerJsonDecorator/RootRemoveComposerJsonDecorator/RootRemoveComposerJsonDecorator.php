@@ -6,12 +6,12 @@ namespace Symplify\MonorepoBuilder\Tests\Merge\ComposerJsonDecorator\RootRemoveC
 
 use Symplify\MonorepoBuilder\Kernel\MonorepoBuilderKernel;
 use Symplify\MonorepoBuilder\Merge\ComposerJsonMerger;
-use Symplify\MonorepoBuilder\Tests\Merge\ComposerJsonDecorator\AbstractComposerJsonDecoratorTest;
+use Symplify\MonorepoBuilder\Tests\Merge\ComposerJsonDecorator\AbstractComposerJsonDecorator;
 
 /**
  * @see \Symplify\MonorepoBuilder\Merge\ComposerJsonDecorator\RootRemoveComposerJsonDecorator
  */
-final class RootRemoveComposerJsonDecoratorTest extends AbstractComposerJsonDecoratorTest
+final class RootRemoveComposerJsonDecorator extends AbstractComposerJsonDecorator
 {
     private ComposerJsonMerger $composerJsonMerger;
 

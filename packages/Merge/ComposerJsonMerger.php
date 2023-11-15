@@ -11,9 +11,6 @@ use Symplify\MonorepoBuilder\Merge\Contract\ComposerPathNormalizerInterface;
 use Symplify\MonorepoBuilder\Merge\Contract\ComposerKeyMergerInterface;
 use Symplify\SmartFileSystem\SmartFileInfo;
 
-/**
- * @see \Symplify\MonorepoBuilder\Tests\Merge\ComposerJsonMerger\ComposerJsonMergerTest
- */
 final class ComposerJsonMerger
 {
     /**

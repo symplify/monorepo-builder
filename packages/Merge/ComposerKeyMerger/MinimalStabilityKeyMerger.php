@@ -9,9 +9,6 @@ use PharIo\Version\PreReleaseSuffix;
 use Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJson;
 use Symplify\MonorepoBuilder\Merge\Contract\ComposerKeyMergerInterface;
 
-/**
- * @see \Symplify\MonorepoBuilder\Tests\Merge\ComposerKeyMerger\MinimalStabilityKeyMergerTest
- */
 final class MinimalStabilityKeyMerger implements ComposerKeyMergerInterface
 {
     public function merge(ComposerJson $mainComposerJson, ComposerJson $newComposerJson): void
