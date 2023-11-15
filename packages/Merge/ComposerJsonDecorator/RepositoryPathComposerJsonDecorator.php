@@ -7,9 +7,6 @@ namespace Symplify\MonorepoBuilder\Merge\ComposerJsonDecorator;
 use Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJson;
 use Symplify\MonorepoBuilder\Merge\Contract\ComposerJsonDecoratorInterface;
 
-/**
- * @see \Symplify\MonorepoBuilder\Tests\Merge\ComposerJsonDecorator\RepositoryPathComposerJsonDecorator\RepositoryPathComposerJsonDecoratorTest
- */
 final class RepositoryPathComposerJsonDecorator implements ComposerJsonDecoratorInterface
 {
     /**
