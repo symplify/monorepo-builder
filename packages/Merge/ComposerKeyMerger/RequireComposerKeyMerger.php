@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Symplify\MonorepoBuilder\Merge\ComposerKeyMerger;
 
 use Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJson;
+use Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
 use Symplify\MonorepoBuilder\Merge\Arrays\SortedParameterMerger;
 use Symplify\MonorepoBuilder\Merge\Cleaner\RequireRequireDevDuplicateCleaner;
 use Symplify\MonorepoBuilder\Merge\Contract\ComposerKeyMergerInterface;
@@ -23,7 +24,7 @@ final class RequireComposerKeyMerger implements ComposerKeyMergerInterface
             return;
         }
 
-        $require = $this->sortedParameterMerger->mergeAndSort(
+        $require = $this->sortedParameterMerger->mergeAndSort(ComposerJsonSection::REQUIRE,
             $newComposerJson->getRequire(),
             $mainComposerJson->getRequire()
         );

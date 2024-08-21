@@ -26,7 +26,7 @@ final class SortComposerJsonDecorator implements ComposerJsonDecoratorInterface
 
     public function decorate(ComposerJson $composerJson): void
     {
-        $orderedKeys = $composerJson->getOrderedKeys();
+        $orderedKeys = $composerJson->getJsonKeys();
 
         usort(
             $orderedKeys,

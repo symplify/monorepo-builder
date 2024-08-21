@@ -144,9 +144,27 @@ final class ComposerJson
      */
     private array $provide = [];
 
+    /**
+     * @var list<string>
+     */
+    private array $jsonKeys = [];
+
     public function __construct()
     {
         $this->composerPackageSorter = new ComposerPackageSorter();
+    }
+
+    public function setJsonKeys(array $jsonKeys): void
+    {
+        $this->jsonKeys = $jsonKeys;
+    }
+
+    /**
+     * @return list<string>
+     */
+    public function getJsonKeys():array
+    {
+        return $this->jsonKeys;
     }
 
     public function setOriginalFileInfo(SmartFileInfo $fileInfo): void
@@ -464,12 +482,10 @@ final class ComposerJson
 
         if ($this->minimumStability !== null) {
             $array[ComposerJsonSection::MINIMUM_STABILITY] = $this->minimumStability;
-            $this->moveValueToBack(ComposerJsonSection::MINIMUM_STABILITY);
         }
 
         if ($this->preferStable !== null) {
             $array[ComposerJsonSection::PREFER_STABLE] = $this->preferStable;
-            $this->moveValueToBack(ComposerJsonSection::PREFER_STABLE);
         }
 
         return $this->sortItemsByOrderedListOfKeys($array, $this->orderedKeys);
@@ -611,17 +627,6 @@ final class ComposerJson
         if ($this->hasRequiredDevPackage($packageName)) {
             $this->requireDev[$packageName] = $version;
         }
-    }
-
-    public function movePackageToRequire(string $packageName): void
-    {
-        if (! $this->hasRequiredDevPackage($packageName)) {
-            return;
-        }
-
-        $version = $this->requireDev[$packageName];
-        $this->removePackage($packageName);
-        $this->addRequiredPackage($packageName, $version);
     }
 
     public function movePackageToRequireDev(string $packageName): void
@@ -829,19 +834,6 @@ final class ComposerJson
     public function setProvidePackage(string $packageName, string $version): void
     {
         $this->provide[$packageName] = $version;
-    }
-
-    /**
-     * @param ComposerJsonSection::* $valueName
-     */
-    private function moveValueToBack(string $valueName): void
-    {
-        $key = array_search($valueName, $this->orderedKeys, true);
-        if ($key !== false) {
-            unset($this->orderedKeys[$key]);
-        }
-
-        $this->orderedKeys[] = $valueName;
     }
 
     /**

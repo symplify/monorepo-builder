@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Style\SymfonyStyle;
-use Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
 use Symplify\MonorepoBuilder\Config\MBConfig;
 use Symplify\MonorepoBuilder\Console\MonorepoBuilderApplication;
+use Symplify\MonorepoBuilder\Merge\JsonSchema;
 use Symplify\MonorepoBuilder\Release\ReleaseWorker\PushTagReleaseWorker;
 use Symplify\MonorepoBuilder\Release\ReleaseWorker\TagVersionReleaseWorker;
 use Symplify\MonorepoBuilder\ValueObject\Option;
@@ -38,33 +38,7 @@ return static function (MBConfig $mbConfig): void {
 
     $mbConfig->packageAliasFormat('<major>.<minor>-dev');
 
-    $mbConfig->composerSectionOrder([
-        ComposerJsonSection::NAME,
-        ComposerJsonSection::TYPE,
-        ComposerJsonSection::DESCRIPTION,
-        ComposerJsonSection::KEYWORDS,
-        ComposerJsonSection::HOMEPAGE,
-        ComposerJsonSection::LICENSE,
-        ComposerJsonSection::AUTHORS,
-        ComposerJsonSection::SUPPORT,
-        ComposerJsonSection::FUNDING,
-        ComposerJsonSection::BIN,
-        ComposerJsonSection::REQUIRE,
-        ComposerJsonSection::REQUIRE_DEV,
-        ComposerJsonSection::AUTOLOAD,
-        ComposerJsonSection::AUTOLOAD_DEV,
-        ComposerJsonSection::REPOSITORIES,
-        ComposerJsonSection::PROVIDE,
-        ComposerJsonSection::CONFLICT,
-        ComposerJsonSection::REPLACE,
-        ComposerJsonSection::SCRIPTS,
-        ComposerJsonSection::SCRIPTS_DESCRIPTIONS,
-        ComposerJsonSection::SUGGEST,
-        ComposerJsonSection::CONFIG,
-        ComposerJsonSection::MINIMUM_STABILITY,
-        ComposerJsonSection::PREFER_STABLE,
-        ComposerJsonSection::EXTRA,
-    ]);
+    $mbConfig->composerSectionOrder(JsonSchema::getProperties());
 
     $services = $mbConfig->services();
 

@@ -48,12 +48,12 @@ final class SortComposerJsonDecoratorTest extends AbstractKernelTestCase
         $composerJsonFactory = $this->getService(ComposerJsonFactory::class);
 
         return $composerJsonFactory->createFromArray([
-            'random-this' => [],
-            ComposerJsonSection::AUTOLOAD_DEV => [],
-            ComposerJsonSection::AUTOLOAD => [],
-            'random-that' => [],
-            ComposerJsonSection::REQUIRE_DEV => [],
-            ComposerJsonSection::REQUIRE => [],
+            'random-this' => ['foo'],
+            ComposerJsonSection::AUTOLOAD_DEV => ['foo'],
+            ComposerJsonSection::AUTOLOAD => ['bar'],
+            'random-that' => ['bar'],
+            ComposerJsonSection::REQUIRE_DEV => ['bar'],
+            ComposerJsonSection::REQUIRE => ['foo'],
         ]);
     }
 }

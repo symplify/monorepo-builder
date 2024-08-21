@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Symplify\MonorepoBuilder\Merge\ComposerKeyMerger;
 
 use Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJson;
+use Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
 use Symplify\MonorepoBuilder\Merge\Arrays\SortedParameterMerger;
 use Symplify\MonorepoBuilder\Merge\Contract\ComposerKeyMergerInterface;
 
@@ -37,7 +38,7 @@ final class ExtraComposerKeyMerger implements ComposerKeyMergerInterface
             }
         }
 
-        $extra = $this->sortedParameterMerger->mergeRecursiveAndSort($mainComposerJson->getExtra(), $newComposerJsonExtra);
+        $extra = $this->sortedParameterMerger->mergeRecursiveAndSort(ComposerJsonSection::EXTRA,$mainComposerJson->getExtra(), $newComposerJsonExtra);
 
         // do not merge extra alias as only for local packages
         if (isset($extra['branch-alias'])) {

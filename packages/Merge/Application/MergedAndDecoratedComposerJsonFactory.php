@@ -27,7 +27,7 @@ final class MergedAndDecoratedComposerJsonFactory
         ComposerJson $mainComposerJson,
         array $packageFileInfos
     ): void {
-        $mergedAndDecoratedComposerJson = $this->mergePackageFileInfosAndDecorate($packageFileInfos);
+        $mergedAndDecoratedComposerJson = $this->mergePackageFileInfosAndDecorate($mainComposerJson,$packageFileInfos);
 
         $this->composerJsonMerger->mergeJsonToRoot($mainComposerJson, $mergedAndDecoratedComposerJson);
     }
@@ -35,9 +35,9 @@ final class MergedAndDecoratedComposerJsonFactory
     /**
      * @param SmartFileInfo[] $packageFileInfos
      */
-    private function mergePackageFileInfosAndDecorate(array $packageFileInfos): ComposerJson
+    private function mergePackageFileInfosAndDecorate(ComposerJson $mainComposerJson,array $packageFileInfos): ComposerJson
     {
-        $mergedComposerJson = $this->composerJsonMerger->mergeFileInfos($packageFileInfos);
+        $mergedComposerJson = $this->composerJsonMerger->mergeFileInfos($mainComposerJson,$packageFileInfos);
         foreach ($this->composerJsonDecorators as $composerJsonDecorator) {
             $composerJsonDecorator->decorate($mergedComposerJson);
         }
