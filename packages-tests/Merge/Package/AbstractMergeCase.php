@@ -30,7 +30,8 @@ abstract class AbstractMergeCase extends AbstractComposerJsonDecorator
         ComposerJson $expectedComposerJson
     ): void {
         $fileInfos = $this->getFileInfosFromDirectory($directoryWithJsonFiles);
-        $mergedComposerJson = $this->composerJsonMerger->mergeFileInfos($fileInfos);
+        $mainComposerJson = $this->composerJsonFactory->createFromArray([]);
+        $mergedComposerJson = $this->composerJsonMerger->mergeFileInfos($mainComposerJson,$fileInfos);
 
         $this->assertComposerJsonEquals($expectedComposerJson, $mergedComposerJson);
     }

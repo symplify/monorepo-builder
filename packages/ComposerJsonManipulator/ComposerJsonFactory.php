@@ -164,8 +164,7 @@ final class ComposerJsonFactory
             $composerJson->setSupport($jsonArray[ComposerJsonSection::SUPPORT]);
         }
 
-        $orderedKeys = array_keys($jsonArray);
-        $composerJson->setOrderedKeys($orderedKeys);
+        $composerJson->setJsonKeys(array_keys($jsonArray));
 
         return $composerJson;
     }
