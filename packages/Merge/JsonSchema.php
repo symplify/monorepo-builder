@@ -1,33 +1,32 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Merge;
 
 use RuntimeException;
 final class JsonSchema
 {
-    private array $composerSchema;
-
+    /**
+     * @var mixed[]
+     */
+    private $composerSchema;
     private function __construct()
     {
-        $json_schema = file_get_contents(__DIR__.'/../Resources/schema.json');
-
-        if ($json_schema === false) {
+        $json_schema = \file_get_contents(__DIR__ . '/../Resources/schema.json');
+        if ($json_schema === \false) {
             throw new RuntimeException('Json schema file cannot be read');
         }
-
-        $this->composerSchema = json_decode($json_schema,true, 512, JSON_THROW_ON_ERROR);
+        $this->composerSchema = \json_decode($json_schema, \true, 512, 0);
+        if (\json_last_error() !== \JSON_ERROR_NONE) {
+            throw new \Exception(\json_last_error_msg());
+        }
     }
-
-    public static function getPropertyDefinitions(string $propertyName): array
+    public static function getPropertyDefinitions(string $propertyName) : array
     {
-        return array_keys((new self())->composerSchema['definitions'][$propertyName]['properties'] ?? []);
+        return \array_keys((new self())->composerSchema['definitions'][$propertyName]['properties'] ?? []);
     }
-
-    public static function getProperties(): array
+    public static function getProperties() : array
     {
-        return array_keys((new self())->composerSchema['properties'] ?? []);
+        return \array_keys((new self())->composerSchema['properties'] ?? []);
     }
-
 }
