@@ -53,6 +53,9 @@
             ]
         }
     },
+    "conflict": {
+        "symfony/config": ">=6.3.0"
+    },
     "config": {
         "platform-check": false,
         "allow-plugins": {
