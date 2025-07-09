@@ -25,7 +25,6 @@ $possibleAutoloadPaths = [
 foreach ($possibleAutoloadPaths as $possibleAutoloadPath) {
     if (file_exists($possibleAutoloadPath)) {
         require_once $possibleAutoloadPath;
-        break;
     }
 }
 
