@@ -1,59 +1,60 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Symplify\MonorepoBuilder\Testing;
 
-use Symfony\Component\Console\Style\SymfonyStyle;
+use MonorepoBuilderPrefix202507\Symfony\Component\Console\Style\SymfonyStyle;
 use Symplify\MonorepoBuilder\ComposerJsonManipulator\FileSystem\JsonFileManager;
 use Symplify\MonorepoBuilder\Testing\ComposerJson\ComposerVersionManipulator;
 use Symplify\MonorepoBuilder\Testing\PackageDependency\UsedPackagesResolver;
-use Symplify\PackageBuilder\Console\Output\ConsoleDiffer;
-use Symplify\SmartFileSystem\SmartFileInfo;
-
+use MonorepoBuilderPrefix202507\Symplify\PackageBuilder\Console\Output\ConsoleDiffer;
+use MonorepoBuilderPrefix202507\Symplify\SmartFileSystem\SmartFileInfo;
 final class ComposerJsonRequireUpdater
 {
-    public function __construct(
-        private JsonFileManager $jsonFileManager,
-        private SymfonyStyle $symfonyStyle,
-        private ComposerVersionManipulator $composerVersionManipulator,
-        private UsedPackagesResolver $usedPackagesResolver,
-        private ConsoleDiffer $consoleDiffer
-    ) {
+    /**
+     * @var \Symplify\MonorepoBuilder\ComposerJsonManipulator\FileSystem\JsonFileManager
+     */
+    private $jsonFileManager;
+    /**
+     * @var \Symfony\Component\Console\Style\SymfonyStyle
+     */
+    private $symfonyStyle;
+    /**
+     * @var \Symplify\MonorepoBuilder\Testing\ComposerJson\ComposerVersionManipulator
+     */
+    private $composerVersionManipulator;
+    /**
+     * @var \Symplify\MonorepoBuilder\Testing\PackageDependency\UsedPackagesResolver
+     */
+    private $usedPackagesResolver;
+    /**
+     * @var \Symplify\PackageBuilder\Console\Output\ConsoleDiffer
+     */
+    private $consoleDiffer;
+    public function __construct(JsonFileManager $jsonFileManager, SymfonyStyle $symfonyStyle, ComposerVersionManipulator $composerVersionManipulator, UsedPackagesResolver $usedPackagesResolver, ConsoleDiffer $consoleDiffer)
+    {
+        $this->jsonFileManager = $jsonFileManager;
+        $this->symfonyStyle = $symfonyStyle;
+        $this->composerVersionManipulator = $composerVersionManipulator;
+        $this->usedPackagesResolver = $usedPackagesResolver;
+        $this->consoleDiffer = $consoleDiffer;
     }
-
-    public function processPackage(SmartFileInfo $packageFileInfo): void
+    public function processPackage(SmartFileInfo $packageFileInfo) : void
     {
         $packageComposerJson = $this->jsonFileManager->loadFromFileInfo($packageFileInfo);
-
         $usedPackageNames = $this->usedPackagesResolver->resolveForPackage($packageComposerJson);
         if ($usedPackageNames === []) {
-            $message = sprintf(
-                'Package "%s" does not use any mutual dependencies, so we skip it',
-                $packageFileInfo->getRelativeFilePathFromCwd()
-            );
+            $message = \sprintf('Package "%s" does not use any mutual dependencies, so we skip it', $packageFileInfo->getRelativeFilePathFromCwd());
             $this->symfonyStyle->note($message);
             return;
         }
-
-        $packageComposerJson = $this->composerVersionManipulator->decorateAsteriskVersionForUsedPackages(
-            $packageComposerJson,
-            $usedPackageNames
-        );
-
+        $packageComposerJson = $this->composerVersionManipulator->decorateAsteriskVersionForUsedPackages($packageComposerJson, $usedPackageNames);
         $oldComposerJsonContents = $packageFileInfo->getContents();
-
-        $newComposerJsonContents = $this->jsonFileManager->printJsonToFileInfoAndReturn(
-            $packageComposerJson,
-            $packageFileInfo
-        );
-
-        $message = sprintf('File "%s" was updated', $packageFileInfo->getRelativeFilePathFromCwd());
+        $newComposerJsonContents = $this->jsonFileManager->printJsonToFileInfoAndReturn($packageComposerJson, $packageFileInfo);
+        $message = \sprintf('File "%s" was updated', $packageFileInfo->getRelativeFilePathFromCwd());
         $this->symfonyStyle->title($message);
-
         $diff = $this->consoleDiffer->diff($oldComposerJsonContents, $newComposerJsonContents);
         $this->symfonyStyle->writeln($diff);
-
         $this->symfonyStyle->newLine(2);
     }
 }
