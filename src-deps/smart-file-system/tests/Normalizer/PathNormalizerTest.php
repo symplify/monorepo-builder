@@ -29,7 +29,7 @@ final class PathNormalizerTest extends TestCase
     /**
      * @return Iterator<string[]>
      */
-    public function provideData(): Iterator
+    public static function provideData(): Iterator
     {
         // based on Linux
         yield ['/any/path', '/any/path'];

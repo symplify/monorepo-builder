@@ -9,13 +9,35 @@
         "symfony/config": "^6.2",
         "symfony/dependency-injection": "^6.2",
         "symfony/filesystem": "^6.2",
-        "symplify/package-builder": "^11.2",
-        "symplify/symplify-kernel": "^11.2",
+        "symplify/package-builder": "dev-main",
+        "symplify/symplify-kernel": "dev-main",
         "symplify/smart-file-system": "^11.2"
     },
     "require-dev": {
-        "phpunit/phpunit": "^9.5.26"
+        "phpunit/phpunit": "^10.0"
     },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../autowire-array-parameter"
+        },
+        {
+            "type": "path",
+            "url": "../easy-testing"
+        },
+        {
+            "type": "path",
+            "url": "../package-builder"
+        },
+        {
+            "type": "path",
+            "url": "../smart-file-system"
+        },
+        {
+            "type": "path",
+            "url": "../symplify-kernel"
+        }
+    ],
     "autoload": {
         "psr-4": {
             "Symplify\\ComposerJsonManipulator\\": "src"

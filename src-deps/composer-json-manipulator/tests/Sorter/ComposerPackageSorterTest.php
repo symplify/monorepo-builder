@@ -33,7 +33,7 @@ final class ComposerPackageSorterTest extends AbstractKernelTestCase
     /**
      * @return Iterator<array<int, array<string, string>>>
      */
-    public function provideData(): Iterator
+    public static function provideData(): Iterator
     {
         yield [
             [

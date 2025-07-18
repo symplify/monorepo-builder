@@ -85,7 +85,7 @@ final class JsonFileManager
     {
         // Empty arrays may lead to bad encoding since we can't be sure whether they need to be arrays or objects.
         $json = $this->jsonCleaner->removeEmptyKeysFromJsonArray($json);
-        $jsonContent = Json::encode($json, Json::PRETTY) . StaticEolConfiguration::getEolChar();
+        $jsonContent = Json::encode($json, Json::PRETTY) . "\n";
 
         return $this->jsonInliner->inlineSections($jsonContent);
     }

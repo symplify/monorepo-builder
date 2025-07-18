@@ -26,7 +26,7 @@ final class ParamTypeDocBlockResolverTest extends TestCase
         $this->assertSame($expectedType, $resolvedType);
     }
 
-    public function provideData(): Iterator
+    public static function provideData(): Iterator
     {
         yield ['/** @param Type[] $name */', 'name', 'Type'];
         yield ['/** @param array<Type> $name */', 'name', 'Type'];
@@ -45,7 +45,7 @@ final class ParamTypeDocBlockResolverTest extends TestCase
     /**
      * @return Iterator<string[]>
      */
-    public function provideDataMissmatchName(): Iterator
+    public static function provideDataMissmatchName(): Iterator
     {
         yield ['/** @param Type[] $name */', '___not'];
     }

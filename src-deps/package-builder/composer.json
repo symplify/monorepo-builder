@@ -21,9 +21,27 @@
         "symplify/easy-coding-standard": "^11.2",
         "symplify/phpstan-extensions": "^11.1",
         "symplify/phpstan-rules": "^11.2",
-        "symplify/symplify-kernel": "^11.1",
-        "tomasvotruba/unused-public": "^0.0.34"
+        "symplify/symplify-kernel": "dev-main",
+        "tomasvotruba/unused-public": "^0.3.0"
     },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../autowire-array-parameter"
+        },
+        {
+            "type": "path",
+            "url": "../easy-testing"
+        },
+        {
+            "type": "path",
+            "url": "../smart-file-system"
+        },
+        {
+            "type": "path",
+            "url": "../symplify-kernel"
+        }
+    ],
     "autoload": {
         "psr-4": {
             "Symplify\\PackageBuilder\\": "src"

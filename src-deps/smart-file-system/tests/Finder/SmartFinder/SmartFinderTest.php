@@ -29,7 +29,7 @@ final class SmartFinderTest extends TestCase
         $this->assertCount($expectedCount, $fileInfos);
     }
 
-    public function provideData(): Iterator
+    public static function provideData(): Iterator
     {
         yield [[__DIR__ . '/Fixture'], '*.twig', 2];
         yield [[__DIR__ . '/Fixture'], '*.txt', 1];
