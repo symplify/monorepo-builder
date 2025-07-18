@@ -1,0 +1,19 @@
+parameters:
+    level: 8
+
+    paths:
+        - src
+        - tests
+
+    excludePaths:
+        - '*/tests/**/Source/*'
+        - '*/tests/**/Fixture/*'
+        - '*/tests/**/data/*'
+
+    unused_public:
+        methods: true
+        properties: true
+        constants: true
+
+    ignoreErrors:
+        - '#Parameter \#1 \$endPath of method Symfony\\Component\\Filesystem\\Filesystem\:\:makePathRelative\(\) expects string, string\|false given#'

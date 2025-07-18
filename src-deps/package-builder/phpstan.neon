@@ -1,0 +1,21 @@
+includes:
+    - phpstan-baseline.neon
+
+parameters:
+    level: 8
+
+    paths:
+        - src
+        - tests
+
+    excludePaths:
+        - '*/tests/**/Source/*'
+        - '*/tests/**/Fixture/*'
+        - '*/tests/**/data/*'
+
+    unused_public:
+        methods: true
+        properties: true
+        constants: true
+
+    ignoreErrors:
