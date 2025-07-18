@@ -75,7 +75,7 @@
         "enable-patching": true,
         "patches": {
             "symfony/dependency-injection": [
-                "patches/symfony-dependency-injection-loader-phpfileloader-php.patch"
+                "patches/generic-php-config-loader.patch"
             ]
         }
     },
