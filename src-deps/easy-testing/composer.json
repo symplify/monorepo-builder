@@ -12,8 +12,8 @@
         "symfony/finder": "^6.2",
         "symfony/console": "^6.2",
         "symfony/dependency-injection": "^6.2",
-        "symplify/package-builder": "dev-main",
-        "symplify/symplify-kernel": "dev-main",
+        "symplify/package-builder": "*",
+        "symplify/symplify-kernel": "*",
         "symplify/smart-file-system": "^11.2"
     },
     "require-dev": {

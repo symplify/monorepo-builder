@@ -1,0 +1,60 @@
+name: smart-file-system Code Analysis
+
+on:
+  workflow_call:
+
+jobs:
+  code_analysis:
+    strategy:
+      fail-fast: false
+      matrix:
+        actions:
+          -
+            name: 'PHPStan'
+            run: cd src-deps/smart-file-system && composer phpstan --ansi
+
+          -
+            name: 'Composer Validate'
+            run: cd src-deps/smart-file-system && composer validate --ansi
+
+          -
+            name: 'Rector'
+            run: cd src-deps/smart-file-system && composer rector --ansi
+
+          -
+            name: 'Coding Standard'
+            run: cd src-deps/smart-file-system && composer fix-cs --ansi
+
+          -
+            name: 'Tests'
+            run: cd src-deps/smart-file-system && vendor/bin/phpunit
+
+          -
+            name: 'PHP Linter'
+            run: cd src-deps/smart-file-system && vendor/bin/parallel-lint src tests
+
+          -
+            name: 'Check Commented Code'
+            run: cd src-deps/smart-file-system && vendor/bin/easy-ci check-commented-code src tests --ansi
+
+          -
+            name: 'Check Active Classes'
+            run: cd src-deps/smart-file-system && vendor/bin/easy-ci check-active-class src --ansi
+
+    name: ${{ matrix.actions.name }}
+    runs-on: ubuntu-latest
+
+    steps:
+      -   uses: actions/checkout@v3
+      # see https://github.com/shivammathur/setup-php
+      -   uses: shivammathur/setup-php@v2
+          with:
+            php-version: 8.1
+            coverage: none
+
+      # composer install cache - https://github.com/ramsey/composer-install
+      -   uses: "ramsey/composer-install@v2"
+          with:
+            working-directory: "src-deps/smart-file-system"
+
+      -   run: ${{ matrix.actions.run }}
