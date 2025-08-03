@@ -14,7 +14,7 @@
         "symfony/dependency-injection": "^6.2",
         "symplify/package-builder": "*",
         "symplify/symplify-kernel": "*",
-        "symplify/smart-file-system": "^11.2"
+        "symplify/smart-file-system": "*"
     },
     "require-dev": {
         "phpunit/phpunit": "^10.0",

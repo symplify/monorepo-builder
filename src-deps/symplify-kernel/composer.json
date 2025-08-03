@@ -7,9 +7,9 @@
         "symfony/console": "^6.2",
         "symfony/dependency-injection": "^6.2",
         "symfony/http-kernel": "^6.2",
-        "symplify/autowire-array-parameter": "^11.2",
+        "symplify/autowire-array-parameter": "*",
         "symplify/package-builder": "*",
-        "symplify/smart-file-system": "^11.2",
+        "symplify/smart-file-system": "*",
         "webmozart/assert": "^1.11"
     },
     "require-dev": {
