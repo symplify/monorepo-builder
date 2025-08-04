@@ -24,6 +24,7 @@
         "symplify/easy-ci": "^11.1",
         "symplify/easy-coding-standard": "^11.1",
         "symplify/phpstan-extensions": "^11.1",
+        "tomasvotruba/class-leak": "^2.0.5",
         "tomasvotruba/unused-public": "^0.3.0"
     },
     "repositories": [

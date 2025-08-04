@@ -17,6 +17,7 @@
         "symplify/package-builder": "*",
         "symplify/phpstan-extensions": "^11.1",
         "symplify/symplify-kernel": "*",
+        "tomasvotruba/class-leak": "^2.0.5",
         "tomasvotruba/unused-public": "^0.3.0"
     },
     "repositories": [

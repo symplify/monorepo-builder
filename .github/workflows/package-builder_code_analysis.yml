@@ -39,7 +39,11 @@ jobs:
 
           -
             name: 'Check Active Classes'
-            run: cd src-deps/package-builder && vendor/bin/easy-ci check-active-class src --ansi
+            run: >
+              cd src-deps/package-builder
+              && vendor/bin/class-leak check src
+                --skip-type="Symplify\\PackageBuilder\\DependencyInjection\\CompilerPass\\AutowireInterfacesCompilerPass"
+                --skip-type="Symplify\\PackageBuilder\\Diff\\DifferFactory"
 
     name: ${{ matrix.actions.name }}
     runs-on: ubuntu-latest

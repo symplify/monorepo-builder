@@ -39,7 +39,7 @@ jobs:
 
           -
             name: 'Check Active Classes'
-            run: cd src-deps/symplify-kernel && vendor/bin/easy-ci check-active-class src --ansi
+            run: cd src-deps/symplify-kernel && vendor/bin/class-leak check src
 
     name: ${{ matrix.actions.name }}
     runs-on: ubuntu-latest
