@@ -41,8 +41,7 @@ jobs:
             name: 'Check Active Classes'
             run: >
               cd src-deps/smart-file-system
-              && vendor/bin/class-leak check src
-                --skip-type="Symplify\\PackageBuilder\\DependencyInjection\\CompilerPass\\AutowireInterfacesCompilerPass"
+              && vendor/bin/class-leak check src --skip-type="Symplify\\PackageBuilder\\DependencyInjection\\CompilerPass\\AutowireInterfacesCompilerPass"
 
     name: ${{ matrix.actions.name }}
     runs-on: ubuntu-latest
