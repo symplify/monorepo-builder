@@ -27,10 +27,12 @@ final class SmartFileInfoTest extends TestCase
 
         $normalizedRelativePath = $this->normalizePath($smartFileInfo->getRelativePath());
         $normalizedDir = $this->normalizePath(__DIR__);
+        $this->assertNotEmpty($normalizedRelativePath); // for phpstan
         $this->assertStringEndsWith($normalizedRelativePath, $normalizedDir);
 
         $normalizedRelativePathname = $this->normalizePath($smartFileInfo->getRelativePathname());
         $normalizeFile = $this->normalizePath(__FILE__);
+        $this->assertNotEmpty($normalizedRelativePathname); // for phpstan
         $this->assertStringEndsWith($normalizedRelativePathname, $normalizeFile);
     }
 
@@ -55,16 +57,15 @@ final class SmartFileInfoTest extends TestCase
     public function testDoesFnmatch(): void
     {
         $smartFileInfo = new SmartFileInfo(__DIR__ . '/Source/AnotherFile.txt');
+        $relativePathname = $smartFileInfo->getRelativePathname();
+        $normalizedBackslashPath = $this->normalizePath('tests\\SmartFileInfo\\Source\\AnotherFile.txt');
+        $normalizedForwardSlashPath = $this->normalizePath('tests/SmartFileInfo/Source/AnotherFile.txt');
 
         // Test param
-        $this->assertStringEndsWith(
-            $this->normalizePath('tests\\SmartFileInfo\\Source\\AnotherFile.txt'),
-            $smartFileInfo->getRelativePathname()
-        );
-        $this->assertStringEndsWith(
-            $this->normalizePath('tests/SmartFileInfo/Source/AnotherFile.txt'),
-            $smartFileInfo->getRelativePathname()
-        );
+        $this->assertNotEmpty($normalizedBackslashPath); // for phpstan
+        $this->assertNotEmpty($normalizedForwardSlashPath); // for phpstan
+        $this->assertStringEndsWith($normalizedBackslashPath, $relativePathname);
+        $this->assertStringEndsWith($normalizedForwardSlashPath, $relativePathname);
 
         // Test function
         $this->assertTrue($smartFileInfo->doesFnmatch(__DIR__ . '/Source/AnotherFile.txt'));
