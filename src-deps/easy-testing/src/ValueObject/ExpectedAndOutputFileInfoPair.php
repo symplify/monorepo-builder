@@ -34,6 +34,6 @@ final class ExpectedAndOutputFileInfoPair
 
     public function doesOutputFileExist(): bool
     {
-        return $this->outputFileInfo !== null;
+        return $this->outputFileInfo instanceof SmartFileInfo;
     }
 }

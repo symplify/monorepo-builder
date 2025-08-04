@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Symplify\AutowireArrayParameter\Skipper;
 
+use ReflectionType;
 use ReflectionMethod;
 use ReflectionNamedType;
 use ReflectionParameter;
@@ -85,7 +86,7 @@ final class ParameterSkipper
 
     private function isArrayType(ReflectionParameter $reflectionParameter): bool
     {
-        if ($reflectionParameter->getType() === null) {
+        if (!$reflectionParameter->getType() instanceof ReflectionType) {
             return false;
         }
 
