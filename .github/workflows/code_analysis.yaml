@@ -55,3 +55,18 @@ jobs:
           coverage: none
       - uses: "ramsey/composer-install@v2"
       - run: ${{ matrix.actions.run }}
+
+  autowire-array-parameter_code_analysis:
+    uses: ./.github/workflows/autowire-array-parameter_code_analysis.yml
+
+  easy-testing_code_analysis:
+    uses: ./.github/workflows/easy-testing_code_analysis.yml
+
+  package-builder_code_analysis:
+    uses: ./.github/workflows/package-builder_code_analysis.yml
+
+  smart-file-system_code_analysis:
+    uses: ./.github/workflows/smart-file-system_code_analysis.yml
+
+  symplify-kernel_code_analysis:
+    uses: ./.github/workflows/symplify-kernel_code_analysis.yml

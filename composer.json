@@ -7,14 +7,14 @@
     ],
     "require": {
         "php": ">=8.1",
-        "nette/utils": "^3.2",
+        "nette/utils": "^4.0.5",
         "phar-io/version": "^3.2",
         "symfony/finder": "^6.2",
-        "symfony/dependency-injection": "6.1.*",
+        "symfony/dependency-injection": "^6.2",
         "symfony/console": "^6.2",
         "symfony/process": "^6.2",
-        "symplify/package-builder": "^11.1",
-        "symplify/symplify-kernel": "^11.1"
+        "symplify/package-builder": "*",
+        "symplify/symplify-kernel": "*"
     },
     "require-dev": {
         "phpunit/phpunit": "^10.3.1",
@@ -29,6 +29,32 @@
         "tracy/tracy": "^2.9",
         "tomasvotruba/class-leak": "0.1.1.72"
     },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "src-deps/autowire-array-parameter"
+        },
+        {
+            "type": "path",
+            "url": "src-deps/composer-json-manipulator"
+        },
+        {
+            "type": "path",
+            "url": "src-deps/easy-testing"
+        },
+        {
+            "type": "path",
+            "url": "src-deps/package-builder"
+        },
+        {
+            "type": "path",
+            "url": "src-deps/smart-file-system"
+        },
+        {
+            "type": "path",
+            "url": "src-deps/symplify-kernel"
+        }
+    ],
     "autoload": {
         "psr-4": {
             "Symplify\\MonorepoBuilder\\": [
@@ -49,12 +75,9 @@
         "enable-patching": true,
         "patches": {
             "symfony/dependency-injection": [
-                "https://raw.githubusercontent.com/symplify/vendor-patch-files/main/patches/generic-php-config-loader.patch"
+                "patches/generic-php-config-loader.patch"
             ]
         }
-    },
-    "conflict": {
-        "symfony/config": ">=6.3.0"
     },
     "config": {
         "platform-check": false,
@@ -69,5 +92,7 @@
         "phpstan": "vendor/bin/phpstan analyse --ansi  --error-format symplify",
         "rector": "vendor/bin/rector process --dry-run --ansi",
         "release": "bin/monorepo-builder release patch --ansi"
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }

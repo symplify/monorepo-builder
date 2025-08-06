@@ -1,0 +1,64 @@
+name: easy-testing Code Analysis
+
+on:
+  workflow_call:
+
+jobs:
+  code_analysis:
+    strategy:
+      fail-fast: false
+      matrix:
+        actions:
+          -
+            name: 'PHPStan'
+            run: cd src-deps/easy-testing && composer phpstan --ansi
+
+          -
+            name: 'Composer Validate'
+            run: cd src-deps/easy-testing && composer validate --ansi
+
+          -
+            name: 'Rector'
+            run: cd src-deps/easy-testing && composer rector --ansi
+
+          -
+            name: 'Coding Standard'
+            run: cd src-deps/easy-testing && composer fix-cs --ansi
+
+          -
+            name: 'Tests'
+            run: cd src-deps/easy-testing && vendor/bin/phpunit
+
+          -
+            name: 'PHP Linter'
+            run: cd src-deps/easy-testing && vendor/bin/parallel-lint src tests
+
+          -
+            name: 'Check Commented Code'
+            run: cd src-deps/easy-testing && vendor/bin/easy-ci check-commented-code src tests --ansi
+
+          -
+            name: 'Check Active Classes'
+            run: >
+              cd src-deps/easy-testing
+              && vendor/bin/class-leak check src
+              --skip-type="Symplify\\AutowireArrayParameter\\DependencyInjection\\CompilerPass\\AutowireArrayParameterCompilerPass"
+              --skip-type="Symplify\\EasyTesting\\Kernel\\EasyTestingKernel"
+
+    name: ${{ matrix.actions.name }}
+    runs-on: ubuntu-latest
+
+    steps:
+      -   uses: actions/checkout@v3
+      # see https://github.com/shivammathur/setup-php
+      -   uses: shivammathur/setup-php@v2
+          with:
+            php-version: 8.1
+            coverage: none
+
+      # composer install cache - https://github.com/ramsey/composer-install
+      -   uses: "ramsey/composer-install@v2"
+          with:
+            working-directory: "src-deps/easy-testing"
+
+      -   run: ${{ matrix.actions.run }}
