@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="com.github.blarc.gitlab.template.lint.plugin.settings.ProjectSettings">
+    <option name="gitlabUrls">
+      <set>
+        <option value="https://github.com/api/v4" />
+        <option value="https://gitlab.rightcapital.io/api/v4" />
+      </set>
+    </option>
+    <option name="newProject" value="false" />
+  </component>
+</project>
