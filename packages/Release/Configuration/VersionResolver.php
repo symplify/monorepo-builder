@@ -20,6 +20,8 @@ final class VersionResolver
     {
         /** @var string $versionArgument */
         $versionArgument = $input->getArgument(Option::VERSION);
-        return $this->versionFactory->createValidVersion($versionArgument, $stage);
+        /** @var string $nextVersionPrefix */
+        $nextVersionPrefix = $input->getOption(Option::VERSION_PREFIX);
+        return $this->versionFactory->createValidVersion($versionArgument, $stage, $nextVersionPrefix);
     }
 }
