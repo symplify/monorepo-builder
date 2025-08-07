@@ -42,7 +42,13 @@ jobs:
 
           -
             name: 'Check Active Classes'
-            run: vendor/bin/class-leak check src packages bin --ansi  --skip-type="Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface" --skip-type="\Symplify\MonorepoBuilder\Merge\Contract\ComposerKeyMergerInterface" --skip-type="\Symplify\MonorepoBuilder\Merge\Contract\ComposerJsonDecoratorInterface"
+            run: >
+              vendor/bin/class-leak check src packages bin --ansi
+              --skip-type="Symplify\\MonorepoBuilder\\Merge\\Contract\\ComposerJsonDecoratorInterface"
+              --skip-type="Symplify\\MonorepoBuilder\\Merge\\Contract\\ComposerKeyMergerInterface"
+              --skip-type="Symplify\\MonorepoBuilder\\Merge\\PathResolver\\AutoloadPathNormalizer"
+              --skip-type="Symplify\\MonorepoBuilder\\Merge\\PathResolver\\ComposerPatchesPathNormalizer"
+              --skip-type="Symplify\\MonorepoBuilder\\Release\\Contract\\ReleaseWorker\\ReleaseWorkerInterface"
 
     name: ${{ matrix.actions.name }}
     runs-on: ubuntu-latest
