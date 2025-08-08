@@ -20,7 +20,7 @@
         "symplify/easy-ci": "^11.2.0",
         "symplify/easy-coding-standard": "^11.2",
         "symplify/phpstan-extensions": "^11.1",
-        "symplify/phpstan-rules": "^11.2",
+        "symplify/phpstan-rules": "^12.4.9",
         "symplify/symplify-kernel": "*",
         "tomasvotruba/class-leak": "^2.0.5",
         "tomasvotruba/unused-public": "^0.3.0"
