@@ -10,11 +10,11 @@ use Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
 /**
  * @api
  */
-final class ExpectedAndOutputFileInfoPair
+final readonly class ExpectedAndOutputFileInfoPair
 {
     public function __construct(
-        private readonly SmartFileInfo $expectedFileInfo,
-        private readonly ?SmartFileInfo $outputFileInfo
+        private SmartFileInfo $expectedFileInfo,
+        private ?SmartFileInfo $outputFileInfo
     ) {
     }
 

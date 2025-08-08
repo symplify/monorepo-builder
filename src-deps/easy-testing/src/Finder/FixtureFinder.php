@@ -8,10 +8,10 @@ use Symfony\Component\Finder\Finder;
 use Symplify\SmartFileSystem\Finder\FinderSanitizer;
 use Symplify\SmartFileSystem\SmartFileInfo;
 
-final class FixtureFinder
+final readonly class FixtureFinder
 {
     public function __construct(
-        private readonly FinderSanitizer $finderSanitizer
+        private FinderSanitizer $finderSanitizer
     ) {
     }
 
