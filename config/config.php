@@ -49,6 +49,7 @@ return static function (MBConfig $mbConfig): void {
     $services->load('Symplify\MonorepoBuilder\\', __DIR__ . '/../packages')
         ->exclude([
             // register manually
+            __DIR__ . '/../packages/Merge/JsonSchema.php',
             __DIR__ . '/../packages/Release/ReleaseWorker',
         ]);
 
