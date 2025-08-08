@@ -14,10 +14,10 @@ use Webmozart\Assert\Assert;
 /**
  * @see \Symplify\SymplifyKernel\Tests\ContainerBuilderFactory\ContainerBuilderFactoryTest
  */
-final class ContainerBuilderFactory
+final readonly class ContainerBuilderFactory
 {
     public function __construct(
-        private readonly LoaderFactoryInterface $loaderFactory
+        private LoaderFactoryInterface $loaderFactory
     ) {
     }
 
