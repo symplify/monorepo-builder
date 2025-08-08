@@ -7,13 +7,13 @@ namespace Symplify\PackageBuilder\DependencyInjection\CompilerPass;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-final class AutowireInterfacesCompilerPass implements CompilerPassInterface
+final readonly class AutowireInterfacesCompilerPass implements CompilerPassInterface
 {
     /**
      * @param string[] $typesToAutowire
      */
     public function __construct(
-        private readonly array $typesToAutowire
+        private array $typesToAutowire
     ) {
     }
 

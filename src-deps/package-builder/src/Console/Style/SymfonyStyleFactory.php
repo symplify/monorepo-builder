@@ -14,9 +14,9 @@ use Symplify\PackageBuilder\Reflection\PrivatesCaller;
 /**
  * @api
  */
-final class SymfonyStyleFactory
+final readonly class SymfonyStyleFactory
 {
-    private readonly PrivatesCaller $privatesCaller;
+    private PrivatesCaller $privatesCaller;
 
     public function __construct()
     {

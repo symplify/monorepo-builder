@@ -10,11 +10,11 @@ use Symplify\PackageBuilder\Console\Formatter\ColorConsoleDiffFormatter;
 /**
  * @api
  */
-final class ConsoleDiffer
+final readonly class ConsoleDiffer
 {
     public function __construct(
-        private readonly Differ $differ,
-        private readonly ColorConsoleDiffFormatter $colorConsoleDiffFormatter
+        private Differ $differ,
+        private ColorConsoleDiffFormatter $colorConsoleDiffFormatter
     ) {
     }
 
