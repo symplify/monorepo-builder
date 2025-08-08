@@ -14,7 +14,7 @@ use Symplify\PackageBuilder\Console\Output\ConsoleDiffer;
 use Symplify\SmartFileSystem\SmartFileInfo;
 use Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
 
-final class ComposerJsonRepositoriesUpdater
+final readonly class ComposerJsonRepositoriesUpdater
 {
     public function __construct(
         private PackageNamesProvider $packageNamesProvider,

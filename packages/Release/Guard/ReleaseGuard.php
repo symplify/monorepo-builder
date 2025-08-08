@@ -33,8 +33,8 @@ final class ReleaseGuard
      */
     public function __construct(
         ParameterProvider $parameterProvider,
-        private TagResolverInterface $tagResolver,
-        private array $releaseWorkers
+        private readonly TagResolverInterface $tagResolver,
+        private readonly array $releaseWorkers
     ) {
         $this->isStageRequired = $parameterProvider->provideBoolParameter(Option::IS_STAGE_REQUIRED);
         $this->stagesToAllowExistingTag = $parameterProvider->provideArrayParameter(

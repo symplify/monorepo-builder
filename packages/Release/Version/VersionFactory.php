@@ -10,7 +10,7 @@ use Symplify\MonorepoBuilder\Contract\Git\TagResolverInterface;
 use Symplify\MonorepoBuilder\Release\Guard\ReleaseGuard;
 use Symplify\MonorepoBuilder\Release\ValueObject\SemVersion;
 
-final class VersionFactory
+final readonly class VersionFactory
 {
     public function __construct(
         private ReleaseGuard $releaseGuard,

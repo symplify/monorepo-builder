@@ -8,7 +8,7 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface;
 use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\StageAwareInterface;
 
-final class ReleaseWorkerReporter
+final readonly class ReleaseWorkerReporter
 {
     public function __construct(
         private SymfonyStyle $symfonyStyle

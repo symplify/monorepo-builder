@@ -18,12 +18,12 @@ use Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
 final class MergeCommand extends AbstractSymplifyCommand
 {
     public function __construct(
-        private ComposerJsonProvider $composerJsonProvider,
-        private ComposerJsonFactory $composerJsonFactory,
-        private JsonFileManager $jsonFileManager,
-        private MergedAndDecoratedComposerJsonFactory $mergedAndDecoratedComposerJsonFactory,
-        private SourcesPresenceValidator $sourcesPresenceValidator,
-        private ConflictingVersionsGuard $conflictingVersionsGuard
+        private readonly ComposerJsonProvider $composerJsonProvider,
+        private readonly ComposerJsonFactory $composerJsonFactory,
+        private readonly JsonFileManager $jsonFileManager,
+        private readonly MergedAndDecoratedComposerJsonFactory $mergedAndDecoratedComposerJsonFactory,
+        private readonly SourcesPresenceValidator $sourcesPresenceValidator,
+        private readonly ConflictingVersionsGuard $conflictingVersionsGuard
     ) {
         parent::__construct();
     }

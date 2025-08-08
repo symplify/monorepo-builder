@@ -7,7 +7,7 @@ namespace Symplify\MonorepoBuilder\Validator;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symplify\MonorepoBuilder\Utils\RelativeFilePathHelper;
 
-final class ConflictingPackageVersionsReporter
+final readonly class ConflictingPackageVersionsReporter
 {
     public function __construct(
         private SymfonyStyle $symfonyStyle

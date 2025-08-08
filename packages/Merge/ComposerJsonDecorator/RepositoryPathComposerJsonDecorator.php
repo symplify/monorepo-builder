@@ -29,7 +29,7 @@ final class RepositoryPathComposerJsonDecorator implements ComposerJsonDecorator
                 continue;
             }
 
-            $repositories[$index]['url'] = str_replace(self::UP_DIRECTORY, '', $repository['url']);
+            $repositories[$index]['url'] = str_replace(self::UP_DIRECTORY, '', (string) $repository['url']);
         }
 
         $composerJson->setRepositories($repositories);

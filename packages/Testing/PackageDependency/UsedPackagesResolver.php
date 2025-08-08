@@ -7,7 +7,7 @@ namespace Symplify\MonorepoBuilder\Testing\PackageDependency;
 use Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
 use Symplify\MonorepoBuilder\Package\PackageNamesProvider;
 
-final class UsedPackagesResolver
+final readonly class UsedPackagesResolver
 {
     public function __construct(
         private PackageNamesProvider $packageNamesProvider

@@ -7,7 +7,7 @@ namespace Symplify\MonorepoBuilder\Merge\Arrays;
 use Symplify\MonorepoBuilder\Merge\JsonSchema;
 use Symplify\PackageBuilder\Yaml\ParametersMerger;
 
-final class SortedParameterMerger
+final readonly class SortedParameterMerger
 {
     public function __construct(
         private ParametersMerger $parametersMerger,

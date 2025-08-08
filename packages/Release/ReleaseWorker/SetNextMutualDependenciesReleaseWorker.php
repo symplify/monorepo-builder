@@ -11,7 +11,7 @@ use Symplify\MonorepoBuilder\Package\PackageNamesProvider;
 use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface;
 use Symplify\MonorepoBuilder\Utils\VersionUtils;
 
-final class SetNextMutualDependenciesReleaseWorker implements ReleaseWorkerInterface
+final readonly class SetNextMutualDependenciesReleaseWorker implements ReleaseWorkerInterface
 {
     public function __construct(
         private ComposerJsonProvider $composerJsonProvider,

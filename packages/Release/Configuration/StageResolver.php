@@ -9,7 +9,7 @@ use Symplify\MonorepoBuilder\Release\Guard\ReleaseGuard;
 use Symplify\MonorepoBuilder\Release\ValueObject\Stage;
 use Symplify\MonorepoBuilder\ValueObject\Option;
 
-final class StageResolver
+final readonly class StageResolver
 {
     public function __construct(
         private ReleaseGuard $releaseGuard

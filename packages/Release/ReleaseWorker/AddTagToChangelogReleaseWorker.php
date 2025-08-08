@@ -10,7 +10,7 @@ use PharIo\Version\Version;
 use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface;
 use Symplify\SmartFileSystem\SmartFileSystem;
 
-final class AddTagToChangelogReleaseWorker implements ReleaseWorkerInterface
+final readonly class AddTagToChangelogReleaseWorker implements ReleaseWorkerInterface
 {
     /**
      * @var string

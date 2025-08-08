@@ -9,7 +9,7 @@ use Symplify\MonorepoBuilder\Validator\ConflictingPackageVersionsReporter;
 use Symplify\MonorepoBuilder\VersionValidator;
 use Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
 
-final class ConflictingVersionsGuard
+final readonly class ConflictingVersionsGuard
 {
     public function __construct(
         private VersionValidator $versionValidator,

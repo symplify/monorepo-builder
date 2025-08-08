@@ -9,7 +9,7 @@ use Symplify\MonorepoBuilder\Merge\ComposerJsonMerger;
 use Symplify\MonorepoBuilder\Merge\Contract\ComposerJsonDecoratorInterface;
 use Symplify\SmartFileSystem\SmartFileInfo;
 
-final class MergedAndDecoratedComposerJsonFactory
+final readonly class MergedAndDecoratedComposerJsonFactory
 {
     /**
      * @param ComposerJsonDecoratorInterface[] $composerJsonDecorators

@@ -11,7 +11,7 @@ use Symplify\PackageBuilder\Parameter\ParameterProvider;
 /**
  * @see \Symplify\MonorepoBuilder\Tests\Utils\VersionUtilsTest
  */
-final class VersionUtils
+final readonly class VersionUtils
 {
     private string $packageAliasFormat;
 

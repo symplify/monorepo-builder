@@ -8,7 +8,7 @@ use PharIo\Version\Version;
 use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface;
 use Symplify\MonorepoBuilder\Release\Process\ProcessRunner;
 
-final class PushTagReleaseWorker implements ReleaseWorkerInterface
+final readonly class PushTagReleaseWorker implements ReleaseWorkerInterface
 {
     public function __construct(
         private ProcessRunner $processRunner

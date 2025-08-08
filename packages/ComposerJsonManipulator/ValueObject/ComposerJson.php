@@ -108,7 +108,7 @@ final class ComposerJson
 
     private ?SmartFileInfo $fileInfo = null;
 
-    private ComposerPackageSorter $composerPackageSorter;
+    private readonly ComposerPackageSorter $composerPackageSorter;
 
     /**
      * @var array<string, string>
