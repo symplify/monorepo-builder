@@ -18,9 +18,9 @@ use Symplify\SmartFileSystem\SmartFileInfo;
 final class PropagateCommand extends AbstractSymplifyCommand
 {
     public function __construct(
-        private ComposerJsonProvider $composerJsonProvider,
-        private VersionPropagator $versionPropagator,
-        private JsonFileManager $jsonFileManager
+        private readonly ComposerJsonProvider $composerJsonProvider,
+        private readonly VersionPropagator $versionPropagator,
+        private readonly JsonFileManager $jsonFileManager
     ) {
         parent::__construct();
     }

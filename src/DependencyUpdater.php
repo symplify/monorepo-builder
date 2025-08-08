@@ -11,7 +11,7 @@ use Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\MonorepoBuilder\Tests\DependencyUpdater\DependencyUpdaterTest
  */
-final class DependencyUpdater
+final readonly class DependencyUpdater
 {
     public function __construct(
         private JsonFileManager $jsonFileManager

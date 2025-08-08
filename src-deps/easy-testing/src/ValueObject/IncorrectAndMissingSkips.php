@@ -6,15 +6,15 @@ namespace Symplify\EasyTesting\ValueObject;
 
 use Symplify\SmartFileSystem\SmartFileInfo;
 
-final class IncorrectAndMissingSkips
+final readonly class IncorrectAndMissingSkips
 {
     /**
      * @param SmartFileInfo[] $incorrectSkipFileInfos
      * @param SmartFileInfo[] $missingSkipFileInfos
      */
     public function __construct(
-        private readonly array $incorrectSkipFileInfos,
-        private readonly array $missingSkipFileInfos,
+        private array $incorrectSkipFileInfos,
+        private array $missingSkipFileInfos,
     ) {
     }
 

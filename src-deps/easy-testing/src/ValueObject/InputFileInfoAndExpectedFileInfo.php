@@ -9,11 +9,11 @@ use Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @api
  */
-final class InputFileInfoAndExpectedFileInfo
+final readonly class InputFileInfoAndExpectedFileInfo
 {
     public function __construct(
-        private readonly SmartFileInfo $inputFileInfo,
-        private readonly SmartFileInfo $expectedFileInfo
+        private SmartFileInfo $inputFileInfo,
+        private SmartFileInfo $expectedFileInfo
     ) {
     }
 

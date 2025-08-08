@@ -17,7 +17,7 @@ final class SourcesPresenceValidator
     private array $packageDirectories = [];
 
     public function __construct(
-        private ComposerJsonProvider $composerJsonProvider,
+        private readonly ComposerJsonProvider $composerJsonProvider,
         ParameterProvider $parameterProvider
     ) {
         $this->packageDirectories = $parameterProvider->provideArrayParameter(Option::PACKAGE_DIRECTORIES);

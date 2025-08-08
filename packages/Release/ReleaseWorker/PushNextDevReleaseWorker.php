@@ -13,11 +13,11 @@ use Symplify\PackageBuilder\Parameter\ParameterProvider;
 
 final class PushNextDevReleaseWorker implements ReleaseWorkerInterface
 {
-    private string $branchName;
+    private readonly string $branchName;
 
     public function __construct(
-        private ProcessRunner $processRunner,
-        private VersionUtils $versionUtils,
+        private readonly ProcessRunner $processRunner,
+        private readonly VersionUtils $versionUtils,
         ParameterProvider $parameterProvider
     ) {
         $this->branchName = $parameterProvider->provideStringParameter(Option::DEFAULT_BRANCH_NAME);

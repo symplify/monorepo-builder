@@ -16,15 +16,15 @@ use Throwable;
 /**
  * @api
  */
-final class KernelBootAndApplicationRun
+final readonly class KernelBootAndApplicationRun
 {
     /**
      * @param class-string<KernelInterface|LightKernelInterface> $kernelClass
      * @param string[] $extraConfigs
      */
     public function __construct(
-        private readonly string $kernelClass,
-        private readonly array $extraConfigs = []
+        private string $kernelClass,
+        private array $extraConfigs = []
     ) {
         $this->validateKernelClass($this->kernelClass);
     }

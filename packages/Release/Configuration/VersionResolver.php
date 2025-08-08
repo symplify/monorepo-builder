@@ -9,7 +9,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symplify\MonorepoBuilder\Release\Version\VersionFactory;
 use Symplify\MonorepoBuilder\ValueObject\Option;
 
-final class VersionResolver
+final readonly class VersionResolver
 {
     public function __construct(
         private VersionFactory $versionFactory

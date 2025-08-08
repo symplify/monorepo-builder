@@ -12,7 +12,7 @@ use Symplify\MonorepoBuilder\Merge\Contract\ComposerJsonDecoratorInterface;
  * Remove inter-dependencies in split packages from root, e.g. symfony/console needs symfony/filesystem in package, but
  * it makes no sense to have symfony/filesystem in root of symfony/symfony.
  */
-final class RootRemoveComposerJsonDecorator implements ComposerJsonDecoratorInterface
+final readonly class RootRemoveComposerJsonDecorator implements ComposerJsonDecoratorInterface
 {
     public function __construct(
         private MergedPackagesCollector $mergedPackagesCollector

@@ -14,9 +14,9 @@ use Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
 final class PackageAliasCommand extends AbstractSymplifyCommand
 {
     public function __construct(
-        private PackageComposerFinder $packageComposerFinder,
-        private DevMasterAliasUpdater $devMasterAliasUpdater,
-        private ExpectedAliasResolver $expectedAliasResolver
+        private readonly PackageComposerFinder $packageComposerFinder,
+        private readonly DevMasterAliasUpdater $devMasterAliasUpdater,
+        private readonly ExpectedAliasResolver $expectedAliasResolver
     ) {
         parent::__construct();
     }

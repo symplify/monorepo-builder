@@ -16,7 +16,7 @@ use Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\MonorepoBuilder\Tests\VersionValidator\VersionValidatorTest
  */
-final class VersionValidator
+final readonly class VersionValidator
 {
     /**
      * @var string[]

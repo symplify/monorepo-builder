@@ -10,7 +10,7 @@ use Symplify\MonorepoBuilder\Merge\Arrays\SortedParameterMerger;
 use Symplify\MonorepoBuilder\Merge\Cleaner\RequireRequireDevDuplicateCleaner;
 use Symplify\MonorepoBuilder\Merge\Contract\ComposerKeyMergerInterface;
 
-final class RequireDevComposerKeyMerger implements ComposerKeyMergerInterface
+final readonly class RequireDevComposerKeyMerger implements ComposerKeyMergerInterface
 {
     public function __construct(
         private SortedParameterMerger $sortedParameterMerger,

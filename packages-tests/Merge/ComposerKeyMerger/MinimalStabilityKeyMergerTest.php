@@ -5,15 +5,14 @@ declare(strict_types=1);
 namespace Symplify\MonorepoBuilder\Tests\Merge\ComposerKeyMerger;
 
 use Iterator;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use Symplify\EasyTesting\DataProvider\StaticFixtureFinder;
 use Symplify\MonorepoBuilder\Merge\ComposerKeyMerger\MinimalStabilityKeyMerger;
 use Symplify\MonorepoBuilder\Tests\Merge\ComposerJsonDecorator\AbstractComposerJsonDecorator;
 use Symplify\SmartFileSystem\SmartFileInfo;
 
-/**
- * @coversDefaultClass \Symplify\MonorepoBuilder\Merge\ComposerKeyMerger\MinimalStabilityKeyMerger
- */
+#[CoversClass(MinimalStabilityKeyMerger::class)]
 final class MinimalStabilityKeyMergerTest extends AbstractComposerJsonDecorator
 {
     #[DataProvider('provideData')]

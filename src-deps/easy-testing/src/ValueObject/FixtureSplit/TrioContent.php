@@ -7,7 +7,7 @@ namespace Symplify\EasyTesting\ValueObject\FixtureSplit;
 /**
  * @api
  */
-final class TrioContent
+final readonly class TrioContent
 {
     public function __construct(
         private string $firstValue,

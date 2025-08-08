@@ -22,11 +22,11 @@ use Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
 final class ReleaseCommand extends AbstractSymplifyCommand
 {
     public function __construct(
-        private ReleaseWorkerProvider $releaseWorkerProvider,
-        private SourcesPresenceValidator $sourcesPresenceValidator,
-        private StageResolver $stageResolver,
-        private VersionResolver $versionResolver,
-        private ReleaseWorkerReporter $releaseWorkerReporter
+        private readonly ReleaseWorkerProvider $releaseWorkerProvider,
+        private readonly SourcesPresenceValidator $sourcesPresenceValidator,
+        private readonly StageResolver $stageResolver,
+        private readonly VersionResolver $versionResolver,
+        private readonly ReleaseWorkerReporter $releaseWorkerReporter
     ) {
         parent::__construct();
     }

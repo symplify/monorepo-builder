@@ -11,7 +11,7 @@ use Symplify\MonorepoBuilder\Release\ValueObject\Stage;
 /**
  * @see \Symplify\MonorepoBuilder\Tests\Release\ReleaseWorkerProvider\ReleaseWorkerProviderTest
  */
-final class ReleaseWorkerProvider
+final readonly class ReleaseWorkerProvider
 {
     /**
      * @param ReleaseWorkerInterface[] $releaseWorkers

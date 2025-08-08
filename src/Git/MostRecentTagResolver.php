@@ -10,7 +10,7 @@ use Symplify\MonorepoBuilder\Release\Process\ProcessRunner;
 /**
  * @api used by default autowire
  */
-final class MostRecentTagResolver implements TagResolverInterface
+final readonly class MostRecentTagResolver implements TagResolverInterface
 {
     /**
      * @var string[]

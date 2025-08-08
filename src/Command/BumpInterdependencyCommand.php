@@ -21,9 +21,9 @@ final class BumpInterdependencyCommand extends AbstractSymplifyCommand
     private const VERSION_ARGUMENT = 'version';
 
     public function __construct(
-        private DependencyUpdater $dependencyUpdater,
-        private ComposerJsonProvider $composerJsonProvider,
-        private SourcesPresenceValidator $sourcesPresenceValidator
+        private readonly DependencyUpdater $dependencyUpdater,
+        private readonly ComposerJsonProvider $composerJsonProvider,
+        private readonly SourcesPresenceValidator $sourcesPresenceValidator
     ) {
         parent::__construct();
     }

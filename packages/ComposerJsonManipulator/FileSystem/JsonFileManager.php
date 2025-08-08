@@ -22,9 +22,9 @@ final class JsonFileManager
     private array $cachedJSONFiles = [];
 
     public function __construct(
-        private SmartFileSystem $smartFileSystem,
-        private JsonCleaner $jsonCleaner,
-        private JsonInliner $jsonInliner
+        private readonly SmartFileSystem $smartFileSystem,
+        private readonly JsonCleaner $jsonCleaner,
+        private readonly JsonInliner $jsonInliner
     ) {
     }
 

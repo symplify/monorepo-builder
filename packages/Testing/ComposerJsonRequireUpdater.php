@@ -11,7 +11,7 @@ use Symplify\MonorepoBuilder\Testing\PackageDependency\UsedPackagesResolver;
 use Symplify\PackageBuilder\Console\Output\ConsoleDiffer;
 use Symplify\SmartFileSystem\SmartFileInfo;
 
-final class ComposerJsonRequireUpdater
+final readonly class ComposerJsonRequireUpdater
 {
     public function __construct(
         private JsonFileManager $jsonFileManager,

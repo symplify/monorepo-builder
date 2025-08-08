@@ -15,10 +15,10 @@ use Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
 final class ValidateCommand extends AbstractSymplifyCommand
 {
     public function __construct(
-        private ComposerJsonProvider $composerJsonProvider,
-        private VersionValidator $versionValidator,
-        private ConflictingPackageVersionsReporter $conflictingPackageVersionsReporter,
-        private SourcesPresenceValidator $sourcesPresenceValidator
+        private readonly ComposerJsonProvider $composerJsonProvider,
+        private readonly VersionValidator $versionValidator,
+        private readonly ConflictingPackageVersionsReporter $conflictingPackageVersionsReporter,
+        private readonly SourcesPresenceValidator $sourcesPresenceValidator
     ) {
         parent::__construct();
     }

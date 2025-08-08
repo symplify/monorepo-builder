@@ -11,10 +11,10 @@ use Symplify\PackageBuilder\Reflection\PrivatesAccessor;
  * @api
  * Creates @see UnifiedDiffOutputBuilder with "$contextLines = 1000;"
  */
-final class CompleteUnifiedDiffOutputBuilderFactory
+final readonly class CompleteUnifiedDiffOutputBuilderFactory
 {
     public function __construct(
-        private readonly PrivatesAccessor $privatesAccessor
+        private PrivatesAccessor $privatesAccessor
     ) {
     }
 

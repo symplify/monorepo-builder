@@ -11,7 +11,7 @@ use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterfa
 use Symplify\MonorepoBuilder\Release\Exception\MissingComposerJsonException;
 use Symplify\SmartFileSystem\SmartFileInfo;
 
-final class UpdateReplaceReleaseWorker implements ReleaseWorkerInterface
+final readonly class UpdateReplaceReleaseWorker implements ReleaseWorkerInterface
 {
     public function __construct(
         private ComposerJsonProvider $composerJsonProvider,

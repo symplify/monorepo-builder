@@ -27,12 +27,12 @@ final class SmartFileInfoTest extends TestCase
 
         $normalizedRelativePath = $this->normalizePath($smartFileInfo->getRelativePath());
         $normalizedDir = $this->normalizePath(__DIR__);
-        $this->assertNotEmpty($normalizedRelativePath); // for phpstan
+        /** @var non-empty-string $normalizedRelativePath */
         $this->assertStringEndsWith($normalizedRelativePath, $normalizedDir);
 
         $normalizedRelativePathname = $this->normalizePath($smartFileInfo->getRelativePathname());
         $normalizeFile = $this->normalizePath(__FILE__);
-        $this->assertNotEmpty($normalizedRelativePathname); // for phpstan
+        /** @var non-empty-string $normalizedRelativePathname */
         $this->assertStringEndsWith($normalizedRelativePathname, $normalizeFile);
     }
 
@@ -62,9 +62,9 @@ final class SmartFileInfoTest extends TestCase
         $normalizedForwardSlashPath = $this->normalizePath('tests/SmartFileInfo/Source/AnotherFile.txt');
 
         // Test param
-        $this->assertNotEmpty($normalizedBackslashPath); // for phpstan
-        $this->assertNotEmpty($normalizedForwardSlashPath); // for phpstan
+        /** @var non-empty-string $normalizedBackslashPath */
         $this->assertStringEndsWith($normalizedBackslashPath, $relativePathname);
+        /** @var non-empty-string $normalizedForwardSlashPath */
         $this->assertStringEndsWith($normalizedForwardSlashPath, $relativePathname);
 
         // Test function

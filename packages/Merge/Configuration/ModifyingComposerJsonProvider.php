@@ -9,7 +9,7 @@ use Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJson;
 use Symplify\MonorepoBuilder\ValueObject\Option;
 use Symplify\PackageBuilder\Parameter\ParameterProvider;
 
-final class ModifyingComposerJsonProvider
+final readonly class ModifyingComposerJsonProvider
 {
     public function __construct(
         private ComposerJsonFactory $composerJsonFactory,

@@ -11,7 +11,7 @@ use Symplify\MonorepoBuilder\Finder\PackageComposerFinder;
 use Symplify\SmartFileSystem\SmartFileInfo;
 use Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
 
-final class ComposerJsonProvider
+final readonly class ComposerJsonProvider
 {
     public function __construct(
         private JsonFileManager $jsonFileManager,

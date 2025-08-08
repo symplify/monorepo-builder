@@ -18,9 +18,9 @@ use Webmozart\Assert\Assert;
 final class LocalizeComposerPathsCommand extends AbstractSymplifyCommand
 {
     public function __construct(
-        private ComposerJsonProvider $composerJsonProvider,
-        private ComposerJsonRequireUpdater $composerJsonRequireUpdater,
-        private ComposerJsonRepositoriesUpdater $composerJsonRepositoriesUpdater
+        private readonly ComposerJsonProvider $composerJsonProvider,
+        private readonly ComposerJsonRequireUpdater $composerJsonRequireUpdater,
+        private readonly ComposerJsonRepositoriesUpdater $composerJsonRepositoriesUpdater
     ) {
         parent::__construct();
     }

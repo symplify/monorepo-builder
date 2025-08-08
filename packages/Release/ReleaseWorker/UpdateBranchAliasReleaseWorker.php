@@ -10,7 +10,7 @@ use Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider;
 use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface;
 use Symplify\MonorepoBuilder\Utils\VersionUtils;
 
-final class UpdateBranchAliasReleaseWorker implements ReleaseWorkerInterface
+final readonly class UpdateBranchAliasReleaseWorker implements ReleaseWorkerInterface
 {
     public function __construct(
         private DevMasterAliasUpdater $devMasterAliasUpdater,
