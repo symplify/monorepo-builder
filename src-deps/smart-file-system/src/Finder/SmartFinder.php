@@ -12,11 +12,11 @@ use Symplify\SmartFileSystem\SmartFileInfo;
  * @api
  * @see \Symplify\SmartFileSystem\Tests\Finder\SmartFinder\SmartFinderTest
  */
-final class SmartFinder
+final readonly class SmartFinder
 {
     public function __construct(
-        private readonly FinderSanitizer $finderSanitizer,
-        private readonly FileSystemFilter $fileSystemFilter
+        private FinderSanitizer $finderSanitizer,
+        private FileSystemFilter $fileSystemFilter
     ) {
     }
 

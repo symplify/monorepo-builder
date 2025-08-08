@@ -13,11 +13,11 @@ use Symplify\SmartFileSystem\SmartFileSystem;
  * @api
  * @see \Symplify\SmartFileSystem\Tests\Json\JsonFileSystem\JsonFileSystemTest
  */
-final class JsonFileSystem
+final readonly class JsonFileSystem
 {
     public function __construct(
-        private readonly FileSystemGuard $fileSystemGuard,
-        private readonly SmartFileSystem $smartFileSystem
+        private FileSystemGuard $fileSystemGuard,
+        private SmartFileSystem $smartFileSystem
     ) {
     }
 
