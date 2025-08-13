@@ -18,14 +18,6 @@ jobs:
             run: cd src-deps/autowire-array-parameter && composer validate --ansi
 
           -
-            name: 'Rector'
-            run: cd src-deps/autowire-array-parameter && composer rector --ansi
-
-          -
-            name: 'Coding Standard'
-            run: cd src-deps/autowire-array-parameter && composer fix-cs --ansi
-
-          -
             name: 'Tests'
             run: cd src-deps/autowire-array-parameter && vendor/bin/phpunit
 

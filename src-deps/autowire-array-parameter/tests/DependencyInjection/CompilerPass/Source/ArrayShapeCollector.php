@@ -44,5 +44,4 @@ final class ArrayShapeCollector
     {
         return $this->secondCollected;
     }
-
 }

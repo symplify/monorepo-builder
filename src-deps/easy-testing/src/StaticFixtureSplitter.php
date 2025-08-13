@@ -10,7 +10,6 @@ use Symplify\EasyTesting\ValueObject\InputFileInfoAndExpected;
 use Symplify\EasyTesting\ValueObject\InputFileInfoAndExpectedFileInfo;
 use Symplify\EasyTesting\ValueObject\SplitLine;
 use Symplify\SmartFileSystem\SmartFileInfo;
-use Symplify\SmartFileSystem\SmartFileSystem;
 
 /**
  * @api

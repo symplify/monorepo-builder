@@ -11,13 +11,13 @@ use Symplify\MonorepoBuilder\Utils\VersionUtils;
 use Symplify\MonorepoBuilder\ValueObject\Option;
 use Symplify\PackageBuilder\Parameter\ParameterProvider;
 
-final class PushNextDevReleaseWorker implements ReleaseWorkerInterface
+final readonly class PushNextDevReleaseWorker implements ReleaseWorkerInterface
 {
-    private readonly string $branchName;
+    private string $branchName;
 
     public function __construct(
-        private readonly ProcessRunner $processRunner,
-        private readonly VersionUtils $versionUtils,
+        private ProcessRunner $processRunner,
+        private VersionUtils $versionUtils,
         ParameterProvider $parameterProvider
     ) {
         $this->branchName = $parameterProvider->provideStringParameter(Option::DEFAULT_BRANCH_NAME);

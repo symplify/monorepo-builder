@@ -8,7 +8,6 @@ use Nette\Utils\Json;
 use Symplify\ComposerJsonManipulator\Json\JsonCleaner;
 use Symplify\ComposerJsonManipulator\Json\JsonInliner;
 use Symplify\ComposerJsonManipulator\ValueObject\ComposerJson;
-use Symplify\PackageBuilder\Configuration\StaticEolConfiguration;
 use Symplify\SmartFileSystem\SmartFileInfo;
 use Symplify\SmartFileSystem\SmartFileSystem;
 
@@ -23,9 +22,9 @@ final class JsonFileManager
     private array $cachedJSONFiles = [];
 
     public function __construct(
-        private SmartFileSystem $smartFileSystem,
-        private JsonCleaner $jsonCleaner,
-        private JsonInliner $jsonInliner
+        private readonly SmartFileSystem $smartFileSystem,
+        private readonly JsonCleaner $jsonCleaner,
+        private readonly JsonInliner $jsonInliner
     ) {
     }
 

@@ -8,5 +8,4 @@ use Symplify\AutowireArrayParameter\Tests\DependencyInjection\CompilerPass\Sourc
 
 final class FirstServiceOfSecondCollected implements SecondCollectedInterface
 {
-
 }

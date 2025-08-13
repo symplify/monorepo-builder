@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Symplify\SmartFileSystem\Tests\Normalizer;
 
 use Iterator;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Symplify\SmartFileSystem\Normalizer\PathNormalizer;
 
@@ -17,9 +18,7 @@ final class PathNormalizerTest extends TestCase
         $this->pathNormalizer = new PathNormalizer();
     }
 
-    /**
-     * @dataProvider provideData()
-     */
+    #[DataProvider('provideData')]
     public function test(string $inputPath, string $expectedNormalizedPath): void
     {
         $normalizedPath = $this->pathNormalizer->normalizePath($inputPath);

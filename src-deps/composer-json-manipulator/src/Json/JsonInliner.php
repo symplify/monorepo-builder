@@ -8,7 +8,7 @@ use Nette\Utils\Strings;
 use Symplify\ComposerJsonManipulator\ValueObject\Option;
 use Symplify\PackageBuilder\Parameter\ParameterProvider;
 
-final class JsonInliner
+final readonly class JsonInliner
 {
     /**
      * @var string
@@ -30,7 +30,7 @@ final class JsonInliner
         $inlineSections = $this->parameterProvider->provideArrayParameter(Option::INLINE_SECTIONS);
 
         foreach ($inlineSections as $inlineSection) {
-            $pattern = '#("' . preg_quote($inlineSection, '#') . '": )\[(.*?)\](,)#ms';
+            $pattern = '#("' . preg_quote((string) $inlineSection, '#') . '": )\[(.*?)\](,)#ms';
 
             $jsonContent = Strings::replace($jsonContent, $pattern, static function (array $match): string {
                 $inlined = Strings::replace($match[2], self::SPACE_REGEX, ' ');

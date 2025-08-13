@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Symplify\SmartFileSystem\Tests\Finder\SmartFinder;
 
 use Iterator;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Symplify\SmartFileSystem\FileSystemFilter;
 use Symplify\SmartFileSystem\Finder\FinderSanitizer;
@@ -21,8 +22,8 @@ final class SmartFinderTest extends TestCase
 
     /**
      * @param string[] $paths
-     * @dataProvider provideData()
      */
+    #[DataProvider('provideData')]
     public function test(array $paths, string $suffix, int $expectedCount): void
     {
         $fileInfos = $this->smartFinder->find($paths, $suffix);

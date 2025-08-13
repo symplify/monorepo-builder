@@ -56,7 +56,7 @@ abstract class AbstractKernelTestCase extends TestCase
      */
     protected function getService(string $type): object
     {
-        if (!self::$container instanceof ContainerInterface) {
+        if (! self::$container instanceof ContainerInterface) {
             throw new ShouldNotHappenException('First, create container with bootKernel(KernelClass::class)');
         }
 
@@ -105,7 +105,6 @@ abstract class AbstractKernelTestCase extends TestCase
             $kernelReflectionClass = new ReflectionClass(static::$kernel);
 
             $containerReflectionProperty = $kernelReflectionClass->getProperty('container');
-            $containerReflectionProperty->setAccessible(true);
 
             $kernel = $containerReflectionProperty->getValue(static::$kernel);
             if ($kernel !== null) {

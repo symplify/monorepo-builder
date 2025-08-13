@@ -20,7 +20,7 @@ use Symplify\AutowireArrayParameter\TypeResolver\ParameterTypeResolver;
  * @inspiration https://github.com/nette/di/pull/178
  * @see \Symplify\AutowireArrayParameter\Tests\DependencyInjection\CompilerPass\AutowireArrayParameterCompilerPassTest
  */
-final class AutowireArrayParameterCompilerPass implements CompilerPassInterface
+final readonly class AutowireArrayParameterCompilerPass implements CompilerPassInterface
 {
     /**
      * These namespaces are already configured by their bundles/extensions.
@@ -46,11 +46,11 @@ final class AutowireArrayParameterCompilerPass implements CompilerPassInterface
         'Symfony\Component\HttpKernel\KernelInterface',
     ];
 
-    private readonly DefinitionFinder $definitionFinder;
+    private DefinitionFinder $definitionFinder;
 
-    private readonly ParameterTypeResolver $parameterTypeResolver;
+    private ParameterTypeResolver $parameterTypeResolver;
 
-    private readonly ParameterSkipper $parameterSkipper;
+    private ParameterSkipper $parameterSkipper;
 
     /**
      * @param string[] $excludedFatalClasses

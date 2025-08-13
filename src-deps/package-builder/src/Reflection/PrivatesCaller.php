@@ -23,9 +23,9 @@ final class PrivatesCaller
             $object = $reflectionClass->newInstanceWithoutConstructor();
         }
 
-        $methodReflection = $this->createAccessibleMethodReflection($object, $methodName);
+        $reflectionMethod = $this->createAccessibleMethodReflection($object, $methodName);
 
-        return $methodReflection->invokeArgs($object, $arguments);
+        return $reflectionMethod->invokeArgs($object, $arguments);
     }
 
     /**
@@ -38,17 +38,14 @@ final class PrivatesCaller
             $object = $reflectionClass->newInstanceWithoutConstructor();
         }
 
-        $methodReflection = $this->createAccessibleMethodReflection($object, $methodName);
-        $methodReflection->invokeArgs($object, [&$argument]);
+        $reflectionMethod = $this->createAccessibleMethodReflection($object, $methodName);
+        $reflectionMethod->invokeArgs($object, [&$argument]);
 
         return $argument;
     }
 
     private function createAccessibleMethodReflection(object $object, string $methodName): ReflectionMethod
     {
-        $reflectionMethod = new ReflectionMethod($object::class, $methodName);
-        $reflectionMethod->setAccessible(true);
-
-        return $reflectionMethod;
+        return new ReflectionMethod($object::class, $methodName);
     }
 }

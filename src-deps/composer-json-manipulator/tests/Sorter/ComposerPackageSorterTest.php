@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Symplify\ComposerJsonManipulator\Tests\Sorter;
 
 use Iterator;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Symplify\ComposerJsonManipulator\Sorter\ComposerPackageSorter;
 use Symplify\ComposerJsonManipulator\Tests\Kernel\ComposerJsonManipulatorKernel;
 use Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
@@ -20,10 +21,10 @@ final class ComposerPackageSorterTest extends AbstractKernelTestCase
     }
 
     /**
-     * @dataProvider provideData()
      * @param array<string, string> $packages
      * @param array<string, string> $expectedSortedPackages
      */
+    #[DataProvider('provideData')]
     public function test(array $packages, array $expectedSortedPackages): void
     {
         $sortedPackages = $this->composerPackageSorter->sortPackages($packages);

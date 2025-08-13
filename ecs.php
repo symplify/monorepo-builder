@@ -12,6 +12,7 @@ return static function (ECSConfig $ecsConfig): void {
         __DIR__ . '/config',
         __DIR__ . '/src',
         __DIR__ . '/tests',
+        __DIR__ . '/src-deps',
     ]);
 
     $ecsConfig->sets([

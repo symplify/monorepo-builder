@@ -18,14 +18,6 @@ jobs:
             run: cd src-deps/symplify-kernel && composer validate --ansi
 
           -
-            name: 'Rector'
-            run: cd src-deps/symplify-kernel && composer rector --ansi
-
-          -
-            name: 'Coding Standard'
-            run: cd src-deps/symplify-kernel && composer fix-cs --ansi
-
-          -
             name: 'Tests'
             run: cd src-deps/symplify-kernel && vendor/bin/phpunit
 
