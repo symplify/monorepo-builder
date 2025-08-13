@@ -8,7 +8,7 @@ use Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJson;
 use Symplify\MonorepoBuilder\Merge\Configuration\MergedPackagesCollector;
 use Symplify\MonorepoBuilder\Merge\Contract\ComposerJsonDecoratorInterface;
 
-final class ReplaceSectionJsonDecorator implements ComposerJsonDecoratorInterface
+final readonly class ReplaceSectionJsonDecorator implements ComposerJsonDecoratorInterface
 {
     public function __construct(
         private MergedPackagesCollector $mergedPackagesCollector

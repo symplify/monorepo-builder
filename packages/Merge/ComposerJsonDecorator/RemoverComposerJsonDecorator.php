@@ -9,7 +9,7 @@ use Symplify\MonorepoBuilder\Merge\Configuration\ModifyingComposerJsonProvider;
 use Symplify\MonorepoBuilder\Merge\Contract\ComposerJsonDecoratorInterface;
 use Symplify\MonorepoBuilder\ValueObject\Option;
 
-final class RemoverComposerJsonDecorator implements ComposerJsonDecoratorInterface
+final readonly class RemoverComposerJsonDecorator implements ComposerJsonDecoratorInterface
 {
     public function __construct(
         private ModifyingComposerJsonProvider $modifyingComposerJsonProvider

@@ -7,7 +7,7 @@ namespace Symplify\MonorepoBuilder\Git;
 use Symfony\Component\Process\Process;
 use Symplify\MonorepoBuilder\Utils\VersionUtils;
 
-final class ExpectedAliasResolver
+final readonly class ExpectedAliasResolver
 {
     public function __construct(
         private VersionUtils $versionUtils

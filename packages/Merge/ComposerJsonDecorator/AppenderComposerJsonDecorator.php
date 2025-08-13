@@ -9,7 +9,7 @@ use Symplify\MonorepoBuilder\Merge\ComposerJsonMerger;
 use Symplify\MonorepoBuilder\Merge\Configuration\ModifyingComposerJsonProvider;
 use Symplify\MonorepoBuilder\Merge\Contract\ComposerJsonDecoratorInterface;
 
-final class AppenderComposerJsonDecorator implements ComposerJsonDecoratorInterface
+final readonly class AppenderComposerJsonDecorator implements ComposerJsonDecoratorInterface
 {
     public function __construct(
         private ComposerJsonMerger $composerJsonMerger,

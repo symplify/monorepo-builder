@@ -29,10 +29,10 @@ final class DevMasterAliasUpdater
      */
     private const COMPOSER_BRANCH_PREFIX = 'dev-';
 
-    private string $branchAliasTarget;
+    private readonly string $branchAliasTarget;
 
     public function __construct(
-        private JsonFileManager $jsonFileManager,
+        private readonly JsonFileManager $jsonFileManager,
         ParameterProvider $parameterProvider
     ) {
         $this->branchAliasTarget = self::COMPOSER_BRANCH_PREFIX . $parameterProvider->provideStringParameter(

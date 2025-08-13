@@ -9,7 +9,7 @@ use Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJsonSec
 use Symplify\MonorepoBuilder\Merge\Arrays\SortedParameterMerger;
 use Symplify\MonorepoBuilder\Merge\Contract\ComposerKeyMergerInterface;
 
-final class ProvideComposerKeyMerger implements ComposerKeyMergerInterface
+final readonly class ProvideComposerKeyMerger implements ComposerKeyMergerInterface
 {
     public function __construct(
         private SortedParameterMerger $sortedParameterMerger

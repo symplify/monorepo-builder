@@ -33,7 +33,7 @@ final class PackageComposerFinder
 
     public function __construct(
         ParameterProvider $parameterProvider,
-        private FinderSanitizer $finderSanitizer
+        private readonly FinderSanitizer $finderSanitizer
     ) {
         $this->packageDirectories = $parameterProvider->provideArrayParameter(Option::PACKAGE_DIRECTORIES);
         $this->packageDirectoriesExcludes = $parameterProvider->provideArrayParameter(

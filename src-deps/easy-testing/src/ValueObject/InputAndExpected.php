@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Symplify\EasyTesting\ValueObject;
 
-final class InputAndExpected
+final readonly class InputAndExpected
 {
     public function __construct(
-        private readonly string $input,
-        private readonly mixed $expected
+        private string $input,
+        private mixed $expected
     ) {
     }
 

@@ -16,8 +16,8 @@ final class PackageNamesProvider
     private array $names = [];
 
     public function __construct(
-        private ComposerJsonProvider $composerJsonProvider,
-        private JsonFileManager $jsonFileManager
+        private readonly ComposerJsonProvider $composerJsonProvider,
+        private readonly JsonFileManager $jsonFileManager
     ) {
     }
 

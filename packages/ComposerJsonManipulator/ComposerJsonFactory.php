@@ -14,7 +14,7 @@ use Symplify\SmartFileSystem\SmartFileInfo;
  * @api
  * @see \Symplify\MonorepoBuilder\Tests\ComposerJsonManipulator\ComposerJsonFactory\ComposerJsonFactoryTest
  */
-final class ComposerJsonFactory
+final readonly class ComposerJsonFactory
 {
     public function __construct(
         private JsonFileManager $jsonFileManager

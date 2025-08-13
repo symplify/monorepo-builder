@@ -11,7 +11,7 @@ use Symplify\MonorepoBuilder\Package\PackageNamesProvider;
 use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface;
 use Symplify\MonorepoBuilder\Utils\VersionUtils;
 
-final class SetCurrentMutualDependenciesReleaseWorker implements ReleaseWorkerInterface
+final readonly class SetCurrentMutualDependenciesReleaseWorker implements ReleaseWorkerInterface
 {
     public function __construct(
         private VersionUtils $versionUtils,
