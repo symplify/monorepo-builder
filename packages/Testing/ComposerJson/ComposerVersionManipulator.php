@@ -8,7 +8,7 @@ use Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJsonSec
 use Symplify\MonorepoBuilder\ValueObject\Option;
 use Symplify\PackageBuilder\Parameter\ParameterProvider;
 
-final class ComposerVersionManipulator
+final readonly class ComposerVersionManipulator
 {
     /**
      * @var string

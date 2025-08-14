@@ -11,7 +11,7 @@ use Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @api
  */
-final class ComposerJsonPrinter
+final readonly class ComposerJsonPrinter
 {
     public function __construct(
         private JsonFileManager $jsonFileManager

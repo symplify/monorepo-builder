@@ -6,6 +6,7 @@ namespace Symplify\SymplifyKernel\ValueObject;
 
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\HttpKernel\KernelInterface;
 use Symplify\PackageBuilder\Console\Input\StaticInputDetector;
 use Symplify\PackageBuilder\Console\Style\SymfonyStyleFactory;
@@ -73,7 +74,7 @@ final readonly class KernelBootAndApplicationRun
         $inputDefinition = $application->getDefinition();
 
         $options = $inputDefinition->getOptions();
-        $options = array_filter($options, static fn ($option): bool => $option->getName() !== 'no-interaction');
+        $options = array_filter($options, static fn (InputOption $inputOption): bool => $inputOption->getName() !== 'no-interaction');
 
         $inputDefinition->setOptions($options);
 

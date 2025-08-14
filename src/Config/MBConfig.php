@@ -18,7 +18,6 @@ final class MBConfig extends ContainerConfigurator
      */
     public function packageDirectories(array $packageDirectories): void
     {
-        Assert::allString($packageDirectories);
         Assert::allFileExists($packageDirectories);
 
         $parameters = $this->parameters();
@@ -40,8 +39,6 @@ final class MBConfig extends ContainerConfigurator
      */
     public function packageDirectoriesExcludes(array $packageDirectories): void
     {
-        Assert::allString($packageDirectories);
-
         $parameters = $this->parameters();
         $parameters->set(Option::PACKAGE_DIRECTORIES_EXCLUDES, $packageDirectories);
     }
@@ -57,8 +54,6 @@ final class MBConfig extends ContainerConfigurator
      */
     public function dataToRemove(array $dataToRemove): void
     {
-        Assert::allString(array_keys($dataToRemove));
-
         $parameters = $this->parameters();
         $parameters->set(Option::DATA_TO_REMOVE, $dataToRemove);
     }
@@ -68,8 +63,6 @@ final class MBConfig extends ContainerConfigurator
      */
     public function dataToAppend(array $dataToAppend): void
     {
-        Assert::allString(array_keys($dataToAppend));
-
         $parameters = $this->parameters();
         $parameters->set(Option::DATA_TO_APPEND, $dataToAppend);
     }
@@ -79,9 +72,6 @@ final class MBConfig extends ContainerConfigurator
      */
     public function workers(array $workerClasses): void
     {
-        Assert::allString($workerClasses);
-        Assert::allIsAOf($workerClasses, ReleaseWorkerInterface::class);
-
         $services = $this->services();
 
         foreach ($workerClasses as $workerClass) {
@@ -100,8 +90,6 @@ final class MBConfig extends ContainerConfigurator
      */
     public function composerSectionOrder(array $sectionOrder): void
     {
-        Assert::allString($sectionOrder);
-
         $parameters = $this->parameters();
         $parameters->set(Option::SECTION_ORDER, $sectionOrder);
     }

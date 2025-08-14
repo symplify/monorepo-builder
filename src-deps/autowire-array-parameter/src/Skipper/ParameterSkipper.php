@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Symplify\AutowireArrayParameter\Skipper;
 
-use ReflectionType;
 use ReflectionMethod;
 use ReflectionNamedType;
 use ReflectionParameter;
+use ReflectionType;
 use Symfony\Component\DependencyInjection\Definition;
 use Symplify\AutowireArrayParameter\TypeResolver\ParameterTypeResolver;
 
@@ -86,15 +86,15 @@ final class ParameterSkipper
 
     private function isArrayType(ReflectionParameter $reflectionParameter): bool
     {
-        if (!$reflectionParameter->getType() instanceof ReflectionType) {
+        if (! $reflectionParameter->getType() instanceof ReflectionType) {
             return false;
         }
 
-        $reflectionParameterType = $reflectionParameter->getType();
-        if (! $reflectionParameterType instanceof ReflectionNamedType) {
+        $reflectionType = $reflectionParameter->getType();
+        if (! $reflectionType instanceof ReflectionNamedType) {
             return false;
         }
 
-        return $reflectionParameterType->getName() === 'array';
+        return $reflectionType->getName() === 'array';
     }
 }

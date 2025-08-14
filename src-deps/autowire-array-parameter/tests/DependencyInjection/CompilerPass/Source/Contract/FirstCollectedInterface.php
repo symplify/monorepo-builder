@@ -6,5 +6,4 @@ namespace Symplify\AutowireArrayParameter\Tests\DependencyInjection\CompilerPass
 
 interface FirstCollectedInterface
 {
-
 }

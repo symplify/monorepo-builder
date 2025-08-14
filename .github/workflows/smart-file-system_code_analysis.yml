@@ -18,14 +18,6 @@ jobs:
             run: cd src-deps/smart-file-system && composer validate --ansi
 
           -
-            name: 'Rector'
-            run: cd src-deps/smart-file-system && composer rector --ansi
-
-          -
-            name: 'Coding Standard'
-            run: cd src-deps/smart-file-system && composer fix-cs --ansi
-
-          -
             name: 'Tests'
             run: cd src-deps/smart-file-system && vendor/bin/phpunit
 

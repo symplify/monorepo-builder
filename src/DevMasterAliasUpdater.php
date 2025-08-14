@@ -12,7 +12,7 @@ use Symplify\SmartFileSystem\SmartFileInfo;
 /**
  * @see \Symplify\MonorepoBuilder\Tests\DevMasterAliasUpdater\DevMasterAliasUpdaterTest
  */
-final class DevMasterAliasUpdater
+final readonly class DevMasterAliasUpdater
 {
     /**
      * @var string
@@ -29,10 +29,10 @@ final class DevMasterAliasUpdater
      */
     private const COMPOSER_BRANCH_PREFIX = 'dev-';
 
-    private readonly string $branchAliasTarget;
+    private string $branchAliasTarget;
 
     public function __construct(
-        private readonly JsonFileManager $jsonFileManager,
+        private JsonFileManager $jsonFileManager,
         ParameterProvider $parameterProvider
     ) {
         $this->branchAliasTarget = self::COMPOSER_BRANCH_PREFIX . $parameterProvider->provideStringParameter(

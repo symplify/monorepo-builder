@@ -11,12 +11,12 @@ use Symplify\MonorepoBuilder\ValueObject\Option;
 use Symplify\PackageBuilder\Parameter\ParameterProvider;
 use Throwable;
 
-final class TagVersionReleaseWorker implements ReleaseWorkerInterface
+final readonly class TagVersionReleaseWorker implements ReleaseWorkerInterface
 {
-    private readonly string $branchName;
+    private string $branchName;
 
     public function __construct(
-        private readonly ProcessRunner $processRunner,
+        private ProcessRunner $processRunner,
         ParameterProvider $parameterProvider
     ) {
         $this->branchName = $parameterProvider->provideStringParameter(Option::DEFAULT_BRANCH_NAME);

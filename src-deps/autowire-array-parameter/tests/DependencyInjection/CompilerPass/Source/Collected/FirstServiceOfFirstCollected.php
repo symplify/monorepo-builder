@@ -8,5 +8,4 @@ use Symplify\AutowireArrayParameter\Tests\DependencyInjection\CompilerPass\Sourc
 
 final class FirstServiceOfFirstCollected implements FirstCollectedInterface
 {
-
 }

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Symplify\MonorepoBuilder\Utils;
 
 use PharIo\Version\Version;
+use RuntimeException;
 use Symplify\MonorepoBuilder\ValueObject\Option;
 use Symplify\PackageBuilder\Parameter\ParameterProvider;
 
@@ -24,12 +25,18 @@ final readonly class VersionUtils
     {
         $version = $this->normalizeVersion($version);
 
-        /** @var Version $minor */
+        $major = $version->getMajor()->getValue();
+
         $minor = $this->getNextMinorNumber($version);
+
+
+        if ($major === null) {
+            throw new RuntimeException('Major version cannot is null');
+        }
 
         return str_replace(
             ['<major>', '<minor>'],
-            [$version->getMajor()->getValue(), $minor],
+            [(string) $major, (string) $minor],
             $this->packageAliasFormat
         );
     }

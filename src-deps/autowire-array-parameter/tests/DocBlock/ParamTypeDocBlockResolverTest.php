@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Symplify\AutowireArrayParameter\Tests\DocBlock;
 
 use Iterator;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Symplify\AutowireArrayParameter\DocBlock\ParamTypeDocBlockResolver;
 
@@ -17,9 +18,7 @@ final class ParamTypeDocBlockResolverTest extends TestCase
         $this->paramTypeDocBlockResolver = new ParamTypeDocBlockResolver();
     }
 
-    /**
-     * @dataProvider provideData()
-     */
+    #[DataProvider('provideData')]
     public function test(string $docBlock, string $parameterName, string $expectedType): void
     {
         $resolvedType = $this->paramTypeDocBlockResolver->resolve($docBlock, $parameterName);
@@ -33,9 +32,7 @@ final class ParamTypeDocBlockResolverTest extends TestCase
         yield ['/** @param iterable<Type> $name */', 'name', 'Type'];
     }
 
-    /**
-     * @dataProvider provideDataMissmatchName()
-     */
+    #[DataProvider('provideDataMissmatchName')]
     public function testMissmatchName(string $docBlock, string $parameterName): void
     {
         $resolvedType = $this->paramTypeDocBlockResolver->resolve($docBlock, $parameterName);

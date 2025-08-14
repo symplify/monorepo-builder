@@ -33,10 +33,9 @@ final class PrivatesAccessor
 
     public function getPrivateProperty(object $object, string $propertyName): mixed
     {
-        $propertyReflection = $this->resolvePropertyReflection($object, $propertyName);
-        $propertyReflection->setAccessible(true);
+        $reflectionProperty = $this->resolvePropertyReflection($object, $propertyName);
 
-        return $propertyReflection->getValue($object);
+        return $reflectionProperty->getValue($object);
     }
 
     /**
@@ -62,10 +61,9 @@ final class PrivatesAccessor
 
     public function setPrivateProperty(object $object, string $propertyName, mixed $value): void
     {
-        $propertyReflection = $this->resolvePropertyReflection($object, $propertyName);
-        $propertyReflection->setAccessible(true);
+        $reflectionProperty = $this->resolvePropertyReflection($object, $propertyName);
 
-        $propertyReflection->setValue($object, $value);
+        $reflectionProperty->setValue($object, $value);
     }
 
     private function resolvePropertyReflection(object $object, string $propertyName): ReflectionProperty
