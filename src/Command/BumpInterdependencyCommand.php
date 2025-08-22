@@ -11,7 +11,6 @@ use Symplify\MonorepoBuilder\DependencyUpdater;
 use Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider;
 use Symplify\MonorepoBuilder\Validator\SourcesPresenceValidator;
 use Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
-use Symplify\SymplifyKernel\Exception\ShouldNotHappenException;
 
 final class BumpInterdependencyCommand extends AbstractSymplifyCommand
 {
@@ -46,18 +45,11 @@ final class BumpInterdependencyCommand extends AbstractSymplifyCommand
         /** @var string $version */
         $version = $input->getArgument(self::VERSION_ARGUMENT);
 
-        $rootComposerJson = $this->composerJsonProvider->getRootComposerJson();
+        $packageNames = $this->composerJsonProvider->getPackageNames();
 
-        // @todo resolve better for only found packages
-        // see https://github.com/symplify/symplify/pull/1037/files
-        $vendorName = $rootComposerJson->getVendorName();
-        if ($vendorName === null) {
-            throw new ShouldNotHappenException();
-        }
-
-        $this->dependencyUpdater->updateFileInfosWithVendorAndVersion(
+        $this->dependencyUpdater->updateFileInfosWithPackagesAndVersion(
             $this->composerJsonProvider->getPackagesComposerFileInfos(),
-            $vendorName,
+            $packageNames,
             $version
         );
 
