@@ -140,10 +140,10 @@ final class ParameterMergingPhpFileLoader extends PhpFileLoader
         $configBuilders = [];
         $reflectionFunction = new ReflectionFunction(Closure::fromCallable($callback));
 
-        foreach ($reflectionFunction->getParameters() as $parameter) {
-            $reflectionType = $parameter->getType();
+        foreach ($reflectionFunction->getParameters() as $reflectionParameter) {
+            $reflectionType = $reflectionParameter->getType();
             if (! $reflectionType instanceof ReflectionNamedType) {
-                throw new InvalidArgumentException(\sprintf('Could not resolve argument "$%s" for "%s". You must typehint it.', $parameter->getName(), $path));
+                throw new InvalidArgumentException(\sprintf('Could not resolve argument "$%s" for "%s". You must typehint it.', $reflectionParameter->getName(), $path));
             }
 
             $type = $reflectionType->getName();
@@ -161,7 +161,7 @@ final class ParameterMergingPhpFileLoader extends PhpFileLoader
                         $arguments[] = $this;
                         break;
                     case 'string':
-                        if ($this->env !== null && $parameter->getName() === 'env') {
+                        if ($this->env !== null && $reflectionParameter->getName() === 'env') {
                             $arguments[] = $this->env;
                             break;
                         }
@@ -172,7 +172,7 @@ final class ParameterMergingPhpFileLoader extends PhpFileLoader
                             $reflectionMethod = new ReflectionMethod(PhpFileLoader::class, 'configBuilder');
                             $configBuilder = $reflectionMethod->invoke($this, $type);
                         } catch (ReflectionException $e) {
-                            throw new InvalidArgumentException(sprintf('Could not resolve argument "%s" for "%s".', $type . ' $' . $parameter->getName(), $path), 0, $e);
+                            throw new InvalidArgumentException(sprintf('Could not resolve argument "%s" for "%s".', $type . ' $' . $reflectionParameter->getName(), $path), 0, $e);
                         }
 
                         $configBuilders[] = $configBuilder;

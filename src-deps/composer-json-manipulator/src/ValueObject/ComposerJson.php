@@ -810,7 +810,7 @@ final class ComposerJson
      */
     private function sortItemsByOrderedListOfKeys(array $contentItems, array $orderedVisibleItems): array
     {
-        uksort($contentItems, function ($firstContentItem, $secondContentItem) use ($orderedVisibleItems): int {
+        uksort($contentItems, function (string $firstContentItem, string $secondContentItem) use ($orderedVisibleItems): int {
             $firstItemPosition = $this->findPosition($firstContentItem, $orderedVisibleItems);
             $secondItemPosition = $this->findPosition($secondContentItem, $orderedVisibleItems);
 

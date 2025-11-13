@@ -55,7 +55,7 @@ final class ComposerPatchesPathNormalizer implements ComposerPathNormalizerInter
         foreach ($patchesSubSection as $key => $value) {
             if (is_array($value)) {
                 $patchesSubSection[$key] = array_map(
-                    fn ($path): string => $this->relativizeSinglePath($packageRelativeDirectory, $path),
+                    fn (string $path): string => $this->relativizeSinglePath($packageRelativeDirectory, $path),
                     $value
                 );
             }

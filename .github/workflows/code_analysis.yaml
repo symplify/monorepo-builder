@@ -22,7 +22,7 @@ jobs:
 
           -
             name: 'Rector'
-            run: composer rector --ansi
+            run: composer check-rector --ansi
 
           -
             name: 'Coding Standard'

@@ -231,6 +231,35 @@ vendor/bin/monorepo-builder release patch
 
 You can use `minor` and `major` too.
 
+### 8. Branch-Aware Tag Validation for LTS Releases
+
+If you maintain multiple version lines (LTS strategy), you can enable branch-aware tag validation to allow releasing older versions even when newer versions exist.
+
+**The Problem:**
+
+By default, the release command compares the new version against the most recent tag by commit date. This causes issues when:
+- Main branch has `v3.0.0` (tagged last month)
+- LTS branch `2.x` needs to release `v2.1.5` (new tag today)
+- ❌ Validation fails: `2.1.5 < 3.0.0`
+
+**The Solution:**
+
+Enable branch-aware validation to compare only within the same major version:
+
+```php
+use Symplify\MonorepoBuilder\Config\MBConfig;
+use Symplify\MonorepoBuilder\Git\BranchAwareTagResolver;
+use Symplify\MonorepoBuilder\Contract\Git\TagResolverInterface;
+
+return static function (MBConfig $mbConfig): void {
+    $services = $mbConfig->services();
+
+    // Enable branch-aware tag validation by using BranchAwareTagResolver
+    $services->set(BranchAwareTagResolver::class);
+    $services->alias(TagResolverInterface::class, BranchAwareTagResolver::class);
+};
+```
+
 ## Available Commands
 
 Here are all available commands you can use with monorepo-builder:
