@@ -66,7 +66,8 @@
         "check-cs": "vendor/bin/ecs check --ansi",
         "fix-cs": "vendor/bin/ecs check --fix --ansi",
         "phpstan": "vendor/bin/phpstan analyse --ansi  --error-format symplify",
-        "rector": "vendor/bin/rector process --dry-run --ansi",
+        "check-rector": "vendor/bin/rector process --dry-run --ansi",
+        "fix-rector": "vendor/bin/rector process --ansi",
         "release": "bin/monorepo-builder release patch --ansi"
     },
     "minimum-stability": "dev",

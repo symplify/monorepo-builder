@@ -60,7 +60,7 @@ final class AutoloadPathNormalizer implements ComposerPathNormalizerInterface
         foreach ($autoloadSubsection as $key => $value) {
             if (is_array($value)) {
                 $autoloadSubsection[$key] = array_map(
-                    fn ($path): string => $this->relativizeSinglePath($packageRelativeDirectory, $path),
+                    fn (string $path): string => $this->relativizeSinglePath($packageRelativeDirectory, $path),
                     $value
                 );
             } else {

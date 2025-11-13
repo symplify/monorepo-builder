@@ -6,6 +6,8 @@ use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symplify\MonorepoBuilder\Config\MBConfig;
 use Symplify\MonorepoBuilder\Console\MonorepoBuilderApplication;
+use Symplify\MonorepoBuilder\Contract\Git\TagResolverInterface;
+use Symplify\MonorepoBuilder\Git\MostRecentTagResolver;
 use Symplify\MonorepoBuilder\Merge\JsonSchema;
 use Symplify\MonorepoBuilder\Release\ReleaseWorker\PushTagReleaseWorker;
 use Symplify\MonorepoBuilder\Release\ReleaseWorker\TagVersionReleaseWorker;
@@ -81,4 +83,7 @@ return static function (MBConfig $mbConfig): void {
     $services->set(SymfonyStyleFactory::class);
     $services->set(SymfonyStyle::class)
         ->factory([service(SymfonyStyleFactory::class), 'create']);
+
+    // Set default tag resolver (can be overridden in user config)
+    $services->alias(TagResolverInterface::class, MostRecentTagResolver::class);
 };

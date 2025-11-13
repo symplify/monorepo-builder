@@ -12,6 +12,8 @@ use Symplify\MonorepoBuilder\Release\Process\ProcessRunner;
  */
 final readonly class MostRecentTagResolver implements TagResolverInterface
 {
+    use TagParserTrait;
+
     /**
      * @var string[]
      */
@@ -37,19 +39,5 @@ final readonly class MostRecentTagResolver implements TagResolverInterface
         }
 
         return $theMostRecentTag;
-    }
-
-    /**
-     * @return string[]
-     */
-    private function parseTags(string $commandResult): array
-    {
-        $tags = trim($commandResult);
-
-        // Remove all "\r" chars in case the CLI env like the Windows OS.
-        // Otherwise (ConEmu, git bash, mingw cli, e.g.), leave as is.
-        $normalizedTags = str_replace("\r", '', $tags);
-
-        return explode("\n", $normalizedTags);
     }
 }

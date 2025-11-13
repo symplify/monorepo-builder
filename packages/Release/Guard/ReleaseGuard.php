@@ -7,6 +7,7 @@ namespace Symplify\MonorepoBuilder\Release\Guard;
 use PharIo\Version\Version;
 use Symplify\MonorepoBuilder\Contract\Git\TagResolverInterface;
 use Symplify\MonorepoBuilder\Exception\Git\InvalidGitVersionException;
+use Symplify\MonorepoBuilder\Git\BranchAwareTagResolver;
 use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface;
 use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\StageAwareInterface;
 use Symplify\MonorepoBuilder\Release\Exception\ConfigurationException;
@@ -110,7 +111,16 @@ final class ReleaseGuard
 
     private function ensureVersionIsNewerThanLastOne(Version $version): void
     {
-        $mostRecentVersionString = $this->tagResolver->resolve(getcwd());
+        $gitDirectory = getcwd();
+
+        // Use branch-aware validation if BranchAwareTagResolver is configured
+        if ($this->tagResolver instanceof BranchAwareTagResolver) {
+            // Compare only against tags with the same major version
+            $mostRecentVersionString = $this->tagResolver->resolveForVersion($gitDirectory, $version);
+        } else {
+            // Default: compare against the most recent tag by commit date
+            $mostRecentVersionString = $this->tagResolver->resolve($gitDirectory);
+        }
 
         // no tag yet
         if ($mostRecentVersionString === null) {
