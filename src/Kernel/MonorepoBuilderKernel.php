@@ -6,6 +6,7 @@ namespace Symplify\MonorepoBuilder\Kernel;
 
 use Psr\Container\ContainerInterface;
 use Symplify\MonorepoBuilder\Contract\Git\TagResolverInterface;
+use Symplify\MonorepoBuilder\DependencyInjection\CompilerPass\RemoveDefaultWorkersCompilerPass;
 use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface;
 use Symplify\PackageBuilder\DependencyInjection\CompilerPass\AutowireInterfacesCompilerPass;
 use Symplify\PackageBuilder\ValueObject\ConsoleColorDiffConfig;
@@ -26,7 +27,15 @@ final class MonorepoBuilderKernel extends AbstractSymplifyKernel
             ReleaseWorkerInterface::class,
             TagResolverInterface::class,
         ]);
-        $compilerPasses = [$autowireInterfacesCompilerPass];
+
+        // This compiler pass must run after all configs are loaded
+        // to properly detect if user called disableDefaultWorkers()
+        $removeDefaultWorkersCompilerPass = new RemoveDefaultWorkersCompilerPass();
+
+        $compilerPasses = [
+            $autowireInterfacesCompilerPass,
+            $removeDefaultWorkersCompilerPass,
+        ];
 
         return $this->create($configFiles, $compilerPasses, []);
     }

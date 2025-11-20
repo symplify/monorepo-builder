@@ -55,11 +55,10 @@ return static function (MBConfig $mbConfig): void {
             __DIR__ . '/../packages/Release/ReleaseWorker',
         ]);
 
-    if (! $mbConfig->isDisableDefaultWorkers()) {
-        // add default for easy tag and push without need to make configs
-        $services->set(TagVersionReleaseWorker::class);
-        $services->set(PushTagReleaseWorker::class);
-    }
+    // Always register default workers here. They will be removed by
+    // RemoveDefaultWorkersCompilerPass if user called disableDefaultWorkers()
+    $services->set(TagVersionReleaseWorker::class);
+    $services->set(PushTagReleaseWorker::class);
 
     $services->load('Symplify\MonorepoBuilder\\', __DIR__ . '/../src')
         ->exclude([
