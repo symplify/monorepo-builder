@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Symplify\AutowireArrayParameter\DependencyInjection\CompilerPass;
 
+use Symfony\Component\Config\Loader\LoaderInterface;
+use Symfony\Component\VarDumper\Dumper\ContextProvider\ContextProviderInterface;
+use Symfony\Component\HttpKernel\KernelInterface;
 use Nette\Utils\Strings;
 use ReflectionClass;
 use ReflectionMethod;
@@ -37,13 +40,13 @@ final readonly class AutowireArrayParameterCompilerPass implements CompilerPassI
     private const EXCLUDED_FATAL_CLASSES = [
         'Symfony\Component\Form\FormExtensionInterface',
         'Symfony\Component\Asset\PackageInterface',
-        'Symfony\Component\Config\Loader\LoaderInterface',
-        'Symfony\Component\VarDumper\Dumper\ContextProvider\ContextProviderInterface',
+        LoaderInterface::class,
+        ContextProviderInterface::class,
         'EasyCorp\Bundle\EasyAdminBundle\Form\Type\Configurator\TypeConfiguratorInterface',
         'Sonata\CoreBundle\Model\Adapter\AdapterInterface',
         'Sonata\Doctrine\Adapter\AdapterChain',
         'Sonata\Twig\Extension\TemplateExtension',
-        'Symfony\Component\HttpKernel\KernelInterface',
+        KernelInterface::class,
     ];
 
     private DefinitionFinder $definitionFinder;
