@@ -27,6 +27,8 @@ jobs:
           coverage: none
 
       - uses: ramsey/composer-install@v3
+        with:
+          composer-options: "--no-dev"
 
       - name: Install Box
         run: composer global require humbug/box
