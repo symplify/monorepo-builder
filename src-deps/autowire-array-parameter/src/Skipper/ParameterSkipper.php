@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Symplify\AutowireArrayParameter\Skipper;
 
+use Symfony\Component\Config\Loader\LoaderInterface;
+use Symfony\Component\VarDumper\Dumper\ContextProvider\ContextProviderInterface;
 use ReflectionMethod;
 use ReflectionNamedType;
 use ReflectionParameter;
@@ -21,8 +23,8 @@ final class ParameterSkipper
     private const DEFAULT_EXCLUDED_FATAL_CLASSES = [
         'Symfony\Component\Form\FormExtensionInterface',
         'Symfony\Component\Asset\PackageInterface',
-        'Symfony\Component\Config\Loader\LoaderInterface',
-        'Symfony\Component\VarDumper\Dumper\ContextProvider\ContextProviderInterface',
+        LoaderInterface::class,
+        ContextProviderInterface::class,
         'EasyCorp\Bundle\EasyAdminBundle\Form\Type\Configurator\TypeConfiguratorInterface',
         'Sonata\CoreBundle\Model\Adapter\AdapterInterface',
         'Sonata\Doctrine\Adapter\AdapterChain',

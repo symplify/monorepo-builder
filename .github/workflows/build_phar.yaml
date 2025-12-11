@@ -1,0 +1,83 @@
+name: Build and Release PHAR
+
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - '*'
+
+env:
+  TARGET_REPO: "monorepo-php/monorepo"
+
+jobs:
+  build_phar:
+    name: Build PHAR
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.2
+          ini-values: phar.readonly=0
+          coverage: none
+
+      - uses: ramsey/composer-install@v3
+
+      - name: Install Box
+        run: composer global require humbug/box
+
+      - name: Build PHAR
+        run: box compile
+
+      - name: Verify PHAR
+        run: build/monorepo-builder.phar --version
+
+      - name: Get commit info
+        id: commit
+        run: |
+          echo "short_sha=$(git rev-parse --short=7 HEAD)" >> $GITHUB_OUTPUT
+          echo "message=$(git log -1 --pretty=%s)" >> $GITHUB_OUTPUT
+
+      - name: Clone target repo
+        env:
+          GH_TOKEN: ${{ secrets.TARGET_REPO_TOKEN }}
+        run: git clone "https://x-access-token:${GH_TOKEN}@github.com/${TARGET_REPO}.git" target-repo
+
+      - name: Copy PHAR to target repo
+        run: |
+          cp build/monorepo-builder.phar target-repo/
+          chmod 755 target-repo/monorepo-builder.phar
+
+      - name: Commit and push (branch)
+        if: github.ref == 'refs/heads/main'
+        working-directory: target-repo
+        env:
+          GH_TOKEN: ${{ secrets.TARGET_REPO_TOKEN }}
+        run: |
+          git config user.name "monorepo-bot"
+          git config user.email "monorepo-bot@users.noreply.github.com"
+          git add monorepo-builder.phar
+          git commit -m "Update to ${{ github.repository }}@${{ steps.commit.outputs.short_sha }}" \
+            -m "Source: ${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}" \
+            -m "${{ steps.commit.outputs.message }}" || echo "No changes to commit"
+          git push origin main
+
+      - name: Commit and push (tag)
+        if: startsWith(github.ref, 'refs/tags/')
+        working-directory: target-repo
+        env:
+          GH_TOKEN: ${{ secrets.TARGET_REPO_TOKEN }}
+        run: |
+          git config user.name "monorepo-bot"
+          git config user.email "monorepo-bot@users.noreply.github.com"
+          git add monorepo-builder.phar
+          git commit -m "Release ${{ github.ref_name }}" \
+            -m "Source: ${{ github.server_url }}/${{ github.repository }}/releases/tag/${{ github.ref_name }}"
+          git tag ${{ github.ref_name }}
+          git push origin main
+          git push origin ${{ github.ref_name }}

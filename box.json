@@ -1,0 +1,35 @@
+{
+    "alias": "monorepo-builder.phar",
+    "banner": false,
+    "chmod": "0755",
+    "annotations": false,
+    "compactors": [
+        "KevinGH\\Box\\Compactor\\Php"
+    ],
+    "directories": [
+        "config",
+        "packages",
+        "src",
+        "src-deps",
+        "templates"
+    ],
+    "files": [
+        "vendor/autoload.php"
+    ],
+    "finder": [
+        {
+            "name": "*.php",
+            "exclude": [
+                "tests",
+                "packages-tests",
+                "build",
+                ".github",
+                ".claude"
+            ],
+            "in": "vendor"
+        }
+    ],
+    "force-autodiscovery": true,
+    "main": "bin/monorepo-builder.php",
+    "output": "build/monorepo-builder.phar"
+}
