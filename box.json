@@ -31,5 +31,5 @@
     ],
     "force-autodiscovery": true,
     "main": "bin/monorepo-builder.php",
-    "output": "build/monorepo-builder.phar"
+    "output": "build/monorepo-builder"
 }

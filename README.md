@@ -10,11 +10,13 @@ Do you maintain a monorepo with multiple packages?
 
 ```bash
 # Latest version (PHP 8.2+)
-composer require symplify/monorepo-builder --dev
+composer require monorepo-php/monorepo --dev
 
 # For PHP 8.1 (legacy version, no longer maintained)
 composer require "symplify/monorepo-builder:^11.2" --dev
 ```
+
+> **Note:** `monorepo-php/monorepo` is an automatically synced, dependency-free compatible package.
 
 **Requirements:**
 - PHP 8.2 or higher (for version 12.x)
