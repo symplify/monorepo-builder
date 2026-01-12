@@ -55,10 +55,13 @@ return static function (MBConfig $mbConfig): void {
             __DIR__ . '/../packages/Release/ReleaseWorker',
         ]);
 
-    // Always register default workers here. They will be removed by
-    // RemoveDefaultWorkersCompilerPass if user called disableDefaultWorkers()
-    $services->set(TagVersionReleaseWorker::class);
-    $services->set(PushTagReleaseWorker::class);
+    // Register default workers with a special tag to identify them.
+    // RemoveDefaultWorkersCompilerPass will remove services with this tag
+    // if user called disableDefaultWorkers(), but preserve user-registered workers.
+    $services->set(TagVersionReleaseWorker::class)
+        ->tag('monorepo.default_worker');
+    $services->set(PushTagReleaseWorker::class)
+        ->tag('monorepo.default_worker');
 
     $services->load('Symplify\MonorepoBuilder\\', __DIR__ . '/../src')
         ->exclude([

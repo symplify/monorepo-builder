@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace Symplify\AutowireArrayParameter\DependencyInjection\CompilerPass;
 
-use Symfony\Component\Config\Loader\LoaderInterface;
-use Symfony\Component\VarDumper\Dumper\ContextProvider\ContextProviderInterface;
-use Symfony\Component\HttpKernel\KernelInterface;
 use Nette\Utils\Strings;
 use ReflectionClass;
 use ReflectionMethod;
+use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Reference;
+use Symfony\Component\HttpKernel\KernelInterface;
+use Symfony\Component\VarDumper\Dumper\ContextProvider\ContextProviderInterface;
 use Symplify\AutowireArrayParameter\DependencyInjection\DefinitionFinder;
 use Symplify\AutowireArrayParameter\DocBlock\ParamTypeDocBlockResolver;
 use Symplify\AutowireArrayParameter\Skipper\ParameterSkipper;

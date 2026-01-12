@@ -7,18 +7,22 @@ namespace Symplify\MonorepoBuilder\DependencyInjection\CompilerPass;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symplify\MonorepoBuilder\Config\MBConfig;
-use Symplify\MonorepoBuilder\Release\ReleaseWorker\PushTagReleaseWorker;
-use Symplify\MonorepoBuilder\Release\ReleaseWorker\TagVersionReleaseWorker;
 
 /**
  * Removes default release workers from the container if MBConfig::disableDefaultWorkers() was called.
- * This needs to happen in a compiler pass rather than during config loading because:
- * 1. Default config is loaded before user config (to allow parameter overriding)
- * 2. User config calls disableDefaultWorkers() after default config has already registered workers
- * 3. Compiler passes run after all configs are loaded, so they can see the final state
+ *
+ * This uses a tag-based approach to distinguish between:
+ * - Default workers registered by config/config.php (tagged with 'monorepo.default_worker')
+ * - User-registered workers (no tag, or re-registered without the tag)
+ *
+ * When user calls disableDefaultWorkers() and then manually registers a worker
+ * (even one with the same class as a default worker), only the tagged default
+ * definition is removed, preserving the user's explicit registration.
  */
 final readonly class RemoveDefaultWorkersCompilerPass implements CompilerPassInterface
 {
+    private const DEFAULT_WORKER_TAG = 'monorepo.default_worker';
+
     public function process(ContainerBuilder $containerBuilder): void
     {
         // Check if user disabled default workers in their config
@@ -26,15 +30,12 @@ final readonly class RemoveDefaultWorkersCompilerPass implements CompilerPassInt
             return;
         }
 
-        // Remove the default workers from the container
-        $defaultWorkers = [
-            TagVersionReleaseWorker::class,
-            PushTagReleaseWorker::class,
-        ];
+        // Find and remove only services tagged as default workers
+        $taggedServices = $containerBuilder->findTaggedServiceIds(self::DEFAULT_WORKER_TAG);
 
-        foreach ($defaultWorkers as $defaultWorker) {
-            if ($containerBuilder->hasDefinition($defaultWorker)) {
-                $containerBuilder->removeDefinition($defaultWorker);
+        foreach (array_keys($taggedServices) as $serviceId) {
+            if ($containerBuilder->hasDefinition($serviceId)) {
+                $containerBuilder->removeDefinition($serviceId);
             }
         }
     }
