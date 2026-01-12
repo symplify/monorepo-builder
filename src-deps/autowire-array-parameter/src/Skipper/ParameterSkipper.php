@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Symplify\AutowireArrayParameter\Skipper;
 
-use Symfony\Component\Config\Loader\LoaderInterface;
-use Symfony\Component\VarDumper\Dumper\ContextProvider\ContextProviderInterface;
 use ReflectionMethod;
 use ReflectionNamedType;
 use ReflectionParameter;
 use ReflectionType;
+use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\DependencyInjection\Definition;
+use Symfony\Component\VarDumper\Dumper\ContextProvider\ContextProviderInterface;
 use Symplify\AutowireArrayParameter\TypeResolver\ParameterTypeResolver;
 
 final class ParameterSkipper
