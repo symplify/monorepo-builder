@@ -18,7 +18,7 @@
         "symfony/finder": "^7.0 || ^8.0",
         "symfony/http-kernel": "^7.0 || ^8.0",
         "symfony/process": "^7.0 || ^8.0",
-        "webmozart/assert": "^1.11"
+        "webmozart/assert": "^1.11 || ^2.0"
     },
     "require-dev": {
         "phpstan/extension-installer": "1.4.3",
