@@ -41,7 +41,6 @@
                 "packages"
             ],
             "Symplify\\AutowireArrayParameter\\": "src-deps/autowire-array-parameter/src",
-            "Symplify\\ComposerJsonManipulator\\": "src-deps/composer-json-manipulator/src",
             "Symplify\\EasyTesting\\": "src-deps/easy-testing/src",
             "Symplify\\PackageBuilder\\": "src-deps/package-builder/src",
             "Symplify\\SmartFileSystem\\": "src-deps/smart-file-system/src",
