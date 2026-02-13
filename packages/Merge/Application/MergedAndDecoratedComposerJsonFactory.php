@@ -7,17 +7,46 @@ namespace Symplify\MonorepoBuilder\Merge\Application;
 use Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJson;
 use Symplify\MonorepoBuilder\Merge\ComposerJsonMerger;
 use Symplify\MonorepoBuilder\Merge\Contract\ComposerJsonDecoratorInterface;
+use Symplify\MonorepoBuilder\Merge\ComposerJsonDecorator\AppenderComposerJsonDecorator;
+use Symplify\MonorepoBuilder\Merge\ComposerJsonDecorator\RemoverComposerJsonDecorator;
+use Symplify\MonorepoBuilder\Merge\ComposerJsonDecorator\ReplaceSectionJsonDecorator;
+use Symplify\MonorepoBuilder\Merge\ComposerJsonDecorator\RootRemoveComposerJsonDecorator;
+use Symplify\MonorepoBuilder\Merge\ComposerJsonDecorator\RepositoryPathComposerJsonDecorator;
+use Symplify\MonorepoBuilder\Merge\ComposerJsonDecorator\FilterOutDuplicatedRequireAndRequireDevJsonDecorator;
+use Symplify\MonorepoBuilder\Merge\ComposerJsonDecorator\SortComposerJsonDecorator;
 use Symplify\SmartFileSystem\SmartFileInfo;
 
 final readonly class MergedAndDecoratedComposerJsonFactory
 {
     /**
+     * Explicit decorator execution order. Decorators not in this list run last
+     * in their original order.
+     *
+     * @var list<class-string<ComposerJsonDecoratorInterface>>
+     */
+    private const DECORATOR_ORDER = [
+        AppenderComposerJsonDecorator::class,
+        RemoverComposerJsonDecorator::class,
+        ReplaceSectionJsonDecorator::class,
+        RootRemoveComposerJsonDecorator::class,
+        RepositoryPathComposerJsonDecorator::class,
+        FilterOutDuplicatedRequireAndRequireDevJsonDecorator::class,
+        SortComposerJsonDecorator::class,
+    ];
+
+    /**
+     * @var ComposerJsonDecoratorInterface[]
+     */
+    private array $sortedDecorators;
+
+    /**
      * @param ComposerJsonDecoratorInterface[] $composerJsonDecorators
      */
     public function __construct(
         private ComposerJsonMerger $composerJsonMerger,
-        private array $composerJsonDecorators
+        array $composerJsonDecorators
     ) {
+        $this->sortedDecorators = $this->sortDecorators($composerJsonDecorators);
     }
 
     /**
@@ -27,21 +56,32 @@ final readonly class MergedAndDecoratedComposerJsonFactory
         ComposerJson $mainComposerJson,
         array $packageFileInfos
     ): void {
-        $mergedAndDecoratedComposerJson = $this->mergePackageFileInfosAndDecorate($mainComposerJson,$packageFileInfos);
+        // mergeFileInfos modifies $mainComposerJson in place
+        $this->composerJsonMerger->mergeFileInfos($mainComposerJson, $packageFileInfos);
 
-        $this->composerJsonMerger->mergeJsonToRoot($mainComposerJson, $mergedAndDecoratedComposerJson);
+        foreach ($this->sortedDecorators as $composerJsonDecorator) {
+            $composerJsonDecorator->decorate($mainComposerJson);
+        }
     }
 
     /**
-     * @param SmartFileInfo[] $packageFileInfos
+     * @param ComposerJsonDecoratorInterface[] $decorators
+     * @return ComposerJsonDecoratorInterface[]
      */
-    private function mergePackageFileInfosAndDecorate(ComposerJson $mainComposerJson,array $packageFileInfos): ComposerJson
+    private function sortDecorators(array $decorators): array
     {
-        $mergedComposerJson = $this->composerJsonMerger->mergeFileInfos($mainComposerJson,$packageFileInfos);
-        foreach ($this->composerJsonDecorators as $composerJsonDecorator) {
-            $composerJsonDecorator->decorate($mergedComposerJson);
-        }
+        usort($decorators, function (ComposerJsonDecoratorInterface $a, ComposerJsonDecoratorInterface $b): int {
+            return $this->getDecoratorOrder($a) <=> $this->getDecoratorOrder($b);
+        });
 
-        return $mergedComposerJson;
+        return $decorators;
+    }
+
+    private function getDecoratorOrder(ComposerJsonDecoratorInterface $decorator): int
+    {
+        $position = array_search($decorator::class, self::DECORATOR_ORDER, true);
+
+        // Unknown decorators go to the end, preserving relative order
+        return $position === false ? PHP_INT_MAX : $position;
     }
 }

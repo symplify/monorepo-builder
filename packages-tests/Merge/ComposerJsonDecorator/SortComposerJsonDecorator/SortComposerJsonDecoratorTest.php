@@ -19,7 +19,9 @@ final class SortComposerJsonDecoratorTest extends AbstractKernelTestCase
 
     protected function setUp(): void
     {
-        $this->bootKernel(MonorepoBuilderKernel::class);
+        $this->bootKernelWithConfigs(MonorepoBuilderKernel::class, [
+            __DIR__ . '/Source/sort_config.php',
+        ]);
 
         $this->composerJson = $this->createComposerJson();
         $this->sortComposerJsonDecorator = $this->getService(SortComposerJsonDecorator::class);
@@ -31,12 +33,12 @@ final class SortComposerJsonDecoratorTest extends AbstractKernelTestCase
 
         $this->assertSame(
             [
-                'random-this',
-                'random-that',
                 ComposerJsonSection::REQUIRE,
                 ComposerJsonSection::REQUIRE_DEV,
                 ComposerJsonSection::AUTOLOAD,
                 ComposerJsonSection::AUTOLOAD_DEV,
+                'random-this',
+                'random-that',
             ],
             $this->composerJson->getOrderedKeys()
         );

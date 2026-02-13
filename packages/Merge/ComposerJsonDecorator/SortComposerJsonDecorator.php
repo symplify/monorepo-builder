@@ -26,18 +26,27 @@ final class SortComposerJsonDecorator implements ComposerJsonDecoratorInterface
 
     public function decorate(ComposerJson $composerJson): void
     {
+        if ($this->sectionOrder === []) {
+            return;
+        }
+
         $orderedKeys = $composerJson->getJsonKeys();
+        $knownKeys = [];
+        $unknownKeys = [];
+
+        foreach ($orderedKeys as $key) {
+            if (in_array($key, $this->sectionOrder, true)) {
+                $knownKeys[] = $key;
+            } else {
+                $unknownKeys[] = $key;
+            }
+        }
 
         usort(
-            $orderedKeys,
-            fn (string $key1, string $key2): int => $this->findKeyPosition($key1) <=> $this->findKeyPosition($key2)
+            $knownKeys,
+            fn (string $a, string $b): int => array_search($a, $this->sectionOrder, true) <=> array_search($b, $this->sectionOrder, true)
         );
 
-        $composerJson->setOrderedKeys($orderedKeys);
-    }
-
-    private function findKeyPosition(string $key): int | string | bool
-    {
-        return array_search($key, $this->sectionOrder, true);
+        $composerJson->setOrderedKeys(array_merge($knownKeys, $unknownKeys));
     }
 }

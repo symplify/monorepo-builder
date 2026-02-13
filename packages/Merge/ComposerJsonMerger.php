@@ -53,6 +53,35 @@ final readonly class ComposerJsonMerger
         foreach ($this->composerKeyMergers as $composerKeyMerger) {
             $composerKeyMerger->merge($mainComposerJson, $newComposerJson);
         }
+
+        // packages already in require don't need to be in require-dev
+        $this->filterOutDuplicatedRequireDev($mainComposerJson);
+
+        $newExtras = $newComposerJson->getExtraSections();
+        if ($newExtras !== []) {
+            $mainExtras = $mainComposerJson->getExtraSections();
+            $mainComposerJson->setExtraSections(array_merge($mainExtras, $newExtras));
+
+            $currentKeys = $mainComposerJson->getJsonKeys();
+            foreach (array_keys($newExtras) as $extraKey) {
+                if (!in_array($extraKey, $currentKeys, true)) {
+                    $currentKeys[] = $extraKey;
+                }
+            }
+            $mainComposerJson->setJsonKeys($currentKeys);
+        }
+    }
+
+    private function filterOutDuplicatedRequireDev(ComposerJson $composerJson): void
+    {
+        $requirePackageNames = array_keys($composerJson->getRequire());
+        $requireDev = $composerJson->getRequireDev();
+
+        foreach ($requirePackageNames as $packageName) {
+            unset($requireDev[$packageName]);
+        }
+
+        $composerJson->setRequireDev($requireDev);
     }
 
     private function mergeJsonToRootWithPackageFileInfo(
