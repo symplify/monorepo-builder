@@ -27,6 +27,8 @@ final class SortComposerJsonDecorator implements ComposerJsonDecoratorInterface
     public function decorate(ComposerJson $composerJson): void
     {
         if ($this->sectionOrder === []) {
+            // no custom order configured — preserve original file key order
+            $composerJson->setOrderedKeys($composerJson->getJsonKeys());
             return;
         }
 

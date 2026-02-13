@@ -39,21 +39,23 @@ This creates a basic monorepo structure with the necessary configuration files.
 
 ### 2. Merge local `composer.json` to the Root One
 
-Merges configured sections to the root `composer.json`, so you can only edit `composer.json` of particular packages and let script to synchronize it.
+Merges all sections from package `composer.json` files into the root `composer.json`. For the reverse direction (propagating versions from root to packages), see the `propagate` command.
 
-Sections that will be merged from packages to root:
+All sections present in package `composer.json` files are merged, including standard sections (`require`, `require-dev`, `autoload`, etc.) and any custom sections (e.g. `scripts-aliases`, `abandoned`).
 
-- `require` - Dependencies needed by packages
-- `require-dev` - Development dependencies  
-- `autoload` - PSR-4 autoloading configuration
-- `autoload-dev` - Development autoloading configuration
-- `repositories` - Package repositories
-- `extra` - Extra configuration data
-- `provide` - Virtual packages provided
-- `authors` - Package authors information
-- `minimum-stability` - Minimum package stability
-- `prefer-stable` - Prefer stable packages
-- `replace` - Packages replaced by this one
+If a package appears in both `require` and `require-dev`, the `require` entry takes priority and the `require-dev` duplicate is removed.
+
+The original key order of the root `composer.json` is preserved by default. New sections from packages are appended at the end. To enforce a specific section order, use `composerSectionOrder()`:
+
+```php
+use Symplify\MonorepoBuilder\Config\MBConfig;
+use Symplify\MonorepoBuilder\Merge\JsonSchema;
+
+return static function (MBConfig $mbConfig): void {
+    // sort sections by composer.json schema order
+    $mbConfig->composerSectionOrder(JsonSchema::getProperties());
+};
+```
 
 To merge run:
 
@@ -63,9 +65,8 @@ vendor/bin/monorepo-builder merge
 
 <br>
 
-
 ```php
-use Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
+use Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
 use Symplify\MonorepoBuilder\Config\MBConfig;
 use Symplify\MonorepoBuilder\ValueObject\Option;
 
@@ -84,6 +85,7 @@ return static function (MBConfig $mbConfig): void {
     // "merge" command related
 
     // what extra parts to add after merge?
+    // supports any composer.json key, not limited to standard sections
     $mbConfig->dataToAppend([
         ComposerJsonSection::AUTOLOAD_DEV => [
             'psr-4' => [
