@@ -149,6 +149,14 @@ final class ComposerJson
      */
     private array $jsonKeys = [];
 
+    /**
+     * Catch-all for composer.json sections not explicitly modeled as properties.
+     * Preserves unknown/custom sections through the read-modify-write cycle.
+     *
+     * @var array<string, mixed>
+     */
+    private array $extraSections = [];
+
     public function __construct()
     {
         $this->composerPackageSorter = new ComposerPackageSorter();
@@ -165,6 +173,22 @@ final class ComposerJson
     public function getJsonKeys():array
     {
         return $this->jsonKeys;
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    public function getExtraSections(): array
+    {
+        return $this->extraSections;
+    }
+
+    /**
+     * @param array<string, mixed> $extraSections
+     */
+    public function setExtraSections(array $extraSections): void
+    {
+        $this->extraSections = $extraSections;
     }
 
     public function setOriginalFileInfo(SmartFileInfo $fileInfo): void
@@ -488,6 +512,12 @@ final class ComposerJson
             $array[ComposerJsonSection::PREFER_STABLE] = $this->preferStable;
         }
 
+        foreach ($this->extraSections as $key => $value) {
+            if (!array_key_exists($key, $array)) {
+                $array[$key] = $value;
+            }
+        }
+
         return $this->sortItemsByOrderedListOfKeys($array, $this->orderedKeys);
     }
 
@@ -792,17 +822,6 @@ final class ComposerJson
     /**
      * @return string[]
      */
-    public function getDuplicatedRequirePackages(): array
-    {
-        $requiredPackageNames = $this->require;
-        $requiredDevPackageNames = $this->requireDev;
-
-        return array_intersect($requiredPackageNames, $requiredDevPackageNames);
-    }
-
-    /**
-     * @return string[]
-     */
     public function getRequirePackageNames(): array
     {
         return array_keys($this->require);
@@ -850,13 +869,15 @@ final class ComposerJson
             $firstItemPosition = $this->findPosition($firstContentItem, $orderedVisibleItems);
             $secondItemPosition = $this->findPosition($secondContentItem, $orderedVisibleItems);
 
+            if ($firstItemPosition === false && $secondItemPosition === false) {
+                return 0;
+            }
+
             if ($firstItemPosition === false) {
-                // new item, put in the back
-                return -1;
+                return 1;
             }
 
             if ($secondItemPosition === false) {
-                // new item, put in the back
                 return -1;
             }
 

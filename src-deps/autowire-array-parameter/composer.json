@@ -21,10 +21,6 @@
     "repositories": [
         {
             "type": "path",
-            "url": "../composer-json-manipulator"
-        },
-        {
-            "type": "path",
             "url": "../easy-testing"
         },
         {

@@ -19,15 +19,11 @@ final class FilterOutDuplicatedRequireAndRequireDevJsonDecorator implements Comp
             return;
         }
 
-        $duplicatedPackages = $composerJson->getDuplicatedRequirePackages();
-
+        $requirePackageNames = array_keys($composerJson->getRequire());
         $currentRequireDev = $composerJson->getRequireDev();
-        $packages = array_keys($currentRequireDev);
 
-        foreach ($packages as $package) {
-            if (in_array($package, $duplicatedPackages, true)) {
-                unset($currentRequireDev[$package]);
-            }
+        foreach ($requirePackageNames as $requirePackageName) {
+            unset($currentRequireDev[$requirePackageName]);
         }
 
         $composerJson->setRequireDev($currentRequireDev);

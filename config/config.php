@@ -8,7 +8,6 @@ use Symplify\MonorepoBuilder\Config\MBConfig;
 use Symplify\MonorepoBuilder\Console\MonorepoBuilderApplication;
 use Symplify\MonorepoBuilder\Contract\Git\TagResolverInterface;
 use Symplify\MonorepoBuilder\Git\MostRecentTagResolver;
-use Symplify\MonorepoBuilder\Merge\JsonSchema;
 use Symplify\MonorepoBuilder\Release\ReleaseWorker\PushTagReleaseWorker;
 use Symplify\MonorepoBuilder\Release\ReleaseWorker\TagVersionReleaseWorker;
 use Symplify\MonorepoBuilder\ValueObject\Option;
@@ -40,7 +39,7 @@ return static function (MBConfig $mbConfig): void {
 
     $mbConfig->packageAliasFormat('<major>.<minor>-dev');
 
-    $mbConfig->composerSectionOrder(JsonSchema::getProperties());
+    $mbConfig->composerSectionOrder([]);
 
     $services = $mbConfig->services();
 

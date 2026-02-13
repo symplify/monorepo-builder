@@ -32,10 +32,6 @@
         },
         {
             "type": "path",
-            "url": "../composer-json-manipulator"
-        },
-        {
-            "type": "path",
             "url": "../package-builder"
         },
         {
