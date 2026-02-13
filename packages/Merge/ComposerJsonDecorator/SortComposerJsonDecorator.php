@@ -36,11 +36,11 @@ final class SortComposerJsonDecorator implements ComposerJsonDecoratorInterface
         $knownKeys = [];
         $unknownKeys = [];
 
-        foreach ($orderedKeys as $key) {
-            if (in_array($key, $this->sectionOrder, true)) {
-                $knownKeys[] = $key;
+        foreach ($orderedKeys as $orderedKey) {
+            if (in_array($orderedKey, $this->sectionOrder, true)) {
+                $knownKeys[] = $orderedKey;
             } else {
-                $unknownKeys[] = $key;
+                $unknownKeys[] = $orderedKey;
             }
         }
 

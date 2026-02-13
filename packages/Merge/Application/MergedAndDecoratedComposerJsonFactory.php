@@ -59,8 +59,8 @@ final readonly class MergedAndDecoratedComposerJsonFactory
         // mergeFileInfos modifies $mainComposerJson in place
         $this->composerJsonMerger->mergeFileInfos($mainComposerJson, $packageFileInfos);
 
-        foreach ($this->sortedDecorators as $composerJsonDecorator) {
-            $composerJsonDecorator->decorate($mainComposerJson);
+        foreach ($this->sortedDecorators as $sortedDecorator) {
+            $sortedDecorator->decorate($mainComposerJson);
         }
     }
 
@@ -70,16 +70,14 @@ final readonly class MergedAndDecoratedComposerJsonFactory
      */
     private function sortDecorators(array $decorators): array
     {
-        usort($decorators, function (ComposerJsonDecoratorInterface $a, ComposerJsonDecoratorInterface $b): int {
-            return $this->getDecoratorOrder($a) <=> $this->getDecoratorOrder($b);
-        });
+        usort($decorators, fn(ComposerJsonDecoratorInterface $a, ComposerJsonDecoratorInterface $b): int => $this->getDecoratorOrder($a) <=> $this->getDecoratorOrder($b));
 
         return $decorators;
     }
 
-    private function getDecoratorOrder(ComposerJsonDecoratorInterface $decorator): int
+    private function getDecoratorOrder(ComposerJsonDecoratorInterface $composerJsonDecorator): int
     {
-        $position = array_search($decorator::class, self::DECORATOR_ORDER, true);
+        $position = array_search($composerJsonDecorator::class, self::DECORATOR_ORDER, true);
 
         // Unknown decorators go to the end, preserving relative order
         return $position === false ? PHP_INT_MAX : $position;

@@ -31,7 +31,6 @@ final readonly class MostRecentTagResolver implements TagResolverInterface
     {
         $tagList = $this->parseTags($this->processRunner->run(self::COMMAND, $gitDirectory));
 
-        /** @var string $theMostRecentTag */
         $theMostRecentTag = (string) array_pop($tagList);
 
         if ($theMostRecentTag === '') {

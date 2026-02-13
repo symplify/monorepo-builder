@@ -7,3 +7,6 @@ parameters:
         - tests
     unused_public:
         methods: false
+
+    scanFiles:
+        - vendor/symfony/dependency-injection/Loader/Configurator/ContainerConfigurator.php

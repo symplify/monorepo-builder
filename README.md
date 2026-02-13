@@ -1,69 +1,64 @@
-# Not only Composer tools to build a Monorepo
+# Monorepo Builder
 
 [![Downloads total](https://img.shields.io/packagist/dt/symplify/monorepo-builder.svg?style=flat-square)](https://packagist.org/packages/symplify/monorepo-builder)
 
-Do you maintain a monorepo with multiple packages?
-
-**This package has few useful tools, that will make that easier**.
+A set of tools for managing PHP monorepos: merging `composer.json` files, validating package versions, releasing with automation, and more.
 
 ## Install
 
 ```bash
-# Latest version (PHP 8.2+)
 composer require monorepo-php/monorepo --dev
-
-# For PHP 8.1 (legacy version, no longer maintained)
-composer require "symplify/monorepo-builder:^11.2" --dev
 ```
 
-> **Note:** `monorepo-php/monorepo` is an automatically synced, dependency-free compatible package.
+Requires PHP 8.2+. For PHP 8.1, use `symplify/monorepo-builder:^11.2` (no longer maintained).
 
-**Requirements:**
-- PHP 8.2 or higher (for version 12.x)
+## Quick Start
 
-**For older PHP versions:**
-- Use version 11.x (no longer maintained)
-
-## Usage
-
-### 1. Are you New to Monorepo?
-
-If you're new to monorepos, you can start with a basic setup using our initialization command:
+If you're new to monorepos, generate a basic structure:
 
 ```bash
 vendor/bin/monorepo-builder init
 ```
 
-This creates a basic monorepo structure with the necessary configuration files.
+All configuration goes in `monorepo-builder.php` at your project root.
 
+## Configuration
 
-### 2. Merge local `composer.json` to the Root One
+### Package Directories
 
-Merges all sections from package `composer.json` files into the root `composer.json`. For the reverse direction (propagating versions from root to packages), see the `propagate` command.
-
-All sections present in package `composer.json` files are merged, including standard sections (`require`, `require-dev`, `autoload`, etc.) and any custom sections (e.g. `scripts-aliases`, `abandoned`).
-
-If a package appears in both `require` and `require-dev`, the `require` entry takes priority and the `require-dev` duplicate is removed.
-
-The original key order of the root `composer.json` is preserved by default. New sections from packages are appended at the end. To enforce a specific section order, use `composerSectionOrder()`:
+By default, packages are discovered from `./packages`. To customize:
 
 ```php
 use Symplify\MonorepoBuilder\Config\MBConfig;
-use Symplify\MonorepoBuilder\Merge\JsonSchema;
 
 return static function (MBConfig $mbConfig): void {
-    // sort sections by composer.json schema order
-    $mbConfig->composerSectionOrder(JsonSchema::getProperties());
+    $mbConfig->packageDirectories([
+        __DIR__ . '/packages',
+        __DIR__ . '/projects',
+    ]);
+
+    // exclude specific packages
+    $mbConfig->packageDirectoriesExcludes([__DIR__ . '/packages/secret-package']);
 };
 ```
 
-To merge run:
+## Commands
+
+### merge
+
+Merges all sections from package `composer.json` files into the root `composer.json`. For the reverse direction, see [`propagate`](#propagate).
 
 ```bash
 vendor/bin/monorepo-builder merge
 ```
 
-<br>
+**Behavior:**
+
+- All sections are merged, including standard (`require`, `autoload`, etc.) and custom ones (`scripts-aliases`, `abandoned`, etc.)
+- If a package appears in both `require` and `require-dev`, the `require` entry takes priority
+- The original key order of the root `composer.json` is preserved; new sections are appended at the end
+
+**Append and remove data after merge:**
 
 ```php
 use Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
@@ -71,21 +66,7 @@ use Symplify\MonorepoBuilder\Config\MBConfig;
 use Symplify\MonorepoBuilder\ValueObject\Option;
 
 return static function (MBConfig $mbConfig): void {
-    // where are the packages located?
-    $mbConfig->packageDirectories([
-        // default value
-        __DIR__ . '/packages',
-        // custom
-        __DIR__ . '/projects',
-    ]);
-
-    // how to skip packages in loaded directories?
-    $mbConfig->packageDirectoriesExcludes([__DIR__ . '/packages/secret-package']);
-
-    // "merge" command related
-
-    // what extra parts to add after merge?
-    // supports any composer.json key, not limited to standard sections
+    // add data after merge (supports any composer.json key)
     $mbConfig->dataToAppend([
         ComposerJsonSection::AUTOLOAD_DEV => [
             'psr-4' => [
@@ -97,58 +78,65 @@ return static function (MBConfig $mbConfig): void {
         ],
     ]);
 
+    // remove data after merge
     $mbConfig->dataToRemove([
         ComposerJsonSection::REQUIRE => [
-            // the line is removed by key, so version is irrelevant, thus *
+            // removed by key, version is irrelevant
             'phpunit/phpunit' => '*',
         ],
         ComposerJsonSection::REPOSITORIES => [
-            // this will remove all repositories
             Option::REMOVE_COMPLETELY,
         ],
     ]);
 };
 ```
 
-### 3. Bump Package Inter-dependencies
+**Custom section order:**
 
-Let's say you release `symplify/symplify` 4.0 and you need package to depend on version `^4.0` for each other:
+By default, the original key order is preserved. To enforce a specific order:
 
-```bash
-vendor/bin/monorepo-builder bump-interdependency "^4.0"
+```php
+use Symplify\MonorepoBuilder\Config\MBConfig;
+use Symplify\MonorepoBuilder\Merge\JsonSchema;
+
+return static function (MBConfig $mbConfig): void {
+    $mbConfig->composerSectionOrder(JsonSchema::getProperties());
+};
 ```
 
-### 4. Keep Synchronized Package Version
+### validate
 
-In synchronized monorepo, it's common to use same package version to prevent bugs and WTFs. So if one of your package uses `symfony/console` 3.4 and the other `symfony/console` 4.1, this will tell you:
+Checks that all packages use the same version for shared dependencies:
 
 ```bash
 vendor/bin/monorepo-builder validate
 ```
 
-### 5. Keep Package Alias Up-To-Date
+### bump-interdependency
 
-You can see this even if there is already version 3.0 out:
+Updates mutual dependencies between packages to a given version:
 
-```json
-{
-    "extra": {
-        "branch-alias": {
-            "dev-master": "2.0-dev"
-        }
-    }
-}
+```bash
+vendor/bin/monorepo-builder bump-interdependency "^4.0"
 ```
 
-**Not good.** Get rid of this manual work and add this command to your release workflow:
+### propagate
+
+Propagates versions from root `composer.json` to all packages (the reverse of `merge`):
+
+```bash
+vendor/bin/monorepo-builder propagate
+```
+
+### package-alias
+
+Updates the `branch-alias` in every package `composer.json` to match the current version:
 
 ```bash
 vendor/bin/monorepo-builder package-alias
 ```
 
-This will add alias `3.1-dev` to `composer.json` in each package.
-
-If you prefer [`3.1.x-dev`](https://getcomposer.org/doc/articles/aliases.md#branch-alias) over default `3.1-dev`, you can configure it:
+To customize the alias format:
 
 ```php
 use Symplify\MonorepoBuilder\Config\MBConfig;
@@ -159,31 +147,38 @@ return static function (MBConfig $mbConfig): void {
 };
 ```
 
-### 6. Split Directories to Git Repositories
+### localize-composer-paths
 
-You can split packages from your monorepo into separate repositories using GitHub Actions. Use [symplify/github-action-monorepo-split](https://github.com/symplify/github-action-monorepo-split) for this purpose.
+Sets mutual package paths to local packages for pre-split testing:
 
-For configuration examples, you can refer to the [GitHub Action workflow documentation](https://github.com/danharrin/monorepo-split-github-action).
+```bash
+vendor/bin/monorepo-builder localize-composer-paths
+```
 
-### 7. Release Flow
+### release
 
-When a new version of your package is released, you have to do many manual steps:
-
-- bump mutual dependencies,
-- tag this version,
-- `git push` with tag,
-- change `CHANGELOG.md` title *Unreleased* to `v<version> - Y-m-d` format
-- bump alias and mutual dependencies to next version alias
-
-But what if **you forget one or do it in wrong order**? Everything will crash!
-
-The `release` command will make you safe:
+Automates the release process: bumping dependencies, tagging, pushing, and updating changelogs.
 
 ```bash
 vendor/bin/monorepo-builder release v7.0
 ```
 
-And add the following release workers to your `monorepo-builder.php`:
+Preview what will happen without making changes:
+
+```bash
+vendor/bin/monorepo-builder release v7.0 --dry-run
+```
+
+Release by semver level (`patch`, `minor`, or `major`):
+
+```bash
+# current v0.7.1 -> v0.7.2
+vendor/bin/monorepo-builder release patch
+```
+
+**Configuring release workers:**
+
+`TagVersionReleaseWorker` and `PushTagReleaseWorker` are enabled by default. Add more workers or customize the order:
 
 ```php
 use Symplify\MonorepoBuilder\Config\MBConfig;
@@ -197,7 +192,6 @@ use Symplify\MonorepoBuilder\Release\ReleaseWorker\UpdateBranchAliasReleaseWorke
 use Symplify\MonorepoBuilder\Release\ReleaseWorker\UpdateReplaceReleaseWorker;
 
 return static function (MBConfig $mbConfig): void {
-    // release workers - in order to execute
     $mbConfig->workers([
         UpdateReplaceReleaseWorker::class,
         SetCurrentMutualDependenciesReleaseWorker::class,
@@ -211,8 +205,7 @@ return static function (MBConfig $mbConfig): void {
 };
 ```
 
-These `TagVersionReleaseWorker` and `PushTagReleaseWorker` are enabled by default.
-If you want to disable these default workers, you can use the following code.
+To disable the default workers:
 
 ```php
 return static function (MBConfig $mbConfig): void {
@@ -220,35 +213,11 @@ return static function (MBConfig $mbConfig): void {
 };
 ```
 
-You can also include your own workers. Just add services that implements `ReleaseWorkerInterface`.
-Are you afraid to tag and push? Use `--dry-run` to see only descriptions:
+You can also add custom workers by implementing `ReleaseWorkerInterface`.
 
-```bash
-vendor/bin/monorepo-builder release 7.0 --dry-run
-```
+**Branch-aware tag validation (LTS):**
 
-Do you want to release next [patch version](https://semver.org/), e.g. current `v0.7.1` → next `v0.7.2`?
-
-```bash
-vendor/bin/monorepo-builder release patch
-```
-
-You can use `minor` and `major` too.
-
-### 8. Branch-Aware Tag Validation for LTS Releases
-
-If you maintain multiple version lines (LTS strategy), you can enable branch-aware tag validation to allow releasing older versions even when newer versions exist.
-
-**The Problem:**
-
-By default, the release command compares the new version against the most recent tag by commit date. This causes issues when:
-- Main branch has `v3.0.0` (tagged last month)
-- LTS branch `2.x` needs to release `v2.1.5` (new tag today)
-- ❌ Validation fails: `2.1.5 < 3.0.0`
-
-**The Solution:**
-
-Enable branch-aware validation to compare only within the same major version:
+If you maintain multiple version lines, the release command may reject older versions because it compares against the most recent tag globally. Enable branch-aware validation to compare only within the same major version:
 
 ```php
 use Symplify\MonorepoBuilder\Config\MBConfig;
@@ -257,27 +226,11 @@ use Symplify\MonorepoBuilder\Contract\Git\TagResolverInterface;
 
 return static function (MBConfig $mbConfig): void {
     $services = $mbConfig->services();
-
-    // Enable branch-aware tag validation by using BranchAwareTagResolver
     $services->set(BranchAwareTagResolver::class);
     $services->alias(TagResolverInterface::class, BranchAwareTagResolver::class);
 };
 ```
 
-## Available Commands
+## Package Splitting
 
-Here are all available commands you can use with monorepo-builder:
-
-- `init` - Creates empty monorepo directory and composer.json structure
-- `merge` - Merge "composer.json" from all found packages to root one
-- `bump-interdependency` - Bump dependency of split packages on each other
-- `validate` - Validates synchronized versions in "composer.json" in all found packages
-- `package-alias` - Updates branch alias in "composer.json" all found packages
-- `propagate` - Propagate versions from root "composer.json" to all packages, the opposite of "merge" command
-- `localize-composer-paths` - Set mutual package paths to local packages - use for pre-split package testing
-- `release` - Perform release process with set Release Workers
-
-To see detailed help for any command, run:
-```bash
-vendor/bin/monorepo-builder <command> --help
-```
+To split packages into separate repositories, use [symplify/github-action-monorepo-split](https://github.com/symplify/github-action-monorepo-split) with GitHub Actions.

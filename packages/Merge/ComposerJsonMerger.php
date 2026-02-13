@@ -68,6 +68,7 @@ final readonly class ComposerJsonMerger
                     $currentKeys[] = $extraKey;
                 }
             }
+
             $mainComposerJson->setJsonKeys($currentKeys);
         }
     }
@@ -77,8 +78,8 @@ final readonly class ComposerJsonMerger
         $requirePackageNames = array_keys($composerJson->getRequire());
         $requireDev = $composerJson->getRequireDev();
 
-        foreach ($requirePackageNames as $packageName) {
-            unset($requireDev[$packageName]);
+        foreach ($requirePackageNames as $requirePackageName) {
+            unset($requireDev[$requirePackageName]);
         }
 
         $composerJson->setRequireDev($requireDev);
