@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Symplify\MonorepoBuilder\Tests\Release\DisableDefaultWorkers;
 
+use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterface;
 use PHPUnit\Framework\TestCase;
 use ReflectionClass;
 use Symplify\MonorepoBuilder\Config\MBConfig;
@@ -72,7 +73,7 @@ final class DisableDefaultWorkersTest extends TestCase
         /** @var ReleaseWorkerProvider $provider */
         $provider = $container->get(ReleaseWorkerProvider::class);
         $workers = $provider->provideByStage(Stage::MAIN);
-        $workerClasses = array_map(static fn ($w) => $w::class, $workers);
+        $workerClasses = array_map(static fn (ReleaseWorkerInterface $releaseWorker): string => $releaseWorker::class, $workers);
         $this->assertContains(TagVersionReleaseWorker::class, $workerClasses);
     }
 
@@ -87,7 +88,7 @@ final class DisableDefaultWorkersTest extends TestCase
         /** @var ReleaseWorkerProvider $provider */
         $provider = $container->get(ReleaseWorkerProvider::class);
         $workers = $provider->provideByStage(Stage::MAIN);
-        $workerClasses = array_map(static fn ($w) => $w::class, $workers);
+        $workerClasses = array_map(static fn (ReleaseWorkerInterface $releaseWorker): string => $releaseWorker::class, $workers);
 
         // Should have exactly 3 workers, no duplicates
         $this->assertSame([
@@ -111,7 +112,7 @@ final class DisableDefaultWorkersTest extends TestCase
         /** @var ReleaseWorkerProvider $provider */
         $provider = $container->get(ReleaseWorkerProvider::class);
         $workers = $provider->provideByStage(Stage::MAIN);
-        $workerClasses = array_map(static fn ($w) => $w::class, $workers);
+        $workerClasses = array_map(static fn (ReleaseWorkerInterface $releaseWorker): string => $releaseWorker::class, $workers);
 
         $this->assertSame([
             FetchTagsReleaseWorker::class,

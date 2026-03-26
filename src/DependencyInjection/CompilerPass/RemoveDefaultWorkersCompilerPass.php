@@ -9,15 +9,11 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symplify\MonorepoBuilder\Config\MBConfig;
 
 /**
- * Removes default release workers from the container if MBConfig::disableDefaultWorkers() was called.
+ * Manages default release workers based on user configuration:
  *
- * This uses a tag-based approach to distinguish between:
- * - Default workers registered by config/config.php (tagged with 'monorepo.default_worker')
- * - User-registered workers (no tag, or re-registered without the tag)
- *
- * When user calls disableDefaultWorkers() and then manually registers a worker
- * (even one with the same class as a default worker), only the tagged default
- * definition is removed, preserving the user's explicit registration.
+ * 1. If disableDefaultWorkers() was called, removes all services tagged with 'monorepo.default_worker'.
+ * 2. If workers() was called (without disableDefaultWorkers()), removes default workers whose class
+ *    overlaps with user-registered workers to prevent duplicates while preserving user-specified order.
  */
 final readonly class RemoveDefaultWorkersCompilerPass implements CompilerPassInterface
 {
