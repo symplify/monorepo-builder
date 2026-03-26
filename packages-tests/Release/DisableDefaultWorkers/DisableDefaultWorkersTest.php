@@ -13,6 +13,8 @@ use Symplify\MonorepoBuilder\Release\ReleaseWorker\PushTagReleaseWorker;
 use Symplify\MonorepoBuilder\Release\ReleaseWorker\TagVersionReleaseWorker;
 use Symplify\MonorepoBuilder\Release\ReleaseWorkerProvider;
 use Symplify\MonorepoBuilder\Release\ValueObject\Stage;
+use Symplify\MonorepoBuilder\Tests\Release\DisableDefaultWorkers\Fixture\FetchTagsReleaseWorker;
+use Symplify\MonorepoBuilder\Tests\Release\DisableDefaultWorkers\Fixture\GenerateChangelogReleaseWorker;
 
 /**
  * Tests for MBConfig::disableDefaultWorkers() functionality.
@@ -96,7 +98,8 @@ final class DisableDefaultWorkersTest extends TestCase
     }
 
     /**
-     * Scenario 5: disableDefaultWorkers() + workers() respects user-specified order
+     * Scenario 5: Reproduces the exact scenario from issue #111.
+     * User wants custom workers to run BEFORE the default tag/push workers.
      *
      * @see https://github.com/symplify/monorepo-builder/issues/111
      */
@@ -111,7 +114,8 @@ final class DisableDefaultWorkersTest extends TestCase
         $workerClasses = array_map(static fn ($w) => $w::class, $workers);
 
         $this->assertSame([
-            AddTagToChangelogReleaseWorker::class,
+            FetchTagsReleaseWorker::class,
+            GenerateChangelogReleaseWorker::class,
             TagVersionReleaseWorker::class,
             PushTagReleaseWorker::class,
         ], $workerClasses);
