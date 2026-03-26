@@ -74,8 +74,11 @@ final class MBConfig extends ContainerConfigurator
     {
         $services = $this->services();
 
-        foreach ($workerClasses as $workerClass) {
-            $services->set($workerClass);
+        // Use a unique service ID prefix so user-registered workers don't replace
+        // default definitions (which would preserve the original array position in
+        // the container and break the user's intended ordering).
+        foreach ($workerClasses as $index => $workerClass) {
+            $services->set('user_release_worker.' . $index, $workerClass);
         }
     }
 

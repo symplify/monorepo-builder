@@ -8,8 +8,11 @@ use PHPUnit\Framework\TestCase;
 use ReflectionClass;
 use Symplify\MonorepoBuilder\Config\MBConfig;
 use Symplify\MonorepoBuilder\Kernel\MonorepoBuilderKernel;
+use Symplify\MonorepoBuilder\Release\ReleaseWorker\AddTagToChangelogReleaseWorker;
 use Symplify\MonorepoBuilder\Release\ReleaseWorker\PushTagReleaseWorker;
 use Symplify\MonorepoBuilder\Release\ReleaseWorker\TagVersionReleaseWorker;
+use Symplify\MonorepoBuilder\Release\ReleaseWorkerProvider;
+use Symplify\MonorepoBuilder\Release\ValueObject\Stage;
 
 /**
  * Tests for MBConfig::disableDefaultWorkers() functionality.
@@ -20,13 +23,11 @@ final class DisableDefaultWorkersTest extends TestCase
 {
     protected function setUp(): void
     {
-        // Reset static state before each test
         $this->resetMBConfigState();
     }
 
     protected function tearDown(): void
     {
-        // Clean up static state after each test
         $this->resetMBConfigState();
     }
 
@@ -62,10 +63,37 @@ final class DisableDefaultWorkersTest extends TestCase
         $monorepoBuilderKernel = new MonorepoBuilderKernel();
         $container = $monorepoBuilderKernel->createFromConfigs([__DIR__ . '/config/disable_and_add_custom.php']);
 
-        // User explicitly added TagVersionReleaseWorker, so it should be preserved
-        $this->assertTrue($container->has(TagVersionReleaseWorker::class));
         // User did not add PushTagReleaseWorker, so it should be removed
         $this->assertFalse($container->has(PushTagReleaseWorker::class));
+
+        // User explicitly added TagVersionReleaseWorker via workers(), so it should be available
+        /** @var ReleaseWorkerProvider $provider */
+        $provider = $container->get(ReleaseWorkerProvider::class);
+        $workers = $provider->provideByStage(Stage::MAIN);
+        $workerClasses = array_map(static fn ($w) => $w::class, $workers);
+        $this->assertContains(TagVersionReleaseWorker::class, $workerClasses);
+    }
+
+    /**
+     * Scenario 4: disableDefaultWorkers() + workers() respects user-specified order
+     *
+     * @see https://github.com/symplify/monorepo-builder/issues/111
+     */
+    public function testWorkerOrderIsRespected(): void
+    {
+        $monorepoBuilderKernel = new MonorepoBuilderKernel();
+        $container = $monorepoBuilderKernel->createFromConfigs([__DIR__ . '/config/disable_and_reorder.php']);
+
+        /** @var ReleaseWorkerProvider $provider */
+        $provider = $container->get(ReleaseWorkerProvider::class);
+        $workers = $provider->provideByStage(Stage::MAIN);
+        $workerClasses = array_map(static fn ($w) => $w::class, $workers);
+
+        $this->assertSame([
+            AddTagToChangelogReleaseWorker::class,
+            TagVersionReleaseWorker::class,
+            PushTagReleaseWorker::class,
+        ], $workerClasses);
     }
 
     private function resetMBConfigState(): void
