@@ -25,16 +25,33 @@ final readonly class RemoveDefaultWorkersCompilerPass implements CompilerPassInt
 
     public function process(ContainerBuilder $containerBuilder): void
     {
-        // Check if user disabled default workers in their config
-        if (! MBConfig::isDisableDefaultWorkers()) {
+        $taggedServices = $containerBuilder->findTaggedServiceIds(self::DEFAULT_WORKER_TAG);
+
+        if (MBConfig::isDisableDefaultWorkers()) {
+            // Remove all default workers
+            foreach (array_keys($taggedServices) as $serviceId) {
+                if ($containerBuilder->hasDefinition($serviceId)) {
+                    $containerBuilder->removeDefinition($serviceId);
+                }
+            }
+
             return;
         }
 
-        // Find and remove only services tagged as default workers
-        $taggedServices = $containerBuilder->findTaggedServiceIds(self::DEFAULT_WORKER_TAG);
+        // Remove default workers whose class was also registered by the user
+        // via workers(), to avoid duplicates
+        $userWorkerClasses = MBConfig::getUserWorkerClasses();
+        if ($userWorkerClasses === []) {
+            return;
+        }
 
         foreach (array_keys($taggedServices) as $serviceId) {
-            if ($containerBuilder->hasDefinition($serviceId)) {
+            if (! $containerBuilder->hasDefinition($serviceId)) {
+                continue;
+            }
+
+            $class = $containerBuilder->getDefinition($serviceId)->getClass() ?? $serviceId;
+            if (in_array($class, $userWorkerClasses, true)) {
                 $containerBuilder->removeDefinition($serviceId);
             }
         }

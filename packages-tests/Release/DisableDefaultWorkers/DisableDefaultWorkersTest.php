@@ -75,7 +75,28 @@ final class DisableDefaultWorkersTest extends TestCase
     }
 
     /**
-     * Scenario 4: disableDefaultWorkers() + workers() respects user-specified order
+     * Scenario 4: workers() without disableDefaultWorkers() should not duplicate overlapping workers
+     */
+    public function testWorkersWithoutDisableDoesNotDuplicate(): void
+    {
+        $monorepoBuilderKernel = new MonorepoBuilderKernel();
+        $container = $monorepoBuilderKernel->createFromConfigs([__DIR__ . '/config/add_custom_without_disable.php']);
+
+        /** @var ReleaseWorkerProvider $provider */
+        $provider = $container->get(ReleaseWorkerProvider::class);
+        $workers = $provider->provideByStage(Stage::MAIN);
+        $workerClasses = array_map(static fn ($w) => $w::class, $workers);
+
+        // Should have exactly 3 workers, no duplicates
+        $this->assertSame([
+            AddTagToChangelogReleaseWorker::class,
+            TagVersionReleaseWorker::class,
+            PushTagReleaseWorker::class,
+        ], $workerClasses);
+    }
+
+    /**
+     * Scenario 5: disableDefaultWorkers() + workers() respects user-specified order
      *
      * @see https://github.com/symplify/monorepo-builder/issues/111
      */
@@ -99,7 +120,11 @@ final class DisableDefaultWorkersTest extends TestCase
     private function resetMBConfigState(): void
     {
         $reflectionClass = new ReflectionClass(MBConfig::class);
+
         $reflectionProperty = $reflectionClass->getProperty('disableDefaultWorkers');
         $reflectionProperty->setValue(null, false);
+
+        $reflectionProperty = $reflectionClass->getProperty('userWorkerClasses');
+        $reflectionProperty->setValue(null, []);
     }
 }

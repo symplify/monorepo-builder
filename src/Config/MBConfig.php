@@ -14,6 +14,11 @@ final class MBConfig extends ContainerConfigurator
     private static bool $disableDefaultWorkers = false;
 
     /**
+     * @var array<class-string<ReleaseWorkerInterface>>
+     */
+    private static array $userWorkerClasses = [];
+
+    /**
      * @param string[] $packageDirectories
      */
     public function packageDirectories(array $packageDirectories): void
@@ -27,6 +32,14 @@ final class MBConfig extends ContainerConfigurator
     public static function isDisableDefaultWorkers(): bool
     {
         return self::$disableDefaultWorkers;
+    }
+
+    /**
+     * @return array<class-string<ReleaseWorkerInterface>>
+     */
+    public static function getUserWorkerClasses(): array
+    {
+        return self::$userWorkerClasses;
     }
 
     public static function disableDefaultWorkers(): void
@@ -73,6 +86,8 @@ final class MBConfig extends ContainerConfigurator
     public function workers(array $workerClasses): void
     {
         $services = $this->services();
+
+        self::$userWorkerClasses = $workerClasses;
 
         // Use a unique service ID prefix so user-registered workers don't replace
         // default definitions (which would preserve the original array position in
