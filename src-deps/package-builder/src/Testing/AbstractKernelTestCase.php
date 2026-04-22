@@ -75,7 +75,6 @@ abstract class AbstractKernelTestCase extends TestCase
     protected function bootKernel(string $kernelClass): void
     {
         if (is_a($kernelClass, LightKernelInterface::class, true)) {
-            /** @var LightKernelInterface $kernel */
             $kernel = new $kernelClass();
             $kernel->createFromConfigs([]);
 
@@ -200,7 +199,6 @@ abstract class AbstractKernelTestCase extends TestCase
         array $configFilePaths
     ): KernelInterface|LightKernelInterface {
         if (is_a($kernelClass, LightKernelInterface::class, true)) {
-            /** @var LightKernelInterface $kernel */
             $kernel = new $kernelClass();
             $kernel->createFromConfigs($configFilePaths);
             return $kernel;
