@@ -6,6 +6,7 @@ namespace Symplify\MonorepoBuilder\Merge\ComposerKeyMerger;
 
 use Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJson;
 use Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJsonSection;
+use Symplify\MonorepoBuilder\Config\MBConfig;
 use Symplify\MonorepoBuilder\Merge\Arrays\SortedParameterMerger;
 use Symplify\MonorepoBuilder\Merge\Contract\ComposerKeyMergerInterface;
 
@@ -18,6 +19,10 @@ final readonly class AutoloadComposerKeyMerger implements ComposerKeyMergerInter
 
     public function merge(ComposerJson $mainComposerJson, ComposerJson $newComposerJson): void
     {
+        if (MBConfig::isAutoloadMergeDisabled()) {
+            return;
+        }
+
         if ($newComposerJson->getAutoload() === []) {
             return;
         }

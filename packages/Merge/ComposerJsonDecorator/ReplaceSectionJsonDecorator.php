@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Symplify\MonorepoBuilder\Merge\ComposerJsonDecorator;
 
 use Symplify\MonorepoBuilder\ComposerJsonManipulator\ValueObject\ComposerJson;
+use Symplify\MonorepoBuilder\Config\MBConfig;
 use Symplify\MonorepoBuilder\Merge\Configuration\MergedPackagesCollector;
 use Symplify\MonorepoBuilder\Merge\Contract\ComposerJsonDecoratorInterface;
 
@@ -17,6 +18,10 @@ final readonly class ReplaceSectionJsonDecorator implements ComposerJsonDecorato
 
     public function decorate(ComposerJson $composerJson): void
     {
+        if (MBConfig::isPackageReplaceDisabled()) {
+            return;
+        }
+
         $mergedPackages = $this->mergedPackagesCollector->getPackages();
 
         foreach ($mergedPackages as $mergedPackage) {

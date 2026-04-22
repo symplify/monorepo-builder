@@ -13,6 +13,10 @@ final class MBConfig extends ContainerConfigurator
 {
     private static bool $disableDefaultWorkers = false;
 
+    private static bool $disablePackageReplace = false;
+
+    private static bool $disableAutoloadMerge = false;
+
     /**
      * @var array<class-string<ReleaseWorkerInterface>>
      */
@@ -34,6 +38,16 @@ final class MBConfig extends ContainerConfigurator
         return self::$disableDefaultWorkers;
     }
 
+    public static function isPackageReplaceDisabled(): bool
+    {
+        return self::$disablePackageReplace;
+    }
+
+    public static function isAutoloadMergeDisabled(): bool
+    {
+        return self::$disableAutoloadMerge;
+    }
+
     /**
      * @return array<class-string<ReleaseWorkerInterface>>
      */
@@ -45,6 +59,16 @@ final class MBConfig extends ContainerConfigurator
     public static function disableDefaultWorkers(): void
     {
         self::$disableDefaultWorkers = true;
+    }
+
+    public static function disablePackageReplace(): void
+    {
+        self::$disablePackageReplace = true;
+    }
+
+    public static function disableAutoloadMerge(): void
+    {
+        self::$disableAutoloadMerge = true;
     }
 
     /**
