@@ -82,7 +82,7 @@ final class RepositoryPathComposerJsonDecorator extends AbstractComposerJsonDeco
                     'type' => 'path',
                     'url' => 'libs/*/',
                 ],
-                3 => [
+                2 => [
                     'packagist.org' => false,
                 ],
             ],

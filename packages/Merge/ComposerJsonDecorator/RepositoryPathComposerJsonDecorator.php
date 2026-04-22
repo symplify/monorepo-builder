@@ -47,11 +47,12 @@ final class RepositoryPathComposerJsonDecorator implements ComposerJsonDecorator
 
             if (in_array((string) $repository['url'], $paths, true)) {
                 unset($repositories[$index]);
+                continue;
             }
 
             $paths[] = $repository['url'];
         }
 
-        $composerJson->setRepositories($repositories);
+        $composerJson->setRepositories(array_values($repositories));
     }
 }
