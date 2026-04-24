@@ -19,7 +19,7 @@ final readonly class AutoloadComposerKeyMerger implements ComposerKeyMergerInter
 
     public function merge(ComposerJson $mainComposerJson, ComposerJson $newComposerJson): void
     {
-        if (MBConfig::isAutoloadMergeDisabled()) {
+        if (MBConfig::shouldSkipAutoload($newComposerJson->getType())) {
             return;
         }
 
