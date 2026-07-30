@@ -34,20 +34,13 @@ final readonly class CompleteUnifiedDiffOutputBuilderFactory
         // "contextLines" property that had to be overridden via reflection.
         if (class_exists(UnifiedDiffOutputBuilder::class)) {
             $unifiedDiffOutputBuilder = new UnifiedDiffOutputBuilder('');
-            $this->privatesAccessor->setPrivateProperty(
-                $unifiedDiffOutputBuilder,
-                'contextLines',
-                self::CONTEXT_LINES
-            );
+            $this->privatesAccessor->setPrivateProperty($unifiedDiffOutputBuilder, 'contextLines', self::CONTEXT_LINES);
 
             return $unifiedDiffOutputBuilder;
         }
 
         // sebastian/diff >= 9 removed UnifiedDiffOutputBuilder and exposes
         // "contextLines" as a public constructor option instead.
-        return new StrictUnifiedDiffOutputBuilder([
-            'contextLines' => self::CONTEXT_LINES,
-            'header' => '',
-        ]);
+        return new StrictUnifiedDiffOutputBuilder(['contextLines' => self::CONTEXT_LINES, 'header' => '']);
     }
 }
