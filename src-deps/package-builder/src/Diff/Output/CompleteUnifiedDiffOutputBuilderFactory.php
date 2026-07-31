@@ -40,7 +40,12 @@ final readonly class CompleteUnifiedDiffOutputBuilderFactory
         }
 
         // sebastian/diff >= 9 removed UnifiedDiffOutputBuilder and exposes
-        // "contextLines" as a public constructor option instead.
-        return new StrictUnifiedDiffOutputBuilder(['contextLines' => self::CONTEXT_LINES, 'header' => '']);
+        // "contextLines" as a public constructor option instead. "addLineNumbers"
+        // is off to keep the "@@ @@" hunk header of the removed builder.
+        return new StrictUnifiedDiffOutputBuilder([
+            'contextLines' => self::CONTEXT_LINES,
+            'header' => '',
+            'addLineNumbers' => false,
+        ]);
     }
 }
