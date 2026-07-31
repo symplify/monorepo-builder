@@ -9,11 +9,6 @@ use Symplify\MonorepoBuilder\Tests\Merge\ComposerJsonDecorator\AbstractComposerJ
 
 final class ComposerPatchesPathNormalizer extends AbstractComposerJsonDecorator
 {
-    protected function setUp(): void
-    {
-        parent::setUp();
-    }
-
     public function test(): void
     {
         if (! defined('SYMPLIFY_MONOREPO')) {

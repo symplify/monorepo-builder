@@ -54,3 +54,35 @@ jobs:
             working-directory: "src-deps/package-builder"
 
       -   run: ${{ matrix.actions.run }}
+
+  # sebastian/diff 9 drops UnifiedDiffOutputBuilder and needs PHP 8.4, so the
+  # fallback branch of CompleteUnifiedDiffOutputBuilderFactory is unreachable
+  # on the PHP 8.2 job above. PHPUnit 13 is what pulls diff 9 in.
+  sebastian_diff_9:
+    name: 'Tests on sebastian/diff 9'
+    runs-on: ubuntu-latest
+
+    steps:
+      -   uses: actions/checkout@v3
+      -   uses: shivammathur/setup-php@v2
+          with:
+            php-version: 8.4
+            coverage: none
+
+      -   run: >
+            cd src-deps/package-builder
+            && composer update --no-interaction --no-progress
+            && composer require --dev --no-interaction --no-progress
+            --with-all-dependencies "phpunit/phpunit:^13.2"
+
+      # guard against a silent pass if the resolver ever picks an older diff
+      -   name: 'Assert sebastian/diff 9 is installed'
+          working-directory: src-deps/package-builder
+          run: |
+            php -r 'require "vendor/autoload.php";
+            if (class_exists(SebastianBergmann\Diff\Output\UnifiedDiffOutputBuilder::class)) {
+                fwrite(STDERR, "expected sebastian/diff 9, got an older one\n");
+                exit(1);
+            }'
+
+      -   run: cd src-deps/package-builder && vendor/bin/phpunit

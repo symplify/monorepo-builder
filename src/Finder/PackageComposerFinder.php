@@ -19,12 +19,12 @@ final class PackageComposerFinder
     /**
      * @var string[]
      */
-    private array $packageDirectories = [];
+    private readonly array $packageDirectories;
 
     /**
      * @var string[]
      */
-    private array $packageDirectoriesExcludes = [];
+    private readonly array $packageDirectoriesExcludes;
 
     /**
      * @var SmartFileInfo[]
