@@ -12,12 +12,12 @@ use Symplify\PackageBuilder\Parameter\ParameterProvider;
 /**
  * @see \Symplify\MonorepoBuilder\Tests\Merge\ComposerJsonDecorator\SortComposerJsonDecorator\SortComposerJsonDecoratorTest
  */
-final class SortComposerJsonDecorator implements ComposerJsonDecoratorInterface
+final readonly class SortComposerJsonDecorator implements ComposerJsonDecoratorInterface
 {
     /**
      * @var string[]
      */
-    private array $sectionOrder = [];
+    private array $sectionOrder;
 
     public function __construct(ParameterProvider $parameterProvider)
     {

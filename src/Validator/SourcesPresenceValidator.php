@@ -9,15 +9,15 @@ use Symplify\MonorepoBuilder\FileSystem\ComposerJsonProvider;
 use Symplify\MonorepoBuilder\ValueObject\Option;
 use Symplify\PackageBuilder\Parameter\ParameterProvider;
 
-final class SourcesPresenceValidator
+final readonly class SourcesPresenceValidator
 {
     /**
      * @var string[]
      */
-    private array $packageDirectories = [];
+    private array $packageDirectories;
 
     public function __construct(
-        private readonly ComposerJsonProvider $composerJsonProvider,
+        private ComposerJsonProvider $composerJsonProvider,
         ParameterProvider $parameterProvider
     ) {
         $this->packageDirectories = $parameterProvider->provideArrayParameter(Option::PACKAGE_DIRECTORIES);

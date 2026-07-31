@@ -13,7 +13,7 @@ use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\VarDumper\Dumper\ContextProvider\ContextProviderInterface;
 use Symplify\AutowireArrayParameter\TypeResolver\ParameterTypeResolver;
 
-final class ParameterSkipper
+final readonly class ParameterSkipper
 {
     /**
      * Classes that create circular dependencies
@@ -34,13 +34,13 @@ final class ParameterSkipper
     /**
      * @var string[]
      */
-    private array $excludedFatalClasses = [];
+    private array $excludedFatalClasses;
 
     /**
      * @param string[] $excludedFatalClasses
      */
     public function __construct(
-        private readonly ParameterTypeResolver $parameterTypeResolver,
+        private ParameterTypeResolver $parameterTypeResolver,
         array $excludedFatalClasses
     ) {
         $this->excludedFatalClasses = array_merge(self::DEFAULT_EXCLUDED_FATAL_CLASSES, $excludedFatalClasses);

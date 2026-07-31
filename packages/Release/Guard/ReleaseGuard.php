@@ -17,7 +17,7 @@ use Symplify\PackageBuilder\Parameter\ParameterProvider;
 
 final class ReleaseGuard
 {
-    private bool $isStageRequired = false;
+    private readonly bool $isStageRequired;
 
     /**
      * @var string[]
@@ -27,7 +27,7 @@ final class ReleaseGuard
     /**
      * @var string[]
      */
-    private array $stagesToAllowExistingTag = [];
+    private readonly array $stagesToAllowExistingTag;
 
     /**
      * @param ReleaseWorkerInterface[] $releaseWorkers
